@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LogServiceService WSDL service -->
+
+  <service name="LogService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.logapp.uniriotec.br"/>
+      <parameter name="wsdlServiceElement" value="LogServiceService"/>
+      <parameter name="schemaQualified" value="http://model.logapp.uniriotec.br,http://service.logapp.uniriotec.br"/>
+      <parameter name="wsdlServicePort" value="LogService"/>
+      <parameter name="className" value="br.uniriotec.logapp.service.LogService"/>
+      <parameter name="wsdlPortType" value="LogService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.logapp.uniriotec.br" xmlns:retNS="http://service.logapp.uniriotec.br" xmlns:rtns="http://model.logapp.uniriotec.br" name="simpleLogService" qname="operNS:simpleLogService" returnQName="retNS:simpleLogServiceReturn" returnType="rtns:LogEffect" soapAction="">
+        <parameter xmlns:pns="http://service.logapp.uniriotec.br" xmlns:tns="http://model.logapp.uniriotec.br" qname="pns:logRequest" type="tns:LogRequest"/>
+      </operation>
+      <operation xmlns:operNS="http://service.logapp.uniriotec.br" xmlns:retNS="http://service.logapp.uniriotec.br" xmlns:rtns="http://model.logapp.uniriotec.br" name="mailAlertService" qname="operNS:mailAlertService" returnQName="retNS:mailAlertServiceReturn" returnType="rtns:LogEffect" soapAction="">
+        <parameter xmlns:pns="http://service.logapp.uniriotec.br" xmlns:tns="http://model.logapp.uniriotec.br" qname="pns:logRequest" type="tns:LogRequest"/>
+      </operation>
+      <operation xmlns:operNS="http://service.logapp.uniriotec.br" xmlns:retNS="http://service.logapp.uniriotec.br" xmlns:rtns="http://model.logapp.uniriotec.br" name="DBLogService" qname="operNS:DBLogService" returnQName="retNS:DBLogServiceReturn" returnType="rtns:LogEffect" soapAction="">
+        <parameter xmlns:pns="http://service.logapp.uniriotec.br" xmlns:tns="http://model.logapp.uniriotec.br" qname="pns:logRequest" type="tns:LogRequest"/>
+      </operation>
+      <parameter name="allowedMethods" value="simpleLogService DBLogService mailAlertService"/>
+
+      <typeMapping xmlns:ns="http://model.logapp.uniriotec.br" qname="ns:Severity" type="java:br.uniriotec.logapp.model.Severity" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.logapp.uniriotec.br" qname="ns:LogRequest" type="java:br.uniriotec.logapp.model.LogRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.logapp.uniriotec.br" qname="ns:LogEffect" type="java:br.uniriotec.logapp.model.LogEffect" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

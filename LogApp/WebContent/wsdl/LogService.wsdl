@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.logapp.uniriotec.br" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.logapp.uniriotec.br" xmlns:intf="http://service.logapp.uniriotec.br" xmlns:tns1="http://model.logapp.uniriotec.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.logapp.uniriotec.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model.logapp.uniriotec.br"/>
+   <element name="simpleLogService">
+    <complexType>
+     <sequence>
+      <element name="logRequest" type="tns1:LogRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="simpleLogServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="simpleLogServiceReturn" type="tns1:LogEffect"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mailAlertService">
+    <complexType>
+     <sequence>
+      <element name="logRequest" type="tns1:LogRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="mailAlertServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="mailAlertServiceReturn" type="tns1:LogEffect"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="DBLogService">
+    <complexType>
+     <sequence>
+      <element name="logRequest" type="tns1:LogRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="DBLogServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="DBLogServiceReturn" type="tns1:LogEffect"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model.logapp.uniriotec.br" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Severity">
+    <sequence>
+     <element name="level" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="LogRequest">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="severity" nillable="true" type="tns1:Severity"/>
+    </sequence>
+   </complexType>
+   <complexType name="LogEffect">
+    <sequence>
+     <element name="logPersisted" type="xsd:boolean"/>
+     <element name="mailSent" type="xsd:boolean"/>
+     <element name="messageLogged" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="mailAlertServiceResponse">
+
+      <wsdl:part element="impl:mailAlertServiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="mailAlertServiceRequest">
+
+      <wsdl:part element="impl:mailAlertService" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="DBLogServiceRequest">
+
+      <wsdl:part element="impl:DBLogService" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="simpleLogServiceRequest">
+
+      <wsdl:part element="impl:simpleLogService" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="simpleLogServiceResponse">
+
+      <wsdl:part element="impl:simpleLogServiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="DBLogServiceResponse">
+
+      <wsdl:part element="impl:DBLogServiceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="LogService">
+
+      <wsdl:operation name="simpleLogService">
+
+         <wsdl:input message="impl:simpleLogServiceRequest" name="simpleLogServiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:simpleLogServiceResponse" name="simpleLogServiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="mailAlertService">
+
+         <wsdl:input message="impl:mailAlertServiceRequest" name="mailAlertServiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:mailAlertServiceResponse" name="mailAlertServiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="DBLogService">
+
+         <wsdl:input message="impl:DBLogServiceRequest" name="DBLogServiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:DBLogServiceResponse" name="DBLogServiceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="LogServiceSoapBinding" type="impl:LogService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="simpleLogService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="simpleLogServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="simpleLogServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="mailAlertService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="mailAlertServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="mailAlertServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="DBLogService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="DBLogServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="DBLogServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="LogServiceService">
+
+      <wsdl:port binding="impl:LogServiceSoapBinding" name="LogService">
+
+         <wsdlsoap:address location="http://localhost:8080/LogApp/services/LogService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
