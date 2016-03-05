@@ -12,6 +12,7 @@ public class LogService {
 		System.out.println("Severity level: " + logRequest.getSeverity().getLevel());		
 		LogEffect log = new LogEffect();
 		log.setMessageLogged(true);
+		log.setMessageShowed(true);
 		System.out.println("End of WebMethod");
 		return log;
 	}
