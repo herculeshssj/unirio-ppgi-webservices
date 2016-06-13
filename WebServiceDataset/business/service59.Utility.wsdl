@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="StartInstance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartInstanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartInstanceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstanceState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstanceStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstanceStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstanceValidActions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInstanceValidActionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstanceValidActionsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PerformInstanceAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ActionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Role" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PerformInstanceActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PerformInstanceActionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XmlConfig" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWorkflowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateWorkflowResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWorkflowList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetWorkflowListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWorkflowListResult" type="s0:ArrayOfWorkflowValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWorkflowValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WorkflowValue" nillable="true" type="s0:WorkflowValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WorkflowValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="ArrayOfWorkflowValue" nillable="true" type="s0:ArrayOfWorkflowValue" />
+    </s:schema>
+  </types>
+  <message name="StartInstanceSoapIn">
+    <part name="parameters" element="s0:StartInstance" />
+  </message>
+  <message name="StartInstanceSoapOut">
+    <part name="parameters" element="s0:StartInstanceResponse" />
+  </message>
+  <message name="GetInstanceStateSoapIn">
+    <part name="parameters" element="s0:GetInstanceState" />
+  </message>
+  <message name="GetInstanceStateSoapOut">
+    <part name="parameters" element="s0:GetInstanceStateResponse" />
+  </message>
+  <message name="GetInstanceValidActionsSoapIn">
+    <part name="parameters" element="s0:GetInstanceValidActions" />
+  </message>
+  <message name="GetInstanceValidActionsSoapOut">
+    <part name="parameters" element="s0:GetInstanceValidActionsResponse" />
+  </message>
+  <message name="PerformInstanceActionSoapIn">
+    <part name="parameters" element="s0:PerformInstanceAction" />
+  </message>
+  <message name="PerformInstanceActionSoapOut">
+    <part name="parameters" element="s0:PerformInstanceActionResponse" />
+  </message>
+  <message name="CreateWorkflowSoapIn">
+    <part name="parameters" element="s0:CreateWorkflow" />
+  </message>
+  <message name="CreateWorkflowSoapOut">
+    <part name="parameters" element="s0:CreateWorkflowResponse" />
+  </message>
+  <message name="GetWorkflowListSoapIn">
+    <part name="parameters" element="s0:GetWorkflowList" />
+  </message>
+  <message name="GetWorkflowListSoapOut">
+    <part name="parameters" element="s0:GetWorkflowListResponse" />
+  </message>
+  <message name="StartInstanceHttpGetIn">
+    <part name="Role" type="s:string" />
+    <part name="WorkflowId" type="s:string" />
+  </message>
+  <message name="StartInstanceHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInstanceStateHttpGetIn">
+    <part name="InstanceId" type="s:string" />
+  </message>
+  <message name="GetInstanceStateHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInstanceValidActionsHttpGetIn">
+    <part name="InstanceId" type="s:string" />
+  </message>
+  <message name="GetInstanceValidActionsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="PerformInstanceActionHttpGetIn">
+    <part name="InstanceId" type="s:string" />
+    <part name="ActionId" type="s:string" />
+    <part name="Role" type="s:string" />
+  </message>
+  <message name="PerformInstanceActionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CreateWorkflowHttpGetIn">
+    <part name="Name" type="s:string" />
+    <part name="Version" type="s:string" />
+    <part name="XmlConfig" type="s:string" />
+  </message>
+  <message name="CreateWorkflowHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetWorkflowListHttpGetIn" />
+  <message name="GetWorkflowListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfWorkflowValue" />
+  </message>
+  <message name="StartInstanceHttpPostIn">
+    <part name="Role" type="s:string" />
+    <part name="WorkflowId" type="s:string" />
+  </message>
+  <message name="StartInstanceHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInstanceStateHttpPostIn">
+    <part name="InstanceId" type="s:string" />
+  </message>
+  <message name="GetInstanceStateHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInstanceValidActionsHttpPostIn">
+    <part name="InstanceId" type="s:string" />
+  </message>
+  <message name="GetInstanceValidActionsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="PerformInstanceActionHttpPostIn">
+    <part name="InstanceId" type="s:string" />
+    <part name="ActionId" type="s:string" />
+    <part name="Role" type="s:string" />
+  </message>
+  <message name="PerformInstanceActionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CreateWorkflowHttpPostIn">
+    <part name="Name" type="s:string" />
+    <part name="Version" type="s:string" />
+    <part name="XmlConfig" type="s:string" />
+  </message>
+  <message name="CreateWorkflowHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetWorkflowListHttpPostIn" />
+  <message name="GetWorkflowListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfWorkflowValue" />
+  </message>
+  <portType name="WorkflowWebServiceSoap">
+    <operation name="StartInstance">
+      <documentation>Start a new instance of a workflow. The WorkflowId is returned from a call to createWorkflow. Role must be the role in the Xml config file. Throws WorkflowException.</documentation>
+      <input message="s0:StartInstanceSoapIn" />
+      <output message="s0:StartInstanceSoapOut" />
+    </operation>
+    <operation name="GetInstanceState">
+      <documentation>Gets the current state of the workflow instance.  Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceStateSoapIn" />
+      <output message="s0:GetInstanceStateSoapOut" />
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <documentation>Gets the current valid actions for the workflow instance. Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceValidActionsSoapIn" />
+      <output message="s0:GetInstanceValidActionsSoapOut" />
+    </operation>
+    <operation name="PerformInstanceAction">
+      <documentation>Actions a instance of a workflow. Returns the new state of the instance. Throws WorkflowException.</documentation>
+      <input message="s0:PerformInstanceActionSoapIn" />
+      <output message="s0:PerformInstanceActionSoapOut" />
+    </operation>
+    <operation name="CreateWorkflow">
+      <documentation>Creates a new workflow based on the xml configuration file. Returns the id of the workflow. A sample is &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot; ?&gt;&amp;lt;WorkflowDefinition&gt;&amp;lt;state name=&amp;quot;New&amp;quot; StartState=&amp;quot;true&amp;quot;&gt;&amp;lt;action name=&amp;quot;Create&amp;quot; role=&amp;quot;User&amp;quot; NewState=&amp;quot;Submitted&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Submitted&amp;quot;&gt;&amp;lt;action name=&amp;quot;Authorise&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Approved&amp;quot;/&gt;&amp;lt;action name=&amp;quot;Reject&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Rejected&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Approved&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;state name=&amp;quot;Rejected&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;/WorkflowDefinition&gt; Throws WorkflowException.</documentation>
+      <input message="s0:CreateWorkflowSoapIn" />
+      <output message="s0:CreateWorkflowSoapOut" />
+    </operation>
+    <operation name="GetWorkflowList">
+      <documentation>Returns a list of all workflows. Throws WorkflowException.</documentation>
+      <input message="s0:GetWorkflowListSoapIn" />
+      <output message="s0:GetWorkflowListSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WorkflowWebServiceHttpGet">
+    <operation name="StartInstance">
+      <documentation>Start a new instance of a workflow. The WorkflowId is returned from a call to createWorkflow. Role must be the role in the Xml config file. Throws WorkflowException.</documentation>
+      <input message="s0:StartInstanceHttpGetIn" />
+      <output message="s0:StartInstanceHttpGetOut" />
+    </operation>
+    <operation name="GetInstanceState">
+      <documentation>Gets the current state of the workflow instance.  Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceStateHttpGetIn" />
+      <output message="s0:GetInstanceStateHttpGetOut" />
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <documentation>Gets the current valid actions for the workflow instance. Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceValidActionsHttpGetIn" />
+      <output message="s0:GetInstanceValidActionsHttpGetOut" />
+    </operation>
+    <operation name="PerformInstanceAction">
+      <documentation>Actions a instance of a workflow. Returns the new state of the instance. Throws WorkflowException.</documentation>
+      <input message="s0:PerformInstanceActionHttpGetIn" />
+      <output message="s0:PerformInstanceActionHttpGetOut" />
+    </operation>
+    <operation name="CreateWorkflow">
+      <documentation>Creates a new workflow based on the xml configuration file. Returns the id of the workflow. A sample is &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot; ?&gt;&amp;lt;WorkflowDefinition&gt;&amp;lt;state name=&amp;quot;New&amp;quot; StartState=&amp;quot;true&amp;quot;&gt;&amp;lt;action name=&amp;quot;Create&amp;quot; role=&amp;quot;User&amp;quot; NewState=&amp;quot;Submitted&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Submitted&amp;quot;&gt;&amp;lt;action name=&amp;quot;Authorise&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Approved&amp;quot;/&gt;&amp;lt;action name=&amp;quot;Reject&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Rejected&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Approved&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;state name=&amp;quot;Rejected&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;/WorkflowDefinition&gt; Throws WorkflowException.</documentation>
+      <input message="s0:CreateWorkflowHttpGetIn" />
+      <output message="s0:CreateWorkflowHttpGetOut" />
+    </operation>
+    <operation name="GetWorkflowList">
+      <documentation>Returns a list of all workflows. Throws WorkflowException.</documentation>
+      <input message="s0:GetWorkflowListHttpGetIn" />
+      <output message="s0:GetWorkflowListHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WorkflowWebServiceHttpPost">
+    <operation name="StartInstance">
+      <documentation>Start a new instance of a workflow. The WorkflowId is returned from a call to createWorkflow. Role must be the role in the Xml config file. Throws WorkflowException.</documentation>
+      <input message="s0:StartInstanceHttpPostIn" />
+      <output message="s0:StartInstanceHttpPostOut" />
+    </operation>
+    <operation name="GetInstanceState">
+      <documentation>Gets the current state of the workflow instance.  Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceStateHttpPostIn" />
+      <output message="s0:GetInstanceStateHttpPostOut" />
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <documentation>Gets the current valid actions for the workflow instance. Throws WorkflowException.</documentation>
+      <input message="s0:GetInstanceValidActionsHttpPostIn" />
+      <output message="s0:GetInstanceValidActionsHttpPostOut" />
+    </operation>
+    <operation name="PerformInstanceAction">
+      <documentation>Actions a instance of a workflow. Returns the new state of the instance. Throws WorkflowException.</documentation>
+      <input message="s0:PerformInstanceActionHttpPostIn" />
+      <output message="s0:PerformInstanceActionHttpPostOut" />
+    </operation>
+    <operation name="CreateWorkflow">
+      <documentation>Creates a new workflow based on the xml configuration file. Returns the id of the workflow. A sample is &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot; ?&gt;&amp;lt;WorkflowDefinition&gt;&amp;lt;state name=&amp;quot;New&amp;quot; StartState=&amp;quot;true&amp;quot;&gt;&amp;lt;action name=&amp;quot;Create&amp;quot; role=&amp;quot;User&amp;quot; NewState=&amp;quot;Submitted&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Submitted&amp;quot;&gt;&amp;lt;action name=&amp;quot;Authorise&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Approved&amp;quot;/&gt;&amp;lt;action name=&amp;quot;Reject&amp;quot; role=&amp;quot;Manager&amp;quot; NewState=&amp;quot;Rejected&amp;quot;/&gt;&amp;lt;/state&gt;&amp;lt;state name=&amp;quot;Approved&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;state name=&amp;quot;Rejected&amp;quot; EndState=&amp;quot;true&amp;quot;/&gt;&amp;lt;/WorkflowDefinition&gt; Throws WorkflowException.</documentation>
+      <input message="s0:CreateWorkflowHttpPostIn" />
+      <output message="s0:CreateWorkflowHttpPostOut" />
+    </operation>
+    <operation name="GetWorkflowList">
+      <documentation>Returns a list of all workflows. Throws WorkflowException.</documentation>
+      <input message="s0:GetWorkflowListHttpPostIn" />
+      <output message="s0:GetWorkflowListHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WorkflowWebServiceSoap" type="s0:WorkflowWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="StartInstance">
+      <soap:operation soapAction="http://tempuri.org/StartInstance" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInstanceState">
+      <soap:operation soapAction="http://tempuri.org/GetInstanceState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <soap:operation soapAction="http://tempuri.org/GetInstanceValidActions" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PerformInstanceAction">
+      <soap:operation soapAction="http://tempuri.org/PerformInstanceAction" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateWorkflow">
+      <soap:operation soapAction="http://tempuri.org/CreateWorkflow" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWorkflowList">
+      <soap:operation soapAction="http://tempuri.org/GetWorkflowList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WorkflowWebServiceHttpGet" type="s0:WorkflowWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="StartInstance">
+      <http:operation location="/StartInstance" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInstanceState">
+      <http:operation location="/GetInstanceState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <http:operation location="/GetInstanceValidActions" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PerformInstanceAction">
+      <http:operation location="/PerformInstanceAction" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateWorkflow">
+      <http:operation location="/CreateWorkflow" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWorkflowList">
+      <http:operation location="/GetWorkflowList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WorkflowWebServiceHttpPost" type="s0:WorkflowWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="StartInstance">
+      <http:operation location="/StartInstance" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInstanceState">
+      <http:operation location="/GetInstanceState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInstanceValidActions">
+      <http:operation location="/GetInstanceValidActions" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PerformInstanceAction">
+      <http:operation location="/PerformInstanceAction" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateWorkflow">
+      <http:operation location="/CreateWorkflow" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWorkflowList">
+      <http:operation location="/GetWorkflowList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WorkflowWebService">
+    <port name="WorkflowWebServiceSoap" binding="s0:WorkflowWebServiceSoap">
+      <soap:address location="http://hosting.msugs.ch/mgvanstone/workflowwebservice.asmx" />
+    </port>
+    <port name="WorkflowWebServiceHttpGet" binding="s0:WorkflowWebServiceHttpGet">
+      <http:address location="http://hosting.msugs.ch/mgvanstone/workflowwebservice.asmx" />
+    </port>
+    <port name="WorkflowWebServiceHttpPost" binding="s0:WorkflowWebServiceHttpPost">
+      <http:address location="http://hosting.msugs.ch/mgvanstone/workflowwebservice.asmx" />
+    </port>
+  </service>
+</definitions>

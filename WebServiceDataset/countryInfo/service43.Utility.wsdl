@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://mangia.tzo.com:8080/WebService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://mangia.tzo.com:8080/WebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://mangia.tzo.com:8080/WebService">
+      <s:element name="Verify_SSN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SocSecNbr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verify_SSNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verify_SSNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_SSN_Rules">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SSN_HTML_FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_SSN_RulesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_SSN_RulesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="Verify_SSNSoapIn">
+    <part name="parameters" element="s0:Verify_SSN" />
+  </message>
+  <message name="Verify_SSNSoapOut">
+    <part name="parameters" element="s0:Verify_SSNResponse" />
+  </message>
+  <message name="Update_SSN_RulesSoapIn">
+    <part name="parameters" element="s0:Update_SSN_Rules" />
+  </message>
+  <message name="Update_SSN_RulesSoapOut">
+    <part name="parameters" element="s0:Update_SSN_RulesResponse" />
+  </message>
+  <message name="Verify_SSNHttpGetIn">
+    <part name="SocSecNbr" type="s:string" />
+  </message>
+  <message name="Verify_SSNHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="Update_SSN_RulesHttpGetIn">
+    <part name="SSN_HTML_FileName" type="s:string" />
+  </message>
+  <message name="Update_SSN_RulesHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="Verify_SSNHttpPostIn">
+    <part name="SocSecNbr" type="s:string" />
+  </message>
+  <message name="Verify_SSNHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="Update_SSN_RulesHttpPostIn">
+    <part name="SSN_HTML_FileName" type="s:string" />
+  </message>
+  <message name="Update_SSN_RulesHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="Verify_SocialSecurityNumberSoap">
+    <operation name="Verify_SSN">
+      <documentation>Verifies a Social Secuity Number against the most recent numbers.</documentation>
+      <input message="s0:Verify_SSNSoapIn" />
+      <output message="s0:Verify_SSNSoapOut" />
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <documentation>Updates the Social Secuity Number rules database with the most recent numbers.</documentation>
+      <input message="s0:Update_SSN_RulesSoapIn" />
+      <output message="s0:Update_SSN_RulesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Verify_SocialSecurityNumberHttpGet">
+    <operation name="Verify_SSN">
+      <documentation>Verifies a Social Secuity Number against the most recent numbers.</documentation>
+      <input message="s0:Verify_SSNHttpGetIn" />
+      <output message="s0:Verify_SSNHttpGetOut" />
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <documentation>Updates the Social Secuity Number rules database with the most recent numbers.</documentation>
+      <input message="s0:Update_SSN_RulesHttpGetIn" />
+      <output message="s0:Update_SSN_RulesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Verify_SocialSecurityNumberHttpPost">
+    <operation name="Verify_SSN">
+      <documentation>Verifies a Social Secuity Number against the most recent numbers.</documentation>
+      <input message="s0:Verify_SSNHttpPostIn" />
+      <output message="s0:Verify_SSNHttpPostOut" />
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <documentation>Updates the Social Secuity Number rules database with the most recent numbers.</documentation>
+      <input message="s0:Update_SSN_RulesHttpPostIn" />
+      <output message="s0:Update_SSN_RulesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Verify_SocialSecurityNumberSoap" type="s0:Verify_SocialSecurityNumberSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Verify_SSN">
+      <soap:operation soapAction="http://mangia.tzo.com:8080/WebService/Verify_SSN" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <soap:operation soapAction="http://mangia.tzo.com:8080/WebService/Update_SSN_Rules" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Verify_SocialSecurityNumberHttpGet" type="s0:Verify_SocialSecurityNumberHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Verify_SSN">
+      <http:operation location="/Verify_SSN" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <http:operation location="/Update_SSN_Rules" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Verify_SocialSecurityNumberHttpPost" type="s0:Verify_SocialSecurityNumberHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Verify_SSN">
+      <http:operation location="/Verify_SSN" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Update_SSN_Rules">
+      <http:operation location="/Update_SSN_Rules" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Verify_SocialSecurityNumber">
+    <documentation>Social Secuity Number verification service.</documentation>
+    <port name="Verify_SocialSecurityNumberSoap" binding="s0:Verify_SocialSecurityNumberSoap">
+      <soap:address location="http://mangia.tzo.com:8080/wsSocialSecuityNumber/SocialSecurityNumber.asmx" />
+    </port>
+    <port name="Verify_SocialSecurityNumberHttpGet" binding="s0:Verify_SocialSecurityNumberHttpGet">
+      <http:address location="http://mangia.tzo.com:8080/wsSocialSecuityNumber/SocialSecurityNumber.asmx" />
+    </port>
+    <port name="Verify_SocialSecurityNumberHttpPost" binding="s0:Verify_SocialSecurityNumberHttpPost">
+      <http:address location="http://mangia.tzo.com:8080/wsSocialSecuityNumber/SocialSecurityNumber.asmx" />
+    </port>
+  </service>
+</definitions>

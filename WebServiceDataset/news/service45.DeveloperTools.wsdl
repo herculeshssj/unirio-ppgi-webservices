@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://srv2.advmrkt.com/yZWebServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://srv2.advmrkt.com/yZWebServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://srv2.advmrkt.com/yZWebServices/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="QuoteForToday">
+        <s:complexType />
+      </s:element>
+      <s:element name="QuoteForTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuoteForTodayResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CQuoteForToday">
+        <s:complexType />
+      </s:element>
+      <s:element name="CQuoteForTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CaQuotes" nillable="true" type="s0:CaQuotes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CaQuotes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Quote" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:int" />
+      </s:complexType>
+      <s:element name="QuoteSelect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteSelectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CaQuotes" nillable="true" type="s0:CaQuotes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteDelete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteDeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QuoteDeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Quote" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QuoteUpdateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Author" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Quote" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QuoteAddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="selectCmd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuoteDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuoteDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="CaQuotes" nillable="true" type="s0:CaQuotes" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="QuoteForTodaySoapIn">
+    <part name="parameters" element="s0:QuoteForToday" />
+  </message>
+  <message name="QuoteForTodaySoapOut">
+    <part name="parameters" element="s0:QuoteForTodayResponse" />
+  </message>
+  <message name="CQuoteForTodaySoapIn">
+    <part name="parameters" element="s0:CQuoteForToday" />
+  </message>
+  <message name="CQuoteForTodaySoapOut">
+    <part name="parameters" element="s0:CQuoteForTodayResponse" />
+  </message>
+  <message name="QuoteSelectSoapIn">
+    <part name="parameters" element="s0:QuoteSelect" />
+  </message>
+  <message name="QuoteSelectSoapOut">
+    <part name="parameters" element="s0:QuoteSelectResponse" />
+  </message>
+  <message name="QuoteDeleteSoapIn">
+    <part name="parameters" element="s0:QuoteDelete" />
+  </message>
+  <message name="QuoteDeleteSoapOut">
+    <part name="parameters" element="s0:QuoteDeleteResponse" />
+  </message>
+  <message name="QuoteUpdateSoapIn">
+    <part name="parameters" element="s0:QuoteUpdate" />
+  </message>
+  <message name="QuoteUpdateSoapOut">
+    <part name="parameters" element="s0:QuoteUpdateResponse" />
+  </message>
+  <message name="QuoteAddSoapIn">
+    <part name="parameters" element="s0:QuoteAdd" />
+  </message>
+  <message name="QuoteAddSoapOut">
+    <part name="parameters" element="s0:QuoteAddResponse" />
+  </message>
+  <message name="QuoteDataSetSoapIn">
+    <part name="parameters" element="s0:QuoteDataSet" />
+  </message>
+  <message name="QuoteDataSetSoapOut">
+    <part name="parameters" element="s0:QuoteDataSetResponse" />
+  </message>
+  <message name="QuoteForTodayHttpGetIn" />
+  <message name="QuoteForTodayHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CQuoteForTodayHttpGetIn" />
+  <message name="CQuoteForTodayHttpGetOut">
+    <part name="Body" element="s0:CaQuotes" />
+  </message>
+  <message name="QuoteSelectHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+  </message>
+  <message name="QuoteSelectHttpGetOut">
+    <part name="Body" element="s0:CaQuotes" />
+  </message>
+  <message name="QuoteDeleteHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+  </message>
+  <message name="QuoteDeleteHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteUpdateHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+    <part name="Author" type="s:string" />
+    <part name="Quote" type="s:string" />
+  </message>
+  <message name="QuoteUpdateHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteAddHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="Author" type="s:string" />
+    <part name="Quote" type="s:string" />
+  </message>
+  <message name="QuoteAddHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteDataSetHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="selectCmd" type="s:string" />
+  </message>
+  <message name="QuoteDataSetHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="QuoteForTodayHttpPostIn" />
+  <message name="QuoteForTodayHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CQuoteForTodayHttpPostIn" />
+  <message name="CQuoteForTodayHttpPostOut">
+    <part name="Body" element="s0:CaQuotes" />
+  </message>
+  <message name="QuoteSelectHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+  </message>
+  <message name="QuoteSelectHttpPostOut">
+    <part name="Body" element="s0:CaQuotes" />
+  </message>
+  <message name="QuoteDeleteHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+  </message>
+  <message name="QuoteDeleteHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteUpdateHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="Id" type="s:string" />
+    <part name="Author" type="s:string" />
+    <part name="Quote" type="s:string" />
+  </message>
+  <message name="QuoteUpdateHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteAddHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="Author" type="s:string" />
+    <part name="Quote" type="s:string" />
+  </message>
+  <message name="QuoteAddHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="QuoteDataSetHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="selectCmd" type="s:string" />
+  </message>
+  <message name="QuoteDataSetHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="Service1Soap">
+    <operation name="QuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today'</documentation>
+      <input message="s0:QuoteForTodaySoapIn" />
+      <output message="s0:QuoteForTodaySoapOut" />
+    </operation>
+    <operation name="CQuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today' Web Service</documentation>
+      <input message="s0:CQuoteForTodaySoapIn" />
+      <output message="s0:CQuoteForTodaySoapOut" />
+    </operation>
+    <operation name="QuoteSelect">
+      <documentation>Private: Select One 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteSelectSoapIn" />
+      <output message="s0:QuoteSelectSoapOut" />
+    </operation>
+    <operation name="QuoteDelete">
+      <documentation>Private: Delete a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteDeleteSoapIn" />
+      <output message="s0:QuoteDeleteSoapOut" />
+    </operation>
+    <operation name="QuoteUpdate">
+      <documentation>Private: Update a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteUpdateSoapIn" />
+      <output message="s0:QuoteUpdateSoapOut" />
+    </operation>
+    <operation name="QuoteAdd">
+      <documentation>Private: Add a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteAddSoapIn" />
+      <output message="s0:QuoteAddSoapOut" />
+    </operation>
+    <operation name="QuoteDataSet">
+      <documentation>Private: Get All Quotes on File, this operation requires a Key.</documentation>
+      <input message="s0:QuoteDataSetSoapIn" />
+      <output message="s0:QuoteDataSetSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpGet">
+    <operation name="QuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today'</documentation>
+      <input message="s0:QuoteForTodayHttpGetIn" />
+      <output message="s0:QuoteForTodayHttpGetOut" />
+    </operation>
+    <operation name="CQuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today' Web Service</documentation>
+      <input message="s0:CQuoteForTodayHttpGetIn" />
+      <output message="s0:CQuoteForTodayHttpGetOut" />
+    </operation>
+    <operation name="QuoteSelect">
+      <documentation>Private: Select One 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteSelectHttpGetIn" />
+      <output message="s0:QuoteSelectHttpGetOut" />
+    </operation>
+    <operation name="QuoteDelete">
+      <documentation>Private: Delete a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteDeleteHttpGetIn" />
+      <output message="s0:QuoteDeleteHttpGetOut" />
+    </operation>
+    <operation name="QuoteUpdate">
+      <documentation>Private: Update a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteUpdateHttpGetIn" />
+      <output message="s0:QuoteUpdateHttpGetOut" />
+    </operation>
+    <operation name="QuoteAdd">
+      <documentation>Private: Add a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteAddHttpGetIn" />
+      <output message="s0:QuoteAddHttpGetOut" />
+    </operation>
+    <operation name="QuoteDataSet">
+      <documentation>Private: Get All Quotes on File, this operation requires a Key.</documentation>
+      <input message="s0:QuoteDataSetHttpGetIn" />
+      <output message="s0:QuoteDataSetHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpPost">
+    <operation name="QuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today'</documentation>
+      <input message="s0:QuoteForTodayHttpPostIn" />
+      <output message="s0:QuoteForTodayHttpPostOut" />
+    </operation>
+    <operation name="CQuoteForToday">
+      <documentation>Public: Return Random 'Quote for Today' Web Service</documentation>
+      <input message="s0:CQuoteForTodayHttpPostIn" />
+      <output message="s0:CQuoteForTodayHttpPostOut" />
+    </operation>
+    <operation name="QuoteSelect">
+      <documentation>Private: Select One 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteSelectHttpPostIn" />
+      <output message="s0:QuoteSelectHttpPostOut" />
+    </operation>
+    <operation name="QuoteDelete">
+      <documentation>Private: Delete a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteDeleteHttpPostIn" />
+      <output message="s0:QuoteDeleteHttpPostOut" />
+    </operation>
+    <operation name="QuoteUpdate">
+      <documentation>Private: Update a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteUpdateHttpPostIn" />
+      <output message="s0:QuoteUpdateHttpPostOut" />
+    </operation>
+    <operation name="QuoteAdd">
+      <documentation>Private: Add a 'Quote for Today', this operation requires a Key.</documentation>
+      <input message="s0:QuoteAddHttpPostIn" />
+      <output message="s0:QuoteAddHttpPostOut" />
+    </operation>
+    <operation name="QuoteDataSet">
+      <documentation>Private: Get All Quotes on File, this operation requires a Key.</documentation>
+      <input message="s0:QuoteDataSetHttpPostIn" />
+      <output message="s0:QuoteDataSetHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Service1Soap" type="s0:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="QuoteForToday">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteForToday" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CQuoteForToday">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/CQuoteForToday" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuoteSelect">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteSelect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuoteDelete">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteDelete" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuoteUpdate">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteUpdate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuoteAdd">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteAdd" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuoteDataSet">
+      <soap:operation soapAction="http://srv2.advmrkt.com/yZWebServices/QuoteDataSet" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpGet" type="s0:Service1HttpGet">
+    <http:binding verb="GET" />
+    <operation name="QuoteForToday">
+      <http:operation location="/QuoteForToday" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CQuoteForToday">
+      <http:operation location="/CQuoteForToday" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteSelect">
+      <http:operation location="/QuoteSelect" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteDelete">
+      <http:operation location="/QuoteDelete" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteUpdate">
+      <http:operation location="/QuoteUpdate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteAdd">
+      <http:operation location="/QuoteAdd" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteDataSet">
+      <http:operation location="/QuoteDataSet" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpPost" type="s0:Service1HttpPost">
+    <http:binding verb="POST" />
+    <operation name="QuoteForToday">
+      <http:operation location="/QuoteForToday" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CQuoteForToday">
+      <http:operation location="/CQuoteForToday" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteSelect">
+      <http:operation location="/QuoteSelect" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteDelete">
+      <http:operation location="/QuoteDelete" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteUpdate">
+      <http:operation location="/QuoteUpdate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteAdd">
+      <http:operation location="/QuoteAdd" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuoteDataSet">
+      <http:operation location="/QuoteDataSet" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service1">
+    <port name="Service1Soap" binding="s0:Service1Soap">
+      <soap:address location="http://srv2.advmrkt.com/yZWebService/Service1.asmx" />
+    </port>
+    <port name="Service1HttpGet" binding="s0:Service1HttpGet">
+      <http:address location="http://srv2.advmrkt.com/yZWebService/Service1.asmx" />
+    </port>
+    <port name="Service1HttpPost" binding="s0:Service1HttpPost">
+      <http:address location="http://srv2.advmrkt.com/yZWebService/Service1.asmx" />
+    </port>
+  </service>
+</definitions>

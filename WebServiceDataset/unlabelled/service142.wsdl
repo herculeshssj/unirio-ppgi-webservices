@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.frameWERKS.com/WebServices/HTMLeMail/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.frameWERKS.com/WebServices/HTMLeMail/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.frameWERKS.com/WebServices/HTMLeMail/">
+      <s:element name="ActivateNewAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EMail_UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardExpirationDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardSecurityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateNewAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateNewAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateWorkingList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressDataURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateWorkingListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateWorkingListResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Add_Remove_AddressList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyBy" type="s0:ModificationType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ListURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ModificationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Add" />
+          <s:enumeration value="Remove" />
+          <s:enumeration value="Update" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Add_Remove_AddressListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Add_Remove_AddressListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateEMailAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressDataURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateEMailAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateEMailAddressResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Add_Remove_Campaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyBy" type="s0:ModificationType" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReplyToAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Add_Remove_CampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Add_Remove_CampaignResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkMailingLists_ToCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailingListName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyBy" type="s0:ModificationType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkMailingLists_ToCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinkMailingLists_ToCampaignsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCampaignDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCampaignDataResult" type="s0:CampaignInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CampaignInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignSubject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressListsToSend" type="s0:ArrayOfAnyType" />
+          <s:element minOccurs="1" maxOccurs="1" name="NextReleaseDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplyToAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CSSProperty">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CSSStyle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StyleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StyleProperties" type="s0:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AddressListInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ListDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Schedule_Remove_Campaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyBy" type="s0:ModificationType" />
+            <s:element minOccurs="1" maxOccurs="1" name="Frequency" type="s0:Schedule" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Schedule">
+        <s:restriction base="s:string">
+          <s:enumeration value="Daily" />
+          <s:enumeration value="EveryOtherDay" />
+          <s:enumeration value="WeekdaysOnly" />
+          <s:enumeration value="WeekendsOnly" />
+          <s:enumeration value="Weekly" />
+          <s:enumeration value="BiWeekly" />
+          <s:enumeration value="TriWeekly" />
+          <s:enumeration value="Monthly" />
+          <s:enumeration value="BiMonthly" />
+          <s:enumeration value="Yearly" />
+          <s:enumeration value="Quarterly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Schedule_Remove_CampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Schedule_Remove_CampaignResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaign">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCampaignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendCampaignResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddressDataURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HTMLTemplateAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FROM_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="REPLY_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Server" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSingleMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HTMLTemplateAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FROM_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="REPLY_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Server" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSingleMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSingleMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatMessageAsHTML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HeaderURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FooterURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cssURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cssClassName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FormatMessageAsHTMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FormatMessageAsHTMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTypedMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FROM_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="REPLY_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BCCAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mail_Server" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTypedMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendTypedMessageResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCSSStyleInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cssURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CSSReader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Styles" type="s0:ArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="StyleURL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCSSStyleInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCSSStyleInfoResult" type="s0:CSSReader" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="ActivateNewAccountSoapIn">
+    <part name="parameters" element="s0:ActivateNewAccount" />
+  </message>
+  <message name="ActivateNewAccountSoapOut">
+    <part name="parameters" element="s0:ActivateNewAccountResponse" />
+  </message>
+  <message name="ValidateWorkingListSoapIn">
+    <part name="parameters" element="s0:ValidateWorkingList" />
+  </message>
+  <message name="ValidateWorkingListSoapOut">
+    <part name="parameters" element="s0:ValidateWorkingListResponse" />
+  </message>
+  <message name="Add_Remove_AddressListSoapIn">
+    <part name="parameters" element="s0:Add_Remove_AddressList" />
+  </message>
+  <message name="Add_Remove_AddressListSoapOut">
+    <part name="parameters" element="s0:Add_Remove_AddressListResponse" />
+  </message>
+  <message name="ValidateEMailAddressSoapIn">
+    <part name="parameters" element="s0:ValidateEMailAddress" />
+  </message>
+  <message name="ValidateEMailAddressSoapOut">
+    <part name="parameters" element="s0:ValidateEMailAddressResponse" />
+  </message>
+  <message name="Add_Remove_CampaignSoapIn">
+    <part name="parameters" element="s0:Add_Remove_Campaign" />
+  </message>
+  <message name="Add_Remove_CampaignSoapOut">
+    <part name="parameters" element="s0:Add_Remove_CampaignResponse" />
+  </message>
+  <message name="LinkMailingLists_ToCampaignsSoapIn">
+    <part name="parameters" element="s0:LinkMailingLists_ToCampaigns" />
+  </message>
+  <message name="LinkMailingLists_ToCampaignsSoapOut">
+    <part name="parameters" element="s0:LinkMailingLists_ToCampaignsResponse" />
+  </message>
+  <message name="GetCampaignDataSoapIn">
+    <part name="parameters" element="s0:GetCampaignData" />
+  </message>
+  <message name="GetCampaignDataSoapOut">
+    <part name="parameters" element="s0:GetCampaignDataResponse" />
+  </message>
+  <message name="Schedule_Remove_CampaignSoapIn">
+    <part name="parameters" element="s0:Schedule_Remove_Campaign" />
+  </message>
+  <message name="Schedule_Remove_CampaignSoapOut">
+    <part name="parameters" element="s0:Schedule_Remove_CampaignResponse" />
+  </message>
+  <message name="SendCampaignSoapIn">
+    <part name="parameters" element="s0:SendCampaign" />
+  </message>
+  <message name="SendCampaignSoapOut">
+    <part name="parameters" element="s0:SendCampaignResponse" />
+  </message>
+  <message name="SendMailSoapIn">
+    <part name="parameters" element="s0:SendMail" />
+  </message>
+  <message name="SendMailSoapOut">
+    <part name="parameters" element="s0:SendMailResponse" />
+  </message>
+  <message name="SendSingleMailSoapIn">
+    <part name="parameters" element="s0:SendSingleMail" />
+  </message>
+  <message name="SendSingleMailSoapOut">
+    <part name="parameters" element="s0:SendSingleMailResponse" />
+  </message>
+  <message name="FormatMessageAsHTMLSoapIn">
+    <part name="parameters" element="s0:FormatMessageAsHTML" />
+  </message>
+  <message name="FormatMessageAsHTMLSoapOut">
+    <part name="parameters" element="s0:FormatMessageAsHTMLResponse" />
+  </message>
+  <message name="SendTypedMessageSoapIn">
+    <part name="parameters" element="s0:SendTypedMessage" />
+  </message>
+  <message name="SendTypedMessageSoapOut">
+    <part name="parameters" element="s0:SendTypedMessageResponse" />
+  </message>
+  <message name="GetCSSStyleInfoSoapIn">
+    <part name="parameters" element="s0:GetCSSStyleInfo" />
+  </message>
+  <message name="GetCSSStyleInfoSoapOut">
+    <part name="parameters" element="s0:GetCSSStyleInfoResponse" />
+  </message>
+  <portType name="HTMLeMailSoap">
+    <operation name="ActivateNewAccount">
+      <documentation>Function will activate a new user account. Credit Card Number is REQUIRED along with a Valid EMail Address. The credit card security code is the 3 digit number found on the back of your credit card. Function will return error messages informing if the frameWERKS Login account has been established with access to the eMail application.</documentation>
+      <input message="s0:ActivateNewAccountSoapIn" />
+      <output message="s0:ActivateNewAccountSoapOut" />
+    </operation>
+    <operation name="ValidateWorkingList">
+      <documentation>Use this function to make sure your mailing list is compatible with our system. Mailing lists can be TXT, CSV, or XML format. See instructions. Function will return a maximum of 100 names from your list in XML format if it can successfully be read.</documentation>
+      <input message="s0:ValidateWorkingListSoapIn" />
+      <output message="s0:ValidateWorkingListSoapOut" />
+    </operation>
+    <operation name="Add_Remove_AddressList">
+      <documentation>Function will add, update, or remove an e-Mail Mailing List to your account. List names are unique. ModifyBy variable is case sensative. Ex: Remove, Add, or Update. Will return Successful is no errors occur. NOTE: If removing ListURL and Description variables are NOT required inputs.</documentation>
+      <input message="s0:Add_Remove_AddressListSoapIn" />
+      <output message="s0:Add_Remove_AddressListSoapOut" />
+    </operation>
+    <operation name="ValidateEMailAddress">
+      <documentation>Function will validate all eMail addresses within a mailing list. Keep lists to a maximum of 1000 names for this function. Larger lists may take a while for processing. Addresses are a delimited list in TXT, CSV, or XML format. See instructions. Function will return an XML list containing all invalid Addresses.</documentation>
+      <input message="s0:ValidateEMailAddressSoapIn" />
+      <output message="s0:ValidateEMailAddressSoapOut" />
+    </operation>
+    <operation name="Add_Remove_Campaign">
+      <documentation>Function will add, update, or remove a campaign to your account. A campaign is any HTML formatted message. Campaign names must be unique unless the campaign has expired according to its schedule. If the campaign has expired, then the information for the campaign will be updated. ModifyBy variable is case sensative. Ex: Remove, Add, or Update. Will return Successful is no errors occur. NOTE: If removing CampaignURL and Description variables are NOT required inputs.</documentation>
+      <input message="s0:Add_Remove_CampaignSoapIn" />
+      <output message="s0:Add_Remove_CampaignSoapOut" />
+    </operation>
+    <operation name="LinkMailingLists_ToCampaigns">
+      <documentation>Allows adding or removing a Mailing list from a campaign. All variables are required. ModifyBy variable is case sensative. Ex: Remove, Add, or Update. Will return Successful is no errors occur.</documentation>
+      <input message="s0:LinkMailingLists_ToCampaignsSoapIn" />
+      <output message="s0:LinkMailingLists_ToCampaignsSoapOut" />
+    </operation>
+    <operation name="GetCampaignData">
+      <documentation>Returns all relevant information regarding a Mailing Campaign</documentation>
+      <input message="s0:GetCampaignDataSoapIn" />
+      <output message="s0:GetCampaignDataSoapOut" />
+    </operation>
+    <operation name="Schedule_Remove_Campaign">
+      <documentation>Sets up a schedule for your ad campaigns. The name of your campaign needs to already be entered into your account. The Frequency variable is case sensative. Make sure to spell correctly: e.g. BiMonthly. See Description Language for details. ModifyBy variable is case sensative. Ex: Remove, Add, or Update. Will return Successful is no errors occur. NOTE: If removing, Start and End dates are NOT required inputs. Other variables are required.</documentation>
+      <input message="s0:Schedule_Remove_CampaignSoapIn" />
+      <output message="s0:Schedule_Remove_CampaignSoapOut" />
+    </operation>
+    <operation name="SendCampaign">
+      <documentation>Send a campaign to each mailing list assigned to it. Will return any error messages if problems occur.</documentation>
+      <input message="s0:SendCampaignSoapIn" />
+      <output message="s0:SendCampaignSoapOut" />
+    </operation>
+    <operation name="SendMail">
+      <documentation>Send Bulk Mail to an address list. Address lists can be in TXT, CSV, or XML format. See instructions. Pass in the HTML Template address to be sent to your audience. Function will return True when all mail messages succeed.</documentation>
+      <input message="s0:SendMailSoapIn" />
+      <output message="s0:SendMailSoapOut" />
+    </operation>
+    <operation name="SendSingleMail">
+      <documentation>Function will send a single address an HTML formatted email. Function will return True if HTML message is successfully sent. Pass in a valid SMTP server that allows frameWERKS to submit mail.</documentation>
+      <input message="s0:SendSingleMailSoapIn" />
+      <output message="s0:SendSingleMailSoapOut" />
+    </operation>
+    <operation name="FormatMessageAsHTML">
+      <documentation>Function will convert any string of text to an HTML format using your own CSS for formatting fonts. Variable cssClassName is the name of the Class within the CSS file you wish to use to format the text. Header and Footer URL's are optional. NOTE: All URL's within any header and footer must be fully qualified http protocol paths.</documentation>
+      <input message="s0:FormatMessageAsHTMLSoapIn" />
+      <output message="s0:FormatMessageAsHTMLSoapOut" />
+    </operation>
+    <operation name="SendTypedMessage">
+      <documentation>This function will send a typed message to your audience. Use the FormatMessageAsHTML Function to provide the content for the Message variable. CC, BCC, and Mail Server are optional.</documentation>
+      <input message="s0:SendTypedMessageSoapIn" />
+      <output message="s0:SendTypedMessageSoapOut" />
+    </operation>
+    <operation name="GetCSSStyleInfo">
+      <documentation>Function will return all information about any CSS file. This information is used to help format normal text into HTML using your own CSS files.</documentation>
+      <input message="s0:GetCSSStyleInfoSoapIn" />
+      <output message="s0:GetCSSStyleInfoSoapOut" />
+    </operation>
+  </portType>
+  <binding name="HTMLeMailSoap" type="s0:HTMLeMailSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ActivateNewAccount">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/ActivateNewAccount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidateWorkingList">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/ValidateWorkingList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Add_Remove_AddressList">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/Add_Remove_AddressList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidateEMailAddress">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/ValidateEMailAddress" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Add_Remove_Campaign">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/Add_Remove_Campaign" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LinkMailingLists_ToCampaigns">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/LinkMailingLists_ToCampaigns" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCampaignData">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/GetCampaignData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Schedule_Remove_Campaign">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/Schedule_Remove_Campaign" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendCampaign">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/SendCampaign" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendMail">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/SendMail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendSingleMail">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/SendSingleMail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FormatMessageAsHTML">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/FormatMessageAsHTML" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendTypedMessage">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/SendTypedMessage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCSSStyleInfo">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HTMLeMail/GetCSSStyleInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="HTMLeMail">
+    <port name="HTMLeMailSoap" binding="s0:HTMLeMailSoap">
+      <soap:address location="http://www.framewerks.com/WebServices/HTMLeMail/HTMLeMail.asmx" />
+    </port>
+  </service>
+</definitions>

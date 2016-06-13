@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<definitions name="XMethodsListingsService" xmlns:xsd="http://www.w3.org/1999/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.xmethods.net/sd/services/XMethodsListingsService.wsdl" xmlns:tns="http://www.xmethods.net/sd/services/XMethodsListingsService.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="http://www.xmethods.net/XMethodsListingsService.xsd">
+	<types>
+		<schema targetNamespace="http://www.xmethods.net/XMethodsListingsService.xsd" xmlns="http://www.w3.org/1999/XMLSchema">
+				<complexType name="SOAPService">
+					<sequence>
+						<element name="name" type="string"/>
+						<element name="owner" type="string"/>
+						<element name="description" type="string"/>
+						<element name="homepageURL" type="string"/>
+						<element name="endpoint" type="string"/>
+						<element name="SOAPAction" type="string"/>
+						<element name="methodNamespaceURI" type="string"/>
+						<element name="methodName" type="string"/>
+						<element name="wsdlURL" type="string"/>
+						<element name="instructions" type="string"/>
+						<element name="contact_email" type="string"/>
+						<element name="serverImplementation" type="string"/>
+					</sequence>
+				</complexType>
+			<element name="itemArray">
+				<complexType name="ArrayOfSOAPService" base="soap:Array">
+					<sequence>
+						<element name="item" type="xsdl:SOAPService"/>
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</types>
+	<message name="getAllSOAPServicesRequest"/>
+	<message name="getAllSOAPServicesResponse">
+		<part name="return" element="xsdl:itemArray"/>
+	</message>
+	<portType name="XMethodsListingsPortType">
+		<operation name="getAllSOAPServices">
+			<input message="tns:getAllSOAPServicesRequest" name="getAllSOAPServices"/>
+			<output message="tns:getAllSOAPServicesResponse" name="getAllSOAPServicesResponse"/>
+		</operation>
+	</portType>
+	<binding name="XMethodsListingsBinding" type="tns:XMethodsListingsPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getAllSOAPServices">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="encoded" namespace="urn:xmethodsServicesManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:xmethodsServicesManager" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="XMethodsListingsService">
+		<documentation>Provides service listings from XMethods directory</documentation>
+		<port name="XMethodsListingsPort" binding="tns:XMethodsListingsBinding">
+			<soap:address location="http://www.xmethods.net:80/soap/servlet/rpcrouter"/>
+		</port>
+	</service>
+</definitions>

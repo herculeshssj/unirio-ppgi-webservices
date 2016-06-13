@@ -1,0 +1,168 @@
+<?xml version="1.0" ?>
+
+<definitions name="Authorize.cauthority" targetNamespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" xmlns:tns="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetUserIDRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+    </message>
+    <message name="GetUserIDResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="GetTimeZoneRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+    </message>
+    <message name="GetTimeZoneResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="CreditsLeftRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+    </message>
+    <message name="CreditsLeftResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="CreditsBoughtRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+    </message>
+    <message name="CreditsBoughtResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="CreditsUsedRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+    </message>
+    <message name="CreditsUsedResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="IsAuthorizedRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="AuthoriseUsername" type="xsd:string"/>
+        <part name="AuthorisePassKey" type="xsd:string"/>
+        <part name="WSUID" type="xsd:string"/>
+        <part name="Source" type="xsd:string"/>
+        <part name="CreditsUsed" type="xsd:long"/>
+        <part name="Notes" type="xsd:string"/>
+    </message>
+    <message name="IsAuthorizedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTransactionsRequest">
+        <part name="UserName" type="xsd:string"/>
+        <part name="PassKey" type="xsd:string"/>
+        <part name="WebServiceGUID" type="xsd:string"/>
+        <part name="MaximumRows" type="xsd:long"/>
+        <part name="ToTransactionID" type="xsd:long"/>
+    </message>
+    <message name="GetTransactionsResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Authorize.cauthorityPortType">
+        <operation name="GetUserID">
+            <input message="tns:GetUserIDRequest"/>
+            <output message="tns:GetUserIDResponse"/>
+        </operation>
+        <operation name="GetTimeZone">
+            <input message="tns:GetTimeZoneRequest"/>
+            <output message="tns:GetTimeZoneResponse"/>
+        </operation>
+        <operation name="CreditsLeft">
+            <input message="tns:CreditsLeftRequest"/>
+            <output message="tns:CreditsLeftResponse"/>
+        </operation>
+        <operation name="CreditsBought">
+            <input message="tns:CreditsBoughtRequest"/>
+            <output message="tns:CreditsBoughtResponse"/>
+        </operation>
+        <operation name="CreditsUsed">
+            <input message="tns:CreditsUsedRequest"/>
+            <output message="tns:CreditsUsedResponse"/>
+        </operation>
+        <operation name="IsAuthorized">
+            <input message="tns:IsAuthorizedRequest"/>
+            <output message="tns:IsAuthorizedResponse"/>
+        </operation>
+        <operation name="GetTransactions">
+            <input message="tns:GetTransactionsRequest"/>
+            <output message="tns:GetTransactionsResponse"/>
+        </operation>
+    </portType>
+    <binding name="Authorize.cauthoritybinding" type="tns:Authorize.cauthorityPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetUserID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#GetUserID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetTimeZone">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#GetTimeZone"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="CreditsLeft">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#CreditsLeft"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="CreditsBought">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#CreditsBought"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="CreditsUsed">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#CreditsUsed"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsAuthorized">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#IsAuthorized"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetTransactions">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml#GetTransactions"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/soapengine/Authorize/CAuthority.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Authorize.cauthorityService">
+        <port name="Authorize.cauthorityPort" binding="tns:Authorize.cauthoritybinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/soapengine.cgi"/>
+        </port>
+    </service>
+</definitions>

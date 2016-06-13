@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/ForecastByZip" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/ForecastByZip" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/ForecastByZip">
+      <s:element name="GetForecastByZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForecastByZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForecastByZipResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetForecastByZipSoapIn">
+    <part name="parameters" element="s0:GetForecastByZip" />
+  </message>
+  <message name="GetForecastByZipSoapOut">
+    <part name="parameters" element="s0:GetForecastByZipResponse" />
+  </message>
+  <message name="GetForecastByZipHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetForecastByZipHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetForecastByZipHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetForecastByZipHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="ForecastByZipSoap">
+    <operation name="GetForecastByZip">
+      <input message="s0:GetForecastByZipSoapIn" />
+      <output message="s0:GetForecastByZipSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ForecastByZipHttpGet">
+    <operation name="GetForecastByZip">
+      <input message="s0:GetForecastByZipHttpGetIn" />
+      <output message="s0:GetForecastByZipHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ForecastByZipHttpPost">
+    <operation name="GetForecastByZip">
+      <input message="s0:GetForecastByZipHttpPostIn" />
+      <output message="s0:GetForecastByZipHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ForecastByZipSoap" type="s0:ForecastByZipSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetForecastByZip">
+      <soap:operation soapAction="http://innergears.com/WebServices/ForecastByZip/GetForecastByZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForecastByZipHttpGet" type="s0:ForecastByZipHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetForecastByZip">
+      <http:operation location="/GetForecastByZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForecastByZipHttpPost" type="s0:ForecastByZipHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetForecastByZip">
+      <http:operation location="/GetForecastByZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ForecastByZip">
+    <port name="ForecastByZipSoap" binding="s0:ForecastByZipSoap">
+      <soap:address location="http://www.innergears.com/WebServices/ForecastByZip/ForecastByZip.asmx" />
+    </port>
+    <port name="ForecastByZipHttpGet" binding="s0:ForecastByZipHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/ForecastByZip/ForecastByZip.asmx" />
+    </port>
+    <port name="ForecastByZipHttpPost" binding="s0:ForecastByZipHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/ForecastByZip/ForecastByZip.asmx" />
+    </port>
+  </service>
+</definitions>

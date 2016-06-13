@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://www.webservicex.net/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webservicex.net" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webservicex.net" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net">
+      <s:element name="CashFlowPresentValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowTimes" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowAmount" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CashFlowPresentValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CashFlowPresentValueResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CashFlowPresentVlaueDiscrete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowTimes" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowAmount" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CashFlowPresentVlaueDiscreteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CashFlowPresentVlaueDiscreteResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CashFlowIrr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowTimes" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlowAmount" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CashFlowIrrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CashFlowIrrResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.webservicex.net/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="CashFlowPresentValueSoapIn">
+    <part name="parameters" element="s0:CashFlowPresentValue" />
+  </message>
+  <message name="CashFlowPresentValueSoapOut">
+    <part name="parameters" element="s0:CashFlowPresentValueResponse" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteSoapIn">
+    <part name="parameters" element="s0:CashFlowPresentVlaueDiscrete" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteSoapOut">
+    <part name="parameters" element="s0:CashFlowPresentVlaueDiscreteResponse" />
+  </message>
+  <message name="CashFlowIrrSoapIn">
+    <part name="parameters" element="s0:CashFlowIrr" />
+  </message>
+  <message name="CashFlowIrrSoapOut">
+    <part name="parameters" element="s0:CashFlowIrrResponse" />
+  </message>
+  <message name="CashFlowPresentValueHttpGetIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+    <part name="InterestRate" type="s:string" />
+  </message>
+  <message name="CashFlowPresentValueHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteHttpGetIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+    <part name="InterestRate" type="s:string" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CashFlowIrrHttpGetIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+  </message>
+  <message name="CashFlowIrrHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CashFlowPresentValueHttpPostIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+    <part name="InterestRate" type="s:string" />
+  </message>
+  <message name="CashFlowPresentValueHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteHttpPostIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+    <part name="InterestRate" type="s:string" />
+  </message>
+  <message name="CashFlowPresentVlaueDiscreteHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CashFlowIrrHttpPostIn">
+    <part name="CashFlowTimes" type="s1:StringArray" />
+    <part name="CashFlowAmount" type="s1:StringArray" />
+  </message>
+  <message name="CashFlowIrrHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="CashFlowPresentValuesSoap">
+    <operation name="CashFlowPresentValue">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If compounding is continous</documentation>
+      <input message="s0:CashFlowPresentValueSoapIn" />
+      <output message="s0:CashFlowPresentValueSoapOut" />
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If discounting was discrete</documentation>
+      <input message="s0:CashFlowPresentVlaueDiscreteSoapIn" />
+      <output message="s0:CashFlowPresentVlaueDiscreteSoapOut" />
+    </operation>
+    <operation name="CashFlowIrr">
+      <documentation>The internal rate of return of a cash flow is the interest rate that makes the present value of a cash flow equal to zero.</documentation>
+      <input message="s0:CashFlowIrrSoapIn" />
+      <output message="s0:CashFlowIrrSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CashFlowPresentValuesHttpGet">
+    <operation name="CashFlowPresentValue">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If compounding is continous</documentation>
+      <input message="s0:CashFlowPresentValueHttpGetIn" />
+      <output message="s0:CashFlowPresentValueHttpGetOut" />
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If discounting was discrete</documentation>
+      <input message="s0:CashFlowPresentVlaueDiscreteHttpGetIn" />
+      <output message="s0:CashFlowPresentVlaueDiscreteHttpGetOut" />
+    </operation>
+    <operation name="CashFlowIrr">
+      <documentation>The internal rate of return of a cash flow is the interest rate that makes the present value of a cash flow equal to zero.</documentation>
+      <input message="s0:CashFlowIrrHttpGetIn" />
+      <output message="s0:CashFlowIrrHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CashFlowPresentValuesHttpPost">
+    <operation name="CashFlowPresentValue">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If compounding is continous</documentation>
+      <input message="s0:CashFlowPresentValueHttpPostIn" />
+      <output message="s0:CashFlowPresentValueHttpPostOut" />
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <documentation>The calculation of present value is one of the basics of finance. The present value is the current value of a stream of future payments.Present value,If discounting was discrete</documentation>
+      <input message="s0:CashFlowPresentVlaueDiscreteHttpPostIn" />
+      <output message="s0:CashFlowPresentVlaueDiscreteHttpPostOut" />
+    </operation>
+    <operation name="CashFlowIrr">
+      <documentation>The internal rate of return of a cash flow is the interest rate that makes the present value of a cash flow equal to zero.</documentation>
+      <input message="s0:CashFlowIrrHttpPostIn" />
+      <output message="s0:CashFlowIrrHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CashFlowPresentValuesSoap" type="s0:CashFlowPresentValuesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CashFlowPresentValue">
+      <soap:operation soapAction="http://www.webservicex.net/CashFlowPresentValue" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <soap:operation soapAction="http://www.webservicex.net/CashFlowPresentVlaueDiscrete" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CashFlowIrr">
+      <soap:operation soapAction="http://www.webservicex.net/CashFlowIrr" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CashFlowPresentValuesHttpGet" type="s0:CashFlowPresentValuesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CashFlowPresentValue">
+      <http:operation location="/CashFlowPresentValue" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <http:operation location="/CashFlowPresentVlaueDiscrete" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CashFlowIrr">
+      <http:operation location="/CashFlowIrr" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CashFlowPresentValuesHttpPost" type="s0:CashFlowPresentValuesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CashFlowPresentValue">
+      <http:operation location="/CashFlowPresentValue" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CashFlowPresentVlaueDiscrete">
+      <http:operation location="/CashFlowPresentVlaueDiscrete" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CashFlowIrr">
+      <http:operation location="/CashFlowIrr" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CashFlowPresentValues">
+    <port name="CashFlowPresentValuesSoap" binding="s0:CashFlowPresentValuesSoap">
+      <soap:address location="http://www.webservicex.net/cashflow.asmx" />
+    </port>
+    <port name="CashFlowPresentValuesHttpGet" binding="s0:CashFlowPresentValuesHttpGet">
+      <http:address location="http://www.webservicex.net/cashflow.asmx" />
+    </port>
+    <port name="CashFlowPresentValuesHttpPost" binding="s0:CashFlowPresentValuesHttpPost">
+      <http:address location="http://www.webservicex.net/cashflow.asmx" />
+    </port>
+  </service>
+</definitions>

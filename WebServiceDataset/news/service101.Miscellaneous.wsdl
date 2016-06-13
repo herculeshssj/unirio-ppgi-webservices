@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="VirusWarnings.cviruswarnings" targetNamespace="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" xmlns:tns="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetVirusWarningsRequest">
+    </message>
+    <message name="GetVirusWarningsResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetRecordsetVirusWarningsRequest">
+        <part name="recWarnings" type="xsd:string"/>
+    </message>
+    <message name="GetRecordsetVirusWarningsResponse">
+        <part name="recWarnings" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="VirusWarnings.cviruswarningsPortType">
+        <operation name="GetVirusWarnings">
+            <input message="tns:GetVirusWarningsRequest"/>
+            <output message="tns:GetVirusWarningsResponse"/>
+        </operation>
+        <operation name="GetRecordsetVirusWarnings">
+            <input message="tns:GetRecordsetVirusWarningsRequest"/>
+            <output message="tns:GetRecordsetVirusWarningsResponse"/>
+        </operation>
+    </portType>
+    <binding name="VirusWarnings.cviruswarningsbinding" type="tns:VirusWarnings.cviruswarningsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetVirusWarnings">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml#GetVirusWarnings"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetRecordsetVirusWarnings">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml#GetRecordsetVirusWarnings"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/VirusWarnings/CVirusWarnings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="VirusWarnings.cviruswarningsService">
+        <port name="VirusWarnings.cviruswarningsPort" binding="tns:VirusWarnings.cviruswarningsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/viruswarnings.cgi"/>
+        </port>
+    </service>
+</definitions>

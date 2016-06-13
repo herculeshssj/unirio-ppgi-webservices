@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetDomainsByZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDomainsByZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDomainsByZipResult" type="s0:Domains" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Domains">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Domain" type="s0:Domain" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Domain">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DomainName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrantEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrantPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegistrantFax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDomainsByRegistrantName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FirstMiddleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDomainsByRegistrantNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDomainsByRegistrantNameResult" type="s0:Domains" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Domains" nillable="true" type="s0:Domains" />
+    </s:schema>
+  </types>
+  <message name="GetDomainsByZipSoapIn">
+    <part name="parameters" element="s0:GetDomainsByZip" />
+  </message>
+  <message name="GetDomainsByZipSoapOut">
+    <part name="parameters" element="s0:GetDomainsByZipResponse" />
+  </message>
+  <message name="GetDomainsByRegistrantNameSoapIn">
+    <part name="parameters" element="s0:GetDomainsByRegistrantName" />
+  </message>
+  <message name="GetDomainsByRegistrantNameSoapOut">
+    <part name="parameters" element="s0:GetDomainsByRegistrantNameResponse" />
+  </message>
+  <message name="GetDomainsByZipHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetDomainsByZipHttpGetOut">
+    <part name="Body" element="s0:Domains" />
+  </message>
+  <message name="GetDomainsByRegistrantNameHttpGetIn">
+    <part name="FirstMiddleName" type="s:string" />
+    <part name="LastName" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetDomainsByRegistrantNameHttpGetOut">
+    <part name="Body" element="s0:Domains" />
+  </message>
+  <message name="GetDomainsByZipHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetDomainsByZipHttpPostOut">
+    <part name="Body" element="s0:Domains" />
+  </message>
+  <message name="GetDomainsByRegistrantNameHttpPostIn">
+    <part name="FirstMiddleName" type="s:string" />
+    <part name="LastName" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetDomainsByRegistrantNameHttpPostOut">
+    <part name="Body" element="s0:Domains" />
+  </message>
+  <portType name="DOTSDomainSpySoap">
+    <operation name="GetDomainsByZip">
+      <documentation>Returns domain information for the top 100 domains registerred within a given zip code.</documentation>
+      <input message="s0:GetDomainsByZipSoapIn" />
+      <output message="s0:GetDomainsByZipSoapOut" />
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <documentation>Returns domain information for all registerred to a given full name.</documentation>
+      <input message="s0:GetDomainsByRegistrantNameSoapIn" />
+      <output message="s0:GetDomainsByRegistrantNameSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSDomainSpyHttpGet">
+    <operation name="GetDomainsByZip">
+      <documentation>Returns domain information for the top 100 domains registerred within a given zip code.</documentation>
+      <input message="s0:GetDomainsByZipHttpGetIn" />
+      <output message="s0:GetDomainsByZipHttpGetOut" />
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <documentation>Returns domain information for all registerred to a given full name.</documentation>
+      <input message="s0:GetDomainsByRegistrantNameHttpGetIn" />
+      <output message="s0:GetDomainsByRegistrantNameHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSDomainSpyHttpPost">
+    <operation name="GetDomainsByZip">
+      <documentation>Returns domain information for the top 100 domains registerred within a given zip code.</documentation>
+      <input message="s0:GetDomainsByZipHttpPostIn" />
+      <output message="s0:GetDomainsByZipHttpPostOut" />
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <documentation>Returns domain information for all registerred to a given full name.</documentation>
+      <input message="s0:GetDomainsByRegistrantNameHttpPostIn" />
+      <output message="s0:GetDomainsByRegistrantNameHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSDomainSpySoap" type="s0:DOTSDomainSpySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetDomainsByZip">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetDomainsByZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetDomainsByRegistrantName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSDomainSpyHttpGet" type="s0:DOTSDomainSpyHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetDomainsByZip">
+      <http:operation location="/GetDomainsByZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <http:operation location="/GetDomainsByRegistrantName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSDomainSpyHttpPost" type="s0:DOTSDomainSpyHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetDomainsByZip">
+      <http:operation location="/GetDomainsByZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDomainsByRegistrantName">
+      <http:operation location="/GetDomainsByRegistrantName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSDomainSpy">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSDomainSpySoap" binding="s0:DOTSDomainSpySoap">
+      <soap:address location="http://ws2.serviceobjects.net/ds/domainspy.asmx" />
+    </port>
+    <port name="DOTSDomainSpyHttpGet" binding="s0:DOTSDomainSpyHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/ds/domainspy.asmx" />
+    </port>
+    <port name="DOTSDomainSpyHttpPost" binding="s0:DOTSDomainSpyHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/ds/domainspy.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<!-- WSDL - AlDia -->
+
+<definitions name="urn:AldiaService"
+             targetNamespace="urn:AldiaService"
+             xmlns:typens="urn:AldiaService"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:AldiaService">
+
+      <xsd:complexType name="noticia">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="titulo" type="xsd:string"/>
+          <xsd:element name="audiorm" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+  
+      <xsd:complexType name="AldiaListaResultArray">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+             <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="typens:noticia[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+    </xsd:schema>
+  </types> 
+
+
+  <message name="ListarNoticias">
+    <part name="fecha"          type="xsd:int"/>
+  </message>
+
+  <message name="ListarNoticiasResponse">
+    <part name="ListadoNoticias"         type="typens:AldiaListaResultArray"/>
+  </message>
+
+  <message name="VerNoticia">
+    <part name="idnews"         type="xsd:int"/>
+  </message>
+
+  <message name="VerNoticiaResponse">
+    <part name="id"             type="xsd:int"/>
+    <part name="titulo"         type="xsd:string"/>
+    <part name="texto"          type="xsd:string"/>
+    <part name="fuente"         type="xsd:string"/>
+    <part name="agencia"        type="xsd:string"/>
+    <part name="fecha"          type="xsd:string"/>
+    <part name="audiorm"        type="xsd:string"/>
+  </message>
+
+
+  <portType name="AldiaServicePort">
+
+    <operation name="aldialista">
+      <input message="typens:ListarNoticias"/>
+      <output message="typens:ListarNoticiasResponse"/>
+    </operation>
+
+    <operation name="aldiaview">
+      <input message="typens:VerNoticia"/>
+      <output message="typens:VerNoticiaResponse"/>
+    </operation>
+
+  </portType>
+
+
+  <binding name="AldiaServiceBinding" type="typens:AldiaServicePort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="aldialista">
+      <soap:operation soapAction="urn:AldiaServiceAction"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:AldiaService"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:AldiaService"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+    <operation name="aldiaview">
+      <soap:operation soapAction="urn:AldiaServiceAction"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:AldiaService"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:AldiaService"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+  </binding>
+
+
+  <service name="SOAP_AldiaService">
+    <documentation>Servicio Diario de Noticias de Salud en Espanol - Infomed</documentation>
+    <port name="AldiaServicePort" binding="typens:AldiaServiceBinding">
+      <soap:address location="http://webservices.sld.cu/aldia.php"/>
+    </port>
+  </service>
+
+</definitions>

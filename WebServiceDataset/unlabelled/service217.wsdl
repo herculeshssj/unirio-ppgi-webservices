@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IMapQuestservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <message name="GetDirections0Request">
+    <part name="FromAddress" type="xs:string"/>
+    <part name="FromCity" type="xs:string"/>
+    <part name="FromState" type="xs:string"/>
+    <part name="FromCountry" type="xs:string"/>
+    <part name="ToAddress" type="xs:string"/>
+    <part name="ToCity" type="xs:string"/>
+    <part name="ToState" type="xs:string"/>
+    <part name="ToCountry" type="xs:string"/>
+  </message>
+  <message name="GetDirections0Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IMapQuest">
+    <operation name="GetDirections">
+      <input message="tns:GetDirections0Request"/>
+      <output message="tns:GetDirections0Response"/>
+    </operation>
+  </portType>
+  <binding name="IMapQuestbinding" type="tns:IMapQuest">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetDirections">
+      <soap:operation soapAction="urn:MapQuestIntf-IMapQuest#GetDirections" style="rpc"/>
+      <input message="tns:GetDirections0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MapQuestIntf-IMapQuest"/>
+      </input>
+      <output message="tns:GetDirections0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MapQuestIntf-IMapQuest"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IMapQuestservice">
+    <port name="IMapQuestPort" binding="tns:IMapQuestbinding">
+      <soap:address location="http://ww6.borland.com/webservices/MapQuest/MapQuest.exe/soap/IMapQuest"/>
+    </port>
+  </service>
+</definitions>
+

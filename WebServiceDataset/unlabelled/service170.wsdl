@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="TransLate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MyText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransLateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransLateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="TransLateSoapIn">
+    <part name="parameters" element="s0:TransLate" />
+  </message>
+  <message name="TransLateSoapOut">
+    <part name="parameters" element="s0:TransLateResponse" />
+  </message>
+  <portType name="engtoarabicSoap">
+    <operation name="TransLate">
+      <documentation>Obtains the Arabic meaning of English Text &lt;br&gt; &lt;A href=client.aspx&gt;click here to try it in .NET client Form&lt;/A&gt;</documentation>
+      <input message="s0:TransLateSoapIn" />
+      <output message="s0:TransLateSoapOut" />
+    </operation>
+  </portType>
+  <binding name="engtoarabicSoap" type="s0:engtoarabicSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="TransLate">
+      <soap:operation soapAction="http://tempuri.org/TransLate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="engtoarabic">
+    <documentation>This web service for translatation from English Text into Arabic Text.</documentation>
+    <port name="engtoarabicSoap" binding="s0:engtoarabicSoap">
+      <soap:address location="http://www.xceer.com/toarabic/engtoarabic.asmx" />
+    </port>
+  </service>
+</definitions>

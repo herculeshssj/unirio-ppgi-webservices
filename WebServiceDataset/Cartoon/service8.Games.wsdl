@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.esynaps.com/WebServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.esynaps.com/WebServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.esynaps.com/WebServices/">
+      <s:element name="MsProxySays">
+        <s:complexType />
+      </s:element>
+      <s:element name="MsProxySaysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MsProxySaysResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+    </s:schema>
+  </types>
+  <message name="MsProxySaysSoapIn">
+    <part name="parameters" element="s0:MsProxySays" />
+  </message>
+  <message name="MsProxySaysSoapOut">
+    <part name="parameters" element="s0:MsProxySaysResponse" />
+  </message>
+  <message name="MsProxySaysHttpGetIn" />
+  <message name="MsProxySaysHttpGetOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="MsProxySaysHttpPostIn" />
+  <message name="MsProxySaysHttpPostOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <portType name="MSProxySoap">
+    <operation name="MsProxySays">
+      <documentation>See what Miss Proxy the Programmer has to say! A Cartoon strip dedicated to VB.NET developers!! </documentation>
+      <input message="s0:MsProxySaysSoapIn" />
+      <output message="s0:MsProxySaysSoapOut" />
+    </operation>
+  </portType>
+  <portType name="MSProxyHttpGet">
+    <operation name="MsProxySays">
+      <documentation>See what Miss Proxy the Programmer has to say! A Cartoon strip dedicated to VB.NET developers!! </documentation>
+      <input message="s0:MsProxySaysHttpGetIn" />
+      <output message="s0:MsProxySaysHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="MSProxyHttpPost">
+    <operation name="MsProxySays">
+      <documentation>See what Miss Proxy the Programmer has to say! A Cartoon strip dedicated to VB.NET developers!! </documentation>
+      <input message="s0:MsProxySaysHttpPostIn" />
+      <output message="s0:MsProxySaysHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="MSProxySoap" type="s0:MSProxySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="MsProxySays">
+      <soap:operation soapAction="http://www.esynaps.com/WebServices/MsProxySays" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MSProxyHttpGet" type="s0:MSProxyHttpGet">
+    <http:binding verb="GET" />
+    <operation name="MsProxySays">
+      <http:operation location="/MsProxySays" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MSProxyHttpPost" type="s0:MSProxyHttpPost">
+    <http:binding verb="POST" />
+    <operation name="MsProxySays">
+      <http:operation location="/MsProxySays" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MSProxy">
+    <port name="MSProxySoap" binding="s0:MSProxySoap">
+      <soap:address location="http://www.esynaps.com/WebServices/MsProxy.asmx" />
+    </port>
+    <port name="MSProxyHttpGet" binding="s0:MSProxyHttpGet">
+      <http:address location="http://www.esynaps.com/WebServices/MsProxy.asmx" />
+    </port>
+    <port name="MSProxyHttpPost" binding="s0:MSProxyHttpPost">
+      <http:address location="http://www.esynaps.com/WebServices/MsProxy.asmx" />
+    </port>
+  </service>
+</definitions>

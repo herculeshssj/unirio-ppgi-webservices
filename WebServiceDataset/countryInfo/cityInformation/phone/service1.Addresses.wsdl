@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IGetAreaservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="GetUSRequest">
+    <part name="iAreaCode" type="xs:int"/>
+  </message>
+  <message name="GetUSResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="GetInternationalRequest">
+    <part name="iCountryCode" type="xs:int"/>
+  </message>
+  <message name="GetInternationalResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IGetArea">
+    <operation name="GetUS">
+      <input message="GetUSRequest"/>
+      <output message="GetUSResponse"/>
+    </operation>
+    <operation name="GetInternational">
+      <input message="GetInternationalRequest"/>
+      <output message="GetInternationalResponse"/>
+    </operation>
+  </portType>
+  <binding name="IGetAreabinding" type="IGetArea">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetUS">
+      <soap:operation soapAction="urn:GetAreaIntf-IGetArea#GetUS"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetAreaIntf-IGetArea"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetAreaIntf-IGetArea"/>
+      </output>
+    </operation>
+    <operation name="GetInternational">
+      <soap:operation soapAction="urn:GetAreaIntf-IGetArea#GetInternational"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetAreaIntf-IGetArea"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetAreaIntf-IGetArea"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IGetAreaservice">
+    <port name="IGetAreaPort" binding="IGetAreabinding">
+      <soap:address location="http://www.taragroup.com/bin/areacode.exe/soap/IGetArea"/>
+    </port>
+  </service>
+</definitions>

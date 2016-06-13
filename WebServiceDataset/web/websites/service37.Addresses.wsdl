@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<definitions name="Titles.ctitles" targetNamespace="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" xmlns:tns="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="IsValidTitleIDRequest">
+        <part name="TitleID" type="xsd:long"/>
+    </message>
+    <message name="IsValidTitleIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTitlesRequest">
+        <part name="RecTitles" type="xsd:string"/>
+    </message>
+    <message name="GetTitlesResponse">
+        <part name="RecTitles" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Titles.ctitlesPortType">
+        <operation name="IsValidTitleID">
+            <input message="tns:IsValidTitleIDRequest"/>
+            <output message="tns:IsValidTitleIDResponse"/>
+        </operation>
+        <operation name="GetTitles">
+            <input message="tns:GetTitlesRequest"/>
+            <output message="tns:GetTitlesResponse"/>
+        </operation>
+    </portType>
+    <binding name="Titles.ctitlesbinding" type="tns:Titles.ctitlesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="IsValidTitleID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml#IsValidTitleID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetTitles">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml#GetTitles"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Titles/CTitles.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Titles.ctitlesService">
+        <port name="Titles.ctitlesPort" binding="tns:Titles.ctitlesbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lctitlecodes.cgi"/>
+        </port>
+    </service>
+</definitions>

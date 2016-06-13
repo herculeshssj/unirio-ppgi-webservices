@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://b2btech.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://b2btech.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://b2btech.com/">
+      <s:element name="ForecastCalc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfHistoricalPeriodsIN" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="HistoryIN" type="s0:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastOUT" type="s0:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="StatusOUT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ForecastCalcResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ForecastCalcResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastOUT" type="s0:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="StatusOUT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ForecastCalc2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfHistoricalPeriodsIN" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="HistoryIN" type="s0:ArrayOfLong" />
+            <s:element minOccurs="0" maxOccurs="1" name="StatusOUT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ForecastCalc2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ForecastCalc2Result" type="s0:FileRecord_Forecast" />
+            <s:element minOccurs="0" maxOccurs="1" name="StatusOUT" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FileRecord_Forecast">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s0:ArrayOfLong" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="ForecastCalcSoapIn">
+    <part name="parameters" element="s0:ForecastCalc" />
+  </message>
+  <message name="ForecastCalcSoapOut">
+    <part name="parameters" element="s0:ForecastCalcResponse" />
+  </message>
+  <message name="ForecastCalc2SoapIn">
+    <part name="parameters" element="s0:ForecastCalc2" />
+  </message>
+  <message name="ForecastCalc2SoapOut">
+    <part name="parameters" element="s0:ForecastCalc2Response" />
+  </message>
+  <portType name="ForecastSoap">
+    <operation name="ForecastCalc">
+      <input message="s0:ForecastCalcSoapIn" />
+      <output message="s0:ForecastCalcSoapOut" />
+    </operation>
+    <operation name="ForecastCalc2">
+      <input message="s0:ForecastCalc2SoapIn" />
+      <output message="s0:ForecastCalc2SoapOut" />
+    </operation>
+  </portType>
+  <portType name="ForecastHttpGet" />
+  <portType name="ForecastHttpPost" />
+  <binding name="ForecastSoap" type="s0:ForecastSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ForecastCalc">
+      <soap:operation soapAction="http://b2btech.com/ForecastCalc" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ForecastCalc2">
+      <soap:operation soapAction="http://b2btech.com/ForecastCalc2" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForecastHttpGet" type="s0:ForecastHttpGet">
+    <http:binding verb="GET" />
+  </binding>
+  <binding name="ForecastHttpPost" type="s0:ForecastHttpPost">
+    <http:binding verb="POST" />
+  </binding>
+  <service name="Forecast">
+    <documentation>Please try our Sales Forecasting Web Service for FREE. &lt;BR&gt;&lt;BR&gt;Note to developers: This function requires programmatic access. Please create a Web reference in the IDE of your choice and examine the properties and methods available to begin using this Web Service!&lt;BR&gt;&lt;BR&gt;&lt;B&gt;Technical Summary&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;Input parameters:&lt;BR&gt; Number of Historical Periods = Long (must be 36 or less)&lt;BR&gt;History period data = Array of Long (where element 0 is the most recent period and element 35 is the oldest)&lt;BR&gt;&lt;BR&gt;Output Parameters:&lt;BR&gt;Forecast period data = Array of Long (where element 0 is the next period's forecast)&lt;BR&gt;Status = String (where a blank string indicates success)</documentation>
+    <port name="ForecastSoap" binding="s0:ForecastSoap">
+      <soap:address location="http://www.b2btech.net/forecast/forecast.asmx" />
+    </port>
+    <port name="ForecastHttpGet" binding="s0:ForecastHttpGet">
+      <http:address location="http://www.b2btech.net/forecast/forecast.asmx" />
+    </port>
+    <port name="ForecastHttpPost" binding="s0:ForecastHttpPost">
+      <http:address location="http://www.b2btech.net/forecast/forecast.asmx" />
+    </port>
+  </service>
+</definitions>

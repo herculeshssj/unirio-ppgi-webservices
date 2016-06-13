@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetScore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MatchID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetScoreResult" type="s0:Score" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Score">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MatchID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Team1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Team2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team1Score" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team2Score" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team1Penalty" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Team2Penalty" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GameTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetScores">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetScoresResult" type="s0:Scores" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Scores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Scores" type="s0:Score" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Score" nillable="true" type="s0:Score" />
+      <s:element name="Scores" nillable="true" type="s0:Scores" />
+    </s:schema>
+  </types>
+  <message name="GetScoreSoapIn">
+    <part name="parameters" element="s0:GetScore" />
+  </message>
+  <message name="GetScoreSoapOut">
+    <part name="parameters" element="s0:GetScoreResponse" />
+  </message>
+  <message name="GetScoresSoapIn">
+    <part name="parameters" element="s0:GetScores" />
+  </message>
+  <message name="GetScoresSoapOut">
+    <part name="parameters" element="s0:GetScoresResponse" />
+  </message>
+  <message name="GetScoreHttpGetIn">
+    <part name="MatchID" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetScoreHttpGetOut">
+    <part name="Body" element="s0:Score" />
+  </message>
+  <message name="GetScoresHttpGetIn">
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetScoresHttpGetOut">
+    <part name="Body" element="s0:Scores" />
+  </message>
+  <message name="GetScoreHttpPostIn">
+    <part name="MatchID" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetScoreHttpPostOut">
+    <part name="Body" element="s0:Score" />
+  </message>
+  <message name="GetScoresHttpPostIn">
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetScoresHttpPostOut">
+    <part name="Body" element="s0:Scores" />
+  </message>
+  <portType name="CupScoresSoap">
+    <operation name="GetScore">
+      <documentation>Returns a World Cup score in real-time for a given MatchID. The MatchID is a number between 1-64. The full list of MatchIDs can be gleaned from the GetScores method. A score of -1 indicates the match hasn't yet started.</documentation>
+      <input message="s0:GetScoreSoapIn" />
+      <output message="s0:GetScoreSoapOut" />
+    </operation>
+    <operation name="GetScores">
+      <documentation>Returns all World Cup scores in real-time.</documentation>
+      <input message="s0:GetScoresSoapIn" />
+      <output message="s0:GetScoresSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CupScoresHttpGet">
+    <operation name="GetScore">
+      <documentation>Returns a World Cup score in real-time for a given MatchID. The MatchID is a number between 1-64. The full list of MatchIDs can be gleaned from the GetScores method. A score of -1 indicates the match hasn't yet started.</documentation>
+      <input message="s0:GetScoreHttpGetIn" />
+      <output message="s0:GetScoreHttpGetOut" />
+    </operation>
+    <operation name="GetScores">
+      <documentation>Returns all World Cup scores in real-time.</documentation>
+      <input message="s0:GetScoresHttpGetIn" />
+      <output message="s0:GetScoresHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CupScoresHttpPost">
+    <operation name="GetScore">
+      <documentation>Returns a World Cup score in real-time for a given MatchID. The MatchID is a number between 1-64. The full list of MatchIDs can be gleaned from the GetScores method. A score of -1 indicates the match hasn't yet started.</documentation>
+      <input message="s0:GetScoreHttpPostIn" />
+      <output message="s0:GetScoreHttpPostOut" />
+    </operation>
+    <operation name="GetScores">
+      <documentation>Returns all World Cup scores in real-time.</documentation>
+      <input message="s0:GetScoresHttpPostIn" />
+      <output message="s0:GetScoresHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CupScoresSoap" type="s0:CupScoresSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetScore">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetScore" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetScores">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetScores" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CupScoresHttpGet" type="s0:CupScoresHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetScore">
+      <http:operation location="/GetScore" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetScores">
+      <http:operation location="/GetScores" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CupScoresHttpPost" type="s0:CupScoresHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetScore">
+      <http:operation location="/GetScore" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetScores">
+      <http:operation location="/GetScores" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CupScores">
+    <port name="CupScoresSoap" binding="s0:CupScoresSoap">
+      <soap:address location="http://scores.serviceobjects.com/CupScores.asmx" />
+    </port>
+    <port name="CupScoresHttpGet" binding="s0:CupScoresHttpGet">
+      <http:address location="http://scores.serviceobjects.com/CupScores.asmx" />
+    </port>
+    <port name="CupScoresHttpPost" binding="s0:CupScoresHttpPost">
+      <http:address location="http://scores.serviceobjects.com/CupScores.asmx" />
+    </port>
+  </service>
+</definitions>

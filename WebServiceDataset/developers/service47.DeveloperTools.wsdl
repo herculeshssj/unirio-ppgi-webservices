@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www28.brinkster.com/shirazaries/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www28.brinkster.com/shirazaries/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www28.brinkster.com/shirazaries/webservices/">
+      <s:element name="ReverseString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReverseStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReverseStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="ReverseStringSoapIn">
+    <part name="parameters" element="s0:ReverseString" />
+  </message>
+  <message name="ReverseStringSoapOut">
+    <part name="parameters" element="s0:ReverseStringResponse" />
+  </message>
+  <message name="ReverseStringHttpGetIn">
+    <part name="message" type="s:string" />
+  </message>
+  <message name="ReverseStringHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ReverseStringHttpPostIn">
+    <part name="message" type="s:string" />
+  </message>
+  <message name="ReverseStringHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="Reverse_x0020_String_x0020_by_x0020_ShirazSoap">
+    <operation name="ReverseString">
+      <input message="s0:ReverseStringSoapIn" />
+      <output message="s0:ReverseStringSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpGet">
+    <operation name="ReverseString">
+      <input message="s0:ReverseStringHttpGetIn" />
+      <output message="s0:ReverseStringHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpPost">
+    <operation name="ReverseString">
+      <input message="s0:ReverseStringHttpPostIn" />
+      <output message="s0:ReverseStringHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Reverse_x0020_String_x0020_by_x0020_ShirazSoap" type="s0:Reverse_x0020_String_x0020_by_x0020_ShirazSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ReverseString">
+      <soap:operation soapAction="http://www28.brinkster.com/shirazaries/webservices/ReverseString" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpGet" type="s0:Reverse_x0020_String_x0020_by_x0020_ShirazHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ReverseString">
+      <http:operation location="/ReverseString" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpPost" type="s0:Reverse_x0020_String_x0020_by_x0020_ShirazHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ReverseString">
+      <http:operation location="/ReverseString" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Reverse_x0020_String_x0020_by_x0020_Shiraz">
+    <documentation>Get a string as a parameter then display it in reverse</documentation>
+    <port name="Reverse_x0020_String_x0020_by_x0020_ShirazSoap" binding="s0:Reverse_x0020_String_x0020_by_x0020_ShirazSoap">
+      <soap:address location="http://www28.brinkster.com/shirazaries/webservices/shirazws.asmx" />
+    </port>
+    <port name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpGet" binding="s0:Reverse_x0020_String_x0020_by_x0020_ShirazHttpGet">
+      <http:address location="http://www28.brinkster.com/shirazaries/webservices/shirazws.asmx" />
+    </port>
+    <port name="Reverse_x0020_String_x0020_by_x0020_ShirazHttpPost" binding="s0:Reverse_x0020_String_x0020_by_x0020_ShirazHttpPost">
+      <http:address location="http://www28.brinkster.com/shirazaries/webservices/shirazws.asmx" />
+    </port>
+  </service>
+</definitions>

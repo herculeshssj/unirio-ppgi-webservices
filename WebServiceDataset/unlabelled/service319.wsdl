@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://dinoch.dyndns.org/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://dinoch.dyndns.org/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://dinoch.dyndns.org/webservices/">
+      <s:element name="ZipToCityAndState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToCityAndStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipToCityAndStateResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ZipTo1CityAndState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipTo1CityAndStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipTo1CityAndStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CityToZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CityToZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CityToZipResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CityTo1Zip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CityTo1ZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CityTo1ZipResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToLatLong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToLatLongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ZipToLatLongResult" type="s0:LatLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LatLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="latitude" type="s0:Latitude" />
+          <s:element minOccurs="1" maxOccurs="1" name="longitude" type="s0:Longitude" />
+          <s:element minOccurs="0" maxOccurs="1" name="tigerMapUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Latitude">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="degrees" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="northsouth" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Longitude">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="degrees" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="eastwest" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="LatLong" type="s0:LatLong" />
+    </s:schema>
+  </types>
+  <message name="ZipToCityAndStateSoapIn">
+    <part name="parameters" element="s0:ZipToCityAndState" />
+  </message>
+  <message name="ZipToCityAndStateSoapOut">
+    <part name="parameters" element="s0:ZipToCityAndStateResponse" />
+  </message>
+  <message name="ZipTo1CityAndStateSoapIn">
+    <part name="parameters" element="s0:ZipTo1CityAndState" />
+  </message>
+  <message name="ZipTo1CityAndStateSoapOut">
+    <part name="parameters" element="s0:ZipTo1CityAndStateResponse" />
+  </message>
+  <message name="CityToZipSoapIn">
+    <part name="parameters" element="s0:CityToZip" />
+  </message>
+  <message name="CityToZipSoapOut">
+    <part name="parameters" element="s0:CityToZipResponse" />
+  </message>
+  <message name="CityTo1ZipSoapIn">
+    <part name="parameters" element="s0:CityTo1Zip" />
+  </message>
+  <message name="CityTo1ZipSoapOut">
+    <part name="parameters" element="s0:CityTo1ZipResponse" />
+  </message>
+  <message name="ZipToLatLongSoapIn">
+    <part name="parameters" element="s0:ZipToLatLong" />
+  </message>
+  <message name="ZipToLatLongSoapOut">
+    <part name="parameters" element="s0:ZipToLatLongResponse" />
+  </message>
+  <message name="ZipToCityAndStateHttpGetIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipToCityAndStateHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="ZipTo1CityAndStateHttpGetIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipTo1CityAndStateHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CityToZipHttpGetIn">
+    <part name="city" type="s:string" />
+  </message>
+  <message name="CityToZipHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="CityTo1ZipHttpGetIn">
+    <part name="city" type="s:string" />
+  </message>
+  <message name="CityTo1ZipHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ZipToLatLongHttpGetIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipToLatLongHttpGetOut">
+    <part name="Body" element="s0:LatLong" />
+  </message>
+  <message name="ZipToCityAndStateHttpPostIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipToCityAndStateHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="ZipTo1CityAndStateHttpPostIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipTo1CityAndStateHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CityToZipHttpPostIn">
+    <part name="city" type="s:string" />
+  </message>
+  <message name="CityToZipHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="CityTo1ZipHttpPostIn">
+    <part name="city" type="s:string" />
+  </message>
+  <message name="CityTo1ZipHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ZipToLatLongHttpPostIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="ZipToLatLongHttpPostOut">
+    <part name="Body" element="s0:LatLong" />
+  </message>
+  <portType name="ZipcodeLookupServiceSoap">
+    <operation name="ZipToCityAndState">
+      <input message="s0:ZipToCityAndStateSoapIn" />
+      <output message="s0:ZipToCityAndStateSoapOut" />
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <input message="s0:ZipTo1CityAndStateSoapIn" />
+      <output message="s0:ZipTo1CityAndStateSoapOut" />
+    </operation>
+    <operation name="CityToZip">
+      <input message="s0:CityToZipSoapIn" />
+      <output message="s0:CityToZipSoapOut" />
+    </operation>
+    <operation name="CityTo1Zip">
+      <input message="s0:CityTo1ZipSoapIn" />
+      <output message="s0:CityTo1ZipSoapOut" />
+    </operation>
+    <operation name="ZipToLatLong">
+      <input message="s0:ZipToLatLongSoapIn" />
+      <output message="s0:ZipToLatLongSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ZipcodeLookupServiceHttpGet">
+    <operation name="ZipToCityAndState">
+      <input message="s0:ZipToCityAndStateHttpGetIn" />
+      <output message="s0:ZipToCityAndStateHttpGetOut" />
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <input message="s0:ZipTo1CityAndStateHttpGetIn" />
+      <output message="s0:ZipTo1CityAndStateHttpGetOut" />
+    </operation>
+    <operation name="CityToZip">
+      <input message="s0:CityToZipHttpGetIn" />
+      <output message="s0:CityToZipHttpGetOut" />
+    </operation>
+    <operation name="CityTo1Zip">
+      <input message="s0:CityTo1ZipHttpGetIn" />
+      <output message="s0:CityTo1ZipHttpGetOut" />
+    </operation>
+    <operation name="ZipToLatLong">
+      <input message="s0:ZipToLatLongHttpGetIn" />
+      <output message="s0:ZipToLatLongHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ZipcodeLookupServiceHttpPost">
+    <operation name="ZipToCityAndState">
+      <input message="s0:ZipToCityAndStateHttpPostIn" />
+      <output message="s0:ZipToCityAndStateHttpPostOut" />
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <input message="s0:ZipTo1CityAndStateHttpPostIn" />
+      <output message="s0:ZipTo1CityAndStateHttpPostOut" />
+    </operation>
+    <operation name="CityToZip">
+      <input message="s0:CityToZipHttpPostIn" />
+      <output message="s0:CityToZipHttpPostOut" />
+    </operation>
+    <operation name="CityTo1Zip">
+      <input message="s0:CityTo1ZipHttpPostIn" />
+      <output message="s0:CityTo1ZipHttpPostOut" />
+    </operation>
+    <operation name="ZipToLatLong">
+      <input message="s0:ZipToLatLongHttpPostIn" />
+      <output message="s0:ZipToLatLongHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ZipcodeLookupServiceSoap" type="s0:ZipcodeLookupServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ZipToCityAndState">
+      <soap:operation soapAction="http://dinoch.dyndns.org/webservices/ZipToCityAndState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <soap:operation soapAction="http://dinoch.dyndns.org/webservices/ZipTo1CityAndState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CityToZip">
+      <soap:operation soapAction="http://dinoch.dyndns.org/webservices/CityToZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CityTo1Zip">
+      <soap:operation soapAction="http://dinoch.dyndns.org/webservices/CityTo1Zip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ZipToLatLong">
+      <soap:operation soapAction="http://dinoch.dyndns.org/webservices/ZipToLatLong" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipcodeLookupServiceHttpGet" type="s0:ZipcodeLookupServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ZipToCityAndState">
+      <http:operation location="/ZipToCityAndState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <http:operation location="/ZipTo1CityAndState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CityToZip">
+      <http:operation location="/CityToZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CityTo1Zip">
+      <http:operation location="/CityTo1Zip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipToLatLong">
+      <http:operation location="/ZipToLatLong" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipcodeLookupServiceHttpPost" type="s0:ZipcodeLookupServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ZipToCityAndState">
+      <http:operation location="/ZipToCityAndState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipTo1CityAndState">
+      <http:operation location="/ZipTo1CityAndState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CityToZip">
+      <http:operation location="/CityToZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CityTo1Zip">
+      <http:operation location="/CityTo1Zip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipToLatLong">
+      <http:operation location="/ZipToLatLong" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ZipcodeLookupService">
+    <port name="ZipcodeLookupServiceSoap" binding="s0:ZipcodeLookupServiceSoap">
+      <soap:address location="http://www.winisp.net/cheeso/zips/ZipService.asmx" />
+    </port>
+    <port name="ZipcodeLookupServiceHttpGet" binding="s0:ZipcodeLookupServiceHttpGet">
+      <http:address location="http://www.winisp.net/cheeso/zips/ZipService.asmx" />
+    </port>
+    <port name="ZipcodeLookupServiceHttpPost" binding="s0:ZipcodeLookupServiceHttpPost">
+      <http:address location="http://www.winisp.net/cheeso/zips/ZipService.asmx" />
+    </port>
+  </service>
+</definitions>

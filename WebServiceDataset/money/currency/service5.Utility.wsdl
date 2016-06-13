@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="USDConvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertTo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="USDConvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="USDConvertResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="USDConvertSoapIn">
+    <part name="parameters" element="s0:USDConvert" />
+  </message>
+  <message name="USDConvertSoapOut">
+    <part name="parameters" element="s0:USDConvertResponse" />
+  </message>
+  <message name="USDConvertHttpGetIn">
+    <part name="ConvertTo" type="s:string" />
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="USDConvertHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="USDConvertHttpPostIn">
+    <part name="ConvertTo" type="s:string" />
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="USDConvertHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="CurrencyConverterSoap">
+    <operation name="USDConvert">
+      <documentation>Convert Curreny to Dollar</documentation>
+      <input message="s0:USDConvertSoapIn" />
+      <output message="s0:USDConvertSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencyConverterHttpGet">
+    <operation name="USDConvert">
+      <documentation>Convert Curreny to Dollar</documentation>
+      <input message="s0:USDConvertHttpGetIn" />
+      <output message="s0:USDConvertHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencyConverterHttpPost">
+    <operation name="USDConvert">
+      <documentation>Convert Curreny to Dollar</documentation>
+      <input message="s0:USDConvertHttpPostIn" />
+      <output message="s0:USDConvertHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CurrencyConverterSoap" type="s0:CurrencyConverterSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="USDConvert">
+      <soap:operation soapAction="http://tempuri.org/USDConvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencyConverterHttpGet" type="s0:CurrencyConverterHttpGet">
+    <http:binding verb="GET" />
+    <operation name="USDConvert">
+      <http:operation location="/USDConvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencyConverterHttpPost" type="s0:CurrencyConverterHttpPost">
+    <http:binding verb="POST" />
+    <operation name="USDConvert">
+      <http:operation location="/USDConvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CurrencyConverter">
+    <port name="CurrencyConverterSoap" binding="s0:CurrencyConverterSoap">
+      <soap:address location="http://www31.brinkster.com/webcomponents/CurrencyConverter.asmx" />
+    </port>
+    <port name="CurrencyConverterHttpGet" binding="s0:CurrencyConverterHttpGet">
+      <http:address location="http://www31.brinkster.com/webcomponents/CurrencyConverter.asmx" />
+    </port>
+    <port name="CurrencyConverterHttpPost" binding="s0:CurrencyConverterHttpPost">
+      <http:address location="http://www31.brinkster.com/webcomponents/CurrencyConverter.asmx" />
+    </port>
+  </service>
+</definitions>

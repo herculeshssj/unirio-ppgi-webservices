@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NameABook">
+        <s:complexType />
+      </s:element>
+      <s:element name="NameABookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NameABookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="n" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setNameResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getName">
+        <s:complexType />
+      </s:element>
+      <s:element name="getNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </types>
+  <message name="NameABookSoapIn">
+    <part name="parameters" element="s0:NameABook" />
+  </message>
+  <message name="NameABookSoapOut">
+    <part name="parameters" element="s0:NameABookResponse" />
+  </message>
+  <message name="setNameSoapIn">
+    <part name="parameters" element="s0:setName" />
+  </message>
+  <message name="setNameSoapOut">
+    <part name="parameters" element="s0:setNameResponse" />
+  </message>
+  <message name="getNameSoapIn">
+    <part name="parameters" element="s0:getName" />
+  </message>
+  <message name="getNameSoapOut">
+    <part name="parameters" element="s0:getNameResponse" />
+  </message>
+  <message name="NameABookHttpGetIn" />
+  <message name="NameABookHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setNameHttpGetIn">
+    <part name="n" type="s:string" />
+  </message>
+  <message name="setNameHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="getNameHttpGetIn" />
+  <message name="getNameHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="NameABookHttpPostIn" />
+  <message name="NameABookHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setNameHttpPostIn">
+    <part name="n" type="s:string" />
+  </message>
+  <message name="setNameHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="getNameHttpPostIn" />
+  <message name="getNameHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CWebServiceSoap">
+    <operation name="NameABook">
+      <documentation>Using Application State</documentation>
+      <input message="s0:NameABookSoapIn" />
+      <output message="s0:NameABookSoapOut" />
+    </operation>
+    <operation name="setName">
+      <documentation>Session - Set Name</documentation>
+      <input message="s0:setNameSoapIn" />
+      <output message="s0:setNameSoapOut" />
+    </operation>
+    <operation name="getName">
+      <documentation>Session - Get Name</documentation>
+      <input message="s0:getNameSoapIn" />
+      <output message="s0:getNameSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CWebServiceHttpGet">
+    <operation name="NameABook">
+      <documentation>Using Application State</documentation>
+      <input message="s0:NameABookHttpGetIn" />
+      <output message="s0:NameABookHttpGetOut" />
+    </operation>
+    <operation name="setName">
+      <documentation>Session - Set Name</documentation>
+      <input message="s0:setNameHttpGetIn" />
+      <output message="s0:setNameHttpGetOut" />
+    </operation>
+    <operation name="getName">
+      <documentation>Session - Get Name</documentation>
+      <input message="s0:getNameHttpGetIn" />
+      <output message="s0:getNameHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CWebServiceHttpPost">
+    <operation name="NameABook">
+      <documentation>Using Application State</documentation>
+      <input message="s0:NameABookHttpPostIn" />
+      <output message="s0:NameABookHttpPostOut" />
+    </operation>
+    <operation name="setName">
+      <documentation>Session - Set Name</documentation>
+      <input message="s0:setNameHttpPostIn" />
+      <output message="s0:setNameHttpPostOut" />
+    </operation>
+    <operation name="getName">
+      <documentation>Session - Get Name</documentation>
+      <input message="s0:getNameHttpPostIn" />
+      <output message="s0:getNameHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CWebServiceSoap" type="s0:CWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NameABook">
+      <soap:operation soapAction="http://tempuri.org/NameABook" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setName">
+      <soap:operation soapAction="http://tempuri.org/setName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getName">
+      <soap:operation soapAction="http://tempuri.org/getName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CWebServiceHttpGet" type="s0:CWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="NameABook">
+      <http:operation location="/NameABook" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setName">
+      <http:operation location="/setName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getName">
+      <http:operation location="/getName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CWebServiceHttpPost" type="s0:CWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="NameABook">
+      <http:operation location="/NameABook" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setName">
+      <http:operation location="/setName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getName">
+      <http:operation location="/getName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CWebService">
+    <port name="CWebServiceSoap" binding="s0:CWebServiceSoap">
+      <soap:address location="http://www31.brinkster.com/webcomponents/CWebService.asmx" />
+    </port>
+    <port name="CWebServiceHttpGet" binding="s0:CWebServiceHttpGet">
+      <http:address location="http://www31.brinkster.com/webcomponents/CWebService.asmx" />
+    </port>
+    <port name="CWebServiceHttpPost" binding="s0:CWebServiceHttpPost">
+      <http:address location="http://www31.brinkster.com/webcomponents/CWebService.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?> 
+<definitions name="KRSS_DAML_Service" targetNamespace="http://digilander.libero.it/mamo78/KRSS_DAML_Service.wsdl" xmlns:tns="http://digilander.libero.it/mamo78/KRSS_DAML_Service.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<message name="TranslateRequest">
+  <part name="str" type="xsd:string" /> 
+  <part name="uri" type="xsd:string" /> 
+  <part name="requestType" type="xsd:string" /> 
+  <part name="ema" type="xsd:string" /> 
+  </message>
+<message name="TranslateResponse">
+  <part name="pass" type="xsd:string" /> 
+  </message>
+<portType name="KRSS_DAML_PortType">
+<operation name="Translate">
+  <input message="tns:TranslateRequest" /> 
+  <output message="tns:TranslateResponse" /> 
+  </operation>
+  </portType>
+<binding name="KRSS_DAML_Binding" type="tns:KRSS_DAML_PortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+<operation name="Translate">
+  <soap:operation soapAction="" /> 
+<input>
+  <soap:body use="encoded" namespace="urn:demo1:Translator" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </input>
+<output>
+  <soap:body use="encoded" namespace="urn:demo1:Translator" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </output>
+  </operation>
+  </binding>
+<service name="KRSS_DAML_Service">
+  <documentation>Invoca modulo di Match tra due descrizioni</documentation> 
+  <port name="KRSS_DAML_Port" binding="tns:KRSS_DAML_Binding">
+  <soap:address location="http://193.204.59.68:8080/soap/servlet/rpcrouter" /> 
+  </port>
+  </service>
+  </definitions>

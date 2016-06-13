@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx">
+      <s:element name="Src2html">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Src2htmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Src2htmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="Src2htmlSoapIn">
+    <part name="parameters" element="s0:Src2html" />
+  </message>
+  <message name="Src2htmlSoapOut">
+    <part name="parameters" element="s0:Src2htmlResponse" />
+  </message>
+  <message name="Src2htmlHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="lan" type="s:string" />
+    <part name="source" type="s:string" />
+  </message>
+  <message name="Src2htmlHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="Src2htmlHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="lan" type="s:string" />
+    <part name="source" type="s:string" />
+  </message>
+  <message name="Src2htmlHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="src2htmlSoap">
+    <operation name="Src2html">
+      <documentation>Permet de coloriser au format HTML un code source pour le rendre visible dans tous les navigateurs web. Les langages supportés sont pour l'instant le CSHARP et le VB DOTNET. D'autres langages sont à venir. Le test par défaut ne permet que de tester le service sur un petit bout de code (1 ligne). Une page de Démo beaucoup plus représentative de ce service est en place à l'URL : &lt;a href=http://www.dotnetisp.com/webservices/tst_src2html.aspx target=_blank&gt;http://www.dotnetisp.com/webservices/tst_src2html.aspx&lt;/a&gt;.&lt;br&gt;&lt;br&gt;Pour utilser le service, les champs login et passe sont ceux de votre compte membre, le champ lan indique le langage de votre code source. Il peut etre soit &lt;b&gt;cs&lt;/b&gt; pour C Sharp ou &lt;b&gt;vbdotnet&lt;/b&gt; pour le VB Dotnet. Le champ source contient votre code source.</documentation>
+      <input message="s0:Src2htmlSoapIn" />
+      <output message="s0:Src2htmlSoapOut" />
+    </operation>
+  </portType>
+  <portType name="src2htmlHttpGet">
+    <operation name="Src2html">
+      <documentation>Permet de coloriser au format HTML un code source pour le rendre visible dans tous les navigateurs web. Les langages supportés sont pour l'instant le CSHARP et le VB DOTNET. D'autres langages sont à venir. Le test par défaut ne permet que de tester le service sur un petit bout de code (1 ligne). Une page de Démo beaucoup plus représentative de ce service est en place à l'URL : &lt;a href=http://www.dotnetisp.com/webservices/tst_src2html.aspx target=_blank&gt;http://www.dotnetisp.com/webservices/tst_src2html.aspx&lt;/a&gt;.&lt;br&gt;&lt;br&gt;Pour utilser le service, les champs login et passe sont ceux de votre compte membre, le champ lan indique le langage de votre code source. Il peut etre soit &lt;b&gt;cs&lt;/b&gt; pour C Sharp ou &lt;b&gt;vbdotnet&lt;/b&gt; pour le VB Dotnet. Le champ source contient votre code source.</documentation>
+      <input message="s0:Src2htmlHttpGetIn" />
+      <output message="s0:Src2htmlHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="src2htmlHttpPost">
+    <operation name="Src2html">
+      <documentation>Permet de coloriser au format HTML un code source pour le rendre visible dans tous les navigateurs web. Les langages supportés sont pour l'instant le CSHARP et le VB DOTNET. D'autres langages sont à venir. Le test par défaut ne permet que de tester le service sur un petit bout de code (1 ligne). Une page de Démo beaucoup plus représentative de ce service est en place à l'URL : &lt;a href=http://www.dotnetisp.com/webservices/tst_src2html.aspx target=_blank&gt;http://www.dotnetisp.com/webservices/tst_src2html.aspx&lt;/a&gt;.&lt;br&gt;&lt;br&gt;Pour utilser le service, les champs login et passe sont ceux de votre compte membre, le champ lan indique le langage de votre code source. Il peut etre soit &lt;b&gt;cs&lt;/b&gt; pour C Sharp ou &lt;b&gt;vbdotnet&lt;/b&gt; pour le VB Dotnet. Le champ source contient votre code source.</documentation>
+      <input message="s0:Src2htmlHttpPostIn" />
+      <output message="s0:Src2htmlHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="src2htmlSoap" type="s0:src2htmlSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Src2html">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx/Src2html" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="src2htmlHttpGet" type="s0:src2htmlHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Src2html">
+      <http:operation location="/Src2html" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="src2htmlHttpPost" type="s0:src2htmlHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Src2html">
+      <http:operation location="/Src2html" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="src2html">
+    <port name="src2htmlSoap" binding="s0:src2htmlSoap">
+      <soap:address location="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx" />
+    </port>
+    <port name="src2htmlHttpGet" binding="s0:src2htmlHttpGet">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx" />
+    </port>
+    <port name="src2htmlHttpPost" binding="s0:src2htmlHttpPost">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/src2html.asmx" />
+    </port>
+  </service>
+</definitions>

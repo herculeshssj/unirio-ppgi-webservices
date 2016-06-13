@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceoftheday.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceoftheday.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceoftheday.com">
+      <s:element name="GetWSOTDMostRecent">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetWSOTDMostRecentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWSOTDMostRecentResult" type="s0:wsotd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="wsotd">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="published" type="s0:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="link" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="date">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="month" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="day" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWSOTDForDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="forDate" type="s0:date" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDForDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWSOTDForDateResult" type="s0:wsotd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDWithID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDWithIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWSOTDWithIDResult" type="s0:wsotd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDFromProvider">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="provider" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDFromProviderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWSOTDFromProviderResult" type="s0:wsotd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDWithKeyword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSOTDWithKeywordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetWSOTDWithKeywordResult" type="s0:wsotd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetWSOTDMostRecentSoapIn">
+    <part name="parameters" element="s0:GetWSOTDMostRecent" />
+  </message>
+  <message name="GetWSOTDMostRecentSoapOut">
+    <part name="parameters" element="s0:GetWSOTDMostRecentResponse" />
+  </message>
+  <message name="GetWSOTDForDateSoapIn">
+    <part name="parameters" element="s0:GetWSOTDForDate" />
+  </message>
+  <message name="GetWSOTDForDateSoapOut">
+    <part name="parameters" element="s0:GetWSOTDForDateResponse" />
+  </message>
+  <message name="GetWSOTDWithIDSoapIn">
+    <part name="parameters" element="s0:GetWSOTDWithID" />
+  </message>
+  <message name="GetWSOTDWithIDSoapOut">
+    <part name="parameters" element="s0:GetWSOTDWithIDResponse" />
+  </message>
+  <message name="GetWSOTDFromProviderSoapIn">
+    <part name="parameters" element="s0:GetWSOTDFromProvider" />
+  </message>
+  <message name="GetWSOTDFromProviderSoapOut">
+    <part name="parameters" element="s0:GetWSOTDFromProviderResponse" />
+  </message>
+  <message name="GetWSOTDWithKeywordSoapIn">
+    <part name="parameters" element="s0:GetWSOTDWithKeyword" />
+  </message>
+  <message name="GetWSOTDWithKeywordSoapOut">
+    <part name="parameters" element="s0:GetWSOTDWithKeywordResponse" />
+  </message>
+  <portType name="WebServiceOfTheDaySoap">
+    <operation name="GetWSOTDMostRecent">
+      <documentation>Gets the most recent Web Service of the Day</documentation>
+      <input message="s0:GetWSOTDMostRecentSoapIn" />
+      <output message="s0:GetWSOTDMostRecentSoapOut" />
+    </operation>
+    <operation name="GetWSOTDForDate">
+      <documentation>Gets the Web Service of the Day for a provided date (specify year, month and day)</documentation>
+      <input message="s0:GetWSOTDForDateSoapIn" />
+      <output message="s0:GetWSOTDForDateSoapOut" />
+    </operation>
+    <operation name="GetWSOTDWithID">
+      <documentation>Gets the Web Service of the Day with a particular ID</documentation>
+      <input message="s0:GetWSOTDWithIDSoapIn" />
+      <output message="s0:GetWSOTDWithIDSoapOut" />
+    </operation>
+    <operation name="GetWSOTDFromProvider">
+      <documentation>Gets the most recent Web Service of the Day from a particular provider</documentation>
+      <input message="s0:GetWSOTDFromProviderSoapIn" />
+      <output message="s0:GetWSOTDFromProviderSoapOut" />
+    </operation>
+    <operation name="GetWSOTDWithKeyword">
+      <documentation>Gets the most recent Web Service of the Day where summary contains a particular word or phrase</documentation>
+      <input message="s0:GetWSOTDWithKeywordSoapIn" />
+      <output message="s0:GetWSOTDWithKeywordSoapOut" />
+    </operation>
+  </portType>
+  <binding name="WebServiceOfTheDaySoap" type="s0:WebServiceOfTheDaySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetWSOTDMostRecent">
+      <soap:operation soapAction="http://www.webserviceoftheday.com/GetWSOTDMostRecent" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWSOTDForDate">
+      <soap:operation soapAction="http://www.webserviceoftheday.com/GetWSOTDForDate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWSOTDWithID">
+      <soap:operation soapAction="http://www.webserviceoftheday.com/GetWSOTDWithID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWSOTDFromProvider">
+      <soap:operation soapAction="http://www.webserviceoftheday.com/GetWSOTDFromProvider" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWSOTDWithKeyword">
+      <soap:operation soapAction="http://www.webserviceoftheday.com/GetWSOTDWithKeyword" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebServiceOfTheDay">
+    <documentation>These services allow SOAP clients to retrieve data from the Web Service of the Day site. For the web version of the site, go to http://www.webserviceoftheday.com</documentation>
+    <port name="WebServiceOfTheDaySoap" binding="s0:WebServiceOfTheDaySoap">
+      <soap:address location="http://www.webserviceoftheday.com/ws/soap/wsotd.asmx" />
+    </port>
+  </service>
+</definitions>

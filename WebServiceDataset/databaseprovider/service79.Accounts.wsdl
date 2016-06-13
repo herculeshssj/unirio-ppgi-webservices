@@ -1,0 +1,1775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://Rila.net/SurveyWS/literalTypes" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://Rila.net/SurveyWS/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://Rila.net/SurveyWS/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://Rila.net/SurveyWS/literalTypes">
+      <s:element name="int" type="s:int" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="CreateAdminIDSoapIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="CreateAdminIDSoapOut">
+    <part name="CreateAdminIDResult" type="s:int" />
+  </message>
+  <message name="ModifyAdminInfoSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifyAdminInfoSoapOut">
+    <part name="ModifyAdminInfoResult" type="s:int" />
+  </message>
+  <message name="ChangePasswordSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="oldPassword" type="s:string" />
+    <part name="newPassword" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ChangePasswordSoapOut">
+    <part name="ChangePasswordResult" type="s:int" />
+  </message>
+  <message name="GetAdminIDSoapIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetAdminIDSoapOut">
+    <part name="GetAdminIDResult" type="s:int" />
+  </message>
+  <message name="CreateSurveySoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="userRecType" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="CreateSurveySoapOut">
+    <part name="CreateSurveyResult" type="s:string" />
+  </message>
+  <message name="GetSurveysSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetSurveysSoapOut">
+    <part name="GetSurveysResult" type="s:string" />
+  </message>
+  <message name="ModifySurveyStatusSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifySurveyStatusSoapOut">
+    <part name="ModifySurveyStatusResult" type="s:int" />
+  </message>
+  <message name="ModifySurveyDescriptionSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="surveyDescription" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifySurveyDescriptionSoapOut">
+    <part name="ModifySurveyDescriptionResult" type="s:int" />
+  </message>
+  <message name="CreateQuestionSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="numberOfAnswers" type="s:int" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="CreateQuestionSoapOut">
+    <part name="CreateQuestionResult" type="s:int" />
+  </message>
+  <message name="ModifyQuestionStatusSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifyQuestionStatusSoapOut">
+    <part name="ModifyQuestionStatusResult" type="s:int" />
+  </message>
+  <message name="ModifyQuestionDescriptionSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifyQuestionDescriptionSoapOut">
+    <part name="ModifyQuestionDescriptionResult" type="s:int" />
+  </message>
+  <message name="GetQuestionsSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetQuestionsSoapOut">
+    <part name="GetQuestionsResult" type="s:string" />
+  </message>
+  <message name="ModifyAnswerStatusSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifyAnswerStatusSoapOut">
+    <part name="ModifyAnswerStatusResult" type="s:int" />
+  </message>
+  <message name="ModifyAnswerDescriptionSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="ModifyAnswerDescriptionSoapOut">
+    <part name="ModifyAnswerDescriptionResult" type="s:int" />
+  </message>
+  <message name="GetAnswersSoapIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetAnswersSoapOut">
+    <part name="GetAnswersResult" type="s:string" />
+  </message>
+  <message name="GetPublicQuestionsSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetPublicQuestionsSoapOut">
+    <part name="GetPublicQuestionsResult" type="s:string" />
+  </message>
+  <message name="GetPublicAnswersSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetPublicAnswersSoapOut">
+    <part name="GetPublicAnswersResult" type="s:string" />
+  </message>
+  <message name="GetPublicDescriptionSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetPublicDescriptionSoapOut">
+    <part name="GetPublicDescriptionResult" type="s:string" />
+  </message>
+  <message name="VoteSoapIn">
+    <part name="userID" type="s:string" />
+    <part name="userInfo" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="answerValue" type="s:int" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="VoteSoapOut">
+    <part name="VoteResult" type="s:int" />
+  </message>
+  <message name="CountVotesSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="CountVotesSoapOut">
+    <part name="CountVotesResult" type="s:string" />
+  </message>
+  <message name="GetVoteStatisticsSoapIn">
+    <part name="questionID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetVoteStatisticsSoapOut">
+    <part name="GetVoteStatisticsResult" type="s:string" />
+  </message>
+  <message name="GetValueStatisticsSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetValueStatisticsSoapOut">
+    <part name="GetValueStatisticsResult" type="s:string" />
+  </message>
+  <message name="GetHighestSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:int" />
+    <part name="endNumber" type="s:int" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetHighestSoapOut">
+    <part name="GetHighestResult" type="s:string" />
+  </message>
+  <message name="GetLowestSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:int" />
+    <part name="endNumber" type="s:int" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetLowestSoapOut">
+    <part name="GetLowestResult" type="s:string" />
+  </message>
+  <message name="GetVotesSoapIn">
+    <part name="userID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:int" />
+    <part name="endNumber" type="s:int" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetVotesSoapOut">
+    <part name="GetVotesResult" type="s:string" />
+  </message>
+  <message name="GetBitMaskStatisticsSoapIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:boolean" />
+  </message>
+  <message name="GetBitMaskStatisticsSoapOut">
+    <part name="GetBitMaskStatisticsResult" type="s:string" />
+  </message>
+  <message name="CreateAdminIDHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateAdminIDHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyAdminInfoHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAdminInfoHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ChangePasswordHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="oldPassword" type="s:string" />
+    <part name="newPassword" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ChangePasswordHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAdminIDHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetAdminIDHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateSurveyHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="userRecType" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateSurveyHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSurveysHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetSurveysHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ModifySurveyStatusHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifySurveyStatusHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifySurveyDescriptionHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="surveyDescription" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifySurveyDescriptionHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateQuestionHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="numberOfAnswers" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateQuestionHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyQuestionStatusHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyQuestionStatusHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyQuestionDescriptionHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyQuestionDescriptionHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetQuestionsHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetQuestionsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ModifyAnswerStatusHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAnswerStatusHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyAnswerDescriptionHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAnswerDescriptionHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAnswersHttpGetIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetAnswersHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicQuestionsHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicQuestionsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicAnswersHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicAnswersHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicDescriptionHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicDescriptionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="VoteHttpGetIn">
+    <part name="userID" type="s:string" />
+    <part name="userInfo" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="answerValue" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="VoteHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountVotesHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CountVotesHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetVoteStatisticsHttpGetIn">
+    <part name="questionID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetVoteStatisticsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetValueStatisticsHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetValueStatisticsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetHighestHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetHighestHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLowestHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetLowestHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetVotesHttpGetIn">
+    <part name="userID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetVotesHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetBitMaskStatisticsHttpGetIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetBitMaskStatisticsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CreateAdminIDHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateAdminIDHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyAdminInfoHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="webSite" type="s:string" />
+    <part name="organization" type="s:string" />
+    <part name="organizationUnit" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAdminInfoHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ChangePasswordHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="oldPassword" type="s:string" />
+    <part name="newPassword" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ChangePasswordHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAdminIDHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetAdminIDHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateSurveyHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="userRecType" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateSurveyHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSurveysHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetSurveysHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ModifySurveyStatusHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifySurveyStatusHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifySurveyDescriptionHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="surveyID" type="s:string" />
+    <part name="surveyDescription" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifySurveyDescriptionHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateQuestionHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="numberOfAnswers" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CreateQuestionHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyQuestionStatusHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyQuestionStatusHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyQuestionDescriptionHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="questionID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyQuestionDescriptionHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetQuestionsHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetQuestionsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ModifyAnswerStatusHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="newStatus" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAnswerStatusHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyAnswerDescriptionHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="ModifyAnswerDescriptionHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAnswersHttpPostIn">
+    <part name="adminID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetAnswersHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicQuestionsHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicQuestionsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicAnswersHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicAnswersHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPublicDescriptionHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetPublicDescriptionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="VoteHttpPostIn">
+    <part name="userID" type="s:string" />
+    <part name="userInfo" type="s:string" />
+    <part name="answerID" type="s:string" />
+    <part name="answerValue" type="s:string" />
+    <part name="description" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="VoteHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountVotesHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="CountVotesHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetVoteStatisticsHttpPostIn">
+    <part name="questionID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetVoteStatisticsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetValueStatisticsHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetValueStatisticsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetHighestHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetHighestHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLowestHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetLowestHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetVotesHttpPostIn">
+    <part name="userID" type="s:string" />
+    <part name="objectID" type="s:string" />
+    <part name="beginTime" type="s:string" />
+    <part name="endTime" type="s:string" />
+    <part name="beginNumber" type="s:string" />
+    <part name="endNumber" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetVotesHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetBitMaskStatisticsHttpPostIn">
+    <part name="objectID" type="s:string" />
+    <part name="exceptionsOn" type="s:string" />
+  </message>
+  <message name="GetBitMaskStatisticsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="SurveyServiceSoap">
+    <operation name="CreateAdminID">
+      <input message="tns:CreateAdminIDSoapIn" />
+      <output message="tns:CreateAdminIDSoapOut" />
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <input message="tns:ModifyAdminInfoSoapIn" />
+      <output message="tns:ModifyAdminInfoSoapOut" />
+    </operation>
+    <operation name="ChangePassword">
+      <input message="tns:ChangePasswordSoapIn" />
+      <output message="tns:ChangePasswordSoapOut" />
+    </operation>
+    <operation name="GetAdminID">
+      <input message="tns:GetAdminIDSoapIn" />
+      <output message="tns:GetAdminIDSoapOut" />
+    </operation>
+    <operation name="CreateSurvey">
+      <input message="tns:CreateSurveySoapIn" />
+      <output message="tns:CreateSurveySoapOut" />
+    </operation>
+    <operation name="GetSurveys">
+      <input message="tns:GetSurveysSoapIn" />
+      <output message="tns:GetSurveysSoapOut" />
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <input message="tns:ModifySurveyStatusSoapIn" />
+      <output message="tns:ModifySurveyStatusSoapOut" />
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <input message="tns:ModifySurveyDescriptionSoapIn" />
+      <output message="tns:ModifySurveyDescriptionSoapOut" />
+    </operation>
+    <operation name="CreateQuestion">
+      <input message="tns:CreateQuestionSoapIn" />
+      <output message="tns:CreateQuestionSoapOut" />
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <input message="tns:ModifyQuestionStatusSoapIn" />
+      <output message="tns:ModifyQuestionStatusSoapOut" />
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <input message="tns:ModifyQuestionDescriptionSoapIn" />
+      <output message="tns:ModifyQuestionDescriptionSoapOut" />
+    </operation>
+    <operation name="GetQuestions">
+      <input message="tns:GetQuestionsSoapIn" />
+      <output message="tns:GetQuestionsSoapOut" />
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <input message="tns:ModifyAnswerStatusSoapIn" />
+      <output message="tns:ModifyAnswerStatusSoapOut" />
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <input message="tns:ModifyAnswerDescriptionSoapIn" />
+      <output message="tns:ModifyAnswerDescriptionSoapOut" />
+    </operation>
+    <operation name="GetAnswers">
+      <input message="tns:GetAnswersSoapIn" />
+      <output message="tns:GetAnswersSoapOut" />
+    </operation>
+    <operation name="GetPublicQuestions">
+      <input message="tns:GetPublicQuestionsSoapIn" />
+      <output message="tns:GetPublicQuestionsSoapOut" />
+    </operation>
+    <operation name="GetPublicAnswers">
+      <input message="tns:GetPublicAnswersSoapIn" />
+      <output message="tns:GetPublicAnswersSoapOut" />
+    </operation>
+    <operation name="GetPublicDescription">
+      <input message="tns:GetPublicDescriptionSoapIn" />
+      <output message="tns:GetPublicDescriptionSoapOut" />
+    </operation>
+    <operation name="Vote">
+      <input message="tns:VoteSoapIn" />
+      <output message="tns:VoteSoapOut" />
+    </operation>
+    <operation name="CountVotes">
+      <input message="tns:CountVotesSoapIn" />
+      <output message="tns:CountVotesSoapOut" />
+    </operation>
+    <operation name="GetVoteStatistics">
+      <input message="tns:GetVoteStatisticsSoapIn" />
+      <output message="tns:GetVoteStatisticsSoapOut" />
+    </operation>
+    <operation name="GetValueStatistics">
+      <input message="tns:GetValueStatisticsSoapIn" />
+      <output message="tns:GetValueStatisticsSoapOut" />
+    </operation>
+    <operation name="GetHighest">
+      <input message="tns:GetHighestSoapIn" />
+      <output message="tns:GetHighestSoapOut" />
+    </operation>
+    <operation name="GetLowest">
+      <input message="tns:GetLowestSoapIn" />
+      <output message="tns:GetLowestSoapOut" />
+    </operation>
+    <operation name="GetVotes">
+      <input message="tns:GetVotesSoapIn" />
+      <output message="tns:GetVotesSoapOut" />
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <input message="tns:GetBitMaskStatisticsSoapIn" />
+      <output message="tns:GetBitMaskStatisticsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SurveyServiceHttpGet">
+    <operation name="CreateAdminID">
+      <input message="tns:CreateAdminIDHttpGetIn" />
+      <output message="tns:CreateAdminIDHttpGetOut" />
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <input message="tns:ModifyAdminInfoHttpGetIn" />
+      <output message="tns:ModifyAdminInfoHttpGetOut" />
+    </operation>
+    <operation name="ChangePassword">
+      <input message="tns:ChangePasswordHttpGetIn" />
+      <output message="tns:ChangePasswordHttpGetOut" />
+    </operation>
+    <operation name="GetAdminID">
+      <input message="tns:GetAdminIDHttpGetIn" />
+      <output message="tns:GetAdminIDHttpGetOut" />
+    </operation>
+    <operation name="CreateSurvey">
+      <input message="tns:CreateSurveyHttpGetIn" />
+      <output message="tns:CreateSurveyHttpGetOut" />
+    </operation>
+    <operation name="GetSurveys">
+      <input message="tns:GetSurveysHttpGetIn" />
+      <output message="tns:GetSurveysHttpGetOut" />
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <input message="tns:ModifySurveyStatusHttpGetIn" />
+      <output message="tns:ModifySurveyStatusHttpGetOut" />
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <input message="tns:ModifySurveyDescriptionHttpGetIn" />
+      <output message="tns:ModifySurveyDescriptionHttpGetOut" />
+    </operation>
+    <operation name="CreateQuestion">
+      <input message="tns:CreateQuestionHttpGetIn" />
+      <output message="tns:CreateQuestionHttpGetOut" />
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <input message="tns:ModifyQuestionStatusHttpGetIn" />
+      <output message="tns:ModifyQuestionStatusHttpGetOut" />
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <input message="tns:ModifyQuestionDescriptionHttpGetIn" />
+      <output message="tns:ModifyQuestionDescriptionHttpGetOut" />
+    </operation>
+    <operation name="GetQuestions">
+      <input message="tns:GetQuestionsHttpGetIn" />
+      <output message="tns:GetQuestionsHttpGetOut" />
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <input message="tns:ModifyAnswerStatusHttpGetIn" />
+      <output message="tns:ModifyAnswerStatusHttpGetOut" />
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <input message="tns:ModifyAnswerDescriptionHttpGetIn" />
+      <output message="tns:ModifyAnswerDescriptionHttpGetOut" />
+    </operation>
+    <operation name="GetAnswers">
+      <input message="tns:GetAnswersHttpGetIn" />
+      <output message="tns:GetAnswersHttpGetOut" />
+    </operation>
+    <operation name="GetPublicQuestions">
+      <input message="tns:GetPublicQuestionsHttpGetIn" />
+      <output message="tns:GetPublicQuestionsHttpGetOut" />
+    </operation>
+    <operation name="GetPublicAnswers">
+      <input message="tns:GetPublicAnswersHttpGetIn" />
+      <output message="tns:GetPublicAnswersHttpGetOut" />
+    </operation>
+    <operation name="GetPublicDescription">
+      <input message="tns:GetPublicDescriptionHttpGetIn" />
+      <output message="tns:GetPublicDescriptionHttpGetOut" />
+    </operation>
+    <operation name="Vote">
+      <input message="tns:VoteHttpGetIn" />
+      <output message="tns:VoteHttpGetOut" />
+    </operation>
+    <operation name="CountVotes">
+      <input message="tns:CountVotesHttpGetIn" />
+      <output message="tns:CountVotesHttpGetOut" />
+    </operation>
+    <operation name="GetVoteStatistics">
+      <input message="tns:GetVoteStatisticsHttpGetIn" />
+      <output message="tns:GetVoteStatisticsHttpGetOut" />
+    </operation>
+    <operation name="GetValueStatistics">
+      <input message="tns:GetValueStatisticsHttpGetIn" />
+      <output message="tns:GetValueStatisticsHttpGetOut" />
+    </operation>
+    <operation name="GetHighest">
+      <input message="tns:GetHighestHttpGetIn" />
+      <output message="tns:GetHighestHttpGetOut" />
+    </operation>
+    <operation name="GetLowest">
+      <input message="tns:GetLowestHttpGetIn" />
+      <output message="tns:GetLowestHttpGetOut" />
+    </operation>
+    <operation name="GetVotes">
+      <input message="tns:GetVotesHttpGetIn" />
+      <output message="tns:GetVotesHttpGetOut" />
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <input message="tns:GetBitMaskStatisticsHttpGetIn" />
+      <output message="tns:GetBitMaskStatisticsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SurveyServiceHttpPost">
+    <operation name="CreateAdminID">
+      <input message="tns:CreateAdminIDHttpPostIn" />
+      <output message="tns:CreateAdminIDHttpPostOut" />
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <input message="tns:ModifyAdminInfoHttpPostIn" />
+      <output message="tns:ModifyAdminInfoHttpPostOut" />
+    </operation>
+    <operation name="ChangePassword">
+      <input message="tns:ChangePasswordHttpPostIn" />
+      <output message="tns:ChangePasswordHttpPostOut" />
+    </operation>
+    <operation name="GetAdminID">
+      <input message="tns:GetAdminIDHttpPostIn" />
+      <output message="tns:GetAdminIDHttpPostOut" />
+    </operation>
+    <operation name="CreateSurvey">
+      <input message="tns:CreateSurveyHttpPostIn" />
+      <output message="tns:CreateSurveyHttpPostOut" />
+    </operation>
+    <operation name="GetSurveys">
+      <input message="tns:GetSurveysHttpPostIn" />
+      <output message="tns:GetSurveysHttpPostOut" />
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <input message="tns:ModifySurveyStatusHttpPostIn" />
+      <output message="tns:ModifySurveyStatusHttpPostOut" />
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <input message="tns:ModifySurveyDescriptionHttpPostIn" />
+      <output message="tns:ModifySurveyDescriptionHttpPostOut" />
+    </operation>
+    <operation name="CreateQuestion">
+      <input message="tns:CreateQuestionHttpPostIn" />
+      <output message="tns:CreateQuestionHttpPostOut" />
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <input message="tns:ModifyQuestionStatusHttpPostIn" />
+      <output message="tns:ModifyQuestionStatusHttpPostOut" />
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <input message="tns:ModifyQuestionDescriptionHttpPostIn" />
+      <output message="tns:ModifyQuestionDescriptionHttpPostOut" />
+    </operation>
+    <operation name="GetQuestions">
+      <input message="tns:GetQuestionsHttpPostIn" />
+      <output message="tns:GetQuestionsHttpPostOut" />
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <input message="tns:ModifyAnswerStatusHttpPostIn" />
+      <output message="tns:ModifyAnswerStatusHttpPostOut" />
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <input message="tns:ModifyAnswerDescriptionHttpPostIn" />
+      <output message="tns:ModifyAnswerDescriptionHttpPostOut" />
+    </operation>
+    <operation name="GetAnswers">
+      <input message="tns:GetAnswersHttpPostIn" />
+      <output message="tns:GetAnswersHttpPostOut" />
+    </operation>
+    <operation name="GetPublicQuestions">
+      <input message="tns:GetPublicQuestionsHttpPostIn" />
+      <output message="tns:GetPublicQuestionsHttpPostOut" />
+    </operation>
+    <operation name="GetPublicAnswers">
+      <input message="tns:GetPublicAnswersHttpPostIn" />
+      <output message="tns:GetPublicAnswersHttpPostOut" />
+    </operation>
+    <operation name="GetPublicDescription">
+      <input message="tns:GetPublicDescriptionHttpPostIn" />
+      <output message="tns:GetPublicDescriptionHttpPostOut" />
+    </operation>
+    <operation name="Vote">
+      <input message="tns:VoteHttpPostIn" />
+      <output message="tns:VoteHttpPostOut" />
+    </operation>
+    <operation name="CountVotes">
+      <input message="tns:CountVotesHttpPostIn" />
+      <output message="tns:CountVotesHttpPostOut" />
+    </operation>
+    <operation name="GetVoteStatistics">
+      <input message="tns:GetVoteStatisticsHttpPostIn" />
+      <output message="tns:GetVoteStatisticsHttpPostOut" />
+    </operation>
+    <operation name="GetValueStatistics">
+      <input message="tns:GetValueStatisticsHttpPostIn" />
+      <output message="tns:GetValueStatisticsHttpPostOut" />
+    </operation>
+    <operation name="GetHighest">
+      <input message="tns:GetHighestHttpPostIn" />
+      <output message="tns:GetHighestHttpPostOut" />
+    </operation>
+    <operation name="GetLowest">
+      <input message="tns:GetLowestHttpPostIn" />
+      <output message="tns:GetLowestHttpPostOut" />
+    </operation>
+    <operation name="GetVotes">
+      <input message="tns:GetVotesHttpPostIn" />
+      <output message="tns:GetVotesHttpPostOut" />
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <input message="tns:GetBitMaskStatisticsHttpPostIn" />
+      <output message="tns:GetBitMaskStatisticsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SurveyServiceSoap" type="tns:SurveyServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="CreateAdminID">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/CreateAdminID" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifyAdminInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ChangePassword">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ChangePassword" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetAdminID">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetAdminID" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CreateSurvey">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/CreateSurvey" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetSurveys">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetSurveys" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifySurveyStatus" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifySurveyDescription" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CreateQuestion">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/CreateQuestion" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifyQuestionStatus" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifyQuestionDescription" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetQuestions">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetQuestions" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifyAnswerStatus" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/ModifyAnswerDescription" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetAnswers">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetAnswers" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetPublicQuestions">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetPublicQuestions" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetPublicAnswers">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetPublicAnswers" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetPublicDescription">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetPublicDescription" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/Vote" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CountVotes">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/CountVotes" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetVoteStatistics">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetVoteStatistics" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetValueStatistics">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetValueStatistics" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetHighest">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetHighest" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetLowest">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetLowest" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetVotes">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetVotes" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <soap:operation soapAction="http://Rila.net/SurveyWS/GetBitMaskStatistics" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://Rila.net/SurveyWS/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SurveyServiceHttpGet" type="tns:SurveyServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CreateAdminID">
+      <http:operation location="/CreateAdminID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <http:operation location="/ModifyAdminInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ChangePassword">
+      <http:operation location="/ChangePassword" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdminID">
+      <http:operation location="/GetAdminID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateSurvey">
+      <http:operation location="/CreateSurvey" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSurveys">
+      <http:operation location="/GetSurveys" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <http:operation location="/ModifySurveyStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <http:operation location="/ModifySurveyDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateQuestion">
+      <http:operation location="/CreateQuestion" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <http:operation location="/ModifyQuestionStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <http:operation location="/ModifyQuestionDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuestions">
+      <http:operation location="/GetQuestions" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <http:operation location="/ModifyAnswerStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <http:operation location="/ModifyAnswerDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAnswers">
+      <http:operation location="/GetAnswers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicQuestions">
+      <http:operation location="/GetPublicQuestions" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicAnswers">
+      <http:operation location="/GetPublicAnswers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicDescription">
+      <http:operation location="/GetPublicDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <http:operation location="/Vote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountVotes">
+      <http:operation location="/CountVotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVoteStatistics">
+      <http:operation location="/GetVoteStatistics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetValueStatistics">
+      <http:operation location="/GetValueStatistics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetHighest">
+      <http:operation location="/GetHighest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLowest">
+      <http:operation location="/GetLowest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVotes">
+      <http:operation location="/GetVotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <http:operation location="/GetBitMaskStatistics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SurveyServiceHttpPost" type="tns:SurveyServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CreateAdminID">
+      <http:operation location="/CreateAdminID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAdminInfo">
+      <http:operation location="/ModifyAdminInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ChangePassword">
+      <http:operation location="/ChangePassword" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdminID">
+      <http:operation location="/GetAdminID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateSurvey">
+      <http:operation location="/CreateSurvey" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSurveys">
+      <http:operation location="/GetSurveys" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyStatus">
+      <http:operation location="/ModifySurveyStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifySurveyDescription">
+      <http:operation location="/ModifySurveyDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateQuestion">
+      <http:operation location="/CreateQuestion" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionStatus">
+      <http:operation location="/ModifyQuestionStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyQuestionDescription">
+      <http:operation location="/ModifyQuestionDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuestions">
+      <http:operation location="/GetQuestions" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerStatus">
+      <http:operation location="/ModifyAnswerStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyAnswerDescription">
+      <http:operation location="/ModifyAnswerDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAnswers">
+      <http:operation location="/GetAnswers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicQuestions">
+      <http:operation location="/GetPublicQuestions" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicAnswers">
+      <http:operation location="/GetPublicAnswers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPublicDescription">
+      <http:operation location="/GetPublicDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <http:operation location="/Vote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountVotes">
+      <http:operation location="/CountVotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVoteStatistics">
+      <http:operation location="/GetVoteStatistics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetValueStatistics">
+      <http:operation location="/GetValueStatistics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetHighest">
+      <http:operation location="/GetHighest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLowest">
+      <http:operation location="/GetLowest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVotes">
+      <http:operation location="/GetVotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBitMaskStatistics">
+      <http:operation location="/GetBitMaskStatistics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SurveyService">
+    <port name="SurveyServiceSoap" binding="tns:SurveyServiceSoap">
+      <soap:address location="http://survey.rila.net/SurveyService/SurveyService.asmx" />
+    </port>
+    <port name="SurveyServiceHttpGet" binding="tns:SurveyServiceHttpGet">
+      <http:address location="http://survey.rila.net/SurveyService/SurveyService.asmx" />
+    </port>
+    <port name="SurveyServiceHttpPost" binding="tns:SurveyServiceHttpPost">
+      <http:address location="http://survey.rila.net/SurveyService/SurveyService.asmx" />
+    </port>
+  </service>
+</definitions>

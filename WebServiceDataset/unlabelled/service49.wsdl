@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.PerfectXML.com/WebServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.PerfectXML.com/WebServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.PerfectXML.com/WebServices/">
+      <s:element name="GetSHA1Hash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSHA1HashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSHA1HashResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetSHA1HashSoapIn">
+    <part name="parameters" element="s0:GetSHA1Hash" />
+  </message>
+  <message name="GetSHA1HashSoapOut">
+    <part name="parameters" element="s0:GetSHA1HashResponse" />
+  </message>
+  <message name="GetSHA1HashHttpGetIn">
+    <part name="InputData" type="s:string" />
+  </message>
+  <message name="GetSHA1HashHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSHA1HashHttpPostIn">
+    <part name="InputData" type="s:string" />
+  </message>
+  <message name="GetSHA1HashHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="SHA1EncryptSoap">
+    <operation name="GetSHA1Hash">
+      <documentation>Get the SHA1 hash in &lt;b&gt;hex format&lt;/b&gt; for the given input string.</documentation>
+      <input message="s0:GetSHA1HashSoapIn" />
+      <output message="s0:GetSHA1HashSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SHA1EncryptHttpGet">
+    <operation name="GetSHA1Hash">
+      <documentation>Get the SHA1 hash in &lt;b&gt;hex format&lt;/b&gt; for the given input string.</documentation>
+      <input message="s0:GetSHA1HashHttpGetIn" />
+      <output message="s0:GetSHA1HashHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SHA1EncryptHttpPost">
+    <operation name="GetSHA1Hash">
+      <documentation>Get the SHA1 hash in &lt;b&gt;hex format&lt;/b&gt; for the given input string.</documentation>
+      <input message="s0:GetSHA1HashHttpPostIn" />
+      <output message="s0:GetSHA1HashHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SHA1EncryptSoap" type="s0:SHA1EncryptSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSHA1Hash">
+      <soap:operation soapAction="http://www.PerfectXML.com/WebServices/GetSHA1Hash" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SHA1EncryptHttpGet" type="s0:SHA1EncryptHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSHA1Hash">
+      <http:operation location="/GetSHA1Hash" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SHA1EncryptHttpPost" type="s0:SHA1EncryptHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSHA1Hash">
+      <http:operation location="/GetSHA1Hash" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SHA1Encrypt">
+    <documentation>&lt;b&gt;Secure Hash Algorithm-1&lt;/b&gt;, or &lt;b&gt;SHA1&lt;/b&gt; is used to generate a condensed representation of a message called a message digest. Developed by NIST, along with the NSA, SHA1 is used by both the transmitter and intended receiver of a message in computing and verifying a digital signature. &lt;br&gt;&lt;br&gt;The Secure Hash Algorithm takes a message of &lt;b&gt;less than 2&lt;sup&gt;64&lt;/sup&gt; bits&lt;/b&gt; in length and produces a &lt;b&gt;160-bit&lt;/b&gt; message digest which is designed so that it should be computationaly expensive to find a text which matches a given hash. For example, if you have a hash for document A, H(A), it is difficult to find a document B which has the same hash, and even more difficult to arrange that document B says what you want it to say. Small changes to the data result in large, unpredictable changes in the hash.&lt;br&gt;&lt;br&gt;&lt;a href='http://csrc.nist.gov/publications/fips/fips180-1/fip180-1.txt' target='_blank'&gt;Click here&lt;/a&gt; to learn more about SHA1. The JavaScript implementation of SHA1 can be found &lt;a href='http://pajhome.org.uk/crypt/md5/sha1src.html' target='_blank'&gt;here&lt;/a&gt;&lt;br&gt;&lt;br&gt;This sample Web service can be used to get the SHA1 hash in &lt;b&gt;hex format&lt;/b&gt; for any given string.&lt;br&gt;&lt;br&gt;This Web service is created by &lt;a href='http://www.PerfectXML.com'&gt;PerfectXML.com Team&lt;/a&gt;.</documentation>
+    <port name="SHA1EncryptSoap" binding="s0:SHA1EncryptSoap">
+      <soap:address location="http://www.perfectxml.net/SHA1Encrypt.asmx" />
+    </port>
+    <port name="SHA1EncryptHttpGet" binding="s0:SHA1EncryptHttpGet">
+      <http:address location="http://www.perfectxml.net/SHA1Encrypt.asmx" />
+    </port>
+    <port name="SHA1EncryptHttpPost" binding="s0:SHA1EncryptHttpPost">
+      <http:address location="http://www.perfectxml.net/SHA1Encrypt.asmx" />
+    </port>
+  </service>
+</definitions>

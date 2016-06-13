@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IZPOP3service" targetNamespace="http://www.zanetti-dev.com/" xmlns:tns="http://www.zanetti-dev.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns1="http://www.zanetti-dev.com/XMLSchema" xmlns:ns2="http://www.borland.com/namespaces/Types">
+  <types>
+    <xs:schema targetNamespace="http://www.zanetti-dev.com/XMLSchema" xmlns="http://www.zanetti-dev.com/XMLSchema">
+      <xs:complexType name="Tzp3wsXSPOP3Stat">
+        <xs:sequence>
+          <xs:element name="MbxSize" type="xs:int"/>
+          <xs:element name="MsgCount" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Tzp3wsXSPOP3HeaderArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="ns1:Tzp3wsXSPOP3Header[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Tzp3wsXSPOP3Header">
+        <xs:sequence>
+          <xs:element name="Date" type="xs:dateTime"/>
+          <xs:element name="From" type="xs:string"/>
+          <xs:element name="Size" type="xs:int"/>
+          <xs:element name="Subject" type="xs:string"/>
+          <xs:element name="UID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Tzp3wsXSPOP3MessageArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="ns1:Tzp3wsXSPOP3Message[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Tzp3wsXSPOP3Message">
+        <xs:sequence>
+          <xs:element name="Body" type="xs:string"/>
+          <xs:element name="Date" type="xs:dateTime"/>
+          <xs:element name="From" type="xs:string"/>
+          <xs:element name="Size" type="xs:int"/>
+          <xs:element name="Subject" type="xs:string"/>
+          <xs:element name="UID" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://www.borland.com/namespaces/Types" xmlns="http://www.borland.com/namespaces/Types">
+      <xs:complexType name="TIntegerDynArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="xs:int[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="TestLogin0Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+  </message>
+  <message name="TestLogin0Response">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <message name="Stat1Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+  </message>
+  <message name="Stat1Response">
+    <part name="return" type="ns1:Tzp3wsXSPOP3Stat"/>
+  </message>
+  <message name="GetAllHeaders2Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+  </message>
+  <message name="GetAllHeaders2Response">
+    <part name="return" type="ns1:Tzp3wsXSPOP3HeaderArray"/>
+  </message>
+  <message name="GetHeaders3Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+    <part name="ANumArray" type="ns2:TIntegerDynArray"/>
+  </message>
+  <message name="GetHeaders3Response">
+    <part name="return" type="ns1:Tzp3wsXSPOP3HeaderArray"/>
+  </message>
+  <message name="GetMessages4Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+    <part name="ANumArray" type="ns2:TIntegerDynArray"/>
+  </message>
+  <message name="GetMessages4Response">
+    <part name="return" type="ns1:Tzp3wsXSPOP3MessageArray"/>
+  </message>
+  <message name="DeleteMessages5Request">
+    <part name="AHost" type="xs:string"/>
+    <part name="AUsername" type="xs:string"/>
+    <part name="APassword" type="xs:string"/>
+    <part name="ANumArray" type="ns2:TIntegerDynArray"/>
+  </message>
+  <message name="DeleteMessages5Response">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <portType name="IZPOP3">
+    <operation name="TestLogin">
+      <input message="tns:TestLogin0Request"/>
+      <output message="tns:TestLogin0Response"/>
+    </operation>
+    <operation name="Stat">
+      <input message="tns:Stat1Request"/>
+      <output message="tns:Stat1Response"/>
+    </operation>
+    <operation name="GetAllHeaders">
+      <input message="tns:GetAllHeaders2Request"/>
+      <output message="tns:GetAllHeaders2Response"/>
+    </operation>
+    <operation name="GetHeaders">
+      <input message="tns:GetHeaders3Request"/>
+      <output message="tns:GetHeaders3Response"/>
+    </operation>
+    <operation name="GetMessages">
+      <input message="tns:GetMessages4Request"/>
+      <output message="tns:GetMessages4Response"/>
+    </operation>
+    <operation name="DeleteMessages">
+      <input message="tns:DeleteMessages5Request"/>
+      <output message="tns:DeleteMessages5Response"/>
+    </operation>
+  </portType>
+  <binding name="IZPOP3binding" type="tns:IZPOP3">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="TestLogin">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#TestLogin" style="rpc"/>
+      <input message="tns:TestLogin0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:TestLogin0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+    <operation name="Stat">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#Stat" style="rpc"/>
+      <input message="tns:Stat1Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:Stat1Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+    <operation name="GetAllHeaders">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#GetAllHeaders" style="rpc"/>
+      <input message="tns:GetAllHeaders2Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:GetAllHeaders2Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+    <operation name="GetHeaders">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#GetHeaders" style="rpc"/>
+      <input message="tns:GetHeaders3Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:GetHeaders3Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+    <operation name="GetMessages">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#GetMessages" style="rpc"/>
+      <input message="tns:GetMessages4Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:GetMessages4Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+    <operation name="DeleteMessages">
+      <soap:operation soapAction="urn:ZPOP3Intf-IZPOP3#DeleteMessages" style="rpc"/>
+      <input message="tns:DeleteMessages5Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </input>
+      <output message="tns:DeleteMessages5Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ZPOP3Intf-IZPOP3"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IZPOP3service">
+    <port name="IZPOP3Port" binding="tns:IZPOP3binding">
+      <soap:address location="http://www.zanetti-dev.com/scripts/zpop3ws.exe/soap/IZPOP3"/>
+    </port>
+  </service>
+</definitions>
+

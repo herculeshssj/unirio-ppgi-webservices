@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FindCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCityResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPostalCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPostalCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPostalCodeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="FindCitySoapIn">
+    <part name="parameters" element="s0:FindCity" />
+  </message>
+  <message name="FindCitySoapOut">
+    <part name="parameters" element="s0:FindCityResponse" />
+  </message>
+  <message name="FindPostalCodeSoapIn">
+    <part name="parameters" element="s0:FindPostalCode" />
+  </message>
+  <message name="FindPostalCodeSoapOut">
+    <part name="parameters" element="s0:FindPostalCodeResponse" />
+  </message>
+  <message name="FindCityHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+  </message>
+  <message name="FindCityHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="FindPostalCodeHttpGetIn">
+    <part name="City" type="s:string" />
+  </message>
+  <message name="FindPostalCodeHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="FindCityHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+  </message>
+  <message name="FindCityHttpPostOut">
+    <part name="Body" />
+  </message>
+  <message name="FindPostalCodeHttpPostIn">
+    <part name="City" type="s:string" />
+  </message>
+  <message name="FindPostalCodeHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="BelgiumCitiesSoap">
+    <operation name="FindCity">
+      <documentation>Provide a postal code and we give you the matching cities</documentation>
+      <input message="s0:FindCitySoapIn" />
+      <output message="s0:FindCitySoapOut" />
+    </operation>
+    <operation name="FindPostalCode">
+      <documentation>Find the postal code of the matching cities</documentation>
+      <input message="s0:FindPostalCodeSoapIn" />
+      <output message="s0:FindPostalCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BelgiumCitiesHttpGet">
+    <operation name="FindCity">
+      <documentation>Provide a postal code and we give you the matching cities</documentation>
+      <input message="s0:FindCityHttpGetIn" />
+      <output message="s0:FindCityHttpGetOut" />
+    </operation>
+    <operation name="FindPostalCode">
+      <documentation>Find the postal code of the matching cities</documentation>
+      <input message="s0:FindPostalCodeHttpGetIn" />
+      <output message="s0:FindPostalCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BelgiumCitiesHttpPost">
+    <operation name="FindCity">
+      <documentation>Provide a postal code and we give you the matching cities</documentation>
+      <input message="s0:FindCityHttpPostIn" />
+      <output message="s0:FindCityHttpPostOut" />
+    </operation>
+    <operation name="FindPostalCode">
+      <documentation>Find the postal code of the matching cities</documentation>
+      <input message="s0:FindPostalCodeHttpPostIn" />
+      <output message="s0:FindPostalCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BelgiumCitiesSoap" type="s0:BelgiumCitiesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindCity">
+      <soap:operation soapAction="http://tempuri.org/FindCity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindPostalCode">
+      <soap:operation soapAction="http://tempuri.org/FindPostalCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BelgiumCitiesHttpGet" type="s0:BelgiumCitiesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindCity">
+      <http:operation location="/FindCity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="FindPostalCode">
+      <http:operation location="/FindPostalCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BelgiumCitiesHttpPost" type="s0:BelgiumCitiesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindCity">
+      <http:operation location="/FindCity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="FindPostalCode">
+      <http:operation location="/FindPostalCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BelgiumCities">
+    <port name="BelgiumCitiesSoap" binding="s0:BelgiumCitiesSoap">
+      <soap:address location="http://194.78.198.202/WebServices/BelgiumCities.asmx" />
+    </port>
+    <port name="BelgiumCitiesHttpGet" binding="s0:BelgiumCitiesHttpGet">
+      <http:address location="http://194.78.198.202/WebServices/BelgiumCities.asmx" />
+    </port>
+    <port name="BelgiumCitiesHttpPost" binding="s0:BelgiumCitiesHttpPost">
+      <http:address location="http://194.78.198.202/WebServices/BelgiumCities.asmx" />
+    </port>
+  </service>
+</definitions>

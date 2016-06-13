@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="GetICD10">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICD10Code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD10Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICD10Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD10ByDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICD10Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD10ByDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICD10ByDescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetICD10SoapIn">
+    <part name="parameters" element="s0:GetICD10" />
+  </message>
+  <message name="GetICD10SoapOut">
+    <part name="parameters" element="s0:GetICD10Response" />
+  </message>
+  <message name="GetICD10ByDescriptionSoapIn">
+    <part name="parameters" element="s0:GetICD10ByDescription" />
+  </message>
+  <message name="GetICD10ByDescriptionSoapOut">
+    <part name="parameters" element="s0:GetICD10ByDescriptionResponse" />
+  </message>
+  <message name="GetICD10HttpGetIn">
+    <part name="ICD10Code" type="s:string" />
+  </message>
+  <message name="GetICD10HttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD10ByDescriptionHttpGetIn">
+    <part name="ICD10Description" type="s:string" />
+  </message>
+  <message name="GetICD10ByDescriptionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD10HttpPostIn">
+    <part name="ICD10Code" type="s:string" />
+  </message>
+  <message name="GetICD10HttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD10ByDescriptionHttpPostIn">
+    <part name="ICD10Description" type="s:string" />
+  </message>
+  <message name="GetICD10ByDescriptionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ICD10Soap">
+    <operation name="GetICD10">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES</documentation>
+      <input message="s0:GetICD10SoapIn" />
+      <output message="s0:GetICD10SoapOut" />
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES by description</documentation>
+      <input message="s0:GetICD10ByDescriptionSoapIn" />
+      <output message="s0:GetICD10ByDescriptionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ICD10HttpGet">
+    <operation name="GetICD10">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES</documentation>
+      <input message="s0:GetICD10HttpGetIn" />
+      <output message="s0:GetICD10HttpGetOut" />
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES by description</documentation>
+      <input message="s0:GetICD10ByDescriptionHttpGetIn" />
+      <output message="s0:GetICD10ByDescriptionHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ICD10HttpPost">
+    <operation name="GetICD10">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES</documentation>
+      <input message="s0:GetICD10HttpPostIn" />
+      <output message="s0:GetICD10HttpPostOut" />
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES by description</documentation>
+      <input message="s0:GetICD10ByDescriptionHttpPostIn" />
+      <output message="s0:GetICD10ByDescriptionHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ICD10Soap" type="s0:ICD10Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetICD10">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetICD10" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetICD10ByDescription" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD10HttpGet" type="s0:ICD10HttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetICD10">
+      <http:operation location="/GetICD10" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <http:operation location="/GetICD10ByDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD10HttpPost" type="s0:ICD10HttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetICD10">
+      <http:operation location="/GetICD10" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICD10ByDescription">
+      <http:operation location="/GetICD10ByDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICD10">
+    <documentation>ICD-10-CM CLASSIFICATION OF DISEASES AND INJURIES</documentation>
+    <port name="ICD10Soap" binding="s0:ICD10Soap">
+      <soap:address location="http://www.webservicex.net/icd10.asmx" />
+    </port>
+    <port name="ICD10HttpGet" binding="s0:ICD10HttpGet">
+      <http:address location="http://www.webservicex.net/icd10.asmx" />
+    </port>
+    <port name="ICD10HttpPost" binding="s0:ICD10HttpPost">
+      <http:address location="http://www.webservicex.net/icd10.asmx" />
+    </port>
+  </service>
+</definitions>

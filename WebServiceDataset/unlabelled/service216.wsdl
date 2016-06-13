@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="ValidateEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateEmailResult" type="s0:Email" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Email">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="1" name="SyntaxCheck" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DNSCheck" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMTPCheck" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgeIndex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValidityIndex" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Email" nillable="true" type="s0:Email" />
+    </s:schema>
+  </types>
+  <message name="ValidateEmailSoapIn">
+    <part name="parameters" element="s0:ValidateEmail" />
+  </message>
+  <message name="ValidateEmailSoapOut">
+    <part name="parameters" element="s0:ValidateEmailResponse" />
+  </message>
+  <message name="ValidateEmailHttpGetIn">
+    <part name="Email" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ValidateEmailHttpGetOut">
+    <part name="Body" element="s0:Email" />
+  </message>
+  <message name="ValidateEmailHttpPostIn">
+    <part name="Email" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ValidateEmailHttpPostOut">
+    <part name="Body" element="s0:Email" />
+  </message>
+  <portType name="DOTSEmailValidateSoap">
+    <operation name="ValidateEmail">
+      <documentation>Returns corrected email information for a given email address.</documentation>
+      <input message="s0:ValidateEmailSoapIn" />
+      <output message="s0:ValidateEmailSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSEmailValidateHttpGet">
+    <operation name="ValidateEmail">
+      <documentation>Returns corrected email information for a given email address.</documentation>
+      <input message="s0:ValidateEmailHttpGetIn" />
+      <output message="s0:ValidateEmailHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSEmailValidateHttpPost">
+    <operation name="ValidateEmail">
+      <documentation>Returns corrected email information for a given email address.</documentation>
+      <input message="s0:ValidateEmailHttpPostIn" />
+      <output message="s0:ValidateEmailHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSEmailValidateSoap" type="s0:DOTSEmailValidateSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ValidateEmail">
+      <soap:operation soapAction="http://www.serviceobjects.com/ValidateEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSEmailValidateHttpGet" type="s0:DOTSEmailValidateHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ValidateEmail">
+      <http:operation location="/ValidateEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSEmailValidateHttpPost" type="s0:DOTSEmailValidateHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ValidateEmail">
+      <http:operation location="/ValidateEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSEmailValidate">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSEmailValidateSoap" binding="s0:DOTSEmailValidateSoap">
+      <soap:address location="http://ws2.serviceobjects.net/ev/EmailValidate.asmx" />
+    </port>
+    <port name="DOTSEmailValidateHttpGet" binding="s0:DOTSEmailValidateHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/ev/EmailValidate.asmx" />
+    </port>
+    <port name="DOTSEmailValidateHttpPost" binding="s0:DOTSEmailValidateHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/ev/EmailValidate.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/MetarBreakDown" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/MetarBreakDown" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/MetarBreakDown">
+      <s:element name="GetMetarBreakDown">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inMetarLine" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMetarBreakDownResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMetarBreakDownResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetMetarBreakDownSoapIn">
+    <part name="parameters" element="s0:GetMetarBreakDown" />
+  </message>
+  <message name="GetMetarBreakDownSoapOut">
+    <part name="parameters" element="s0:GetMetarBreakDownResponse" />
+  </message>
+  <message name="GetMetarBreakDownHttpGetIn">
+    <part name="inMetarLine" type="s:string" />
+  </message>
+  <message name="GetMetarBreakDownHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetMetarBreakDownHttpPostIn">
+    <part name="inMetarLine" type="s:string" />
+  </message>
+  <message name="GetMetarBreakDownHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="MetarBreakDownSoap">
+    <operation name="GetMetarBreakDown">
+      <input message="s0:GetMetarBreakDownSoapIn" />
+      <output message="s0:GetMetarBreakDownSoapOut" />
+    </operation>
+  </portType>
+  <portType name="MetarBreakDownHttpGet">
+    <operation name="GetMetarBreakDown">
+      <input message="s0:GetMetarBreakDownHttpGetIn" />
+      <output message="s0:GetMetarBreakDownHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="MetarBreakDownHttpPost">
+    <operation name="GetMetarBreakDown">
+      <input message="s0:GetMetarBreakDownHttpPostIn" />
+      <output message="s0:GetMetarBreakDownHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="MetarBreakDownSoap" type="s0:MetarBreakDownSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetMetarBreakDown">
+      <soap:operation soapAction="http://innergears.com/WebServices/MetarBreakDown/GetMetarBreakDown" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MetarBreakDownHttpGet" type="s0:MetarBreakDownHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetMetarBreakDown">
+      <http:operation location="/GetMetarBreakDown" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MetarBreakDownHttpPost" type="s0:MetarBreakDownHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetMetarBreakDown">
+      <http:operation location="/GetMetarBreakDown" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MetarBreakDown">
+    <port name="MetarBreakDownSoap" binding="s0:MetarBreakDownSoap">
+      <soap:address location="http://www.innergears.com/webservices/metarbreakdown/metarbreakdown.asmx" />
+    </port>
+    <port name="MetarBreakDownHttpGet" binding="s0:MetarBreakDownHttpGet">
+      <http:address location="http://www.innergears.com/webservices/metarbreakdown/metarbreakdown.asmx" />
+    </port>
+    <port name="MetarBreakDownHttpPost" binding="s0:MetarBreakDownHttpPost">
+      <http:address location="http://www.innergears.com/webservices/metarbreakdown/metarbreakdown.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetStockInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockInfoResult" type="s0:StockInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StockInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteOpen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteLast" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteVolume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteChange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuotePercentChange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuoteLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiftyTwoWeekHigh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FiftyTwoWeekLow" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DivPerShare" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAV" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrevNAV" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMutualInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMutualInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMutualInfoResult" type="s0:StockInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOTCStockInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOTCStockInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOTCStockInfoResult" type="s0:StockInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInternationalStockInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInternationalStockInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInternationalStockInfoResult" type="s0:StockInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StockInfo" nillable="true" type="s0:StockInfo" />
+    </s:schema>
+  </types>
+  <message name="GetStockInfoSoapIn">
+    <part name="parameters" element="s0:GetStockInfo" />
+  </message>
+  <message name="GetStockInfoSoapOut">
+    <part name="parameters" element="s0:GetStockInfoResponse" />
+  </message>
+  <message name="GetMutualInfoSoapIn">
+    <part name="parameters" element="s0:GetMutualInfo" />
+  </message>
+  <message name="GetMutualInfoSoapOut">
+    <part name="parameters" element="s0:GetMutualInfoResponse" />
+  </message>
+  <message name="GetOTCStockInfoSoapIn">
+    <part name="parameters" element="s0:GetOTCStockInfo" />
+  </message>
+  <message name="GetOTCStockInfoSoapOut">
+    <part name="parameters" element="s0:GetOTCStockInfoResponse" />
+  </message>
+  <message name="GetInternationalStockInfoSoapIn">
+    <part name="parameters" element="s0:GetInternationalStockInfo" />
+  </message>
+  <message name="GetInternationalStockInfoSoapOut">
+    <part name="parameters" element="s0:GetInternationalStockInfoResponse" />
+  </message>
+  <message name="GetStockInfoHttpGetIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetStockInfoHttpGetOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetMutualInfoHttpGetIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetMutualInfoHttpGetOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetOTCStockInfoHttpGetIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetOTCStockInfoHttpGetOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetInternationalStockInfoHttpGetIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetInternationalStockInfoHttpGetOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetStockInfoHttpPostIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetStockInfoHttpPostOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetMutualInfoHttpPostIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetMutualInfoHttpPostOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetOTCStockInfoHttpPostIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetOTCStockInfoHttpPostOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <message name="GetInternationalStockInfoHttpPostIn">
+    <part name="Ticker" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetInternationalStockInfoHttpPostOut">
+    <part name="Body" element="s0:StockInfo" />
+  </message>
+  <portType name="DOTSFastQuoteSoap">
+    <operation name="GetStockInfo">
+      <documentation>Returns stock information for a given stock ticker.&lt;br/&gt;NYSE and AMEX quotes are delayed by at least 20 minutes.&lt;br/&gt;All other quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetStockInfoSoapIn" />
+      <output message="s0:GetStockInfoSoapOut" />
+    </operation>
+    <operation name="GetMutualInfo">
+      <documentation>Returns mutual price stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetMutualInfoSoapIn" />
+      <output message="s0:GetMutualInfoSoapOut" />
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <documentation>Returns OTC Bulleting Board Market stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetOTCStockInfoSoapIn" />
+      <output message="s0:GetOTCStockInfoSoapOut" />
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <documentation>Returns international stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.&lt;br/&gt;&lt;!--&lt;br/&gt;Currently supports the following tickers:&lt;br/&gt;London:BNZL&lt;br/&gt;Berlin:BNZL&lt;br/&gt;EC:BNZL&lt;br/&gt;Stuttgart:BNZL&lt;br/&gt;American:YHOO&lt;br/&gt;BuenossAires:YHOO&lt;br/&gt;Bremen:YHOO&lt;br/&gt;Cincinnati:YHOO&lt;br/&gt;Dusseldorf:YHOO&lt;br/&gt;Xetra:YHOO&lt;br/&gt;Frankfurt:YHOO&lt;br/&gt;Hamburg:YHOO&lt;br/&gt;Hanover:YHOO&lt;br/&gt;Lima:YHOO&lt;br/&gt;Munich:YHOO&lt;br/&gt;Chicago:YHOO&lt;br/&gt;--&gt;</documentation>
+      <input message="s0:GetInternationalStockInfoSoapIn" />
+      <output message="s0:GetInternationalStockInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastQuoteHttpGet">
+    <operation name="GetStockInfo">
+      <documentation>Returns stock information for a given stock ticker.&lt;br/&gt;NYSE and AMEX quotes are delayed by at least 20 minutes.&lt;br/&gt;All other quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetStockInfoHttpGetIn" />
+      <output message="s0:GetStockInfoHttpGetOut" />
+    </operation>
+    <operation name="GetMutualInfo">
+      <documentation>Returns mutual price stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetMutualInfoHttpGetIn" />
+      <output message="s0:GetMutualInfoHttpGetOut" />
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <documentation>Returns OTC Bulleting Board Market stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetOTCStockInfoHttpGetIn" />
+      <output message="s0:GetOTCStockInfoHttpGetOut" />
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <documentation>Returns international stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.&lt;br/&gt;&lt;!--&lt;br/&gt;Currently supports the following tickers:&lt;br/&gt;London:BNZL&lt;br/&gt;Berlin:BNZL&lt;br/&gt;EC:BNZL&lt;br/&gt;Stuttgart:BNZL&lt;br/&gt;American:YHOO&lt;br/&gt;BuenossAires:YHOO&lt;br/&gt;Bremen:YHOO&lt;br/&gt;Cincinnati:YHOO&lt;br/&gt;Dusseldorf:YHOO&lt;br/&gt;Xetra:YHOO&lt;br/&gt;Frankfurt:YHOO&lt;br/&gt;Hamburg:YHOO&lt;br/&gt;Hanover:YHOO&lt;br/&gt;Lima:YHOO&lt;br/&gt;Munich:YHOO&lt;br/&gt;Chicago:YHOO&lt;br/&gt;--&gt;</documentation>
+      <input message="s0:GetInternationalStockInfoHttpGetIn" />
+      <output message="s0:GetInternationalStockInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastQuoteHttpPost">
+    <operation name="GetStockInfo">
+      <documentation>Returns stock information for a given stock ticker.&lt;br/&gt;NYSE and AMEX quotes are delayed by at least 20 minutes.&lt;br/&gt;All other quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetStockInfoHttpPostIn" />
+      <output message="s0:GetStockInfoHttpPostOut" />
+    </operation>
+    <operation name="GetMutualInfo">
+      <documentation>Returns mutual price stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetMutualInfoHttpPostIn" />
+      <output message="s0:GetMutualInfoHttpPostOut" />
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <documentation>Returns OTC Bulleting Board Market stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.</documentation>
+      <input message="s0:GetOTCStockInfoHttpPostIn" />
+      <output message="s0:GetOTCStockInfoHttpPostOut" />
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <documentation>Returns international stock information.&lt;br/&gt;Quotes are delayed by at least 15 minutes.&lt;br/&gt;&lt;!--&lt;br/&gt;Currently supports the following tickers:&lt;br/&gt;London:BNZL&lt;br/&gt;Berlin:BNZL&lt;br/&gt;EC:BNZL&lt;br/&gt;Stuttgart:BNZL&lt;br/&gt;American:YHOO&lt;br/&gt;BuenossAires:YHOO&lt;br/&gt;Bremen:YHOO&lt;br/&gt;Cincinnati:YHOO&lt;br/&gt;Dusseldorf:YHOO&lt;br/&gt;Xetra:YHOO&lt;br/&gt;Frankfurt:YHOO&lt;br/&gt;Hamburg:YHOO&lt;br/&gt;Hanover:YHOO&lt;br/&gt;Lima:YHOO&lt;br/&gt;Munich:YHOO&lt;br/&gt;Chicago:YHOO&lt;br/&gt;--&gt;</documentation>
+      <input message="s0:GetInternationalStockInfoHttpPostIn" />
+      <output message="s0:GetInternationalStockInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSFastQuoteSoap" type="s0:DOTSFastQuoteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetStockInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetStockInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMutualInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetMutualInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetOTCStockInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetInternationalStockInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastQuoteHttpGet" type="s0:DOTSFastQuoteHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetStockInfo">
+      <http:operation location="/GetStockInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMutualInfo">
+      <http:operation location="/GetMutualInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <http:operation location="/GetOTCStockInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <http:operation location="/GetInternationalStockInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastQuoteHttpPost" type="s0:DOTSFastQuoteHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetStockInfo">
+      <http:operation location="/GetStockInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMutualInfo">
+      <http:operation location="/GetMutualInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetOTCStockInfo">
+      <http:operation location="/GetOTCStockInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInternationalStockInfo">
+      <http:operation location="/GetInternationalStockInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSFastQuote">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSFastQuoteSoap" binding="s0:DOTSFastQuoteSoap">
+      <soap:address location="http://ws2.serviceobjects.net/sq/FastQuote.asmx" />
+    </port>
+    <port name="DOTSFastQuoteHttpGet" binding="s0:DOTSFastQuoteHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/sq/FastQuote.asmx" />
+    </port>
+    <port name="DOTSFastQuoteHttpPost" binding="s0:DOTSFastQuoteHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/sq/FastQuote.asmx" />
+    </port>
+  </service>
+</definitions>

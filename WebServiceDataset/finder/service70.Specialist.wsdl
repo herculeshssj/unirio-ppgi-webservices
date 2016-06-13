@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:s0="http://SpeciesAnalyst.net/zportal/definitions" 
+	targetNamespace="http://SpeciesAnalyst.net/zportal/definitions" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <message name="searchHttpGetIn">
+    <part name="t" type="s:string" />
+    <part name="p" type="s:integer" />
+    <part name="d" type="s:string" />
+    <part name="q" type="s:string" />
+    <part name="s" type="s:integer" />
+    <part name="m" type="s:integer" />
+    <part name="e" type="s:string" />
+    <part name="syntax" type="s:string" />
+    <part name="encode" type="s:string" />
+    <part name="template" type="s:string" />
+  </message>
+  <message name="searchHttpGetOut">
+    <part name="Response" element="s:string" />
+  </message>
+  <portType name="ZPortalHttpGet">
+    <operation name="search">
+      <input message="s0:searchHttpGetIn" />
+      <output message="s0:searchHttpGetOut" />
+    </operation>
+  </portType>
+  <binding name="ZPortalHttpGet" type="s0:ZPortalHttpGet">
+    <http:binding verb="GET" />
+    <operation name="search">
+      <http:operation location="search.asp" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+</definitions>

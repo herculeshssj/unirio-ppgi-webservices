@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="CFCInvocationException"><sequence/></complexType><element name="CFCInvocationException" nillable="true" type="tns1:CFCInvocationException"/></schema></wsdl:types>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:message name="advancedemailcheckRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="emailaddress" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="advancedemailcheckResponse">
+    <wsdl:part name="advancedemailcheckReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="advancedemailcheck">
+    <wsdl:operation name="advancedemailcheck" parameterOrder="username password emailaddress">
+      <wsdl:input name="advancedemailcheckRequest" message="impl:advancedemailcheckRequest"/>
+      <wsdl:output name="advancedemailcheckResponse" message="impl:advancedemailcheckResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="advancedemailcheck.cfcSoapBinding" type="impl:advancedemailcheck">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="advancedemailcheck">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="advancedemailcheckRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="advancedemailcheckResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="advancedemailcheckService">
+    <wsdl:port name="advancedemailcheck.cfc" binding="impl:advancedemailcheck.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.tinetics.com/webservices/advancedemailcheck.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

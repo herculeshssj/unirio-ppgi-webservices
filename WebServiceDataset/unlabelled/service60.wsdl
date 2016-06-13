@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gsmNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="SendSMSSoapIn">
+    <part name="parameters" element="s0:SendSMS" />
+  </message>
+  <message name="SendSMSSoapOut">
+    <part name="parameters" element="s0:SendSMSResponse" />
+  </message>
+  <message name="SendSMSHttpGetIn">
+    <part name="gsmNumber" type="s:string" />
+    <part name="text" type="s:string" />
+  </message>
+  <message name="SendSMSHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="SendSMSHttpPostIn">
+    <part name="gsmNumber" type="s:string" />
+    <part name="text" type="s:string" />
+  </message>
+  <message name="SendSMSHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="SMSSoap">
+    <operation name="SendSMS">
+      <input message="s0:SendSMSSoapIn" />
+      <output message="s0:SendSMSSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpGet">
+    <operation name="SendSMS">
+      <input message="s0:SendSMSHttpGetIn" />
+      <output message="s0:SendSMSHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpPost">
+    <operation name="SendSMS">
+      <input message="s0:SendSMSHttpPostIn" />
+      <output message="s0:SendSMSHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SMSSoap" type="s0:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SMSHttpGet" type="s0:SMSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SMSHttpPost" type="s0:SMSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SMS">
+    <port name="SMSSoap" binding="s0:SMSSoap">
+      <soap:address location="http://www.barnaland.is/dev/sms.asmx" />
+    </port>
+    <port name="SMSHttpGet" binding="s0:SMSHttpGet">
+      <http:address location="http://www.barnaland.is/dev/sms.asmx" />
+    </port>
+    <port name="SMSHttpPost" binding="s0:SMSHttpPost">
+      <http:address location="http://www.barnaland.is/dev/sms.asmx" />
+    </port>
+  </service>
+</definitions>

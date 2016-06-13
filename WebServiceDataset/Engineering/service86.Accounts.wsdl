@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.hunter.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.hunter.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.hunter.com">
+      <s:element name="GetManufacturerList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetManufacturerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetManufacturerListResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetModelList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="manufacturer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetModelListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetModelListResult" type="s0:ArrayOfHCVehicleNameInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHCVehicleNameInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HCVehicleNameInfo" nillable="true" type="s0:HCVehicleNameInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HCVehicleNameInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MfgName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniqueIdentifier" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicleImgInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UniqueVehicleIdentifier" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicleImgInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleImgInfoResult" type="s0:HCVehicleIllusInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HCVehicleIllusInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleNameInfo" type="s0:HCVehicleNameInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhotoAdjImgList" type="s0:ArrayOfHCAdjImgInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiagramAdjImgList" type="s0:ArrayOfHCAdjImgInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="InspectionImageFront" type="s0:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="InspectionImageRear" type="s0:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHCAdjImgInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HCAdjImgInfo" nillable="true" type="s0:HCAdjImgInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HCAdjImgInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageTitle" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAdjImgURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dialect" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdjImgURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdjImgURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInspectionImageAndParts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdjImgName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dialect" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HighlightedPart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ColorIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInspectionImageAndPartsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInspectionImageAndPartsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInspectionImageShaded">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdjImgName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dialect" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HighlightedPart" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ColorIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInspectionImageShadedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInspectionImageShadedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImgTitle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImageName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="language" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dialect" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImgTitleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImgTitleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLanguages">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLanguagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLanguagesResult" type="s0:ArrayOfHCLanguageInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHCLanguageInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HCLanguageInfo" nillable="true" type="s0:HCLanguageInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HCLanguageInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LanguageID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DialectID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="ArrayOfHCVehicleNameInfo" nillable="true" type="s0:ArrayOfHCVehicleNameInfo" />
+      <s:element name="HCVehicleIllusInfo" nillable="true" type="s0:HCVehicleIllusInfo" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfHCLanguageInfo" nillable="true" type="s0:ArrayOfHCLanguageInfo" />
+    </s:schema>
+  </types>
+  <message name="GetManufacturerListSoapIn">
+    <part name="parameters" element="s0:GetManufacturerList" />
+  </message>
+  <message name="GetManufacturerListSoapOut">
+    <part name="parameters" element="s0:GetManufacturerListResponse" />
+  </message>
+  <message name="GetModelListSoapIn">
+    <part name="parameters" element="s0:GetModelList" />
+  </message>
+  <message name="GetModelListSoapOut">
+    <part name="parameters" element="s0:GetModelListResponse" />
+  </message>
+  <message name="GetVehicleImgInfoSoapIn">
+    <part name="parameters" element="s0:GetVehicleImgInfo" />
+  </message>
+  <message name="GetVehicleImgInfoSoapOut">
+    <part name="parameters" element="s0:GetVehicleImgInfoResponse" />
+  </message>
+  <message name="GetAdjImgURLSoapIn">
+    <part name="parameters" element="s0:GetAdjImgURL" />
+  </message>
+  <message name="GetAdjImgURLSoapOut">
+    <part name="parameters" element="s0:GetAdjImgURLResponse" />
+  </message>
+  <message name="GetInspectionImageAndPartsSoapIn">
+    <part name="parameters" element="s0:GetInspectionImageAndParts" />
+  </message>
+  <message name="GetInspectionImageAndPartsSoapOut">
+    <part name="parameters" element="s0:GetInspectionImageAndPartsResponse" />
+  </message>
+  <message name="GetInspectionImageShadedSoapIn">
+    <part name="parameters" element="s0:GetInspectionImageShaded" />
+  </message>
+  <message name="GetInspectionImageShadedSoapOut">
+    <part name="parameters" element="s0:GetInspectionImageShadedResponse" />
+  </message>
+  <message name="GetImgTitleSoapIn">
+    <part name="parameters" element="s0:GetImgTitle" />
+  </message>
+  <message name="GetImgTitleSoapOut">
+    <part name="parameters" element="s0:GetImgTitleResponse" />
+  </message>
+  <message name="GetLanguagesSoapIn">
+    <part name="parameters" element="s0:GetLanguages" />
+  </message>
+  <message name="GetLanguagesSoapOut">
+    <part name="parameters" element="s0:GetLanguagesResponse" />
+  </message>
+  <message name="GetManufacturerListHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="GetManufacturerListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetModelListHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="manufacturer" type="s:string" />
+  </message>
+  <message name="GetModelListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfHCVehicleNameInfo" />
+  </message>
+  <message name="GetVehicleImgInfoHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="UniqueVehicleIdentifier" type="s:string" />
+  </message>
+  <message name="GetVehicleImgInfoHttpGetOut">
+    <part name="Body" element="s0:HCVehicleIllusInfo" />
+  </message>
+  <message name="GetAdjImgURLHttpGetIn">
+    <part name="ImageName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+  </message>
+  <message name="GetAdjImgURLHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInspectionImageAndPartsHttpGetIn">
+    <part name="AdjImgName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+    <part name="HighlightedPart" type="s:string" />
+    <part name="ColorIndex" type="s:string" />
+  </message>
+  <message name="GetInspectionImageAndPartsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInspectionImageShadedHttpGetIn">
+    <part name="AdjImgName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+    <part name="HighlightedPart" type="s:string" />
+    <part name="ColorIndex" type="s:string" />
+  </message>
+  <message name="GetInspectionImageShadedHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetImgTitleHttpGetIn">
+    <part name="ImageName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+  </message>
+  <message name="GetImgTitleHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLanguagesHttpGetIn" />
+  <message name="GetLanguagesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfHCLanguageInfo" />
+  </message>
+  <message name="GetManufacturerListHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="GetManufacturerListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetModelListHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="manufacturer" type="s:string" />
+  </message>
+  <message name="GetModelListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfHCVehicleNameInfo" />
+  </message>
+  <message name="GetVehicleImgInfoHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="UniqueVehicleIdentifier" type="s:string" />
+  </message>
+  <message name="GetVehicleImgInfoHttpPostOut">
+    <part name="Body" element="s0:HCVehicleIllusInfo" />
+  </message>
+  <message name="GetAdjImgURLHttpPostIn">
+    <part name="ImageName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+  </message>
+  <message name="GetAdjImgURLHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInspectionImageAndPartsHttpPostIn">
+    <part name="AdjImgName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+    <part name="HighlightedPart" type="s:string" />
+    <part name="ColorIndex" type="s:string" />
+  </message>
+  <message name="GetInspectionImageAndPartsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetInspectionImageShadedHttpPostIn">
+    <part name="AdjImgName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+    <part name="width" type="s:string" />
+    <part name="HighlightedPart" type="s:string" />
+    <part name="ColorIndex" type="s:string" />
+  </message>
+  <message name="GetInspectionImageShadedHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetImgTitleHttpPostIn">
+    <part name="ImageName" type="s:string" />
+    <part name="language" type="s:string" />
+    <part name="dialect" type="s:string" />
+  </message>
+  <message name="GetImgTitleHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLanguagesHttpPostIn" />
+  <message name="GetLanguagesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfHCLanguageInfo" />
+  </message>
+  <portType name="UndercarVehicleImageSoap">
+    <operation name="GetManufacturerList">
+      <documentation>This method provides a list of the vehicle manufacturers available. This method returns an array of strings. Each string is a manufacturer. A manufacturer name can be passed to the GetModelList method to find the list of models available for a single manufacturer.A manufacturer name is a name like â??Acuraâ??, â??BMWâ??, etc..</documentation>
+      <input message="s0:GetManufacturerListSoapIn" />
+      <output message="s0:GetManufacturerListSoapOut" />
+    </operation>
+    <operation name="GetModelList">
+      <documentation> This method provides a list of vehicle models for a given manufacturer. This method returns an array of HCVehicleNameInfo elements. Each element describes the manufacturer, model, year and unique identifier for a single vehicle. The Unique vehicle identifier can be passed to the GetVehicleImgInfo method  to get a lists all of the images available for a single vehicle.A model name is a string like â??Cavalierâ??, â??Camaroâ??, etc.	</documentation>
+      <input message="s0:GetModelListSoapIn" />
+      <output message="s0:GetModelListSoapOut" />
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <documentation>This method provides the list of adjustment and inspection illustrations for a single vehicle. This method returns an HCVehicleIllusInfo element that contains a list of the photographic illustrations, the diagram illustrations and the inspection illustrations available for a single vehicle. Each photographic and diagram illustration has a unique name that can be passed to GetAdjImgURL method in order to dynamically generate an image. Each inspection illustration has a unique name that can be passed to the GetInspectionImageAndParts method in order to dynamically generate images and a dataset (represented in XML) that completely describe parts and their locations on a inspection illustration. 	</documentation>
+      <input message="s0:GetVehicleImgInfoSoapIn" />
+      <output message="s0:GetVehicleImgInfoSoapOut" />
+    </operation>
+    <operation name="GetAdjImgURL">
+      <documentation> This method dynamically creates an adjustment illustration in the specified language and with the specified width.The method returns a URL that points to the newly created image. This method calls upon a C++ service that uses a database of information about images and the text that appears on the images. An image is generated in the specified width and the text is displayed in the specified language and dialect. The method returns the URL of the generated image.This method accepts an image name that can be obtained from the GetVehicleImgInfo method and a language and dialect that can be obtained from the GetLanguages method.The width should be specified in pixels.		</documentation>
+      <input message="s0:GetAdjImgURLSoapIn" />
+      <output message="s0:GetAdjImgURLSoapOut" />
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <documentation>This method returns an XML dataset that list all of the inspection parts on the image along with their location on the image.The location of each part is represented by a series of rectangles that define a region on the image. The XML also contains URLs for a series of dynamically generated images that illustrate each part on the image.This method accepts a unique image name (that can be obtained from The GetVehicleImgInfo method).This method accepts a language and dialect (that can be obtained from the GetLanguages) method.The HighlightedPart and ColorIndex methods can be zero as a default, or they can be used to choose the index of the part to be highlighted and the color of the part shading to use on the image. 		</documentation>
+      <input message="s0:GetInspectionImageAndPartsSoapIn" />
+      <output message="s0:GetInspectionImageAndPartsSoapOut" />
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <documentation>This method returns an URL for an Inspection image with the specified part shaded. This method dynamically generates an image and returns a URL. The image will have a specified part highlighted with a hatch pattern. 		</documentation>
+      <input message="s0:GetInspectionImageShadedSoapIn" />
+      <output message="s0:GetInspectionImageShadedSoapOut" />
+    </operation>
+    <operation name="GetImgTitle">
+      <documentation> This method returns a title that can be used to label an image. This title might be useful as 'rollover text' on an image.This method accepts a unique image name that can be obtained from the GetVehicleImgInfo method.	</documentation>
+      <input message="s0:GetImgTitleSoapIn" />
+      <output message="s0:GetImgTitleSoapOut" />
+    </operation>
+    <operation name="GetLanguages">
+      <documentation>Get the list of available languages.  Several of the methods in this service accept a language and a dialect identifier.  This function returns a list of the available language and dialect identifiers.</documentation>
+      <input message="s0:GetLanguagesSoapIn" />
+      <output message="s0:GetLanguagesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UndercarVehicleImageHttpGet">
+    <operation name="GetManufacturerList">
+      <documentation>This method provides a list of the vehicle manufacturers available. This method returns an array of strings. Each string is a manufacturer. A manufacturer name can be passed to the GetModelList method to find the list of models available for a single manufacturer.A manufacturer name is a name like â??Acuraâ??, â??BMWâ??, etc..</documentation>
+      <input message="s0:GetManufacturerListHttpGetIn" />
+      <output message="s0:GetManufacturerListHttpGetOut" />
+    </operation>
+    <operation name="GetModelList">
+      <documentation> This method provides a list of vehicle models for a given manufacturer. This method returns an array of HCVehicleNameInfo elements. Each element describes the manufacturer, model, year and unique identifier for a single vehicle. The Unique vehicle identifier can be passed to the GetVehicleImgInfo method  to get a lists all of the images available for a single vehicle.A model name is a string like â??Cavalierâ??, â??Camaroâ??, etc.	</documentation>
+      <input message="s0:GetModelListHttpGetIn" />
+      <output message="s0:GetModelListHttpGetOut" />
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <documentation>This method provides the list of adjustment and inspection illustrations for a single vehicle. This method returns an HCVehicleIllusInfo element that contains a list of the photographic illustrations, the diagram illustrations and the inspection illustrations available for a single vehicle. Each photographic and diagram illustration has a unique name that can be passed to GetAdjImgURL method in order to dynamically generate an image. Each inspection illustration has a unique name that can be passed to the GetInspectionImageAndParts method in order to dynamically generate images and a dataset (represented in XML) that completely describe parts and their locations on a inspection illustration. 	</documentation>
+      <input message="s0:GetVehicleImgInfoHttpGetIn" />
+      <output message="s0:GetVehicleImgInfoHttpGetOut" />
+    </operation>
+    <operation name="GetAdjImgURL">
+      <documentation> This method dynamically creates an adjustment illustration in the specified language and with the specified width.The method returns a URL that points to the newly created image. This method calls upon a C++ service that uses a database of information about images and the text that appears on the images. An image is generated in the specified width and the text is displayed in the specified language and dialect. The method returns the URL of the generated image.This method accepts an image name that can be obtained from the GetVehicleImgInfo method and a language and dialect that can be obtained from the GetLanguages method.The width should be specified in pixels.		</documentation>
+      <input message="s0:GetAdjImgURLHttpGetIn" />
+      <output message="s0:GetAdjImgURLHttpGetOut" />
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <documentation>This method returns an XML dataset that list all of the inspection parts on the image along with their location on the image.The location of each part is represented by a series of rectangles that define a region on the image. The XML also contains URLs for a series of dynamically generated images that illustrate each part on the image.This method accepts a unique image name (that can be obtained from The GetVehicleImgInfo method).This method accepts a language and dialect (that can be obtained from the GetLanguages) method.The HighlightedPart and ColorIndex methods can be zero as a default, or they can be used to choose the index of the part to be highlighted and the color of the part shading to use on the image. 		</documentation>
+      <input message="s0:GetInspectionImageAndPartsHttpGetIn" />
+      <output message="s0:GetInspectionImageAndPartsHttpGetOut" />
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <documentation>This method returns an URL for an Inspection image with the specified part shaded. This method dynamically generates an image and returns a URL. The image will have a specified part highlighted with a hatch pattern. 		</documentation>
+      <input message="s0:GetInspectionImageShadedHttpGetIn" />
+      <output message="s0:GetInspectionImageShadedHttpGetOut" />
+    </operation>
+    <operation name="GetImgTitle">
+      <documentation> This method returns a title that can be used to label an image. This title might be useful as 'rollover text' on an image.This method accepts a unique image name that can be obtained from the GetVehicleImgInfo method.	</documentation>
+      <input message="s0:GetImgTitleHttpGetIn" />
+      <output message="s0:GetImgTitleHttpGetOut" />
+    </operation>
+    <operation name="GetLanguages">
+      <documentation>Get the list of available languages.  Several of the methods in this service accept a language and a dialect identifier.  This function returns a list of the available language and dialect identifiers.</documentation>
+      <input message="s0:GetLanguagesHttpGetIn" />
+      <output message="s0:GetLanguagesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UndercarVehicleImageHttpPost">
+    <operation name="GetManufacturerList">
+      <documentation>This method provides a list of the vehicle manufacturers available. This method returns an array of strings. Each string is a manufacturer. A manufacturer name can be passed to the GetModelList method to find the list of models available for a single manufacturer.A manufacturer name is a name like â??Acuraâ??, â??BMWâ??, etc..</documentation>
+      <input message="s0:GetManufacturerListHttpPostIn" />
+      <output message="s0:GetManufacturerListHttpPostOut" />
+    </operation>
+    <operation name="GetModelList">
+      <documentation> This method provides a list of vehicle models for a given manufacturer. This method returns an array of HCVehicleNameInfo elements. Each element describes the manufacturer, model, year and unique identifier for a single vehicle. The Unique vehicle identifier can be passed to the GetVehicleImgInfo method  to get a lists all of the images available for a single vehicle.A model name is a string like â??Cavalierâ??, â??Camaroâ??, etc.	</documentation>
+      <input message="s0:GetModelListHttpPostIn" />
+      <output message="s0:GetModelListHttpPostOut" />
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <documentation>This method provides the list of adjustment and inspection illustrations for a single vehicle. This method returns an HCVehicleIllusInfo element that contains a list of the photographic illustrations, the diagram illustrations and the inspection illustrations available for a single vehicle. Each photographic and diagram illustration has a unique name that can be passed to GetAdjImgURL method in order to dynamically generate an image. Each inspection illustration has a unique name that can be passed to the GetInspectionImageAndParts method in order to dynamically generate images and a dataset (represented in XML) that completely describe parts and their locations on a inspection illustration. 	</documentation>
+      <input message="s0:GetVehicleImgInfoHttpPostIn" />
+      <output message="s0:GetVehicleImgInfoHttpPostOut" />
+    </operation>
+    <operation name="GetAdjImgURL">
+      <documentation> This method dynamically creates an adjustment illustration in the specified language and with the specified width.The method returns a URL that points to the newly created image. This method calls upon a C++ service that uses a database of information about images and the text that appears on the images. An image is generated in the specified width and the text is displayed in the specified language and dialect. The method returns the URL of the generated image.This method accepts an image name that can be obtained from the GetVehicleImgInfo method and a language and dialect that can be obtained from the GetLanguages method.The width should be specified in pixels.		</documentation>
+      <input message="s0:GetAdjImgURLHttpPostIn" />
+      <output message="s0:GetAdjImgURLHttpPostOut" />
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <documentation>This method returns an XML dataset that list all of the inspection parts on the image along with their location on the image.The location of each part is represented by a series of rectangles that define a region on the image. The XML also contains URLs for a series of dynamically generated images that illustrate each part on the image.This method accepts a unique image name (that can be obtained from The GetVehicleImgInfo method).This method accepts a language and dialect (that can be obtained from the GetLanguages) method.The HighlightedPart and ColorIndex methods can be zero as a default, or they can be used to choose the index of the part to be highlighted and the color of the part shading to use on the image. 		</documentation>
+      <input message="s0:GetInspectionImageAndPartsHttpPostIn" />
+      <output message="s0:GetInspectionImageAndPartsHttpPostOut" />
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <documentation>This method returns an URL for an Inspection image with the specified part shaded. This method dynamically generates an image and returns a URL. The image will have a specified part highlighted with a hatch pattern. 		</documentation>
+      <input message="s0:GetInspectionImageShadedHttpPostIn" />
+      <output message="s0:GetInspectionImageShadedHttpPostOut" />
+    </operation>
+    <operation name="GetImgTitle">
+      <documentation> This method returns a title that can be used to label an image. This title might be useful as 'rollover text' on an image.This method accepts a unique image name that can be obtained from the GetVehicleImgInfo method.	</documentation>
+      <input message="s0:GetImgTitleHttpPostIn" />
+      <output message="s0:GetImgTitleHttpPostOut" />
+    </operation>
+    <operation name="GetLanguages">
+      <documentation>Get the list of available languages.  Several of the methods in this service accept a language and a dialect identifier.  This function returns a list of the available language and dialect identifiers.</documentation>
+      <input message="s0:GetLanguagesHttpPostIn" />
+      <output message="s0:GetLanguagesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UndercarVehicleImageSoap" type="s0:UndercarVehicleImageSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetManufacturerList">
+      <soap:operation soapAction="http://www.hunter.com/GetManufacturerList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetModelList">
+      <soap:operation soapAction="http://www.hunter.com/GetModelList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <soap:operation soapAction="http://www.hunter.com/GetVehicleImgInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdjImgURL">
+      <soap:operation soapAction="http://www.hunter.com/GetAdjImgURL" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <soap:operation soapAction="http://www.hunter.com/GetInspectionImageAndParts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <soap:operation soapAction="http://www.hunter.com/GetInspectionImageShaded" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetImgTitle">
+      <soap:operation soapAction="http://www.hunter.com/GetImgTitle" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLanguages">
+      <soap:operation soapAction="http://www.hunter.com/GetLanguages" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UndercarVehicleImageHttpGet" type="s0:UndercarVehicleImageHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetManufacturerList">
+      <http:operation location="/GetManufacturerList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetModelList">
+      <http:operation location="/GetModelList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <http:operation location="/GetVehicleImgInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjImgURL">
+      <http:operation location="/GetAdjImgURL" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <http:operation location="/GetInspectionImageAndParts" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <http:operation location="/GetInspectionImageShaded" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetImgTitle">
+      <http:operation location="/GetImgTitle" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLanguages">
+      <http:operation location="/GetLanguages" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UndercarVehicleImageHttpPost" type="s0:UndercarVehicleImageHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetManufacturerList">
+      <http:operation location="/GetManufacturerList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetModelList">
+      <http:operation location="/GetModelList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetVehicleImgInfo">
+      <http:operation location="/GetVehicleImgInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjImgURL">
+      <http:operation location="/GetAdjImgURL" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageAndParts">
+      <http:operation location="/GetInspectionImageAndParts" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInspectionImageShaded">
+      <http:operation location="/GetInspectionImageShaded" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetImgTitle">
+      <http:operation location="/GetImgTitle" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLanguages">
+      <http:operation location="/GetLanguages" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UndercarVehicleImage">
+    <documentation>This service provides information about the adjustment and inspection images  available on the Hunter Engineering web server.  The GetAdjImgURL and GetInspectionImageAndParts functions dynamically generate images in specified language and size.  The GetVehicleImgInfo function is used to determine what images are available for a single vehicle.  The GetManufacturerList and GetModelList functions are used to determine what vehicles are available.    &lt;P&gt;For technical information about this service see:&lt;BR&gt;			&lt;A href="http://www.webspecs.net/webservice"&gt;http://www.webspecs.net/webservice&lt;/A&gt;&lt;/P&gt;		&lt;P&gt;&lt;/P&gt;		&lt;P&gt;To view the service in use see:&lt;BR&gt;			&lt;A href="http://www.webspecs.net"&gt;http://www.webspecs.net&lt;/A&gt;&lt;/P&gt;	</documentation>
+    <port name="UndercarVehicleImageSoap" binding="s0:UndercarVehicleImageSoap">
+      <soap:address location="http://www.webspecs.net/VehicleImgInfoWebService/VehicleImgInfo.asmx" />
+    </port>
+    <port name="UndercarVehicleImageHttpGet" binding="s0:UndercarVehicleImageHttpGet">
+      <http:address location="http://www.webspecs.net/VehicleImgInfoWebService/VehicleImgInfo.asmx" />
+    </port>
+    <port name="UndercarVehicleImageHttpPost" binding="s0:UndercarVehicleImageHttpPost">
+      <http:address location="http://www.webspecs.net/VehicleImgInfoWebService/VehicleImgInfo.asmx" />
+    </port>
+  </service>
+</definitions>

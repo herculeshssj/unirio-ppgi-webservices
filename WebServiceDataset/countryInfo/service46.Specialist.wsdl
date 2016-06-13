@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="LiveCityCams" targetNamespace="http://www.epionet.com/webservices/epiowebservices/livecitycams/wsdl/" xmlns:stc="http://www.epionet.com/webservices/epiowebservices/livecitycams/wsdl/" xmlns:xsd1="http://www.epionet.com/webservices/epiowebservices/livecitycams/schema/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="http://www.epionet.com/webservices/epiowebservices/livecitycams/schema/" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+			<element name="ListLiveCityCamsResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="citycams" type="xsd1:LiveCityCam"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="GetLiveCityCamRequest">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="citycamid" type="string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="GetLiveCityCamResponse">
+				<complexType>
+					<sequence>
+						<element minOccurs="1" maxOccurs="1" name="livecitycam" type="string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="LiveCityCam">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="citycam" type="xsd1:CityCamList"/>
+				</sequence>
+			</complexType>
+			<complexType name="CityCamList">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="camid" type="string"/>
+					<element minOccurs="1" maxOccurs="1" name="city" type="string"/>
+					<element minOccurs="1" maxOccurs="1" name="location" type="string"/>
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	<message name="ListLiveCityCamsRequest"/>
+	<message name="ListLiveCityCamsResponse">
+		<part name="params" element="xsd1:ListLiveCityCamsResponse"/>
+	</message>
+	<message name="GetLiveCityCamRequest">
+		<part name="params" element="xsd1:GetLiveCityCamRequest"/>
+	</message>
+	<message name="GetLiveCityCamResponse">
+		<part name="params" element="xsd1:GetLiveCityCamResponse"/>
+	</message>
+	<portType name="LiveCityCamsPortType">
+		<operation name="ListLiveCityCams">
+			<documentation>......</documentation>
+			<input message="stc:ListLiveCityCamsRequest"/>
+			<output message="stc:ListLiveCityCamsResponse"/>
+		</operation>
+		<operation name="GetLiveCityCam">
+			<documentation>......</documentation>
+			<input message="stc:GetLiveCityCamRequest"/>
+			<output message="stc:GetLiveCityCamResponse"/>
+		</operation>
+	</portType>
+	<binding name="LiveCityCamsBinding" type="stc:LiveCityCamsPortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="ListLiveCityCams">
+			<soap:operation soapAction="http://www.epionet.com/webservices/epiowebservices/livecitycams/listlivecitycams" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetLiveCityCam">
+			<soap:operation soapAction="http://www.epionet.com/webservices/epiowebservices/livecitycams/getlivecitycam" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="LiveCityCams">
+		<documentation>.....</documentation>
+		<port name="LiveCityCamsPort" binding="stc:LiveCityCamsBinding">
+			<soap:address location="http://www.epionet.com/epiowavewebservices/livecitycams/livecitycams.asp"/>
+		</port>
+	</service>
+</definitions>

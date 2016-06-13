@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://freene.com/RentDB2/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://freene.com/RentDB2/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://freene.com/RentDB2/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="register_user">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="register_userResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="register_userResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="register_table">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name_wanted" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="register_tableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="register_tableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="register_column">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="col_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="data_type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="data_size" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="is_notnull" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="is_identity" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="default_val" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="check_cstr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="register_columnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="register_columnResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_table">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="create_tableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="create_tableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="drop_table">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="drop_tableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drop_tableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_row">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="col_list" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="val_list" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insert_rowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insert_rowResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_row">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="col_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="val_updt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="where" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="update_rowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="update_rowResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_row">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="where" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_rowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delete_rowResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="select_row">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="col_list" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="where" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="select_rowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="select_rowResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_user_info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_user_infoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_user_infoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_table_info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_table_infoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_table_infoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_table_schema">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_table_schemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_table_schemaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="register_userSoapIn">
+    <part name="parameters" element="s0:register_user" />
+  </message>
+  <message name="register_userSoapOut">
+    <part name="parameters" element="s0:register_userResponse" />
+  </message>
+  <message name="register_tableSoapIn">
+    <part name="parameters" element="s0:register_table" />
+  </message>
+  <message name="register_tableSoapOut">
+    <part name="parameters" element="s0:register_tableResponse" />
+  </message>
+  <message name="register_columnSoapIn">
+    <part name="parameters" element="s0:register_column" />
+  </message>
+  <message name="register_columnSoapOut">
+    <part name="parameters" element="s0:register_columnResponse" />
+  </message>
+  <message name="create_tableSoapIn">
+    <part name="parameters" element="s0:create_table" />
+  </message>
+  <message name="create_tableSoapOut">
+    <part name="parameters" element="s0:create_tableResponse" />
+  </message>
+  <message name="drop_tableSoapIn">
+    <part name="parameters" element="s0:drop_table" />
+  </message>
+  <message name="drop_tableSoapOut">
+    <part name="parameters" element="s0:drop_tableResponse" />
+  </message>
+  <message name="insert_rowSoapIn">
+    <part name="parameters" element="s0:insert_row" />
+  </message>
+  <message name="insert_rowSoapOut">
+    <part name="parameters" element="s0:insert_rowResponse" />
+  </message>
+  <message name="update_rowSoapIn">
+    <part name="parameters" element="s0:update_row" />
+  </message>
+  <message name="update_rowSoapOut">
+    <part name="parameters" element="s0:update_rowResponse" />
+  </message>
+  <message name="delete_rowSoapIn">
+    <part name="parameters" element="s0:delete_row" />
+  </message>
+  <message name="delete_rowSoapOut">
+    <part name="parameters" element="s0:delete_rowResponse" />
+  </message>
+  <message name="select_rowSoapIn">
+    <part name="parameters" element="s0:select_row" />
+  </message>
+  <message name="select_rowSoapOut">
+    <part name="parameters" element="s0:select_rowResponse" />
+  </message>
+  <message name="get_user_infoSoapIn">
+    <part name="parameters" element="s0:get_user_info" />
+  </message>
+  <message name="get_user_infoSoapOut">
+    <part name="parameters" element="s0:get_user_infoResponse" />
+  </message>
+  <message name="get_table_infoSoapIn">
+    <part name="parameters" element="s0:get_table_info" />
+  </message>
+  <message name="get_table_infoSoapOut">
+    <part name="parameters" element="s0:get_table_infoResponse" />
+  </message>
+  <message name="get_table_schemaSoapIn">
+    <part name="parameters" element="s0:get_table_schema" />
+  </message>
+  <message name="get_table_schemaSoapOut">
+    <part name="parameters" element="s0:get_table_schemaResponse" />
+  </message>
+  <message name="register_userHttpGetIn">
+    <part name="user_name" type="s:string" />
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="phone" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_userHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="register_tableHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name_wanted" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_tableHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="register_columnHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_name" type="s:string" />
+    <part name="data_type" type="s:string" />
+    <part name="data_size" type="s:string" />
+    <part name="is_notnull" type="s:string" />
+    <part name="is_identity" type="s:string" />
+    <part name="default_val" type="s:string" />
+    <part name="check_cstr" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_columnHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="create_tableHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="create_tableHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="drop_tableHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="drop_tableHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="insert_rowHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_list" type="s:string" />
+    <part name="val_list" type="s:string" />
+  </message>
+  <message name="insert_rowHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="update_rowHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_name" type="s:string" />
+    <part name="val_updt" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="update_rowHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="delete_rowHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="delete_rowHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="select_rowHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_list" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="select_rowHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_user_infoHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="get_user_infoHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_table_infoHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+  </message>
+  <message name="get_table_infoHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_table_schemaHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+  </message>
+  <message name="get_table_schemaHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="register_userHttpPostIn">
+    <part name="user_name" type="s:string" />
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="phone" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_userHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="register_tableHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name_wanted" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_tableHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="register_columnHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_name" type="s:string" />
+    <part name="data_type" type="s:string" />
+    <part name="data_size" type="s:string" />
+    <part name="is_notnull" type="s:string" />
+    <part name="is_identity" type="s:string" />
+    <part name="default_val" type="s:string" />
+    <part name="check_cstr" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="register_columnHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="create_tableHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="create_tableHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="drop_tableHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="remark" type="s:string" />
+  </message>
+  <message name="drop_tableHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="insert_rowHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_list" type="s:string" />
+    <part name="val_list" type="s:string" />
+  </message>
+  <message name="insert_rowHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="update_rowHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_name" type="s:string" />
+    <part name="val_updt" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="update_rowHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="delete_rowHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="delete_rowHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="select_rowHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+    <part name="col_list" type="s:string" />
+    <part name="where" type="s:string" />
+  </message>
+  <message name="select_rowHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_user_infoHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="get_user_infoHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_table_infoHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+  </message>
+  <message name="get_table_infoHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="get_table_schemaHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="tbl_name" type="s:string" />
+  </message>
+  <message name="get_table_schemaHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="RentDB2Soap">
+    <operation name="register_user">
+      <input message="s0:register_userSoapIn" />
+      <output message="s0:register_userSoapOut" />
+    </operation>
+    <operation name="register_table">
+      <input message="s0:register_tableSoapIn" />
+      <output message="s0:register_tableSoapOut" />
+    </operation>
+    <operation name="register_column">
+      <input message="s0:register_columnSoapIn" />
+      <output message="s0:register_columnSoapOut" />
+    </operation>
+    <operation name="create_table">
+      <input message="s0:create_tableSoapIn" />
+      <output message="s0:create_tableSoapOut" />
+    </operation>
+    <operation name="drop_table">
+      <input message="s0:drop_tableSoapIn" />
+      <output message="s0:drop_tableSoapOut" />
+    </operation>
+    <operation name="insert_row">
+      <input message="s0:insert_rowSoapIn" />
+      <output message="s0:insert_rowSoapOut" />
+    </operation>
+    <operation name="update_row">
+      <input message="s0:update_rowSoapIn" />
+      <output message="s0:update_rowSoapOut" />
+    </operation>
+    <operation name="delete_row">
+      <input message="s0:delete_rowSoapIn" />
+      <output message="s0:delete_rowSoapOut" />
+    </operation>
+    <operation name="select_row">
+      <input message="s0:select_rowSoapIn" />
+      <output message="s0:select_rowSoapOut" />
+    </operation>
+    <operation name="get_user_info">
+      <input message="s0:get_user_infoSoapIn" />
+      <output message="s0:get_user_infoSoapOut" />
+    </operation>
+    <operation name="get_table_info">
+      <input message="s0:get_table_infoSoapIn" />
+      <output message="s0:get_table_infoSoapOut" />
+    </operation>
+    <operation name="get_table_schema">
+      <input message="s0:get_table_schemaSoapIn" />
+      <output message="s0:get_table_schemaSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RentDB2HttpGet">
+    <operation name="register_user">
+      <input message="s0:register_userHttpGetIn" />
+      <output message="s0:register_userHttpGetOut" />
+    </operation>
+    <operation name="register_table">
+      <input message="s0:register_tableHttpGetIn" />
+      <output message="s0:register_tableHttpGetOut" />
+    </operation>
+    <operation name="register_column">
+      <input message="s0:register_columnHttpGetIn" />
+      <output message="s0:register_columnHttpGetOut" />
+    </operation>
+    <operation name="create_table">
+      <input message="s0:create_tableHttpGetIn" />
+      <output message="s0:create_tableHttpGetOut" />
+    </operation>
+    <operation name="drop_table">
+      <input message="s0:drop_tableHttpGetIn" />
+      <output message="s0:drop_tableHttpGetOut" />
+    </operation>
+    <operation name="insert_row">
+      <input message="s0:insert_rowHttpGetIn" />
+      <output message="s0:insert_rowHttpGetOut" />
+    </operation>
+    <operation name="update_row">
+      <input message="s0:update_rowHttpGetIn" />
+      <output message="s0:update_rowHttpGetOut" />
+    </operation>
+    <operation name="delete_row">
+      <input message="s0:delete_rowHttpGetIn" />
+      <output message="s0:delete_rowHttpGetOut" />
+    </operation>
+    <operation name="select_row">
+      <input message="s0:select_rowHttpGetIn" />
+      <output message="s0:select_rowHttpGetOut" />
+    </operation>
+    <operation name="get_user_info">
+      <input message="s0:get_user_infoHttpGetIn" />
+      <output message="s0:get_user_infoHttpGetOut" />
+    </operation>
+    <operation name="get_table_info">
+      <input message="s0:get_table_infoHttpGetIn" />
+      <output message="s0:get_table_infoHttpGetOut" />
+    </operation>
+    <operation name="get_table_schema">
+      <input message="s0:get_table_schemaHttpGetIn" />
+      <output message="s0:get_table_schemaHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RentDB2HttpPost">
+    <operation name="register_user">
+      <input message="s0:register_userHttpPostIn" />
+      <output message="s0:register_userHttpPostOut" />
+    </operation>
+    <operation name="register_table">
+      <input message="s0:register_tableHttpPostIn" />
+      <output message="s0:register_tableHttpPostOut" />
+    </operation>
+    <operation name="register_column">
+      <input message="s0:register_columnHttpPostIn" />
+      <output message="s0:register_columnHttpPostOut" />
+    </operation>
+    <operation name="create_table">
+      <input message="s0:create_tableHttpPostIn" />
+      <output message="s0:create_tableHttpPostOut" />
+    </operation>
+    <operation name="drop_table">
+      <input message="s0:drop_tableHttpPostIn" />
+      <output message="s0:drop_tableHttpPostOut" />
+    </operation>
+    <operation name="insert_row">
+      <input message="s0:insert_rowHttpPostIn" />
+      <output message="s0:insert_rowHttpPostOut" />
+    </operation>
+    <operation name="update_row">
+      <input message="s0:update_rowHttpPostIn" />
+      <output message="s0:update_rowHttpPostOut" />
+    </operation>
+    <operation name="delete_row">
+      <input message="s0:delete_rowHttpPostIn" />
+      <output message="s0:delete_rowHttpPostOut" />
+    </operation>
+    <operation name="select_row">
+      <input message="s0:select_rowHttpPostIn" />
+      <output message="s0:select_rowHttpPostOut" />
+    </operation>
+    <operation name="get_user_info">
+      <input message="s0:get_user_infoHttpPostIn" />
+      <output message="s0:get_user_infoHttpPostOut" />
+    </operation>
+    <operation name="get_table_info">
+      <input message="s0:get_table_infoHttpPostIn" />
+      <output message="s0:get_table_infoHttpPostOut" />
+    </operation>
+    <operation name="get_table_schema">
+      <input message="s0:get_table_schemaHttpPostIn" />
+      <output message="s0:get_table_schemaHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RentDB2Soap" type="s0:RentDB2Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="register_user">
+      <soap:operation soapAction="http://freene.com/RentDB2/register_user" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="register_table">
+      <soap:operation soapAction="http://freene.com/RentDB2/register_table" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="register_column">
+      <soap:operation soapAction="http://freene.com/RentDB2/register_column" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="create_table">
+      <soap:operation soapAction="http://freene.com/RentDB2/create_table" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="drop_table">
+      <soap:operation soapAction="http://freene.com/RentDB2/drop_table" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insert_row">
+      <soap:operation soapAction="http://freene.com/RentDB2/insert_row" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="update_row">
+      <soap:operation soapAction="http://freene.com/RentDB2/update_row" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="delete_row">
+      <soap:operation soapAction="http://freene.com/RentDB2/delete_row" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="select_row">
+      <soap:operation soapAction="http://freene.com/RentDB2/select_row" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_user_info">
+      <soap:operation soapAction="http://freene.com/RentDB2/get_user_info" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_table_info">
+      <soap:operation soapAction="http://freene.com/RentDB2/get_table_info" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="get_table_schema">
+      <soap:operation soapAction="http://freene.com/RentDB2/get_table_schema" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RentDB2HttpGet" type="s0:RentDB2HttpGet">
+    <http:binding verb="GET" />
+    <operation name="register_user">
+      <http:operation location="/register_user" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="register_table">
+      <http:operation location="/register_table" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="register_column">
+      <http:operation location="/register_column" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="create_table">
+      <http:operation location="/create_table" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="drop_table">
+      <http:operation location="/drop_table" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="insert_row">
+      <http:operation location="/insert_row" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="update_row">
+      <http:operation location="/update_row" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="delete_row">
+      <http:operation location="/delete_row" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="select_row">
+      <http:operation location="/select_row" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_user_info">
+      <http:operation location="/get_user_info" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_table_info">
+      <http:operation location="/get_table_info" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_table_schema">
+      <http:operation location="/get_table_schema" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RentDB2HttpPost" type="s0:RentDB2HttpPost">
+    <http:binding verb="POST" />
+    <operation name="register_user">
+      <http:operation location="/register_user" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="register_table">
+      <http:operation location="/register_table" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="register_column">
+      <http:operation location="/register_column" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="create_table">
+      <http:operation location="/create_table" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="drop_table">
+      <http:operation location="/drop_table" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="insert_row">
+      <http:operation location="/insert_row" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="update_row">
+      <http:operation location="/update_row" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="delete_row">
+      <http:operation location="/delete_row" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="select_row">
+      <http:operation location="/select_row" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_user_info">
+      <http:operation location="/get_user_info" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_table_info">
+      <http:operation location="/get_table_info" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="get_table_schema">
+      <http:operation location="/get_table_schema" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RentDB2">
+    <port name="RentDB2Soap" binding="s0:RentDB2Soap">
+      <soap:address location="http://freene.dynip.com/RentDB2/RentDB2.asmx" />
+    </port>
+    <port name="RentDB2HttpGet" binding="s0:RentDB2HttpGet">
+      <http:address location="http://freene.dynip.com/RentDB2/RentDB2.asmx" />
+    </port>
+    <port name="RentDB2HttpPost" binding="s0:RentDB2HttpPost">
+      <http:address location="http://freene.dynip.com/RentDB2/RentDB2.asmx" />
+    </port>
+  </service>
+</definitions>

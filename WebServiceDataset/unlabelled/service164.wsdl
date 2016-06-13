@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://cfc" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://cfc" xmlns:impl="http://cfc-impl" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/"><types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2001/XMLSchema"><element name="dateTime" nillable="true" type="xsd:dateTime"/></schema></types>
+  <wsdl:message name="makecodResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="makecodRequest">
+    <wsdl:part name="cognome" type="SOAP-ENC:string"/>
+    <wsdl:part name="nome" type="SOAP-ENC:string"/>
+    <wsdl:part name="sesso" type="SOAP-ENC:string"/>
+    <wsdl:part name="provincia" type="SOAP-ENC:string"/>
+    <wsdl:part name="comune" type="SOAP-ENC:string"/>
+    <wsdl:part name="nascita" type="xsd:dateTime"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:portType name="Cod_fiscale">
+    <wsdl:operation name="makecod" parameterOrder="cognome nome sesso provincia comune nascita">
+      <wsdl:input message="intf:makecodRequest"/>
+      <wsdl:output message="intf:makecodResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Cod_fiscale.cfcSoapBinding" type="intf:Cod_fiscale">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="makecod">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://cfc"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://cfc"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Cod_fiscaleService">
+    <wsdl:port name="Cod_fiscale.cfc" binding="intf:Cod_fiscale.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.pinellus.com/cfc/Cod_fiscale.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+
+<definitions name="WebSiteMembers.cprocess" targetNamespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" xmlns:tns="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="CreateWebSiteRequest">
+        <part name="WebSiteName" type="xsd:string"/>
+        <part name="WebSitePassword" type="xsd:string"/>
+    </message>
+    <message name="CreateWebSiteResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="IsValidWebSiteRequest">
+        <part name="WebSiteName" type="xsd:string"/>
+        <part name="WebSitePassword" type="xsd:string"/>
+    </message>
+    <message name="IsValidWebSiteResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="IsRegisteredRequest">
+        <part name="WebSiteName" type="xsd:string"/>
+        <part name="WebSitePassword" type="xsd:string"/>
+        <part name="EmailAddress" type="xsd:string"/>
+    </message>
+    <message name="IsRegisteredResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="RegisterRequest">
+        <part name="WebSiteName" type="xsd:string"/>
+        <part name="WebSitePassword" type="xsd:string"/>
+        <part name="EmailAddress" type="xsd:string"/>
+        <part name="Name" type="xsd:string"/>
+        <part name="Password" type="xsd:string"/>
+    </message>
+    <message name="RegisterResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="WebSiteMembers.cprocessPortType">
+        <operation name="CreateWebSite">
+            <input message="tns:CreateWebSiteRequest"/>
+            <output message="tns:CreateWebSiteResponse"/>
+        </operation>
+        <operation name="IsValidWebSite">
+            <input message="tns:IsValidWebSiteRequest"/>
+            <output message="tns:IsValidWebSiteResponse"/>
+        </operation>
+        <operation name="IsRegistered">
+            <input message="tns:IsRegisteredRequest"/>
+            <output message="tns:IsRegisteredResponse"/>
+        </operation>
+        <operation name="Register">
+            <input message="tns:RegisterRequest"/>
+            <output message="tns:RegisterResponse"/>
+        </operation>
+    </portType>
+    <binding name="WebSiteMembers.cprocessbinding" type="tns:WebSiteMembers.cprocessPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="CreateWebSite">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml#CreateWebSite"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsValidWebSite">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml#IsValidWebSite"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsRegistered">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml#IsRegistered"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Register">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml#Register"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/WebSiteMembers/CProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WebSiteMembers.cprocessService">
+        <port name="WebSiteMembers.cprocessPort" binding="tns:WebSiteMembers.cprocessbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lcmembers.cgi"/>
+        </port>
+    </service>
+</definitions>

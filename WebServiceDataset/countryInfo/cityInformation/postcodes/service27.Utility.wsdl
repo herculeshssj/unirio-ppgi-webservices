@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZipCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetZipCodeSoapIn">
+    <part name="parameters" element="s0:GetZipCode" />
+  </message>
+  <message name="GetZipCodeSoapOut">
+    <part name="parameters" element="s0:GetZipCodeResponse" />
+  </message>
+  <message name="GetZipCodeHttpGetIn">
+    <part name="txt" type="s:string" />
+  </message>
+  <message name="GetZipCodeHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetZipCodeHttpPostIn">
+    <part name="txt" type="s:string" />
+  </message>
+  <message name="GetZipCodeHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="ZipServiceSoap">
+    <operation name="GetZipCode">
+      <input message="s0:GetZipCodeSoapIn" />
+      <output message="s0:GetZipCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ZipServiceHttpGet">
+    <operation name="GetZipCode">
+      <input message="s0:GetZipCodeHttpGetIn" />
+      <output message="s0:GetZipCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ZipServiceHttpPost">
+    <operation name="GetZipCode">
+      <input message="s0:GetZipCodeHttpPostIn" />
+      <output message="s0:GetZipCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ZipServiceSoap" type="s0:ZipServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetZipCode">
+      <soap:operation soapAction="http://tempuri.org/GetZipCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipServiceHttpGet" type="s0:ZipServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetZipCode">
+      <http:operation location="/GetZipCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipServiceHttpPost" type="s0:ZipServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetZipCode">
+      <http:operation location="/GetZipCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ZipService">
+    <port name="ZipServiceSoap" binding="s0:ZipServiceSoap">
+      <soap:address location="http://www.kuddi.net/ZipCodeService/Service1.asmx" />
+    </port>
+    <port name="ZipServiceHttpGet" binding="s0:ZipServiceHttpGet">
+      <http:address location="http://www.kuddi.net/ZipCodeService/Service1.asmx" />
+    </port>
+    <port name="ZipServiceHttpPost" binding="s0:ZipServiceHttpPost">
+      <http:address location="http://www.kuddi.net/ZipCodeService/Service1.asmx" />
+    </port>
+  </service>
+</definitions>

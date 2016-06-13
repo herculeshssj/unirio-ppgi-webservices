@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeDensityUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DensityValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromDensityUnit" type="s0:Densitys" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDensityUnit" type="s0:Densitys" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Densitys">
+        <s:restriction base="s:string">
+          <s:enumeration value="kgPercubicmeter" />
+          <s:enumeration value="lbmPercubicfoot" />
+          <s:enumeration value="lbmPergallonUSliq" />
+          <s:enumeration value="slugPercubicfoot" />
+          <s:enumeration value="gramPercubiccm" />
+          <s:enumeration value="kilogramPerliter" />
+          <s:enumeration value="metrictonPercumeter" />
+          <s:enumeration value="longtonPercubicyard" />
+          <s:enumeration value="lbmPercubicinch" />
+          <s:enumeration value="shorttonPercubicfoot" />
+          <s:enumeration value="kilogramPercubiccm" />
+          <s:enumeration value="aluminum" />
+          <s:enumeration value="iron" />
+          <s:enumeration value="copper" />
+          <s:enumeration value="lead" />
+          <s:enumeration value="gold" />
+          <s:enumeration value="silver" />
+          <s:enumeration value="water" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeDensityUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeDensityUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeDensityUnitSoapIn">
+    <part name="parameters" element="s0:ChangeDensityUnit" />
+  </message>
+  <message name="ChangeDensityUnitSoapOut">
+    <part name="parameters" element="s0:ChangeDensityUnitResponse" />
+  </message>
+  <message name="ChangeDensityUnitHttpGetIn">
+    <part name="DensityValue" type="s:string" />
+    <part name="fromDensityUnit" type="s:string" />
+    <part name="toDensityUnit" type="s:string" />
+  </message>
+  <message name="ChangeDensityUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeDensityUnitHttpPostIn">
+    <part name="DensityValue" type="s:string" />
+    <part name="fromDensityUnit" type="s:string" />
+    <part name="toDensityUnit" type="s:string" />
+  </message>
+  <message name="ChangeDensityUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="DensityUnitSoap">
+    <operation name="ChangeDensityUnit">
+      <input message="s0:ChangeDensityUnitSoapIn" />
+      <output message="s0:ChangeDensityUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DensityUnitHttpGet">
+    <operation name="ChangeDensityUnit">
+      <input message="s0:ChangeDensityUnitHttpGetIn" />
+      <output message="s0:ChangeDensityUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DensityUnitHttpPost">
+    <operation name="ChangeDensityUnit">
+      <input message="s0:ChangeDensityUnitHttpPostIn" />
+      <output message="s0:ChangeDensityUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DensityUnitSoap" type="s0:DensityUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeDensityUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeDensityUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DensityUnitHttpGet" type="s0:DensityUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeDensityUnit">
+      <http:operation location="/ChangeDensityUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DensityUnitHttpPost" type="s0:DensityUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeDensityUnit">
+      <http:operation location="/ChangeDensityUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DensityUnit">
+    <port name="DensityUnitSoap" binding="s0:DensityUnitSoap">
+      <soap:address location="http://www.webservicex.net/ConvertDensity.asmx" />
+    </port>
+    <port name="DensityUnitHttpGet" binding="s0:DensityUnitHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertDensity.asmx" />
+    </port>
+    <port name="DensityUnitHttpPost" binding="s0:DensityUnitHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertDensity.asmx" />
+    </port>
+  </service>
+</definitions>

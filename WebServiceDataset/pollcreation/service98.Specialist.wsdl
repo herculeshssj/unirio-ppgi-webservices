@@ -1,0 +1,2006 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tenculi.org" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tenculi.org" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tenculi.org">
+      <s:element name="CreateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateAccountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAccountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePWD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNewPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePWDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangePWDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPWD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsername" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendPWDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendPWDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeletePollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDAnswer" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAnswerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPoll" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Vote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAnswer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserIdentity" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VoteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasVoted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserIdentity" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasVotedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasVotedResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPoll" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyPollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAnswer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAnswerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArchivePoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArchivePollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ArchivePollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosePoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClosePollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClosePollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenPoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenPollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OpenPollResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPolls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPollsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPollsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllOpenPolls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllOpenPollsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllOpenPollsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClosedPolls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClosedPollsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClosedPollsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllArchivedPolls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllArchivedPollsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllArchivedPollsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iIDQuestion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPollResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomPoll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomPollResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRandomPollResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomPollByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserIdentity" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomPollByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRandomPollByUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXMLPollSchema">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetXMLPollSchemaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXMLPollSchemaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastErrorMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastErrorMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastErrorMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetErrorMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastErrorCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIDAccount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastErrorCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLastErrorCodeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="CreateAccountSoapIn">
+    <part name="parameters" element="s0:CreateAccount" />
+  </message>
+  <message name="CreateAccountSoapOut">
+    <part name="parameters" element="s0:CreateAccountResponse" />
+  </message>
+  <message name="DoLoginSoapIn">
+    <part name="parameters" element="s0:DoLogin" />
+  </message>
+  <message name="DoLoginSoapOut">
+    <part name="parameters" element="s0:DoLoginResponse" />
+  </message>
+  <message name="DeleteAccountSoapIn">
+    <part name="parameters" element="s0:DeleteAccount" />
+  </message>
+  <message name="DeleteAccountSoapOut">
+    <part name="parameters" element="s0:DeleteAccountResponse" />
+  </message>
+  <message name="ChangePWDSoapIn">
+    <part name="parameters" element="s0:ChangePWD" />
+  </message>
+  <message name="ChangePWDSoapOut">
+    <part name="parameters" element="s0:ChangePWDResponse" />
+  </message>
+  <message name="SendPWDSoapIn">
+    <part name="parameters" element="s0:SendPWD" />
+  </message>
+  <message name="SendPWDSoapOut">
+    <part name="parameters" element="s0:SendPWDResponse" />
+  </message>
+  <message name="DeletePollSoapIn">
+    <part name="parameters" element="s0:DeletePoll" />
+  </message>
+  <message name="DeletePollSoapOut">
+    <part name="parameters" element="s0:DeletePollResponse" />
+  </message>
+  <message name="DeleteAnswerSoapIn">
+    <part name="parameters" element="s0:DeleteAnswer" />
+  </message>
+  <message name="DeleteAnswerSoapOut">
+    <part name="parameters" element="s0:DeleteAnswerResponse" />
+  </message>
+  <message name="CreatePollSoapIn">
+    <part name="parameters" element="s0:CreatePoll" />
+  </message>
+  <message name="CreatePollSoapOut">
+    <part name="parameters" element="s0:CreatePollResponse" />
+  </message>
+  <message name="VoteSoapIn">
+    <part name="parameters" element="s0:Vote" />
+  </message>
+  <message name="VoteSoapOut">
+    <part name="parameters" element="s0:VoteResponse" />
+  </message>
+  <message name="HasVotedSoapIn">
+    <part name="parameters" element="s0:HasVoted" />
+  </message>
+  <message name="HasVotedSoapOut">
+    <part name="parameters" element="s0:HasVotedResponse" />
+  </message>
+  <message name="ModifyPollSoapIn">
+    <part name="parameters" element="s0:ModifyPoll" />
+  </message>
+  <message name="ModifyPollSoapOut">
+    <part name="parameters" element="s0:ModifyPollResponse" />
+  </message>
+  <message name="AddAnswerSoapIn">
+    <part name="parameters" element="s0:AddAnswer" />
+  </message>
+  <message name="AddAnswerSoapOut">
+    <part name="parameters" element="s0:AddAnswerResponse" />
+  </message>
+  <message name="ArchivePollSoapIn">
+    <part name="parameters" element="s0:ArchivePoll" />
+  </message>
+  <message name="ArchivePollSoapOut">
+    <part name="parameters" element="s0:ArchivePollResponse" />
+  </message>
+  <message name="ClosePollSoapIn">
+    <part name="parameters" element="s0:ClosePoll" />
+  </message>
+  <message name="ClosePollSoapOut">
+    <part name="parameters" element="s0:ClosePollResponse" />
+  </message>
+  <message name="OpenPollSoapIn">
+    <part name="parameters" element="s0:OpenPoll" />
+  </message>
+  <message name="OpenPollSoapOut">
+    <part name="parameters" element="s0:OpenPollResponse" />
+  </message>
+  <message name="GetAllPollsSoapIn">
+    <part name="parameters" element="s0:GetAllPolls" />
+  </message>
+  <message name="GetAllPollsSoapOut">
+    <part name="parameters" element="s0:GetAllPollsResponse" />
+  </message>
+  <message name="GetAllOpenPollsSoapIn">
+    <part name="parameters" element="s0:GetAllOpenPolls" />
+  </message>
+  <message name="GetAllOpenPollsSoapOut">
+    <part name="parameters" element="s0:GetAllOpenPollsResponse" />
+  </message>
+  <message name="GetAllClosedPollsSoapIn">
+    <part name="parameters" element="s0:GetAllClosedPolls" />
+  </message>
+  <message name="GetAllClosedPollsSoapOut">
+    <part name="parameters" element="s0:GetAllClosedPollsResponse" />
+  </message>
+  <message name="GetAllArchivedPollsSoapIn">
+    <part name="parameters" element="s0:GetAllArchivedPolls" />
+  </message>
+  <message name="GetAllArchivedPollsSoapOut">
+    <part name="parameters" element="s0:GetAllArchivedPollsResponse" />
+  </message>
+  <message name="GetPollSoapIn">
+    <part name="parameters" element="s0:GetPoll" />
+  </message>
+  <message name="GetPollSoapOut">
+    <part name="parameters" element="s0:GetPollResponse" />
+  </message>
+  <message name="GetRandomPollSoapIn">
+    <part name="parameters" element="s0:GetRandomPoll" />
+  </message>
+  <message name="GetRandomPollSoapOut">
+    <part name="parameters" element="s0:GetRandomPollResponse" />
+  </message>
+  <message name="GetRandomPollByUserSoapIn">
+    <part name="parameters" element="s0:GetRandomPollByUser" />
+  </message>
+  <message name="GetRandomPollByUserSoapOut">
+    <part name="parameters" element="s0:GetRandomPollByUserResponse" />
+  </message>
+  <message name="GetXMLPollSchemaSoapIn">
+    <part name="parameters" element="s0:GetXMLPollSchema" />
+  </message>
+  <message name="GetXMLPollSchemaSoapOut">
+    <part name="parameters" element="s0:GetXMLPollSchemaResponse" />
+  </message>
+  <message name="GetLastErrorMessageSoapIn">
+    <part name="parameters" element="s0:GetLastErrorMessage" />
+  </message>
+  <message name="GetLastErrorMessageSoapOut">
+    <part name="parameters" element="s0:GetLastErrorMessageResponse" />
+  </message>
+  <message name="GetErrorMessageSoapIn">
+    <part name="parameters" element="s0:GetErrorMessage" />
+  </message>
+  <message name="GetErrorMessageSoapOut">
+    <part name="parameters" element="s0:GetErrorMessageResponse" />
+  </message>
+  <message name="GetLastErrorCodeSoapIn">
+    <part name="parameters" element="s0:GetLastErrorCode" />
+  </message>
+  <message name="GetLastErrorCodeSoapOut">
+    <part name="parameters" element="s0:GetLastErrorCodeResponse" />
+  </message>
+  <message name="CreateAccountHttpGetIn">
+    <part name="strUsername" type="s:string" />
+    <part name="strEmail" type="s:string" />
+  </message>
+  <message name="CreateAccountHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DoLoginHttpGetIn">
+    <part name="strUsername" type="s:string" />
+    <part name="strPwd" type="s:string" />
+  </message>
+  <message name="DoLoginHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DeleteAccountHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="DeleteAccountHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ChangePWDHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strNewPwd" type="s:string" />
+  </message>
+  <message name="ChangePWDHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SendPWDHttpGetIn">
+    <part name="strUsername" type="s:string" />
+  </message>
+  <message name="SendPWDHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DeletePollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="DeletePollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DeleteAnswerHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDAnswer" type="s:string" />
+  </message>
+  <message name="DeleteAnswerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreatePollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strPoll" type="s:string" />
+  </message>
+  <message name="CreatePollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="VoteHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strIDAnswer" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="VoteHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="HasVotedHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="HasVotedHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyPollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strPoll" type="s:string" />
+  </message>
+  <message name="ModifyPollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddAnswerHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+    <part name="strAnswer" type="s:string" />
+  </message>
+  <message name="AddAnswerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ArchivePollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="ArchivePollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ClosePollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="ClosePollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="OpenPollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="OpenPollHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAllPollsHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllPollsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllOpenPollsHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllOpenPollsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllClosedPollsHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllClosedPollsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllArchivedPollsHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllArchivedPollsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="GetPollHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRandomPollHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetRandomPollHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRandomPollByUserHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="GetRandomPollByUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetXMLPollSchemaHttpGetIn" />
+  <message name="GetXMLPollSchemaHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorMessageHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetLastErrorMessageHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetErrorMessageHttpGetIn">
+    <part name="ErrorCode" type="s:string" />
+  </message>
+  <message name="GetErrorMessageHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorCodeHttpGetIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetLastErrorCodeHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateAccountHttpPostIn">
+    <part name="strUsername" type="s:string" />
+    <part name="strEmail" type="s:string" />
+  </message>
+  <message name="CreateAccountHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DoLoginHttpPostIn">
+    <part name="strUsername" type="s:string" />
+    <part name="strPwd" type="s:string" />
+  </message>
+  <message name="DoLoginHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DeleteAccountHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="DeleteAccountHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ChangePWDHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strNewPwd" type="s:string" />
+  </message>
+  <message name="ChangePWDHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SendPWDHttpPostIn">
+    <part name="strUsername" type="s:string" />
+  </message>
+  <message name="SendPWDHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DeletePollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="DeletePollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="DeleteAnswerHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDAnswer" type="s:string" />
+  </message>
+  <message name="DeleteAnswerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreatePollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strPoll" type="s:string" />
+  </message>
+  <message name="CreatePollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="VoteHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strIDAnswer" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="VoteHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="HasVotedHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="HasVotedHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ModifyPollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strPoll" type="s:string" />
+  </message>
+  <message name="ModifyPollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddAnswerHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+    <part name="strAnswer" type="s:string" />
+  </message>
+  <message name="AddAnswerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ArchivePollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="ArchivePollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ClosePollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="ClosePollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="OpenPollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="OpenPollHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetAllPollsHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllPollsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllOpenPollsHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllOpenPollsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllClosedPollsHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllClosedPollsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllArchivedPollsHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetAllArchivedPollsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="iIDQuestion" type="s:string" />
+  </message>
+  <message name="GetPollHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRandomPollHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetRandomPollHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRandomPollByUserHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+    <part name="strUserIdentity" type="s:string" />
+  </message>
+  <message name="GetRandomPollByUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetXMLPollSchemaHttpPostIn" />
+  <message name="GetXMLPollSchemaHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorMessageHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetLastErrorMessageHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetErrorMessageHttpPostIn">
+    <part name="ErrorCode" type="s:string" />
+  </message>
+  <message name="GetErrorMessageHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorCodeHttpPostIn">
+    <part name="strIDAccount" type="s:string" />
+  </message>
+  <message name="GetLastErrorCodeHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <portType name="XMLPollSoap">
+    <operation name="CreateAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a free account to use the service. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:CreateAccountSoapIn" />
+      <output message="s0:CreateAccountSoapOut" />
+    </operation>
+    <operation name="DoLogin">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: You need to Login to use the service. The DoLogin method will return your account identifier (GUID format). You can create your account using the &lt;u&gt;CreateAccount&lt;/u&gt; method. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: IDAccount = String(38) &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:DoLoginSoapIn" />
+      <output message="s0:DoLoginSoapOut" />
+    </operation>
+    <operation name="DeleteAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Use this method to delete your account. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:DeleteAccountSoapIn" />
+      <output message="s0:DeleteAccountSoapOut" />
+    </operation>
+    <operation name="ChangePWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Change your password. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); NewPwd = String(30)</documentation>
+      <input message="s0:ChangePWDSoapIn" />
+      <output message="s0:ChangePWDSoapOut" />
+    </operation>
+    <operation name="SendPWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Using this method your password will be sent to your email address. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:SendPWDSoapIn" />
+      <output message="s0:SendPWDSoapOut" />
+    </operation>
+    <operation name="DeletePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an entire pool. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:DeletePollSoapIn" />
+      <output message="s0:DeletePollSoapOut" />
+    </operation>
+    <operation name="DeleteAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an answer within a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = Integer</documentation>
+      <input message="s0:DeleteAnswerSoapIn" />
+      <output message="s0:DeleteAnswerSoapOut" />
+    </operation>
+    <operation name="CreatePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a new poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:CreatePollSoapIn" />
+      <output message="s0:CreatePollSoapOut" />
+    </operation>
+    <operation name="Vote">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add a vote to a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = String(collection); UserIdentity = String(50) [optional]</documentation>
+      <input message="s0:VoteSoapIn" />
+      <output message="s0:VoteSoapOut" />
+    </operation>
+    <operation name="HasVoted">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Check if the user has voted to the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer; UserIdentity = String(50)</documentation>
+      <input message="s0:HasVotedSoapIn" />
+      <output message="s0:HasVotedSoapOut" />
+    </operation>
+    <operation name="ModifyPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Modify the information (i.e. question, answers) in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:ModifyPollSoapIn" />
+      <output message="s0:ModifyPollSoapOut" />
+    </operation>
+    <operation name="AddAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add an answer in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); strAnswer = String</documentation>
+      <input message="s0:AddAnswerSoapIn" />
+      <output message="s0:AddAnswerSoapOut" />
+    </operation>
+    <operation name="ArchivePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Archive the pool. Attention: an archived poll can't be reopened. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ArchivePollSoapIn" />
+      <output message="s0:ArchivePollSoapOut" />
+    </operation>
+    <operation name="ClosePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Suspend your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ClosePollSoapIn" />
+      <output message="s0:ClosePollSoapOut" />
+    </operation>
+    <operation name="OpenPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Open a closed poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:OpenPollSoapIn" />
+      <output message="s0:OpenPollSoapOut" />
+    </operation>
+    <operation name="GetAllPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve your polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllPollsSoapIn" />
+      <output message="s0:GetAllPollsSoapOut" />
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllOpenPollsSoapIn" />
+      <output message="s0:GetAllOpenPollsSoapOut" />
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your closed polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllClosedPollsSoapIn" />
+      <output message="s0:GetAllClosedPollsSoapOut" />
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your archived polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllArchivedPollsSoapIn" />
+      <output message="s0:GetAllArchivedPollsSoapOut" />
+    </operation>
+    <operation name="GetPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve just the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:GetPollSoapIn" />
+      <output message="s0:GetPollSoapOut" />
+    </operation>
+    <operation name="GetRandomPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetRandomPollSoapIn" />
+      <output message="s0:GetRandomPollSoapOut" />
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls discarding those where the user (specified by the strUserIdentity param) has already voted. If you don't have the Useridentity param use &lt;u&gt;GetRandomPoll&lt;/u&gt; method instead. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); UserIdentity = String(50)</documentation>
+      <input message="s0:GetRandomPollByUserSoapIn" />
+      <output message="s0:GetRandomPollByUserSoapOut" />
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the poll's XML Schema. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String</documentation>
+      <input message="s0:GetXMLPollSchemaSoapIn" />
+      <output message="s0:GetXMLPollSchemaSoapOut" />
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorMessageSoapIn" />
+      <output message="s0:GetLastErrorMessageSoapOut" />
+    </operation>
+    <operation name="GetErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the an error. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: ErrorCode = Integer</documentation>
+      <input message="s0:GetErrorMessageSoapIn" />
+      <output message="s0:GetErrorMessageSoapOut" />
+    </operation>
+    <operation name="GetLastErrorCode">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the code of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorCodeSoapIn" />
+      <output message="s0:GetLastErrorCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XMLPollHttpGet">
+    <operation name="CreateAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a free account to use the service. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:CreateAccountHttpGetIn" />
+      <output message="s0:CreateAccountHttpGetOut" />
+    </operation>
+    <operation name="DoLogin">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: You need to Login to use the service. The DoLogin method will return your account identifier (GUID format). You can create your account using the &lt;u&gt;CreateAccount&lt;/u&gt; method. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: IDAccount = String(38) &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:DoLoginHttpGetIn" />
+      <output message="s0:DoLoginHttpGetOut" />
+    </operation>
+    <operation name="DeleteAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Use this method to delete your account. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:DeleteAccountHttpGetIn" />
+      <output message="s0:DeleteAccountHttpGetOut" />
+    </operation>
+    <operation name="ChangePWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Change your password. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); NewPwd = String(30)</documentation>
+      <input message="s0:ChangePWDHttpGetIn" />
+      <output message="s0:ChangePWDHttpGetOut" />
+    </operation>
+    <operation name="SendPWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Using this method your password will be sent to your email address. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:SendPWDHttpGetIn" />
+      <output message="s0:SendPWDHttpGetOut" />
+    </operation>
+    <operation name="DeletePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an entire pool. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:DeletePollHttpGetIn" />
+      <output message="s0:DeletePollHttpGetOut" />
+    </operation>
+    <operation name="DeleteAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an answer within a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = Integer</documentation>
+      <input message="s0:DeleteAnswerHttpGetIn" />
+      <output message="s0:DeleteAnswerHttpGetOut" />
+    </operation>
+    <operation name="CreatePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a new poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:CreatePollHttpGetIn" />
+      <output message="s0:CreatePollHttpGetOut" />
+    </operation>
+    <operation name="Vote">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add a vote to a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = String(collection); UserIdentity = String(50) [optional]</documentation>
+      <input message="s0:VoteHttpGetIn" />
+      <output message="s0:VoteHttpGetOut" />
+    </operation>
+    <operation name="HasVoted">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Check if the user has voted to the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer; UserIdentity = String(50)</documentation>
+      <input message="s0:HasVotedHttpGetIn" />
+      <output message="s0:HasVotedHttpGetOut" />
+    </operation>
+    <operation name="ModifyPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Modify the information (i.e. question, answers) in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:ModifyPollHttpGetIn" />
+      <output message="s0:ModifyPollHttpGetOut" />
+    </operation>
+    <operation name="AddAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add an answer in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); strAnswer = String</documentation>
+      <input message="s0:AddAnswerHttpGetIn" />
+      <output message="s0:AddAnswerHttpGetOut" />
+    </operation>
+    <operation name="ArchivePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Archive the pool. Attention: an archived poll can't be reopened. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ArchivePollHttpGetIn" />
+      <output message="s0:ArchivePollHttpGetOut" />
+    </operation>
+    <operation name="ClosePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Suspend your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ClosePollHttpGetIn" />
+      <output message="s0:ClosePollHttpGetOut" />
+    </operation>
+    <operation name="OpenPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Open a closed poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:OpenPollHttpGetIn" />
+      <output message="s0:OpenPollHttpGetOut" />
+    </operation>
+    <operation name="GetAllPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve your polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllPollsHttpGetIn" />
+      <output message="s0:GetAllPollsHttpGetOut" />
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllOpenPollsHttpGetIn" />
+      <output message="s0:GetAllOpenPollsHttpGetOut" />
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your closed polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllClosedPollsHttpGetIn" />
+      <output message="s0:GetAllClosedPollsHttpGetOut" />
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your archived polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllArchivedPollsHttpGetIn" />
+      <output message="s0:GetAllArchivedPollsHttpGetOut" />
+    </operation>
+    <operation name="GetPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve just the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:GetPollHttpGetIn" />
+      <output message="s0:GetPollHttpGetOut" />
+    </operation>
+    <operation name="GetRandomPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetRandomPollHttpGetIn" />
+      <output message="s0:GetRandomPollHttpGetOut" />
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls discarding those where the user (specified by the strUserIdentity param) has already voted. If you don't have the Useridentity param use &lt;u&gt;GetRandomPoll&lt;/u&gt; method instead. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); UserIdentity = String(50)</documentation>
+      <input message="s0:GetRandomPollByUserHttpGetIn" />
+      <output message="s0:GetRandomPollByUserHttpGetOut" />
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the poll's XML Schema. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String</documentation>
+      <input message="s0:GetXMLPollSchemaHttpGetIn" />
+      <output message="s0:GetXMLPollSchemaHttpGetOut" />
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorMessageHttpGetIn" />
+      <output message="s0:GetLastErrorMessageHttpGetOut" />
+    </operation>
+    <operation name="GetErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the an error. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: ErrorCode = Integer</documentation>
+      <input message="s0:GetErrorMessageHttpGetIn" />
+      <output message="s0:GetErrorMessageHttpGetOut" />
+    </operation>
+    <operation name="GetLastErrorCode">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the code of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorCodeHttpGetIn" />
+      <output message="s0:GetLastErrorCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XMLPollHttpPost">
+    <operation name="CreateAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a free account to use the service. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:CreateAccountHttpPostIn" />
+      <output message="s0:CreateAccountHttpPostOut" />
+    </operation>
+    <operation name="DoLogin">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: You need to Login to use the service. The DoLogin method will return your account identifier (GUID format). You can create your account using the &lt;u&gt;CreateAccount&lt;/u&gt; method. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: IDAccount = String(38) &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: Username = String(30); Password = String(30)</documentation>
+      <input message="s0:DoLoginHttpPostIn" />
+      <output message="s0:DoLoginHttpPostOut" />
+    </operation>
+    <operation name="DeleteAccount">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Use this method to delete your account. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:DeleteAccountHttpPostIn" />
+      <output message="s0:DeleteAccountHttpPostOut" />
+    </operation>
+    <operation name="ChangePWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Change your password. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); NewPwd = String(30)</documentation>
+      <input message="s0:ChangePWDHttpPostIn" />
+      <output message="s0:ChangePWDHttpPostOut" />
+    </operation>
+    <operation name="SendPWD">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Using this method your password will be sent to your email address. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:SendPWDHttpPostIn" />
+      <output message="s0:SendPWDHttpPostOut" />
+    </operation>
+    <operation name="DeletePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an entire pool. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:DeletePollHttpPostIn" />
+      <output message="s0:DeletePollHttpPostOut" />
+    </operation>
+    <operation name="DeleteAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Delete an answer within a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = Integer</documentation>
+      <input message="s0:DeleteAnswerHttpPostIn" />
+      <output message="s0:DeleteAnswerHttpPostOut" />
+    </operation>
+    <operation name="CreatePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Create a new poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:CreatePollHttpPostIn" />
+      <output message="s0:CreatePollHttpPostOut" />
+    </operation>
+    <operation name="Vote">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add a vote to a poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDAnswer = String(collection); UserIdentity = String(50) [optional]</documentation>
+      <input message="s0:VoteHttpPostIn" />
+      <output message="s0:VoteHttpPostOut" />
+    </operation>
+    <operation name="HasVoted">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Check if the user has voted to the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer; UserIdentity = String(50)</documentation>
+      <input message="s0:HasVotedHttpPostIn" />
+      <output message="s0:HasVotedHttpPostOut" />
+    </operation>
+    <operation name="ModifyPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Modify the information (i.e. question, answers) in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); XML = String</documentation>
+      <input message="s0:ModifyPollHttpPostIn" />
+      <output message="s0:ModifyPollHttpPostOut" />
+    </operation>
+    <operation name="AddAnswer">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Add an answer in your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); strAnswer = String</documentation>
+      <input message="s0:AddAnswerHttpPostIn" />
+      <output message="s0:AddAnswerHttpPostOut" />
+    </operation>
+    <operation name="ArchivePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Archive the pool. Attention: an archived poll can't be reopened. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ArchivePollHttpPostIn" />
+      <output message="s0:ArchivePollHttpPostOut" />
+    </operation>
+    <operation name="ClosePoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Suspend your poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:ClosePollHttpPostIn" />
+      <output message="s0:ClosePollHttpPostOut" />
+    </operation>
+    <operation name="OpenPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Open a closed poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:OpenPollHttpPostIn" />
+      <output message="s0:OpenPollHttpPostOut" />
+    </operation>
+    <operation name="GetAllPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve your polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllPollsHttpPostIn" />
+      <output message="s0:GetAllPollsHttpPostOut" />
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllOpenPollsHttpPostIn" />
+      <output message="s0:GetAllOpenPollsHttpPostOut" />
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your closed polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllClosedPollsHttpPostIn" />
+      <output message="s0:GetAllClosedPollsHttpPostOut" />
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve all your archived polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetAllArchivedPollsHttpPostIn" />
+      <output message="s0:GetAllArchivedPollsHttpPostOut" />
+    </operation>
+    <operation name="GetPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve just the specified poll. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); IDQuestion = Integer</documentation>
+      <input message="s0:GetPollHttpPostIn" />
+      <output message="s0:GetPollHttpPostOut" />
+    </operation>
+    <operation name="GetRandomPoll">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetRandomPollHttpPostIn" />
+      <output message="s0:GetRandomPollHttpPostOut" />
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Retrieve a random poll from your opened polls discarding those where the user (specified by the strUserIdentity param) has already voted. If you don't have the Useridentity param use &lt;u&gt;GetRandomPoll&lt;/u&gt; method instead. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38); UserIdentity = String(50)</documentation>
+      <input message="s0:GetRandomPollByUserHttpPostIn" />
+      <output message="s0:GetRandomPollByUserHttpPostOut" />
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the poll's XML Schema. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: XML = String</documentation>
+      <input message="s0:GetXMLPollSchemaHttpPostIn" />
+      <output message="s0:GetXMLPollSchemaHttpPostOut" />
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorMessageHttpPostIn" />
+      <output message="s0:GetLastErrorMessageHttpPostOut" />
+    </operation>
+    <operation name="GetErrorMessage">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the description of the an error. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: String &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: ErrorCode = Integer</documentation>
+      <input message="s0:GetErrorMessageHttpPostIn" />
+      <output message="s0:GetErrorMessageHttpPostOut" />
+    </operation>
+    <operation name="GetLastErrorCode">
+      <documentation>&lt;b&gt;DESCRIPTION&lt;/b&gt;: Get the code of the last error occurred. &lt;br&gt;&lt;b&gt;RETURNS&lt;/b&gt;: Result_Code = Integer &lt;br&gt;&lt;b&gt;PARAMS&lt;/b&gt;: IDAccount = String(38)</documentation>
+      <input message="s0:GetLastErrorCodeHttpPostIn" />
+      <output message="s0:GetLastErrorCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XMLPollSoap" type="s0:XMLPollSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CreateAccount">
+      <soap:operation soapAction="http://tenculi.org/CreateAccount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DoLogin">
+      <soap:operation soapAction="http://tenculi.org/DoLogin" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteAccount">
+      <soap:operation soapAction="http://tenculi.org/DeleteAccount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ChangePWD">
+      <soap:operation soapAction="http://tenculi.org/ChangePWD" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendPWD">
+      <soap:operation soapAction="http://tenculi.org/SendPWD" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeletePoll">
+      <soap:operation soapAction="http://tenculi.org/DeletePoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteAnswer">
+      <soap:operation soapAction="http://tenculi.org/DeleteAnswer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreatePoll">
+      <soap:operation soapAction="http://tenculi.org/CreatePoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <soap:operation soapAction="http://tenculi.org/Vote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="HasVoted">
+      <soap:operation soapAction="http://tenculi.org/HasVoted" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ModifyPoll">
+      <soap:operation soapAction="http://tenculi.org/ModifyPoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddAnswer">
+      <soap:operation soapAction="http://tenculi.org/AddAnswer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ArchivePoll">
+      <soap:operation soapAction="http://tenculi.org/ArchivePoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ClosePoll">
+      <soap:operation soapAction="http://tenculi.org/ClosePoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="OpenPoll">
+      <soap:operation soapAction="http://tenculi.org/OpenPoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllPolls">
+      <soap:operation soapAction="http://tenculi.org/GetAllPolls" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <soap:operation soapAction="http://tenculi.org/GetAllOpenPolls" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <soap:operation soapAction="http://tenculi.org/GetAllClosedPolls" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <soap:operation soapAction="http://tenculi.org/GetAllArchivedPolls" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPoll">
+      <soap:operation soapAction="http://tenculi.org/GetPoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRandomPoll">
+      <soap:operation soapAction="http://tenculi.org/GetRandomPoll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <soap:operation soapAction="http://tenculi.org/GetRandomPollByUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <soap:operation soapAction="http://tenculi.org/GetXMLPollSchema" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <soap:operation soapAction="http://tenculi.org/GetLastErrorMessage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetErrorMessage">
+      <soap:operation soapAction="http://tenculi.org/GetErrorMessage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorCode">
+      <soap:operation soapAction="http://tenculi.org/GetLastErrorCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XMLPollHttpGet" type="s0:XMLPollHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CreateAccount">
+      <http:operation location="/CreateAccount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DoLogin">
+      <http:operation location="/DoLogin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteAccount">
+      <http:operation location="/DeleteAccount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ChangePWD">
+      <http:operation location="/ChangePWD" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendPWD">
+      <http:operation location="/SendPWD" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeletePoll">
+      <http:operation location="/DeletePoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteAnswer">
+      <http:operation location="/DeleteAnswer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreatePoll">
+      <http:operation location="/CreatePoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <http:operation location="/Vote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="HasVoted">
+      <http:operation location="/HasVoted" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyPoll">
+      <http:operation location="/ModifyPoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAnswer">
+      <http:operation location="/AddAnswer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ArchivePoll">
+      <http:operation location="/ArchivePoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ClosePoll">
+      <http:operation location="/ClosePoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="OpenPoll">
+      <http:operation location="/OpenPoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllPolls">
+      <http:operation location="/GetAllPolls" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <http:operation location="/GetAllOpenPolls" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <http:operation location="/GetAllClosedPolls" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <http:operation location="/GetAllArchivedPolls" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPoll">
+      <http:operation location="/GetPoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomPoll">
+      <http:operation location="/GetRandomPoll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <http:operation location="/GetRandomPollByUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <http:operation location="/GetXMLPollSchema" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <http:operation location="/GetLastErrorMessage" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetErrorMessage">
+      <http:operation location="/GetErrorMessage" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorCode">
+      <http:operation location="/GetLastErrorCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XMLPollHttpPost" type="s0:XMLPollHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CreateAccount">
+      <http:operation location="/CreateAccount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DoLogin">
+      <http:operation location="/DoLogin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteAccount">
+      <http:operation location="/DeleteAccount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ChangePWD">
+      <http:operation location="/ChangePWD" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendPWD">
+      <http:operation location="/SendPWD" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeletePoll">
+      <http:operation location="/DeletePoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteAnswer">
+      <http:operation location="/DeleteAnswer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreatePoll">
+      <http:operation location="/CreatePoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Vote">
+      <http:operation location="/Vote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="HasVoted">
+      <http:operation location="/HasVoted" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ModifyPoll">
+      <http:operation location="/ModifyPoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAnswer">
+      <http:operation location="/AddAnswer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ArchivePoll">
+      <http:operation location="/ArchivePoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ClosePoll">
+      <http:operation location="/ClosePoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="OpenPoll">
+      <http:operation location="/OpenPoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllPolls">
+      <http:operation location="/GetAllPolls" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllOpenPolls">
+      <http:operation location="/GetAllOpenPolls" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllClosedPolls">
+      <http:operation location="/GetAllClosedPolls" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllArchivedPolls">
+      <http:operation location="/GetAllArchivedPolls" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPoll">
+      <http:operation location="/GetPoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomPoll">
+      <http:operation location="/GetRandomPoll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomPollByUser">
+      <http:operation location="/GetRandomPollByUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetXMLPollSchema">
+      <http:operation location="/GetXMLPollSchema" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorMessage">
+      <http:operation location="/GetLastErrorMessage" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetErrorMessage">
+      <http:operation location="/GetErrorMessage" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastErrorCode">
+      <http:operation location="/GetLastErrorCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XMLPoll">
+    <documentation>B2B presents: &lt;div style='background-color:black; color:white;'&gt;&lt;font color='#70BC1F' face='Book Antiqua'&gt;&amp;nbsp;&lt;b&gt;&lt;big&gt;X&lt;/big&gt;&lt;/b&gt;&lt;/font&gt;MLPoll v 1.0.64&lt;/div&gt; &lt;br&gt;The service provides everything you need to make, use and configure a pool. Ask any question you like and display up-to-date poll results to your visitors. You will archive your old polls as well.&lt;br&gt;&lt;br&gt;&lt;div class='heading1'&gt;&amp;nbsp;Visit the &lt;a href='http://hosting.msugs.ch/xmlpollweb/' target='_blank' style='color: #70BC1F; font-family: Book Antiqua;'&gt;XMLPoll website&lt;/a&gt; for informations and manuals.&lt;/div&gt;</documentation>
+    <port name="XMLPollSoap" binding="s0:XMLPollSoap">
+      <soap:address location="http://hosting.msugs.ch/xmlpoll/xmlpoll.asmx" />
+    </port>
+    <port name="XMLPollHttpGet" binding="s0:XMLPollHttpGet">
+      <http:address location="http://hosting.msugs.ch/xmlpoll/xmlpoll.asmx" />
+    </port>
+    <port name="XMLPollHttpPost" binding="s0:XMLPollHttpPost">
+      <http:address location="http://hosting.msugs.ch/xmlpoll/xmlpoll.asmx" />
+    </port>
+  </service>
+</definitions>

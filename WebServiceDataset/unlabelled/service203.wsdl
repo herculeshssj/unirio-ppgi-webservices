@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="CFCInvocationException"><sequence/></complexType><element name="CFCInvocationException" nillable="true" type="tns1:CFCInvocationException"/></schema></wsdl:types>
+  <wsdl:message name="fetchquakedataRequest">
+    <wsdl:part name="weeks" type="xsd:double"/>
+    <wsdl:part name="WDDXorXMLflavor" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="fetchquakedataResponse">
+    <wsdl:part name="fetchquakedataReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:portType name="getQuakeData">
+    <wsdl:operation name="fetchquakedata" parameterOrder="weeks WDDXorXMLflavor">
+      <wsdl:input name="fetchquakedataRequest" message="impl:fetchquakedataRequest"/>
+      <wsdl:output name="fetchquakedataResponse" message="impl:fetchquakedataResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="getQuakeData.cfcSoapBinding" type="impl:getQuakeData">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="fetchquakedata">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="fetchquakedataRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="fetchquakedataResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getQuakeDataService">
+    <wsdl:port name="getQuakeData.cfc" binding="impl:getQuakeData.cfcSoapBinding">
+      <wsdlsoap:address location="http://webservices.tei.or.th/getQuakeData.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!-- Generated 04/10/01 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.00.530.0 --> 
+<definitions  name ='TestService'   targetNamespace = 'http://tempuri.org/wsdl/'
+   xmlns:wsdlns='http://tempuri.org/wsdl/' 
+   xmlns:typens='http://tempuri.org/type' 
+   xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+   xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+   xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+   xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+  <schema targetNamespace='http://tempuri.org/type'
+    xmlns='http://www.w3.org/2001/XMLSchema'
+    xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    elementFormDefault='qualified'>
+  </schema>
+  </types>
+  <!-- 
+  ////////////////////////////////////////////////////////////////////
+  // 
+  //  Method: TestMethod
+  //
+  -->
+  <message name='TestService.TestMethod'>
+    <part name='Mode_opt_' type='xsd:anyType'/>
+  </message>
+  <message name='TestService.TestMethodResponse'>
+    <part name='Result' type='xsd:string'/>
+    <part name='OutDate' type='xsd:date'/>
+    <part name='OutTime' type='xsd:time'/>
+  </message>
+  <portType name='TestServiceSoapPort'>
+    <operation name='TestMethod' parameterOrder='Mode_opt_ OutDate OutTime'>
+      <input message='wsdlns:TestService.TestMethod' />
+      <output message='wsdlns:TestService.TestMethodResponse' />
+    </operation>
+  </portType>
+  <binding name='TestServiceSoapBinding' type='wsdlns:TestServiceSoapPort' >
+    <stk:binding preferredEncoding='UTF-8'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='TestMethod' >
+      <soap:operation soapAction='http://tempuri.org/action/TestService.TestMethod' />
+      <input>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+    	  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+    	  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='TestService' >
+    <port name='TestServiceSoapPort' binding='wsdlns:TestServiceSoapBinding' >
+      <soap:address location='https://soap.Fidesic.com/webservices/TestService.asp' />
+    </port>
+  </service>
+</definitions>

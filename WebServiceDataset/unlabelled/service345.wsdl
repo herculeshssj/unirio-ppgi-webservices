@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IRomanservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="IntToRomanRequest">
+    <part name="Int" type="xs:int"/>
+  </message>
+  <message name="IntToRomanResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="RomanToIntRequest">
+    <part name="Rom" type="xs:string"/>
+  </message>
+  <message name="RomanToIntResponse">
+    <part name="return" type="xs:int"/>
+  </message>
+  <portType name="IRoman">
+    <operation name="IntToRoman">
+      <input message="tns:IntToRomanRequest"/>
+      <output message="tns:IntToRomanResponse"/>
+    </operation>
+    <operation name="RomanToInt">
+      <input message="tns:RomanToIntRequest"/>
+      <output message="tns:RomanToIntResponse"/>
+    </operation>
+  </portType>
+  <binding name="IRomanbinding" type="tns:IRoman">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="IntToRoman">
+      <soap:operation soapAction="urn:Roman-IRoman#IntToRoman"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Roman-IRoman"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Roman-IRoman"/>
+      </output>
+    </operation>
+    <operation name="RomanToInt">
+      <soap:operation soapAction="urn:Roman-IRoman#RomanToInt"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Roman-IRoman"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Roman-IRoman"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IRomanservice">
+    <port name="IRomanPort" binding="tns:IRomanbinding">
+      <soap:address location="http://www.ebob42.com/cgi-bin/Romulan.exe/soap/IRoman"/>
+    </port>
+  </service>
+</definitions>

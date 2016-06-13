@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="https://secure.baxglobal.com/xmltracking/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="https://secure.baxglobal.com/xmltracking/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://secure.baxglobal.com/xmltracking/">
+      <s:element name="Track">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackCDATAWrapped">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackCDATAWrappedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackCDATAWrappedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="TrackSoapIn">
+    <part name="parameters" element="s0:Track" />
+  </message>
+  <message name="TrackSoapOut">
+    <part name="parameters" element="s0:TrackResponse" />
+  </message>
+  <message name="TrackCDATAWrappedSoapIn">
+    <part name="parameters" element="s0:TrackCDATAWrapped" />
+  </message>
+  <message name="TrackCDATAWrappedSoapOut">
+    <part name="parameters" element="s0:TrackCDATAWrappedResponse" />
+  </message>
+  <message name="TrackHttpGetIn">
+    <part name="strIn" type="s:string" />
+  </message>
+  <message name="TrackHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="TrackCDATAWrappedHttpGetIn">
+    <part name="strIn" type="s:string" />
+  </message>
+  <message name="TrackCDATAWrappedHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="TrackHttpPostIn">
+    <part name="strIn" type="s:string" />
+  </message>
+  <message name="TrackHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="TrackCDATAWrappedHttpPostIn">
+    <part name="strIn" type="s:string" />
+  </message>
+  <message name="TrackCDATAWrappedHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="XmlTrackingSoap">
+    <operation name="Track">
+      <documentation>Accepts an XmlDocument object as input and returns the results in an XmlDocument object. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackSoapIn" />
+      <output message="s0:TrackSoapOut" />
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <documentation>Accepts a CDATA wrapped XML document as input and returns the results in a CDATA wrapped XML document. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackCDATAWrappedSoapIn" />
+      <output message="s0:TrackCDATAWrappedSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XmlTrackingHttpGet">
+    <operation name="Track">
+      <documentation>Accepts an XmlDocument object as input and returns the results in an XmlDocument object. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackHttpGetIn" />
+      <output message="s0:TrackHttpGetOut" />
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <documentation>Accepts a CDATA wrapped XML document as input and returns the results in a CDATA wrapped XML document. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackCDATAWrappedHttpGetIn" />
+      <output message="s0:TrackCDATAWrappedHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XmlTrackingHttpPost">
+    <operation name="Track">
+      <documentation>Accepts an XmlDocument object as input and returns the results in an XmlDocument object. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackHttpPostIn" />
+      <output message="s0:TrackHttpPostOut" />
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <documentation>Accepts a CDATA wrapped XML document as input and returns the results in a CDATA wrapped XML document. For more information, please look at the documentation in the doc directory.</documentation>
+      <input message="s0:TrackCDATAWrappedHttpPostIn" />
+      <output message="s0:TrackCDATAWrappedHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XmlTrackingSoap" type="s0:XmlTrackingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Track">
+      <soap:operation soapAction="https://secure.baxglobal.com/xmltracking/Track" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <soap:operation soapAction="https://secure.baxglobal.com/xmltracking/TrackCDATAWrapped" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XmlTrackingHttpGet" type="s0:XmlTrackingHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Track">
+      <http:operation location="/Track" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <http:operation location="/TrackCDATAWrapped" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XmlTrackingHttpPost" type="s0:XmlTrackingHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Track">
+      <http:operation location="/Track" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="TrackCDATAWrapped">
+      <http:operation location="/TrackCDATAWrapped" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XmlTracking">
+    <port name="XmlTrackingSoap" binding="s0:XmlTrackingSoap">
+      <soap:address location="http://www.baxglobal.com/xmltracking/xmltracking.asmx" />
+    </port>
+    <port name="XmlTrackingHttpGet" binding="s0:XmlTrackingHttpGet">
+      <http:address location="http://www.baxglobal.com/xmltracking/xmltracking.asmx" />
+    </port>
+    <port name="XmlTrackingHttpPost" binding="s0:XmlTrackingHttpPost">
+      <http:address location="http://www.baxglobal.com/xmltracking/xmltracking.asmx" />
+    </port>
+  </service>
+</definitions>

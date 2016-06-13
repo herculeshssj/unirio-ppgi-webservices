@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.mastercsharp.com/WebService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.mastercsharp.com/WebService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.mastercsharp.com/WebService">
+      <s:element name="GetProverb">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProverbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProverbResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProverb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userProverb" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddProverbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddProverbResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetProverbSoapIn">
+    <part name="parameters" element="s0:GetProverb" />
+  </message>
+  <message name="GetProverbSoapOut">
+    <part name="parameters" element="s0:GetProverbResponse" />
+  </message>
+  <message name="AddProverbSoapIn">
+    <part name="parameters" element="s0:AddProverb" />
+  </message>
+  <message name="AddProverbSoapOut">
+    <part name="parameters" element="s0:AddProverbResponse" />
+  </message>
+  <message name="GetProverbHttpGetIn" />
+  <message name="GetProverbHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="AddProverbHttpGetIn">
+    <part name="userProverb" type="s:string" />
+  </message>
+  <message name="AddProverbHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetProverbHttpPostIn" />
+  <message name="GetProverbHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="AddProverbHttpPostIn">
+    <part name="userProverb" type="s:string" />
+  </message>
+  <message name="AddProverbHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ProverbsSoap">
+    <operation name="GetProverb">
+      <input message="s0:GetProverbSoapIn" />
+      <output message="s0:GetProverbSoapOut" />
+    </operation>
+    <operation name="AddProverb">
+      <input message="s0:AddProverbSoapIn" />
+      <output message="s0:AddProverbSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ProverbsHttpGet">
+    <operation name="GetProverb">
+      <input message="s0:GetProverbHttpGetIn" />
+      <output message="s0:GetProverbHttpGetOut" />
+    </operation>
+    <operation name="AddProverb">
+      <input message="s0:AddProverbHttpGetIn" />
+      <output message="s0:AddProverbHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ProverbsHttpPost">
+    <operation name="GetProverb">
+      <input message="s0:GetProverbHttpPostIn" />
+      <output message="s0:GetProverbHttpPostOut" />
+    </operation>
+    <operation name="AddProverb">
+      <input message="s0:AddProverbHttpPostIn" />
+      <output message="s0:AddProverbHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ProverbsSoap" type="s0:ProverbsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetProverb">
+      <soap:operation soapAction="http://www.mastercsharp.com/WebService/GetProverb" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddProverb">
+      <soap:operation soapAction="http://www.mastercsharp.com/WebService/AddProverb" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ProverbsHttpGet" type="s0:ProverbsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetProverb">
+      <http:operation location="/GetProverb" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddProverb">
+      <http:operation location="/AddProverb" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ProverbsHttpPost" type="s0:ProverbsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetProverb">
+      <http:operation location="/GetProverb" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddProverb">
+      <http:operation location="/AddProverb" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Proverbs">
+    <port name="ProverbsSoap" binding="s0:ProverbsSoap">
+      <soap:address location="http://www.mastercsharp.com/live/ProverbService1/ProverbService.asmx" />
+    </port>
+    <port name="ProverbsHttpGet" binding="s0:ProverbsHttpGet">
+      <http:address location="http://www.mastercsharp.com/live/ProverbService1/ProverbService.asmx" />
+    </port>
+    <port name="ProverbsHttpPost" binding="s0:ProverbsHttpPost">
+      <http:address location="http://www.mastercsharp.com/live/ProverbService1/ProverbService.asmx" />
+    </port>
+  </service>
+</definitions>

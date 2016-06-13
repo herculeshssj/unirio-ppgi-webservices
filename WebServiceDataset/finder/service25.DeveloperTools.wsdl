@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.rookiesoft.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.rookiesoft.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.rookiesoft.com/webservices/">
+      <s:element name="GetIPList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetIPListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIPListResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetIPListSoapIn">
+    <part name="parameters" element="s0:GetIPList" />
+  </message>
+  <message name="GetIPListSoapOut">
+    <part name="parameters" element="s0:GetIPListResponse" />
+  </message>
+  <message name="GetIPListHttpGetIn" />
+  <message name="GetIPListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetIPListHttpPostIn" />
+  <message name="GetIPListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="GoogleIPBoxSoap">
+    <operation name="GetIPList">
+      <input message="s0:GetIPListSoapIn" />
+      <output message="s0:GetIPListSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GoogleIPBoxHttpGet">
+    <operation name="GetIPList">
+      <input message="s0:GetIPListHttpGetIn" />
+      <output message="s0:GetIPListHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GoogleIPBoxHttpPost">
+    <operation name="GetIPList">
+      <input message="s0:GetIPListHttpPostIn" />
+      <output message="s0:GetIPListHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GoogleIPBoxSoap" type="s0:GoogleIPBoxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetIPList">
+      <soap:operation soapAction="http://www.rookiesoft.com/webservices/GetIPList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GoogleIPBoxHttpGet" type="s0:GoogleIPBoxHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetIPList">
+      <http:operation location="/GetIPList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GoogleIPBoxHttpPost" type="s0:GoogleIPBoxHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetIPList">
+      <http:operation location="/GetIPList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GoogleIPBox">
+    <port name="GoogleIPBoxSoap" binding="s0:GoogleIPBoxSoap">
+      <soap:address location="http://dev1.eraserver.net/rookieport/Forum/GoogleIPBox.asmx" />
+    </port>
+    <port name="GoogleIPBoxHttpGet" binding="s0:GoogleIPBoxHttpGet">
+      <http:address location="http://dev1.eraserver.net/rookieport/Forum/GoogleIPBox.asmx" />
+    </port>
+    <port name="GoogleIPBoxHttpPost" binding="s0:GoogleIPBoxHttpPost">
+      <http:address location="http://dev1.eraserver.net/rookieport/Forum/GoogleIPBox.asmx" />
+    </port>
+  </service>
+</definitions>

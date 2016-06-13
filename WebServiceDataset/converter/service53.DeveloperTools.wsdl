@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://b2btech.com/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://b2btech.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://b2btech.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://b2btech.com/">
+      <s:element name="Mean">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Numbers" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MeanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MeanResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Variance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Numbers" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VarianceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VarianceResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VarianceUnbiased">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Numbers" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VarianceUnbiasedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VarianceUnbiasedResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StandardDeviation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Numbers" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StandardDeviationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StandardDeviationResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PercentileRankInNormalDistribution">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Mean" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="StandardDeviation" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberToBeRanked" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PercentileRankInNormalDistributionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PercentileRankInNormalDistributionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PearsonsR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="X" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="Y" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PearsonsRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PearsonsRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinearSlopeFormula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="X" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="Y" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinearSlopeFormulaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LinearSlopeFormulaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema targetNamespace="http://b2btech.com/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="MeanSoapIn">
+    <part name="parameters" element="s0:Mean" />
+  </message>
+  <message name="MeanSoapOut">
+    <part name="parameters" element="s0:MeanResponse" />
+  </message>
+  <message name="VarianceSoapIn">
+    <part name="parameters" element="s0:Variance" />
+  </message>
+  <message name="VarianceSoapOut">
+    <part name="parameters" element="s0:VarianceResponse" />
+  </message>
+  <message name="VarianceUnbiasedSoapIn">
+    <part name="parameters" element="s0:VarianceUnbiased" />
+  </message>
+  <message name="VarianceUnbiasedSoapOut">
+    <part name="parameters" element="s0:VarianceUnbiasedResponse" />
+  </message>
+  <message name="StandardDeviationSoapIn">
+    <part name="parameters" element="s0:StandardDeviation" />
+  </message>
+  <message name="StandardDeviationSoapOut">
+    <part name="parameters" element="s0:StandardDeviationResponse" />
+  </message>
+  <message name="PercentileRankInNormalDistributionSoapIn">
+    <part name="parameters" element="s0:PercentileRankInNormalDistribution" />
+  </message>
+  <message name="PercentileRankInNormalDistributionSoapOut">
+    <part name="parameters" element="s0:PercentileRankInNormalDistributionResponse" />
+  </message>
+  <message name="PearsonsRSoapIn">
+    <part name="parameters" element="s0:PearsonsR" />
+  </message>
+  <message name="PearsonsRSoapOut">
+    <part name="parameters" element="s0:PearsonsRResponse" />
+  </message>
+  <message name="LinearSlopeFormulaSoapIn">
+    <part name="parameters" element="s0:LinearSlopeFormula" />
+  </message>
+  <message name="LinearSlopeFormulaSoapOut">
+    <part name="parameters" element="s0:LinearSlopeFormulaResponse" />
+  </message>
+  <message name="MeanHttpGetIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="MeanHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="VarianceHttpGetIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="VarianceHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="VarianceUnbiasedHttpGetIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="VarianceUnbiasedHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="StandardDeviationHttpGetIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="StandardDeviationHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="PercentileRankInNormalDistributionHttpGetIn">
+    <part name="Mean" type="s:string" />
+    <part name="StandardDeviation" type="s:string" />
+    <part name="NumberToBeRanked" type="s:string" />
+  </message>
+  <message name="PercentileRankInNormalDistributionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PearsonsRHttpGetIn">
+    <part name="X" type="s1:StringArray" />
+    <part name="Y" type="s1:StringArray" />
+  </message>
+  <message name="PearsonsRHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LinearSlopeFormulaHttpGetIn">
+    <part name="X" type="s1:StringArray" />
+    <part name="Y" type="s1:StringArray" />
+  </message>
+  <message name="LinearSlopeFormulaHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MeanHttpPostIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="MeanHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="VarianceHttpPostIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="VarianceHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="VarianceUnbiasedHttpPostIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="VarianceUnbiasedHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="StandardDeviationHttpPostIn">
+    <part name="Numbers" type="s1:StringArray" />
+  </message>
+  <message name="StandardDeviationHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="PercentileRankInNormalDistributionHttpPostIn">
+    <part name="Mean" type="s:string" />
+    <part name="StandardDeviation" type="s:string" />
+    <part name="NumberToBeRanked" type="s:string" />
+  </message>
+  <message name="PercentileRankInNormalDistributionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PearsonsRHttpPostIn">
+    <part name="X" type="s1:StringArray" />
+    <part name="Y" type="s1:StringArray" />
+  </message>
+  <message name="PearsonsRHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LinearSlopeFormulaHttpPostIn">
+    <part name="X" type="s1:StringArray" />
+    <part name="Y" type="s1:StringArray" />
+  </message>
+  <message name="LinearSlopeFormulaHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="StatsSoap">
+    <operation name="Mean">
+      <input message="s0:MeanSoapIn" />
+      <output message="s0:MeanSoapOut" />
+    </operation>
+    <operation name="Variance">
+      <input message="s0:VarianceSoapIn" />
+      <output message="s0:VarianceSoapOut" />
+    </operation>
+    <operation name="VarianceUnbiased">
+      <input message="s0:VarianceUnbiasedSoapIn" />
+      <output message="s0:VarianceUnbiasedSoapOut" />
+    </operation>
+    <operation name="StandardDeviation">
+      <input message="s0:StandardDeviationSoapIn" />
+      <output message="s0:StandardDeviationSoapOut" />
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <input message="s0:PercentileRankInNormalDistributionSoapIn" />
+      <output message="s0:PercentileRankInNormalDistributionSoapOut" />
+    </operation>
+    <operation name="PearsonsR">
+      <input message="s0:PearsonsRSoapIn" />
+      <output message="s0:PearsonsRSoapOut" />
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <input message="s0:LinearSlopeFormulaSoapIn" />
+      <output message="s0:LinearSlopeFormulaSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StatsHttpGet">
+    <operation name="Mean">
+      <input message="s0:MeanHttpGetIn" />
+      <output message="s0:MeanHttpGetOut" />
+    </operation>
+    <operation name="Variance">
+      <input message="s0:VarianceHttpGetIn" />
+      <output message="s0:VarianceHttpGetOut" />
+    </operation>
+    <operation name="VarianceUnbiased">
+      <input message="s0:VarianceUnbiasedHttpGetIn" />
+      <output message="s0:VarianceUnbiasedHttpGetOut" />
+    </operation>
+    <operation name="StandardDeviation">
+      <input message="s0:StandardDeviationHttpGetIn" />
+      <output message="s0:StandardDeviationHttpGetOut" />
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <input message="s0:PercentileRankInNormalDistributionHttpGetIn" />
+      <output message="s0:PercentileRankInNormalDistributionHttpGetOut" />
+    </operation>
+    <operation name="PearsonsR">
+      <input message="s0:PearsonsRHttpGetIn" />
+      <output message="s0:PearsonsRHttpGetOut" />
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <input message="s0:LinearSlopeFormulaHttpGetIn" />
+      <output message="s0:LinearSlopeFormulaHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StatsHttpPost">
+    <operation name="Mean">
+      <input message="s0:MeanHttpPostIn" />
+      <output message="s0:MeanHttpPostOut" />
+    </operation>
+    <operation name="Variance">
+      <input message="s0:VarianceHttpPostIn" />
+      <output message="s0:VarianceHttpPostOut" />
+    </operation>
+    <operation name="VarianceUnbiased">
+      <input message="s0:VarianceUnbiasedHttpPostIn" />
+      <output message="s0:VarianceUnbiasedHttpPostOut" />
+    </operation>
+    <operation name="StandardDeviation">
+      <input message="s0:StandardDeviationHttpPostIn" />
+      <output message="s0:StandardDeviationHttpPostOut" />
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <input message="s0:PercentileRankInNormalDistributionHttpPostIn" />
+      <output message="s0:PercentileRankInNormalDistributionHttpPostOut" />
+    </operation>
+    <operation name="PearsonsR">
+      <input message="s0:PearsonsRHttpPostIn" />
+      <output message="s0:PearsonsRHttpPostOut" />
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <input message="s0:LinearSlopeFormulaHttpPostIn" />
+      <output message="s0:LinearSlopeFormulaHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StatsSoap" type="s0:StatsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Mean">
+      <soap:operation soapAction="http://b2btech.com/Mean" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Variance">
+      <soap:operation soapAction="http://b2btech.com/Variance" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VarianceUnbiased">
+      <soap:operation soapAction="http://b2btech.com/VarianceUnbiased" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="StandardDeviation">
+      <soap:operation soapAction="http://b2btech.com/StandardDeviation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <soap:operation soapAction="http://b2btech.com/PercentileRankInNormalDistribution" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PearsonsR">
+      <soap:operation soapAction="http://b2btech.com/PearsonsR" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <soap:operation soapAction="http://b2btech.com/LinearSlopeFormula" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StatsHttpGet" type="s0:StatsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Mean">
+      <http:operation location="/Mean" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Variance">
+      <http:operation location="/Variance" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VarianceUnbiased">
+      <http:operation location="/VarianceUnbiased" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="StandardDeviation">
+      <http:operation location="/StandardDeviation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <http:operation location="/PercentileRankInNormalDistribution" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PearsonsR">
+      <http:operation location="/PearsonsR" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <http:operation location="/LinearSlopeFormula" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StatsHttpPost" type="s0:StatsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Mean">
+      <http:operation location="/Mean" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Variance">
+      <http:operation location="/Variance" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VarianceUnbiased">
+      <http:operation location="/VarianceUnbiased" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="StandardDeviation">
+      <http:operation location="/StandardDeviation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PercentileRankInNormalDistribution">
+      <http:operation location="/PercentileRankInNormalDistribution" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PearsonsR">
+      <http:operation location="/PearsonsR" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LinearSlopeFormula">
+      <http:operation location="/LinearSlopeFormula" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Stats">
+    <documentation>Please try our statistical functions for FREE. &lt;BR&gt;&lt;BR&gt;Note to developers: These non-Demo functions require programmatic access. Please create a Web reference in the IDE of your choice and examine the properties and methods available to begin using this FREE Web service! </documentation>
+    <port name="StatsSoap" binding="s0:StatsSoap">
+      <soap:address location="http://www.b2btech.net/stats/stats.asmx" />
+    </port>
+    <port name="StatsHttpGet" binding="s0:StatsHttpGet">
+      <http:address location="http://www.b2btech.net/stats/stats.asmx" />
+    </port>
+    <port name="StatsHttpPost" binding="s0:StatsHttpPost">
+      <http:address location="http://www.b2btech.net/stats/stats.asmx" />
+    </port>
+  </service>
+</definitions>

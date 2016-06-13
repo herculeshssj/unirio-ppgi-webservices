@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.soapengine.com/lucin/salcentral/csearch.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.soapengine.com/lucin/salcentral/csearch.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.soapengine.com/lucin/salcentral/csearch.asmx">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetTopSearches">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopSearchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopSearchesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInquireURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInquireURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInquireURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClickRegistryEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClickRegistryEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ClickRegistryEntryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BrowsePeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InquireURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="KeyType" type="s0:enmKeyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="enmKeyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="eBusiness" />
+          <s:enumeration value="eService" />
+          <s:enumeration value="eTModel" />
+          <s:enumeration value="eWebService" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="BrowsePeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BrowsePeriodResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InquireURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="KeyType" type="s0:enmKeyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="Month" type="s0:enmMonth" />
+            <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="enmMonth">
+        <s:restriction base="s:string">
+          <s:enumeration value="eJan" />
+          <s:enumeration value="eFeb" />
+          <s:enumeration value="eMar" />
+          <s:enumeration value="eApr" />
+          <s:enumeration value="eMay" />
+          <s:enumeration value="eJun" />
+          <s:enumeration value="eJul" />
+          <s:enumeration value="eAug" />
+          <s:enumeration value="eSep" />
+          <s:enumeration value="eOct" />
+          <s:enumeration value="eNov" />
+          <s:enumeration value="eDec" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MirrorDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InquireURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="KeyType" type="s0:enmKeyType" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxRecords" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FromCacheID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MirrorDatabaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MirrorDatabaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="InquireURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseTModel" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseBusiness" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="UseService" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxRecords" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSDLSuffix">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WSURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWSDLSuffixResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWSDLSuffixResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsWebService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsWebServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsWebServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="GetTopSearchesSoapIn">
+    <part name="parameters" element="s0:GetTopSearches" />
+  </message>
+  <message name="GetTopSearchesSoapOut">
+    <part name="parameters" element="s0:GetTopSearchesResponse" />
+  </message>
+  <message name="GetInquireURLSoapIn">
+    <part name="parameters" element="s0:GetInquireURL" />
+  </message>
+  <message name="GetInquireURLSoapOut">
+    <part name="parameters" element="s0:GetInquireURLResponse" />
+  </message>
+  <message name="ClickRegistryEntrySoapIn">
+    <part name="parameters" element="s0:ClickRegistryEntry" />
+  </message>
+  <message name="ClickRegistryEntrySoapOut">
+    <part name="parameters" element="s0:ClickRegistryEntryResponse" />
+  </message>
+  <message name="BrowsePeriodSoapIn">
+    <part name="parameters" element="s0:BrowsePeriod" />
+  </message>
+  <message name="BrowsePeriodSoapOut">
+    <part name="parameters" element="s0:BrowsePeriodResponse" />
+  </message>
+  <message name="GetPeriodSoapIn">
+    <part name="parameters" element="s0:GetPeriod" />
+  </message>
+  <message name="GetPeriodSoapOut">
+    <part name="parameters" element="s0:GetPeriodResponse" />
+  </message>
+  <message name="MirrorDatabaseSoapIn">
+    <part name="parameters" element="s0:MirrorDatabase" />
+  </message>
+  <message name="MirrorDatabaseSoapOut">
+    <part name="parameters" element="s0:MirrorDatabaseResponse" />
+  </message>
+  <message name="SearchSoapIn">
+    <part name="parameters" element="s0:Search" />
+  </message>
+  <message name="SearchSoapOut">
+    <part name="parameters" element="s0:SearchResponse" />
+  </message>
+  <message name="GetWSDLSuffixSoapIn">
+    <part name="parameters" element="s0:GetWSDLSuffix" />
+  </message>
+  <message name="GetWSDLSuffixSoapOut">
+    <part name="parameters" element="s0:GetWSDLSuffixResponse" />
+  </message>
+  <message name="IsWebServiceSoapIn">
+    <part name="parameters" element="s0:IsWebService" />
+  </message>
+  <message name="IsWebServiceSoapOut">
+    <part name="parameters" element="s0:IsWebServiceResponse" />
+  </message>
+  <message name="GetUserIDSoapIn">
+    <part name="parameters" element="s0:GetUserID" />
+  </message>
+  <message name="GetUserIDSoapOut">
+    <part name="parameters" element="s0:GetUserIDResponse" />
+  </message>
+  <message name="GetTopSearchesHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetTopSearchesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetInquireURLHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="GetInquireURLHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ClickRegistryEntryHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="ClickRegistryEntryHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="BrowsePeriodHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="BrowsePeriodHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetPeriodHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="Month" type="s:string" />
+    <part name="Year" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetPeriodHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="MirrorDatabaseHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="MaxRecords" type="s:string" />
+    <part name="FromCacheID" type="s:string" />
+  </message>
+  <message name="MirrorDatabaseHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="SearchHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="SearchText" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="UseTModel" type="s:string" />
+    <part name="UseBusiness" type="s:string" />
+    <part name="UseService" type="s:string" />
+    <part name="MaxRecords" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="SearchHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetWSDLSuffixHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="WSURL" type="s:string" />
+  </message>
+  <message name="GetWSDLSuffixHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsWebServiceHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="IsWebServiceHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetUserIDHttpGetIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTopSearchesHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetTopSearchesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetInquireURLHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="GetInquireURLHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ClickRegistryEntryHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="ClickRegistryEntryHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="BrowsePeriodHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="BrowsePeriodHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetPeriodHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="Month" type="s:string" />
+    <part name="Year" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetPeriodHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="MirrorDatabaseHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="KeyType" type="s:string" />
+    <part name="MaxRecords" type="s:string" />
+    <part name="FromCacheID" type="s:string" />
+  </message>
+  <message name="MirrorDatabaseHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="SearchHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="SearchText" type="s:string" />
+    <part name="InquireURL" type="s:string" />
+    <part name="UseTModel" type="s:string" />
+    <part name="UseBusiness" type="s:string" />
+    <part name="UseService" type="s:string" />
+    <part name="MaxRecords" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="SearchHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetWSDLSuffixHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="WSURL" type="s:string" />
+  </message>
+  <message name="GetWSDLSuffixHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsWebServiceHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="KeyValue" type="s:string" />
+  </message>
+  <message name="IsWebServiceHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetUserIDHttpPostIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="csearchSoap">
+    <operation name="GetTopSearches">
+      <documentation>WEB SERVICE CACHED - Lists the top 10 searches being performed in the SoapEngine search engine over the last 7 days&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetTopSearchesSoapIn" />
+      <output message="s0:GetTopSearchesSoapOut" />
+    </operation>
+    <operation name="GetInquireURL">
+      <documentation>WEB SERVICE CACHED - If you have a specific KeyValue (GUID) for a UDDI registry entry, you can use this function to indentify which UDDI registry it is actually residing in&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetInquireURLSoapIn" />
+      <output message="s0:GetInquireURLSoapOut" />
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <documentation>Update a single registry entry to state that it has been clicked on by a visitor. This allows the client to increment the hits field as returned in the Search method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:ClickRegistryEntrySoapIn" />
+      <output message="s0:ClickRegistryEntrySoapOut" />
+    </operation>
+    <operation name="BrowsePeriod">
+      <documentation>WEB SERVICE CACHED - Browse by month and year the UDDI entries within the public UDDI registry. This web service simply returns number of records registered during that period that are over a certain rating within the registry i.e. display the number of businesses registering in the public UDDI registry for February that are valid and have consistent data. You can browse down and see what registry entries make up these figures by using the &lt;a target='_blank' href='GetPeriod.asmx'&gt;GetPeriod&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:BrowsePeriodSoapIn" />
+      <output message="s0:BrowsePeriodSoapOut" />
+    </operation>
+    <operation name="GetPeriod">
+      <documentation>WEB SERVICE CACHED - Search for web service on UDDI search engine by month and year it was created.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;Month&lt;/b&gt; = Indentifies the specific month you wish to process or work with&lt;br&gt;&lt;b&gt;Year&lt;/b&gt; = Identifies the specific year you want to process or work with&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetPeriodSoapIn" />
+      <output message="s0:GetPeriodSoapOut" />
+    </operation>
+    <operation name="MirrorDatabase">
+      <documentation>You must subscribe to our mirroring system to use this service. Subscription gives you the ability to extract all records from our rating system and re-use it on your own web site or other such application for commercial use. For more information please email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated information'&gt;Mirroring&lt;/a&gt;. You can only download a maximum of 250 records with this method, but can make subsequent calls to obtain the entire database.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:MirrorDatabaseSoapIn" />
+      <output message="s0:MirrorDatabaseSoapOut" />
+    </operation>
+    <operation name="Search">
+      <documentation>Search for web service on UDDI search engine. Searches across different structures i.e. searches tmodels, businesses and services all at the same time. Also search weights the results by making sure that all registry entries are available and checked ones are listed at the top of the search. The views value on each record are increased when search values are returned. NB* This search system can only return a maximum of 250 records at any one time. NB* You can retrieve all rated information within the SoapEngine system for keeping your own rating system by subscribing to our service, email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated Data'&gt;Mirroring&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;How to use?&lt;/b&gt;&lt;br&gt;1. Get your UserID using the &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method&lt;br&gt;2. Search the database using this method&lt;br&gt;3. NB* IMPORTANT BIT, use the link in the field called 'linkURL' on each returned XML record to display the original UDDI registry entry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;UseTmodel&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search tmodels&lt;br&gt;&lt;b&gt;UseBusiness&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search businesses&lt;br&gt;&lt;b&gt;UseService&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search services&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Return Value:&lt;/b&gt;&lt;br&gt;This web service process returns an XML data set which corresponds to the results of the search that you are performing, the following is a description of the elements of each record within this XML dataset...&lt;br&gt;&lt;br&gt;&lt;table cellpadding=3 border=0 cellspacing=0&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Full description of the ShKeyType element below i.e. Business, Service or TModel&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;ShKeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Short description of the KeyType above i.e. BUS=Business, SRV=Service or TMD=Tmodel.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyValue&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Unique UDDI keyvalue as assigned by the UDDI registry. Can be used with a UDDI SDK to retrieve registry details.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Name&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Name of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Description&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Description of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;LinkURL&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;NB* Use this link to see an actual view of this record on the internet, it links to a valid web page which display this registry entry along with all the information and links to other registry records available from within UDDI.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsWebService&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;SoapEngine scans this record and sets this element to TRUE if it believes that this record contains a pointer towards a SOAP/WSDL Web Service as described in the SOAP standards.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsValid&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;When a UDDI registry entry is first found, this value is set to TRUE, however manual interception by a SoapEngine administrator can change this value to FALSE and therefore exclude it permanently from all searches and UDDI Registry listings within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsChecked&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If this is set to TRUE, it means that this record has been checked for validity by a SoapEngine administrator.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNotes&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it means that this record has some associated notes, see the associated &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service to retrieve these notes.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsBuy&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Some web services or general services require you to purchase to able you to use, if set to TRUE, then this UDDI registry entry is a commercial pay to use service.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNewsGroup&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it signifies that this UDDI registry entry has an associated discussion newsgroup.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsQuestionnaire&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then it signifies that the owner of this UDDI record has completed a SoapEngine questionnaire, which covers some validation requirements.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsAdmin&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then is means that this UDDI record is administered from within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Weight&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;This is the total weight assigned to this UDDI regisrtry entry, this weight is what makes sure that this record is select above all others. The higher the weight then the more valid and consistant the data is within this record. Weight is increased or decreased depending on certain factors about this registyr record, for example if their are notes then we increase the weighting, if the record points towards a URL that does not exist then we decrease the weighting.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Rating&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Not currently in use, but this gives SoapEngine the ability to add an independant rating to each record within ther UDDI registry. This would in turn alter the weighting of this record and therefore give it more of a chance to appear in searches performed through SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Hits&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI record has been selected or clicked on. Is incremented every time the &lt;a target='_blank' href='csearch.asmx?op=ClickRegistryEntry'&gt;ClickRegistryEntry&lt;/a&gt; method is run.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Views&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI registry record has been viewed. This value is automatically updated every time a search is performed. However it is also only updated then the Cache needs to be renewed, therefore if the same person 'runs the same search' within the cache timescale (1 hour) then those views are not registered.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;NoteCount&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of notes that have been written about this UDDI registry entry. Notes can be retrieved using the &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchSoapIn" />
+      <output message="s0:SearchSoapOut" />
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <documentation>WEB SERVICE CACHED - Given a specific URL this service determines whether it needs an additional suffix to make it retrieve the WSDL schema definition. If you use http://www.soapengine.com/lucin/soapenginex/smsx.asmx for your example you would expect to receive back '?WSDL' as combining the return value with the URL you have actually allows you to browse to the WSDL schema file. This web service uses as a template all known url link formats it finds within the UDDI registry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;WSURL&lt;/b&gt; = Web Service internet location&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetWSDLSuffixSoapIn" />
+      <output message="s0:GetWSDLSuffixSoapOut" />
+    </operation>
+    <operation name="IsWebService">
+      <documentation>Returns whether a specific UDDI key registry is a web service or not. A web service is found when it was last scanned and each record is marked.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsWebServiceSoapIn" />
+      <output message="s0:IsWebServiceSoapOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDSoapIn" />
+      <output message="s0:GetUserIDSoapOut" />
+    </operation>
+  </portType>
+  <portType name="csearchHttpGet">
+    <operation name="GetTopSearches">
+      <documentation>WEB SERVICE CACHED - Lists the top 10 searches being performed in the SoapEngine search engine over the last 7 days&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetTopSearchesHttpGetIn" />
+      <output message="s0:GetTopSearchesHttpGetOut" />
+    </operation>
+    <operation name="GetInquireURL">
+      <documentation>WEB SERVICE CACHED - If you have a specific KeyValue (GUID) for a UDDI registry entry, you can use this function to indentify which UDDI registry it is actually residing in&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetInquireURLHttpGetIn" />
+      <output message="s0:GetInquireURLHttpGetOut" />
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <documentation>Update a single registry entry to state that it has been clicked on by a visitor. This allows the client to increment the hits field as returned in the Search method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:ClickRegistryEntryHttpGetIn" />
+      <output message="s0:ClickRegistryEntryHttpGetOut" />
+    </operation>
+    <operation name="BrowsePeriod">
+      <documentation>WEB SERVICE CACHED - Browse by month and year the UDDI entries within the public UDDI registry. This web service simply returns number of records registered during that period that are over a certain rating within the registry i.e. display the number of businesses registering in the public UDDI registry for February that are valid and have consistent data. You can browse down and see what registry entries make up these figures by using the &lt;a target='_blank' href='GetPeriod.asmx'&gt;GetPeriod&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:BrowsePeriodHttpGetIn" />
+      <output message="s0:BrowsePeriodHttpGetOut" />
+    </operation>
+    <operation name="GetPeriod">
+      <documentation>WEB SERVICE CACHED - Search for web service on UDDI search engine by month and year it was created.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;Month&lt;/b&gt; = Indentifies the specific month you wish to process or work with&lt;br&gt;&lt;b&gt;Year&lt;/b&gt; = Identifies the specific year you want to process or work with&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetPeriodHttpGetIn" />
+      <output message="s0:GetPeriodHttpGetOut" />
+    </operation>
+    <operation name="MirrorDatabase">
+      <documentation>You must subscribe to our mirroring system to use this service. Subscription gives you the ability to extract all records from our rating system and re-use it on your own web site or other such application for commercial use. For more information please email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated information'&gt;Mirroring&lt;/a&gt;. You can only download a maximum of 250 records with this method, but can make subsequent calls to obtain the entire database.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:MirrorDatabaseHttpGetIn" />
+      <output message="s0:MirrorDatabaseHttpGetOut" />
+    </operation>
+    <operation name="Search">
+      <documentation>Search for web service on UDDI search engine. Searches across different structures i.e. searches tmodels, businesses and services all at the same time. Also search weights the results by making sure that all registry entries are available and checked ones are listed at the top of the search. The views value on each record are increased when search values are returned. NB* This search system can only return a maximum of 250 records at any one time. NB* You can retrieve all rated information within the SoapEngine system for keeping your own rating system by subscribing to our service, email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated Data'&gt;Mirroring&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;How to use?&lt;/b&gt;&lt;br&gt;1. Get your UserID using the &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method&lt;br&gt;2. Search the database using this method&lt;br&gt;3. NB* IMPORTANT BIT, use the link in the field called 'linkURL' on each returned XML record to display the original UDDI registry entry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;UseTmodel&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search tmodels&lt;br&gt;&lt;b&gt;UseBusiness&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search businesses&lt;br&gt;&lt;b&gt;UseService&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search services&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Return Value:&lt;/b&gt;&lt;br&gt;This web service process returns an XML data set which corresponds to the results of the search that you are performing, the following is a description of the elements of each record within this XML dataset...&lt;br&gt;&lt;br&gt;&lt;table cellpadding=3 border=0 cellspacing=0&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Full description of the ShKeyType element below i.e. Business, Service or TModel&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;ShKeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Short description of the KeyType above i.e. BUS=Business, SRV=Service or TMD=Tmodel.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyValue&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Unique UDDI keyvalue as assigned by the UDDI registry. Can be used with a UDDI SDK to retrieve registry details.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Name&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Name of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Description&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Description of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;LinkURL&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;NB* Use this link to see an actual view of this record on the internet, it links to a valid web page which display this registry entry along with all the information and links to other registry records available from within UDDI.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsWebService&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;SoapEngine scans this record and sets this element to TRUE if it believes that this record contains a pointer towards a SOAP/WSDL Web Service as described in the SOAP standards.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsValid&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;When a UDDI registry entry is first found, this value is set to TRUE, however manual interception by a SoapEngine administrator can change this value to FALSE and therefore exclude it permanently from all searches and UDDI Registry listings within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsChecked&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If this is set to TRUE, it means that this record has been checked for validity by a SoapEngine administrator.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNotes&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it means that this record has some associated notes, see the associated &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service to retrieve these notes.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsBuy&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Some web services or general services require you to purchase to able you to use, if set to TRUE, then this UDDI registry entry is a commercial pay to use service.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNewsGroup&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it signifies that this UDDI registry entry has an associated discussion newsgroup.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsQuestionnaire&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then it signifies that the owner of this UDDI record has completed a SoapEngine questionnaire, which covers some validation requirements.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsAdmin&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then is means that this UDDI record is administered from within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Weight&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;This is the total weight assigned to this UDDI regisrtry entry, this weight is what makes sure that this record is select above all others. The higher the weight then the more valid and consistant the data is within this record. Weight is increased or decreased depending on certain factors about this registyr record, for example if their are notes then we increase the weighting, if the record points towards a URL that does not exist then we decrease the weighting.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Rating&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Not currently in use, but this gives SoapEngine the ability to add an independant rating to each record within ther UDDI registry. This would in turn alter the weighting of this record and therefore give it more of a chance to appear in searches performed through SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Hits&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI record has been selected or clicked on. Is incremented every time the &lt;a target='_blank' href='csearch.asmx?op=ClickRegistryEntry'&gt;ClickRegistryEntry&lt;/a&gt; method is run.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Views&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI registry record has been viewed. This value is automatically updated every time a search is performed. However it is also only updated then the Cache needs to be renewed, therefore if the same person 'runs the same search' within the cache timescale (1 hour) then those views are not registered.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;NoteCount&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of notes that have been written about this UDDI registry entry. Notes can be retrieved using the &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchHttpGetIn" />
+      <output message="s0:SearchHttpGetOut" />
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <documentation>WEB SERVICE CACHED - Given a specific URL this service determines whether it needs an additional suffix to make it retrieve the WSDL schema definition. If you use http://www.soapengine.com/lucin/soapenginex/smsx.asmx for your example you would expect to receive back '?WSDL' as combining the return value with the URL you have actually allows you to browse to the WSDL schema file. This web service uses as a template all known url link formats it finds within the UDDI registry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;WSURL&lt;/b&gt; = Web Service internet location&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetWSDLSuffixHttpGetIn" />
+      <output message="s0:GetWSDLSuffixHttpGetOut" />
+    </operation>
+    <operation name="IsWebService">
+      <documentation>Returns whether a specific UDDI key registry is a web service or not. A web service is found when it was last scanned and each record is marked.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsWebServiceHttpGetIn" />
+      <output message="s0:IsWebServiceHttpGetOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpGetIn" />
+      <output message="s0:GetUserIDHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="csearchHttpPost">
+    <operation name="GetTopSearches">
+      <documentation>WEB SERVICE CACHED - Lists the top 10 searches being performed in the SoapEngine search engine over the last 7 days&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetTopSearchesHttpPostIn" />
+      <output message="s0:GetTopSearchesHttpPostOut" />
+    </operation>
+    <operation name="GetInquireURL">
+      <documentation>WEB SERVICE CACHED - If you have a specific KeyValue (GUID) for a UDDI registry entry, you can use this function to indentify which UDDI registry it is actually residing in&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetInquireURLHttpPostIn" />
+      <output message="s0:GetInquireURLHttpPostOut" />
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <documentation>Update a single registry entry to state that it has been clicked on by a visitor. This allows the client to increment the hits field as returned in the Search method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:ClickRegistryEntryHttpPostIn" />
+      <output message="s0:ClickRegistryEntryHttpPostOut" />
+    </operation>
+    <operation name="BrowsePeriod">
+      <documentation>WEB SERVICE CACHED - Browse by month and year the UDDI entries within the public UDDI registry. This web service simply returns number of records registered during that period that are over a certain rating within the registry i.e. display the number of businesses registering in the public UDDI registry for February that are valid and have consistent data. You can browse down and see what registry entries make up these figures by using the &lt;a target='_blank' href='GetPeriod.asmx'&gt;GetPeriod&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:BrowsePeriodHttpPostIn" />
+      <output message="s0:BrowsePeriodHttpPostOut" />
+    </operation>
+    <operation name="GetPeriod">
+      <documentation>WEB SERVICE CACHED - Search for web service on UDDI search engine by month and year it was created.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;Month&lt;/b&gt; = Indentifies the specific month you wish to process or work with&lt;br&gt;&lt;b&gt;Year&lt;/b&gt; = Identifies the specific year you want to process or work with&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetPeriodHttpPostIn" />
+      <output message="s0:GetPeriodHttpPostOut" />
+    </operation>
+    <operation name="MirrorDatabase">
+      <documentation>You must subscribe to our mirroring system to use this service. Subscription gives you the ability to extract all records from our rating system and re-use it on your own web site or other such application for commercial use. For more information please email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated information'&gt;Mirroring&lt;/a&gt;. You can only download a maximum of 250 records with this method, but can make subsequent calls to obtain the entire database.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;KeyType&lt;/b&gt; = A identifier for the keyvalue, for example eBusiness could mean business UDDI registry records to be used in this process only.&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:MirrorDatabaseHttpPostIn" />
+      <output message="s0:MirrorDatabaseHttpPostOut" />
+    </operation>
+    <operation name="Search">
+      <documentation>Search for web service on UDDI search engine. Searches across different structures i.e. searches tmodels, businesses and services all at the same time. Also search weights the results by making sure that all registry entries are available and checked ones are listed at the top of the search. The views value on each record are increased when search values are returned. NB* This search system can only return a maximum of 250 records at any one time. NB* You can retrieve all rated information within the SoapEngine system for keeping your own rating system by subscribing to our service, email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated Data'&gt;Mirroring&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;How to use?&lt;/b&gt;&lt;br&gt;1. Get your UserID using the &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method&lt;br&gt;2. Search the database using this method&lt;br&gt;3. NB* IMPORTANT BIT, use the link in the field called 'linkURL' on each returned XML record to display the original UDDI registry entry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;SearchText&lt;/b&gt; = Text to search for within UDDI registry can be multiple words, for example entering 'EMAIL MOBILE' will search for both those names within the Name and Description in UDDI. This web service returns a list of web services appearing within the UDDI in a specific period&lt;br&gt;&lt;b&gt;InquireURL&lt;/b&gt; = UDDI Inquire end-point that was used to originally extract the information that you are interested in i.e. https://uddi.microsoft.com/inquire. NB* This link is used as a reference to the extraction link url, it could be a private UDDI registry or a public UDDI registry. For a list of registries that have been used to populate SoapEngine please &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cuddi.asmx?op=GetUDDIRegistries'&gt;click HERE&lt;/a&gt; to use the following Web Service.&lt;br&gt;&lt;b&gt;UseTmodel&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search tmodels&lt;br&gt;&lt;b&gt;UseBusiness&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search businesses&lt;br&gt;&lt;b&gt;UseService&lt;/b&gt; = Should be TRUE or FALSE. Use TRUE if you want to search services&lt;br&gt;&lt;b&gt;MaxRecords&lt;/b&gt; = Maximum number of records for the search routine to return i.e. 30. NB* There is an absolute maximum of 250 able to be retrieved at any one time.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;b&gt;Return Value:&lt;/b&gt;&lt;br&gt;This web service process returns an XML data set which corresponds to the results of the search that you are performing, the following is a description of the elements of each record within this XML dataset...&lt;br&gt;&lt;br&gt;&lt;table cellpadding=3 border=0 cellspacing=0&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Full description of the ShKeyType element below i.e. Business, Service or TModel&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;ShKeyType&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Short description of the KeyType above i.e. BUS=Business, SRV=Service or TMD=Tmodel.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;KeyValue&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Unique UDDI keyvalue as assigned by the UDDI registry. Can be used with a UDDI SDK to retrieve registry details.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Name&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Name of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Description&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Description of UDDI Registry entry.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;LinkURL&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;NB* Use this link to see an actual view of this record on the internet, it links to a valid web page which display this registry entry along with all the information and links to other registry records available from within UDDI.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsWebService&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;SoapEngine scans this record and sets this element to TRUE if it believes that this record contains a pointer towards a SOAP/WSDL Web Service as described in the SOAP standards.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsValid&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;When a UDDI registry entry is first found, this value is set to TRUE, however manual interception by a SoapEngine administrator can change this value to FALSE and therefore exclude it permanently from all searches and UDDI Registry listings within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsChecked&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If this is set to TRUE, it means that this record has been checked for validity by a SoapEngine administrator.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNotes&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it means that this record has some associated notes, see the associated &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service to retrieve these notes.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsBuy&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Some web services or general services require you to purchase to able you to use, if set to TRUE, then this UDDI registry entry is a commercial pay to use service.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsNewsGroup&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, it signifies that this UDDI registry entry has an associated discussion newsgroup.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsQuestionnaire&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then it signifies that the owner of this UDDI record has completed a SoapEngine questionnaire, which covers some validation requirements.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;IsAdmin&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;If set to TRUE, then is means that this UDDI record is administered from within SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Weight&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;This is the total weight assigned to this UDDI regisrtry entry, this weight is what makes sure that this record is select above all others. The higher the weight then the more valid and consistant the data is within this record. Weight is increased or decreased depending on certain factors about this registyr record, for example if their are notes then we increase the weighting, if the record points towards a URL that does not exist then we decrease the weighting.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Rating&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Not currently in use, but this gives SoapEngine the ability to add an independant rating to each record within ther UDDI registry. This would in turn alter the weighting of this record and therefore give it more of a chance to appear in searches performed through SoapEngine.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Hits&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI record has been selected or clicked on. Is incremented every time the &lt;a target='_blank' href='csearch.asmx?op=ClickRegistryEntry'&gt;ClickRegistryEntry&lt;/a&gt; method is run.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;Views&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of times that this UDDI registry record has been viewed. This value is automatically updated every time a search is performed. However it is also only updated then the Cache needs to be renewed, therefore if the same person 'runs the same search' within the cache timescale (1 hour) then those views are not registered.&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;lt;NoteCount&amp;gt;&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Number of notes that have been written about this UDDI registry entry. Notes can be retrieved using the &lt;a target='_blank' href='cnotes.asmx'&gt;CNotes&lt;/a&gt; web service.&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchHttpPostIn" />
+      <output message="s0:SearchHttpPostOut" />
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <documentation>WEB SERVICE CACHED - Given a specific URL this service determines whether it needs an additional suffix to make it retrieve the WSDL schema definition. If you use http://www.soapengine.com/lucin/soapenginex/smsx.asmx for your example you would expect to receive back '?WSDL' as combining the return value with the URL you have actually allows you to browse to the WSDL schema file. This web service uses as a template all known url link formats it finds within the UDDI registry.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;WSURL&lt;/b&gt; = Web Service internet location&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetWSDLSuffixHttpPostIn" />
+      <output message="s0:GetWSDLSuffixHttpPostOut" />
+    </operation>
+    <operation name="IsWebService">
+      <documentation>Returns whether a specific UDDI key registry is a web service or not. A web service is found when it was last scanned and each record is marked.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;KeyValue&lt;/b&gt; = Combined with the KeyType value this should be unique and refer to a specific product, service, business etc.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsWebServiceHttpPostIn" />
+      <output message="s0:IsWebServiceHttpPostOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpPostIn" />
+      <output message="s0:GetUserIDHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="csearchSoap" type="s0:csearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTopSearches">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/GetTopSearches" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInquireURL">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/GetInquireURL" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/ClickRegistryEntry" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BrowsePeriod">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/BrowsePeriod" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPeriod">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/GetPeriod" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="MirrorDatabase">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/MirrorDatabase" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Search">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/Search" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/GetWSDLSuffix" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsWebService">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/IsWebService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/csearch.asmx/GetUserID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="csearchHttpGet" type="s0:csearchHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTopSearches">
+      <http:operation location="/GetTopSearches" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInquireURL">
+      <http:operation location="/GetInquireURL" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <http:operation location="/ClickRegistryEntry" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="BrowsePeriod">
+      <http:operation location="/BrowsePeriod" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPeriod">
+      <http:operation location="/GetPeriod" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MirrorDatabase">
+      <http:operation location="/MirrorDatabase" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Search">
+      <http:operation location="/Search" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <http:operation location="/GetWSDLSuffix" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsWebService">
+      <http:operation location="/IsWebService" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="csearchHttpPost" type="s0:csearchHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTopSearches">
+      <http:operation location="/GetTopSearches" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetInquireURL">
+      <http:operation location="/GetInquireURL" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ClickRegistryEntry">
+      <http:operation location="/ClickRegistryEntry" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="BrowsePeriod">
+      <http:operation location="/BrowsePeriod" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPeriod">
+      <http:operation location="/GetPeriod" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MirrorDatabase">
+      <http:operation location="/MirrorDatabase" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Search">
+      <http:operation location="/Search" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWSDLSuffix">
+      <http:operation location="/GetWSDLSuffix" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsWebService">
+      <http:operation location="/IsWebService" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="csearch">
+    <documentation>&lt;font size='3'&gt;&lt;b&gt;UDDI Searching&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size='3'&gt;Advanced Search &amp; Rating Facilities for the UDDI Registry&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Overview:&lt;/b&gt;&lt;br&gt;Search for an entry within the UDDI registry using wild card and multi-word search. The results are weighted depending on validity, availability etc. This effectively means that working links that pass validation and are deemed to be most complete i.e. a business with contacts, services and discovery links is rated better than one without and is more more likely to be seen at the top of all search engine listings. This search offers unique abilities such as searching across multiple types i.e. TMD, BUS and SRV and searching on multiple keywords, ratings, periods etc. Works by returning UDDI Key registry value or a link (linkURL) you can use to view the original UDDI registry record. To get hold of the details of each UDDI record using the UDDI Key you must use a UDDI SDK (for your operating system) or the &lt;a target='_blank' href='cinquire.asmx'&gt;Inquire&lt;/a&gt; web service (the inquire web service returns XML). This service can also serve value added information to other UDDI search engines or companies who subscribe for data mirroring, this means that other companies can use SoapEngine's validation processes and download the results when complete then use them on their own systems, for more information please email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated information'&gt;Mirroring&lt;/a&gt;.&lt;br&gt;&lt;br&gt;This web service has come about due to its ability to cure most data inconsistancy problems within the UDDI public registry, in ongoing tests 90% of the records we successfully retrieved were found to be correct, valid and useful to the person searching, over the next few months we will endeavour to improve on this percentage.&lt;br&gt;&lt;br&gt;&lt;b&gt;Whats UNIQUE about this UDDI Search?&lt;/b&gt;&lt;br&gt;* Multiple keyword search i.e. entering 'email sms' will search for both keywords in the answer&lt;br&gt;* Searches Names and Descriptions at the same time&lt;br&gt;* Cross registry search i.e. search for Businesses, Services and TModels at the same time&lt;br&gt;* Results are returned using a rating system, therefore the most complete and most valid records appear at the top of searches&lt;br&gt;* Entire rating system can be downloaded to your own database and incorporated within your own rating system, email &lt;a href='mailto:support@lucin.com?Subject=Mirroring Rated information'&gt;Mirroring&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;Example:&lt;/b&gt;&lt;br&gt;&lt;a href='http://www.soapengine.com/lucin/examples/UDDISearch.zip'&gt;Click HERE to download an example VB.NET client project that uses the search abilities of this web service&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Web Service White Paper:&lt;/b&gt;&lt;br&gt;&lt;a target='_blank' href='doc/csearch.pdf'&gt;Click HERE to view our own white paper on the general workings of this web service&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;How to get your UserID &amp; Password?&lt;/b&gt;&lt;br&gt;This web service uses a userid and password to allow people to access each of its methods, you can obtain your own personal identification that can be used on any SoapEngine web service using this following &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method, &lt;a target='_blank' href='?op=GetUserID'&gt;click HERE&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;Terms of Use:&lt;/b&gt;&lt;br&gt;The following web services can be used free of charge for non-commercial activities, we would however ask you to consider placing the following pointer on your web site (this request may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities), thank you for your support:&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='http://www.salcentral.com'&gt;&lt;img border=0 src='images/salcsmall.gif'&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Commercial Use:&lt;/b&gt;&lt;br&gt;Much of the functionality within these web services may be used for FREE non-commercial use, however if you are using any these services commercially please register by email at &lt;a href='mailto:support@lucin.com?Subject=Register Commercial Use'&gt;Register Commercial Use&lt;/a&gt; with your name and web site (if applicable). In response we will endeavour to support your use of our products as much as possible. This rule may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities.&lt;br&gt;&lt;br&gt;&lt;b&gt;Error Trapping:&lt;/b&gt;&lt;br&gt;This web service contains in-built software driven error trapping device, therefore whenever you receive a programmatic error the support team for this web service also receives the same error but via email. Once the error has been rectified, support will email you back using your registered email address to advise you that the error has been fixed and that you can once again use that function. This support mechanism is a predominant feature of all SoapEngine web services.&lt;br&gt;&lt;br&gt;&lt;b&gt;Result Caching:&lt;/b&gt;&lt;br&gt;Some of the methods within this web service use a local memory cache to store commonly used searches and retrieve information in the fastest possible time. This caching systems advanced features means that it only retrieves cached information using exact arguments i.e. userid and password are also taken into consideration. The Cache duration is between 5 minutes and 1 hour, none of our web services engage a duration longer than 1 hour unless specified within each methods description.&lt;br&gt;&lt;br&gt;&lt;b&gt;How does AdminUser Work?&lt;/b&gt;&lt;br&gt;All SoapEngine web services are governed by a single web service called &lt;a target='_blank' href='csecurity.asmx'&gt;csecurity&lt;/a&gt;, this web service controls access for all users and administrators. An administrator can use their AdminUserID and password to gain administrator access to a certain methods or web services, only methods that contain the AdminUserID argument allow admin access. It does this in two ways ...&lt;br&gt;&lt;br&gt;1) It checks to see that the userid supplied is a valid userid and the password supplied is correct, NB* its important to remember that if you are an AdminUser and your using the adminuserid field then the password you enter must be your password not the password of the userid you are also using.&lt;br&gt;&lt;br&gt;2) If an adminuserid is also supplied it is validated to see that the adminuserid is valid and along with the password entered also passes the security check, in addition each method called has a unique Identifier hidden from the user but is used to see whether this adminuserid has Administrator access to the method your attempting to process.&lt;br&gt;&lt;br&gt;To gain administrative access to a specific web service please email &lt;a href='mailto:support@lucin.com?Subject=Request for Admin Access to Web Service'&gt;AdminAccess&lt;/a&gt; with details about the web service or method you want access to and why.&lt;br&gt;&lt;br&gt;&lt;b&gt;Support and Feedback:&lt;/b&gt;&lt;br&gt;We will endeavour to support this web service for external activities as much as possible, please email &lt;a href='mailto:support@lucin.com?Subject=Web Service Support or Feedback'&gt;Support&lt;/a&gt; with any questions or feedback you may have.&lt;br&gt;&lt;br&gt;&lt;br&gt;</documentation>
+    <port name="csearchSoap" binding="s0:csearchSoap">
+      <soap:address location="http://www.soapengine.com/lucin/salcentral/csearch.asmx" />
+    </port>
+    <port name="csearchHttpGet" binding="s0:csearchHttpGet">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/csearch.asmx" />
+    </port>
+    <port name="csearchHttpPost" binding="s0:csearchHttpPost">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/csearch.asmx" />
+    </port>
+  </service>
+</definitions>

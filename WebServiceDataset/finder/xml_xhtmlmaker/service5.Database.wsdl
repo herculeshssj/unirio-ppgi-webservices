@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://oakleaf.ws/cfr/section/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://oakleaf.ws/cfr/section/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://oakleaf.ws/cfr/section/">
+      <s:element name="GetSectById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDocType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSectByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSectByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTitleID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPartID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSectionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDocType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSectionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetSectByIdSoapIn">
+    <part name="parameters" element="s0:GetSectById" />
+  </message>
+  <message name="GetSectByIdSoapOut">
+    <part name="parameters" element="s0:GetSectByIdResponse" />
+  </message>
+  <message name="GetSectionSoapIn">
+    <part name="parameters" element="s0:GetSection" />
+  </message>
+  <message name="GetSectionSoapOut">
+    <part name="parameters" element="s0:GetSectionResponse" />
+  </message>
+  <message name="GetSectByIdHttpGetIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strDocType" type="s:string" />
+    <part name="strID" type="s:string" />
+  </message>
+  <message name="GetSectByIdHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSectionHttpGetIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strTitleID" type="s:string" />
+    <part name="strPartID" type="s:string" />
+    <part name="strSectionID" type="s:string" />
+    <part name="strDocType" type="s:string" />
+  </message>
+  <message name="GetSectionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSectByIdHttpPostIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strDocType" type="s:string" />
+    <part name="strID" type="s:string" />
+  </message>
+  <message name="GetSectByIdHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSectionHttpPostIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strTitleID" type="s:string" />
+    <part name="strPartID" type="s:string" />
+    <part name="strSectionID" type="s:string" />
+    <part name="strDocType" type="s:string" />
+  </message>
+  <message name="GetSectionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CFRSectSoap">
+    <operation name="GetSectById">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSectByID Web method accepts a single xsd:string argument value to specify the title, part, and section numbers for HTTP GET or POST operations. GetSectByID translates the single string argument into the arguments required by the GetSection method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a section or appendix. The format is ti#pn#sn#, where # is a number or, in the case of appendices, snApp#[#], where # is an appendix letter or number code.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.  Type &lt;b&gt;XHTML&lt;/b&gt; in the text box to view the XHTML code in IE.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document. For example, to return a CFR citation to title 9, part 317, section 356 (9CFR317.356), the strID code is &lt;b&gt;ti9pn317sn356&lt;/b&gt;. Copy and paste the strConnect and strID values into the test form to return an XML response document.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectByIdSoapIn" />
+      <output message="s0:GetSectByIdSoapOut" />
+    </operation>
+    <operation name="GetSection">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSection Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetSectById method.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) Set this value to 14 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters). Set this value to 107 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSectId&lt;/b&gt; is a valid section number, which consists of a number (and in some cases, letters) or appendix specified as App&lt;i&gt;A&lt;/i&gt;, where &lt;i&gt;A&lt;/i&gt; is the appendix letter(s). Set this value to 3 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectionSoapIn" />
+      <output message="s0:GetSectionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CFRSectHttpGet">
+    <operation name="GetSectById">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSectByID Web method accepts a single xsd:string argument value to specify the title, part, and section numbers for HTTP GET or POST operations. GetSectByID translates the single string argument into the arguments required by the GetSection method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a section or appendix. The format is ti#pn#sn#, where # is a number or, in the case of appendices, snApp#[#], where # is an appendix letter or number code.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.  Type &lt;b&gt;XHTML&lt;/b&gt; in the text box to view the XHTML code in IE.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document. For example, to return a CFR citation to title 9, part 317, section 356 (9CFR317.356), the strID code is &lt;b&gt;ti9pn317sn356&lt;/b&gt;. Copy and paste the strConnect and strID values into the test form to return an XML response document.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectByIdHttpGetIn" />
+      <output message="s0:GetSectByIdHttpGetOut" />
+    </operation>
+    <operation name="GetSection">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSection Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetSectById method.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) Set this value to 14 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters). Set this value to 107 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSectId&lt;/b&gt; is a valid section number, which consists of a number (and in some cases, letters) or appendix specified as App&lt;i&gt;A&lt;/i&gt;, where &lt;i&gt;A&lt;/i&gt; is the appendix letter(s). Set this value to 3 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectionHttpGetIn" />
+      <output message="s0:GetSectionHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CFRSectHttpPost">
+    <operation name="GetSectById">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSectByID Web method accepts a single xsd:string argument value to specify the title, part, and section numbers for HTTP GET or POST operations. GetSectByID translates the single string argument into the arguments required by the GetSection method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a section or appendix. The format is ti#pn#sn#, where # is a number or, in the case of appendices, snApp#[#], where # is an appendix letter or number code.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.  Type &lt;b&gt;XHTML&lt;/b&gt; in the text box to view the XHTML code in IE.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document. For example, to return a CFR citation to title 9, part 317, section 356 (9CFR317.356), the strID code is &lt;b&gt;ti9pn317sn356&lt;/b&gt;. Copy and paste the strConnect and strID values into the test form to return an XML response document.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectByIdHttpPostIn" />
+      <output message="s0:GetSectByIdHttpPostOut" />
+    </operation>
+    <operation name="GetSection">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSection Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetSectById method.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) Set this value to 14 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters). Set this value to 107 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSectId&lt;/b&gt; is a valid section number, which consists of a number (and in some cases, letters) or appendix specified as App&lt;i&gt;A&lt;/i&gt;, where &lt;i&gt;A&lt;/i&gt; is the appendix letter(s). Set this value to 3 for initial tests.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDocType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;All values except strDocType must be supplied to return a section or appendix document.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSectionHttpPostIn" />
+      <output message="s0:GetSectionHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CFRSectSoap" type="s0:CFRSectSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSectById">
+      <soap:operation soapAction="http://oakleaf.ws/cfr/section/GetSectById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSection">
+      <soap:operation soapAction="http://oakleaf.ws/cfr/section/GetSection" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRSectHttpGet" type="s0:CFRSectHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSectById">
+      <http:operation location="/GetSectById" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSection">
+      <http:operation location="/GetSection" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRSectHttpPost" type="s0:CFRSectHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSectById">
+      <http:operation location="/GetSectById" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSection">
+      <http:operation location="/GetSection" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CFRSect">
+    <documentation>&lt;p&gt;&lt;a href='http://shop.barnesandnoble.com/booksearch/isbnInquiry.asp?isbn=0072223693'&gt;&lt;img src='http://www.oakleaf.ws/BookSmall.jpg' border='0' align='right' hspace='8' vspace='0'&gt;&lt;/a&gt;CFRSectWS is one of three document/literal ASP.NET XML Web services for OakLeaf Systems' U.S. Code of Federal Regulations (CFR) demonstration database. The 1-GB SQL Server 2000 database (CFRSQL) contains the entire text of the 204 volumes of the CFR as individual structured XML documents, which range in size from about 1,000 to more than 500,000 characters. A Visual Basic .NET client handles the transformation from the U.S. Government Printing Office's unstructured SGML to well-formed XML documents. Chapter 9, "Designing the Presentation Layer for XML Web Services," of &lt;i&gt;&lt;a href='http://shop.barnesandnoble.com/booksearch/isbnInquiry.asp?isbn=0072223693'&gt;Visual Basic .NET XML Web Services Developer's Guide&lt;/a&gt;&lt;/i&gt; describes the ASP.NET client consumer of the CFR XML Web services.&lt;/p&gt;&lt;p&gt;CFRSectWS returns the text of CFR sections and appendices. You can specify XML or XHTML as the format for the response document. The XHTML transformation is what you see when you navigate to the section level on the OakLeaf CFR Web site. This &lt;a href='http://www.fawcette.com/vsm/2002_04/online/online_eprods/dataaccess_rjennings04_22/'&gt;article &lt;/a&gt;describes the DHTML navigation system for the CFR pages.&lt;/p&gt;&lt;p&gt;Click &lt;a href='http://www.oakleaf.ws/cfr/about.aspx'&gt;here&lt;/a&gt; for further details about the XML and XHTML response document formats. Click &lt;a href='http://www.oakleaf.ws/cfr/opentoc.aspx?tocid=ti9pn317sn356'&gt;here&lt;/a&gt; to view the XHTML version of the document. Click &lt;a href='http://www.oakleaf.ws/cfr/CFRSect.xml'&gt;here&lt;/a&gt; to open a sample XML document. The XSD schema for the response document currently isn't available (Xsd.exe won't create it.)&lt;/p&gt;&lt;p&gt;&lt;b&gt;The OakLeaf Systems CFR XML Web services are for demonstration/development use only and do not return official content of the U.S. CFR. Click &lt;a href='http://www.access.gpo.gov/ecfr/'&gt;here&lt;/a&gt; to go to the official U.S. GPO/NARA eCFR Beta Test Site.&lt;/b&gt;&lt;/p&gt;</documentation>
+    <port name="CFRSectSoap" binding="s0:CFRSectSoap">
+      <soap:address location="http://www.oakleaf.ws/cfrsectws/cfrsectws.asmx" />
+    </port>
+    <port name="CFRSectHttpGet" binding="s0:CFRSectHttpGet">
+      <http:address location="http://www.oakleaf.ws/cfrsectws/cfrsectws.asmx" />
+    </port>
+    <port name="CFRSectHttpPost" binding="s0:CFRSectHttpPost">
+      <http:address location="http://www.oakleaf.ws/cfrsectws/cfrsectws.asmx" />
+    </port>
+  </service>
+</definitions>

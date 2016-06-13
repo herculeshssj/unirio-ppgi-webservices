@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeAccelerationUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AccelerationValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromAccelerationUnit" type="s0:Accelerations" />
+            <s:element minOccurs="1" maxOccurs="1" name="toAccelerationUnit" type="s0:Accelerations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Accelerations">
+        <s:restriction base="s:string">
+          <s:enumeration value="celo" />
+          <s:enumeration value="centigal" />
+          <s:enumeration value="centimeterPersquaresecond" />
+          <s:enumeration value="decigal" />
+          <s:enumeration value="decimeterPersquaresecond" />
+          <s:enumeration value="dekameterPersquaresecond" />
+          <s:enumeration value="footPersquaresecond" />
+          <s:enumeration value="gunit" />
+          <s:enumeration value="gal" />
+          <s:enumeration value="galileo" />
+          <s:enumeration value="gn" />
+          <s:enumeration value="grav" />
+          <s:enumeration value="hectometerPersquaresecond" />
+          <s:enumeration value="inchPersquaresecond" />
+          <s:enumeration value="kilometerPerhoursecond" />
+          <s:enumeration value="kilometerPersquaresecond" />
+          <s:enumeration value="leo" />
+          <s:enumeration value="meterPersquaresecond" />
+          <s:enumeration value="milePerhourminute" />
+          <s:enumeration value="milePerhoursecond" />
+          <s:enumeration value="milePersquaresecond" />
+          <s:enumeration value="milligal" />
+          <s:enumeration value="millimeterPersquaresecond" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeAccelerationUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeAccelerationUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeAccelerationUnitSoapIn">
+    <part name="parameters" element="s0:ChangeAccelerationUnit" />
+  </message>
+  <message name="ChangeAccelerationUnitSoapOut">
+    <part name="parameters" element="s0:ChangeAccelerationUnitResponse" />
+  </message>
+  <message name="ChangeAccelerationUnitHttpGetIn">
+    <part name="AccelerationValue" type="s:string" />
+    <part name="fromAccelerationUnit" type="s:string" />
+    <part name="toAccelerationUnit" type="s:string" />
+  </message>
+  <message name="ChangeAccelerationUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeAccelerationUnitHttpPostIn">
+    <part name="AccelerationValue" type="s:string" />
+    <part name="fromAccelerationUnit" type="s:string" />
+    <part name="toAccelerationUnit" type="s:string" />
+  </message>
+  <message name="ChangeAccelerationUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="AccelerationUnitSoap">
+    <operation name="ChangeAccelerationUnit">
+      <input message="s0:ChangeAccelerationUnitSoapIn" />
+      <output message="s0:ChangeAccelerationUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AccelerationUnitHttpGet">
+    <operation name="ChangeAccelerationUnit">
+      <input message="s0:ChangeAccelerationUnitHttpGetIn" />
+      <output message="s0:ChangeAccelerationUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AccelerationUnitHttpPost">
+    <operation name="ChangeAccelerationUnit">
+      <input message="s0:ChangeAccelerationUnitHttpPostIn" />
+      <output message="s0:ChangeAccelerationUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AccelerationUnitSoap" type="s0:AccelerationUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeAccelerationUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeAccelerationUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AccelerationUnitHttpGet" type="s0:AccelerationUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeAccelerationUnit">
+      <http:operation location="/ChangeAccelerationUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AccelerationUnitHttpPost" type="s0:AccelerationUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeAccelerationUnit">
+      <http:operation location="/ChangeAccelerationUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AccelerationUnit">
+    <port name="AccelerationUnitSoap" binding="s0:AccelerationUnitSoap">
+      <soap:address location="http://www.webservicex.net/ConvertAcceleration.asmx" />
+    </port>
+    <port name="AccelerationUnitHttpGet" binding="s0:AccelerationUnitHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertAcceleration.asmx" />
+    </port>
+    <port name="AccelerationUnitHttpPost" binding="s0:AccelerationUnitHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertAcceleration.asmx" />
+    </port>
+  </service>
+</definitions>

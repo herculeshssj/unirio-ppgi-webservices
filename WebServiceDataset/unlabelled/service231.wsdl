@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://ws" xmlns:impl="http://ws-impl" xmlns:tns2="http://rpc.xml.coldfusion" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/"><types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><complexType name="QueryBean"><sequence><element name="data" nillable="true" type="intf:ArrayOfArrayOf_xsd_anyType"/><element name="ColumnList" nillable="true" type="intf:ArrayOf_SOAP-ENC_string"/></sequence></complexType><element name="QueryBean" nillable="true" type="tns2:QueryBean"/></schema><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ws"><complexType name="ArrayOfArrayOf_xsd_anyType"><complexContent><restriction base="SOAP-ENC:Array"><attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:anyType[][]"/></restriction></complexContent></complexType><complexType name="ArrayOf_SOAP-ENC_string"><complexContent><restriction base="SOAP-ENC:Array"><attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/></restriction></complexContent></complexType></schema></types>
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:message name="getXMLNewsRequest">
+  </wsdl:message>
+  <wsdl:message name="getQueryNewsResponse">
+    <wsdl:part name="return" type="tns2:QueryBean"/>
+  </wsdl:message>
+  <wsdl:message name="getXMLNewsResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="getQueryNewsRequest">
+  </wsdl:message>
+  <wsdl:portType name="slashdotnews">
+    <wsdl:operation name="getXMLNews">
+      <wsdl:input message="intf:getXMLNewsRequest"/>
+      <wsdl:output message="intf:getXMLNewsResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryNews">
+      <wsdl:input message="intf:getQueryNewsRequest"/>
+      <wsdl:output message="intf:getQueryNewsResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="slashdotnews.cfcSoapBinding" type="intf:slashdotnews">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getXMLNews">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getQueryNews">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="slashdotnewsService">
+    <wsdl:port name="slashdotnews.cfc" binding="intf:slashdotnews.cfcSoapBinding">
+      <wsdlsoap:address location="http://webservices.isitedesign.com/ws/slashdotnews.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www26.brinkster.com/vbornhak/Rechner/Eurorechner" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www26.brinkster.com/vbornhak/Rechner/Eurorechner" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www26.brinkster.com/vbornhak/Rechner/Eurorechner">
+      <s:element name="CurrencyinEuro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="wert" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrencyinEuroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CurrencyinEuroResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EuroinCurrency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="wert" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EuroinCurrencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EuroinCurrencyResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="CurrencyinEuroSoapIn">
+    <part name="parameters" element="s0:CurrencyinEuro" />
+  </message>
+  <message name="CurrencyinEuroSoapOut">
+    <part name="parameters" element="s0:CurrencyinEuroResponse" />
+  </message>
+  <message name="EuroinCurrencySoapIn">
+    <part name="parameters" element="s0:EuroinCurrency" />
+  </message>
+  <message name="EuroinCurrencySoapOut">
+    <part name="parameters" element="s0:EuroinCurrencyResponse" />
+  </message>
+  <message name="CurrencyinEuroHttpGetIn">
+    <part name="wert" type="s:string" />
+    <part name="currency" type="s:string" />
+  </message>
+  <message name="CurrencyinEuroHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="EuroinCurrencyHttpGetIn">
+    <part name="wert" type="s:string" />
+    <part name="currency" type="s:string" />
+  </message>
+  <message name="EuroinCurrencyHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CurrencyinEuroHttpPostIn">
+    <part name="wert" type="s:string" />
+    <part name="currency" type="s:string" />
+  </message>
+  <message name="CurrencyinEuroHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="EuroinCurrencyHttpPostIn">
+    <part name="wert" type="s:string" />
+    <part name="currency" type="s:string" />
+  </message>
+  <message name="EuroinCurrencyHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="CurrencyConvertSoap">
+    <operation name="CurrencyinEuro">
+      <documentation>Diese Methode rechnet die Währung in Euro um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:CurrencyinEuroSoapIn" />
+      <output message="s0:CurrencyinEuroSoapOut" />
+    </operation>
+    <operation name="EuroinCurrency">
+      <documentation>Diese Methode rechnet Euro in die angegebene Währung um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:EuroinCurrencySoapIn" />
+      <output message="s0:EuroinCurrencySoapOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencyConvertHttpGet">
+    <operation name="CurrencyinEuro">
+      <documentation>Diese Methode rechnet die Währung in Euro um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:CurrencyinEuroHttpGetIn" />
+      <output message="s0:CurrencyinEuroHttpGetOut" />
+    </operation>
+    <operation name="EuroinCurrency">
+      <documentation>Diese Methode rechnet Euro in die angegebene Währung um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:EuroinCurrencyHttpGetIn" />
+      <output message="s0:EuroinCurrencyHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencyConvertHttpPost">
+    <operation name="CurrencyinEuro">
+      <documentation>Diese Methode rechnet die Währung in Euro um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:CurrencyinEuroHttpPostIn" />
+      <output message="s0:CurrencyinEuroHttpPostOut" />
+    </operation>
+    <operation name="EuroinCurrency">
+      <documentation>Diese Methode rechnet Euro in die angegebene Währung um.&lt;br&gt;Es werden zwei Parameter erwartet.&lt;br&gt;1.  Der Wert (z.B. 1000)&lt;BR&gt;2.  Die Währungsart ("ITL" für italienische Lire).&lt;br&gt;Ist der Rückgabewert -1, haben Sie einen falschen Typ Währungstyp angegeben, bei -2 haben Sie haben Sie einen faschen Zahlenwert angegeben.</documentation>
+      <input message="s0:EuroinCurrencyHttpPostIn" />
+      <output message="s0:EuroinCurrencyHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CurrencyConvertSoap" type="s0:CurrencyConvertSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CurrencyinEuro">
+      <soap:operation soapAction="http://www26.brinkster.com/vbornhak/Rechner/Eurorechner/CurrencyinEuro" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="EuroinCurrency">
+      <soap:operation soapAction="http://www26.brinkster.com/vbornhak/Rechner/Eurorechner/EuroinCurrency" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencyConvertHttpGet" type="s0:CurrencyConvertHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CurrencyinEuro">
+      <http:operation location="/CurrencyinEuro" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EuroinCurrency">
+      <http:operation location="/EuroinCurrency" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencyConvertHttpPost" type="s0:CurrencyConvertHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CurrencyinEuro">
+      <http:operation location="/CurrencyinEuro" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EuroinCurrency">
+      <http:operation location="/EuroinCurrency" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CurrencyConvert">
+    <documentation>Dieser Webservice rechnet Währungen in Euro und zurück um!&lt;br&gt;folgende Umrechnungen sind möglich:&lt;br&gt;ATS, Austria&lt;br&gt;BEF, Belgium&lt;br&gt;LUF, Luxemburg&lt;br&gt;FIM, Finland&lt;br&gt;FRF, France&lt;br&gt;DEM, Germany&lt;br&gt;IEP, Ireland&lt;br&gt;ITL, Italy&lt;br&gt;NLG, Netherlands&lt;br&gt;PTE, Portugal&lt;br&gt;ESP, Spain&lt;br&gt;GRD, Greece</documentation>
+    <port name="CurrencyConvertSoap" binding="s0:CurrencyConvertSoap">
+      <soap:address location="http://www26.brinkster.com/vbornhak/rechner/currencyconvert.asmx" />
+    </port>
+    <port name="CurrencyConvertHttpGet" binding="s0:CurrencyConvertHttpGet">
+      <http:address location="http://www26.brinkster.com/vbornhak/rechner/currencyconvert.asmx" />
+    </port>
+    <port name="CurrencyConvertHttpPost" binding="s0:CurrencyConvertHttpPost">
+      <http:address location="http://www26.brinkster.com/vbornhak/rechner/currencyconvert.asmx" />
+    </port>
+  </service>
+</definitions>

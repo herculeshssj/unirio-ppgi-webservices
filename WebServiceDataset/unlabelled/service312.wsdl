@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ISwedishZipInfoservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <message name="GetZipInfoAsHTML0Request">
+    <part name="street" type="xs:string"/>
+    <part name="zip" type="xs:string"/>
+    <part name="city" type="xs:string"/>
+  </message>
+  <message name="GetZipInfoAsHTML0Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="GetZipInfoAsXML1Request">
+    <part name="street" type="xs:string"/>
+    <part name="zip" type="xs:string"/>
+    <part name="city" type="xs:string"/>
+  </message>
+  <message name="GetZipInfoAsXML1Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="ISwedishZipInfo">
+    <operation name="GetZipInfoAsHTML">
+      <input message="tns:GetZipInfoAsHTML0Request"/>
+      <output message="tns:GetZipInfoAsHTML0Response"/>
+    </operation>
+    <operation name="GetZipInfoAsXML">
+      <input message="tns:GetZipInfoAsXML1Request"/>
+      <output message="tns:GetZipInfoAsXML1Response"/>
+    </operation>
+  </portType>
+  <binding name="ISwedishZipInfobinding" type="tns:ISwedishZipInfo">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetZipInfoAsHTML">
+      <soap:operation soapAction="urn:SwedishZipInfoIntf-ISwedishZipInfo#GetZipInfoAsHTML" style="rpc"/>
+      <input message="tns:GetZipInfoAsHTML0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SwedishZipInfoIntf-ISwedishZipInfo"/>
+      </input>
+      <output message="tns:GetZipInfoAsHTML0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SwedishZipInfoIntf-ISwedishZipInfo"/>
+      </output>
+    </operation>
+    <operation name="GetZipInfoAsXML">
+      <soap:operation soapAction="urn:SwedishZipInfoIntf-ISwedishZipInfo#GetZipInfoAsXML" style="rpc"/>
+      <input message="tns:GetZipInfoAsXML1Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SwedishZipInfoIntf-ISwedishZipInfo"/>
+      </input>
+      <output message="tns:GetZipInfoAsXML1Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SwedishZipInfoIntf-ISwedishZipInfo"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ISwedishZipInfoservice">
+    <port name="ISwedishZipInfoPort" binding="tns:ISwedishZipInfobinding">
+      <soap:address location="http://www.marotz.se/scripts/zipinfo.exe/soap/ISwedishZipInfo"/>
+    </port>
+  </service>
+</definitions>
+

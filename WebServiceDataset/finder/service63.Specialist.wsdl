@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://oakleaf.ws/dsmlv2ws/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://oakleaf.ws/dsmlv2ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://oakleaf.ws/dsmlv2ws/">
+      <s:element name="BatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRequest" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnFormatted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BatchResponseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BatchResponseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="BatchResponseSoapIn">
+    <part name="parameters" element="s0:BatchResponse" />
+  </message>
+  <message name="BatchResponseSoapOut">
+    <part name="parameters" element="s0:BatchResponseResponse" />
+  </message>
+  <message name="BatchResponseHttpGetIn">
+    <part name="strRequest" type="s:string" />
+    <part name="blnFormatted" type="s:string" />
+  </message>
+  <message name="BatchResponseHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="BatchResponseHttpPostIn">
+    <part name="strRequest" type="s:string" />
+    <part name="blnFormatted" type="s:string" />
+  </message>
+  <message name="BatchResponseHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="DSMLv2WSSoap">
+    <operation name="BatchResponse">
+      <documentation>&lt;p&gt;DSMLv2WS accepts two input parameters: &lt;b&gt;strRequest&lt;/b&gt;, which specifies the batchRequest document, and &lt;b&gt;blnFormatted&lt;/b&gt;, which determines whether the batchResponse document is formatted with line-feeds and indentation. (You won't see the formatting in IE's presentation of the document.) If you don't specify &lt;b&gt;true&lt;/b&gt; or &lt;b&gt;false&lt;/b&gt;, for blnFormatted, you receive an error message.&lt;/p&gt;&lt;p&gt;The &lt;b&gt;strRequest&lt;/b&gt; parameter accepts one of the following seven values, which aren't case sensitive:&lt;ul&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/read.xml'&gt;read&lt;/a&gt; returns all attribute values of the Faculty Members OU. This is a modified version of DSfW's read.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/search.xml'&gt;search&lt;/a&gt; returns the name, description, and members of the Faculty Members OU, including its child OUs and security groups. This is a modification of the search.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/equality.xml'&gt;equality&lt;/a&gt; find all users with sn=Smith. This is a very modified version of the equality.xml example to display most user attribute values. The equivalent LDAP filter is (&amp;amp;(objectCategory=user)(sn=smith)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/matching.xml'&gt;matching&lt;/a&gt; finds all security enabled groups. This is an unmodified version of matching.xml (except for namespace changes). The equivalent LDAP filter is (&amp;amp;(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=2147483648)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/literal.xml'&gt;literal&lt;/a&gt; finds all professors and lecturers in the Faculty Members OU. This is a major modification of the literal.xml sample, because the request document doesn't return the results implied ('containing H*Q' rather than 'is equal to' implies a &amp;lt;substrings&amp;gt;&amp;lt;any&amp;gt; operation.) This example demonstrates use of &lt;and&gt;&lt;or&gt; filter combinations. The equivalent LDAP filter (less the attribute list) is (&amp;amp;(objectClass=User)(|(title=*Professor*)(title=Lecturer))).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/substring.xml'&gt;substring&lt;/a&gt; finds all Faculty Member Users with last name beginning with 'J'. The equivalent LDAP filter is (&amp;(objectCategory=user)(sn=J*)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/not.xml'&gt;not&lt;/a&gt; finds all objects that do not have a samAccountName attribute value. This request is unmodified except for namespace fixup and change of the second attribute name. The equivalent LDAP filter is (!(samAccountName=*)).&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BatchResponseSoapIn" />
+      <output message="s0:BatchResponseSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DSMLv2WSHttpGet">
+    <operation name="BatchResponse">
+      <documentation>&lt;p&gt;DSMLv2WS accepts two input parameters: &lt;b&gt;strRequest&lt;/b&gt;, which specifies the batchRequest document, and &lt;b&gt;blnFormatted&lt;/b&gt;, which determines whether the batchResponse document is formatted with line-feeds and indentation. (You won't see the formatting in IE's presentation of the document.) If you don't specify &lt;b&gt;true&lt;/b&gt; or &lt;b&gt;false&lt;/b&gt;, for blnFormatted, you receive an error message.&lt;/p&gt;&lt;p&gt;The &lt;b&gt;strRequest&lt;/b&gt; parameter accepts one of the following seven values, which aren't case sensitive:&lt;ul&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/read.xml'&gt;read&lt;/a&gt; returns all attribute values of the Faculty Members OU. This is a modified version of DSfW's read.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/search.xml'&gt;search&lt;/a&gt; returns the name, description, and members of the Faculty Members OU, including its child OUs and security groups. This is a modification of the search.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/equality.xml'&gt;equality&lt;/a&gt; find all users with sn=Smith. This is a very modified version of the equality.xml example to display most user attribute values. The equivalent LDAP filter is (&amp;amp;(objectCategory=user)(sn=smith)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/matching.xml'&gt;matching&lt;/a&gt; finds all security enabled groups. This is an unmodified version of matching.xml (except for namespace changes). The equivalent LDAP filter is (&amp;amp;(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=2147483648)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/literal.xml'&gt;literal&lt;/a&gt; finds all professors and lecturers in the Faculty Members OU. This is a major modification of the literal.xml sample, because the request document doesn't return the results implied ('containing H*Q' rather than 'is equal to' implies a &amp;lt;substrings&amp;gt;&amp;lt;any&amp;gt; operation.) This example demonstrates use of &lt;and&gt;&lt;or&gt; filter combinations. The equivalent LDAP filter (less the attribute list) is (&amp;amp;(objectClass=User)(|(title=*Professor*)(title=Lecturer))).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/substring.xml'&gt;substring&lt;/a&gt; finds all Faculty Member Users with last name beginning with 'J'. The equivalent LDAP filter is (&amp;(objectCategory=user)(sn=J*)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/not.xml'&gt;not&lt;/a&gt; finds all objects that do not have a samAccountName attribute value. This request is unmodified except for namespace fixup and change of the second attribute name. The equivalent LDAP filter is (!(samAccountName=*)).&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BatchResponseHttpGetIn" />
+      <output message="s0:BatchResponseHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DSMLv2WSHttpPost">
+    <operation name="BatchResponse">
+      <documentation>&lt;p&gt;DSMLv2WS accepts two input parameters: &lt;b&gt;strRequest&lt;/b&gt;, which specifies the batchRequest document, and &lt;b&gt;blnFormatted&lt;/b&gt;, which determines whether the batchResponse document is formatted with line-feeds and indentation. (You won't see the formatting in IE's presentation of the document.) If you don't specify &lt;b&gt;true&lt;/b&gt; or &lt;b&gt;false&lt;/b&gt;, for blnFormatted, you receive an error message.&lt;/p&gt;&lt;p&gt;The &lt;b&gt;strRequest&lt;/b&gt; parameter accepts one of the following seven values, which aren't case sensitive:&lt;ul&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/read.xml'&gt;read&lt;/a&gt; returns all attribute values of the Faculty Members OU. This is a modified version of DSfW's read.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/search.xml'&gt;search&lt;/a&gt; returns the name, description, and members of the Faculty Members OU, including its child OUs and security groups. This is a modification of the search.xml example.&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/equality.xml'&gt;equality&lt;/a&gt; find all users with sn=Smith. This is a very modified version of the equality.xml example to display most user attribute values. The equivalent LDAP filter is (&amp;amp;(objectCategory=user)(sn=smith)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/matching.xml'&gt;matching&lt;/a&gt; finds all security enabled groups. This is an unmodified version of matching.xml (except for namespace changes). The equivalent LDAP filter is (&amp;amp;(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=2147483648)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/literal.xml'&gt;literal&lt;/a&gt; finds all professors and lecturers in the Faculty Members OU. This is a major modification of the literal.xml sample, because the request document doesn't return the results implied ('containing H*Q' rather than 'is equal to' implies a &amp;lt;substrings&amp;gt;&amp;lt;any&amp;gt; operation.) This example demonstrates use of &lt;and&gt;&lt;or&gt; filter combinations. The equivalent LDAP filter (less the attribute list) is (&amp;amp;(objectClass=User)(|(title=*Professor*)(title=Lecturer))).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/substring.xml'&gt;substring&lt;/a&gt; finds all Faculty Member Users with last name beginning with 'J'. The equivalent LDAP filter is (&amp;(objectCategory=user)(sn=J*)).&lt;/li&gt;&lt;li&gt;&lt;a href='http://www.oakleaf.ws/dsmlws/not.xml'&gt;not&lt;/a&gt; finds all objects that do not have a samAccountName attribute value. This request is unmodified except for namespace fixup and change of the second attribute name. The equivalent LDAP filter is (!(samAccountName=*)).&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BatchResponseHttpPostIn" />
+      <output message="s0:BatchResponseHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DSMLv2WSSoap" type="s0:DSMLv2WSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="BatchResponse">
+      <soap:operation soapAction="http://oakleaf.ws/dsmlv2ws/BatchResponse" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DSMLv2WSHttpGet" type="s0:DSMLv2WSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="BatchResponse">
+      <http:operation location="/BatchResponse" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DSMLv2WSHttpPost" type="s0:DSMLv2WSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="BatchResponse">
+      <http:operation location="/BatchResponse" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DSMLv2WS">
+    <documentation>&lt;p&gt;&lt;a href='http://www.amazon.com/roger-jennings'&gt;&lt;img src='http://www.oakleaf.ws/BookSmall.jpg' border='0' align='right' hspace='8' vspace='0'&gt;&lt;/a&gt;DSMLv2WS is an ASP.NET XML Web service wrapper for Microsoft's DSML Services for Windows (&lt;a href='http://www.microsoft.com/windows2000/server/evaluation/news/bulletins/dsml.asp'&gt;DSfW&lt;/a&gt;) Beta 1. DSfW is a SOAP v1.1 binding for Directory Services Markup Language version 2 (DSMLv2). DSMLv2 is an XML dialect for managing Lightweight Directory Access Protocol version 3 (&lt;a href='http://www.ietf.org/rfc/rfc2251.txt'&gt;LDAPv3&lt;/a&gt;) directories, which include Windows 2000 and .NET Servers' Active Directory, Novell eDirectory, Sun Directory Services, and a few other other directory services implementations. DSfW is an XMLized implementation of Active Directory Service Interfaces (&lt;a href='http://www.microsoft.com/windows2000/techinfo/howitworks/activedirectory/adsilinks.asp'&gt;ADSI&lt;/a&gt;) 2.5.&lt;/p&gt;&lt;p&gt;The &lt;a href='http://www.oasis-open.org/committees/dsml/docs/DSMLv2.doc'&gt;DSMLv2 specification&lt;/a&gt; is managed by the Organization for the Advancement of Structured Information Systems' Directory Services Technical Committee (&lt;a href='http://www.oasis-open.org/committees/dsml/'&gt;OASIS Directory Services TC&lt;/a&gt;) and was approved by the OASIS membership in May 2002. DSMLv2 is defined by a XML Schema (&lt;a href='http://www.oasis-open.org/committees/dsml/docs/DSMLv2.xsd'&gt;DSMLv2.xsd&lt;/a&gt;), which supports queries, updates, sessions, and other LDAP operations. DSMLv2 with a SOAP binding lets you manage directories with HTTP applications running outside the firewall. If you have the required administrative privileges privileges, you can distribute almost-simultaneous updates to multiple directories that that implement DSMLv2.&lt;/p&gt;&lt;p&gt;DSfW's SOAP implementation runs as an ISAPI application, but isn't a traditional XML Web service. It has no WSDL file or help document, so you can't create a Web reference to the virtual directory containing Adssoap.dll. Instead, you instantiate a .NET HttpWebRequest object, which sends an XML batchRequest document and receives a batchResponse document. The DSMLv2WS wrapper permits very restricted, read-only public access to the directory for an OakLeaf Systems internal test domain (oakleaf.org). The batchRequest examples are modifications of the sample XML documents from the DSfW beta 1 documentation.&lt;/p&gt;&lt;p&gt;You can test-drive DSMLv2WS from the BatchResponse page or an &lt;a href='http://www.oakleaf.ws/dsmlasp/dsml.aspx'&gt;ASP.NET test harness&lt;/a&gt;. The "Access Directories Through Firewalls with DSML" .NET&lt;i&gt;Insight&lt;/i&gt; article (coming soon) has detailed descriptions of DSfW, DSMLv2, plus a downloadable Visual Basic .NET Windows form client that connects to DSMLv2WS and the demo XML files included with the DSfW documentation. The oakleaf.org domain has 500 fictitious users in a hierarchical OU structure, which was created by GroupPol.exe. GroupPol.exe is a Visual Basic 6.0 application developed for use with &lt;i&gt;&lt;a href='http://www.amazon.com/exec/obidos/ASIN/0072129484/'&gt;Admin911: Windows 2000 Group Policy&lt;/a&gt;&lt;/i&gt;.&lt;/p&gt;&lt;p&gt;If you want to create up to 25,000 user accounts in a test AD domain, GroupPol is available for free downloading as &lt;a href='http://www.admin911.com/downloads/GroupPol.msi'&gt;GroupPol.msi&lt;/a&gt;. The "&lt;a href='http://www.fawcette.com/archives/premier/mgznarch/vbpj/1999/12dec99/rj1299/rj1299.asp'&gt;Activate Windows 2000's Directory&lt;/a&gt;" article from the December 1999 issue of &lt;i&gt;Visual Studio Magazine&lt;/i&gt; (formerly &lt;i&gt;Visual Basic Programmer's Journal&lt;/i&gt;) describes the ADSI25.vbp project, which is a forerunner of GroupPol.exe.&lt;/p&gt;</documentation>
+    <port name="DSMLv2WSSoap" binding="s0:DSMLv2WSSoap">
+      <soap:address location="http://www.oakleaf.ws/dsmlws/DsmlWS.asmx" />
+    </port>
+    <port name="DSMLv2WSHttpGet" binding="s0:DSMLv2WSHttpGet">
+      <http:address location="http://www.oakleaf.ws/dsmlws/DsmlWS.asmx" />
+    </port>
+    <port name="DSMLv2WSHttpPost" binding="s0:DSMLv2WSHttpPost">
+      <http:address location="http://www.oakleaf.ws/dsmlws/DsmlWS.asmx" />
+    </port>
+  </service>
+</definitions>

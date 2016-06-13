@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IUKIServiceservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="KeyWordSearchRequest">
+    <part name="Keywords" type="xs:string"/>
+    <part name="PageNum" type="xs:int"/>
+    <part name="AsClientDataSet" type="xs:boolean"/>
+    <part name="RankResults" type="xs:boolean"/>
+  </message>
+  <message name="KeyWordSearchResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="PhraseSearchRequest">
+    <part name="Phrase" type="xs:string"/>
+    <part name="PageNum" type="xs:int"/>
+    <part name="AsClientDataSet" type="xs:boolean"/>
+    <part name="RankResults" type="xs:boolean"/>
+  </message>
+  <message name="PhraseSearchResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="ExpressionSearchRequest">
+    <part name="Expression" type="xs:string"/>
+    <part name="PageNum" type="xs:int"/>
+    <part name="AsClientDataSet" type="xs:boolean"/>
+    <part name="RankResults" type="xs:boolean"/>
+  </message>
+  <message name="ExpressionSearchResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="ResultsDTDRequest">
+    <part name="AsClientDataSet" type="xs:boolean"/>
+  </message>
+  <message name="ResultsDTDResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IUKIService">
+    <operation name="KeyWordSearch">
+      <input message="tns:KeyWordSearchRequest"/>
+      <output message="tns:KeyWordSearchResponse"/>
+    </operation>
+    <operation name="PhraseSearch">
+      <input message="tns:PhraseSearchRequest"/>
+      <output message="tns:PhraseSearchResponse"/>
+    </operation>
+    <operation name="ExpressionSearch">
+      <input message="tns:ExpressionSearchRequest"/>
+      <output message="tns:ExpressionSearchResponse"/>
+    </operation>
+    <operation name="ResultsDTD">
+      <input message="tns:ResultsDTDRequest"/>
+      <output message="tns:ResultsDTDResponse"/>
+    </operation>
+  </portType>
+  <binding name="IUKIServicebinding" type="tns:IUKIService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="KeyWordSearch">
+      <soap:operation soapAction="urn:UKIServiceIntf-IUKIService#KeyWordSearch" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </output>
+    </operation>
+    <operation name="PhraseSearch">
+      <soap:operation soapAction="urn:UKIServiceIntf-IUKIService#PhraseSearch" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </output>
+    </operation>
+    <operation name="ExpressionSearch">
+      <soap:operation soapAction="urn:UKIServiceIntf-IUKIService#ExpressionSearch" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </output>
+    </operation>
+    <operation name="ResultsDTD">
+      <soap:operation soapAction="urn:UKIServiceIntf-IUKIService#ResultsDTD" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UKIServiceIntf-IUKIService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IUKIServiceservice">
+    <port name="IUKIServicePort" binding="tns:IUKIServicebinding">
+      <soap:address location="http://www.ukindex.co.uk/cgi-bin/ukiws.dll/soap/IUKIService"/>
+    </port>
+  </service>
+</definitions>
+

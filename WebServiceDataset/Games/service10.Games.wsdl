@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="SuperLottoIT" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="SuperLottoIT" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="SuperLottoIT">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="getLastContest">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLastContestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLastContestResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPreviousContest">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPreviousContestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPreviousContestResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOldContest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ContestDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOldContestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOldContestResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="getLastContestSoapIn">
+    <part name="parameters" element="s0:getLastContest" />
+  </message>
+  <message name="getLastContestSoapOut">
+    <part name="parameters" element="s0:getLastContestResponse" />
+  </message>
+  <message name="getPreviousContestSoapIn">
+    <part name="parameters" element="s0:getPreviousContest" />
+  </message>
+  <message name="getPreviousContestSoapOut">
+    <part name="parameters" element="s0:getPreviousContestResponse" />
+  </message>
+  <message name="getOldContestSoapIn">
+    <part name="parameters" element="s0:getOldContest" />
+  </message>
+  <message name="getOldContestSoapOut">
+    <part name="parameters" element="s0:getOldContestResponse" />
+  </message>
+  <message name="getLastContestHttpGetIn" />
+  <message name="getLastContestHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getPreviousContestHttpGetIn" />
+  <message name="getPreviousContestHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getOldContestHttpGetIn">
+    <part name="ContestDate" type="s:string" />
+  </message>
+  <message name="getOldContestHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getLastContestHttpPostIn" />
+  <message name="getLastContestHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getPreviousContestHttpPostIn" />
+  <message name="getPreviousContestHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getOldContestHttpPostIn">
+    <part name="ContestDate" type="s:string" />
+  </message>
+  <message name="getOldContestHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="SuperLottoITSoap">
+    <operation name="getLastContest">
+      <input message="s0:getLastContestSoapIn" />
+      <output message="s0:getLastContestSoapOut" />
+    </operation>
+    <operation name="getPreviousContest">
+      <input message="s0:getPreviousContestSoapIn" />
+      <output message="s0:getPreviousContestSoapOut" />
+    </operation>
+    <operation name="getOldContest">
+      <input message="s0:getOldContestSoapIn" />
+      <output message="s0:getOldContestSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SuperLottoITHttpGet">
+    <operation name="getLastContest">
+      <input message="s0:getLastContestHttpGetIn" />
+      <output message="s0:getLastContestHttpGetOut" />
+    </operation>
+    <operation name="getPreviousContest">
+      <input message="s0:getPreviousContestHttpGetIn" />
+      <output message="s0:getPreviousContestHttpGetOut" />
+    </operation>
+    <operation name="getOldContest">
+      <input message="s0:getOldContestHttpGetIn" />
+      <output message="s0:getOldContestHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SuperLottoITHttpPost">
+    <operation name="getLastContest">
+      <input message="s0:getLastContestHttpPostIn" />
+      <output message="s0:getLastContestHttpPostOut" />
+    </operation>
+    <operation name="getPreviousContest">
+      <input message="s0:getPreviousContestHttpPostIn" />
+      <output message="s0:getPreviousContestHttpPostOut" />
+    </operation>
+    <operation name="getOldContest">
+      <input message="s0:getOldContestHttpPostIn" />
+      <output message="s0:getOldContestHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SuperLottoITSoap" type="s0:SuperLottoITSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="getLastContest">
+      <soap:operation soapAction="SuperLottoIT/getLastContest" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getPreviousContest">
+      <soap:operation soapAction="SuperLottoIT/getPreviousContest" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getOldContest">
+      <soap:operation soapAction="SuperLottoIT/getOldContest" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SuperLottoITHttpGet" type="s0:SuperLottoITHttpGet">
+    <http:binding verb="GET" />
+    <operation name="getLastContest">
+      <http:operation location="/getLastContest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPreviousContest">
+      <http:operation location="/getPreviousContest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getOldContest">
+      <http:operation location="/getOldContest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SuperLottoITHttpPost" type="s0:SuperLottoITHttpPost">
+    <http:binding verb="POST" />
+    <operation name="getLastContest">
+      <http:operation location="/getLastContest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPreviousContest">
+      <http:operation location="/getPreviousContest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getOldContest">
+      <http:operation location="/getOldContest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SuperLottoIT">
+    <documentation>The &lt;b&gt;SuperLotto&lt;/b&gt; class contains methods to get last, previous and specifaid italian Super EnaLotto contest.&lt;br /&gt;More informations about this webservice at &lt;b&gt;http://wwww.intranext.it&lt;/b&gt;.</documentation>
+    <port name="SuperLottoITSoap" binding="s0:SuperLottoITSoap">
+      <soap:address location="http://www11.brinkster.com/devnext/SuperLottoIT/SuperLottoIT.asmx" />
+    </port>
+    <port name="SuperLottoITHttpGet" binding="s0:SuperLottoITHttpGet">
+      <http:address location="http://www11.brinkster.com/devnext/SuperLottoIT/SuperLottoIT.asmx" />
+    </port>
+    <port name="SuperLottoITHttpPost" binding="s0:SuperLottoITHttpPost">
+      <http:address location="http://www11.brinkster.com/devnext/SuperLottoIT/SuperLottoIT.asmx" />
+    </port>
+  </service>
+</definitions>

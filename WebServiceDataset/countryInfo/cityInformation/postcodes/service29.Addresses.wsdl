@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www26.brinkster.com/vbornhak/plz_blz" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www26.brinkster.com/vbornhak/plz_blz" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www26.brinkster.com/vbornhak/plz_blz">
+      <s:element name="Bankleitzahlen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="blz" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BankleitzahlenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BankleitzahlenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Postleitzahlen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="plz" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostleitzahlenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostleitzahlenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="BankleitzahlenSoapIn">
+    <part name="parameters" element="s0:Bankleitzahlen" />
+  </message>
+  <message name="BankleitzahlenSoapOut">
+    <part name="parameters" element="s0:BankleitzahlenResponse" />
+  </message>
+  <message name="PostleitzahlenSoapIn">
+    <part name="parameters" element="s0:Postleitzahlen" />
+  </message>
+  <message name="PostleitzahlenSoapOut">
+    <part name="parameters" element="s0:PostleitzahlenResponse" />
+  </message>
+  <message name="BankleitzahlenHttpGetIn">
+    <part name="blz" type="s:string" />
+  </message>
+  <message name="BankleitzahlenHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PostleitzahlenHttpGetIn">
+    <part name="plz" type="s:string" />
+  </message>
+  <message name="PostleitzahlenHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="BankleitzahlenHttpPostIn">
+    <part name="blz" type="s:string" />
+  </message>
+  <message name="BankleitzahlenHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PostleitzahlenHttpPostIn">
+    <part name="plz" type="s:string" />
+  </message>
+  <message name="PostleitzahlenHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="Plz_BlzSoap">
+    <operation name="Bankleitzahlen">
+      <documentation>Dieser Service ermittelt über die Bankleitzahl den Namen der Bank.</documentation>
+      <input message="s0:BankleitzahlenSoapIn" />
+      <output message="s0:BankleitzahlenSoapOut" />
+    </operation>
+    <operation name="Postleitzahlen">
+      <documentation>Dieser Service ermittelt über die Postleitzahl den Ort.</documentation>
+      <input message="s0:PostleitzahlenSoapIn" />
+      <output message="s0:PostleitzahlenSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Plz_BlzHttpGet">
+    <operation name="Bankleitzahlen">
+      <documentation>Dieser Service ermittelt über die Bankleitzahl den Namen der Bank.</documentation>
+      <input message="s0:BankleitzahlenHttpGetIn" />
+      <output message="s0:BankleitzahlenHttpGetOut" />
+    </operation>
+    <operation name="Postleitzahlen">
+      <documentation>Dieser Service ermittelt über die Postleitzahl den Ort.</documentation>
+      <input message="s0:PostleitzahlenHttpGetIn" />
+      <output message="s0:PostleitzahlenHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Plz_BlzHttpPost">
+    <operation name="Bankleitzahlen">
+      <documentation>Dieser Service ermittelt über die Bankleitzahl den Namen der Bank.</documentation>
+      <input message="s0:BankleitzahlenHttpPostIn" />
+      <output message="s0:BankleitzahlenHttpPostOut" />
+    </operation>
+    <operation name="Postleitzahlen">
+      <documentation>Dieser Service ermittelt über die Postleitzahl den Ort.</documentation>
+      <input message="s0:PostleitzahlenHttpPostIn" />
+      <output message="s0:PostleitzahlenHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Plz_BlzSoap" type="s0:Plz_BlzSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Bankleitzahlen">
+      <soap:operation soapAction="http://www26.brinkster.com/vbornhak/plz_blz/Bankleitzahlen" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Postleitzahlen">
+      <soap:operation soapAction="http://www26.brinkster.com/vbornhak/plz_blz/Postleitzahlen" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Plz_BlzHttpGet" type="s0:Plz_BlzHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Bankleitzahlen">
+      <http:operation location="/Bankleitzahlen" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Postleitzahlen">
+      <http:operation location="/Postleitzahlen" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Plz_BlzHttpPost" type="s0:Plz_BlzHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Bankleitzahlen">
+      <http:operation location="/Bankleitzahlen" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Postleitzahlen">
+      <http:operation location="/Postleitzahlen" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Plz_Blz">
+    <documentation>Dieser Servie ermittelt über die Bankleitzahl den Banknamen und über die Postleitzahl den Ort.</documentation>
+    <port name="Plz_BlzSoap" binding="s0:Plz_BlzSoap">
+      <soap:address location="http://www26.brinkster.com/vbornhak/plz_blz/plz_blz.asmx" />
+    </port>
+    <port name="Plz_BlzHttpGet" binding="s0:Plz_BlzHttpGet">
+      <http:address location="http://www26.brinkster.com/vbornhak/plz_blz/plz_blz.asmx" />
+    </port>
+    <port name="Plz_BlzHttpPost" binding="s0:Plz_BlzHttpPost">
+      <http:address location="http://www26.brinkster.com/vbornhak/plz_blz/plz_blz.asmx" />
+    </port>
+  </service>
+</definitions>

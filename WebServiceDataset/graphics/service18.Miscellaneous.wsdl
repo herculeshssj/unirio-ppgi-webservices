@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ICameraservice" targetNamespace="http://www.massrawa.com/soapServices/" xmlns:tns="http://www.massrawa.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="clickRequest">
+    <part name="url" type="xs:string"/>
+  </message>
+  <message name="clickResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="clickProRequest">
+    <part name="url" type="xs:string"/>
+    <part name="width" type="xs:int"/>
+    <part name="height" type="xs:int"/>
+    <part name="resulution" type="xs:int"/>
+  </message>
+  <message name="clickProResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="ICamera">
+    <operation name="click">
+      <input message="tns:clickRequest"/>
+      <output message="tns:clickResponse"/>
+    </operation>
+    <operation name="clickPro">
+      <input message="tns:clickProRequest"/>
+      <output message="tns:clickProResponse"/>
+    </operation>
+  </portType>
+  <binding name="ICamerabinding" type="tns:ICamera">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="click">
+      <soap:operation soapAction="urn:CameraI-ICamera#click"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CameraI-ICamera"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CameraI-ICamera"/>
+      </output>
+    </operation>
+    <operation name="clickPro">
+      <soap:operation soapAction="urn:CameraI-ICamera#clickPro"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CameraI-ICamera"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CameraI-ICamera"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ICameraservice">
+    <port name="ICameraPort" binding="tns:ICamerabinding">
+      <soap:address location="http://www.alternativa.co.il/service/camera.exe/soap/ICamera"/>
+    </port>
+  </service>
+</definitions>

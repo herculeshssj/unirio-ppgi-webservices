@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://alphadist.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://alphadist.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://alphadist.com/webservices/">
+      <s:element name="CheckStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDatabase" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSKU" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnXML" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckStockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDatabase" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strXML" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnXML" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaceOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="CheckStockSoapIn">
+    <part name="parameters" element="s0:CheckStock" />
+  </message>
+  <message name="CheckStockSoapOut">
+    <part name="parameters" element="s0:CheckStockResponse" />
+  </message>
+  <message name="PlaceOrderSoapIn">
+    <part name="parameters" element="s0:PlaceOrder" />
+  </message>
+  <message name="PlaceOrderSoapOut">
+    <part name="parameters" element="s0:PlaceOrderResponse" />
+  </message>
+  <message name="CheckStockHttpGetIn">
+    <part name="strServer" type="s:string" />
+    <part name="strDatabase" type="s:string" />
+    <part name="strUser" type="s:string" />
+    <part name="strPassword" type="s:string" />
+    <part name="strSKU" type="s:string" />
+    <part name="blnXML" type="s:string" />
+  </message>
+  <message name="CheckStockHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlaceOrderHttpGetIn">
+    <part name="strServer" type="s:string" />
+    <part name="strDatabase" type="s:string" />
+    <part name="strUser" type="s:string" />
+    <part name="strPassword" type="s:string" />
+    <part name="strXML" type="s:string" />
+    <part name="blnXML" type="s:string" />
+  </message>
+  <message name="PlaceOrderHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CheckStockHttpPostIn">
+    <part name="strServer" type="s:string" />
+    <part name="strDatabase" type="s:string" />
+    <part name="strUser" type="s:string" />
+    <part name="strPassword" type="s:string" />
+    <part name="strSKU" type="s:string" />
+    <part name="blnXML" type="s:string" />
+  </message>
+  <message name="CheckStockHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlaceOrderHttpPostIn">
+    <part name="strServer" type="s:string" />
+    <part name="strDatabase" type="s:string" />
+    <part name="strUser" type="s:string" />
+    <part name="strPassword" type="s:string" />
+    <part name="strXML" type="s:string" />
+    <part name="blnXML" type="s:string" />
+  </message>
+  <message name="PlaceOrderHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="AlphaDistSoap">
+    <operation name="CheckStock">
+      <documentation>&lt;br /&gt;&lt;p&gt;You can use the test form to invoke the AlphaDist XML Web service by supplying the following six parameter values for the CheckStock method: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server (xsd:string) &lt;b&gt;OAKLEAF-MS7&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDatabase&lt;/b&gt;: The name of the AlphaDist database (xsd:string) &lt;b&gt;AlphaDist&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID (xsd:string) &lt;b&gt;AlphaUser&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password  (xsd:string) &lt;b&gt;Alpha#123&lt;/b&gt; (case-sensitive)&lt;br /&gt;&lt;li&gt;&lt;b&gt;strSKU&lt;/b&gt;: The standard stockkeeping unit (SKU) ID of the product (xsd:string) &lt;b&gt;SKU=SPKF0496&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML document, False to return a cookie-style string (xsd:boolean) &lt;b&gt;True&lt;/b&gt;&lt;br /&gt;&lt;li&gt;Response String: If we stock the SKU specified in strSQL, you receive the following string if blnXML is False: &lt;br /&gt;'AlphaDist CheckStock for SKU=SPKF0496;Category=SPKF;Brand=POLK;Model=RT2000I (Black), Pair;Description=8-inch Three-way Powered Tower Speaker;MSRP=$2,000.00;NetPrice=$1,275.00;ShipWeight=63.8 lbs;DiscountFor=Cooperative Advertising Discount;Percent=0.0%;InStock=2'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'. &lt;br /&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaStockReport schema.&lt;/ul&gt;</documentation>
+      <input message="s0:CheckStockSoapIn" />
+      <output message="s0:CheckStockSoapOut" />
+    </operation>
+    <operation name="PlaceOrder">
+      <documentation>&lt;br /&gt;&lt;p&gt;The PlaceOrder method requires the following parameter values. Alpha Distributors, Inc. provides you with the values for parameters with an asterisk (*) when you complete your retailer agreement. &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password*  (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strXML&lt;/b&gt;: The XML document for the order in cesRetailerOrder or cesDropShipOrder format (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML invoice document in ceaRetailerInvoice format, False to return a cookie-style string (xsd:boolean)&lt;/li&gt;&lt;li&gt;Response String: If we can ship the SKU(s) specified in strXML, you receive the following string if blnXML is False:&lt;/li&gt;'OrderID=41048;Date=12/16/2001;Item=1;SKU=SPKS0328;Shipped=2;Status=Complete'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'.&lt;/li&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaRetailerInvoice schema.&lt;/li&gt;&lt;p&gt;&lt;br /&gt;Note: You can't use the HTTP-GET protocol with the PlaceOrder method, because the test form won't accept a lengthy XML document.</documentation>
+      <input message="s0:PlaceOrderSoapIn" />
+      <output message="s0:PlaceOrderSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AlphaDistHttpGet">
+    <operation name="CheckStock">
+      <documentation>&lt;br /&gt;&lt;p&gt;You can use the test form to invoke the AlphaDist XML Web service by supplying the following six parameter values for the CheckStock method: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server (xsd:string) &lt;b&gt;OAKLEAF-MS7&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDatabase&lt;/b&gt;: The name of the AlphaDist database (xsd:string) &lt;b&gt;AlphaDist&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID (xsd:string) &lt;b&gt;AlphaUser&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password  (xsd:string) &lt;b&gt;Alpha#123&lt;/b&gt; (case-sensitive)&lt;br /&gt;&lt;li&gt;&lt;b&gt;strSKU&lt;/b&gt;: The standard stockkeeping unit (SKU) ID of the product (xsd:string) &lt;b&gt;SKU=SPKF0496&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML document, False to return a cookie-style string (xsd:boolean) &lt;b&gt;True&lt;/b&gt;&lt;br /&gt;&lt;li&gt;Response String: If we stock the SKU specified in strSQL, you receive the following string if blnXML is False: &lt;br /&gt;'AlphaDist CheckStock for SKU=SPKF0496;Category=SPKF;Brand=POLK;Model=RT2000I (Black), Pair;Description=8-inch Three-way Powered Tower Speaker;MSRP=$2,000.00;NetPrice=$1,275.00;ShipWeight=63.8 lbs;DiscountFor=Cooperative Advertising Discount;Percent=0.0%;InStock=2'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'. &lt;br /&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaStockReport schema.&lt;/ul&gt;</documentation>
+      <input message="s0:CheckStockHttpGetIn" />
+      <output message="s0:CheckStockHttpGetOut" />
+    </operation>
+    <operation name="PlaceOrder">
+      <documentation>&lt;br /&gt;&lt;p&gt;The PlaceOrder method requires the following parameter values. Alpha Distributors, Inc. provides you with the values for parameters with an asterisk (*) when you complete your retailer agreement. &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password*  (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strXML&lt;/b&gt;: The XML document for the order in cesRetailerOrder or cesDropShipOrder format (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML invoice document in ceaRetailerInvoice format, False to return a cookie-style string (xsd:boolean)&lt;/li&gt;&lt;li&gt;Response String: If we can ship the SKU(s) specified in strXML, you receive the following string if blnXML is False:&lt;/li&gt;'OrderID=41048;Date=12/16/2001;Item=1;SKU=SPKS0328;Shipped=2;Status=Complete'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'.&lt;/li&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaRetailerInvoice schema.&lt;/li&gt;&lt;p&gt;&lt;br /&gt;Note: You can't use the HTTP-GET protocol with the PlaceOrder method, because the test form won't accept a lengthy XML document.</documentation>
+      <input message="s0:PlaceOrderHttpGetIn" />
+      <output message="s0:PlaceOrderHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AlphaDistHttpPost">
+    <operation name="CheckStock">
+      <documentation>&lt;br /&gt;&lt;p&gt;You can use the test form to invoke the AlphaDist XML Web service by supplying the following six parameter values for the CheckStock method: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server (xsd:string) &lt;b&gt;OAKLEAF-MS7&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strDatabase&lt;/b&gt;: The name of the AlphaDist database (xsd:string) &lt;b&gt;AlphaDist&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID (xsd:string) &lt;b&gt;AlphaUser&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password  (xsd:string) &lt;b&gt;Alpha#123&lt;/b&gt; (case-sensitive)&lt;br /&gt;&lt;li&gt;&lt;b&gt;strSKU&lt;/b&gt;: The standard stockkeeping unit (SKU) ID of the product (xsd:string) &lt;b&gt;SKU=SPKF0496&lt;/b&gt;&lt;br /&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML document, False to return a cookie-style string (xsd:boolean) &lt;b&gt;True&lt;/b&gt;&lt;br /&gt;&lt;li&gt;Response String: If we stock the SKU specified in strSQL, you receive the following string if blnXML is False: &lt;br /&gt;'AlphaDist CheckStock for SKU=SPKF0496;Category=SPKF;Brand=POLK;Model=RT2000I (Black), Pair;Description=8-inch Three-way Powered Tower Speaker;MSRP=$2,000.00;NetPrice=$1,275.00;ShipWeight=63.8 lbs;DiscountFor=Cooperative Advertising Discount;Percent=0.0%;InStock=2'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'. &lt;br /&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaStockReport schema.&lt;/ul&gt;</documentation>
+      <input message="s0:CheckStockHttpPostIn" />
+      <output message="s0:CheckStockHttpPostOut" />
+    </operation>
+    <operation name="PlaceOrder">
+      <documentation>&lt;br /&gt;&lt;p&gt;The PlaceOrder method requires the following parameter values. Alpha Distributors, Inc. provides you with the values for parameters with an asterisk (*) when you complete your retailer agreement. &lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strServer&lt;/b&gt;: The name of the AlphaDist server* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strUser&lt;/b&gt;: Your assigned login ID* (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPassword&lt;/b&gt;: Your assigned login password*  (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;strXML&lt;/b&gt;: The XML document for the order in cesRetailerOrder or cesDropShipOrder format (xsd:string)&lt;/li&gt;&lt;li&gt;&lt;b&gt;blnXML&lt;/b&gt;: True to return an XML invoice document in ceaRetailerInvoice format, False to return a cookie-style string (xsd:boolean)&lt;/li&gt;&lt;li&gt;Response String: If we can ship the SKU(s) specified in strXML, you receive the following string if blnXML is False:&lt;/li&gt;'OrderID=41048;Date=12/16/2001;Item=1;SKU=SPKS0328;Shipped=2;Status=Complete'. &lt;br /&gt;Otherwise, you receive 'Error: AlphaDist doesn't recognize SKU TVRX1234'.&lt;/li&gt;&lt;li&gt;Response Document: If blnXML is True, you receive a well-formed XML document, which conforms to the ceaRetailerInvoice schema.&lt;/li&gt;&lt;p&gt;&lt;br /&gt;Note: You can't use the HTTP-GET protocol with the PlaceOrder method, because the test form won't accept a lengthy XML document.</documentation>
+      <input message="s0:PlaceOrderHttpPostIn" />
+      <output message="s0:PlaceOrderHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AlphaDistSoap" type="s0:AlphaDistSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CheckStock">
+      <soap:operation soapAction="http://alphadist.com/webservices/CheckStock" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlaceOrder">
+      <soap:operation soapAction="http://alphadist.com/webservices/PlaceOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AlphaDistHttpGet" type="s0:AlphaDistHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CheckStock">
+      <http:operation location="/CheckStock" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceOrder">
+      <http:operation location="/PlaceOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AlphaDistHttpPost" type="s0:AlphaDistHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CheckStock">
+      <http:operation location="/CheckStock" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceOrder">
+      <http:operation location="/PlaceOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AlphaDist">
+    <documentation>&lt;p&gt;&lt;a href='http://www.amazon.com/roger-jennings'&gt;&lt;img src='http://www.oakleaf.ws/BookSmall.jpg' border='0' align='right' hspace='8' vspace='0'&gt;&lt;/a&gt;&lt;b&gt;Alpha Distributors, Inc.&lt;/b&gt; is a (fictitious) full-service distributor of consumer electronic (CE) products in the Republic of Texas. We handle Acoustic Research (AR), Blaupunkt, Cerwin-Vega, Infinity, JBL, Jensen, Polk Audio, and other high-end audio product lines. Alpha offers CE retailers and on-line B2C Web sites a wide variety of services, including drop shipment of high-ticket and oversize/overweight CE gear directly to your customers.&lt;/p&gt;&lt;p&gt;&lt;b&gt;AlphaDist&lt;/b&gt; XML Web services support consuming applications with well-formed XML response documents or, if you aren't ready to handle XML, cookie-style text responses. The CheckStock method lets retailers verify our inventory for the SKU you specify as a (fictitious) standard SKU defined by the Consumer Electronics Association's (fictitious) ceaSku standard. The PlaceOrder method accepts an XML order request document validated to the CEA's (fictitious) &lt;a href='http://www.oakleaf.ws/oce/ceaRetailerOrder.xsd'&gt;ceaRetailerOrder&lt;/a&gt; or &lt;a href='http://www.oakleaf.ws/oce/ceaDropShipOrder.xsd'&gt;ceaDropShipOrder&lt;/a&gt; schema, and returns an XML invoice validated to the &lt;a href='http://www.oakleaf.ws/oce/ceaRetailerInvoice.xsd'&gt;ceaRetailerInvoice&lt;/a&gt; schema. Click the links to display the schemas.&lt;/p&gt;&lt;p&gt;&lt;b&gt;Background: &lt;/b&gt;AlphaDist is one of four demonstration supply-chain XML Web services that support the OakLeaf Consumer Electronics &lt;a href='http://www.oakleaf.ws/AboutOCE.aspx'&gt;example applications&lt;/a&gt; of &lt;i&gt;Visual Basic .NET XML Web Services Developer's Guide&lt;/i&gt; (McGraw-Hill/Osborne, ISBN 0-07-222369-3, May 20, 2002). The &lt;a href='http://www.oakleaf.ws/OCE/Orders.aspx'&gt;OakLeaf Consumer Electronics Order Processing Test Form&lt;/a&gt; consumes the four services. Adding an order for an outsourced item in the test harness consumes the AlphaDist XML Web service or one of the other two distributor services (BetaDist and GammaDist). The online preview of the book's &lt;a href='http://www.oakleaf.ws/Chapter6.htm'&gt;Chapter 6&lt;/a&gt; describes the development of the ASP.NET test harness. The distributor databases contain records for 695 products from 25 manufacturers. The products are real, but the prices are fictitious.&lt;/p&gt;&lt;/p&gt;&lt;center&gt;Copyright &amp;#169; 2002 Roger Jennings and OakLeaf Systems. All Rights Reserved.&lt;/center&gt;&lt;/p&gt;</documentation>
+    <port name="AlphaDistSoap" binding="s0:AlphaDistSoap">
+      <soap:address location="http://www.oakleaf.ws/AlphaADO/AlphaDist.asmx" />
+    </port>
+    <port name="AlphaDistHttpGet" binding="s0:AlphaDistHttpGet">
+      <http:address location="http://www.oakleaf.ws/AlphaADO/AlphaDist.asmx" />
+    </port>
+    <port name="AlphaDistHttpPost" binding="s0:AlphaDistHttpPost">
+      <http:address location="http://www.oakleaf.ws/AlphaADO/AlphaDist.asmx" />
+    </port>
+  </service>
+</definitions>

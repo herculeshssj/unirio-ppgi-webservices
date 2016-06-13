@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:impl="http://webservices-impl" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://webservices" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:message name="usernameRequest">
+    <wsdl:part name="input" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="stripRequest">
+    <wsdl:part name="input" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="domainResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="domainRequest">
+    <wsdl:part name="input" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:message name="stripResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="usernameResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:portType name="email_utils">
+    <wsdl:operation name="domain" parameterOrder="input">
+      <wsdl:input message="intf:domainRequest"/>
+      <wsdl:output message="intf:domainResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="strip" parameterOrder="input">
+      <wsdl:input message="intf:stripRequest"/>
+      <wsdl:output message="intf:stripResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="username" parameterOrder="input">
+      <wsdl:input message="intf:usernameRequest"/>
+      <wsdl:output message="intf:usernameResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="email_utils.cfcSoapBinding" type="intf:email_utils">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="domain">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="strip">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="username">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="email_utilsService">
+    <wsdl:port name="email_utils.cfc" binding="intf:email_utils.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.tinetics.com/webservices/email_utils.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

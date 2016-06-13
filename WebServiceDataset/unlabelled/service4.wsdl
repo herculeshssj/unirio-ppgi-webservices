@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://webservices.empowered.com/StatsWS/DataService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://webservices.empowered.com/StatsWS/DataService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.empowered.com/StatsWS/DataService">
+      <s:element name="GetPlayersByTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlayersByTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlayersByTeamResult" type="s0:ArrayOfPlayers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlayers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Players" nillable="true" type="s0:Players" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Players">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerNumber" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bats" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Throws" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="BirthDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="BirthPlace" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExperienceYears" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="DraftInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPlayers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPlayersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlayersResult" type="s0:ArrayOfPlayers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeams">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTeamsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamsResult" type="s0:ArrayOfTeams" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTeams">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Teams" nillable="true" type="s0:Teams" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Teams">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetBattingStatistics">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBattingStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBattingStatisticsResult" type="s0:ArrayOfBattingStats" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBattingStats">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BattingStats" nillable="true" type="s0:BattingStats" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BattingStats">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BattingStatID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryCode" type="s0:CategoryCodes" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeasonYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Games" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="AtBats" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Runs" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hits" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Doubles" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Triples" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Homeruns" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="RBI" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="BaseOnBalls" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="StrikeOut" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="StolenBase" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="CaughtStealing" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="BattingAvg" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnBasePct" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SluggingPct" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="OPS" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CategoryCodes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Season" />
+          <s:enumeration value="Situational" />
+          <s:enumeration value="Pitching" />
+          <s:enumeration value="Split" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetBattingStatisticsByTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBattingStatisticsByTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBattingStatisticsByTeamResult" type="s0:ArrayOfBattingStats" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlayerProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlayerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlayerProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlayerProfileResult" type="s0:PlayerProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlayerProfile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerInfo" type="s0:Players" />
+          <s:element minOccurs="0" maxOccurs="1" name="OverallBattingStats" type="s0:ArrayOfBattingStats" />
+          <s:element minOccurs="0" maxOccurs="1" name="Splits" type="s0:ArrayOfBattingStats" />
+          <s:element minOccurs="0" maxOccurs="1" name="Situational" type="s0:ArrayOfBattingStats" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pitcher" type="s0:ArrayOfBattingStats" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPitchingStatistics">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPitchingStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPitchingStatisticsResult" type="s0:ArrayOfPitchingStats" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPitchingStats">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PitchingStats" nillable="true" type="s0:PitchingStats" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PitchingStats">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PitchingStatID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeasonYear" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryCode" type="s0:CategoryCodes" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Games" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="GamesStarted" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Wins" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Losses" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Saves" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompleteGames" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shutouts" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="InningsPitched" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="HitsAllowed" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="RunsAllowed" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="EarnedRuns" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="HomeRunsAllowed" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="WalksAllowed" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Strikeouts" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="EarnedRunAverage" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Whip" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BattingAvgAgainst" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPitchingStatisticsByTeam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TeamCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPitchingStatisticsByTeamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPitchingStatisticsByTeamResult" type="s0:ArrayOfPitchingStats" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetPlayersByTeamSoapIn">
+    <part name="parameters" element="s0:GetPlayersByTeam" />
+  </message>
+  <message name="GetPlayersByTeamSoapOut">
+    <part name="parameters" element="s0:GetPlayersByTeamResponse" />
+  </message>
+  <message name="GetPlayersSoapIn">
+    <part name="parameters" element="s0:GetPlayers" />
+  </message>
+  <message name="GetPlayersSoapOut">
+    <part name="parameters" element="s0:GetPlayersResponse" />
+  </message>
+  <message name="GetTeamsSoapIn">
+    <part name="parameters" element="s0:GetTeams" />
+  </message>
+  <message name="GetTeamsSoapOut">
+    <part name="parameters" element="s0:GetTeamsResponse" />
+  </message>
+  <message name="GetBattingStatisticsSoapIn">
+    <part name="parameters" element="s0:GetBattingStatistics" />
+  </message>
+  <message name="GetBattingStatisticsSoapOut">
+    <part name="parameters" element="s0:GetBattingStatisticsResponse" />
+  </message>
+  <message name="GetBattingStatisticsByTeamSoapIn">
+    <part name="parameters" element="s0:GetBattingStatisticsByTeam" />
+  </message>
+  <message name="GetBattingStatisticsByTeamSoapOut">
+    <part name="parameters" element="s0:GetBattingStatisticsByTeamResponse" />
+  </message>
+  <message name="GetPlayerProfileSoapIn">
+    <part name="parameters" element="s0:GetPlayerProfile" />
+  </message>
+  <message name="GetPlayerProfileSoapOut">
+    <part name="parameters" element="s0:GetPlayerProfileResponse" />
+  </message>
+  <message name="GetPitchingStatisticsSoapIn">
+    <part name="parameters" element="s0:GetPitchingStatistics" />
+  </message>
+  <message name="GetPitchingStatisticsSoapOut">
+    <part name="parameters" element="s0:GetPitchingStatisticsResponse" />
+  </message>
+  <message name="GetPitchingStatisticsByTeamSoapIn">
+    <part name="parameters" element="s0:GetPitchingStatisticsByTeam" />
+  </message>
+  <message name="GetPitchingStatisticsByTeamSoapOut">
+    <part name="parameters" element="s0:GetPitchingStatisticsByTeamResponse" />
+  </message>
+  <portType name="DataServiceSoap">
+    <operation name="GetPlayersByTeam">
+      <documentation>Returns an array of Players for a given Team.</documentation>
+      <input message="s0:GetPlayersByTeamSoapIn" />
+      <output message="s0:GetPlayersByTeamSoapOut" />
+    </operation>
+    <operation name="GetPlayers">
+      <documentation>Returns an array of Players.</documentation>
+      <input message="s0:GetPlayersSoapIn" />
+      <output message="s0:GetPlayersSoapOut" />
+    </operation>
+    <operation name="GetTeams">
+      <documentation>Returns an array of Teams.</documentation>
+      <input message="s0:GetTeamsSoapIn" />
+      <output message="s0:GetTeamsSoapOut" />
+    </operation>
+    <operation name="GetBattingStatistics">
+      <documentation>Returns an array of BattingStatistics.</documentation>
+      <input message="s0:GetBattingStatisticsSoapIn" />
+      <output message="s0:GetBattingStatisticsSoapOut" />
+    </operation>
+    <operation name="GetBattingStatisticsByTeam">
+      <documentation>Returns an array of BattingStatistics for a given team.</documentation>
+      <input message="s0:GetBattingStatisticsByTeamSoapIn" />
+      <output message="s0:GetBattingStatisticsByTeamSoapOut" />
+    </operation>
+    <operation name="GetPlayerProfile">
+      <documentation>Returns a player profile based on the PlayerID.</documentation>
+      <input message="s0:GetPlayerProfileSoapIn" />
+      <output message="s0:GetPlayerProfileSoapOut" />
+    </operation>
+    <operation name="GetPitchingStatistics">
+      <documentation>Returns an array of PitchingStatistics.</documentation>
+      <input message="s0:GetPitchingStatisticsSoapIn" />
+      <output message="s0:GetPitchingStatisticsSoapOut" />
+    </operation>
+    <operation name="GetPitchingStatisticsByTeam">
+      <documentation>Returns an array of PitchingStatistics for a given team.</documentation>
+      <input message="s0:GetPitchingStatisticsByTeamSoapIn" />
+      <output message="s0:GetPitchingStatisticsByTeamSoapOut" />
+    </operation>
+  </portType>
+  <binding name="DataServiceSoap" type="s0:DataServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetPlayersByTeam">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetPlayersByTeam" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPlayers">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetPlayers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTeams">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetTeams" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBattingStatistics">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetBattingStatistics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBattingStatisticsByTeam">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetBattingStatisticsByTeam" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPlayerProfile">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetPlayerProfile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPitchingStatistics">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetPitchingStatistics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPitchingStatisticsByTeam">
+      <soap:operation soapAction="http://webservices.empowered.com/StatsWS/DataService/GetPitchingStatisticsByTeam" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DataService">
+    <port name="DataServiceSoap" binding="s0:DataServiceSoap">
+      <soap:address location="http://webservices.empowered.com/statsws/stats.asmx" />
+    </port>
+  </service>
+</definitions>

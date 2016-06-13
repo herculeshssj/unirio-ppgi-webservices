@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Quote">
+        <s:complexType />
+      </s:element>
+      <s:element name="QuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="QuoteSoapIn">
+    <part name="parameters" element="s0:Quote" />
+  </message>
+  <message name="QuoteSoapOut">
+    <part name="parameters" element="s0:QuoteResponse" />
+  </message>
+  <message name="QuoteHttpGetIn" />
+  <message name="QuoteHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="QuoteHttpPostIn" />
+  <message name="QuoteHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="QuoteOfTheDaySoap">
+    <operation name="Quote">
+      <input message="s0:QuoteSoapIn" />
+      <output message="s0:QuoteSoapOut" />
+    </operation>
+  </portType>
+  <portType name="QuoteOfTheDayHttpGet">
+    <operation name="Quote">
+      <input message="s0:QuoteHttpGetIn" />
+      <output message="s0:QuoteHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="QuoteOfTheDayHttpPost">
+    <operation name="Quote">
+      <input message="s0:QuoteHttpPostIn" />
+      <output message="s0:QuoteHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="QuoteOfTheDaySoap" type="s0:QuoteOfTheDaySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Quote">
+      <soap:operation soapAction="http://tempuri.org/Quote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QuoteOfTheDayHttpGet" type="s0:QuoteOfTheDayHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Quote">
+      <http:operation location="/Quote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QuoteOfTheDayHttpPost" type="s0:QuoteOfTheDayHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Quote">
+      <http:operation location="/Quote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="QuoteOfTheDay">
+    <documentation>Randomly generates a quote of the day</documentation>
+    <port name="QuoteOfTheDaySoap" binding="s0:QuoteOfTheDaySoap">
+      <soap:address location="http://www28.brinkster.com/krhtraining/QuoteOfTheDay.asmx" />
+    </port>
+    <port name="QuoteOfTheDayHttpGet" binding="s0:QuoteOfTheDayHttpGet">
+      <http:address location="http://www28.brinkster.com/krhtraining/QuoteOfTheDay.asmx" />
+    </port>
+    <port name="QuoteOfTheDayHttpPost" binding="s0:QuoteOfTheDayHttpPost">
+      <http:address location="http://www28.brinkster.com/krhtraining/QuoteOfTheDay.asmx" />
+    </port>
+  </service>
+</definitions>

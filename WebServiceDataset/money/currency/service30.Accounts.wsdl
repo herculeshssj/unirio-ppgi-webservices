@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+
+<definitions name="CurrencyConvertor.ccurrencyc" targetNamespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetCountryListRequest">
+        <part name="recCountries" type="xsd:string"/>
+    </message>
+    <message name="GetCountryListResponse">
+        <part name="recCountries" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LastUpdatedRequest">
+    </message>
+    <message name="LastUpdatedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="ConvertRequest">
+        <part name="FromCountry" type="xsd:string"/>
+        <part name="ToCountry" type="xsd:string"/>
+        <part name="FromAmount" type="xsd:double"/>
+        <part name="ConvertedAmount" type="xsd:double"/>
+        <part name="LimitToTwoDecimalPlaces" type="xsd:boolean"/>
+    </message>
+    <message name="ConvertResponse">
+        <part name="FromAmount" type="xsd:double"/>
+        <part name="ConvertedAmount" type="xsd:double"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CurrencyConvertor.ccurrencycPortType">
+        <operation name="GetCountryList">
+            <input message="tns:GetCountryListRequest"/>
+            <output message="tns:GetCountryListResponse"/>
+        </operation>
+        <operation name="LastUpdated">
+            <input message="tns:LastUpdatedRequest"/>
+            <output message="tns:LastUpdatedResponse"/>
+        </operation>
+        <operation name="Convert">
+            <input message="tns:ConvertRequest"/>
+            <output message="tns:ConvertResponse"/>
+        </operation>
+    </portType>
+    <binding name="CurrencyConvertor.ccurrencycbinding" type="tns:CurrencyConvertor.ccurrencycPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetCountryList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml#GetCountryList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LastUpdated">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml#LastUpdated"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Convert">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml#Convert"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/CurrencyConvertor/CCurrencyC.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CurrencyConvertor.ccurrencycService">
+        <port name="CurrencyConvertor.ccurrencycPort" binding="tns:CurrencyConvertor.ccurrencycbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/currencyc.cgi"/>
+        </port>
+    </service>
+</definitions>

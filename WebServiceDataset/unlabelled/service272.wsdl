@@ -1,0 +1,1844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.soapengine.com/lucin/salcentral/cadvert.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.soapengine.com/lucin/salcentral/cadvert.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.soapengine.com/lucin/salcentral/cadvert.asmx">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="UpdAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertDesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisableAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DisableAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DisableAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnableAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnableAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdminUpdAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsPaid" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrderID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertType" type="s0:enmAdvertType" />
+            <s:element minOccurs="1" maxOccurs="1" name="Bought" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="Impressions" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="enmAdvertType">
+        <s:restriction base="s:string">
+          <s:enumeration value="eSideBox" />
+          <s:enumeration value="eNewsLetterASPNET" />
+          <s:enumeration value="eNewsLetterUDDI" />
+          <s:enumeration value="eBanner" />
+          <s:enumeration value="eSpotlight" />
+          <s:enumeration value="eLeftSideBox" />
+          <s:enumeration value="eRightSideBox" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AdminUpdAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUpdAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthoriseAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthoriseAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthoriseAdvertResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertDesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LinkURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertType" type="s0:enmAdvertType" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumBought" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAdvertResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SearchValue" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchAdvertResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnAuthorised">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnAuthorisedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnAuthorisedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotPaid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotPaidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotPaidResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvertType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvertTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdvertTypeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyAdverts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyAdvertsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyAdvertsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRightAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertTypeID" type="s0:enmAdvertType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRightAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRightAdvertResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdverts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertTypeID" type="s0:enmAdvertType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvertsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdvertsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeftAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertTypeID" type="s0:enmAdvertType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLeftAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLeftAdvertResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncrementImpressionsCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertTypeID" type="s0:enmAdvertType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncrementImpressionsCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IncrementImpressionsCountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncrementHitsCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertPos" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IncrementHitsCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IncrementHitsCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAdverts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAdvertsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAdvertsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdvertID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdvertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdvertResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="long" type="s:long" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="UpdAdvertSoapIn">
+    <part name="parameters" element="s0:UpdAdvert" />
+  </message>
+  <message name="UpdAdvertSoapOut">
+    <part name="parameters" element="s0:UpdAdvertResponse" />
+  </message>
+  <message name="DisableAdvertSoapIn">
+    <part name="parameters" element="s0:DisableAdvert" />
+  </message>
+  <message name="DisableAdvertSoapOut">
+    <part name="parameters" element="s0:DisableAdvertResponse" />
+  </message>
+  <message name="DelAdvertSoapIn">
+    <part name="parameters" element="s0:DelAdvert" />
+  </message>
+  <message name="DelAdvertSoapOut">
+    <part name="parameters" element="s0:DelAdvertResponse" />
+  </message>
+  <message name="EnableAdvertSoapIn">
+    <part name="parameters" element="s0:EnableAdvert" />
+  </message>
+  <message name="EnableAdvertSoapOut">
+    <part name="parameters" element="s0:EnableAdvertResponse" />
+  </message>
+  <message name="AdminUpdAdvertSoapIn">
+    <part name="parameters" element="s0:AdminUpdAdvert" />
+  </message>
+  <message name="AdminUpdAdvertSoapOut">
+    <part name="parameters" element="s0:AdminUpdAdvertResponse" />
+  </message>
+  <message name="AuthoriseAdvertSoapIn">
+    <part name="parameters" element="s0:AuthoriseAdvert" />
+  </message>
+  <message name="AuthoriseAdvertSoapOut">
+    <part name="parameters" element="s0:AuthoriseAdvertResponse" />
+  </message>
+  <message name="AddAdvertSoapIn">
+    <part name="parameters" element="s0:AddAdvert" />
+  </message>
+  <message name="AddAdvertSoapOut">
+    <part name="parameters" element="s0:AddAdvertResponse" />
+  </message>
+  <message name="SearchAdvertSoapIn">
+    <part name="parameters" element="s0:SearchAdvert" />
+  </message>
+  <message name="SearchAdvertSoapOut">
+    <part name="parameters" element="s0:SearchAdvertResponse" />
+  </message>
+  <message name="GetUnAuthorisedSoapIn">
+    <part name="parameters" element="s0:GetUnAuthorised" />
+  </message>
+  <message name="GetUnAuthorisedSoapOut">
+    <part name="parameters" element="s0:GetUnAuthorisedResponse" />
+  </message>
+  <message name="GetNotPaidSoapIn">
+    <part name="parameters" element="s0:GetNotPaid" />
+  </message>
+  <message name="GetNotPaidSoapOut">
+    <part name="parameters" element="s0:GetNotPaidResponse" />
+  </message>
+  <message name="GetAdvertTypeSoapIn">
+    <part name="parameters" element="s0:GetAdvertType" />
+  </message>
+  <message name="GetAdvertTypeSoapOut">
+    <part name="parameters" element="s0:GetAdvertTypeResponse" />
+  </message>
+  <message name="GetMyAdvertsSoapIn">
+    <part name="parameters" element="s0:GetMyAdverts" />
+  </message>
+  <message name="GetMyAdvertsSoapOut">
+    <part name="parameters" element="s0:GetMyAdvertsResponse" />
+  </message>
+  <message name="GetRightAdvertSoapIn">
+    <part name="parameters" element="s0:GetRightAdvert" />
+  </message>
+  <message name="GetRightAdvertSoapOut">
+    <part name="parameters" element="s0:GetRightAdvertResponse" />
+  </message>
+  <message name="GetAdvertsSoapIn">
+    <part name="parameters" element="s0:GetAdverts" />
+  </message>
+  <message name="GetAdvertsSoapOut">
+    <part name="parameters" element="s0:GetAdvertsResponse" />
+  </message>
+  <message name="GetLeftAdvertSoapIn">
+    <part name="parameters" element="s0:GetLeftAdvert" />
+  </message>
+  <message name="GetLeftAdvertSoapOut">
+    <part name="parameters" element="s0:GetLeftAdvertResponse" />
+  </message>
+  <message name="IncrementImpressionsCountSoapIn">
+    <part name="parameters" element="s0:IncrementImpressionsCount" />
+  </message>
+  <message name="IncrementImpressionsCountSoapOut">
+    <part name="parameters" element="s0:IncrementImpressionsCountResponse" />
+  </message>
+  <message name="IncrementHitsCountSoapIn">
+    <part name="parameters" element="s0:IncrementHitsCount" />
+  </message>
+  <message name="IncrementHitsCountSoapOut">
+    <part name="parameters" element="s0:IncrementHitsCountResponse" />
+  </message>
+  <message name="GetAllAdvertsSoapIn">
+    <part name="parameters" element="s0:GetAllAdverts" />
+  </message>
+  <message name="GetAllAdvertsSoapOut">
+    <part name="parameters" element="s0:GetAllAdvertsResponse" />
+  </message>
+  <message name="GetAdvertSoapIn">
+    <part name="parameters" element="s0:GetAdvert" />
+  </message>
+  <message name="GetAdvertSoapOut">
+    <part name="parameters" element="s0:GetAdvertResponse" />
+  </message>
+  <message name="GetUserIDSoapIn">
+    <part name="parameters" element="s0:GetUserID" />
+  </message>
+  <message name="GetUserIDSoapOut">
+    <part name="parameters" element="s0:GetUserIDResponse" />
+  </message>
+  <message name="UpdAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="AdvertName" type="s:string" />
+    <part name="AdvertDesc" type="s:string" />
+    <part name="LinkURL" type="s:string" />
+  </message>
+  <message name="UpdAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DisableAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="DisableAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DelAdvertHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="DelAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="EnableAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="EnableAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AdminUpdAdvertHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="IsPaid" type="s:string" />
+    <part name="OrderID" type="s:string" />
+    <part name="AdvertType" type="s:string" />
+    <part name="Bought" type="s:string" />
+    <part name="Impressions" type="s:string" />
+  </message>
+  <message name="AdminUpdAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AuthoriseAdvertHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="AuthoriseAdvertHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertName" type="s:string" />
+    <part name="AdvertDesc" type="s:string" />
+    <part name="LinkURL" type="s:string" />
+    <part name="AdvertType" type="s:string" />
+    <part name="NumBought" type="s:string" />
+  </message>
+  <message name="AddAdvertHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SearchAdvertHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="SearchValue" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="SearchAdvertHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUnAuthorisedHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetUnAuthorisedHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetNotPaidHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetNotPaidHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertTypeHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdvertTypeHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetMyAdvertsHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetMyAdvertsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetRightAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetRightAdvertHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertsHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetAdvertsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetLeftAdvertHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetLeftAdvertHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="IncrementImpressionsCountHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="IncrementImpressionsCountHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="IncrementHitsCountHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="AdvertPos" type="s:string" />
+  </message>
+  <message name="IncrementHitsCountHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllAdvertsHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAllAdvertsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdvertHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUserIDHttpGetIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="UpdAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="AdvertName" type="s:string" />
+    <part name="AdvertDesc" type="s:string" />
+    <part name="LinkURL" type="s:string" />
+  </message>
+  <message name="UpdAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DisableAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="DisableAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DelAdvertHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="DelAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="EnableAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="EnableAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AdminUpdAdvertHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="IsPaid" type="s:string" />
+    <part name="OrderID" type="s:string" />
+    <part name="AdvertType" type="s:string" />
+    <part name="Bought" type="s:string" />
+    <part name="Impressions" type="s:string" />
+  </message>
+  <message name="AdminUpdAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AuthoriseAdvertHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+  </message>
+  <message name="AuthoriseAdvertHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertName" type="s:string" />
+    <part name="AdvertDesc" type="s:string" />
+    <part name="LinkURL" type="s:string" />
+    <part name="AdvertType" type="s:string" />
+    <part name="NumBought" type="s:string" />
+  </message>
+  <message name="AddAdvertHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SearchAdvertHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="SearchValue" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="SearchAdvertHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUnAuthorisedHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetUnAuthorisedHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetNotPaidHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetNotPaidHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertTypeHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdvertTypeHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetMyAdvertsHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetMyAdvertsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetRightAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetRightAdvertHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertsHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetAdvertsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetLeftAdvertHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="GetLeftAdvertHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="IncrementImpressionsCountHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertTypeID" type="s:string" />
+  </message>
+  <message name="IncrementImpressionsCountHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="IncrementHitsCountHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="AdvertPos" type="s:string" />
+  </message>
+  <message name="IncrementHitsCountHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllAdvertsHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAllAdvertsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdvertHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AdvertID" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdvertHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUserIDHttpPostIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="cadvertSoap">
+    <operation name="UpdAdvert">
+      <documentation>Update an advert within SoapEngine engine. NB* When an advert is updated, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:UpdAdvertSoapIn" />
+      <output message="s0:UpdAdvertSoapOut" />
+    </operation>
+    <operation name="DisableAdvert">
+      <documentation>Disable an advert within advertising web ring. NB* When an advert is disabled, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again. However after disabling you can edit the advert before making it available. To have it placed back on the main advertising web ring again, simply use the EnableAdvert method&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DisableAdvertSoapIn" />
+      <output message="s0:DisableAdvertSoapOut" />
+    </operation>
+    <operation name="DelAdvert">
+      <documentation>Delete an advert within SoapEngine. NB* This does not constitute a refund. Also you can only delete an advert if it is not authorised i.e. has been disabled&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdvertSoapIn" />
+      <output message="s0:DelAdvertSoapOut" />
+    </operation>
+    <operation name="EnableAdvert">
+      <documentation>Enable an advert within advertising web ring. NB* This is the function you perform when an advert has been disabled and needs to be made available on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:EnableAdvertSoapIn" />
+      <output message="s0:EnableAdvertSoapOut" />
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <documentation>Update the administration information found against an advert i.e. Paid, Impressions, Hits.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AdminUpdAdvertSoapIn" />
+      <output message="s0:AdminUpdAdvertSoapOut" />
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <documentation>Authorise an advert within advertising web ring. NB* This is the function you perform on already enabled adverts by the administrator when you wish an advert to appear on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AuthoriseAdvertSoapIn" />
+      <output message="s0:AuthoriseAdvertSoapOut" />
+    </operation>
+    <operation name="AddAdvert">
+      <documentation>Register an order to buy advertising space within SoapEngine, once you have registered you will be contacted by a sales representative to tell you about payment methods. You can then use the GetMyAdverts function to retrieve the status and statistics of your adverts within the SoapEngine application.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdvertSoapIn" />
+      <output message="s0:AddAdvertSoapOut" />
+    </operation>
+    <operation name="SearchAdvert">
+      <documentation>Get a list of adverts that have been selected using a specific search text&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;SearchValue&lt;/b&gt; = Enter specific search text that is used to search within this process&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchAdvertSoapIn" />
+      <output message="s0:SearchAdvertSoapOut" />
+    </operation>
+    <operation name="GetUnAuthorised">
+      <documentation>Get a list of UN-Authorised adverts that are waiting to be authorised and scheduled to be run on SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUnAuthorisedSoapIn" />
+      <output message="s0:GetUnAuthorisedSoapOut" />
+    </operation>
+    <operation name="GetNotPaid">
+      <documentation>Get a list of adverts that have been enabled by the user but have not been paid yet&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetNotPaidSoapIn" />
+      <output message="s0:GetNotPaidSoapOut" />
+    </operation>
+    <operation name="GetAdvertType">
+      <documentation>Get a list of types of advert that are allowed&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertTypeSoapIn" />
+      <output message="s0:GetAdvertTypeSoapOut" />
+    </operation>
+    <operation name="GetMyAdverts">
+      <documentation>Get a list of adverts that a user has placed within advertising ring along with their response rates and status&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetMyAdvertsSoapIn" />
+      <output message="s0:GetMyAdvertsSoapOut" />
+    </operation>
+    <operation name="GetRightAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetRightAdvertSoapIn" />
+      <output message="s0:GetRightAdvertSoapOut" />
+    </operation>
+    <operation name="GetAdverts">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertsSoapIn" />
+      <output message="s0:GetAdvertsSoapOut" />
+    </operation>
+    <operation name="GetLeftAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the left hand side of the advertising web ring page.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetLeftAdvertSoapIn" />
+      <output message="s0:GetLeftAdvertSoapOut" />
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <documentation>Increments the impressions counter on the adverts page so that each advert moves up one tile, this makes sure that every advert has the opportunity of being place in priority spaces such as the top left. Impressions means the number of times an advert has been seen&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementImpressionsCountSoapIn" />
+      <output message="s0:IncrementImpressionsCountSoapOut" />
+    </operation>
+    <operation name="IncrementHitsCount">
+      <documentation>Increments the hits or usage count for a specific advert. Hits means the number of times this advert has been folled and clicked on&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;AdvertPos&lt;/b&gt; = Advertising position that the advert appeared in when it was clicked on&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementHitsCountSoapIn" />
+      <output message="s0:IncrementHitsCountSoapOut" />
+    </operation>
+    <operation name="GetAllAdverts">
+      <documentation>Return all adverts for a specific AdminUserID&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAllAdvertsSoapIn" />
+      <output message="s0:GetAllAdvertsSoapOut" />
+    </operation>
+    <operation name="GetAdvert">
+      <documentation>Get a specific advert using its unique AdvertID to retrieve it&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertSoapIn" />
+      <output message="s0:GetAdvertSoapOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDSoapIn" />
+      <output message="s0:GetUserIDSoapOut" />
+    </operation>
+  </portType>
+  <portType name="cadvertHttpGet">
+    <operation name="UpdAdvert">
+      <documentation>Update an advert within SoapEngine engine. NB* When an advert is updated, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:UpdAdvertHttpGetIn" />
+      <output message="s0:UpdAdvertHttpGetOut" />
+    </operation>
+    <operation name="DisableAdvert">
+      <documentation>Disable an advert within advertising web ring. NB* When an advert is disabled, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again. However after disabling you can edit the advert before making it available. To have it placed back on the main advertising web ring again, simply use the EnableAdvert method&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DisableAdvertHttpGetIn" />
+      <output message="s0:DisableAdvertHttpGetOut" />
+    </operation>
+    <operation name="DelAdvert">
+      <documentation>Delete an advert within SoapEngine. NB* This does not constitute a refund. Also you can only delete an advert if it is not authorised i.e. has been disabled&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdvertHttpGetIn" />
+      <output message="s0:DelAdvertHttpGetOut" />
+    </operation>
+    <operation name="EnableAdvert">
+      <documentation>Enable an advert within advertising web ring. NB* This is the function you perform when an advert has been disabled and needs to be made available on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:EnableAdvertHttpGetIn" />
+      <output message="s0:EnableAdvertHttpGetOut" />
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <documentation>Update the administration information found against an advert i.e. Paid, Impressions, Hits.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AdminUpdAdvertHttpGetIn" />
+      <output message="s0:AdminUpdAdvertHttpGetOut" />
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <documentation>Authorise an advert within advertising web ring. NB* This is the function you perform on already enabled adverts by the administrator when you wish an advert to appear on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AuthoriseAdvertHttpGetIn" />
+      <output message="s0:AuthoriseAdvertHttpGetOut" />
+    </operation>
+    <operation name="AddAdvert">
+      <documentation>Register an order to buy advertising space within SoapEngine, once you have registered you will be contacted by a sales representative to tell you about payment methods. You can then use the GetMyAdverts function to retrieve the status and statistics of your adverts within the SoapEngine application.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdvertHttpGetIn" />
+      <output message="s0:AddAdvertHttpGetOut" />
+    </operation>
+    <operation name="SearchAdvert">
+      <documentation>Get a list of adverts that have been selected using a specific search text&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;SearchValue&lt;/b&gt; = Enter specific search text that is used to search within this process&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchAdvertHttpGetIn" />
+      <output message="s0:SearchAdvertHttpGetOut" />
+    </operation>
+    <operation name="GetUnAuthorised">
+      <documentation>Get a list of UN-Authorised adverts that are waiting to be authorised and scheduled to be run on SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUnAuthorisedHttpGetIn" />
+      <output message="s0:GetUnAuthorisedHttpGetOut" />
+    </operation>
+    <operation name="GetNotPaid">
+      <documentation>Get a list of adverts that have been enabled by the user but have not been paid yet&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetNotPaidHttpGetIn" />
+      <output message="s0:GetNotPaidHttpGetOut" />
+    </operation>
+    <operation name="GetAdvertType">
+      <documentation>Get a list of types of advert that are allowed&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertTypeHttpGetIn" />
+      <output message="s0:GetAdvertTypeHttpGetOut" />
+    </operation>
+    <operation name="GetMyAdverts">
+      <documentation>Get a list of adverts that a user has placed within advertising ring along with their response rates and status&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetMyAdvertsHttpGetIn" />
+      <output message="s0:GetMyAdvertsHttpGetOut" />
+    </operation>
+    <operation name="GetRightAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetRightAdvertHttpGetIn" />
+      <output message="s0:GetRightAdvertHttpGetOut" />
+    </operation>
+    <operation name="GetAdverts">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertsHttpGetIn" />
+      <output message="s0:GetAdvertsHttpGetOut" />
+    </operation>
+    <operation name="GetLeftAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the left hand side of the advertising web ring page.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetLeftAdvertHttpGetIn" />
+      <output message="s0:GetLeftAdvertHttpGetOut" />
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <documentation>Increments the impressions counter on the adverts page so that each advert moves up one tile, this makes sure that every advert has the opportunity of being place in priority spaces such as the top left. Impressions means the number of times an advert has been seen&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementImpressionsCountHttpGetIn" />
+      <output message="s0:IncrementImpressionsCountHttpGetOut" />
+    </operation>
+    <operation name="IncrementHitsCount">
+      <documentation>Increments the hits or usage count for a specific advert. Hits means the number of times this advert has been folled and clicked on&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;AdvertPos&lt;/b&gt; = Advertising position that the advert appeared in when it was clicked on&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementHitsCountHttpGetIn" />
+      <output message="s0:IncrementHitsCountHttpGetOut" />
+    </operation>
+    <operation name="GetAllAdverts">
+      <documentation>Return all adverts for a specific AdminUserID&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAllAdvertsHttpGetIn" />
+      <output message="s0:GetAllAdvertsHttpGetOut" />
+    </operation>
+    <operation name="GetAdvert">
+      <documentation>Get a specific advert using its unique AdvertID to retrieve it&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertHttpGetIn" />
+      <output message="s0:GetAdvertHttpGetOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpGetIn" />
+      <output message="s0:GetUserIDHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="cadvertHttpPost">
+    <operation name="UpdAdvert">
+      <documentation>Update an advert within SoapEngine engine. NB* When an advert is updated, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:UpdAdvertHttpPostIn" />
+      <output message="s0:UpdAdvertHttpPostOut" />
+    </operation>
+    <operation name="DisableAdvert">
+      <documentation>Disable an advert within advertising web ring. NB* When an advert is disabled, it is changed to Not Authorised and will need to be authorised by an administrator before being made available on the main advertising web ring again. However after disabling you can edit the advert before making it available. To have it placed back on the main advertising web ring again, simply use the EnableAdvert method&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DisableAdvertHttpPostIn" />
+      <output message="s0:DisableAdvertHttpPostOut" />
+    </operation>
+    <operation name="DelAdvert">
+      <documentation>Delete an advert within SoapEngine. NB* This does not constitute a refund. Also you can only delete an advert if it is not authorised i.e. has been disabled&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdvertHttpPostIn" />
+      <output message="s0:DelAdvertHttpPostOut" />
+    </operation>
+    <operation name="EnableAdvert">
+      <documentation>Enable an advert within advertising web ring. NB* This is the function you perform when an advert has been disabled and needs to be made available on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:EnableAdvertHttpPostIn" />
+      <output message="s0:EnableAdvertHttpPostOut" />
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <documentation>Update the administration information found against an advert i.e. Paid, Impressions, Hits.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AdminUpdAdvertHttpPostIn" />
+      <output message="s0:AdminUpdAdvertHttpPostOut" />
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <documentation>Authorise an advert within advertising web ring. NB* This is the function you perform on already enabled adverts by the administrator when you wish an advert to appear on the system again.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;Started&lt;/b&gt; = Date the advert should be started from i.e. you can schedule a date in the future&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AuthoriseAdvertHttpPostIn" />
+      <output message="s0:AuthoriseAdvertHttpPostOut" />
+    </operation>
+    <operation name="AddAdvert">
+      <documentation>Register an order to buy advertising space within SoapEngine, once you have registered you will be contacted by a sales representative to tell you about payment methods. You can then use the GetMyAdverts function to retrieve the status and statistics of your adverts within the SoapEngine application.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AdvertName&lt;/b&gt; = Name of advert you want to purchase&lt;br&gt;&lt;b&gt;AdvertDesc&lt;/b&gt; = Description of advert&lt;br&gt;&lt;b&gt;LinkURL&lt;/b&gt; = Link you want to advertise&lt;br&gt;&lt;b&gt;AdvertType&lt;/b&gt; = Type of advert you wish to order. Valid values are 'SideBox' and 'NewsLetter'. NB* The numbought value refers to views if you select 'SideBox' and insertions is you select 'NewsLetter'&lt;br&gt;&lt;b&gt;NumBought&lt;/b&gt; = Number of views or impressions purchased i.e. 20000 views, 40000 views, 16 newsletter insertions. Depends on Advert Type selected.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdvertHttpPostIn" />
+      <output message="s0:AddAdvertHttpPostOut" />
+    </operation>
+    <operation name="SearchAdvert">
+      <documentation>Get a list of adverts that have been selected using a specific search text&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;SearchValue&lt;/b&gt; = Enter specific search text that is used to search within this process&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SearchAdvertHttpPostIn" />
+      <output message="s0:SearchAdvertHttpPostOut" />
+    </operation>
+    <operation name="GetUnAuthorised">
+      <documentation>Get a list of UN-Authorised adverts that are waiting to be authorised and scheduled to be run on SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUnAuthorisedHttpPostIn" />
+      <output message="s0:GetUnAuthorisedHttpPostOut" />
+    </operation>
+    <operation name="GetNotPaid">
+      <documentation>Get a list of adverts that have been enabled by the user but have not been paid yet&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetNotPaidHttpPostIn" />
+      <output message="s0:GetNotPaidHttpPostOut" />
+    </operation>
+    <operation name="GetAdvertType">
+      <documentation>Get a list of types of advert that are allowed&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertTypeHttpPostIn" />
+      <output message="s0:GetAdvertTypeHttpPostOut" />
+    </operation>
+    <operation name="GetMyAdverts">
+      <documentation>Get a list of adverts that a user has placed within advertising ring along with their response rates and status&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetMyAdvertsHttpPostIn" />
+      <output message="s0:GetMyAdvertsHttpPostOut" />
+    </operation>
+    <operation name="GetRightAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetRightAdvertHttpPostIn" />
+      <output message="s0:GetRightAdvertHttpPostOut" />
+    </operation>
+    <operation name="GetAdverts">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the right hand side of the advertising web ring page&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertsHttpPostIn" />
+      <output message="s0:GetAdvertsHttpPostOut" />
+    </operation>
+    <operation name="GetLeftAdvert">
+      <documentation>WEB SERVICE CACHED - Get the adverts that appear on the left hand side of the advertising web ring page.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetLeftAdvertHttpPostIn" />
+      <output message="s0:GetLeftAdvertHttpPostOut" />
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <documentation>Increments the impressions counter on the adverts page so that each advert moves up one tile, this makes sure that every advert has the opportunity of being place in priority spaces such as the top left. Impressions means the number of times an advert has been seen&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementImpressionsCountHttpPostIn" />
+      <output message="s0:IncrementImpressionsCountHttpPostOut" />
+    </operation>
+    <operation name="IncrementHitsCount">
+      <documentation>Increments the hits or usage count for a specific advert. Hits means the number of times this advert has been folled and clicked on&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;AdvertPos&lt;/b&gt; = Advertising position that the advert appeared in when it was clicked on&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IncrementHitsCountHttpPostIn" />
+      <output message="s0:IncrementHitsCountHttpPostOut" />
+    </operation>
+    <operation name="GetAllAdverts">
+      <documentation>Return all adverts for a specific AdminUserID&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAllAdvertsHttpPostIn" />
+      <output message="s0:GetAllAdvertsHttpPostOut" />
+    </operation>
+    <operation name="GetAdvert">
+      <documentation>Get a specific advert using its unique AdvertID to retrieve it&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AdvertID&lt;/b&gt; = Unique identity number for a specific advertising campaign&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdvertHttpPostIn" />
+      <output message="s0:GetAdvertHttpPostOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpPostIn" />
+      <output message="s0:GetUserIDHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="cadvertSoap" type="s0:cadvertSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="UpdAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/UpdAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DisableAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/DisableAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DelAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/DelAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="EnableAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/EnableAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/AdminUpdAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/AuthoriseAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/AddAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/SearchAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUnAuthorised">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetUnAuthorised" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNotPaid">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetNotPaid" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdvertType">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetAdvertType" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMyAdverts">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetMyAdverts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRightAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetRightAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdverts">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetAdverts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLeftAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetLeftAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/IncrementImpressionsCount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IncrementHitsCount">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/IncrementHitsCount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllAdverts">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetAllAdverts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdvert">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetAdvert" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/cadvert.asmx/GetUserID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="cadvertHttpGet" type="s0:cadvertHttpGet">
+    <http:binding verb="GET" />
+    <operation name="UpdAdvert">
+      <http:operation location="/UpdAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DisableAdvert">
+      <http:operation location="/DisableAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdvert">
+      <http:operation location="/DelAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EnableAdvert">
+      <http:operation location="/EnableAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <http:operation location="/AdminUpdAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <http:operation location="/AuthoriseAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAdvert">
+      <http:operation location="/AddAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchAdvert">
+      <http:operation location="/SearchAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUnAuthorised">
+      <http:operation location="/GetUnAuthorised" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNotPaid">
+      <http:operation location="/GetNotPaid" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdvertType">
+      <http:operation location="/GetAdvertType" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMyAdverts">
+      <http:operation location="/GetMyAdverts" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRightAdvert">
+      <http:operation location="/GetRightAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdverts">
+      <http:operation location="/GetAdverts" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLeftAdvert">
+      <http:operation location="/GetLeftAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <http:operation location="/IncrementImpressionsCount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IncrementHitsCount">
+      <http:operation location="/IncrementHitsCount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllAdverts">
+      <http:operation location="/GetAllAdverts" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdvert">
+      <http:operation location="/GetAdvert" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="cadvertHttpPost" type="s0:cadvertHttpPost">
+    <http:binding verb="POST" />
+    <operation name="UpdAdvert">
+      <http:operation location="/UpdAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DisableAdvert">
+      <http:operation location="/DisableAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdvert">
+      <http:operation location="/DelAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EnableAdvert">
+      <http:operation location="/EnableAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AdminUpdAdvert">
+      <http:operation location="/AdminUpdAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AuthoriseAdvert">
+      <http:operation location="/AuthoriseAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAdvert">
+      <http:operation location="/AddAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchAdvert">
+      <http:operation location="/SearchAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUnAuthorised">
+      <http:operation location="/GetUnAuthorised" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNotPaid">
+      <http:operation location="/GetNotPaid" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdvertType">
+      <http:operation location="/GetAdvertType" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMyAdverts">
+      <http:operation location="/GetMyAdverts" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRightAdvert">
+      <http:operation location="/GetRightAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdverts">
+      <http:operation location="/GetAdverts" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLeftAdvert">
+      <http:operation location="/GetLeftAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IncrementImpressionsCount">
+      <http:operation location="/IncrementImpressionsCount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IncrementHitsCount">
+      <http:operation location="/IncrementHitsCount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllAdverts">
+      <http:operation location="/GetAllAdverts" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdvert">
+      <http:operation location="/GetAdvert" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="cadvert">
+    <documentation>&lt;font size='3'&gt;&lt;b&gt;The Worlds FIRST Web Service Advertising Ring&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size='3'&gt;Create Revenue and Traffic for your Web Site&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Overview:&lt;/b&gt;&lt;br&gt;Individuals and companies can purchase advertising space within the Advertising Ring using this web service. The service also allows advertisers/administrators to view the status of existing campaigns along with their individual response rates, start dates, completion dates etc.&lt;br&gt;&lt;br&gt;&lt;b&gt;Create Revenue and Traffic for your Web Site:&lt;/b&gt;&lt;br&gt;Please note that this advertising ring can be used by any web site and as an administrator you can produce revenue for your web site by taking a commission on the sales made. You also generate yourself additional traffic by being part of the ring and by placing adverts (free of charge) within the advertising ring. For additional information please email &lt;a href='mailto:cadvert@lucin.com?Subject=Information on Advertising Ring'&gt;Web Service Advertising Ring&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Example:&lt;/b&gt;&lt;br&gt;1. Use the &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cadvert.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method to get yourself a unique identity number and password.&lt;br&gt;2. Get all adverts that appear on the left of the screen using the &lt;a target='_blank' href='http://www.soapengine.com/lucin/salcentral/cadvert.asmx?op=GetLeftAdvert'&gt;GetLeftAdverts&lt;/a&gt; method.&lt;br&gt;&lt;br&gt;&lt;b&gt;How to get your UserID &amp; Password?&lt;/b&gt;&lt;br&gt;This web service uses a userid and password to allow people to access each of its methods, you can obtain your own personal identification that can be used on any SoapEngine web service using this following &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method, &lt;a target='_blank' href='?op=GetUserID'&gt;click HERE&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;Terms of Use:&lt;/b&gt;&lt;br&gt;The following web services can be used free of charge for non-commercial activities, we would however ask you to consider placing the following pointer on your web site (this request may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities), thank you for your support:&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='http://www.salcentral.com'&gt;&lt;img border=0 src='images/salcsmall.gif'&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Commercial Use:&lt;/b&gt;&lt;br&gt;Much of the functionality within these web services may be used for FREE non-commercial use, however if you are using any these services commercially please register by email at &lt;a href='mailto:support@lucin.com?Subject=Register Commercial Use'&gt;Register Commercial Use&lt;/a&gt; with your name and web site (if applicable). In response we will endeavour to support your use of our products as much as possible. This rule may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities.&lt;br&gt;&lt;br&gt;&lt;b&gt;Error Trapping:&lt;/b&gt;&lt;br&gt;This web service contains in-built software driven error trapping device, therefore whenever you receive a programmatic error the support team for this web service also receives the same error but via email. Once the error has been rectified, support will email you back using your registered email address to advise you that the error has been fixed and that you can once again use that function. This support mechanism is a predominant feature of all SoapEngine web services.&lt;br&gt;&lt;br&gt;&lt;b&gt;How does AdminUser Work?&lt;/b&gt;&lt;br&gt;All SoapEngine web services are governed by a single web service called &lt;a target='_blank' href='csecurity.asmx'&gt;csecurity&lt;/a&gt;, this web service controls access for all users and administrators. An administrator can use their AdminUserID and password to gain administrator access to a certain methods or web services, only methods that contain the AdminUserID argument allow admin access. It does this in two ways ...&lt;br&gt;&lt;br&gt;1) It checks to see that the userid supplied is a valid userid and the password supplied is correct, NB* its important to remember that if you are an AdminUser and your using the adminuserid field then the password you enter must be your password not the password of the userid you are also using.&lt;br&gt;&lt;br&gt;2) If an adminuserid is also supplied it is validated to see that the adminuserid is valid and along with the password entered also passes the security check, in addition each method called has a unique Identifier hidden from the user but is used to see whether this adminuserid has Administrator access to the method your attempting to process.&lt;br&gt;&lt;br&gt;To gain administrative access to a specific web service please email &lt;a href='mailto:support@lucin.com?Subject=Request for Admin Access to Web Service'&gt;AdminAccess&lt;/a&gt; with details about the web service or method you want access to and why.&lt;br&gt;&lt;br&gt;&lt;b&gt;Support and Feedback:&lt;/b&gt;&lt;br&gt;We will endeavour to support this web service for external activities as much as possible, please email &lt;a href='mailto:support@lucin.com?Subject=Web Service Support or Feedback'&gt;Support&lt;/a&gt; with any questions or feedback you may have.&lt;br&gt;&lt;br&gt;&lt;br&gt;</documentation>
+    <port name="cadvertSoap" binding="s0:cadvertSoap">
+      <soap:address location="http://www.soapengine.com/lucin/salcentral/cadvert.asmx" />
+    </port>
+    <port name="cadvertHttpGet" binding="s0:cadvertHttpGet">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/cadvert.asmx" />
+    </port>
+    <port name="cadvertHttpPost" binding="s0:cadvertHttpPost">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/cadvert.asmx" />
+    </port>
+  </service>
+</definitions>

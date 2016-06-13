@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ws.acrosscommunications.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.acrosscommunications.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.acrosscommunications.com/">
+      <s:element name="Call">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CallResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="HangUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HangUpResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Say">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SayResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SayWithDigitEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLastDigits" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxDigits" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SayWithDigitEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SayWithDigitEventResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PlayFileWithDigitEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLastDigits" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxDigits" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayFileWithDigitEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlayFileWithDigitEventResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayDigits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDigits" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlayDigitsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="WaitDigits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Timeout" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxDigits" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastDigit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WaitDigitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WaitDigitsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Record">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Timeout" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastDigit" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxDigits" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeAudioFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTextToSpeak" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeAudioFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastMethodDuration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MethodName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastMethodDurationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLastMethodDurationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSearchString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSearchStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSearchString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Release">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReleaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </types>
+  <message name="CallSoapIn">
+    <part name="parameters" element="s0:Call" />
+  </message>
+  <message name="CallSoapOut">
+    <part name="parameters" element="s0:CallResponse" />
+  </message>
+  <message name="HangUpSoapIn">
+    <part name="parameters" element="s0:HangUp" />
+  </message>
+  <message name="HangUpSoapOut">
+    <part name="parameters" element="s0:HangUpResponse" />
+  </message>
+  <message name="SaySoapIn">
+    <part name="parameters" element="s0:Say" />
+  </message>
+  <message name="SaySoapOut">
+    <part name="parameters" element="s0:SayResponse" />
+  </message>
+  <message name="SayWithDigitEventSoapIn">
+    <part name="parameters" element="s0:SayWithDigitEvent" />
+  </message>
+  <message name="SayWithDigitEventSoapOut">
+    <part name="parameters" element="s0:SayWithDigitEventResponse" />
+  </message>
+  <message name="PlayFileSoapIn">
+    <part name="parameters" element="s0:PlayFile" />
+  </message>
+  <message name="PlayFileSoapOut">
+    <part name="parameters" element="s0:PlayFileResponse" />
+  </message>
+  <message name="PlayFileWithDigitEventSoapIn">
+    <part name="parameters" element="s0:PlayFileWithDigitEvent" />
+  </message>
+  <message name="PlayFileWithDigitEventSoapOut">
+    <part name="parameters" element="s0:PlayFileWithDigitEventResponse" />
+  </message>
+  <message name="PlayDigitsSoapIn">
+    <part name="parameters" element="s0:PlayDigits" />
+  </message>
+  <message name="PlayDigitsSoapOut">
+    <part name="parameters" element="s0:PlayDigitsResponse" />
+  </message>
+  <message name="WaitDigitsSoapIn">
+    <part name="parameters" element="s0:WaitDigits" />
+  </message>
+  <message name="WaitDigitsSoapOut">
+    <part name="parameters" element="s0:WaitDigitsResponse" />
+  </message>
+  <message name="RecordSoapIn">
+    <part name="parameters" element="s0:Record" />
+  </message>
+  <message name="RecordSoapOut">
+    <part name="parameters" element="s0:RecordResponse" />
+  </message>
+  <message name="MakeAudioFileSoapIn">
+    <part name="parameters" element="s0:MakeAudioFile" />
+  </message>
+  <message name="MakeAudioFileSoapOut">
+    <part name="parameters" element="s0:MakeAudioFileResponse" />
+  </message>
+  <message name="GetLastMethodDurationSoapIn">
+    <part name="parameters" element="s0:GetLastMethodDuration" />
+  </message>
+  <message name="GetLastMethodDurationSoapOut">
+    <part name="parameters" element="s0:GetLastMethodDurationResponse" />
+  </message>
+  <message name="SetSearchStringSoapIn">
+    <part name="parameters" element="s0:SetSearchString" />
+  </message>
+  <message name="SetSearchStringSoapOut">
+    <part name="parameters" element="s0:SetSearchStringResponse" />
+  </message>
+  <message name="GetSearchStringSoapIn">
+    <part name="parameters" element="s0:GetSearchString" />
+  </message>
+  <message name="GetSearchStringSoapOut">
+    <part name="parameters" element="s0:GetSearchStringResponse" />
+  </message>
+  <message name="ReleaseSoapIn">
+    <part name="parameters" element="s0:Release" />
+  </message>
+  <message name="ReleaseSoapOut">
+    <part name="parameters" element="s0:ReleaseResponse" />
+  </message>
+  <message name="CallHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strDialNumber" type="s:string" />
+  </message>
+  <message name="CallHttpGetOut" />
+  <message name="HangUpHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="HangUpHttpGetOut" />
+  <message name="SayHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strText" type="s:string" />
+  </message>
+  <message name="SayHttpGetOut" />
+  <message name="SayWithDigitEventHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strText" type="s:string" />
+    <part name="strLastDigits" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="SayWithDigitEventHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlayFileHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strFile" type="s:string" />
+  </message>
+  <message name="PlayFileHttpGetOut" />
+  <message name="PlayFileWithDigitEventHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strFile" type="s:string" />
+    <part name="strLastDigits" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="PlayFileWithDigitEventHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlayDigitsHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strDigits" type="s:string" />
+  </message>
+  <message name="PlayDigitsHttpGetOut" />
+  <message name="WaitDigitsHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="Timeout" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+    <part name="LastDigit" type="s:string" />
+  </message>
+  <message name="WaitDigitsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RecordHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="Timeout" type="s:string" />
+    <part name="LastDigit" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="RecordHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MakeAudioFileHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strName" type="s:string" />
+    <part name="strTextToSpeak" type="s:string" />
+  </message>
+  <message name="MakeAudioFileHttpGetOut" />
+  <message name="GetLastMethodDurationHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="MethodName" type="s:string" />
+  </message>
+  <message name="GetLastMethodDurationHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SetSearchStringHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strValue" type="s:string" />
+  </message>
+  <message name="SetSearchStringHttpGetOut" />
+  <message name="GetSearchStringHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="GetSearchStringHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ReleaseHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="ReleaseHttpGetOut" />
+  <message name="CallHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strDialNumber" type="s:string" />
+  </message>
+  <message name="CallHttpPostOut" />
+  <message name="HangUpHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="HangUpHttpPostOut" />
+  <message name="SayHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strText" type="s:string" />
+  </message>
+  <message name="SayHttpPostOut" />
+  <message name="SayWithDigitEventHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strText" type="s:string" />
+    <part name="strLastDigits" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="SayWithDigitEventHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlayFileHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strFile" type="s:string" />
+  </message>
+  <message name="PlayFileHttpPostOut" />
+  <message name="PlayFileWithDigitEventHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strFile" type="s:string" />
+    <part name="strLastDigits" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="PlayFileWithDigitEventHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlayDigitsHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strDigits" type="s:string" />
+  </message>
+  <message name="PlayDigitsHttpPostOut" />
+  <message name="WaitDigitsHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="Timeout" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+    <part name="LastDigit" type="s:string" />
+  </message>
+  <message name="WaitDigitsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RecordHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="Timeout" type="s:string" />
+    <part name="LastDigit" type="s:string" />
+    <part name="MaxDigits" type="s:string" />
+  </message>
+  <message name="RecordHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MakeAudioFileHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strName" type="s:string" />
+    <part name="strTextToSpeak" type="s:string" />
+  </message>
+  <message name="MakeAudioFileHttpPostOut" />
+  <message name="GetLastMethodDurationHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="MethodName" type="s:string" />
+  </message>
+  <message name="GetLastMethodDurationHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SetSearchStringHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strValue" type="s:string" />
+  </message>
+  <message name="SetSearchStringHttpPostOut" />
+  <message name="GetSearchStringHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="GetSearchStringHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ReleaseHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="ReleaseHttpPostOut" />
+  <portType name="PhoneSoap">
+    <operation name="Call">
+      <documentation>Call and connect to phone number</documentation>
+      <input message="s0:CallSoapIn" />
+      <output message="s0:CallSoapOut" />
+    </operation>
+    <operation name="HangUp">
+      <documentation>Disconnect form phone line</documentation>
+      <input message="s0:HangUpSoapIn" />
+      <output message="s0:HangUpSoapOut" />
+    </operation>
+    <operation name="Say">
+      <documentation>Speak text</documentation>
+      <input message="s0:SaySoapIn" />
+      <output message="s0:SaySoapOut" />
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <documentation>Speak text screening touch-tone response</documentation>
+      <input message="s0:SayWithDigitEventSoapIn" />
+      <output message="s0:SayWithDigitEventSoapOut" />
+    </operation>
+    <operation name="PlayFile">
+      <documentation>Play stored wav file</documentation>
+      <input message="s0:PlayFileSoapIn" />
+      <output message="s0:PlayFileSoapOut" />
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <documentation>Play stored wav file screening touch-tone response</documentation>
+      <input message="s0:PlayFileWithDigitEventSoapIn" />
+      <output message="s0:PlayFileWithDigitEventSoapOut" />
+    </operation>
+    <operation name="PlayDigits">
+      <documentation>Play DTMF tones</documentation>
+      <input message="s0:PlayDigitsSoapIn" />
+      <output message="s0:PlayDigitsSoapOut" />
+    </operation>
+    <operation name="WaitDigits">
+      <documentation>Wait for touch-tone response</documentation>
+      <input message="s0:WaitDigitsSoapIn" />
+      <output message="s0:WaitDigitsSoapOut" />
+    </operation>
+    <operation name="Record">
+      <documentation>Record voice into file</documentation>
+      <input message="s0:RecordSoapIn" />
+      <output message="s0:RecordSoapOut" />
+    </operation>
+    <operation name="MakeAudioFile">
+      <documentation>Generate voice file from text</documentation>
+      <input message="s0:MakeAudioFileSoapIn" />
+      <output message="s0:MakeAudioFileSoapOut" />
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <documentation>Get connetion time</documentation>
+      <input message="s0:GetLastMethodDurationSoapIn" />
+      <output message="s0:GetLastMethodDurationSoapOut" />
+    </operation>
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringSoapIn" />
+      <output message="s0:SetSearchStringSoapOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringSoapIn" />
+      <output message="s0:GetSearchStringSoapOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseSoapIn" />
+      <output message="s0:ReleaseSoapOut" />
+    </operation>
+  </portType>
+  <portType name="PhoneHttpGet">
+    <operation name="Call">
+      <documentation>Call and connect to phone number</documentation>
+      <input message="s0:CallHttpGetIn" />
+      <output message="s0:CallHttpGetOut" />
+    </operation>
+    <operation name="HangUp">
+      <documentation>Disconnect form phone line</documentation>
+      <input message="s0:HangUpHttpGetIn" />
+      <output message="s0:HangUpHttpGetOut" />
+    </operation>
+    <operation name="Say">
+      <documentation>Speak text</documentation>
+      <input message="s0:SayHttpGetIn" />
+      <output message="s0:SayHttpGetOut" />
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <documentation>Speak text screening touch-tone response</documentation>
+      <input message="s0:SayWithDigitEventHttpGetIn" />
+      <output message="s0:SayWithDigitEventHttpGetOut" />
+    </operation>
+    <operation name="PlayFile">
+      <documentation>Play stored wav file</documentation>
+      <input message="s0:PlayFileHttpGetIn" />
+      <output message="s0:PlayFileHttpGetOut" />
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <documentation>Play stored wav file screening touch-tone response</documentation>
+      <input message="s0:PlayFileWithDigitEventHttpGetIn" />
+      <output message="s0:PlayFileWithDigitEventHttpGetOut" />
+    </operation>
+    <operation name="PlayDigits">
+      <documentation>Play DTMF tones</documentation>
+      <input message="s0:PlayDigitsHttpGetIn" />
+      <output message="s0:PlayDigitsHttpGetOut" />
+    </operation>
+    <operation name="WaitDigits">
+      <documentation>Wait for touch-tone response</documentation>
+      <input message="s0:WaitDigitsHttpGetIn" />
+      <output message="s0:WaitDigitsHttpGetOut" />
+    </operation>
+    <operation name="Record">
+      <documentation>Record voice into file</documentation>
+      <input message="s0:RecordHttpGetIn" />
+      <output message="s0:RecordHttpGetOut" />
+    </operation>
+    <operation name="MakeAudioFile">
+      <documentation>Generate voice file from text</documentation>
+      <input message="s0:MakeAudioFileHttpGetIn" />
+      <output message="s0:MakeAudioFileHttpGetOut" />
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <documentation>Get connetion time</documentation>
+      <input message="s0:GetLastMethodDurationHttpGetIn" />
+      <output message="s0:GetLastMethodDurationHttpGetOut" />
+    </operation>
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringHttpGetIn" />
+      <output message="s0:SetSearchStringHttpGetOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringHttpGetIn" />
+      <output message="s0:GetSearchStringHttpGetOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseHttpGetIn" />
+      <output message="s0:ReleaseHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="PhoneHttpPost">
+    <operation name="Call">
+      <documentation>Call and connect to phone number</documentation>
+      <input message="s0:CallHttpPostIn" />
+      <output message="s0:CallHttpPostOut" />
+    </operation>
+    <operation name="HangUp">
+      <documentation>Disconnect form phone line</documentation>
+      <input message="s0:HangUpHttpPostIn" />
+      <output message="s0:HangUpHttpPostOut" />
+    </operation>
+    <operation name="Say">
+      <documentation>Speak text</documentation>
+      <input message="s0:SayHttpPostIn" />
+      <output message="s0:SayHttpPostOut" />
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <documentation>Speak text screening touch-tone response</documentation>
+      <input message="s0:SayWithDigitEventHttpPostIn" />
+      <output message="s0:SayWithDigitEventHttpPostOut" />
+    </operation>
+    <operation name="PlayFile">
+      <documentation>Play stored wav file</documentation>
+      <input message="s0:PlayFileHttpPostIn" />
+      <output message="s0:PlayFileHttpPostOut" />
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <documentation>Play stored wav file screening touch-tone response</documentation>
+      <input message="s0:PlayFileWithDigitEventHttpPostIn" />
+      <output message="s0:PlayFileWithDigitEventHttpPostOut" />
+    </operation>
+    <operation name="PlayDigits">
+      <documentation>Play DTMF tones</documentation>
+      <input message="s0:PlayDigitsHttpPostIn" />
+      <output message="s0:PlayDigitsHttpPostOut" />
+    </operation>
+    <operation name="WaitDigits">
+      <documentation>Wait for touch-tone response</documentation>
+      <input message="s0:WaitDigitsHttpPostIn" />
+      <output message="s0:WaitDigitsHttpPostOut" />
+    </operation>
+    <operation name="Record">
+      <documentation>Record voice into file</documentation>
+      <input message="s0:RecordHttpPostIn" />
+      <output message="s0:RecordHttpPostOut" />
+    </operation>
+    <operation name="MakeAudioFile">
+      <documentation>Generate voice file from text</documentation>
+      <input message="s0:MakeAudioFileHttpPostIn" />
+      <output message="s0:MakeAudioFileHttpPostOut" />
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <documentation>Get connetion time</documentation>
+      <input message="s0:GetLastMethodDurationHttpPostIn" />
+      <output message="s0:GetLastMethodDurationHttpPostOut" />
+    </operation>
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringHttpPostIn" />
+      <output message="s0:SetSearchStringHttpPostOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringHttpPostIn" />
+      <output message="s0:GetSearchStringHttpPostOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseHttpPostIn" />
+      <output message="s0:ReleaseHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="PhoneSoap" type="s0:PhoneSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Call">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/Call" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="HangUp">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/HangUp" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Say">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/Say" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/SayWithDigitEvent" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlayFile">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/PlayFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/PlayFileWithDigitEvent" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlayDigits">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/PlayDigits" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="WaitDigits">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/WaitDigits" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Record">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/Record" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="MakeAudioFile">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/MakeAudioFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/GetLastMethodDuration" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetSearchString">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/SetSearchString" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSearchString">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/GetSearchString" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Release">
+      <soap:operation soapAction="http://ws.acrosscommunications.com/Release" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PhoneHttpGet" type="s0:PhoneHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Call">
+      <http:operation location="/Call" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="HangUp">
+      <http:operation location="/HangUp" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="Say">
+      <http:operation location="/Say" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <http:operation location="/SayWithDigitEvent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlayFile">
+      <http:operation location="/PlayFile" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <http:operation location="/PlayFileWithDigitEvent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlayDigits">
+      <http:operation location="/PlayDigits" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="WaitDigits">
+      <http:operation location="/WaitDigits" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Record">
+      <http:operation location="/Record" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MakeAudioFile">
+      <http:operation location="/MakeAudioFile" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <http:operation location="/GetLastMethodDuration" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SetSearchString">
+      <http:operation location="/SetSearchString" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetSearchString">
+      <http:operation location="/GetSearchString" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Release">
+      <http:operation location="/Release" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+  </binding>
+  <binding name="PhoneHttpPost" type="s0:PhoneHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Call">
+      <http:operation location="/Call" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="HangUp">
+      <http:operation location="/HangUp" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="Say">
+      <http:operation location="/Say" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="SayWithDigitEvent">
+      <http:operation location="/SayWithDigitEvent" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlayFile">
+      <http:operation location="/PlayFile" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="PlayFileWithDigitEvent">
+      <http:operation location="/PlayFileWithDigitEvent" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlayDigits">
+      <http:operation location="/PlayDigits" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="WaitDigits">
+      <http:operation location="/WaitDigits" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Record">
+      <http:operation location="/Record" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MakeAudioFile">
+      <http:operation location="/MakeAudioFile" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetLastMethodDuration">
+      <http:operation location="/GetLastMethodDuration" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SetSearchString">
+      <http:operation location="/SetSearchString" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetSearchString">
+      <http:operation location="/GetSearchString" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Release">
+      <http:operation location="/Release" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+  </binding>
+  <service name="Phone">
+    <port name="PhoneSoap" binding="s0:PhoneSoap">
+      <soap:address location="http://ws.acrosscommunications.com/Phone.asmx" />
+    </port>
+    <port name="PhoneHttpGet" binding="s0:PhoneHttpGet">
+      <http:address location="http://ws.acrosscommunications.com/Phone.asmx" />
+    </port>
+    <port name="PhoneHttpPost" binding="s0:PhoneHttpPost">
+      <http:address location="http://ws.acrosscommunications.com/Phone.asmx" />
+    </port>
+  </service>
+</definitions>

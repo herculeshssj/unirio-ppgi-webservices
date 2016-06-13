@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<definitions name="EMWebFunctions"
+	targetNamespace="http://www.eyemaginations.com/wsdl/WebFunction.wsdl"
+	xmlns          ="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:tns      ="http://www.eyemaginations.com/wsdl/WebFunction.wsdl"
+        xmlns:soap     ="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc  ="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:xsd      ="http://www.w3.org/2001/XMLSchema">
+
+    <message name="EMCodeRegisterPrintInput">
+      <part name="productID" type="xsd:string" />
+      <part name="myIDType" type="xsd:string" />
+      <part name="myID" type="xsd:string" />
+      <part name="password" type="xsd:string" />
+      <part name="distribID" type="xsd:string" />
+      <part name="siteID" type="xsd:string" />
+      <part name="ComputerName" type="xsd:string" />
+      <part name="SoftwareID" type="xsd:string" />
+      <part name="SoftwareIDConfirm" type="xsd:string" />
+      <part name="KeyType" type="xsd:string" />
+    </message>
+
+    <message name="EMCodeRegisterPrintCodeOutput">
+      <part name="EMKeyCode" type="xsd:string" />
+    </message>
+
+    <message name="EMCodeRegisterPrintEmailOutput">
+      <part name="EMKeyCodeEmail" type="xsd:string" />
+    </message>
+
+    <message name="DistribCreditTransferInput">
+      <part name="myIDType" type="xsd:string" />
+      <part name="myID" type="xsd:string" />
+      <part name="password" type="xsd:string" />
+      <part name="distribID" type="xsd:string" />
+      <part name="productID" type="xsd:string" />
+      <part name="creditType" type="xsd:string" />
+      <part name="action" type="xsd:string" />
+      <part name="creditNum" type="xsd:integer" />
+    </message>
+
+    <message name="DistribCreditTransferOutput">
+      <part name="CreditTransfer" type="xsd:string" />
+    </message>
+
+    <message name="EMAddSiteInput">
+      <part name="myIDType" type="xsd:string" />
+      <part name="myID" type="xsd:string" />
+      <part name="password" type="xsd:string" />
+      <part name="address" type="xsd:string" />
+      <part name="city" type="xsd:string" />
+      <part name="state" type="xsd:string" />
+      <part name="zip" type="xsd:string" />
+      <part name="country" type="xsd:string" />
+      <part name="phone" type="xsd:string" />
+      <part name="fax" type="xsd:string" />
+    </message>
+
+    <message name="EMAddSiteOutput">
+      <part name="SiteOutput" type="xsd:string" />
+    </message>
+    
+    <message name="EMRegisterNewUserInput">
+      <part name="DistribID" type="xsd:integer" />
+      <part name="UserTypeID" type="xsd:string" />
+      <part name="CompanyName" type="xsd:string" />
+      <part name="CompanyType" type="xsd:string" />
+      <part name="Contact" type="xsd:string" />
+      <part name="Title" type="xsd:string" />
+      <part name="Address" type="xsd:string" />
+      <part name="City" type="xsd:string" />
+      <part name="State" type="xsd:string" />
+      <part name="Zip" type="xsd:string" />
+      <part name="Country" type="xsd:string" />
+      <part name="PhoneNo" type="xsd:string" />
+      <part name="FaxNo" type="xsd:string" />
+      <part name="URL" type="xsd:string" />
+      <part name="Email" type="xsd:string" />
+      <part name="EmailConfirm" type="xsd:string" />
+      <part name="Username" type="xsd:string" />
+      <part name="Password" type="xsd:string" />
+      <part name="PasswordConfirm" type="xsd:string" />
+      <part name="FeedbackType" type="xsd:string" />
+      <part name="FeedbackText" type="xsd:string" />
+      <part name="Profile" type="xsd:string" />
+    </message>
+
+    <message name="EMRegisterNewUserOutput">
+      <part name="UserID" type="xsd:integer" />
+    </message>
+
+    <portType name="CodeGenPortType">
+        <operation name="EMCodeRegisterPrintCode">
+           <input message="tns:EMCodeRegisterPrintInput" />
+           <output message="tns:EMCodeRegisterPrintCodeOutput" />
+        </operation>
+        <operation name="EMCodeRegisterPrintEmail">
+           <input message="tns:EMCodeRegisterPrintInput" />
+           <output message="tns:EMCodeRegisterPrintEmailOutput" />
+        </operation>
+        <operation name="DistribCreditTransfer">
+	  <input message="tns:DistribCreditTransferInput" />
+	  <output message="tns:DistribCreditTransferOutput" />
+        </operation>
+        <operation name="EMAddSite">
+	  <input message="tns:EMAddSiteInput" />
+	  <output message="tns:EMAddSiteOutput" />
+        </operation>
+        <operation name="EMRegisterNewUser">
+	  <input message="tns:EMRegisterNewUserInput" />
+	  <output message="tns:EMRegisterNewUserOutput" />
+        </operation>
+    </portType>
+
+    <binding name="CodeGenSoapBinding" type="tns:CodeGenPortType">
+        <soap:binding style="rpc"
+	      transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="EMCodeRegisterPrintCode">
+	   <soap:operation soapAction="http://www.eyemaginations.com/eyeMaginationS::WebFunction#EMCodeRegisterPrintCode"/>
+           <input>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </input>
+           <output>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </output>
+        </operation>
+        <operation name="EMCodeRegisterPrintEmail">
+           <soap:operation soapAction="http://www.eyemaginations.com/eyeMaginationS::WebFunction#EMCodeRegisterPrintEmail" />
+	   <input>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </input>
+           <output>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </output>
+        </operation>
+        <operation name="DistribCreditTransfer">
+	   <soap:operation soapAction="http://www.eyemaginations.com/eyeMaginationS::WebFunction#DistribCreditTransfer" />
+	   <input>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </input>
+           <output>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </output>
+        </operation>
+        <operation name="EMAddSite">
+	   <soap:operation soapAction="http://www.eyemaginations.com/eyeMaginationS::WebFunction#EMAddSite" />
+	   <input>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </input>
+           <output>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </output>
+        </operation>
+        <operation name="EMRegisterNewUser">
+	   <soap:operation soapAction="http://www.eyemaginations.com/eyeMaginationS::WebFunction#EMRegisterNewUser" />
+	   <input>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </input>
+           <output>
+	     <soap:body use="encoded"
+		   namespace="http://www.eyemaginations.com/eyeMaginationS::WebFunction"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+           </output>
+        </operation>
+    </binding>
+
+    <service name="CodeGenService">
+        <documentation>eyeMaginationS Code Generation Service</documentation>
+        <port name="CodeGenPort"
+	      binding="tns:CodeGenSoapBinding">
+		  <soap:address location="http://www.eyemaginations.com/cgi-bin/wssWebFunction.pl" />
+        </port>
+    </service>
+
+
+</definitions>
+

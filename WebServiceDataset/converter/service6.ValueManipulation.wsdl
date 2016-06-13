@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.Softwaremaker.Net/WebServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.Softwaremaker.Net/WebServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.Softwaremaker.Net/WebServices/">
+      <s:element name="NumberConvertor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ps_InputNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_Dollar" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_Cent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_PointSeparator" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ps_Suffix" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NumberConvertorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NumberConvertorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="NumberConvertorSoapIn">
+    <part name="parameters" element="s0:NumberConvertor" />
+  </message>
+  <message name="NumberConvertorSoapOut">
+    <part name="parameters" element="s0:NumberConvertorResponse" />
+  </message>
+  <message name="NumberConvertorHttpGetIn">
+    <part name="ps_InputNo" type="s:string" />
+    <part name="ps_Dollar" type="s:string" />
+    <part name="ps_Cent" type="s:string" />
+    <part name="ps_PointSeparator" type="s:string" />
+    <part name="ps_Suffix" type="s:string" />
+  </message>
+  <message name="NumberConvertorHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="NumberConvertorHttpPostIn">
+    <part name="ps_InputNo" type="s:string" />
+    <part name="ps_Dollar" type="s:string" />
+    <part name="ps_Cent" type="s:string" />
+    <part name="ps_PointSeparator" type="s:string" />
+    <part name="ps_Suffix" type="s:string" />
+  </message>
+  <message name="NumberConvertorHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ConvertorSoap">
+    <operation name="NumberConvertor">
+      <documentation>&lt;p&gt;This web service (a.k.a. Cheque-Writer) requires&lt;br/&gt;A numerical Input (No more than One Hundred Zillion - 100,000,000,000,000,000),&lt;br/&gt;A Dollar Currency Value,&lt;br/&gt;A Cent Currency Value,&lt;br/&gt;A Decimal Point Separator Value (Default is "and"),&lt;br/&gt;A Suffix Value.&lt;br/&gt;&lt;br/&gt;It returns a value that represents the text conversion of the numerical input.</documentation>
+      <input message="s0:NumberConvertorSoapIn" />
+      <output message="s0:NumberConvertorSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertorHttpGet">
+    <operation name="NumberConvertor">
+      <documentation>&lt;p&gt;This web service (a.k.a. Cheque-Writer) requires&lt;br/&gt;A numerical Input (No more than One Hundred Zillion - 100,000,000,000,000,000),&lt;br/&gt;A Dollar Currency Value,&lt;br/&gt;A Cent Currency Value,&lt;br/&gt;A Decimal Point Separator Value (Default is "and"),&lt;br/&gt;A Suffix Value.&lt;br/&gt;&lt;br/&gt;It returns a value that represents the text conversion of the numerical input.</documentation>
+      <input message="s0:NumberConvertorHttpGetIn" />
+      <output message="s0:NumberConvertorHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertorHttpPost">
+    <operation name="NumberConvertor">
+      <documentation>&lt;p&gt;This web service (a.k.a. Cheque-Writer) requires&lt;br/&gt;A numerical Input (No more than One Hundred Zillion - 100,000,000,000,000,000),&lt;br/&gt;A Dollar Currency Value,&lt;br/&gt;A Cent Currency Value,&lt;br/&gt;A Decimal Point Separator Value (Default is "and"),&lt;br/&gt;A Suffix Value.&lt;br/&gt;&lt;br/&gt;It returns a value that represents the text conversion of the numerical input.</documentation>
+      <input message="s0:NumberConvertorHttpPostIn" />
+      <output message="s0:NumberConvertorHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ConvertorSoap" type="s0:ConvertorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NumberConvertor">
+      <soap:operation soapAction="http://www.Softwaremaker.Net/WebServices/NumberConvertor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertorHttpGet" type="s0:ConvertorHttpGet">
+    <http:binding verb="GET" />
+    <operation name="NumberConvertor">
+      <http:operation location="/NumberConvertor" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertorHttpPost" type="s0:ConvertorHttpPost">
+    <http:binding verb="POST" />
+    <operation name="NumberConvertor">
+      <http:operation location="/NumberConvertor" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Convertor">
+    <documentation>Copyright 2002 Softwaremaker.Net Pte Ltd (William T). All Rights Reserved.&lt;br/&gt;&lt;br/&gt;Listed below are various useful Web Services for businesses and individuals alike to use and consume.</documentation>
+    <port name="ConvertorSoap" binding="s0:ConvertorSoap">
+      <soap:address location="http://www.softwaremaker.net/webservices/swm/Convertor/Convertor.asmx" />
+    </port>
+    <port name="ConvertorHttpGet" binding="s0:ConvertorHttpGet">
+      <http:address location="http://www.softwaremaker.net/webservices/swm/Convertor/Convertor.asmx" />
+    </port>
+    <port name="ConvertorHttpPost" binding="s0:ConvertorHttpPost">
+      <http:address location="http://www.softwaremaker.net/webservices/swm/Convertor/Convertor.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://frameWERKS.com/WebServices/" targetNamespace="http://frameWERKS.com/WebServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://frameWERKS.com/WebServices/">
+      <s:element name="GetArticles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lMaxNumberReturned" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArticlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetArticlesResult" nillable="true">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetArticlesSoapIn">
+    <part name="parameters" element="s0:GetArticles" />
+  </message>
+  <message name="GetArticlesSoapOut">
+    <part name="parameters" element="s0:GetArticlesResponse" />
+  </message>
+  <message name="GetArticlesHttpGetIn">
+    <part name="lMaxNumberReturned" type="s:string" />
+  </message>
+  <message name="GetArticlesHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="GetArticlesHttpPostIn">
+    <part name="lMaxNumberReturned" type="s:string" />
+  </message>
+  <message name="GetArticlesHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="fWArticleServiceSoap">
+    <operation name="GetArticles">
+      <documentation>Function will return a user determined number of technical articles as a collection of properties</documentation>
+      <input message="s0:GetArticlesSoapIn" />
+      <output message="s0:GetArticlesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="fWArticleServiceHttpGet">
+    <operation name="GetArticles">
+      <documentation>Function will return a user determined number of technical articles as a collection of properties</documentation>
+      <input message="s0:GetArticlesHttpGetIn" />
+      <output message="s0:GetArticlesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="fWArticleServiceHttpPost">
+    <operation name="GetArticles">
+      <documentation>Function will return a user determined number of technical articles as a collection of properties</documentation>
+      <input message="s0:GetArticlesHttpPostIn" />
+      <output message="s0:GetArticlesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="fWArticleServiceSoap" type="s0:fWArticleServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetArticles">
+      <soap:operation soapAction="http://frameWERKS.com/WebServices/GetArticles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="fWArticleServiceHttpGet" type="s0:fWArticleServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetArticles">
+      <http:operation location="/GetArticles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="fWArticleServiceHttpPost" type="s0:fWArticleServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetArticles">
+      <http:operation location="/GetArticles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="fWArticleService">
+    <port name="fWArticleServiceSoap" binding="s0:fWArticleServiceSoap">
+      <soap:address location="http://www.framewerks.com/WebServices/fWArticleService/fwArticles.asmx" />
+    </port>
+    <port name="fWArticleServiceHttpGet" binding="s0:fWArticleServiceHttpGet">
+      <http:address location="http://www.framewerks.com/WebServices/fWArticleService/fwArticles.asmx" />
+    </port>
+    <port name="fWArticleServiceHttpPost" binding="s0:fWArticleServiceHttpPost">
+      <http:address location="http://www.framewerks.com/WebServices/fWArticleService/fwArticles.asmx" />
+    </port>
+  </service>
+</definitions>

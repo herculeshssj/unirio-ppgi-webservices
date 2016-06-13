@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeLengthUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LengthValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromLengthUnit" type="s0:Lengths" />
+            <s:element minOccurs="1" maxOccurs="1" name="toLengthUnit" type="s0:Lengths" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Lengths">
+        <s:restriction base="s:string">
+          <s:enumeration value="Angstroms" />
+          <s:enumeration value="Nanometers" />
+          <s:enumeration value="Microinch" />
+          <s:enumeration value="Microns" />
+          <s:enumeration value="Mils" />
+          <s:enumeration value="Millimeters" />
+          <s:enumeration value="Centimeters" />
+          <s:enumeration value="Inches" />
+          <s:enumeration value="Links" />
+          <s:enumeration value="Spans" />
+          <s:enumeration value="Feet" />
+          <s:enumeration value="Cubits" />
+          <s:enumeration value="Varas" />
+          <s:enumeration value="Yards" />
+          <s:enumeration value="Meters" />
+          <s:enumeration value="Fathoms" />
+          <s:enumeration value="Rods" />
+          <s:enumeration value="Chains" />
+          <s:enumeration value="Furlongs" />
+          <s:enumeration value="Cablelengths" />
+          <s:enumeration value="Kilometers" />
+          <s:enumeration value="Miles" />
+          <s:enumeration value="Nauticalmile" />
+          <s:enumeration value="League" />
+          <s:enumeration value="Nauticalleague" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeLengthUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeLengthUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeLengthUnitSoapIn">
+    <part name="parameters" element="s0:ChangeLengthUnit" />
+  </message>
+  <message name="ChangeLengthUnitSoapOut">
+    <part name="parameters" element="s0:ChangeLengthUnitResponse" />
+  </message>
+  <message name="ChangeLengthUnitHttpGetIn">
+    <part name="LengthValue" type="s:string" />
+    <part name="fromLengthUnit" type="s:string" />
+    <part name="toLengthUnit" type="s:string" />
+  </message>
+  <message name="ChangeLengthUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeLengthUnitHttpPostIn">
+    <part name="LengthValue" type="s:string" />
+    <part name="fromLengthUnit" type="s:string" />
+    <part name="toLengthUnit" type="s:string" />
+  </message>
+  <message name="ChangeLengthUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="lengthUnitSoap">
+    <operation name="ChangeLengthUnit">
+      <input message="s0:ChangeLengthUnitSoapIn" />
+      <output message="s0:ChangeLengthUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="lengthUnitHttpGet">
+    <operation name="ChangeLengthUnit">
+      <input message="s0:ChangeLengthUnitHttpGetIn" />
+      <output message="s0:ChangeLengthUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="lengthUnitHttpPost">
+    <operation name="ChangeLengthUnit">
+      <input message="s0:ChangeLengthUnitHttpPostIn" />
+      <output message="s0:ChangeLengthUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="lengthUnitSoap" type="s0:lengthUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeLengthUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeLengthUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="lengthUnitHttpGet" type="s0:lengthUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeLengthUnit">
+      <http:operation location="/ChangeLengthUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="lengthUnitHttpPost" type="s0:lengthUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeLengthUnit">
+      <http:operation location="/ChangeLengthUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="lengthUnit">
+    <port name="lengthUnitSoap" binding="s0:lengthUnitSoap">
+      <soap:address location="http://www.webservicex.net/length.asmx" />
+    </port>
+    <port name="lengthUnitHttpGet" binding="s0:lengthUnitHttpGet">
+      <http:address location="http://www.webservicex.net/length.asmx" />
+    </port>
+    <port name="lengthUnitHttpPost" binding="s0:lengthUnitHttpPost">
+      <http:address location="http://www.webservicex.net/length.asmx" />
+    </port>
+  </service>
+</definitions>

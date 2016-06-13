@@ -1,0 +1,667 @@
+<?xml version="1.0" ?>
+
+<definitions name="CCard.ccard" targetNamespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetNumCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ReturnNumCard" type="xsd:long"/>
+    </message>
+    <message name="GetNumCardResponse">
+        <part name="ReturnNumCard" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchCardHolderRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardHolder" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromCardID" type="xsd:long"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="SearchCardHolderResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromCardID" type="xsd:long"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchVisitorCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromCardID" type="xsd:long"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="SearchVisitorCardResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SetDefaultCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="CardID" type="xsd:long"/>
+    </message>
+    <message name="SetDefaultCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetDefaultCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="GetDefaultCardResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="CardTypeID" type="xsd:long"/>
+        <part name="CardHolder" type="xsd:string"/>
+        <part name="CardExpiryMonth" type="xsd:long"/>
+        <part name="CardExpiryYear" type="xsd:long"/>
+        <part name="CardNumber" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="CheckCode" type="xsd:string"/>
+        <part name="IsAuthorised" type="xsd:string"/>
+        <part name="ReturnCardID" type="xsd:string"/>
+    </message>
+    <message name="NewCardResponse">
+        <part name="ReturnCardID" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+        <part name="CardHolder" type="xsd:string"/>
+        <part name="CardExpiryMonth" type="xsd:long"/>
+        <part name="CardExpiryYear" type="xsd:long"/>
+        <part name="CardNumber" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="CheckCode" type="xsd:string"/>
+        <part name="IsAuthorised" type="xsd:string"/>
+    </message>
+    <message name="UpdCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+    </message>
+    <message name="DelCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetCardTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecCardType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetCardTypeResponse">
+        <part name="RecCardType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsValidCardNumberRequest">
+        <part name="CardNumber" type="xsd:string"/>
+    </message>
+    <message name="IsValidCardNumberResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="AuthoriseCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+    </message>
+    <message name="AuthoriseCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnAuthoriseCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+    </message>
+    <message name="UnAuthoriseCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetAllCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromCardID" type="xsd:long"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="GetAllCardResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewCardTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnCardTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewCardTypeResponse">
+        <part name="ReturnCardTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdCardTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+        <part name="CardTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdCardTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelCardTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelCardTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultCardTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultCardTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultCardRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="RecCard" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultCardResponse">
+        <part name="RecCard" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsValidCardTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsValidCardTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="ReturnTextID" type="xsd:long"/>
+    </message>
+    <message name="NewTextResponse">
+        <part name="ReturnTextID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="DelTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="LinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnLinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="UnLinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+    </message>
+    <message name="UpdTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="GetTextResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultCardTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultCardTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchTextByCardIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CardID" type="xsd:long"/>
+        <part name="EffectiveDate" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromTextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="SearchTextByCardIDResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CCard.ccardPortType">
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="GetNumCard">
+            <input message="tns:GetNumCardRequest"/>
+            <output message="tns:GetNumCardResponse"/>
+        </operation>
+        <operation name="SearchCardHolder">
+            <input message="tns:SearchCardHolderRequest"/>
+            <output message="tns:SearchCardHolderResponse"/>
+        </operation>
+        <operation name="SearchReference">
+            <input message="tns:SearchReferenceRequest"/>
+            <output message="tns:SearchReferenceResponse"/>
+        </operation>
+        <operation name="SearchVisitorCard">
+            <input message="tns:SearchVisitorCardRequest"/>
+            <output message="tns:SearchVisitorCardResponse"/>
+        </operation>
+        <operation name="SetDefaultCard">
+            <input message="tns:SetDefaultCardRequest"/>
+            <output message="tns:SetDefaultCardResponse"/>
+        </operation>
+        <operation name="GetDefaultCard">
+            <input message="tns:GetDefaultCardRequest"/>
+            <output message="tns:GetDefaultCardResponse"/>
+        </operation>
+        <operation name="NewCard">
+            <input message="tns:NewCardRequest"/>
+            <output message="tns:NewCardResponse"/>
+        </operation>
+        <operation name="UpdCard">
+            <input message="tns:UpdCardRequest"/>
+            <output message="tns:UpdCardResponse"/>
+        </operation>
+        <operation name="DelCard">
+            <input message="tns:DelCardRequest"/>
+            <output message="tns:DelCardResponse"/>
+        </operation>
+        <operation name="LookupGetCardType">
+            <input message="tns:LookupGetCardTypeRequest"/>
+            <output message="tns:LookupGetCardTypeResponse"/>
+        </operation>
+        <operation name="IsValidCardNumber">
+            <input message="tns:IsValidCardNumberRequest"/>
+            <output message="tns:IsValidCardNumberResponse"/>
+        </operation>
+        <operation name="AuthoriseCard">
+            <input message="tns:AuthoriseCardRequest"/>
+            <output message="tns:AuthoriseCardResponse"/>
+        </operation>
+        <operation name="UnAuthoriseCard">
+            <input message="tns:UnAuthoriseCardRequest"/>
+            <output message="tns:UnAuthoriseCardResponse"/>
+        </operation>
+        <operation name="GetAllCard">
+            <input message="tns:GetAllCardRequest"/>
+            <output message="tns:GetAllCardResponse"/>
+        </operation>
+        <operation name="LookupNewCardType">
+            <input message="tns:LookupNewCardTypeRequest"/>
+            <output message="tns:LookupNewCardTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdCardType">
+            <input message="tns:LookupUpdCardTypeRequest"/>
+            <output message="tns:LookupUpdCardTypeResponse"/>
+        </operation>
+        <operation name="LookupDelCardType">
+            <input message="tns:LookupDelCardTypeRequest"/>
+            <output message="tns:LookupDelCardTypeResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultCardType">
+            <input message="tns:LookupLinkDefaultCardTypeRequest"/>
+            <output message="tns:LookupLinkDefaultCardTypeResponse"/>
+        </operation>
+        <operation name="LookupGetDefaultCard">
+            <input message="tns:LookupGetDefaultCardRequest"/>
+            <output message="tns:LookupGetDefaultCardResponse"/>
+        </operation>
+        <operation name="IsValidCardTypeID">
+            <input message="tns:IsValidCardTypeIDRequest"/>
+            <output message="tns:IsValidCardTypeIDResponse"/>
+        </operation>
+        <operation name="NewText">
+            <input message="tns:NewTextRequest"/>
+            <output message="tns:NewTextResponse"/>
+        </operation>
+        <operation name="DelText">
+            <input message="tns:DelTextRequest"/>
+            <output message="tns:DelTextResponse"/>
+        </operation>
+        <operation name="LinkText">
+            <input message="tns:LinkTextRequest"/>
+            <output message="tns:LinkTextResponse"/>
+        </operation>
+        <operation name="UnLinkText">
+            <input message="tns:UnLinkTextRequest"/>
+            <output message="tns:UnLinkTextResponse"/>
+        </operation>
+        <operation name="UpdText">
+            <input message="tns:UpdTextRequest"/>
+            <output message="tns:UpdTextResponse"/>
+        </operation>
+        <operation name="GetText">
+            <input message="tns:GetTextRequest"/>
+            <output message="tns:GetTextResponse"/>
+        </operation>
+        <operation name="IsDefaultCardTypeID">
+            <input message="tns:IsDefaultCardTypeIDRequest"/>
+            <output message="tns:IsDefaultCardTypeIDResponse"/>
+        </operation>
+        <operation name="SearchTextByCardID">
+            <input message="tns:SearchTextByCardIDRequest"/>
+            <output message="tns:SearchTextByCardIDResponse"/>
+        </operation>
+    </portType>
+    <binding name="CCard.ccardbinding" type="tns:CCard.ccardPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#GetNumCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchCardHolder">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#SearchCardHolder"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchReference">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#SearchReference"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchVisitorCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#SearchVisitorCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SetDefaultCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#SetDefaultCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetDefaultCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#GetDefaultCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#NewCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#UpdCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#DelCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetCardType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupGetCardType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsValidCardNumber">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#IsValidCardNumber"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="AuthoriseCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#AuthoriseCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnAuthoriseCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#UnAuthoriseCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetAllCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#GetAllCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewCardType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupNewCardType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdCardType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupUpdCardType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelCardType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupDelCardType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultCardType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupLinkDefaultCardType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDefaultCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LookupGetDefaultCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsValidCardTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#IsValidCardTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#NewText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#DelText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#LinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnLinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#UnLinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#UpdText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#GetText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultCardTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#IsDefaultCardTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchTextByCardID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml#SearchTextByCardID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CCard/CCard.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CCard.ccardService">
+        <port name="CCard.ccardPort" binding="tns:CCard.ccardbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

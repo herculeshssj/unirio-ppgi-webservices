@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xignite.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="GetCategoriesAndTopics">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCategoriesAndTopicsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCategoriesAndTopicsResult" type="s0:ArrayOfCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="s0:Category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Category">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Topics" type="s0:ArrayOfTopic" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseReturnClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Topic">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfTopic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Topic" nillable="true" type="s0:Topic" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCategories">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCategoriesResult" type="s0:ArrayOfCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CategoryCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicsResult" type="s0:Category" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicDetailsResult" type="s0:TopicDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TopicDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Release" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Adjustment" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateRange" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTopicData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicDataResult" type="s0:TopicData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TopicData">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Data" type="s0:ArrayOfSeriesData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSeriesData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SeriesData" nillable="true" type="s0:SeriesData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SeriesData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Change" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentChange" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTopicChart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChartWidth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicChartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicChartResult" type="s0:TopicChart" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TopicChart">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Imageurl" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Data" type="s0:ArrayOfSeriesData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetTopicBinaryChart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChartWidth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTopicBinaryChartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTopicBinaryChartResult" type="s0:TopicChartBinary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TopicChartBinary">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:BaseReturnClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Frequency" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Units" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:base64Binary" />
+              <s:element minOccurs="0" maxOccurs="1" name="Data" type="s0:ArrayOfSeriesData" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetChartUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChartWidth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChartUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChartUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChartBinary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopicCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChartWidth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChartBinaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChartBinaryResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfCategory" nillable="true" type="s0:ArrayOfCategory" />
+      <s:element name="Category" nillable="true" type="s0:Category" />
+      <s:element name="TopicDetail" nillable="true" type="s0:TopicDetail" />
+      <s:element name="TopicData" nillable="true" type="s0:TopicData" />
+      <s:element name="TopicChart" nillable="true" type="s0:TopicChart" />
+      <s:element name="TopicChartBinary" nillable="true" type="s0:TopicChartBinary" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+    </s:schema>
+  </types>
+  <message name="GetCategoriesAndTopicsSoapIn">
+    <part name="parameters" element="s0:GetCategoriesAndTopics" />
+  </message>
+  <message name="GetCategoriesAndTopicsSoapOut">
+    <part name="parameters" element="s0:GetCategoriesAndTopicsResponse" />
+  </message>
+  <message name="GetCategoriesSoapIn">
+    <part name="parameters" element="s0:GetCategories" />
+  </message>
+  <message name="GetCategoriesSoapOut">
+    <part name="parameters" element="s0:GetCategoriesResponse" />
+  </message>
+  <message name="GetTopicsSoapIn">
+    <part name="parameters" element="s0:GetTopics" />
+  </message>
+  <message name="GetTopicsSoapOut">
+    <part name="parameters" element="s0:GetTopicsResponse" />
+  </message>
+  <message name="GetTopicDetailsSoapIn">
+    <part name="parameters" element="s0:GetTopicDetails" />
+  </message>
+  <message name="GetTopicDetailsSoapOut">
+    <part name="parameters" element="s0:GetTopicDetailsResponse" />
+  </message>
+  <message name="GetTopicDataSoapIn">
+    <part name="parameters" element="s0:GetTopicData" />
+  </message>
+  <message name="GetTopicDataSoapOut">
+    <part name="parameters" element="s0:GetTopicDataResponse" />
+  </message>
+  <message name="GetTopicChartSoapIn">
+    <part name="parameters" element="s0:GetTopicChart" />
+  </message>
+  <message name="GetTopicChartSoapOut">
+    <part name="parameters" element="s0:GetTopicChartResponse" />
+  </message>
+  <message name="GetTopicBinaryChartSoapIn">
+    <part name="parameters" element="s0:GetTopicBinaryChart" />
+  </message>
+  <message name="GetTopicBinaryChartSoapOut">
+    <part name="parameters" element="s0:GetTopicBinaryChartResponse" />
+  </message>
+  <message name="GetChartUrlSoapIn">
+    <part name="parameters" element="s0:GetChartUrl" />
+  </message>
+  <message name="GetChartUrlSoapOut">
+    <part name="parameters" element="s0:GetChartUrlResponse" />
+  </message>
+  <message name="GetChartBinarySoapIn">
+    <part name="parameters" element="s0:GetChartBinary" />
+  </message>
+  <message name="GetChartBinarySoapOut">
+    <part name="parameters" element="s0:GetChartBinaryResponse" />
+  </message>
+  <message name="GetCategoriesAndTopicsHttpGetIn" />
+  <message name="GetCategoriesAndTopicsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfCategory" />
+  </message>
+  <message name="GetCategoriesHttpGetIn" />
+  <message name="GetCategoriesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfCategory" />
+  </message>
+  <message name="GetTopicsHttpGetIn">
+    <part name="CategoryCode" type="s:string" />
+  </message>
+  <message name="GetTopicsHttpGetOut">
+    <part name="Body" element="s0:Category" />
+  </message>
+  <message name="GetTopicDetailsHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+  </message>
+  <message name="GetTopicDetailsHttpGetOut">
+    <part name="Body" element="s0:TopicDetail" />
+  </message>
+  <message name="GetTopicDataHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+  </message>
+  <message name="GetTopicDataHttpGetOut">
+    <part name="Body" element="s0:TopicData" />
+  </message>
+  <message name="GetTopicChartHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetTopicChartHttpGetOut">
+    <part name="Body" element="s0:TopicChart" />
+  </message>
+  <message name="GetTopicBinaryChartHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetTopicBinaryChartHttpGetOut">
+    <part name="Body" element="s0:TopicChartBinary" />
+  </message>
+  <message name="GetChartUrlHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetChartUrlHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetChartBinaryHttpGetIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetChartBinaryHttpGetOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="GetCategoriesAndTopicsHttpPostIn" />
+  <message name="GetCategoriesAndTopicsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfCategory" />
+  </message>
+  <message name="GetCategoriesHttpPostIn" />
+  <message name="GetCategoriesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfCategory" />
+  </message>
+  <message name="GetTopicsHttpPostIn">
+    <part name="CategoryCode" type="s:string" />
+  </message>
+  <message name="GetTopicsHttpPostOut">
+    <part name="Body" element="s0:Category" />
+  </message>
+  <message name="GetTopicDetailsHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+  </message>
+  <message name="GetTopicDetailsHttpPostOut">
+    <part name="Body" element="s0:TopicDetail" />
+  </message>
+  <message name="GetTopicDataHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+  </message>
+  <message name="GetTopicDataHttpPostOut">
+    <part name="Body" element="s0:TopicData" />
+  </message>
+  <message name="GetTopicChartHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetTopicChartHttpPostOut">
+    <part name="Body" element="s0:TopicChart" />
+  </message>
+  <message name="GetTopicBinaryChartHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetTopicBinaryChartHttpPostOut">
+    <part name="Body" element="s0:TopicChartBinary" />
+  </message>
+  <message name="GetChartUrlHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetChartUrlHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetChartBinaryHttpPostIn">
+    <part name="TopicCode" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="EndDate" type="s:string" />
+    <part name="ChartWidth" type="s:string" />
+  </message>
+  <message name="GetChartBinaryHttpPostOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <portType name="XigniteStatisticsSoap">
+    <operation name="GetCategoriesAndTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of time-series categories and all associated topics. This is a large data set.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesAndTopicsSoapIn" />
+      <output message="s0:GetCategoriesAndTopicsSoapOut" />
+    </operation>
+    <operation name="GetCategories">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of all time-series categories.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesSoapIn" />
+      <output message="s0:GetCategoriesSoapOut" />
+    </operation>
+    <operation name="GetTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get all topics for a time-series category.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicsSoapIn" />
+      <output message="s0:GetTopicsSoapOut" />
+    </operation>
+    <operation name="GetTopicDetails">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get detailed information about a topic such as units and update frequency.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDetailsSoapIn" />
+      <output message="s0:GetTopicDetailsSoapOut" />
+    </operation>
+    <operation name="GetTopicData">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDataSoapIn" />
+      <output message="s0:GetTopicDataSoapOut" />
+    </operation>
+    <operation name="GetTopicChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data and a URL to a chart for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicChartSoapIn" />
+      <output message="s0:GetTopicChartSoapOut" />
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series and a chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicBinaryChartSoapIn" />
+      <output message="s0:GetTopicBinaryChartSoapOut" />
+    </operation>
+    <operation name="GetChartUrl">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart url for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartUrlSoapIn" />
+      <output message="s0:GetChartUrlSoapOut" />
+    </operation>
+    <operation name="GetChartBinary">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartBinarySoapIn" />
+      <output message="s0:GetChartBinarySoapOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteStatisticsHttpGet">
+    <operation name="GetCategoriesAndTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of time-series categories and all associated topics. This is a large data set.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesAndTopicsHttpGetIn" />
+      <output message="s0:GetCategoriesAndTopicsHttpGetOut" />
+    </operation>
+    <operation name="GetCategories">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of all time-series categories.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesHttpGetIn" />
+      <output message="s0:GetCategoriesHttpGetOut" />
+    </operation>
+    <operation name="GetTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get all topics for a time-series category.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicsHttpGetIn" />
+      <output message="s0:GetTopicsHttpGetOut" />
+    </operation>
+    <operation name="GetTopicDetails">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get detailed information about a topic such as units and update frequency.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDetailsHttpGetIn" />
+      <output message="s0:GetTopicDetailsHttpGetOut" />
+    </operation>
+    <operation name="GetTopicData">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDataHttpGetIn" />
+      <output message="s0:GetTopicDataHttpGetOut" />
+    </operation>
+    <operation name="GetTopicChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data and a URL to a chart for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicChartHttpGetIn" />
+      <output message="s0:GetTopicChartHttpGetOut" />
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series and a chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicBinaryChartHttpGetIn" />
+      <output message="s0:GetTopicBinaryChartHttpGetOut" />
+    </operation>
+    <operation name="GetChartUrl">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart url for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartUrlHttpGetIn" />
+      <output message="s0:GetChartUrlHttpGetOut" />
+    </operation>
+    <operation name="GetChartBinary">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartBinaryHttpGetIn" />
+      <output message="s0:GetChartBinaryHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteStatisticsHttpPost">
+    <operation name="GetCategoriesAndTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of time-series categories and all associated topics. This is a large data set.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesAndTopicsHttpPostIn" />
+      <output message="s0:GetCategoriesAndTopicsHttpPostOut" />
+    </operation>
+    <operation name="GetCategories">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a list of all time-series categories.&lt;br&gt;</documentation>
+      <input message="s0:GetCategoriesHttpPostIn" />
+      <output message="s0:GetCategoriesHttpPostOut" />
+    </operation>
+    <operation name="GetTopics">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get all topics for a time-series category.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicsHttpPostIn" />
+      <output message="s0:GetTopicsHttpPostOut" />
+    </operation>
+    <operation name="GetTopicDetails">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get detailed information about a topic such as units and update frequency.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDetailsHttpPostIn" />
+      <output message="s0:GetTopicDetailsHttpPostOut" />
+    </operation>
+    <operation name="GetTopicData">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicDataHttpPostIn" />
+      <output message="s0:GetTopicDataHttpPostOut" />
+    </operation>
+    <operation name="GetTopicChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series data and a URL to a chart for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicChartHttpPostIn" />
+      <output message="s0:GetTopicChartHttpPostOut" />
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get time-series and a chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetTopicBinaryChartHttpPostIn" />
+      <output message="s0:GetTopicBinaryChartHttpPostOut" />
+    </operation>
+    <operation name="GetChartUrl">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart url for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartUrlHttpPostIn" />
+      <output message="s0:GetChartUrlHttpPostOut" />
+    </operation>
+    <operation name="GetChartBinary">
+      <documentation>&lt;a href="http://www.xignite.com/xstatistics.aspx"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get chart in binary format for a topic.&lt;br&gt;</documentation>
+      <input message="s0:GetChartBinaryHttpPostIn" />
+      <output message="s0:GetChartBinaryHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XigniteStatisticsSoap" type="s0:XigniteStatisticsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetCategoriesAndTopics">
+      <soap:operation soapAction="http://www.xignite.com/services/GetCategoriesAndTopics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCategories">
+      <soap:operation soapAction="http://www.xignite.com/services/GetCategories" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopics">
+      <soap:operation soapAction="http://www.xignite.com/services/GetTopics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopicDetails">
+      <soap:operation soapAction="http://www.xignite.com/services/GetTopicDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopicData">
+      <soap:operation soapAction="http://www.xignite.com/services/GetTopicData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopicChart">
+      <soap:operation soapAction="http://www.xignite.com/services/GetTopicChart" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <soap:operation soapAction="http://www.xignite.com/services/GetTopicBinaryChart" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetChartUrl">
+      <soap:operation soapAction="http://www.xignite.com/services/GetChartUrl" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetChartBinary">
+      <soap:operation soapAction="http://www.xignite.com/services/GetChartBinary" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteStatisticsHttpGet" type="s0:XigniteStatisticsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetCategoriesAndTopics">
+      <http:operation location="/GetCategoriesAndTopics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCategories">
+      <http:operation location="/GetCategories" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopics">
+      <http:operation location="/GetTopics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicDetails">
+      <http:operation location="/GetTopicDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicData">
+      <http:operation location="/GetTopicData" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicChart">
+      <http:operation location="/GetTopicChart" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <http:operation location="/GetTopicBinaryChart" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetChartUrl">
+      <http:operation location="/GetChartUrl" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetChartBinary">
+      <http:operation location="/GetChartBinary" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteStatisticsHttpPost" type="s0:XigniteStatisticsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetCategoriesAndTopics">
+      <http:operation location="/GetCategoriesAndTopics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCategories">
+      <http:operation location="/GetCategories" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopics">
+      <http:operation location="/GetTopics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicDetails">
+      <http:operation location="/GetTopicDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicData">
+      <http:operation location="/GetTopicData" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicChart">
+      <http:operation location="/GetTopicChart" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTopicBinaryChart">
+      <http:operation location="/GetTopicBinaryChart" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetChartUrl">
+      <http:operation location="/GetChartUrl" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetChartBinary">
+      <http:operation location="/GetChartBinary" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XigniteStatistics">
+    <port name="XigniteStatisticsSoap" binding="s0:XigniteStatisticsSoap">
+      <soap:address location="http://www.xignite.com/xstatistics.asmx" />
+    </port>
+    <port name="XigniteStatisticsHttpGet" binding="s0:XigniteStatisticsHttpGet">
+      <http:address location="http://www.xignite.com/xstatistics.asmx" />
+    </port>
+    <port name="XigniteStatisticsHttpPost" binding="s0:XigniteStatisticsHttpPost">
+      <http:address location="http://www.xignite.com/xstatistics.asmx" />
+    </port>
+  </service>
+</definitions>

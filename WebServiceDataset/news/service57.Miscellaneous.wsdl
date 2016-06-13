@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="LatestSoccerNews.csoccernews" targetNamespace="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" xmlns:tns="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetLatestSoccerNewsXMLRequest">
+    </message>
+    <message name="GetLatestSoccerNewsXMLResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetLatestSoccerNewsRequest">
+        <part name="recSoccer" type="xsd:string"/>
+    </message>
+    <message name="GetLatestSoccerNewsResponse">
+        <part name="recSoccer" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="LatestSoccerNews.csoccernewsPortType">
+        <operation name="GetLatestSoccerNewsXML">
+            <input message="tns:GetLatestSoccerNewsXMLRequest"/>
+            <output message="tns:GetLatestSoccerNewsXMLResponse"/>
+        </operation>
+        <operation name="GetLatestSoccerNews">
+            <input message="tns:GetLatestSoccerNewsRequest"/>
+            <output message="tns:GetLatestSoccerNewsResponse"/>
+        </operation>
+    </portType>
+    <binding name="LatestSoccerNews.csoccernewsbinding" type="tns:LatestSoccerNews.csoccernewsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLatestSoccerNewsXML">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml#GetLatestSoccerNewsXML"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetLatestSoccerNews">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml#GetLatestSoccerNews"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/LatestSoccerNews/CSoccerNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="LatestSoccerNews.csoccernewsService">
+        <port name="LatestSoccerNews.csoccernewsPort" binding="tns:LatestSoccerNews.csoccernewsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/soccernews.cgi"/>
+        </port>
+    </service>
+</definitions>

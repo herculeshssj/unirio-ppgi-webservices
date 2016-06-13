@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/CalcDistanceByZips" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/CalcDistanceByZips" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/CalcDistanceByZips">
+      <s:element name="CalcDistTwoZipsKm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Zip_Code_1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Zip_Code_2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcDistTwoZipsKmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalcDistTwoZipsKmResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcDistTwoZipsMi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Zip_Code_1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Zip_Code_2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcDistTwoZipsMiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalcDistTwoZipsMiResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="CalcDistTwoZipsKmSoapIn">
+    <part name="parameters" element="s0:CalcDistTwoZipsKm" />
+  </message>
+  <message name="CalcDistTwoZipsKmSoapOut">
+    <part name="parameters" element="s0:CalcDistTwoZipsKmResponse" />
+  </message>
+  <message name="CalcDistTwoZipsMiSoapIn">
+    <part name="parameters" element="s0:CalcDistTwoZipsMi" />
+  </message>
+  <message name="CalcDistTwoZipsMiSoapOut">
+    <part name="parameters" element="s0:CalcDistTwoZipsMiResponse" />
+  </message>
+  <message name="CalcDistTwoZipsKmHttpGetIn">
+    <part name="Zip_Code_1" type="s:string" />
+    <part name="Zip_Code_2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoZipsKmHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CalcDistTwoZipsMiHttpGetIn">
+    <part name="Zip_Code_1" type="s:string" />
+    <part name="Zip_Code_2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoZipsMiHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CalcDistTwoZipsKmHttpPostIn">
+    <part name="Zip_Code_1" type="s:string" />
+    <part name="Zip_Code_2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoZipsKmHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CalcDistTwoZipsMiHttpPostIn">
+    <part name="Zip_Code_1" type="s:string" />
+    <part name="Zip_Code_2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoZipsMiHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="CalcDistanceByZipsSoap">
+    <operation name="CalcDistTwoZipsKm">
+      <input message="s0:CalcDistTwoZipsKmSoapIn" />
+      <output message="s0:CalcDistTwoZipsKmSoapOut" />
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <input message="s0:CalcDistTwoZipsMiSoapIn" />
+      <output message="s0:CalcDistTwoZipsMiSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CalcDistanceByZipsHttpGet">
+    <operation name="CalcDistTwoZipsKm">
+      <input message="s0:CalcDistTwoZipsKmHttpGetIn" />
+      <output message="s0:CalcDistTwoZipsKmHttpGetOut" />
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <input message="s0:CalcDistTwoZipsMiHttpGetIn" />
+      <output message="s0:CalcDistTwoZipsMiHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CalcDistanceByZipsHttpPost">
+    <operation name="CalcDistTwoZipsKm">
+      <input message="s0:CalcDistTwoZipsKmHttpPostIn" />
+      <output message="s0:CalcDistTwoZipsKmHttpPostOut" />
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <input message="s0:CalcDistTwoZipsMiHttpPostIn" />
+      <output message="s0:CalcDistTwoZipsMiHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CalcDistanceByZipsSoap" type="s0:CalcDistanceByZipsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CalcDistTwoZipsKm">
+      <soap:operation soapAction="http://innergears.com/WebServices/CalcDistanceByZips/CalcDistTwoZipsKm" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <soap:operation soapAction="http://innergears.com/WebServices/CalcDistanceByZips/CalcDistTwoZipsMi" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CalcDistanceByZipsHttpGet" type="s0:CalcDistanceByZipsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CalcDistTwoZipsKm">
+      <http:operation location="/CalcDistTwoZipsKm" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <http:operation location="/CalcDistTwoZipsMi" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CalcDistanceByZipsHttpPost" type="s0:CalcDistanceByZipsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CalcDistTwoZipsKm">
+      <http:operation location="/CalcDistTwoZipsKm" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CalcDistTwoZipsMi">
+      <http:operation location="/CalcDistTwoZipsMi" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CalcDistanceByZips">
+    <port name="CalcDistanceByZipsSoap" binding="s0:CalcDistanceByZipsSoap">
+      <soap:address location="http://www.innergears.com/WebServices/CalcDistanceByZips/CalcDistanceByZips.asmx" />
+    </port>
+    <port name="CalcDistanceByZipsHttpGet" binding="s0:CalcDistanceByZipsHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/CalcDistanceByZips/CalcDistanceByZips.asmx" />
+    </port>
+    <port name="CalcDistanceByZipsHttpPost" binding="s0:CalcDistanceByZipsHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/CalcDistanceByZips/CalcDistanceByZips.asmx" />
+    </port>
+  </service>
+</definitions>

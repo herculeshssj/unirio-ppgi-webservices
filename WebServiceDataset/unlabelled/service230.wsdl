@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://ws" xmlns:impl="http://ws-impl" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:message name="XMLChartRequest">
+    <wsdl:part name="mycharttype" type="SOAP-ENC:string"/>
+    <wsdl:part name="mychartformat" type="SOAP-ENC:string"/>
+    <wsdl:part name="mychartxaxis" type="SOAP-ENC:string"/>
+    <wsdl:part name="mychartyaxis" type="SOAP-ENC:string"/>
+    <wsdl:part name="mychartdata" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="XMLChartResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:portType name="chartWS">
+    <wsdl:operation name="XMLChart" parameterOrder="mycharttype mychartformat mychartxaxis mychartyaxis mychartdata">
+      <wsdl:input message="intf:XMLChartRequest"/>
+      <wsdl:output message="intf:XMLChartResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="chartWS.cfcSoapBinding" type="intf:chartWS">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="XMLChart">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="chartWSService">
+    <wsdl:port name="chartWS.cfc" binding="intf:chartWS.cfcSoapBinding">
+      <wsdlsoap:address location="http://webservices.isitedesign.com/ws/chartWS.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

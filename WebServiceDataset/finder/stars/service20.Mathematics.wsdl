@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<definitions name="Orbitarium"
+     targetNamespace    ="http://www.orbitarium.com/schemas/ows.wsdl"
+         xmlns:ows      ="http://www.orbitarium.com/schemas/ows.wsdl"
+         xmlns:owsxsd   ="http://www.orbitarium.com/schemas/ows.xsd"
+         xmlns:soap     ="http://schemas.xmlsoap.org/wsdl/soap/"
+         xmlns          ="http://schemas.xmlsoap.org/wsdl/">
+
+ <types>
+ <xsd:schema 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   targetNamespace="http://www.orbitarium.com/schemas/ows.xsd">
+
+   <xsd:simpleType name="dateTimeType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="julianDateType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="timeType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="siderealTimeType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="longitudeType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="latitudeType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="distanceType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="nameType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="idType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:simpleType name="viewType">
+      <xsd:restriction base="xsd:string" />
+   </xsd:simpleType>
+
+   <xsd:group name="dateChoices">
+      <xsd:choice>
+          <xsd:element name="dateTime"   type="dateTimeType" />
+          <xsd:element name="time"       type="timeTime"     />
+          <xsd:element name="julianDate" type="julianDateType" /> 
+      </xsd:choice>
+   </xsd:group>
+ 
+   <xsd:group name="datePlanetGroup">
+       <xsd:all>
+           <xsd:group     ref="dateChoices" />	
+           <xsd:element   name="planet"     type="planetType"     />
+       </xsd:all>
+   </xsd:group>
+
+   <xsd:group name="dateResponseType">
+        <xsd:sequence>
+           <xsd:element name="dateTime"     type="dateTimeType" />
+           <xsd:element name="julianDate"   type="julianDateType" />
+           <xsd:element name="siderealType" type="siderealTimeType" />
+        </xsd:sequence>
+   </xsd:group>
+
+   <xsd:complexType name="coordinatesType">
+       <xsd:all> 
+           <xsd:element name="longitude" type="longitudeType" 
+                             minOccurs="0" maxOccurs="1" />
+           <xsd:element name="latitude" type="latitudeType" 
+                             minOccurs="0" maxOccurs="1" />
+           <xsd:element name="distance" type="distanceType" 
+                             minOccurs="0" maxOccurs="1" />
+        </xsd:all>
+        <xsd:attribute  name="view" type="viewType" use="required" />
+   </xsd:complexType>
+
+   <xsd:complexType name="theMoonType">
+      <xsd:all>
+       <xsd:element name="coordinates" type="coordinatesType"
+                  minOccurs="0" maxOccurs="unbounded" />
+      </xsd:all>
+   </xsd:complexType>
+
+   <xsd:complexType name="theSunType">
+      <xsd:all>
+       <xsd:element name="coordinates" type="coordinatesType"
+                  minOccurs="0" maxOccurs="unbounded" />
+      </xsd:all>
+   </xsd:complexType>
+
+
+   <xsd:complexType name="planetType">
+      <xsd:all>
+         <xsd:element   name="coordinates" type="coordinatesType"
+                  minOccurs="0" maxOccurs="unbounded" />
+      </xsd:all>
+      <xsd:attribute name="name" type="nameType" use="required" />
+   </xsd:complexType>
+
+   <xsd:complexType name="getJulianDateType">
+       <xsd:choice>
+          <xsd:element name="dateTime"   type="dateTimeType" />
+          <xsd:element name="time"       type="timeTime"     />
+       </xsd:choice>
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getSiderealTimeType">
+       <xsd:group     ref="dateChoices" />
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getSolarPositionType">
+       <xsd:group     ref="dateChoices" />
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getLunarPositionType">
+       <xsd:group     ref="dateChoices" />
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+   <xsd:complexType name="getHeliocentricPositionsType">
+       <xsd:group     ref="dateChoices" />	 
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getGeocentricPositionsType">
+       <xsd:group     ref="dateChoices" />	 
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+   <xsd:complexType name="getHeliocentricPositionType">
+       <xsd:group     ref="datePlanetGroup"     />
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getGeocentricPositionType">
+       <xsd:group    ref="datePlanetGroup" />
+       <xsd:attribute name="id"   type="idType" />
+   </xsd:complexType>
+
+   <xsd:complexType name="getJulianDateResponseType">
+        <xsd:sequence>
+           <xsd:element name="dateTime" type="dateTimeType" />
+           <xsd:element name="julianDate" type="julianDateType" />
+        </xsd:sequence>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+   <xsd:complexType name="getSiderealTimeResponseType">
+        <xsd:sequence>
+           <xsd:element name="dateTime"     type="dateTimeType" />
+           <xsd:element name="julianDate"   type="julianDateType" />
+           <xsd:element name="siderealType" type="siderealTimeType" />
+        </xsd:sequence>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getLunarPositionResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="theMoon"   type="theMoonType" />
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+   <xsd:complexType name="getSolarPositionResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="theSun"   type="theSunType" />
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+   <xsd:complexType name="getHeliocentricPositionResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="planet"   type="planetType"   />
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getGeocentricPositionResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="planet"   type="planetType"   />
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getHeliocentricPositionsResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="planet"   type="planetType"  
+                            minOccurs="9" maxOccurs="9" />
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+
+   <xsd:complexType name="getGeocentricPositionsResponseType">
+        <xsd:all>
+            <xsd:group     ref="dateResponseType"              />
+            <xsd:element   name="theSun"   type="theSunType"   />
+            <xsd:element   name="theMoon"  type="theMoonType"  />
+            <xsd:element   name="planet"   type="planetType"   
+                           minOccurs="8" maxOccurs="8"/>
+        </xsd:all>
+        <xsd:attribute name="id"   type="idType" />	
+   </xsd:complexType>
+
+   <xsd:element name="getJulianDate"    type="getJulianDateType"    
+        minOccurs="0" />
+   <xsd:element name="getSiderealTime"  type="getSiderealTypeType"  
+        minOccurs="0" />
+   <xsd:element name="getLunarPosition" type="getLunarPositionType" 
+        minOccurs="0" />
+   <xsd:element name="getSolarPosition" type="getSolarPositionType" 
+        minOccurs="0" />
+   <xsd:element name="getHeliocentricPosition" 
+           type="getHeliocentricPositionType"  
+           minOccurs="0" />
+   <xsd:element name="getGeocentricPosition"
+           type="getGeocentricPositioinType"   
+           minOccurs="0" />
+   <xsd:element name="getHeliocentricPositions"
+           type="getHeliocentricPositionsType" 
+           minOccurs="0" />
+   <xsd:element name="getGeocentricPositions"
+           type="getGeocentricPositionsType"   
+           minOccurs="0" />
+
+   <xsd:element name="getJulianDateResponse"    type="getJulianDateReponseType"    
+        minOccurs="0" />
+   <xsd:element name="getSiderealTimeResponse"  type="getSiderealTypeResponseType"  
+        minOccurs="0" />
+   <xsd:element name="getLunarPositionResponse" type="getLunarPositionResponseType" 
+        minOccurs="0" />
+   <xsd:element name="getSolarPositionResponse" type="getSolarPositionResponseType" 
+        minOccurs="0" />
+   <xsd:element name="getHeliocentricPositionResponse" 
+           type="getHeliocentricPositionResponseType"  
+           minOccurs="0" />
+   <xsd:element name="getGeocentricPositionResponse"
+           type="getGeocentricPositionResponseType"   
+           minOccurs="0" />
+   <xsd:element name="getHeliocentricPositionsResponse"
+           type="getHeliocentricPositionsResponseType" 
+           minOccurs="0" />
+   <xsd:element name="getGeocentricPositionsResponse"
+           type="getGeocentricPositionsResponseType"   
+           minOccurs="0" />
+</xsd:schema>
+
+ </types>
+ <message name="GetJulianDateInput">
+   <part name="body" element="owsxsd:getJulianDate"/>
+ </message>
+
+ <message name="GetJulianDateOutput">
+   <part name="body" element="owsxsd:getJulianDateResponse"/>
+ </message>
+ 
+ <message name="GetSiderealTimeInput">
+   <part name="body" element="owsxsd:getSiderealTime"/>
+ </message>
+
+ <message name="GetSiderealTimeOutput">
+   <part name="body" element="owsxsd:getSiderealTimeResponse"/>
+ </message>
+
+ <message name="GetLunarPositionInput">
+   <part name="body" element="owsxsd:getLunarPosition"/>
+ </message>
+
+ <message name="GetLunarPositionOutput">
+   <part name="body" element="owsxsd:getLunarPositionResponse"/>
+ </message>
+
+ <message name="GetSolarPositionInput">
+   <part name="body" element="owsxsd:getSolarPosition"/>
+ </message>
+
+ <message name="GetSolarPositionOutput">
+   <part name="body" element="owsxsd:getSolarPositionResponse"/>
+ </message>
+
+ <message name="GetHeliocentricPositionInput">
+   <part name="body" element="owsxsd:getHeliocentricPosition"/>
+ </message>
+
+ <message name="GetHeliocentricPositionOutput">
+   <part name="body" element="owsxsd:getHeliocentricPositionResponse"/>
+ </message>
+
+
+ <message name="GetGeocentricPositionInput">
+   <part name="body" element="owsxsd:getGeocentricPosition"/>
+ </message>
+
+ <message name="GetGeocentricPositionOutput">
+   <part name="body" element="owsxsd:getGeocentricPositionResponse"/>
+ </message>
+
+ <message name="GetHeliocentricPositionsInput">
+   <part name="body" element="owsxsd:getHeliocentricPositions"/>
+ </message>
+
+ <message name="GetHeliocentricPositionsOutput">
+   <part name="body" element="owsxsd:getHeliocentricPositionsResponse"/>
+ </message>
+
+
+ <message name="GetGeocentricPositionsInput">
+   <part name="body" element="owsxsd:getGeocentricPositions"/>
+ </message>
+
+ <message name="GetGeocentricPositionsOutput">
+   <part name="body" element="owsxsd:getGeocentricPositionsResponse"/>
+ </message>
+
+ <portType name="OrbitariumPortType">
+
+   <operation name="GetJulianDate">
+     <input  message="ows:GetJulianDateInput"  />
+     <output message="ows:GetJulianDateOutput" />
+   </operation>
+
+   <operation name="GetSiderealTime">
+     <input  message="ows:GetSiderealTimeInput"  />
+     <output message="ows:GetSiderealTimeOutput" />
+   </operation>
+
+   <operation name="GetLunarPosition">
+     <input  message="ows:GetLunarPositionInput"  />
+     <output message="ows:GetLunarPositionOutput" />
+   </operation>
+
+   <operation name="GetSolarPosition">
+     <input  message="ows:GetSolarPositionInput"  />
+     <output message="ows:GetSolarPositionOutput" />
+   </operation>
+
+   <operation name="GetHeliocentricPosition">
+     <input  message="ows:GetHeliocentricPositionInput"  />
+     <output message="ows:GetHeliocentricPositionOutput" />
+   </operation>
+
+   <operation name="GetGeocentricPosition">
+     <input  message="ows:GetGeocentricPositionInput"  />
+     <output message="ows:GetGeocentricPositionOutput" />
+   </operation>
+
+   <operation name="GetHeliocentricPositions">
+     <input  message="ows:GetHeliocentricPositionsInput"  />
+     <output message="ows:GetHeliocentricPositionsOutput" />
+   </operation>
+
+   <operation name="GetGeocentricPositions">
+     <input  message="ows:GetGeocentricPositionsInput"  />
+     <output message="ows:GetGeocentricPositionsOutput" />
+   </operation>
+
+
+ </portType>
+
+
+ <binding name="OrbitariumBinding" type="ows:OrbitariumPortType">
+       
+   <soap:binding style="document" 
+        transport="http://schemas.xmlsoap.org/soap/http"/>
+
+   <operation name="GetJulianDate">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+  <operation name="GetSiderealTime">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetLunarPosition">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetSolarPosition">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetHeliocentricPosition">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetGeocentricPosition">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetHeliocentricPositions">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+
+  <operation name="GetGeocentricPositions">
+
+      <soap:operation 
+       soapAction="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+          
+      <input>
+        <soap:body use="literal"
+             namespace="http://www.orbitarium.com/schemas/ows.xsd" />
+      </input>
+      <output>
+        <soap:body use="literal"
+             namespace="http://www.orbitarum.com/schemas/ows.xsd" />
+      </output>
+
+  </operation>
+
+ </binding>
+
+ <service name="OrbitariumService">
+
+   <documentation>Web Service for Current Planetary Positions</documentation>
+                  
+   <port name="OrbitariumPort" binding="ows:OrbitariumBinding">
+      <soap:address 
+	location="http://soap.orbitarium.com/orbitarium/servlet/ows/"/>
+   </port>
+              
+ </service>
+
+</definitions>

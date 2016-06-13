@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IWSMazeServerservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="GetCurrentPlayersInfosRequest"/>
+  <message name="GetCurrentPlayersInfosResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="NewPlayerAcceptedRequest">
+    <part name="PlayerName" type="xs:string"/>
+    <part name="AClientHostId" type="xs:string"/>
+  </message>
+  <message name="NewPlayerAcceptedResponse">
+    <part name="PlayerId" type="xs:int"/>
+    <part name="PlayerCode" type="xs:string"/>
+    <part name="MazeLayoutAsString" type="xs:string"/>
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <message name="PlayerPollsOkRequest">
+    <part name="PlayerId" type="xs:int"/>
+    <part name="PlayerCode" type="xs:string"/>
+    <part name="PlayerActionAsString" type="xs:string"/>
+    <part name="LastServRespTimeMs" type="xs:int"/>
+    <part name="LastDxDrawTimeMs" type="xs:int"/>
+  </message>
+  <message name="PlayerPollsOkResponse">
+    <part name="PlayersInfosAsString" type="xs:string"/>
+    <part name="GoalInfosAsString" type="xs:string"/>
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <message name="LeaveGameRequest">
+    <part name="PlayerId" type="xs:int"/>
+    <part name="PlayerCode" type="xs:string"/>
+  </message>
+  <message name="LeaveGameResponse"/>
+  <portType name="IWSMazeServer">
+    <operation name="GetCurrentPlayersInfos">
+      <input message="tns:GetCurrentPlayersInfosRequest"/>
+      <output message="tns:GetCurrentPlayersInfosResponse"/>
+    </operation>
+    <operation name="NewPlayerAccepted">
+      <input message="tns:NewPlayerAcceptedRequest"/>
+      <output message="tns:NewPlayerAcceptedResponse"/>
+    </operation>
+    <operation name="PlayerPollsOk">
+      <input message="tns:PlayerPollsOkRequest"/>
+      <output message="tns:PlayerPollsOkResponse"/>
+    </operation>
+    <operation name="LeaveGame">
+      <input message="tns:LeaveGameRequest"/>
+    </operation>
+  </portType>
+  <binding name="IWSMazeServerbinding" type="tns:IWSMazeServer">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetCurrentPlayersInfos">
+      <soap:operation soapAction="urn:WSMaze_int-IWSMazeServer#GetCurrentPlayersInfos"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </output>
+    </operation>
+    <operation name="NewPlayerAccepted">
+      <soap:operation soapAction="urn:WSMaze_int-IWSMazeServer#NewPlayerAccepted"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </output>
+    </operation>
+    <operation name="PlayerPollsOk">
+      <soap:operation soapAction="urn:WSMaze_int-IWSMazeServer#PlayerPollsOk"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </output>
+    </operation>
+    <operation name="LeaveGame">
+      <soap:operation soapAction="urn:WSMaze_int-IWSMazeServer#LeaveGame"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WSMaze_int-IWSMazeServer"/>
+      </input>
+    </operation>
+  </binding>
+  <service name="IWSMazeServerservice">
+    <port name="IWSMazeServerPort" binding="tns:IWSMazeServerbinding">
+      <soap:address location="http://www.culand.net/WebServices/bin/WSMaze_Server.dll/soap/IWSMazeServer"/>
+    </port>
+  </service>
+</definitions>

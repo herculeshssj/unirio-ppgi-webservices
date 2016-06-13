@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="SecurityGroupCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BrokerageID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SecurityGroupCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SecurityGroupCheckResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="BrokerageID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBrokerage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBrokerageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBrokerageResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SecurityCheck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BrokerageID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SecurityCheckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SecurityCheckResult" type="s0:enmSecurityLevel" />
+            <s:element minOccurs="1" maxOccurs="1" name="BrokerageID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="enmSecurityLevel">
+        <s:restriction base="s:string">
+          <s:enumeration value="eNotRegistered" />
+          <s:enumeration value="eUserLevel" />
+          <s:enumeration value="eAdminLevel" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetAdministrators">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdministratorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdministratorsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelSecurityArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelSecurityAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelSecurityAreaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSecurityArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsTrace" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSecurityAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSecurityAreaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSecurityAreas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AppName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSecurityAreasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSecurityAreasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppNames">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppNamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppNamesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdministrator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdministratorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelAdministratorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdministratorToArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddAdministratorToAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddAdministratorToAreaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdministratorFromArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelAdministratorFromAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DelAdministratorFromAreaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreasForAdministrator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="HTMLFormat" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreasForAdministratorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreasForAdministratorResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SecurityGroupCheckSoapIn">
+    <part name="parameters" element="s0:SecurityGroupCheck" />
+  </message>
+  <message name="SecurityGroupCheckSoapOut">
+    <part name="parameters" element="s0:SecurityGroupCheckResponse" />
+  </message>
+  <message name="GetBrokerageSoapIn">
+    <part name="parameters" element="s0:GetBrokerage" />
+  </message>
+  <message name="GetBrokerageSoapOut">
+    <part name="parameters" element="s0:GetBrokerageResponse" />
+  </message>
+  <message name="SecurityCheckSoapIn">
+    <part name="parameters" element="s0:SecurityCheck" />
+  </message>
+  <message name="SecurityCheckSoapOut">
+    <part name="parameters" element="s0:SecurityCheckResponse" />
+  </message>
+  <message name="GetAdministratorsSoapIn">
+    <part name="parameters" element="s0:GetAdministrators" />
+  </message>
+  <message name="GetAdministratorsSoapOut">
+    <part name="parameters" element="s0:GetAdministratorsResponse" />
+  </message>
+  <message name="DelSecurityAreaSoapIn">
+    <part name="parameters" element="s0:DelSecurityArea" />
+  </message>
+  <message name="DelSecurityAreaSoapOut">
+    <part name="parameters" element="s0:DelSecurityAreaResponse" />
+  </message>
+  <message name="AddSecurityAreaSoapIn">
+    <part name="parameters" element="s0:AddSecurityArea" />
+  </message>
+  <message name="AddSecurityAreaSoapOut">
+    <part name="parameters" element="s0:AddSecurityAreaResponse" />
+  </message>
+  <message name="GetSecurityAreasSoapIn">
+    <part name="parameters" element="s0:GetSecurityAreas" />
+  </message>
+  <message name="GetSecurityAreasSoapOut">
+    <part name="parameters" element="s0:GetSecurityAreasResponse" />
+  </message>
+  <message name="GetAppNamesSoapIn">
+    <part name="parameters" element="s0:GetAppNames" />
+  </message>
+  <message name="GetAppNamesSoapOut">
+    <part name="parameters" element="s0:GetAppNamesResponse" />
+  </message>
+  <message name="DelAdministratorSoapIn">
+    <part name="parameters" element="s0:DelAdministrator" />
+  </message>
+  <message name="DelAdministratorSoapOut">
+    <part name="parameters" element="s0:DelAdministratorResponse" />
+  </message>
+  <message name="AddAdministratorToAreaSoapIn">
+    <part name="parameters" element="s0:AddAdministratorToArea" />
+  </message>
+  <message name="AddAdministratorToAreaSoapOut">
+    <part name="parameters" element="s0:AddAdministratorToAreaResponse" />
+  </message>
+  <message name="DelAdministratorFromAreaSoapIn">
+    <part name="parameters" element="s0:DelAdministratorFromArea" />
+  </message>
+  <message name="DelAdministratorFromAreaSoapOut">
+    <part name="parameters" element="s0:DelAdministratorFromAreaResponse" />
+  </message>
+  <message name="GetAreasForAdministratorSoapIn">
+    <part name="parameters" element="s0:GetAreasForAdministrator" />
+  </message>
+  <message name="GetAreasForAdministratorSoapOut">
+    <part name="parameters" element="s0:GetAreasForAdministratorResponse" />
+  </message>
+  <message name="GetUserIDSoapIn">
+    <part name="parameters" element="s0:GetUserID" />
+  </message>
+  <message name="GetUserIDSoapOut">
+    <part name="parameters" element="s0:GetUserIDResponse" />
+  </message>
+  <message name="GetBrokerageHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetBrokerageHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdministratorsHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdministratorsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="DelSecurityAreaHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="DelSecurityAreaHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddSecurityAreaHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AppName" type="s:string" />
+    <part name="AreaName" type="s:string" />
+    <part name="IsTrace" type="s:string" />
+  </message>
+  <message name="AddSecurityAreaHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetSecurityAreasHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AppName" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetSecurityAreasHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAppNamesHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAppNamesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="DelAdministratorHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+  </message>
+  <message name="DelAdministratorHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddAdministratorToAreaHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="AddAdministratorToAreaHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DelAdministratorFromAreaHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="DelAdministratorFromAreaHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetAreasForAdministratorHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAreasForAdministratorHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUserIDHttpGetIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetBrokerageHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetBrokerageHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAdministratorsHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAdministratorsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="DelSecurityAreaHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="DelSecurityAreaHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddSecurityAreaHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AppName" type="s:string" />
+    <part name="AreaName" type="s:string" />
+    <part name="IsTrace" type="s:string" />
+  </message>
+  <message name="AddSecurityAreaHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetSecurityAreasHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="AppName" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetSecurityAreasHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAppNamesHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAppNamesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="DelAdministratorHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+  </message>
+  <message name="DelAdministratorHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="AddAdministratorToAreaHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="AddAdministratorToAreaHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="DelAdministratorFromAreaHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="AreaID" type="s:string" />
+  </message>
+  <message name="DelAdministratorFromAreaHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetAreasForAdministratorHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="UserID" type="s:string" />
+    <part name="HTMLFormat" type="s:string" />
+  </message>
+  <message name="GetAreasForAdministratorHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetUserIDHttpPostIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="csecuritySoap">
+    <operation name="SecurityGroupCheck">
+      <documentation>This web service validates all access to every web service within the SoapEngine brokerage suite. It also in turn returns valid brokerage IDs for each user. A brokerage ID is the ID of the company that was responsible for registering an individuals details.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AreaName&lt;/b&gt; = Name of the security area or web service/method name that you want to validate a user against&lt;br&gt;&lt;b&gt;BrokerageID&lt;/b&gt; = This is a unique number that identifies the brokerage that is responsible for referring this customer. In real terms this means as brokerage referral you can receive commission if the visitor you refer's purchases products or uses services that are commission tailored, &lt;a href='brokerage.aspx'&gt;Click HERE for details on setting up your own brokerage&lt;/a&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SecurityGroupCheckSoapIn" />
+      <output message="s0:SecurityGroupCheckSoapOut" />
+    </operation>
+    <operation name="GetBrokerage">
+      <documentation>Get the brokerage details for a specific user, can be used by an administrator of the brokerage or also by the user themselves to find out the details of the brokerage they are allocated too&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetBrokerageSoapIn" />
+      <output message="s0:GetBrokerageSoapOut" />
+    </operation>
+    <operation name="SecurityCheck">
+      <documentation>SecurityGroupCheck calls this method to check an individuals user access. When validating use the SecurityGroupCheck as it covers all aspects i.e. admin and user access, within the single call&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;AreaName&lt;/b&gt; = Name of the security area or web service/method name that you want to validate a user against&lt;br&gt;&lt;b&gt;BrokerageID&lt;/b&gt; = This is a unique number that identifies the brokerage that is responsible for referring this customer. In real terms this means as brokerage referral you can receive commission if the visitor you refer's purchases products or uses services that are commission tailored, &lt;a href='brokerage.aspx'&gt;Click HERE for details on setting up your own brokerage&lt;/a&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SecurityCheckSoapIn" />
+      <output message="s0:SecurityCheckSoapOut" />
+    </operation>
+    <operation name="GetAdministrators">
+      <documentation>Get a list of all administrators that are registered within the SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdministratorsSoapIn" />
+      <output message="s0:GetAdministratorsSoapOut" />
+    </operation>
+    <operation name="DelSecurityArea">
+      <documentation>Deletes a security area and also deletes all administrators entries who are pointing towards this security area, leaving their other security assignments intact&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelSecurityAreaSoapIn" />
+      <output message="s0:DelSecurityAreaSoapOut" />
+    </operation>
+    <operation name="AddSecurityArea">
+      <documentation>Add a security area to the available list of security areas&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;AreaName&lt;/b&gt; = Name of the security area or web service/method name that you want to validate a user against&lt;br&gt;&lt;b&gt;IsTrace&lt;/b&gt; = Defines whether access to the security area will be traced&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddSecurityAreaSoapIn" />
+      <output message="s0:AddSecurityAreaSoapOut" />
+    </operation>
+    <operation name="GetSecurityAreas">
+      <documentation>Get a list of all security areas available within system&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetSecurityAreasSoapIn" />
+      <output message="s0:GetSecurityAreasSoapOut" />
+    </operation>
+    <operation name="GetAppNames">
+      <documentation>Get a list of all applications using this security mechanism&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAppNamesSoapIn" />
+      <output message="s0:GetAppNamesSoapOut" />
+    </operation>
+    <operation name="DelAdministrator">
+      <documentation>Delete an administrator and all their security assignments&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorSoapIn" />
+      <output message="s0:DelAdministratorSoapOut" />
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <documentation>Assign a specific security area to an administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdministratorToAreaSoapIn" />
+      <output message="s0:AddAdministratorToAreaSoapOut" />
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <documentation>Delete an assigned security area from a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorFromAreaSoapIn" />
+      <output message="s0:DelAdministratorFromAreaSoapOut" />
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <documentation>Get all security areas that have been assigned to a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAreasForAdministratorSoapIn" />
+      <output message="s0:GetAreasForAdministratorSoapOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDSoapIn" />
+      <output message="s0:GetUserIDSoapOut" />
+    </operation>
+  </portType>
+  <portType name="csecurityHttpGet">
+    <operation name="GetBrokerage">
+      <documentation>Get the brokerage details for a specific user, can be used by an administrator of the brokerage or also by the user themselves to find out the details of the brokerage they are allocated too&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetBrokerageHttpGetIn" />
+      <output message="s0:GetBrokerageHttpGetOut" />
+    </operation>
+    <operation name="GetAdministrators">
+      <documentation>Get a list of all administrators that are registered within the SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdministratorsHttpGetIn" />
+      <output message="s0:GetAdministratorsHttpGetOut" />
+    </operation>
+    <operation name="DelSecurityArea">
+      <documentation>Deletes a security area and also deletes all administrators entries who are pointing towards this security area, leaving their other security assignments intact&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelSecurityAreaHttpGetIn" />
+      <output message="s0:DelSecurityAreaHttpGetOut" />
+    </operation>
+    <operation name="AddSecurityArea">
+      <documentation>Add a security area to the available list of security areas&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;AreaName&lt;/b&gt; = Name of the security area or web service/method name that you want to validate a user against&lt;br&gt;&lt;b&gt;IsTrace&lt;/b&gt; = Defines whether access to the security area will be traced&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddSecurityAreaHttpGetIn" />
+      <output message="s0:AddSecurityAreaHttpGetOut" />
+    </operation>
+    <operation name="GetSecurityAreas">
+      <documentation>Get a list of all security areas available within system&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetSecurityAreasHttpGetIn" />
+      <output message="s0:GetSecurityAreasHttpGetOut" />
+    </operation>
+    <operation name="GetAppNames">
+      <documentation>Get a list of all applications using this security mechanism&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAppNamesHttpGetIn" />
+      <output message="s0:GetAppNamesHttpGetOut" />
+    </operation>
+    <operation name="DelAdministrator">
+      <documentation>Delete an administrator and all their security assignments&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorHttpGetIn" />
+      <output message="s0:DelAdministratorHttpGetOut" />
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <documentation>Assign a specific security area to an administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdministratorToAreaHttpGetIn" />
+      <output message="s0:AddAdministratorToAreaHttpGetOut" />
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <documentation>Delete an assigned security area from a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorFromAreaHttpGetIn" />
+      <output message="s0:DelAdministratorFromAreaHttpGetOut" />
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <documentation>Get all security areas that have been assigned to a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAreasForAdministratorHttpGetIn" />
+      <output message="s0:GetAreasForAdministratorHttpGetOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpGetIn" />
+      <output message="s0:GetUserIDHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="csecurityHttpPost">
+    <operation name="GetBrokerage">
+      <documentation>Get the brokerage details for a specific user, can be used by an administrator of the brokerage or also by the user themselves to find out the details of the brokerage they are allocated too&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Type 0 if not sure. Valid and active Administrator User identification. If you are not an administrator simply enter 0. If you are an Administrator this gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the GetUserID method also included with this web service. If you are using an AdminUserID then this password must be your administrators password not your UserID password.&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetBrokerageHttpPostIn" />
+      <output message="s0:GetBrokerageHttpPostOut" />
+    </operation>
+    <operation name="GetAdministrators">
+      <documentation>Get a list of all administrators that are registered within the SoapEngine&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAdministratorsHttpPostIn" />
+      <output message="s0:GetAdministratorsHttpPostOut" />
+    </operation>
+    <operation name="DelSecurityArea">
+      <documentation>Deletes a security area and also deletes all administrators entries who are pointing towards this security area, leaving their other security assignments intact&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelSecurityAreaHttpPostIn" />
+      <output message="s0:DelSecurityAreaHttpPostOut" />
+    </operation>
+    <operation name="AddSecurityArea">
+      <documentation>Add a security area to the available list of security areas&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;AreaName&lt;/b&gt; = Name of the security area or web service/method name that you want to validate a user against&lt;br&gt;&lt;b&gt;IsTrace&lt;/b&gt; = Defines whether access to the security area will be traced&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddSecurityAreaHttpPostIn" />
+      <output message="s0:AddSecurityAreaHttpPostOut" />
+    </operation>
+    <operation name="GetSecurityAreas">
+      <documentation>Get a list of all security areas available within system&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;AppName&lt;/b&gt; = Name of the application that is grouped to this security session&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetSecurityAreasHttpPostIn" />
+      <output message="s0:GetSecurityAreasHttpPostOut" />
+    </operation>
+    <operation name="GetAppNames">
+      <documentation>Get a list of all applications using this security mechanism&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAppNamesHttpPostIn" />
+      <output message="s0:GetAppNamesHttpPostOut" />
+    </operation>
+    <operation name="DelAdministrator">
+      <documentation>Delete an administrator and all their security assignments&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorHttpPostIn" />
+      <output message="s0:DelAdministratorHttpPostOut" />
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <documentation>Assign a specific security area to an administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:AddAdministratorToAreaHttpPostIn" />
+      <output message="s0:AddAdministratorToAreaHttpPostOut" />
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <documentation>Delete an assigned security area from a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;AreaID&lt;/b&gt; = Unique Area ID assigned to a specific security area and application combination&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:DelAdministratorFromAreaHttpPostIn" />
+      <output message="s0:DelAdministratorFromAreaHttpPostOut" />
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <documentation>Get all security areas that have been assigned to a specific administrator&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;UserID&lt;/b&gt; = Unique userid that needs to be used during this operation&lt;br&gt;&lt;b&gt;HTMLFormat&lt;/b&gt; = NB* Must be TRUE or FALSE. If True then HTML tags and data types are changed to suit a HTML formatted web site. If False then raw data is returned with no formatting.&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetAreasForAdministratorHttpPostIn" />
+      <output message="s0:GetAreasForAdministratorHttpPostOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpPostIn" />
+      <output message="s0:GetUserIDHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="csecuritySoap" type="s0:csecuritySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SecurityGroupCheck">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/SecurityGroupCheck" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBrokerage">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetBrokerage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SecurityCheck">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/SecurityCheck" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdministrators">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetAdministrators" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DelSecurityArea">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/DelSecurityArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddSecurityArea">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/AddSecurityArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSecurityAreas">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetSecurityAreas" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAppNames">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetAppNames" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DelAdministrator">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/DelAdministrator" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/AddAdministratorToArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/DelAdministratorFromArea" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetAreasForAdministrator" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <soap:operation soapAction="http://www.SalCentral.com/lucin/salcentral/csecurity.asmx/GetUserID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="csecurityHttpGet" type="s0:csecurityHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetBrokerage">
+      <http:operation location="/GetBrokerage" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdministrators">
+      <http:operation location="/GetAdministrators" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelSecurityArea">
+      <http:operation location="/DelSecurityArea" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddSecurityArea">
+      <http:operation location="/AddSecurityArea" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSecurityAreas">
+      <http:operation location="/GetSecurityAreas" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAppNames">
+      <http:operation location="/GetAppNames" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdministrator">
+      <http:operation location="/DelAdministrator" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <http:operation location="/AddAdministratorToArea" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <http:operation location="/DelAdministratorFromArea" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <http:operation location="/GetAreasForAdministrator" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="csecurityHttpPost" type="s0:csecurityHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetBrokerage">
+      <http:operation location="/GetBrokerage" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdministrators">
+      <http:operation location="/GetAdministrators" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelSecurityArea">
+      <http:operation location="/DelSecurityArea" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddSecurityArea">
+      <http:operation location="/AddSecurityArea" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSecurityAreas">
+      <http:operation location="/GetSecurityAreas" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAppNames">
+      <http:operation location="/GetAppNames" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdministrator">
+      <http:operation location="/DelAdministrator" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddAdministratorToArea">
+      <http:operation location="/AddAdministratorToArea" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DelAdministratorFromArea">
+      <http:operation location="/DelAdministratorFromArea" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAreasForAdministrator">
+      <http:operation location="/GetAreasForAdministrator" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="csecurity">
+    <documentation>&lt;font size='3'&gt;&lt;b&gt;Security Validation&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size='3'&gt;Security check and user maintenance for SoapEngine&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Overview:&lt;/b&gt;&lt;br&gt;This web service controls the in-built security mechanism for SoapEngine, it validates users and administrators as well as identifying the correct brokerage value for each registered user within the system&lt;br&gt;&lt;br&gt;&lt;b&gt;How to get your UserID &amp; Password?&lt;/b&gt;&lt;br&gt;This web service uses a userid and password to allow people to access each of its methods, you can obtain your own personal identification that can be used on any SoapEngine web service using this following &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method, &lt;a target='_blank' href='?op=GetUserID'&gt;click HERE&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;Terms of Use:&lt;/b&gt;&lt;br&gt;The following web services can be used free of charge for non-commercial activities, we would however ask you to consider placing the following pointer on your web site (this request may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities), thank you for your support:&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='http://www.salcentral.com'&gt;&lt;img border=0 src='images/salcsmall.gif'&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Commercial Use:&lt;/b&gt;&lt;br&gt;Much of the functionality within these web services may be used for FREE non-commercial use, however if you are using any these services commercially please register by email at &lt;a href='mailto:support@lucin.com?Subject=Register Commercial Use'&gt;Register Commercial Use&lt;/a&gt; with your name and web site (if applicable). In response we will endeavour to support your use of our products as much as possible. This rule may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities.&lt;br&gt;&lt;br&gt;&lt;b&gt;Error Trapping:&lt;/b&gt;&lt;br&gt;This web service contains in-built software driven error trapping device, therefore whenever you receive a programmatic error the support team for this web service also receives the same error but via email. Once the error has been rectified, support will email you back using your registered email address to advise you that the error has been fixed and that you can once again use that function. This support mechanism is a predominant feature of all SoapEngine web services.&lt;br&gt;&lt;br&gt;&lt;b&gt;How does AdminUser Work?&lt;/b&gt;&lt;br&gt;All SoapEngine web services are governed by a single web service called &lt;a target='_blank' href='csecurity.asmx'&gt;csecurity&lt;/a&gt;, this web service controls access for all users and administrators. An administrator can use their AdminUserID and password to gain administrator access to a certain methods or web services, only methods that contain the AdminUserID argument allow admin access. It does this in two ways ...&lt;br&gt;&lt;br&gt;1) It checks to see that the userid supplied is a valid userid and the password supplied is correct, NB* its important to remember that if you are an AdminUser and your using the adminuserid field then the password you enter must be your password not the password of the userid you are also using.&lt;br&gt;&lt;br&gt;2) If an adminuserid is also supplied it is validated to see that the adminuserid is valid and along with the password entered also passes the security check, in addition each method called has a unique Identifier hidden from the user but is used to see whether this adminuserid has Administrator access to the method your attempting to process.&lt;br&gt;&lt;br&gt;To gain administrative access to a specific web service please email &lt;a href='mailto:support@lucin.com?Subject=Request for Admin Access to Web Service'&gt;AdminAccess&lt;/a&gt; with details about the web service or method you want access to and why.&lt;br&gt;&lt;br&gt;&lt;b&gt;Support and Feedback:&lt;/b&gt;&lt;br&gt;We will endeavour to support this web service for external activities as much as possible, please email &lt;a href='mailto:support@lucin.com?Subject=Web Service Support or Feedback'&gt;Support&lt;/a&gt; with any questions or feedback you may have.&lt;br&gt;&lt;br&gt;&lt;br&gt;</documentation>
+    <port name="csecuritySoap" binding="s0:csecuritySoap">
+      <soap:address location="http://www.soapengine.com/lucin/salcentral/csecurity.asmx" />
+    </port>
+    <port name="csecurityHttpGet" binding="s0:csecurityHttpGet">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/csecurity.asmx" />
+    </port>
+    <port name="csecurityHttpPost" binding="s0:csecurityHttpPost">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/csecurity.asmx" />
+    </port>
+  </service>
+</definitions>

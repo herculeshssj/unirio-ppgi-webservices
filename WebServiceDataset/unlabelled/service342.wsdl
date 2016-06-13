@@ -1,0 +1,38 @@
+<?xml version="1.0" ?> 
+<definitions name="YahooUserPingService"
+	targetNamespace="http://www.allesta.net:51110/webservices/wsdl/YahooUserPingService.xml"
+	xmlns:tns="http://www.allesta.net:51110/webservices/wsdl/YahooUserPingService.xml"
+	xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<message name="isUserOnlineRequest">
+  		<part name="username" type="xsd:string" /> 
+	</message>
+	<message name="isUserOnlineResponse">
+ 		<part name="return" type="xsd:boolean" /> 
+  	</message>
+	<portType name="YahooUserPingPortType">
+ 		<operation name="isuseronline">
+  			<input message="tns:isUserOnlineRequest" name="isuseronline" /> 
+  			<output message="tns:isUserOnlineResponse" name="isuseronlineResponse" /> 
+  		</operation>
+  	</portType>
+ 	<binding name="YahooUserPingBinding" type="tns:YahooUserPingPortType">
+  		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+ 		<operation name="isuseronline">
+ 			<soap:operation soapAction="" /> 
+ 			<input>
+  				<soap:body use="encoded" namespace="urn:allesta-YahooUserPing" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  			</input>
+ 			<output>
+  				<soap:body use="encoded" namespace="urn:allesta-YahooUserPing" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  			</output>
+  		</operation>
+  	</binding>
+ 	<service name="YahooUserPingService">
+  		<documentation>Provides information on whether a Yahoo user is currently online</documentation> 
+ 		<port name="YahooUserPingPortType" binding="tns:YahooUserPingBinding">
+  			<soap:address location="http://www.allesta.net:51110/webservices/soapx4/isuseronline.php" /> 
+  		</port>
+  	</service>
+</definitions>

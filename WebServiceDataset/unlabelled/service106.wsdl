@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://studentweb.seaed.com/DocServer/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://studentweb.seaed.com/DocServer/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://studentweb.seaed.com/DocServer/">
+      <s:element name="GetFileNames">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFileNamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileNamesResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFileResult" type="s0:WebDoc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebDoc">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Contents" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="WebDoc" type="s0:WebDoc" />
+    </s:schema>
+  </types>
+  <message name="GetFileNamesSoapIn">
+    <part name="parameters" element="s0:GetFileNames" />
+  </message>
+  <message name="GetFileNamesSoapOut">
+    <part name="parameters" element="s0:GetFileNamesResponse" />
+  </message>
+  <message name="GetFileSoapIn">
+    <part name="parameters" element="s0:GetFile" />
+  </message>
+  <message name="GetFileSoapOut">
+    <part name="parameters" element="s0:GetFileResponse" />
+  </message>
+  <message name="GetFileNamesHttpGetIn" />
+  <message name="GetFileNamesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetFileHttpGetIn">
+    <part name="title" type="s:string" />
+  </message>
+  <message name="GetFileHttpGetOut">
+    <part name="Body" element="s0:WebDoc" />
+  </message>
+  <message name="GetFileNamesHttpPostIn" />
+  <message name="GetFileNamesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetFileHttpPostIn">
+    <part name="title" type="s:string" />
+  </message>
+  <message name="GetFileHttpPostOut">
+    <part name="Body" element="s0:WebDoc" />
+  </message>
+  <portType name="GetDocsSoap">
+    <operation name="GetFileNames">
+      <documentation>Retrieves list of available files.</documentation>
+      <input message="s0:GetFileNamesSoapIn" />
+      <output message="s0:GetFileNamesSoapOut" />
+    </operation>
+    <operation name="GetFile">
+      <documentation>Retrieves WebDoc structure with title and byte array of contents.</documentation>
+      <input message="s0:GetFileSoapIn" />
+      <output message="s0:GetFileSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GetDocsHttpGet">
+    <operation name="GetFileNames">
+      <documentation>Retrieves list of available files.</documentation>
+      <input message="s0:GetFileNamesHttpGetIn" />
+      <output message="s0:GetFileNamesHttpGetOut" />
+    </operation>
+    <operation name="GetFile">
+      <documentation>Retrieves WebDoc structure with title and byte array of contents.</documentation>
+      <input message="s0:GetFileHttpGetIn" />
+      <output message="s0:GetFileHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GetDocsHttpPost">
+    <operation name="GetFileNames">
+      <documentation>Retrieves list of available files.</documentation>
+      <input message="s0:GetFileNamesHttpPostIn" />
+      <output message="s0:GetFileNamesHttpPostOut" />
+    </operation>
+    <operation name="GetFile">
+      <documentation>Retrieves WebDoc structure with title and byte array of contents.</documentation>
+      <input message="s0:GetFileHttpPostIn" />
+      <output message="s0:GetFileHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GetDocsSoap" type="s0:GetDocsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetFileNames">
+      <soap:operation soapAction="http://studentweb.seaed.com/DocServer/GetFileNames" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFile">
+      <soap:operation soapAction="http://studentweb.seaed.com/DocServer/GetFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetDocsHttpGet" type="s0:GetDocsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetFileNames">
+      <http:operation location="/GetFileNames" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetFile">
+      <http:operation location="/GetFile" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetDocsHttpPost" type="s0:GetDocsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetFileNames">
+      <http:operation location="/GetFileNames" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetFile">
+      <http:operation location="/GetFile" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GetDocs">
+    <documentation>Retrieve documents from SQL Server</documentation>
+    <port name="GetDocsSoap" binding="s0:GetDocsSoap">
+      <soap:address location="http://studentweb.seaed.com/webservices/DocServer/GetDocs.asmx" />
+    </port>
+    <port name="GetDocsHttpGet" binding="s0:GetDocsHttpGet">
+      <http:address location="http://studentweb.seaed.com/webservices/DocServer/GetDocs.asmx" />
+    </port>
+    <port name="GetDocsHttpPost" binding="s0:GetDocsHttpPost">
+      <http:address location="http://studentweb.seaed.com/webservices/DocServer/GetDocs.asmx" />
+    </port>
+  </service>
+</definitions>

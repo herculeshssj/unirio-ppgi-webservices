@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://IUnknown.Team/ePortal/GetData" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://IUnknown.Team/ePortal/GetData" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://IUnknown.Team/ePortal/GetData">
+      <s:complexType name="any" mixed="true">
+        <s:sequence>
+          <s:any minOccurs="0" maxOccurs="unbounded" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RebuildTabList">
+        <s:complexType />
+      </s:element>
+      <s:element name="RebuildTabListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RebuildTabListResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RebuildTabStruct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tabname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RebuildTabStructResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RebuildTabStructResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tabname" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="GetTabListSoapIn" />
+  <message name="GetTabListSoapOut">
+    <part name="GetTabListResult" type="s0:any" />
+  </message>
+  <message name="RebuildTabListSoapIn">
+    <part name="parameters" element="s0:RebuildTabList" />
+  </message>
+  <message name="RebuildTabListSoapOut">
+    <part name="parameters" element="s0:RebuildTabListResponse" />
+  </message>
+  <message name="RebuildTabStructSoapIn">
+    <part name="parameters" element="s0:RebuildTabStruct" />
+  </message>
+  <message name="RebuildTabStructSoapOut">
+    <part name="parameters" element="s0:RebuildTabStructResponse" />
+  </message>
+  <message name="GetTabStructSoapIn">
+    <part name="tabname" element="s0:tabname" />
+  </message>
+  <message name="GetTabStructSoapOut">
+    <part name="GetTabStructResult" type="s0:any" />
+  </message>
+  <message name="GetTabListHttpGetIn" />
+  <message name="GetTabListHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="RebuildTabListHttpGetIn" />
+  <message name="RebuildTabListHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RebuildTabStructHttpGetIn">
+    <part name="tabname" type="s:string" />
+  </message>
+  <message name="RebuildTabStructHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetTabStructHttpGetIn">
+    <part name="tabname" type="s:string" />
+  </message>
+  <message name="GetTabStructHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="GetTabListHttpPostIn" />
+  <message name="GetTabListHttpPostOut">
+    <part name="Body" />
+  </message>
+  <message name="RebuildTabListHttpPostIn" />
+  <message name="RebuildTabListHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RebuildTabStructHttpPostIn">
+    <part name="tabname" type="s:string" />
+  </message>
+  <message name="RebuildTabStructHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetTabStructHttpPostIn">
+    <part name="tabname" type="s:string" />
+  </message>
+  <message name="GetTabStructHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="GetDataSoap">
+    <operation name="GetTabList">
+      <documentation>Gives list of available tabs</documentation>
+      <input message="s0:GetTabListSoapIn" />
+      <output message="s0:GetTabListSoapOut" />
+    </operation>
+    <operation name="RebuildTabList">
+      <documentation>Rebuilds XML document containing list of available tabs</documentation>
+      <input message="s0:RebuildTabListSoapIn" />
+      <output message="s0:RebuildTabListSoapOut" />
+    </operation>
+    <operation name="RebuildTabStruct">
+      <documentation>Rebuilds XML document containing structure of specified tab</documentation>
+      <input message="s0:RebuildTabStructSoapIn" />
+      <output message="s0:RebuildTabStructSoapOut" />
+    </operation>
+    <operation name="GetTabStruct">
+      <documentation>Gives structure of specified tab</documentation>
+      <input message="s0:GetTabStructSoapIn" />
+      <output message="s0:GetTabStructSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GetDataHttpGet">
+    <operation name="GetTabList">
+      <documentation>Gives list of available tabs</documentation>
+      <input message="s0:GetTabListHttpGetIn" />
+      <output message="s0:GetTabListHttpGetOut" />
+    </operation>
+    <operation name="RebuildTabList">
+      <documentation>Rebuilds XML document containing list of available tabs</documentation>
+      <input message="s0:RebuildTabListHttpGetIn" />
+      <output message="s0:RebuildTabListHttpGetOut" />
+    </operation>
+    <operation name="RebuildTabStruct">
+      <documentation>Rebuilds XML document containing structure of specified tab</documentation>
+      <input message="s0:RebuildTabStructHttpGetIn" />
+      <output message="s0:RebuildTabStructHttpGetOut" />
+    </operation>
+    <operation name="GetTabStruct">
+      <documentation>Gives structure of specified tab</documentation>
+      <input message="s0:GetTabStructHttpGetIn" />
+      <output message="s0:GetTabStructHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GetDataHttpPost">
+    <operation name="GetTabList">
+      <documentation>Gives list of available tabs</documentation>
+      <input message="s0:GetTabListHttpPostIn" />
+      <output message="s0:GetTabListHttpPostOut" />
+    </operation>
+    <operation name="RebuildTabList">
+      <documentation>Rebuilds XML document containing list of available tabs</documentation>
+      <input message="s0:RebuildTabListHttpPostIn" />
+      <output message="s0:RebuildTabListHttpPostOut" />
+    </operation>
+    <operation name="RebuildTabStruct">
+      <documentation>Rebuilds XML document containing structure of specified tab</documentation>
+      <input message="s0:RebuildTabStructHttpPostIn" />
+      <output message="s0:RebuildTabStructHttpPostOut" />
+    </operation>
+    <operation name="GetTabStruct">
+      <documentation>Gives structure of specified tab</documentation>
+      <input message="s0:GetTabStructHttpPostIn" />
+      <output message="s0:GetTabStructHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GetDataSoap" type="s0:GetDataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTabList">
+      <soap:operation soapAction="http://IUnknown.Team/ePortal/GetData/GetTabList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RebuildTabList">
+      <soap:operation soapAction="http://IUnknown.Team/ePortal/GetData/RebuildTabList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RebuildTabStruct">
+      <soap:operation soapAction="http://IUnknown.Team/ePortal/GetData/RebuildTabStruct" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTabStruct">
+      <soap:operation soapAction="http://IUnknown.Team/ePortal/GetData/GetTabStruct" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetDataHttpGet" type="s0:GetDataHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTabList">
+      <http:operation location="/GetTabList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="RebuildTabList">
+      <http:operation location="/RebuildTabList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RebuildTabStruct">
+      <http:operation location="/RebuildTabStruct" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTabStruct">
+      <http:operation location="/GetTabStruct" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetDataHttpPost" type="s0:GetDataHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTabList">
+      <http:operation location="/GetTabList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="RebuildTabList">
+      <http:operation location="/RebuildTabList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RebuildTabStruct">
+      <http:operation location="/RebuildTabStruct" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTabStruct">
+      <http:operation location="/GetTabStruct" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GetData">
+    <documentation>This service simulates activity of the &lt;i&gt;Business Logic&lt;/i&gt; abstraction layer in &lt;b&gt;ePortal Template&lt;/b&gt; architecture by encapsulating logic of working with single NTFS content source.</documentation>
+    <port name="GetDataSoap" binding="s0:GetDataSoap">
+      <soap:address location="http://iunknownteam.com/GetData.asmx" />
+    </port>
+    <port name="GetDataHttpGet" binding="s0:GetDataHttpGet">
+      <http:address location="http://iunknownteam.com/GetData.asmx" />
+    </port>
+    <port name="GetDataHttpPost" binding="s0:GetDataHttpPost">
+      <http:address location="http://iunknownteam.com/GetData.asmx" />
+    </port>
+  </service>
+</definitions>

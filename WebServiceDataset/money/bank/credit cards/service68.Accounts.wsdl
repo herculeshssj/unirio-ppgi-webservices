@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="https://www.infodial.com/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="https://www.infodial.com/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://www.infodial.com/webservices">
+      <s:element name="ProcessCreditCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardholderZipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OptionalParameters" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessCreditCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessCreditCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendUsComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="firstname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailaddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comments" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendUsCommentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendUsCommentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="ProcessCreditCardSoapIn">
+    <part name="parameters" element="s0:ProcessCreditCard" />
+  </message>
+  <message name="ProcessCreditCardSoapOut">
+    <part name="parameters" element="s0:ProcessCreditCardResponse" />
+  </message>
+  <message name="SendUsCommentsSoapIn">
+    <part name="parameters" element="s0:SendUsComments" />
+  </message>
+  <message name="SendUsCommentsSoapOut">
+    <part name="parameters" element="s0:SendUsCommentsResponse" />
+  </message>
+  <message name="ProcessCreditCardHttpGetIn">
+    <part name="CreditCardNumber" type="s:string" />
+    <part name="ExpirationDate" type="s:string" />
+    <part name="CardholderZipCode" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="OptionalParameters" type="s:string" />
+  </message>
+  <message name="ProcessCreditCardHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendUsCommentsHttpGetIn">
+    <part name="firstname" type="s:string" />
+    <part name="lastname" type="s:string" />
+    <part name="emailaddress" type="s:string" />
+    <part name="companyname" type="s:string" />
+    <part name="phone" type="s:string" />
+    <part name="comments" type="s:string" />
+  </message>
+  <message name="SendUsCommentsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ProcessCreditCardHttpPostIn">
+    <part name="CreditCardNumber" type="s:string" />
+    <part name="ExpirationDate" type="s:string" />
+    <part name="CardholderZipCode" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="OptionalParameters" type="s:string" />
+  </message>
+  <message name="ProcessCreditCardHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendUsCommentsHttpPostIn">
+    <part name="firstname" type="s:string" />
+    <part name="lastname" type="s:string" />
+    <part name="emailaddress" type="s:string" />
+    <part name="companyname" type="s:string" />
+    <part name="phone" type="s:string" />
+    <part name="comments" type="s:string" />
+  </message>
+  <message name="SendUsCommentsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="WebServicesSoap">
+    <operation name="ProcessCreditCard">
+      <input message="s0:ProcessCreditCardSoapIn" />
+      <output message="s0:ProcessCreditCardSoapOut" />
+    </operation>
+    <operation name="SendUsComments">
+      <input message="s0:SendUsCommentsSoapIn" />
+      <output message="s0:SendUsCommentsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WebServicesHttpGet">
+    <operation name="ProcessCreditCard">
+      <input message="s0:ProcessCreditCardHttpGetIn" />
+      <output message="s0:ProcessCreditCardHttpGetOut" />
+    </operation>
+    <operation name="SendUsComments">
+      <input message="s0:SendUsCommentsHttpGetIn" />
+      <output message="s0:SendUsCommentsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WebServicesHttpPost">
+    <operation name="ProcessCreditCard">
+      <input message="s0:ProcessCreditCardHttpPostIn" />
+      <output message="s0:ProcessCreditCardHttpPostOut" />
+    </operation>
+    <operation name="SendUsComments">
+      <input message="s0:SendUsCommentsHttpPostIn" />
+      <output message="s0:SendUsCommentsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WebServicesSoap" type="s0:WebServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ProcessCreditCard">
+      <soap:operation soapAction="https://www.infodial.com/webservices/ProcessCreditCard" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendUsComments">
+      <soap:operation soapAction="https://www.infodial.com/webservices/SendUsComments" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebServicesHttpGet" type="s0:WebServicesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ProcessCreditCard">
+      <http:operation location="/ProcessCreditCard" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendUsComments">
+      <http:operation location="/SendUsComments" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebServicesHttpPost" type="s0:WebServicesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ProcessCreditCard">
+      <http:operation location="/ProcessCreditCard" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendUsComments">
+      <http:operation location="/SendUsComments" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebServices">
+    <port name="WebServicesSoap" binding="s0:WebServicesSoap">
+      <soap:address location="https://www.infodial.com/webservices/default.asmx" />
+    </port>
+    <port name="WebServicesHttpGet" binding="s0:WebServicesHttpGet">
+      <http:address location="https://www.infodial.com/webservices/default.asmx" />
+    </port>
+    <port name="WebServicesHttpPost" binding="s0:WebServicesHttpPost">
+      <http:address location="https://www.infodial.com/webservices/default.asmx" />
+    </port>
+  </service>
+</definitions>

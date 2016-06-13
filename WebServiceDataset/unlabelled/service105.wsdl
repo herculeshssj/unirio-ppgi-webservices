@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="CFCInvocationException"><sequence/></complexType><element name="CFCInvocationException" nillable="true" type="tns1:CFCInvocationException"/></schema></wsdl:types>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:message name="GetZipDetailsResponse">
+    <wsdl:part name="GetZipDetailsReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetZipDetailsRequest">
+    <wsdl:part name="zip" type="xsd:string"/>
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityStateDetailsRequest">
+    <wsdl:part name="city" type="xsd:string"/>
+    <wsdl:part name="state" type="xsd:string"/>
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetCityStateDetailsResponse">
+    <wsdl:part name="GetCityStateDetailsReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="zipbase">
+    <wsdl:operation name="GetZipDetails" parameterOrder="zip username password">
+      <wsdl:input name="GetZipDetailsRequest" message="impl:GetZipDetailsRequest"/>
+      <wsdl:output name="GetZipDetailsResponse" message="impl:GetZipDetailsResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStateDetails" parameterOrder="city state username password">
+      <wsdl:input name="GetCityStateDetailsRequest" message="impl:GetCityStateDetailsRequest"/>
+      <wsdl:output name="GetCityStateDetailsResponse" message="impl:GetCityStateDetailsResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="zipbase.cfcSoapBinding" type="impl:zipbase">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetZipDetails">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="GetZipDetailsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="GetZipDetailsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStateDetails">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="GetCityStateDetailsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="GetCityStateDetailsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="zipbaseService">
+    <wsdl:port name="zipbase.cfc" binding="impl:zipbase.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.tinetics.com/webservices/zipbase.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

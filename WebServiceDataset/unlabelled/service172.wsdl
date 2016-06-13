@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://geb.kattare.com:10130/axis/services/EvaluationService/axis/services/EvaluationService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://geb.kattare.com:10130/axis/services/EvaluationService/axis/services/EvaluationService-impl" xmlns:intf="http://geb.kattare.com:10130/axis/services/EvaluationService/axis/services/EvaluationService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><wsdl:types><schema targetNamespace="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><element name="Array" nillable="true" type="soapenc:Array"/></schema></wsdl:types>
+  <wsdl:message name="evaluateRequest">
+    <wsdl:part name="params" type="soapenc:Array"/>
+    <wsdl:part name="expr" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="evaluateResponse">
+    <wsdl:part name="return" type="xsd:double"/>
+  </wsdl:message>
+  <wsdl:portType name="EvalMain">
+    <wsdl:operation name="evaluate" parameterOrder="params expr">
+      <wsdl:input message="intf:evaluateRequest" name="evaluateRequest"/>
+      <wsdl:output message="intf:evaluateResponse" name="evaluateResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EvaluationServiceSoapBinding" type="intf:EvalMain">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="evaluate">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="evaluateRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://geb.kattare.com:10130/axis/services/EvaluationService/axis/services/EvaluationService" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="evaluateResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://geb.kattare.com:10130/axis/services/EvaluationService/axis/services/EvaluationService" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EvalMainService">
+    <wsdl:port binding="intf:EvaluationServiceSoapBinding" name="EvaluationService">
+      <wsdlsoap:address location="http://geb.kattare.com:10130/axis/services/EvaluationService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

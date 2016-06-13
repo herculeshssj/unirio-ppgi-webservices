@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+
+<definitions name="HelloWorldTests.cgreetings" targetNamespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" xmlns:tns="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="SayHelloRequest">
+        <part name="YourName" type="xsd:string"/>
+        <part name="Greeting" type="xsd:string"/>
+    </message>
+    <message name="SayHelloResponse">
+        <part name="Greeting" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="HelloWorldRequest">
+        <part name="Message" type="xsd:string"/>
+    </message>
+    <message name="HelloWorldResponse">
+        <part name="Message" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetBestLinkRequest">
+    </message>
+    <message name="GetBestLinkResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetSALServerDateRequest">
+        <part name="SALDate" type="xsd:string"/>
+    </message>
+    <message name="GetSALServerDateResponse">
+        <part name="SALDate" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="HelloWorldTests.cgreetingsPortType">
+        <operation name="SayHello">
+            <input message="tns:SayHelloRequest"/>
+            <output message="tns:SayHelloResponse"/>
+        </operation>
+        <operation name="HelloWorld">
+            <input message="tns:HelloWorldRequest"/>
+            <output message="tns:HelloWorldResponse"/>
+        </operation>
+        <operation name="GetBestLink">
+            <input message="tns:GetBestLinkRequest"/>
+            <output message="tns:GetBestLinkResponse"/>
+        </operation>
+        <operation name="GetSALServerDate">
+            <input message="tns:GetSALServerDateRequest"/>
+            <output message="tns:GetSALServerDateResponse"/>
+        </operation>
+    </portType>
+    <binding name="HelloWorldTests.cgreetingsbinding" type="tns:HelloWorldTests.cgreetingsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="SayHello">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml#SayHello"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="HelloWorld">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml#HelloWorld"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetBestLink">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml#GetBestLink"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetSALServerDate">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml#GetSALServerDate"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/TestNode/HelloWorldTests/CGreetings.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="HelloWorldTests.cgreetingsService">
+        <port name="HelloWorldTests.cgreetingsPort" binding="tns:HelloWorldTests.cgreetingsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/greetings.cgi"/>
+        </port>
+    </service>
+</definitions>

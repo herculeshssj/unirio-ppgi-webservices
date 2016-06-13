@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.thebigword.com/tranZapp" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.thebigword.com/tranZapp" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.thebigword.com/tranZapp">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetLanguages">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLanguagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLanguagesResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Register">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DefaultLangauge" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sendEmail" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="s0:RegistrationInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RegistrationInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="isAccepted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="details" type="s0:accepted" />
+          <s:element minOccurs="1" maxOccurs="1" name="hasContacts" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="contacts" type="s0:ArrayOfContact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="accepted">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="contact" nillable="true" type="s0:contact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="contact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="contactName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="department" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TranslateFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="externalID" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="isQuote" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="requireProofReading" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="languageFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="languagesTo" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="PONumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="requiredDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileData" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TranslateFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TranslateFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompletedFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="externalID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompletedFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompletedFilesResult" type="s0:ArrayOfCompletedFile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCompletedFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompletedFile" nillable="true" type="s0:CompletedFile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompletedFile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="headerNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCompletedFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="externalID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompletedFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCompletedFileResult" type="s0:CompletedFileData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompletedFileData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fileData" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="fileExtension" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="externalID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="externalID" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="headerNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelJobResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="RegistrationInfo" nillable="true" type="s0:RegistrationInfo" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="GetLanguagesSoapIn">
+    <part name="parameters" element="s0:GetLanguages" />
+  </message>
+  <message name="GetLanguagesSoapOut">
+    <part name="parameters" element="s0:GetLanguagesResponse" />
+  </message>
+  <message name="RegisterSoapIn">
+    <part name="parameters" element="s0:Register" />
+  </message>
+  <message name="RegisterSoapOut">
+    <part name="parameters" element="s0:RegisterResponse" />
+  </message>
+  <message name="TranslateFileSoapIn">
+    <part name="parameters" element="s0:TranslateFile" />
+  </message>
+  <message name="TranslateFileSoapOut">
+    <part name="parameters" element="s0:TranslateFileResponse" />
+  </message>
+  <message name="CompletedFilesSoapIn">
+    <part name="parameters" element="s0:CompletedFiles" />
+  </message>
+  <message name="CompletedFilesSoapOut">
+    <part name="parameters" element="s0:CompletedFilesResponse" />
+  </message>
+  <message name="GetCompletedFileSoapIn">
+    <part name="parameters" element="s0:GetCompletedFile" />
+  </message>
+  <message name="GetCompletedFileSoapOut">
+    <part name="parameters" element="s0:GetCompletedFileResponse" />
+  </message>
+  <message name="ConfirmFileSoapIn">
+    <part name="parameters" element="s0:ConfirmFile" />
+  </message>
+  <message name="ConfirmFileSoapOut">
+    <part name="parameters" element="s0:ConfirmFileResponse" />
+  </message>
+  <message name="CancelJobSoapIn">
+    <part name="parameters" element="s0:CancelJob" />
+  </message>
+  <message name="CancelJobSoapOut">
+    <part name="parameters" element="s0:CancelJobResponse" />
+  </message>
+  <message name="GetLanguagesHttpGetIn" />
+  <message name="GetLanguagesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="RegisterHttpGetIn">
+    <part name="ClientCode" type="s:string" />
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Email" type="s:string" />
+    <part name="DefaultLangauge" type="s:string" />
+    <part name="sendEmail" type="s:string" />
+  </message>
+  <message name="RegisterHttpGetOut">
+    <part name="Body" element="s0:RegistrationInfo" />
+  </message>
+  <message name="GetLanguagesHttpPostIn" />
+  <message name="GetLanguagesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="RegisterHttpPostIn">
+    <part name="ClientCode" type="s:string" />
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Email" type="s:string" />
+    <part name="DefaultLangauge" type="s:string" />
+    <part name="sendEmail" type="s:string" />
+  </message>
+  <message name="RegisterHttpPostOut">
+    <part name="Body" element="s0:RegistrationInfo" />
+  </message>
+  <portType name="tranZappSoap">
+    <operation name="GetLanguages">
+      <input message="s0:GetLanguagesSoapIn" />
+      <output message="s0:GetLanguagesSoapOut" />
+    </operation>
+    <operation name="Register">
+      <input message="s0:RegisterSoapIn" />
+      <output message="s0:RegisterSoapOut" />
+    </operation>
+    <operation name="TranslateFile">
+      <input message="s0:TranslateFileSoapIn" />
+      <output message="s0:TranslateFileSoapOut" />
+    </operation>
+    <operation name="CompletedFiles">
+      <input message="s0:CompletedFilesSoapIn" />
+      <output message="s0:CompletedFilesSoapOut" />
+    </operation>
+    <operation name="GetCompletedFile">
+      <input message="s0:GetCompletedFileSoapIn" />
+      <output message="s0:GetCompletedFileSoapOut" />
+    </operation>
+    <operation name="ConfirmFile">
+      <input message="s0:ConfirmFileSoapIn" />
+      <output message="s0:ConfirmFileSoapOut" />
+    </operation>
+    <operation name="CancelJob">
+      <input message="s0:CancelJobSoapIn" />
+      <output message="s0:CancelJobSoapOut" />
+    </operation>
+  </portType>
+  <portType name="tranZappHttpGet">
+    <operation name="GetLanguages">
+      <input message="s0:GetLanguagesHttpGetIn" />
+      <output message="s0:GetLanguagesHttpGetOut" />
+    </operation>
+    <operation name="Register">
+      <input message="s0:RegisterHttpGetIn" />
+      <output message="s0:RegisterHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="tranZappHttpPost">
+    <operation name="GetLanguages">
+      <input message="s0:GetLanguagesHttpPostIn" />
+      <output message="s0:GetLanguagesHttpPostOut" />
+    </operation>
+    <operation name="Register">
+      <input message="s0:RegisterHttpPostIn" />
+      <output message="s0:RegisterHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="tranZappSoap" type="s0:tranZappSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLanguages">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/GetLanguages" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Register">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/Register" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TranslateFile">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/TranslateFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CompletedFiles">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/CompletedFiles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCompletedFile">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/GetCompletedFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ConfirmFile">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/ConfirmFile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelJob">
+      <soap:operation soapAction="http://www.thebigword.com/tranZapp/CancelJob" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="tranZappHttpGet" type="s0:tranZappHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLanguages">
+      <http:operation location="/GetLanguages" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Register">
+      <http:operation location="/Register" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="tranZappHttpPost" type="s0:tranZappHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLanguages">
+      <http:operation location="/GetLanguages" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Register">
+      <http:operation location="/Register" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="tranZapp">
+    <port name="tranZappSoap" binding="s0:tranZappSoap">
+      <soap:address location="https://clm.thebigword.com/tranzapp.ws/tranzapp.asmx" />
+    </port>
+    <port name="tranZappHttpGet" binding="s0:tranZappHttpGet">
+      <http:address location="https://clm.thebigword.com/tranzapp.ws/tranzapp.asmx" />
+    </port>
+    <port name="tranZappHttpPost" binding="s0:tranZappHttpPost">
+      <http:address location="https://clm.thebigword.com/tranzapp.ws/tranzapp.asmx" />
+    </port>
+  </service>
+</definitions>

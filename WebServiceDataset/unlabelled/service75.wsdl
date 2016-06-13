@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://test.mapfrepr.net/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://test.mapfrepr.net/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://test.mapfrepr.net/">
+      <s:element name="EncryptText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="privateKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptTextResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="privateKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptTextResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="EncryptTextSoapIn">
+    <part name="parameters" element="s0:EncryptText" />
+  </message>
+  <message name="EncryptTextSoapOut">
+    <part name="parameters" element="s0:EncryptTextResponse" />
+  </message>
+  <message name="DecryptTextSoapIn">
+    <part name="parameters" element="s0:DecryptText" />
+  </message>
+  <message name="DecryptTextSoapOut">
+    <part name="parameters" element="s0:DecryptTextResponse" />
+  </message>
+  <portType name="EncryptionWSSoap">
+    <operation name="EncryptText">
+      <documentation>This WebMethod Encrypts text using the TripleDESCbc Algorythm using a private key or keyword that you use. This private key must be used to decrypt the text back again</documentation>
+      <input message="s0:EncryptTextSoapIn" />
+      <output message="s0:EncryptTextSoapOut" />
+    </operation>
+    <operation name="DecryptText">
+      <documentation>This WebMethod Decrypts text using the TripleDESCbc Algorythm using a private key or keyword that you use. This private key must be the same that you used to encrypt the text</documentation>
+      <input message="s0:DecryptTextSoapIn" />
+      <output message="s0:DecryptTextSoapOut" />
+    </operation>
+  </portType>
+  <binding name="EncryptionWSSoap" type="s0:EncryptionWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="EncryptText">
+      <soap:operation soapAction="http://test.mapfrepr.net/EncryptText" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DecryptText">
+      <soap:operation soapAction="http://test.mapfrepr.net/DecryptText" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EncryptionWS">
+    <documentation>This web service encrypts and decrypts text in TripleDesCBC format</documentation>
+    <port name="EncryptionWSSoap" binding="s0:EncryptionWSSoap">
+      <soap:address location="http://test.mapfrepr.net/Encryption/Encryption.asmx" />
+    </port>
+  </service>
+</definitions>

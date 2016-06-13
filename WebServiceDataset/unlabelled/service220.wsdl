@@ -1,0 +1,61 @@
+<?xml version="1.0"?><wsdl:definitions name="xmethods_gcd" xmlns:tns="http://bowstreet.com/2002/03/models/xmethods/gcd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://bowstreet.com/2002/03/models/xmethods/gcd" xmlns:xsd1="http://www.bowstreet.com/02/2002/gcd"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.bowstreet.com/02/2002/gcd" targetNamespace="http://www.bowstreet.com/02/2002/gcd"><element name="gcd" type="tns:gcd" />
+<element name="gcdreply" type="tns:gcdreply" />
+<complexType name="gcd"><sequence><element name="point1" type="tns:point" />
+<element name="point2" type="tns:point" />
+</sequence>
+</complexType>
+<complexType name="point"><sequence><element name="latitude" type="double" />
+<element name="longitude" type="double" />
+</sequence>
+</complexType>
+<complexType name="gcdreply"><sequence><element name="distance" type="double" />
+<element name="error" type="string" />
+</sequence>
+</complexType>
+</schema>
+</wsdl:types>
+<wsdl:message name="gcdDoublesResponse"><wsdl:part name="return" type="xsd:double"><wsdl:documentation>A double - the distance between the 2 points passed in.</wsdl:documentation>
+</wsdl:part>
+</wsdl:message>
+<wsdl:message name="gcdDoublesRequest"><wsdl:part name="lat1" type="xsd:double"><wsdl:documentation>latitude of first point</wsdl:documentation>
+</wsdl:part>
+<wsdl:part name="long1" type="xsd:double"><wsdl:documentation>longitude of first point</wsdl:documentation>
+</wsdl:part>
+<wsdl:part name="lat2" type="xsd:double"><wsdl:documentation>latitude of second point</wsdl:documentation>
+</wsdl:part>
+<wsdl:part name="long2" type="xsd:double"><wsdl:documentation>longitude of second point</wsdl:documentation>
+</wsdl:part>
+</wsdl:message>
+<wsdl:message name="gcdXmlResponse"><wsdl:part name="gcdreply" type="xsd1:gcdreply"><wsdl:documentation>An XML object holding the distance between the two points.</wsdl:documentation>
+</wsdl:part>
+</wsdl:message>
+<wsdl:message name="gcdXmlRequest"><wsdl:part name="locations" type="xsd1:gcd"><wsdl:documentation>An XML object holding the latitude and longitude of the two points to be measured.</wsdl:documentation>
+</wsdl:part>
+</wsdl:message>
+<wsdl:portType name="gcdPortType"><wsdl:operation name="gcdDoubles"><wsdl:documentation>Takes four doubles describing the longitude and latitude of two points and calculates the great-circle distance between them.</wsdl:documentation>
+<wsdl:input message="tns:gcdDoublesRequest" name="gcdDoublesRequest" />
+<wsdl:output message="tns:gcdDoublesResponse" name="gcdDoublesResponse" />
+</wsdl:operation>
+<wsdl:operation name="gcdXml"><wsdl:documentation>Takes an XML argument describing two points of {longitude,latitude} and calculates the great-circle distance between them.</wsdl:documentation>
+<wsdl:input message="tns:gcdXmlRequest" name="gcdXmlRequest" />
+<wsdl:output message="tns:gcdXmlResponse" name="gcdXmlResponse" />
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="gcdBinding" type="tns:gcdPortType"><soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<wsdl:operation name="gcdDoubles"><soap:operation soapAction="" style="rpc" />
+<wsdl:input><soap:body use="encoded" namespace="http://bowstreet.com/2002/03/models/xmethods/gcd" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</wsdl:input>
+<wsdl:output><soap:body use="encoded" namespace="http://bowstreet.com/2002/03/models/xmethods/gcd" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="gcdXml"><soap:operation soapAction="" style="rpc" />
+<wsdl:input><soap:body use="encoded" namespace="http://bowstreet.com/2002/03/models/xmethods/gcd" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</wsdl:input>
+<wsdl:output><soap:body use="encoded" namespace="http://bowstreet.com/2002/03/models/xmethods/gcd" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="gcd"><wsdl:port name="gcdSoap" binding="tns:gcdBinding"><soap:address location="http://66.151.239.30:9080/bowstreet5/webengine/SOAP" />
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

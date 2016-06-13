@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://wininsider.com/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://wininsider.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://wininsider.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://wininsider.com/">
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastError">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLastErrorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastErrorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="keyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchNewsByTopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="topics" type="s0:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchNewsByTopicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchNewsByTopicResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema targetNamespace="http://wininsider.com/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="AboutSoapIn">
+    <part name="parameters" element="s0:About" />
+  </message>
+  <message name="AboutSoapOut">
+    <part name="parameters" element="s0:AboutResponse" />
+  </message>
+  <message name="GetLastErrorSoapIn">
+    <part name="parameters" element="s0:GetLastError" />
+  </message>
+  <message name="GetLastErrorSoapOut">
+    <part name="parameters" element="s0:GetLastErrorResponse" />
+  </message>
+  <message name="GetAllNewsSoapIn">
+    <part name="parameters" element="s0:GetAllNews" />
+  </message>
+  <message name="GetAllNewsSoapOut">
+    <part name="parameters" element="s0:GetAllNewsResponse" />
+  </message>
+  <message name="SearchNewsSoapIn">
+    <part name="parameters" element="s0:SearchNews" />
+  </message>
+  <message name="SearchNewsSoapOut">
+    <part name="parameters" element="s0:SearchNewsResponse" />
+  </message>
+  <message name="SearchNewsByTopicSoapIn">
+    <part name="parameters" element="s0:SearchNewsByTopic" />
+  </message>
+  <message name="SearchNewsByTopicSoapOut">
+    <part name="parameters" element="s0:SearchNewsByTopicResponse" />
+  </message>
+  <message name="AboutHttpGetIn" />
+  <message name="AboutHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorHttpGetIn" />
+  <message name="GetLastErrorHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllNewsHttpGetIn" />
+  <message name="GetAllNewsHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchNewsHttpGetIn">
+    <part name="keyword" type="s:string" />
+  </message>
+  <message name="SearchNewsHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchNewsByTopicHttpGetIn">
+    <part name="topics" type="s1:StringArray" />
+  </message>
+  <message name="SearchNewsByTopicHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="AboutHttpPostIn" />
+  <message name="AboutHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLastErrorHttpPostIn" />
+  <message name="GetLastErrorHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAllNewsHttpPostIn" />
+  <message name="GetAllNewsHttpPostOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchNewsHttpPostIn">
+    <part name="keyword" type="s:string" />
+  </message>
+  <message name="SearchNewsHttpPostOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchNewsByTopicHttpPostIn">
+    <part name="topics" type="s1:StringArray" />
+  </message>
+  <message name="SearchNewsByTopicHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="NewsSearchSoap">
+    <operation name="About">
+      <input message="s0:AboutSoapIn" />
+      <output message="s0:AboutSoapOut" />
+    </operation>
+    <operation name="GetLastError">
+      <input message="s0:GetLastErrorSoapIn" />
+      <output message="s0:GetLastErrorSoapOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Returns all avialble news items.</documentation>
+      <input message="s0:GetAllNewsSoapIn" />
+      <output message="s0:GetAllNewsSoapOut" />
+    </operation>
+    <operation name="SearchNews">
+      <documentation>Returns news sitems which contanin specify keyword.</documentation>
+      <input message="s0:SearchNewsSoapIn" />
+      <output message="s0:SearchNewsSoapOut" />
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <documentation>Returns news sitems which contanin specify topic id.</documentation>
+      <input message="s0:SearchNewsByTopicSoapIn" />
+      <output message="s0:SearchNewsByTopicSoapOut" />
+    </operation>
+  </portType>
+  <portType name="NewsSearchHttpGet">
+    <operation name="About">
+      <input message="s0:AboutHttpGetIn" />
+      <output message="s0:AboutHttpGetOut" />
+    </operation>
+    <operation name="GetLastError">
+      <input message="s0:GetLastErrorHttpGetIn" />
+      <output message="s0:GetLastErrorHttpGetOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Returns all avialble news items.</documentation>
+      <input message="s0:GetAllNewsHttpGetIn" />
+      <output message="s0:GetAllNewsHttpGetOut" />
+    </operation>
+    <operation name="SearchNews">
+      <documentation>Returns news sitems which contanin specify keyword.</documentation>
+      <input message="s0:SearchNewsHttpGetIn" />
+      <output message="s0:SearchNewsHttpGetOut" />
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <documentation>Returns news sitems which contanin specify topic id.</documentation>
+      <input message="s0:SearchNewsByTopicHttpGetIn" />
+      <output message="s0:SearchNewsByTopicHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="NewsSearchHttpPost">
+    <operation name="About">
+      <input message="s0:AboutHttpPostIn" />
+      <output message="s0:AboutHttpPostOut" />
+    </operation>
+    <operation name="GetLastError">
+      <input message="s0:GetLastErrorHttpPostIn" />
+      <output message="s0:GetLastErrorHttpPostOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Returns all avialble news items.</documentation>
+      <input message="s0:GetAllNewsHttpPostIn" />
+      <output message="s0:GetAllNewsHttpPostOut" />
+    </operation>
+    <operation name="SearchNews">
+      <documentation>Returns news sitems which contanin specify keyword.</documentation>
+      <input message="s0:SearchNewsHttpPostIn" />
+      <output message="s0:SearchNewsHttpPostOut" />
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <documentation>Returns news sitems which contanin specify topic id.</documentation>
+      <input message="s0:SearchNewsByTopicHttpPostIn" />
+      <output message="s0:SearchNewsByTopicHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="NewsSearchSoap" type="s0:NewsSearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="About">
+      <soap:operation soapAction="http://wininsider.com/About" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLastError">
+      <soap:operation soapAction="http://wininsider.com/GetLastError" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <soap:operation soapAction="http://wininsider.com/GetAllNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchNews">
+      <soap:operation soapAction="http://wininsider.com/SearchNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <soap:operation soapAction="http://wininsider.com/SearchNewsByTopic" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NewsSearchHttpGet" type="s0:NewsSearchHttpGet">
+    <http:binding verb="GET" />
+    <operation name="About">
+      <http:operation location="/About" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastError">
+      <http:operation location="/GetLastError" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchNews">
+      <http:operation location="/SearchNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <http:operation location="/SearchNewsByTopic" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NewsSearchHttpPost" type="s0:NewsSearchHttpPost">
+    <http:binding verb="POST" />
+    <operation name="About">
+      <http:operation location="/About" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLastError">
+      <http:operation location="/GetLastError" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchNews">
+      <http:operation location="/SearchNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchNewsByTopic">
+      <http:operation location="/SearchNewsByTopic" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NewsSearch">
+    <port name="NewsSearchSoap" binding="s0:NewsSearchSoap">
+      <soap:address location="http://www11.brinkster.com/newsagent/ws/SearchNews.asmx" />
+    </port>
+    <port name="NewsSearchHttpGet" binding="s0:NewsSearchHttpGet">
+      <http:address location="http://www11.brinkster.com/newsagent/ws/SearchNews.asmx" />
+    </port>
+    <port name="NewsSearchHttpPost" binding="s0:NewsSearchHttpPost">
+      <http:address location="http://www11.brinkster.com/newsagent/ws/SearchNews.asmx" />
+    </port>
+  </service>
+</definitions>

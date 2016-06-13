@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getLatestWaterTempProfile">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLatestWaterTempProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLatestWaterTempProfileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="getLatestWaterTempProfileSoapIn">
+    <part name="parameters" element="s0:getLatestWaterTempProfile" />
+  </message>
+  <message name="getLatestWaterTempProfileSoapOut">
+    <part name="parameters" element="s0:getLatestWaterTempProfileResponse" />
+  </message>
+  <message name="getLatestWaterTempProfileHttpGetIn" />
+  <message name="getLatestWaterTempProfileHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getLatestWaterTempProfileHttpPostIn" />
+  <message name="getLatestWaterTempProfileHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="LakeInfoSoap">
+    <operation name="getLatestWaterTempProfile">
+      <input message="s0:getLatestWaterTempProfileSoapIn" />
+      <output message="s0:getLatestWaterTempProfileSoapOut" />
+    </operation>
+  </portType>
+  <portType name="LakeInfoHttpGet">
+    <operation name="getLatestWaterTempProfile">
+      <input message="s0:getLatestWaterTempProfileHttpGetIn" />
+      <output message="s0:getLatestWaterTempProfileHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="LakeInfoHttpPost">
+    <operation name="getLatestWaterTempProfile">
+      <input message="s0:getLatestWaterTempProfileHttpPostIn" />
+      <output message="s0:getLatestWaterTempProfileHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="LakeInfoSoap" type="s0:LakeInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="getLatestWaterTempProfile">
+      <soap:operation soapAction="http://tempuri.org/getLatestWaterTempProfile" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LakeInfoHttpGet" type="s0:LakeInfoHttpGet">
+    <http:binding verb="GET" />
+    <operation name="getLatestWaterTempProfile">
+      <http:operation location="/getLatestWaterTempProfile" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LakeInfoHttpPost" type="s0:LakeInfoHttpPost">
+    <http:binding verb="POST" />
+    <operation name="getLatestWaterTempProfile">
+      <http:operation location="/getLatestWaterTempProfile" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LakeInfo">
+    <port name="LakeInfoSoap" binding="s0:LakeInfoSoap">
+      <soap:address location="http://www15.brinkster.com/jvilalta/ws/lakeinfo.asmx" />
+    </port>
+    <port name="LakeInfoHttpGet" binding="s0:LakeInfoHttpGet">
+      <http:address location="http://www15.brinkster.com/jvilalta/ws/lakeinfo.asmx" />
+    </port>
+    <port name="LakeInfoHttpPost" binding="s0:LakeInfoHttpPost">
+      <http:address location="http://www15.brinkster.com/jvilalta/ws/lakeinfo.asmx" />
+    </port>
+  </service>
+</definitions>

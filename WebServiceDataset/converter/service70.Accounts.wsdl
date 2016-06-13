@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<definitions name="Rajesh_Kumar_TestVBProject.class1" targetNamespace="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" xmlns:tns="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="AddRequest">
+        <part name="Value1" type="xsd:long"/>
+        <part name="Value2" type="xsd:long"/>
+    </message>
+    <message name="AddResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="SubtractRequest">
+        <part name="Value1" type="xsd:long"/>
+        <part name="Value2" type="xsd:long"/>
+    </message>
+    <message name="SubtractResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="Rajesh_Kumar_TestVBProject.class1PortType">
+        <operation name="Add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+        <operation name="Subtract">
+            <input message="tns:SubtractRequest"/>
+            <output message="tns:SubtractResponse"/>
+        </operation>
+    </portType>
+    <binding name="Rajesh_Kumar_TestVBProject.class1binding" type="tns:Rajesh_Kumar_TestVBProject.class1PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Add">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml#Add"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Subtract">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml#Subtract"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/vbtest/Rajesh_Kumar_TestVBProject/Class1.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Rajesh_Kumar_TestVBProject.class1Service">
+        <port name="Rajesh_Kumar_TestVBProject.class1Port" binding="tns:Rajesh_Kumar_TestVBProject.class1binding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/project1.cgi"/>
+        </port>
+    </service>
+</definitions>

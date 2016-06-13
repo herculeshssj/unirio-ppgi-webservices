@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetQuote">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Helloworld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloworldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloworldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetQuoteSoapIn">
+    <part name="parameters" element="s0:GetQuote" />
+  </message>
+  <message name="GetQuoteSoapOut">
+    <part name="parameters" element="s0:GetQuoteResponse" />
+  </message>
+  <message name="HelloworldSoapIn">
+    <part name="parameters" element="s0:Helloworld" />
+  </message>
+  <message name="HelloworldSoapOut">
+    <part name="parameters" element="s0:HelloworldResponse" />
+  </message>
+  <message name="GetQuoteHttpGetIn" />
+  <message name="GetQuoteHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="HelloworldHttpGetIn" />
+  <message name="HelloworldHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetQuoteHttpPostIn" />
+  <message name="GetQuoteHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="HelloworldHttpPostIn" />
+  <message name="HelloworldHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="QuoteSoap">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteSoapIn" />
+      <output message="s0:GetQuoteSoapOut" />
+    </operation>
+    <operation name="Helloworld">
+      <input message="s0:HelloworldSoapIn" />
+      <output message="s0:HelloworldSoapOut" />
+    </operation>
+  </portType>
+  <portType name="QuoteHttpGet">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteHttpGetIn" />
+      <output message="s0:GetQuoteHttpGetOut" />
+    </operation>
+    <operation name="Helloworld">
+      <input message="s0:HelloworldHttpGetIn" />
+      <output message="s0:HelloworldHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="QuoteHttpPost">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteHttpPostIn" />
+      <output message="s0:GetQuoteHttpPostOut" />
+    </operation>
+    <operation name="Helloworld">
+      <input message="s0:HelloworldHttpPostIn" />
+      <output message="s0:HelloworldHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="QuoteSoap" type="s0:QuoteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuote">
+      <soap:operation soapAction="http://tempuri.org/GetQuote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Helloworld">
+      <soap:operation soapAction="http://tempuri.org/Helloworld" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QuoteHttpGet" type="s0:QuoteHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetQuote">
+      <http:operation location="/GetQuote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Helloworld">
+      <http:operation location="/Helloworld" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QuoteHttpPost" type="s0:QuoteHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetQuote">
+      <http:operation location="/GetQuote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Helloworld">
+      <http:operation location="/Helloworld" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Quote">
+    <port name="QuoteSoap" binding="s0:QuoteSoap">
+      <soap:address location="http://www26.brinkster.com/12ka4/qotd.asmx" />
+    </port>
+    <port name="QuoteHttpGet" binding="s0:QuoteHttpGet">
+      <http:address location="http://www26.brinkster.com/12ka4/qotd.asmx" />
+    </port>
+    <port name="QuoteHttpPost" binding="s0:QuoteHttpPost">
+      <http:address location="http://www26.brinkster.com/12ka4/qotd.asmx" />
+    </port>
+  </service>
+</definitions>

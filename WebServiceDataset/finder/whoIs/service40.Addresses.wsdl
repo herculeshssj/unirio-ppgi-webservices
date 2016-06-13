@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ws.cdyne.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.cdyne.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.cdyne.com/">
+      <s:element name="Query">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPaddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="QuerySoapIn">
+    <part name="parameters" element="s0:Query" />
+  </message>
+  <message name="QuerySoapOut">
+    <part name="parameters" element="s0:QueryResponse" />
+  </message>
+  <message name="QueryHttpGetIn">
+    <part name="IPaddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="QueryHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="QueryHttpPostIn">
+    <part name="IPaddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="QueryHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="QueryIPSoap">
+    <operation name="Query">
+      <input message="s0:QuerySoapIn" />
+      <output message="s0:QuerySoapOut" />
+    </operation>
+  </portType>
+  <portType name="QueryIPHttpGet">
+    <operation name="Query">
+      <input message="s0:QueryHttpGetIn" />
+      <output message="s0:QueryHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="QueryIPHttpPost">
+    <operation name="Query">
+      <input message="s0:QueryHttpPostIn" />
+      <output message="s0:QueryHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="QueryIPSoap" type="s0:QueryIPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Query">
+      <soap:operation soapAction="http://ws.cdyne.com/Query" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QueryIPHttpGet" type="s0:QueryIPHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Query">
+      <http:operation location="/Query" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="QueryIPHttpPost" type="s0:QueryIPHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Query">
+      <http:operation location="/Query" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="QueryIP">
+    <port name="QueryIPSoap" binding="s0:QueryIPSoap">
+      <soap:address location="http://ws.cdyne.com/whoisforip/queryip.asmx" />
+    </port>
+    <port name="QueryIPHttpGet" binding="s0:QueryIPHttpGet">
+      <http:address location="http://ws.cdyne.com/whoisforip/queryip.asmx" />
+    </port>
+    <port name="QueryIPHttpPost" binding="s0:QueryIPHttpPost">
+      <http:address location="http://ws.cdyne.com/whoisforip/queryip.asmx" />
+    </port>
+  </service>
+</definitions>

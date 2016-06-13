@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx">
+      <s:element name="TimeServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimeServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimeServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="TimeServerSoapIn">
+    <part name="parameters" element="s0:TimeServer" />
+  </message>
+  <message name="TimeServerSoapOut">
+    <part name="parameters" element="s0:TimeServerResponse" />
+  </message>
+  <message name="TimeServerHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+  </message>
+  <message name="TimeServerHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="TimeServerHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+  </message>
+  <message name="TimeServerHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="DotNetIspTimeServerSoap">
+    <operation name="TimeServer">
+      <documentation>Serveur de temps.&lt;br&gt;&lt;br&gt;Retourne l'heure et la date sous forme de chaine de caractères. &lt;br&gt;&lt;br&gt;Attention: l'heure délivrée est UTC, donc ne tient pas compte des fuseaux horaires ni des changements heure d'été, heure d'hiver. &lt;br&gt;&lt;br&gt;Le service s'appuie sur des serveurs de temps de référence en utilisant le protocole NTP (Network Time Protocol)&lt;br&gt;&lt;br&gt;Les paramètres login et passe du service correspondent à ceux de votre compte membre Pour l'utiliser vous devez donc vous inscrire dans la rubrique membres.</documentation>
+      <input message="s0:TimeServerSoapIn" />
+      <output message="s0:TimeServerSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DotNetIspTimeServerHttpGet">
+    <operation name="TimeServer">
+      <documentation>Serveur de temps.&lt;br&gt;&lt;br&gt;Retourne l'heure et la date sous forme de chaine de caractères. &lt;br&gt;&lt;br&gt;Attention: l'heure délivrée est UTC, donc ne tient pas compte des fuseaux horaires ni des changements heure d'été, heure d'hiver. &lt;br&gt;&lt;br&gt;Le service s'appuie sur des serveurs de temps de référence en utilisant le protocole NTP (Network Time Protocol)&lt;br&gt;&lt;br&gt;Les paramètres login et passe du service correspondent à ceux de votre compte membre Pour l'utiliser vous devez donc vous inscrire dans la rubrique membres.</documentation>
+      <input message="s0:TimeServerHttpGetIn" />
+      <output message="s0:TimeServerHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DotNetIspTimeServerHttpPost">
+    <operation name="TimeServer">
+      <documentation>Serveur de temps.&lt;br&gt;&lt;br&gt;Retourne l'heure et la date sous forme de chaine de caractères. &lt;br&gt;&lt;br&gt;Attention: l'heure délivrée est UTC, donc ne tient pas compte des fuseaux horaires ni des changements heure d'été, heure d'hiver. &lt;br&gt;&lt;br&gt;Le service s'appuie sur des serveurs de temps de référence en utilisant le protocole NTP (Network Time Protocol)&lt;br&gt;&lt;br&gt;Les paramètres login et passe du service correspondent à ceux de votre compte membre Pour l'utiliser vous devez donc vous inscrire dans la rubrique membres.</documentation>
+      <input message="s0:TimeServerHttpPostIn" />
+      <output message="s0:TimeServerHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DotNetIspTimeServerSoap" type="s0:DotNetIspTimeServerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="TimeServer">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx/TimeServer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DotNetIspTimeServerHttpGet" type="s0:DotNetIspTimeServerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="TimeServer">
+      <http:operation location="/TimeServer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DotNetIspTimeServerHttpPost" type="s0:DotNetIspTimeServerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="TimeServer">
+      <http:operation location="/TimeServer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DotNetIspTimeServer">
+    <port name="DotNetIspTimeServerSoap" binding="s0:DotNetIspTimeServerSoap">
+      <soap:address location="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx" />
+    </port>
+    <port name="DotNetIspTimeServerHttpGet" binding="s0:DotNetIspTimeServerHttpGet">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx" />
+    </port>
+    <port name="DotNetIspTimeServerHttpPost" binding="s0:DotNetIspTimeServerHttpPost">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/timeserver.asmx" />
+    </port>
+  </service>
+</definitions>

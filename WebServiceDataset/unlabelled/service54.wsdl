@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ws.cdyne.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.cdyne.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.cdyne.com/">
+      <s:element name="ResolveIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPaddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResolveIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ResolveIPResult" type="s0:IPInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IPInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateProvince" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Organization" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasDaylightSavings" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Certainty" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IPInformation" type="s0:IPInformation" />
+    </s:schema>
+  </types>
+  <message name="ResolveIPSoapIn">
+    <part name="parameters" element="s0:ResolveIP" />
+  </message>
+  <message name="ResolveIPSoapOut">
+    <part name="parameters" element="s0:ResolveIPResponse" />
+  </message>
+  <message name="ResolveIPHttpGetIn">
+    <part name="IPaddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ResolveIPHttpGetOut">
+    <part name="Body" element="s0:IPInformation" />
+  </message>
+  <message name="ResolveIPHttpPostIn">
+    <part name="IPaddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ResolveIPHttpPostOut">
+    <part name="Body" element="s0:IPInformation" />
+  </message>
+  <portType name="IP2GeoSoap">
+    <operation name="ResolveIP">
+      <documentation>Use a License Key of 0 for Testing</documentation>
+      <input message="s0:ResolveIPSoapIn" />
+      <output message="s0:ResolveIPSoapOut" />
+    </operation>
+  </portType>
+  <portType name="IP2GeoHttpGet">
+    <operation name="ResolveIP">
+      <documentation>Use a License Key of 0 for Testing</documentation>
+      <input message="s0:ResolveIPHttpGetIn" />
+      <output message="s0:ResolveIPHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="IP2GeoHttpPost">
+    <operation name="ResolveIP">
+      <documentation>Use a License Key of 0 for Testing</documentation>
+      <input message="s0:ResolveIPHttpPostIn" />
+      <output message="s0:ResolveIPHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="IP2GeoSoap" type="s0:IP2GeoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ResolveIP">
+      <soap:operation soapAction="http://ws.cdyne.com/ResolveIP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IP2GeoHttpGet" type="s0:IP2GeoHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ResolveIP">
+      <http:operation location="/ResolveIP" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IP2GeoHttpPost" type="s0:IP2GeoHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ResolveIP">
+      <http:operation location="/ResolveIP" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IP2Geo">
+    <documentation>Resolves IP addresses to Network Owner Name, Country, City, and State/Province.  In most US cities it will also provide some extra information such as Area Code, Latitude/Longitude, and more.</documentation>
+    <port name="IP2GeoSoap" binding="s0:IP2GeoSoap">
+      <soap:address location="http://ws.cdyne.com/ip2geo/ip2geo.asmx" />
+    </port>
+    <port name="IP2GeoHttpGet" binding="s0:IP2GeoHttpGet">
+      <http:address location="http://ws.cdyne.com/ip2geo/ip2geo.asmx" />
+    </port>
+    <port name="IP2GeoHttpPost" binding="s0:IP2GeoHttpPost">
+      <http:address location="http://ws.cdyne.com/ip2geo/ip2geo.asmx" />
+    </port>
+  </service>
+</definitions>

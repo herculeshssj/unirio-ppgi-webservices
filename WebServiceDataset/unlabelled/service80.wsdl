@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="CFCInvocationException"><sequence/></complexType><element name="CFCInvocationException" nillable="true" type="tns1:CFCInvocationException"/></schema></wsdl:types>
+  <wsdl:message name="getbannerbycatResponse">
+    <wsdl:part name="getbannerbycatReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewbannerstatsbycatRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="category" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getbannerbycatRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="category" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewallbannerstatsRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewbannerstatsbynameRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="bannername" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewallbannerstatsResponse">
+    <wsdl:part name="viewallbannerstatsReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getbannerbynameResponse">
+    <wsdl:part name="getbannerbynameReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="deletebannerResponse">
+    <wsdl:part name="deletebannerReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewbannerstatsbynameResponse">
+    <wsdl:part name="viewbannerstatsbynameReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getbannerbynameRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="bannername" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="deletebannerRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="bannername" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="viewbannerstatsbycatResponse">
+    <wsdl:part name="viewbannerstatsbycatReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:message name="getbannerResponse">
+    <wsdl:part name="getbannerReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="addbannerResponse">
+    <wsdl:part name="addbannerReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getbannerRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="addbannerRequest">
+    <wsdl:part name="username" type="xsd:string"/>
+    <wsdl:part name="password" type="xsd:string"/>
+    <wsdl:part name="allottedviews" type="xsd:string"/>
+    <wsdl:part name="clickurl" type="xsd:string"/>
+    <wsdl:part name="bannerlocation" type="xsd:string"/>
+    <wsdl:part name="bannername" type="xsd:string"/>
+    <wsdl:part name="category" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="wsbanner">
+    <wsdl:operation name="getbanner" parameterOrder="username password">
+      <wsdl:input name="getbannerRequest" message="impl:getbannerRequest"/>
+      <wsdl:output name="getbannerResponse" message="impl:getbannerResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="deletebanner" parameterOrder="username password bannername">
+      <wsdl:input name="deletebannerRequest" message="impl:deletebannerRequest"/>
+      <wsdl:output name="deletebannerResponse" message="impl:deletebannerResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="viewbannerstatsbycat" parameterOrder="username password category">
+      <wsdl:input name="viewbannerstatsbycatRequest" message="impl:viewbannerstatsbycatRequest"/>
+      <wsdl:output name="viewbannerstatsbycatResponse" message="impl:viewbannerstatsbycatResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getbannerbycat" parameterOrder="username password category">
+      <wsdl:input name="getbannerbycatRequest" message="impl:getbannerbycatRequest"/>
+      <wsdl:output name="getbannerbycatResponse" message="impl:getbannerbycatResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="addbanner" parameterOrder="username password allottedviews clickurl bannerlocation bannername category">
+      <wsdl:input name="addbannerRequest" message="impl:addbannerRequest"/>
+      <wsdl:output name="addbannerResponse" message="impl:addbannerResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="viewbannerstatsbyname" parameterOrder="username password bannername">
+      <wsdl:input name="viewbannerstatsbynameRequest" message="impl:viewbannerstatsbynameRequest"/>
+      <wsdl:output name="viewbannerstatsbynameResponse" message="impl:viewbannerstatsbynameResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="viewallbannerstats" parameterOrder="username password">
+      <wsdl:input name="viewallbannerstatsRequest" message="impl:viewallbannerstatsRequest"/>
+      <wsdl:output name="viewallbannerstatsResponse" message="impl:viewallbannerstatsResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="getbannerbyname" parameterOrder="username password bannername">
+      <wsdl:input name="getbannerbynameRequest" message="impl:getbannerbynameRequest"/>
+      <wsdl:output name="getbannerbynameResponse" message="impl:getbannerbynameResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsbanner.cfcSoapBinding" type="impl:wsbanner">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getbanner">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getbannerRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="getbannerResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletebanner">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="deletebannerRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="deletebannerResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewbannerstatsbycat">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="viewbannerstatsbycatRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="viewbannerstatsbycatResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getbannerbycat">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getbannerbycatRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="getbannerbycatResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addbanner">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addbannerRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="addbannerResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewbannerstatsbyname">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="viewbannerstatsbynameRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="viewbannerstatsbynameResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewallbannerstats">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="viewallbannerstatsRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="viewallbannerstatsResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getbannerbyname">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getbannerbynameRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:input>
+      <wsdl:output name="getbannerbynameResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsbannerService">
+    <wsdl:port name="wsbanner.cfc" binding="impl:wsbanner.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.tinetics.com/webservices/wsbanner.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

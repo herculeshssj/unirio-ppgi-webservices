@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="controtex.com/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="controtex.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="controtex.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="controtex.com">
+      <s:element name="GetUKCoord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUKCoordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUKCoordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CodeDistance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CodeDistanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CodeDistanceResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CodeDistanceArray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code1" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="code2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CodeDistanceArrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodeDistanceArrayResult" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CodeDistanceEncoded">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CodeDistanceEncodedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodeDistanceEncodedResult" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="double" type="s:double" />
+      <s:element name="ArrayOfDouble" nillable="true" type="s0:ArrayOfDouble" />
+    </s:schema>
+    <s:schema targetNamespace="controtex.com/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetUKCoordSoapIn">
+    <part name="parameters" element="s0:GetUKCoord" />
+  </message>
+  <message name="GetUKCoordSoapOut">
+    <part name="parameters" element="s0:GetUKCoordResponse" />
+  </message>
+  <message name="CodeDistanceSoapIn">
+    <part name="parameters" element="s0:CodeDistance" />
+  </message>
+  <message name="CodeDistanceSoapOut">
+    <part name="parameters" element="s0:CodeDistanceResponse" />
+  </message>
+  <message name="CodeDistanceArraySoapIn">
+    <part name="parameters" element="s0:CodeDistanceArray" />
+  </message>
+  <message name="CodeDistanceArraySoapOut">
+    <part name="parameters" element="s0:CodeDistanceArrayResponse" />
+  </message>
+  <message name="CodeDistanceEncodedSoapIn">
+    <part name="parameters" element="s0:CodeDistanceEncoded" />
+  </message>
+  <message name="CodeDistanceEncodedSoapOut">
+    <part name="parameters" element="s0:CodeDistanceEncodedResponse" />
+  </message>
+  <message name="GetUKCoordHttpGetIn">
+    <part name="PostCode" type="s:string" />
+  </message>
+  <message name="GetUKCoordHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CodeDistanceHttpGetIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CodeDistanceArrayHttpGetIn">
+    <part name="code1" type="s1:StringArray" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceArrayHttpGetOut">
+    <part name="Body" element="s0:ArrayOfDouble" />
+  </message>
+  <message name="CodeDistanceEncodedHttpGetIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceEncodedHttpGetOut">
+    <part name="Body" element="s0:ArrayOfDouble" />
+  </message>
+  <message name="GetUKCoordHttpPostIn">
+    <part name="PostCode" type="s:string" />
+  </message>
+  <message name="GetUKCoordHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CodeDistanceHttpPostIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CodeDistanceArrayHttpPostIn">
+    <part name="code1" type="s1:StringArray" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceArrayHttpPostOut">
+    <part name="Body" element="s0:ArrayOfDouble" />
+  </message>
+  <message name="CodeDistanceEncodedHttpPostIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="CodeDistanceEncodedHttpPostOut">
+    <part name="Body" element="s0:ArrayOfDouble" />
+  </message>
+  <portType name="GeographicalCoordSoap">
+    <operation name="GetUKCoord">
+      <documentation>&lt;i&gt;Find longitude and latitude of the given post code&lt;/i&gt;</documentation>
+      <input message="s0:GetUKCoordSoapIn" />
+      <output message="s0:GetUKCoordSoapOut" />
+    </operation>
+    <operation name="CodeDistance">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceSoapIn" />
+      <output message="s0:CodeDistanceSoapOut" />
+    </operation>
+    <operation name="CodeDistanceArray">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceArraySoapIn" />
+      <output message="s0:CodeDistanceArraySoapOut" />
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes.First postcode can contain list of post codes separated by semicolon&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceEncodedSoapIn" />
+      <output message="s0:CodeDistanceEncodedSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GeographicalCoordHttpGet">
+    <operation name="GetUKCoord">
+      <documentation>&lt;i&gt;Find longitude and latitude of the given post code&lt;/i&gt;</documentation>
+      <input message="s0:GetUKCoordHttpGetIn" />
+      <output message="s0:GetUKCoordHttpGetOut" />
+    </operation>
+    <operation name="CodeDistance">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceHttpGetIn" />
+      <output message="s0:CodeDistanceHttpGetOut" />
+    </operation>
+    <operation name="CodeDistanceArray">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceArrayHttpGetIn" />
+      <output message="s0:CodeDistanceArrayHttpGetOut" />
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes.First postcode can contain list of post codes separated by semicolon&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceEncodedHttpGetIn" />
+      <output message="s0:CodeDistanceEncodedHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GeographicalCoordHttpPost">
+    <operation name="GetUKCoord">
+      <documentation>&lt;i&gt;Find longitude and latitude of the given post code&lt;/i&gt;</documentation>
+      <input message="s0:GetUKCoordHttpPostIn" />
+      <output message="s0:GetUKCoordHttpPostOut" />
+    </operation>
+    <operation name="CodeDistance">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceHttpPostIn" />
+      <output message="s0:CodeDistanceHttpPostOut" />
+    </operation>
+    <operation name="CodeDistanceArray">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceArrayHttpPostIn" />
+      <output message="s0:CodeDistanceArrayHttpPostOut" />
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <documentation>&lt;i&gt;Find distance in miles between given post codes.First postcode can contain list of post codes separated by semicolon&lt;/i&gt;</documentation>
+      <input message="s0:CodeDistanceEncodedHttpPostIn" />
+      <output message="s0:CodeDistanceEncodedHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GeographicalCoordSoap" type="s0:GeographicalCoordSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetUKCoord">
+      <soap:operation soapAction="controtex.com/GetUKCoord" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CodeDistance">
+      <soap:operation soapAction="controtex.com/CodeDistance" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceArray">
+      <soap:operation soapAction="controtex.com/CodeDistanceArray" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <soap:operation soapAction="controtex.com/CodeDistanceEncoded" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GeographicalCoordHttpGet" type="s0:GeographicalCoordHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetUKCoord">
+      <http:operation location="/GetUKCoord" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistance">
+      <http:operation location="/CodeDistance" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceArray">
+      <http:operation location="/CodeDistanceArray" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <http:operation location="/CodeDistanceEncoded" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GeographicalCoordHttpPost" type="s0:GeographicalCoordHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetUKCoord">
+      <http:operation location="/GetUKCoord" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistance">
+      <http:operation location="/CodeDistance" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceArray">
+      <http:operation location="/CodeDistanceArray" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CodeDistanceEncoded">
+      <http:operation location="/CodeDistanceEncoded" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GeographicalCoord">
+    <documentation>&lt;b&gt;Get geographical coordinates for UK post codes&lt;br&gt;Find distance between two post codes&lt;/b&gt;</documentation>
+    <port name="GeographicalCoordSoap" binding="s0:GeographicalCoordSoap">
+      <soap:address location="http://www.discoverdance.co.uk/UKCoordinates/GeographicalCoord.asmx" />
+    </port>
+    <port name="GeographicalCoordHttpGet" binding="s0:GeographicalCoordHttpGet">
+      <http:address location="http://www.discoverdance.co.uk/UKCoordinates/GeographicalCoord.asmx" />
+    </port>
+    <port name="GeographicalCoordHttpPost" binding="s0:GeographicalCoordHttpPost">
+      <http:address location="http://www.discoverdance.co.uk/UKCoordinates/GeographicalCoord.asmx" />
+    </port>
+  </service>
+</definitions>

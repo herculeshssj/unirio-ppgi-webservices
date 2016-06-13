@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+   xmlns:tns="http://tempuri.org/"
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+   targetNamespace="http://tempuri.org/"
+   xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+
+           <message name="generateKeys" >
+
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Size" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:int" />
+
+
+  </message>
+  <message name="generateKeysResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+
+
+
+
+
+           <message name="verifyDocument" >
+
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Document" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="DocumentSigned" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+  <message name="verifyDocumentResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:boolean" />
+
+
+  </message>
+
+
+
+
+
+           <message name="registerUser" >
+
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Mail" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+  <message name="registerUserResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+
+
+
+
+
+           <message name="signDocument" >
+
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Document" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+  <message name="signDocumentResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+
+
+
+
+
+
+           <portType name="SignaturePort" >
+
+  <operation name="generateKeys"  >
+    <input message="tns:generateKeys" />
+
+    <output message="tns:generateKeysResponse" />
+
+
+  </operation>
+
+  <operation name="verifyDocument"  >
+    <input message="tns:verifyDocument" />
+
+    <output message="tns:verifyDocumentResponse" />
+
+
+  </operation>
+
+  <operation name="registerUser"  >
+    <input message="tns:registerUser" />
+
+    <output message="tns:registerUserResponse" />
+
+
+  </operation>
+
+  <operation name="signDocument"  >
+    <input message="tns:signDocument" />
+
+    <output message="tns:signDocumentResponse" />
+
+
+  </operation>
+
+  </portType>
+
+
+
+           <binding name="SignaturePortSoapBinding"
+           type="tns:SignaturePort" >
+
+    <soap:binding style="rpc"
+           transport="http://schemas.xmlsoap.org/soap/http" />
+
+  <operation name="generateKeys" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  <operation name="verifyDocument" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  <operation name="registerUser" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  <operation name="signDocument" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  </binding>
+
+
+     <service name="Signature" >
+
+    <port name="SignaturePort"
+      binding="tns:SignaturePortSoapBinding">
+     <soap:address location="http://www.adis.dynu.com:80/web-services/sig"/>
+    </port>
+
+  </service>
+
+</definitions>

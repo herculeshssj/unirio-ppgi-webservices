@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" 
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+   xmlns:tns="http://tempuri.org/" 
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+   targetNamespace="http://tempuri.org/"
+   xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+   
+   
+           <message name="decryptWithKey" >
+    
+  <part name="cipherText" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Key" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Iv" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  <message name="decryptWithKeyResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+           <message name="decrypt" >
+    
+  <part name="cipherText" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Type" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  <message name="decryptResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+           <message name="registerUser" >
+    
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Mail" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  <message name="registerUserResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+           <message name="encryptWithKey" >
+    
+  <part name="plainText" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Key" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Iv" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  <message name="encryptWithKeyResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+           <message name="generateKey" >
+    
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Size" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:int" />
+  
+ 
+  </message>
+  <message name="generateKeyResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+           <message name="encrypt" >
+    
+  <part name="plainText" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="User" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Password" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  <part name="Type" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  <message name="encryptResponse" >
+    
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+  
+ 
+  </message>
+  
+  
+  
+
+   
+   
+           <portType name="CryptoPort" >
+    
+  <operation name="decryptWithKey"  >
+    <input message="tns:decryptWithKey" />
+    
+    <output message="tns:decryptWithKeyResponse" />
+     
+    
+  </operation>
+ 
+  <operation name="decrypt"  >
+    <input message="tns:decrypt" />
+    
+    <output message="tns:decryptResponse" />
+     
+    
+  </operation>
+ 
+  <operation name="registerUser"  >
+    <input message="tns:registerUser" />
+    
+    <output message="tns:registerUserResponse" />
+     
+    
+  </operation>
+ 
+  <operation name="encryptWithKey"  >
+    <input message="tns:encryptWithKey" />
+    
+    <output message="tns:encryptWithKeyResponse" />
+     
+    
+  </operation>
+ 
+  <operation name="generateKey"  >
+    <input message="tns:generateKey" />
+    
+    <output message="tns:generateKeyResponse" />
+     
+    
+  </operation>
+ 
+  <operation name="encrypt"  >
+    <input message="tns:encrypt" />
+    
+    <output message="tns:encryptResponse" />
+     
+    
+  </operation>
+ 
+  </portType>
+
+   
+   
+           <binding name="CryptoPortSoapBinding"
+           type="tns:CryptoPort" >
+
+    <soap:binding style="rpc" 
+           transport="http://schemas.xmlsoap.org/soap/http" />
+    
+  <operation name="decryptWithKey" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  <operation name="decrypt" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  <operation name="registerUser" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  <operation name="encryptWithKey" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  <operation name="generateKey" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  <operation name="encrypt" >
+    <soap:operation 
+    soapAction="" 
+    style="rpc" />
+
+    <input>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </input>
+    <output>
+      
+            
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      
+      
+ 
+      
+    </output>
+    
+  </operation>
+ 
+    
+  </binding>
+
+   
+     <service name="Crypto" >
+    <documentation>todo: add your documentation here</documentation>
+    
+    <port name="CryptoPort" 
+      binding="tns:CryptoPortSoapBinding">
+     <soap:address location="http://www.adis.dynu.com:80/web-services/crypto"/>
+    </port>
+    
+  </service>
+
+</definitions>

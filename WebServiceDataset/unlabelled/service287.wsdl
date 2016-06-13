@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IGetInflectionservice" targetNamespace="http://www.verbix.com/" xmlns:tns="http://www.verbix.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://www.borland.com/namespaces/Types">
+  <types>
+    <xs:schema targetNamespace="http://www.borland.com/namespaces/Types" xmlns="http://www.borland.com/namespaces/Types">
+      <xs:complexType name="TStringDynArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="xs:string[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TWideStringDynArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="xs:string[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="GetLanguageListRequest"/>
+  <message name="GetLanguageListResponse">
+    <part name="return" type="ns1:TStringDynArray"/>
+  </message>
+  <message name="GetTenseListRequest">
+    <part name="langid" type="xs:int"/>
+  </message>
+  <message name="GetTenseListResponse">
+    <part name="return" type="ns1:TStringDynArray"/>
+  </message>
+  <message name="GetInflectionRequest">
+    <part name="username" type="xs:string"/>
+    <part name="password" type="xs:string"/>
+    <part name="langid" type="xs:int"/>
+    <part name="tenseid" type="xs:int"/>
+    <part name="verb" type="xs:string"/>
+  </message>
+  <message name="GetInflectionResponse">
+    <part name="return" type="ns1:TWideStringDynArray"/>
+  </message>
+  <portType name="IGetInflection">
+    <operation name="GetLanguageList">
+      <input message="tns:GetLanguageListRequest"/>
+      <output message="tns:GetLanguageListResponse"/>
+    </operation>
+    <operation name="GetTenseList">
+      <input message="tns:GetTenseListRequest"/>
+      <output message="tns:GetTenseListResponse"/>
+    </operation>
+    <operation name="GetInflection">
+      <input message="tns:GetInflectionRequest"/>
+      <output message="tns:GetInflectionResponse"/>
+    </operation>
+  </portType>
+  <binding name="IGetInflectionbinding" type="tns:IGetInflection">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetLanguageList">
+      <soap:operation soapAction="urn:GetInflectionIntf-IGetInflection#GetLanguageList" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </output>
+    </operation>
+    <operation name="GetTenseList">
+      <soap:operation soapAction="urn:GetInflectionIntf-IGetInflection#GetTenseList" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </output>
+    </operation>
+    <operation name="GetInflection">
+      <soap:operation soapAction="urn:GetInflectionIntf-IGetInflection#GetInflection" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:GetInflectionIntf-IGetInflection"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IGetInflectionservice">
+    <port name="IGetInflectionPort" binding="tns:IGetInflectionbinding">
+      <soap:address location="http://www.verbix.com/cgi-bin/soapx.exe/soap/IGetInflection"/>
+    </port>
+  </service>
+</definitions>
+

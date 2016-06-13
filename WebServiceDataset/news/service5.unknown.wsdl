@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://tips.cf" xmlns:tns3="http://rpc.xml.coldfusion" xmlns:tns2="http://xml.apache.org/xml-soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://tips.cf-impl" xmlns:intf="http://tips.cf" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"><types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2001/XMLSchema"><element name="dateTime" nillable="true" type="xsd:dateTime"/></schema><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.apache.org/xml-soap"><complexType name="Map"><sequence><element name="item" minOccurs="0" maxOccurs="unbounded"><complexType><all><element name="key" type="xsd:anyType"/><element name="value" type="xsd:anyType"/></all></complexType></element></sequence></complexType><element name="Map" nillable="true" type="tns2:Map"/></schema><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><complexType name="QueryBean"><sequence><element name="data" nillable="true" type="intf:ArrayOfArrayOf_xsd_anyType"/><element name="ColumnList" nillable="true" type="intf:ArrayOf_SOAP-ENC_string"/></sequence></complexType><element name="QueryBean" nillable="true" type="tns3:QueryBean"/></schema><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tips.cf"><complexType name="ArrayOfArrayOf_xsd_anyType"><complexContent><restriction base="SOAP-ENC:Array"><attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:anyType[][]"/></restriction></complexContent></complexType><complexType name="ArrayOf_SOAP-ENC_string"><complexContent><restriction base="SOAP-ENC:Array"><attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]"/></restriction></complexContent></complexType></schema></types>
+  <wsdl:message name="GetRequest">
+    <wsdl:part name="date" type="xsd:dateTime"/>
+  </wsdl:message>
+  <wsdl:message name="SearchRequest">
+    <wsdl:part name="text" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="SearchResponse">
+    <wsdl:part name="return" type="tns3:QueryBean"/>
+  </wsdl:message>
+  <wsdl:message name="BrowseResponse">
+    <wsdl:part name="return" type="tns2:Map"/>
+  </wsdl:message>
+  <wsdl:message name="BrowseRequest">
+    <wsdl:part name="age" type="SOAP-ENC:double"/>
+  </wsdl:message>
+  <wsdl:message name="GetResponse">
+    <wsdl:part name="return" type="tns2:Map"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:portType name="syndicate">
+    <wsdl:operation name="Get" parameterOrder="date">
+      <wsdl:input message="intf:GetRequest"/>
+      <wsdl:output message="intf:GetResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="Search" parameterOrder="text">
+      <wsdl:input message="intf:SearchRequest"/>
+      <wsdl:output message="intf:SearchResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="Browse" parameterOrder="age">
+      <wsdl:input message="intf:BrowseRequest"/>
+      <wsdl:output message="intf:BrowseResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="syndicate.cfcSoapBinding" type="intf:syndicate">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Get">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Browse">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://tips.cf"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="syndicateService">
+    <wsdl:port name="syndicate.cfc" binding="intf:syndicate.cfcSoapBinding">
+      <wsdlsoap:address location="http://www.forta.com/cf/tips/syndicate.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

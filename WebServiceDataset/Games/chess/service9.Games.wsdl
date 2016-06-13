@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+ <!-- Generated 04/05/01 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.00.530.0 --> 
+<definitions  name ='tbapi'   targetNamespace = 'http://lokasoft.org/wsdl/'
+	 xmlns:wsdlns='http://lokasoft.org/wsdl/' 
+	 xmlns:typens='http://lokasoft.org/type' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+	 xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://lokasoft.org/type'
+      xmlns='http://www.w3.org/2001/XMLSchema'
+      xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+      xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+      elementFormDefault='qualified'>
+    </schema>
+  </types>
+  <message name='TB2ComObj.DoMove'>
+    <part name='fen' type='xsd:string'/>
+    <part name='move' type='xsd:string'/>
+  </message>
+  <message name='TB2ComObj.DoMoveResponse'>
+    <part name='Result' type='xsd:string'/>
+  </message>
+  <message name='TB2ComObj.GetBestMoves'>
+    <part name='fen' type='xsd:string'/>
+  </message>
+  <message name='TB2ComObj.GetBestMovesResponse'>
+    <part name='Result' type='xsd:string'/>
+  </message>
+  <message name='TB2ComObj.ProbePosition'>
+    <part name='fen' type='xsd:string'/>
+  </message>
+  <message name='TB2ComObj.ProbePositionResponse'>
+    <part name='Result' type='xsd:string'/>
+  </message>
+  <portType name='TB2ComObjSoapPort'>
+    <operation name='DoMove' parameterOrder='fen move'>
+      <input message='wsdlns:TB2ComObj.DoMove' />
+      <output message='wsdlns:TB2ComObj.DoMoveResponse' />
+    </operation>
+    <operation name='GetBestMoves' parameterOrder='fen'>
+      <input message='wsdlns:TB2ComObj.GetBestMoves' />
+      <output message='wsdlns:TB2ComObj.GetBestMovesResponse' />
+    </operation>
+    <operation name='ProbePosition' parameterOrder='fen'>
+      <input message='wsdlns:TB2ComObj.ProbePosition' />
+      <output message='wsdlns:TB2ComObj.ProbePositionResponse' />
+    </operation>
+  </portType>
+  <binding name='TB2ComObjSoapBinding' type='wsdlns:TB2ComObjSoapPort' >
+    <stk:binding preferredEncoding='UTF-8'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='DoMove' >
+      <soap:operation soapAction='http://lokasoft.org/action/TB2ComObj.DoMove' />
+      <input>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+    <operation name='GetBestMoves' >
+      <soap:operation soapAction='http://lokasoft.org/action/TB2ComObj.GetBestMoves' />
+      <input>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+    <operation name='ProbePosition' >
+      <soap:operation soapAction='http://lokasoft.org/action/TB2ComObj.ProbePosition' />
+      <input>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://lokasoft.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='tbapi' >
+    <port name='TB2ComObjSoapPort' binding='wsdlns:TB2ComObjSoapBinding' >
+      <soap:address location='http://mx2.lokasoft.com/tbweb/tbapi.ASP' />
+    </port>
+  </service>
+</definitions>

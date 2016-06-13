@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+
+<definitions name="SearchText.csearch" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="SearchForTextRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="SearchText" type="xsd:string"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+        <part name="IsFound" type="xsd:boolean"/>
+    </message>
+    <message name="SearchForTextResponse">
+        <part name="IsFound" type="xsd:boolean"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetNextPositionRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="SearchText" type="xsd:string"/>
+        <part name="StartPos" type="xsd:long"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+    </message>
+    <message name="GetNextPositionResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="GetFirstPositionRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="SearchText" type="xsd:string"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+        <part name="FirstPosition" type="xsd:long"/>
+    </message>
+    <message name="GetFirstPositionResponse">
+        <part name="FirstPosition" type="xsd:long"/>
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="GetNumberOfOccurencesRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="SearchText" type="xsd:string"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+        <part name="NumberOfOccurences" type="xsd:long"/>
+    </message>
+    <message name="GetNumberOfOccurencesResponse">
+        <part name="NumberOfOccurences" type="xsd:long"/>
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="SearchText.csearchPortType">
+        <operation name="SearchForText">
+            <input message="tns:SearchForTextRequest"/>
+            <output message="tns:SearchForTextResponse"/>
+        </operation>
+        <operation name="GetNextPosition">
+            <input message="tns:GetNextPositionRequest"/>
+            <output message="tns:GetNextPositionResponse"/>
+        </operation>
+        <operation name="GetFirstPosition">
+            <input message="tns:GetFirstPositionRequest"/>
+            <output message="tns:GetFirstPositionResponse"/>
+        </operation>
+        <operation name="GetNumberOfOccurences">
+            <input message="tns:GetNumberOfOccurencesRequest"/>
+            <output message="tns:GetNumberOfOccurencesResponse"/>
+        </operation>
+    </portType>
+    <binding name="SearchText.csearchbinding" type="tns:SearchText.csearchPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="SearchForText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml#SearchForText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNextPosition">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml#GetNextPosition"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetFirstPosition">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml#GetFirstPosition"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumberOfOccurences">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml#GetNumberOfOccurences"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/SearchText/CSearch.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="SearchText.csearchService">
+        <port name="SearchText.csearchPort" binding="tns:SearchText.csearchbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/strings.cgi"/>
+        </port>
+    </service>
+</definitions>

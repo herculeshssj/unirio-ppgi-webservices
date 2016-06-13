@@ -1,0 +1,753 @@
+<?xml version="1.0" ?>
+
+<definitions name="CText.ctext" targetNamespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CText/CText.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchTextIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="SearchDate" type="xsd:string"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="SearchTextIDResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceDataTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceDataTypeID" type="xsd:long"/>
+        <part name="SearchDate" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromTextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceDataTypeIDResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceDataTypeIDSourceIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeID" type="xsd:long"/>
+        <part name="SourceID" type="xsd:long"/>
+        <part name="SearchDate" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromTextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceDataTypeIDSourceIDResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="SearchDate" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromTextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="GetTextResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+    </message>
+    <message name="UpdTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceDataTypeID" type="xsd:long"/>
+        <part name="SourceID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="ReturnTextID" type="xsd:long"/>
+    </message>
+    <message name="NewTextResponse">
+        <part name="ReturnTextID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="DelTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecDataType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDataTypeResponse">
+        <part name="RecDataType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecTextType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetTextTypeResponse">
+        <part name="RecTextType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetNumTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="NumText" type="xsd:long"/>
+    </message>
+    <message name="GetNumTextResponse">
+        <part name="NumText" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultDataTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="RecDataType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultDataTypeResponse">
+        <part name="RecDataType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeID" type="xsd:long"/>
+        <part name="DataTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdDataTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelDataTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewDataTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnDataTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewDataTypeResponse">
+        <part name="ReturnDataTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceDataTypeID" type="xsd:long"/>
+        <part name="SourceID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="LinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnLinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceDataTypeID" type="xsd:long"/>
+        <part name="SourceID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="UnLinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="FileTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultFileTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultTextTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="RecTextType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultTextTypeResponse">
+        <part name="RecTextType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="RecFileType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultFileTypeResponse">
+        <part name="RecFileType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+        <part name="TextTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdTextTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="FileTypeID" type="xsd:long"/>
+        <part name="FileTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdFileTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="FileTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelFileTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelTextTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewTextTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnTextTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewTextTypeResponse">
+        <part name="ReturnTextTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="FileTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnFileTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewFileTypeResponse">
+        <part name="ReturnFileTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetFileTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecFileType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetFileTypeResponse">
+        <part name="RecFileType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultTextTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultTextTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultFileTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="FileTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultFileTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultDataTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="DataTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultDataTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CText.ctextPortType">
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="SearchTextID">
+            <input message="tns:SearchTextIDRequest"/>
+            <output message="tns:SearchTextIDResponse"/>
+        </operation>
+        <operation name="SearchSourceDataTypeID">
+            <input message="tns:SearchSourceDataTypeIDRequest"/>
+            <output message="tns:SearchSourceDataTypeIDResponse"/>
+        </operation>
+        <operation name="SearchSourceDataTypeIDSourceID">
+            <input message="tns:SearchSourceDataTypeIDSourceIDRequest"/>
+            <output message="tns:SearchSourceDataTypeIDSourceIDResponse"/>
+        </operation>
+        <operation name="SearchReference">
+            <input message="tns:SearchReferenceRequest"/>
+            <output message="tns:SearchReferenceResponse"/>
+        </operation>
+        <operation name="GetText">
+            <input message="tns:GetTextRequest"/>
+            <output message="tns:GetTextResponse"/>
+        </operation>
+        <operation name="UpdText">
+            <input message="tns:UpdTextRequest"/>
+            <output message="tns:UpdTextResponse"/>
+        </operation>
+        <operation name="NewText">
+            <input message="tns:NewTextRequest"/>
+            <output message="tns:NewTextResponse"/>
+        </operation>
+        <operation name="DelText">
+            <input message="tns:DelTextRequest"/>
+            <output message="tns:DelTextResponse"/>
+        </operation>
+        <operation name="LookupGetDataType">
+            <input message="tns:LookupGetDataTypeRequest"/>
+            <output message="tns:LookupGetDataTypeResponse"/>
+        </operation>
+        <operation name="LookupGetTextType">
+            <input message="tns:LookupGetTextTypeRequest"/>
+            <output message="tns:LookupGetTextTypeResponse"/>
+        </operation>
+        <operation name="GetNumText">
+            <input message="tns:GetNumTextRequest"/>
+            <output message="tns:GetNumTextResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultDataType">
+            <input message="tns:LookupLinkDefaultDataTypeRequest"/>
+            <output message="tns:LookupLinkDefaultDataTypeResponse"/>
+        </operation>
+        <operation name="LookupGetDefaultDataType">
+            <input message="tns:LookupGetDefaultDataTypeRequest"/>
+            <output message="tns:LookupGetDefaultDataTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdDataType">
+            <input message="tns:LookupUpdDataTypeRequest"/>
+            <output message="tns:LookupUpdDataTypeResponse"/>
+        </operation>
+        <operation name="LookupDelDataType">
+            <input message="tns:LookupDelDataTypeRequest"/>
+            <output message="tns:LookupDelDataTypeResponse"/>
+        </operation>
+        <operation name="LookupNewDataType">
+            <input message="tns:LookupNewDataTypeRequest"/>
+            <output message="tns:LookupNewDataTypeResponse"/>
+        </operation>
+        <operation name="LinkText">
+            <input message="tns:LinkTextRequest"/>
+            <output message="tns:LinkTextResponse"/>
+        </operation>
+        <operation name="UnLinkText">
+            <input message="tns:UnLinkTextRequest"/>
+            <output message="tns:UnLinkTextResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultFileType">
+            <input message="tns:LookupLinkDefaultFileTypeRequest"/>
+            <output message="tns:LookupLinkDefaultFileTypeResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultTextType">
+            <input message="tns:LookupLinkDefaultTextTypeRequest"/>
+            <output message="tns:LookupLinkDefaultTextTypeResponse"/>
+        </operation>
+        <operation name="LookupGetDefaultTextType">
+            <input message="tns:LookupGetDefaultTextTypeRequest"/>
+            <output message="tns:LookupGetDefaultTextTypeResponse"/>
+        </operation>
+        <operation name="LookupGetDefaultFileType">
+            <input message="tns:LookupGetDefaultFileTypeRequest"/>
+            <output message="tns:LookupGetDefaultFileTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdTextType">
+            <input message="tns:LookupUpdTextTypeRequest"/>
+            <output message="tns:LookupUpdTextTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdFileType">
+            <input message="tns:LookupUpdFileTypeRequest"/>
+            <output message="tns:LookupUpdFileTypeResponse"/>
+        </operation>
+        <operation name="LookupDelFileType">
+            <input message="tns:LookupDelFileTypeRequest"/>
+            <output message="tns:LookupDelFileTypeResponse"/>
+        </operation>
+        <operation name="LookupDelTextType">
+            <input message="tns:LookupDelTextTypeRequest"/>
+            <output message="tns:LookupDelTextTypeResponse"/>
+        </operation>
+        <operation name="LookupNewTextType">
+            <input message="tns:LookupNewTextTypeRequest"/>
+            <output message="tns:LookupNewTextTypeResponse"/>
+        </operation>
+        <operation name="LookupNewFileType">
+            <input message="tns:LookupNewFileTypeRequest"/>
+            <output message="tns:LookupNewFileTypeResponse"/>
+        </operation>
+        <operation name="LookupGetFileType">
+            <input message="tns:LookupGetFileTypeRequest"/>
+            <output message="tns:LookupGetFileTypeResponse"/>
+        </operation>
+        <operation name="IsDefaultTextTypeID">
+            <input message="tns:IsDefaultTextTypeIDRequest"/>
+            <output message="tns:IsDefaultTextTypeIDResponse"/>
+        </operation>
+        <operation name="IsDefaultFileTypeID">
+            <input message="tns:IsDefaultFileTypeIDRequest"/>
+            <output message="tns:IsDefaultFileTypeIDResponse"/>
+        </operation>
+        <operation name="IsDefaultDataTypeID">
+            <input message="tns:IsDefaultDataTypeIDRequest"/>
+            <output message="tns:IsDefaultDataTypeIDResponse"/>
+        </operation>
+    </portType>
+    <binding name="CText.ctextbinding" type="tns:CText.ctextPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchTextID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#SearchTextID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSourceDataTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#SearchSourceDataTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSourceDataTypeIDSourceID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#SearchSourceDataTypeIDSourceID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchReference">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#SearchReference"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#GetText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#UpdText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#NewText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#DelText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#GetNumText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupLinkDefaultDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDefaultDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetDefaultDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupUpdDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupDelDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewDataType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupNewDataType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnLinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#UnLinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupLinkDefaultFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupLinkDefaultTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDefaultTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetDefaultTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDefaultFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetDefaultFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupUpdTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupUpdFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupDelFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupDelTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewTextType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupNewTextType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupNewFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetFileType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#LookupGetFileType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultTextTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#IsDefaultTextTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultFileTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#IsDefaultFileTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultDataTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CText/CText.xml#IsDefaultDataTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CText/CText.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CText.ctextService">
+        <port name="CText.ctextPort" binding="tns:CText.ctextbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

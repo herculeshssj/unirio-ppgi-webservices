@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeMetricWeightUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MetricWeightValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromMetricWeightUnit" type="s0:MetricWeights" />
+            <s:element minOccurs="1" maxOccurs="1" name="toMetricWeightUnit" type="s0:MetricWeights" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MetricWeights">
+        <s:restriction base="s:string">
+          <s:enumeration value="microgram" />
+          <s:enumeration value="milligram" />
+          <s:enumeration value="centigram" />
+          <s:enumeration value="decigram" />
+          <s:enumeration value="gram" />
+          <s:enumeration value="dekagram" />
+          <s:enumeration value="hectogram" />
+          <s:enumeration value="kilogram" />
+          <s:enumeration value="metricton" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeMetricWeightUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeMetricWeightUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeMetricWeightUnitSoapIn">
+    <part name="parameters" element="s0:ChangeMetricWeightUnit" />
+  </message>
+  <message name="ChangeMetricWeightUnitSoapOut">
+    <part name="parameters" element="s0:ChangeMetricWeightUnitResponse" />
+  </message>
+  <message name="ChangeMetricWeightUnitHttpGetIn">
+    <part name="MetricWeightValue" type="s:string" />
+    <part name="fromMetricWeightUnit" type="s:string" />
+    <part name="toMetricWeightUnit" type="s:string" />
+  </message>
+  <message name="ChangeMetricWeightUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeMetricWeightUnitHttpPostIn">
+    <part name="MetricWeightValue" type="s:string" />
+    <part name="fromMetricWeightUnit" type="s:string" />
+    <part name="toMetricWeightUnit" type="s:string" />
+  </message>
+  <message name="ChangeMetricWeightUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="MetricWeightUnitSoap">
+    <operation name="ChangeMetricWeightUnit">
+      <input message="s0:ChangeMetricWeightUnitSoapIn" />
+      <output message="s0:ChangeMetricWeightUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="MetricWeightUnitHttpGet">
+    <operation name="ChangeMetricWeightUnit">
+      <input message="s0:ChangeMetricWeightUnitHttpGetIn" />
+      <output message="s0:ChangeMetricWeightUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="MetricWeightUnitHttpPost">
+    <operation name="ChangeMetricWeightUnit">
+      <input message="s0:ChangeMetricWeightUnitHttpPostIn" />
+      <output message="s0:ChangeMetricWeightUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="MetricWeightUnitSoap" type="s0:MetricWeightUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeMetricWeightUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeMetricWeightUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MetricWeightUnitHttpGet" type="s0:MetricWeightUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeMetricWeightUnit">
+      <http:operation location="/ChangeMetricWeightUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MetricWeightUnitHttpPost" type="s0:MetricWeightUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeMetricWeightUnit">
+      <http:operation location="/ChangeMetricWeightUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MetricWeightUnit">
+    <port name="MetricWeightUnitSoap" binding="s0:MetricWeightUnitSoap">
+      <soap:address location="http://www.webservicex.net/convertMetricWeight.asmx" />
+    </port>
+    <port name="MetricWeightUnitHttpGet" binding="s0:MetricWeightUnitHttpGet">
+      <http:address location="http://www.webservicex.net/convertMetricWeight.asmx" />
+    </port>
+    <port name="MetricWeightUnitHttpPost" binding="s0:MetricWeightUnitHttpPost">
+      <http:address location="http://www.webservicex.net/convertMetricWeight.asmx" />
+    </port>
+  </service>
+</definitions>

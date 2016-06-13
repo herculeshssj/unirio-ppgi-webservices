@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www3.creditdiscovery.com/axis/services/CreditReport" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://www3.creditdiscovery.com/axis/services/CreditReport" xmlns:intf="http://www3.creditdiscovery.com/axis/services/CreditReport" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><wsdl:types/>
+  <wsdl:message name="requestReportResponse">
+    <wsdl:part name="requestReportReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="requestReportRequest">
+    <wsdl:part name="xml" type="xsd:string"/>
+    <wsdl:part name="id" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="requestReportResponse1">
+    <wsdl:part name="requestReportReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="requestReportRequest1">
+    <wsdl:part name="xml" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="CreditReportService">
+    <wsdl:operation name="requestReport" parameterOrder="xml id">
+      <wsdl:input message="impl:requestReportRequest" name="requestReportRequest"/>
+      <wsdl:output message="impl:requestReportResponse" name="requestReportResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="requestReport" parameterOrder="xml">
+      <wsdl:input message="impl:requestReportRequest1" name="requestReportRequest1"/>
+      <wsdl:output message="impl:requestReportResponse1" name="requestReportResponse1"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreditReportSoapBinding" type="impl:CreditReportService">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="requestReport">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="requestReportRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www3.creditdiscovery.com/axis/services/CreditReport" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="requestReportResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www3.creditdiscovery.com/axis/services/CreditReport" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="requestReport">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="requestReportRequest1">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www3.creditdiscovery.com/axis/services/CreditReport" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="requestReportResponse1">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www3.creditdiscovery.com/axis/services/CreditReport" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreditReportServiceService">
+    <wsdl:port binding="impl:CreditReportSoapBinding" name="CreditReport">
+      <wsdlsoap:address location="http://www3.creditdiscovery.com/axis/services/CreditReport"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

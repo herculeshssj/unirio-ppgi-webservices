@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.firelife.eu.com/dynamicflash/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.firelife.eu.com/dynamicflash/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.firelife.eu.com/dynamicflash/">
+      <s:element name="GenerateDynamicFlashHtml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intMovieType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intWidth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intHeight" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnshowflashmenu" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strbackgroundcolour" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnloopMovie" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strvar1" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateDynamicFlashHtmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateDynamicFlashHtmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GenerateDynamicFlashHtmlSoapIn">
+    <part name="parameters" element="s0:GenerateDynamicFlashHtml" />
+  </message>
+  <message name="GenerateDynamicFlashHtmlSoapOut">
+    <part name="parameters" element="s0:GenerateDynamicFlashHtmlResponse" />
+  </message>
+  <portType name="DynamicFlashWebServiceSoap">
+    <operation name="GenerateDynamicFlashHtml">
+      <documentation>Returns HTML text which will allow custom text to be generated as part of a flash movie.) Parameters &gt;&gt;&gt;&gt; intMovieType {1 - Displays thank you for registering with us, uses strvar1 within Flash movie.} {2 - Uses strvar1 to display the total of a shopping cart transaction.} intWidth {Width in pixels. 550 is a standard size to use.} intHeight{Height in pixels. 400 is a standard size to use.} blnshowflashmenu {Boolean as to whether or not to show the built in flash menu.} strbackgroundcolour{Background colour either in Hex format or colourname '#ffffff' = white.} blnloopMovie {Boolean as to whether or not to loop the generated flash movie.}</documentation>
+      <input message="s0:GenerateDynamicFlashHtmlSoapIn" />
+      <output message="s0:GenerateDynamicFlashHtmlSoapOut" />
+    </operation>
+  </portType>
+  <binding name="DynamicFlashWebServiceSoap" type="s0:DynamicFlashWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GenerateDynamicFlashHtml">
+      <soap:operation soapAction="http://www.firelife.eu.com/dynamicflash/GenerateDynamicFlashHtml" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DynamicFlashWebService">
+    <documentation>This XML Webservice generates the HTML required to include dynamic Macromedia flash content into your website.  The Service will produce a link to some dynamic movies that we have generated for public use.  Each movie accepts 1 string variable parameter that will be included in the dynamic flash movie that will be generated and shown on your site.  For example Movie Type 1 allows you to include a string in a movie which shows 'Thank you for Registering with us...'</documentation>
+    <port name="DynamicFlashWebServiceSoap" binding="s0:DynamicFlashWebServiceSoap">
+      <soap:address location="http://www.firelife.eu.com/dynamicflash/dynamicflash.asmx" />
+    </port>
+  </service>
+</definitions>

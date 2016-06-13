@@ -1,0 +1,261 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.freedb.FreeDBService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/freedb/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/freedb/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xns4="http://systinet.com/wsdl/com/systinet/demo/freedb/">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/com/systinet/demo/freedb/"/>
+            <xsd:element name="p0" nillable="true" type="xsd:string"/>
+            <xsd:element name="ArrayOfCDInfo_Response" nillable="true"
+                type="xns4:ArrayOfCDInfo"/>
+            <xsd:element name="p0_1" nillable="true" type="xns4:CDInfo"/>
+            <xsd:element name="CDDetails_Response" nillable="true"
+                type="xns4:CDDetails"/>
+        </xsd:schema>
+
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/com/systinet/demo/freedb/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:complexType name="CDInfo">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type name="com.systinet.demo.freedb.CDInfo"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="artist" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="category" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="discId" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfCDInfo">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.freedb.CDInfo;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="CDInfo" nillable="true" type="tns:CDInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="CDDetails">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.freedb.CDDetails"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="artist" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="category" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="discId" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="duration" type="xsd:int"/>
+                    <xsd:element name="genre" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="tracks" nillable="true"
+                        type="tns:ArrayOfCDTrackDetails"/>
+                    <xsd:element name="year" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="CDTrackDetails">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.freedb.CDTrackDetails"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="duration" type="xsd:int"/>
+                    <xsd:element name="songTitle" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="trackNumber" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfCDTrackDetails">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.freedb.CDTrackDetails;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="CDTrackDetails" nillable="true"
+                        type="tns:CDTrackDetails"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='FreeDBService_searchByArtist_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_getDetails_Response'>
+        <wsdl:part name='response' element='ns0:CDDetails_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_search_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfCDInfo_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_getDetails_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0_1'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTrack_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTrack_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfCDInfo_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_getDetails_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_search_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTitle_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTrack_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTitle_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfCDInfo_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByArtist_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfCDInfo_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_search_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByTitle_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='FreeDBService_searchByArtist_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:portType name='FreeDBService'>
+        <wsdl:operation name='search' parameterOrder='p0'>
+            <wsdl:input message='tns:FreeDBService_search_1_Request'/>
+            <wsdl:output message='tns:FreeDBService_search_Response'/>
+            <wsdl:fault name='search_fault1' message='tns:FreeDBService_search_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='getDetails' parameterOrder='p0'>
+            <wsdl:input message='tns:FreeDBService_getDetails_1_Request'/>
+            <wsdl:output message='tns:FreeDBService_getDetails_Response'/>
+            <wsdl:fault name='getDetails_fault1' message='tns:FreeDBService_getDetails_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='searchByArtist' parameterOrder='p0'>
+            <wsdl:input message='tns:FreeDBService_searchByArtist_1_Request'/>
+            <wsdl:output message='tns:FreeDBService_searchByArtist_Response'/>
+            <wsdl:fault name='searchByArtist_fault1' message='tns:FreeDBService_searchByArtist_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='searchByTitle' parameterOrder='p0'>
+            <wsdl:input message='tns:FreeDBService_searchByTitle_1_Request'/>
+            <wsdl:output message='tns:FreeDBService_searchByTitle_Response'/>
+            <wsdl:fault name='searchByTitle_fault1' message='tns:FreeDBService_searchByTitle_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='searchByTrack' parameterOrder='p0'>
+            <wsdl:input message='tns:FreeDBService_searchByTrack_1_Request'/>
+            <wsdl:output message='tns:FreeDBService_searchByTrack_Response'/>
+            <wsdl:fault name='searchByTrack_fault1' message='tns:FreeDBService_searchByTrack_java.io.IOException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='FreeDBService' type='tns:FreeDBService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='search'>
+            <map:java-operation name='search' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService#search#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='search_fault1'>
+                <soap:fault name='search_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='getDetails'>
+            <map:java-operation name='getDetails' signature='KExjb20vc3lzdGluZXQvZGVtby9mcmVlZGIvQ0RJbmZvOylMY29tL3N5c3RpbmV0L2RlbW8vZnJlZWRiL0NERGV0YWlsczs='/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService#getDetails#KExjb20vc3lzdGluZXQvZGVtby9mcmVlZGIvQ0RJbmZvOylMY29tL3N5c3RpbmV0L2RlbW8vZnJlZWRiL0NERGV0YWlsczs=' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='getDetails_fault1'>
+                <soap:fault name='getDetails_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='searchByArtist'>
+            <map:java-operation name='searchByArtist' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService#searchByArtist#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='searchByArtist_fault1'>
+                <soap:fault name='searchByArtist_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='searchByTitle'>
+            <map:java-operation name='searchByTitle' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService#searchByTitle#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='searchByTitle_fault1'>
+                <soap:fault name='searchByTitle_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='searchByTrack'>
+            <map:java-operation name='searchByTrack' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService#searchByTrack#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL2ZyZWVkYi9DREluZm87' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='searchByTrack_fault1'>
+                <soap:fault name='searchByTrack_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/freedb/FreeDBService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='FreeDBService' binding='tns:FreeDBService'>
+            <soap:address location='http://soap.systinet.net:6080/FreeDB/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

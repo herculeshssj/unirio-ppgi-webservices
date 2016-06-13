@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://circle24.com/webservices/Astrology" targetNamespace="http://circle24.com/webservices/Astrology" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://circle24.com/webservices/Astrology">
+      <s:element name="GetHoroscope">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sign" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHoroscopeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetHoroscopeResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetHoroscopeSoapIn">
+    <part name="parameters" element="s0:GetHoroscope" />
+  </message>
+  <message name="GetHoroscopeSoapOut">
+    <part name="parameters" element="s0:GetHoroscopeResponse" />
+  </message>
+  <message name="GetHoroscopeHttpGetIn">
+    <part name="Sign" type="s:string" />
+  </message>
+  <message name="GetHoroscopeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetHoroscopeHttpPostIn">
+    <part name="Sign" type="s:string" />
+  </message>
+  <message name="GetHoroscopeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="AstrologyServiceSoap">
+    <operation name="GetHoroscope">
+      <documentation>Get Horoscope of the Day.</documentation>
+      <input message="s0:GetHoroscopeSoapIn" />
+      <output message="s0:GetHoroscopeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AstrologyServiceHttpGet">
+    <operation name="GetHoroscope">
+      <documentation>Get Horoscope of the Day.</documentation>
+      <input message="s0:GetHoroscopeHttpGetIn" />
+      <output message="s0:GetHoroscopeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AstrologyServiceHttpPost">
+    <operation name="GetHoroscope">
+      <documentation>Get Horoscope of the Day.</documentation>
+      <input message="s0:GetHoroscopeHttpPostIn" />
+      <output message="s0:GetHoroscopeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AstrologyServiceSoap" type="s0:AstrologyServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetHoroscope">
+      <soap:operation soapAction="http://circle24.com/webservices/Astrology/GetHoroscope" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AstrologyServiceHttpGet" type="s0:AstrologyServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetHoroscope">
+      <http:operation location="/GetHoroscope" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AstrologyServiceHttpPost" type="s0:AstrologyServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetHoroscope">
+      <http:operation location="/GetHoroscope" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AstrologyService">
+    <documentation>A Web Service which displays the daily horoscope.</documentation>
+    <port name="AstrologyServiceSoap" binding="s0:AstrologyServiceSoap">
+      <soap:address location="http://upload.eraserver.net/circle24/astrology/astrologyservice.asmx" />
+    </port>
+    <port name="AstrologyServiceHttpGet" binding="s0:AstrologyServiceHttpGet">
+      <http:address location="http://upload.eraserver.net/circle24/astrology/astrologyservice.asmx" />
+    </port>
+    <port name="AstrologyServiceHttpPost" binding="s0:AstrologyServiceHttpPost">
+      <http:address location="http://upload.eraserver.net/circle24/astrology/astrologyservice.asmx" />
+    </port>
+  </service>
+</definitions>

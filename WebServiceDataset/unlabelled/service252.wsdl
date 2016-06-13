@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+ targetNamespace="http://majordojo.com/AmazonQuery"
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:md="http://majordojo.com/AmazonQuery"
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <types>
+  <schema targetNamespace="http://majordojo.com/AmazonQuery"
+          xmlns="http://www.w3.org/2001/XMLSchema">
+
+   <complexType name="Product">
+    <sequence>
+     <element name="ranking" type="xsd:int"/>
+     <element name="title" type="xsd:string"/>
+     <element name="asin" type="xsd:int"/>
+     <element name="author" type="xsd:string"/>
+     <element name="image" type="xsd:anyURI"/>
+     <element name="small_image" type="xsd:anyURI"/>
+     <element name="our_price" type="xsd:string"/>
+     <element name="list_price" type="xsd:string"/>
+     <element name="release_date" type="xsd:string"/>
+     <element name="binding" type="xsd:string"/>
+     <element name="availability" nillable="true" type="xsd:string"/>
+     <element name="tagged_url" type="xsd:anyURI"/>
+    </sequence>
+   </complexType>
+   <element name="product" nillable="true" type="md:Product"/>
+   <complexType name="ArrayOf_md_Product">
+    <complexContent>
+     <restriction base="SOAP-ENC:Array">
+      <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="md:Product[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+   <element name="ArrayOf_md_Product" nillable="true"
+            type="md:ArrayOf_md_Product"/>
+  </schema>
+ </types>
+
+   <wsdl:message name="searchRequest">
+      <wsdl:part name="associates_id" type="xsd:string"/>
+      <wsdl:part name="product_group" type="xsd:string"/>
+      <wsdl:part name="keywords" type="xsd:string"/>
+   </wsdl:message>
+   <wsdl:message name="searchResponse">
+      <wsdl:part name="keyword" type="xsd:string"/>
+      <wsdl:part name="product_group" type="xsd:string"/>
+      <wsdl:part name="product" type="md:ArrayOf_md_Product"/>
+   </wsdl:message>
+
+   <wsdl:message name="browseRequest">
+      <wsdl:part name="associates_id" type="xsd:string"/>
+      <wsdl:part name="product_group" type="xsd:string"/>
+      <wsdl:part name="category" type="xsd:string"/>
+   </wsdl:message>
+   <wsdl:message name="browseResponse">
+      <wsdl:part name="category" type="xsd:string"/>
+      <wsdl:part name="product_group" type="xsd:string"/>
+      <wsdl:part name="product" type="md:ArrayOf_md_Product"/>
+   </wsdl:message>
+
+
+   <wsdl:portType name="AmazonQuery">
+      <wsdl:operation name="search">
+         <wsdl:input message="md:searchRequest"/>
+         <wsdl:output message="md:searchResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="browse">
+         <wsdl:input message="md:browseRequest"/>
+         <wsdl:output message="md:browseResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+
+   <wsdl:binding name="AmazonQuerySoapBinding" type="md:AmazonQuery">
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="search">
+         <wsdlsoap:operation soapAction="http://majordojo.com/AmazonQuery#search"/>
+         <wsdl:input>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://majordojo.com/AmazonQuery" use="encoded"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://majordojo.com/AmazonQuery" use="encoded"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="browse">
+         <wsdlsoap:operation soapAction="http://majordojo.com/AmazonQuery#browse"/>
+         <wsdl:input>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://majordojo.com/AmazonQuery" use="encoded"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://majordojo.com/AmazonQuery" use="encoded"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+
+   <wsdl:service name="AmazonQuery">
+      <wsdl:port binding="md:AmazonQuerySoapBinding" name="AmazonQuery">
+         <wsdlsoap:address location="http://majordojo.com/cgi-bin/amazon_query.cgi"/>
+      </wsdl:port>
+   </wsdl:service>
+
+</wsdl:definitions>

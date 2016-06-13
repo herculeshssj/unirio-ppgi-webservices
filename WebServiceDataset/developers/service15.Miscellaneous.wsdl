@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BLogManager_Service" targetNamespace="http://www.iternum.com/BLogManager"
+  xmlns:wsdlns='http://tempuri.org/wsdl/' 
+  xmlns:typens='http://tempuri.org/type' 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+  <xsd:schema targetNamespace="http://tempuri.org/type"
+        xmlns="http://www.w3.org/2001/XMLSchema/">
+    <xsd:complexType name="BLog">
+      <xsd:element name="id" type="xsd:long" value="0"/>
+      <xsd:element name="mood" type="xsd:string"/>
+      <xsd:element name="body" type="xsd:string"/>
+      <xsd:element name="title" type="xsd:string"/>
+      <xsd:element name="eventDate" type="xsd:timeInstant"/>
+      <xsd:element name="userRef" type="xsd:long"/>
+    </xsd:complexType>
+    <xsd:complexType name="SoapLogin">
+      <xsd:element name="username" type="xsd:string"/>
+      <xsd:element name="password" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:schema>
+</types>
+
+<message name="IngetBLogsRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="username" type="xsd:string"/>
+  <part name="maxNums" type="xsd:int"/>
+  <part name="startDate" type="xsd:timeInstant"/>
+</message>
+
+<message name="OutgetBLogsResponse">
+  <part name="blog" type="typens:BLog"/>
+</message>
+
+<message name="InaddBLogRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="blog" type="typens:BLog"/>
+</message>
+
+<message name="OutaddBLogResponse">
+  <part name="id" type="xsd:long"/>
+</message>
+
+<message name="IngetBLogRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="id" type="xsd:long"/>
+</message>
+
+<message name="OutgetBLogResponse">
+  <part name="blog" type="typens:BLog"/>
+</message>
+
+<message name="IndeleteBLogRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="id" type="xsd:long"/>
+</message>
+
+<message name="InmodifyBLogRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="blog" type="typens:BLog"/>
+</message>
+
+
+<portType name="BLogManager_Service">
+  <operation name="getBLogs">
+    <input message="wsdlns:IngetBLogsRequest"/>
+    <output message="wsdlns:OutgetBLogsResponse"/>
+  </operation>
+
+  <operation name="addBLog">
+    <input message="wsdlns:InaddBLogRequest"/>
+    <output message="wsdlns:OutaddBLogResponse"/>
+  </operation>
+
+  <operation name="getBLog">
+    <input message="wsdlns:IngetBLogRequest"/>
+    <output message="wsdlns:OutgetBLogResponse"/>
+  </operation>
+
+  <operation name="deleteBLog">
+    <input message="wsdlns:IndeleteBLogRequest"/>
+  </operation>
+
+  <operation name="modifyBLog">
+    <input message="wsdlns:InmodifyBLogRequest"/>
+  </operation>
+</portType>
+
+
+<binding name="BLogManager_ServiceBinding" type="wsdlns:BLogManager_Service">
+  <soap:binding style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getBLogs">
+    <soap:operation
+          soapAction="urn:blogmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="addBLog">
+    <soap:operation soapAction="urn:blogmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+      use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="getBLog">
+    <soap:operation soapAction="urn:blogmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="deleteBLog">
+    <soap:operation soapAction="urn:blogmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+          use="encoded"/>
+    </input>
+  </operation>
+  <operation name="modifyBLog">
+    <soap:operation
+          soapAction="urn:blogmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:blogmanager-service"
+          use="encoded"/>
+    </input>
+  </operation>
+</binding>
+
+<service name="BLogManager_Service">
+  <documentation>Service definiton file for blogs</documentation>
+  <port binding="wsdlns:BLogManager_ServiceBinding" name="BLogManager_ServicePort">
+    <soap:address location="http://www.iternum.net/soap/servlet/rpcrouter"/>
+  </port>
+</service>
+
+</definitions>

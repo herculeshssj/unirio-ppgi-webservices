@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://skats.net/services/literalTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://skats.net/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://skats.net/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://skats.net/services/">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <s:complexType name="ArrayOfZipCodeDistances">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:ZipCodeDistances[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ZipCodeDistances">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZipCodeCoordinates">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LatDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatRadians" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonRadians" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://skats.net/services/literalTypes">
+      <s:element name="ArrayOfZipCodeDistances" nillable="true" type="s1:ArrayOfZipCodeDistances" />
+      <s:complexType name="ArrayOfZipCodeDistances">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZipCodeDistances" nillable="true" type="s1:ZipCodeDistances" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZipCodeDistances">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="float" type="s:float" />
+      <s:element name="ZipCodeCoordinates" nillable="true" type="s1:ZipCodeCoordinates" />
+      <s:complexType name="ZipCodeCoordinates">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LatDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatRadians" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonRadians" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetZipCodesWithinSoapIn">
+    <part name="zip" type="s:string" />
+    <part name="distance" type="s:float" />
+  </message>
+  <message name="GetZipCodesWithinSoapOut">
+    <part name="GetZipCodesWithinResult" type="s0:ArrayOfZipCodeDistances" />
+  </message>
+  <message name="GetZipCodesWithinAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesSoapIn">
+    <part name="zip1" type="s:string" />
+    <part name="zip2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesSoapOut">
+    <part name="GetDistanceBetweenZipCodesResult" type="s:float" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetZipCodeCoordinatesSoapIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="GetZipCodeCoordinatesSoapOut">
+    <part name="GetZipCodeCoordinatesResult" type="s0:ZipCodeCoordinates" />
+  </message>
+  <message name="GetZipCodeCoordinatesAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetZipCodesWithinHttpGetIn">
+    <part name="zip" type="s:string" />
+    <part name="distance" type="s:string" />
+  </message>
+  <message name="GetZipCodesWithinHttpGetOut">
+    <part name="Body" element="s1:ArrayOfZipCodeDistances" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesHttpGetIn">
+    <part name="zip1" type="s:string" />
+    <part name="zip2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesHttpGetOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetZipCodeCoordinatesHttpGetIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="GetZipCodeCoordinatesHttpGetOut">
+    <part name="Body" element="s1:ZipCodeCoordinates" />
+  </message>
+  <message name="GetZipCodesWithinHttpPostIn">
+    <part name="zip" type="s:string" />
+    <part name="distance" type="s:string" />
+  </message>
+  <message name="GetZipCodesWithinHttpPostOut">
+    <part name="Body" element="s1:ArrayOfZipCodeDistances" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesHttpPostIn">
+    <part name="zip1" type="s:string" />
+    <part name="zip2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenZipCodesHttpPostOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetZipCodeCoordinatesHttpPostIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="GetZipCodeCoordinatesHttpPostOut">
+    <part name="Body" element="s1:ZipCodeCoordinates" />
+  </message>
+  <portType name="ZipCodesSoap">
+    <operation name="GetZipCodesWithin">
+      <documentation>Returns a list of zip codes within a specified distance from a given zip code. Parameters: zip - 5 digit zip code, distance - distance in miles.</documentation>
+      <input message="s0:GetZipCodesWithinSoapIn" />
+      <output message="s0:GetZipCodesWithinSoapOut" />
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <documentation>Returns a distance in miles between two zip codes. Parameters: zip1 - 5 digit zip code, zip2 - 5 digit zip code.</documentation>
+      <input message="s0:GetDistanceBetweenZipCodesSoapIn" />
+      <output message="s0:GetDistanceBetweenZipCodesSoapOut" />
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <documentation>Returns a centroid point of the zip code in both radians and degrees. Parameters: zip - 5 digit zip code.</documentation>
+      <input message="s0:GetZipCodeCoordinatesSoapIn" />
+      <output message="s0:GetZipCodeCoordinatesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ZipCodesHttpGet">
+    <operation name="GetZipCodesWithin">
+      <documentation>Returns a list of zip codes within a specified distance from a given zip code. Parameters: zip - 5 digit zip code, distance - distance in miles.</documentation>
+      <input message="s0:GetZipCodesWithinHttpGetIn" />
+      <output message="s0:GetZipCodesWithinHttpGetOut" />
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <documentation>Returns a distance in miles between two zip codes. Parameters: zip1 - 5 digit zip code, zip2 - 5 digit zip code.</documentation>
+      <input message="s0:GetDistanceBetweenZipCodesHttpGetIn" />
+      <output message="s0:GetDistanceBetweenZipCodesHttpGetOut" />
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <documentation>Returns a centroid point of the zip code in both radians and degrees. Parameters: zip - 5 digit zip code.</documentation>
+      <input message="s0:GetZipCodeCoordinatesHttpGetIn" />
+      <output message="s0:GetZipCodeCoordinatesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ZipCodesHttpPost">
+    <operation name="GetZipCodesWithin">
+      <documentation>Returns a list of zip codes within a specified distance from a given zip code. Parameters: zip - 5 digit zip code, distance - distance in miles.</documentation>
+      <input message="s0:GetZipCodesWithinHttpPostIn" />
+      <output message="s0:GetZipCodesWithinHttpPostOut" />
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <documentation>Returns a distance in miles between two zip codes. Parameters: zip1 - 5 digit zip code, zip2 - 5 digit zip code.</documentation>
+      <input message="s0:GetDistanceBetweenZipCodesHttpPostIn" />
+      <output message="s0:GetDistanceBetweenZipCodesHttpPostOut" />
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <documentation>Returns a centroid point of the zip code in both radians and degrees. Parameters: zip - 5 digit zip code.</documentation>
+      <input message="s0:GetZipCodeCoordinatesHttpPostIn" />
+      <output message="s0:GetZipCodeCoordinatesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ZipCodesSoap" type="s0:ZipCodesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetZipCodesWithin">
+      <soap:operation soapAction="http://skats.net/services/GetZipCodesWithin" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetZipCodesWithinAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <soap:operation soapAction="http://skats.net/services/GetDistanceBetweenZipCodes" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetDistanceBetweenZipCodesAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <soap:operation soapAction="http://skats.net/services/GetZipCodeCoordinates" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetZipCodeCoordinatesAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipCodesHttpGet" type="s0:ZipCodesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetZipCodesWithin">
+      <http:operation location="/GetZipCodesWithin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <http:operation location="/GetDistanceBetweenZipCodes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <http:operation location="/GetZipCodeCoordinates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipCodesHttpPost" type="s0:ZipCodesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetZipCodesWithin">
+      <http:operation location="/GetZipCodesWithin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenZipCodes">
+      <http:operation location="/GetDistanceBetweenZipCodes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetZipCodeCoordinates">
+      <http:operation location="/GetZipCodeCoordinates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ZipCodes">
+    <documentation>ZipCode Lookup web service features several functions for US zipcodes and distance manipulations: zip code lookup by distance, zip code coordinates, distance between zip codes.</documentation>
+    <port name="ZipCodesSoap" binding="s0:ZipCodesSoap">
+      <soap:address location="http://www.codebump.com/services/zipcodelookup.asmx" />
+    </port>
+    <port name="ZipCodesHttpGet" binding="s0:ZipCodesHttpGet">
+      <http:address location="http://www.codebump.com/services/zipcodelookup.asmx" />
+    </port>
+    <port name="ZipCodesHttpPost" binding="s0:ZipCodesHttpPost">
+      <http:address location="http://www.codebump.com/services/zipcodelookup.asmx" />
+    </port>
+  </service>
+</definitions>

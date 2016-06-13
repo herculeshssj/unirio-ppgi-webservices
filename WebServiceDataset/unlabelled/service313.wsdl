@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsd="http://www.w3.org/1999/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="urn:necho" targetNamespace="urn:necho" name="necho">
+
+<!--  hello message  -->
+    <message name="helloRequest">
+        <part name="hello" type="xsd:string"/>
+    </message>
+    <message name="helloResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+
+<!--  jfortune  message  -->
+    <message name="jfortuneRequest">
+        <part name="jfortune" type="xsd:string"/>
+    </message>
+    <message name="jfortuneResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+
+    <portType name="nechoServicePortType">
+<!--  hello portType  -->
+        <operation name="hello">
+            <input message="tns:helloRequest" name="hello"/>
+            <output message="tns:helloResponse" name="helloResponse"/>
+        </operation>
+
+<!-- jfortune portType  -->         
+        <operation name="jfortune">
+            <input message="tns:jfortuneRequest" name="jfortune"/>
+            <output message="tns:jfortuneResponse" name="jfortuneResponse"/>
+        </operation>
+
+    </portType>
+
+    <binding name="nechoServiceSOAPBinding" type="tns:nechoServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+<!--  hello binding   -->
+        <operation name="hello">
+            <soap:operation soapAction="" style="rpc"/>
+            <input name="hello">
+                <soap:body use="encoded" namespace="urn:necho" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output name="helloResponse">
+                <soap:body use="encoded" namespace="urn:necho" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+<!--  jfortune  binding   -->
+         <operation name="jfortune">
+            <soap:operation soapAction="" style="rpc"/>
+            <input name="jfortune">
+                <soap:body use="encoded" namespace="urn:necho" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output name="jfortuneResponse">
+                <soap:body use="encoded" namespace="urn:necho" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+
+<!--  Servoice  protocol -->
+    <service name="necho">
+        <documentation>Return an echo which you requested</documentation>
+        <port name="nechoServicePort" binding="tns:nechoServiceSOAPBinding">
+            <soap:address location="http://bobcat.webappcabaret.net/sk/servlet/prpcrouter"/>
+        </port>       
+    </service>
+
+</definitions>

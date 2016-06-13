@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.inter-data.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.inter-data.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.inter-data.com/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetCurrentCPI">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentCPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCurrentCPIResult" type="s0:IndicatorData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IndicatorData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentForex">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentForexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentForexResult" type="s0:ArrayOfIndicatorData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIndicatorData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IndicatorData" type="s0:IndicatorData" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCurrentForexBI">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentForexBIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentForexBIResult" type="s0:ArrayOfIndicatorData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentSBIRates">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentSBIRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentSBIRatesResult" type="s0:ArrayOfIndicatorData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentJSX">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCurrentJSXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentJSXResult" type="s0:ArrayOfIndicatorData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyForex">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="currCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyForexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDailyForexResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyForexBI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="currCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyForexBIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDailyForexBIResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyJSX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyJSXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDailyJSXResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthlyCPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startMonth" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="startYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="endMonth" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="endYear" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthlyCPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMonthlyCPIResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeeklySBIRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startPeriod" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endPeriod" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="term" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeeklySBIRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeeklySBIRatesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IndicatorData" type="s0:IndicatorData" />
+      <s:element name="ArrayOfIndicatorData" nillable="true" type="s0:ArrayOfIndicatorData" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetCurrentCPISoapIn">
+    <part name="parameters" element="s0:GetCurrentCPI" />
+  </message>
+  <message name="GetCurrentCPISoapOut">
+    <part name="parameters" element="s0:GetCurrentCPIResponse" />
+  </message>
+  <message name="GetCurrentForexSoapIn">
+    <part name="parameters" element="s0:GetCurrentForex" />
+  </message>
+  <message name="GetCurrentForexSoapOut">
+    <part name="parameters" element="s0:GetCurrentForexResponse" />
+  </message>
+  <message name="GetCurrentForexBISoapIn">
+    <part name="parameters" element="s0:GetCurrentForexBI" />
+  </message>
+  <message name="GetCurrentForexBISoapOut">
+    <part name="parameters" element="s0:GetCurrentForexBIResponse" />
+  </message>
+  <message name="GetCurrentSBIRatesSoapIn">
+    <part name="parameters" element="s0:GetCurrentSBIRates" />
+  </message>
+  <message name="GetCurrentSBIRatesSoapOut">
+    <part name="parameters" element="s0:GetCurrentSBIRatesResponse" />
+  </message>
+  <message name="GetCurrentJSXSoapIn">
+    <part name="parameters" element="s0:GetCurrentJSX" />
+  </message>
+  <message name="GetCurrentJSXSoapOut">
+    <part name="parameters" element="s0:GetCurrentJSXResponse" />
+  </message>
+  <message name="GetDailyForexSoapIn">
+    <part name="parameters" element="s0:GetDailyForex" />
+  </message>
+  <message name="GetDailyForexSoapOut">
+    <part name="parameters" element="s0:GetDailyForexResponse" />
+  </message>
+  <message name="GetDailyForexBISoapIn">
+    <part name="parameters" element="s0:GetDailyForexBI" />
+  </message>
+  <message name="GetDailyForexBISoapOut">
+    <part name="parameters" element="s0:GetDailyForexBIResponse" />
+  </message>
+  <message name="GetDailyJSXSoapIn">
+    <part name="parameters" element="s0:GetDailyJSX" />
+  </message>
+  <message name="GetDailyJSXSoapOut">
+    <part name="parameters" element="s0:GetDailyJSXResponse" />
+  </message>
+  <message name="GetMonthlyCPISoapIn">
+    <part name="parameters" element="s0:GetMonthlyCPI" />
+  </message>
+  <message name="GetMonthlyCPISoapOut">
+    <part name="parameters" element="s0:GetMonthlyCPIResponse" />
+  </message>
+  <message name="GetWeeklySBIRatesSoapIn">
+    <part name="parameters" element="s0:GetWeeklySBIRates" />
+  </message>
+  <message name="GetWeeklySBIRatesSoapOut">
+    <part name="parameters" element="s0:GetWeeklySBIRatesResponse" />
+  </message>
+  <message name="GetCurrentCPIHttpGetIn" />
+  <message name="GetCurrentCPIHttpGetOut">
+    <part name="Body" element="s0:IndicatorData" />
+  </message>
+  <message name="GetCurrentForexHttpGetIn" />
+  <message name="GetCurrentForexHttpGetOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentForexBIHttpGetIn" />
+  <message name="GetCurrentForexBIHttpGetOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentSBIRatesHttpGetIn" />
+  <message name="GetCurrentSBIRatesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentJSXHttpGetIn" />
+  <message name="GetCurrentJSXHttpGetOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetDailyForexHttpGetIn">
+    <part name="currCode" type="s:string" />
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyForexHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetDailyForexBIHttpGetIn">
+    <part name="currCode" type="s:string" />
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyForexBIHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetDailyJSXHttpGetIn">
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyJSXHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetMonthlyCPIHttpGetIn">
+    <part name="startMonth" type="s:string" />
+    <part name="startYear" type="s:string" />
+    <part name="endMonth" type="s:string" />
+    <part name="endYear" type="s:string" />
+  </message>
+  <message name="GetMonthlyCPIHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetWeeklySBIRatesHttpGetIn">
+    <part name="startPeriod" type="s:string" />
+    <part name="endPeriod" type="s:string" />
+    <part name="term" type="s:string" />
+  </message>
+  <message name="GetWeeklySBIRatesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetCurrentCPIHttpPostIn" />
+  <message name="GetCurrentCPIHttpPostOut">
+    <part name="Body" element="s0:IndicatorData" />
+  </message>
+  <message name="GetCurrentForexHttpPostIn" />
+  <message name="GetCurrentForexHttpPostOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentForexBIHttpPostIn" />
+  <message name="GetCurrentForexBIHttpPostOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentSBIRatesHttpPostIn" />
+  <message name="GetCurrentSBIRatesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetCurrentJSXHttpPostIn" />
+  <message name="GetCurrentJSXHttpPostOut">
+    <part name="Body" element="s0:ArrayOfIndicatorData" />
+  </message>
+  <message name="GetDailyForexHttpPostIn">
+    <part name="currCode" type="s:string" />
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyForexHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetDailyForexBIHttpPostIn">
+    <part name="currCode" type="s:string" />
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyForexBIHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetDailyJSXHttpPostIn">
+    <part name="startDate" type="s:string" />
+    <part name="endDate" type="s:string" />
+  </message>
+  <message name="GetDailyJSXHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetMonthlyCPIHttpPostIn">
+    <part name="startMonth" type="s:string" />
+    <part name="startYear" type="s:string" />
+    <part name="endMonth" type="s:string" />
+    <part name="endYear" type="s:string" />
+  </message>
+  <message name="GetMonthlyCPIHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetWeeklySBIRatesHttpPostIn">
+    <part name="startPeriod" type="s:string" />
+    <part name="endPeriod" type="s:string" />
+    <part name="term" type="s:string" />
+  </message>
+  <message name="GetWeeklySBIRatesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="IndoEconoCatorSoap">
+    <operation name="GetCurrentCPI">
+      <input message="s0:GetCurrentCPISoapIn" />
+      <output message="s0:GetCurrentCPISoapOut" />
+    </operation>
+    <operation name="GetCurrentForex">
+      <input message="s0:GetCurrentForexSoapIn" />
+      <output message="s0:GetCurrentForexSoapOut" />
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <input message="s0:GetCurrentForexBISoapIn" />
+      <output message="s0:GetCurrentForexBISoapOut" />
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <input message="s0:GetCurrentSBIRatesSoapIn" />
+      <output message="s0:GetCurrentSBIRatesSoapOut" />
+    </operation>
+    <operation name="GetCurrentJSX">
+      <input message="s0:GetCurrentJSXSoapIn" />
+      <output message="s0:GetCurrentJSXSoapOut" />
+    </operation>
+    <operation name="GetDailyForex">
+      <input message="s0:GetDailyForexSoapIn" />
+      <output message="s0:GetDailyForexSoapOut" />
+    </operation>
+    <operation name="GetDailyForexBI">
+      <input message="s0:GetDailyForexBISoapIn" />
+      <output message="s0:GetDailyForexBISoapOut" />
+    </operation>
+    <operation name="GetDailyJSX">
+      <input message="s0:GetDailyJSXSoapIn" />
+      <output message="s0:GetDailyJSXSoapOut" />
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <input message="s0:GetMonthlyCPISoapIn" />
+      <output message="s0:GetMonthlyCPISoapOut" />
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <input message="s0:GetWeeklySBIRatesSoapIn" />
+      <output message="s0:GetWeeklySBIRatesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="IndoEconoCatorHttpGet">
+    <operation name="GetCurrentCPI">
+      <input message="s0:GetCurrentCPIHttpGetIn" />
+      <output message="s0:GetCurrentCPIHttpGetOut" />
+    </operation>
+    <operation name="GetCurrentForex">
+      <input message="s0:GetCurrentForexHttpGetIn" />
+      <output message="s0:GetCurrentForexHttpGetOut" />
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <input message="s0:GetCurrentForexBIHttpGetIn" />
+      <output message="s0:GetCurrentForexBIHttpGetOut" />
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <input message="s0:GetCurrentSBIRatesHttpGetIn" />
+      <output message="s0:GetCurrentSBIRatesHttpGetOut" />
+    </operation>
+    <operation name="GetCurrentJSX">
+      <input message="s0:GetCurrentJSXHttpGetIn" />
+      <output message="s0:GetCurrentJSXHttpGetOut" />
+    </operation>
+    <operation name="GetDailyForex">
+      <input message="s0:GetDailyForexHttpGetIn" />
+      <output message="s0:GetDailyForexHttpGetOut" />
+    </operation>
+    <operation name="GetDailyForexBI">
+      <input message="s0:GetDailyForexBIHttpGetIn" />
+      <output message="s0:GetDailyForexBIHttpGetOut" />
+    </operation>
+    <operation name="GetDailyJSX">
+      <input message="s0:GetDailyJSXHttpGetIn" />
+      <output message="s0:GetDailyJSXHttpGetOut" />
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <input message="s0:GetMonthlyCPIHttpGetIn" />
+      <output message="s0:GetMonthlyCPIHttpGetOut" />
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <input message="s0:GetWeeklySBIRatesHttpGetIn" />
+      <output message="s0:GetWeeklySBIRatesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="IndoEconoCatorHttpPost">
+    <operation name="GetCurrentCPI">
+      <input message="s0:GetCurrentCPIHttpPostIn" />
+      <output message="s0:GetCurrentCPIHttpPostOut" />
+    </operation>
+    <operation name="GetCurrentForex">
+      <input message="s0:GetCurrentForexHttpPostIn" />
+      <output message="s0:GetCurrentForexHttpPostOut" />
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <input message="s0:GetCurrentForexBIHttpPostIn" />
+      <output message="s0:GetCurrentForexBIHttpPostOut" />
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <input message="s0:GetCurrentSBIRatesHttpPostIn" />
+      <output message="s0:GetCurrentSBIRatesHttpPostOut" />
+    </operation>
+    <operation name="GetCurrentJSX">
+      <input message="s0:GetCurrentJSXHttpPostIn" />
+      <output message="s0:GetCurrentJSXHttpPostOut" />
+    </operation>
+    <operation name="GetDailyForex">
+      <input message="s0:GetDailyForexHttpPostIn" />
+      <output message="s0:GetDailyForexHttpPostOut" />
+    </operation>
+    <operation name="GetDailyForexBI">
+      <input message="s0:GetDailyForexBIHttpPostIn" />
+      <output message="s0:GetDailyForexBIHttpPostOut" />
+    </operation>
+    <operation name="GetDailyJSX">
+      <input message="s0:GetDailyJSXHttpPostIn" />
+      <output message="s0:GetDailyJSXHttpPostOut" />
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <input message="s0:GetMonthlyCPIHttpPostIn" />
+      <output message="s0:GetMonthlyCPIHttpPostOut" />
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <input message="s0:GetWeeklySBIRatesHttpPostIn" />
+      <output message="s0:GetWeeklySBIRatesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="IndoEconoCatorSoap" type="s0:IndoEconoCatorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetCurrentCPI">
+      <soap:operation soapAction="http://www.inter-data.com/GetCurrentCPI" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForex">
+      <soap:operation soapAction="http://www.inter-data.com/GetCurrentForex" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <soap:operation soapAction="http://www.inter-data.com/GetCurrentForexBI" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <soap:operation soapAction="http://www.inter-data.com/GetCurrentSBIRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCurrentJSX">
+      <soap:operation soapAction="http://www.inter-data.com/GetCurrentJSX" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDailyForex">
+      <soap:operation soapAction="http://www.inter-data.com/GetDailyForex" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDailyForexBI">
+      <soap:operation soapAction="http://www.inter-data.com/GetDailyForexBI" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDailyJSX">
+      <soap:operation soapAction="http://www.inter-data.com/GetDailyJSX" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <soap:operation soapAction="http://www.inter-data.com/GetMonthlyCPI" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <soap:operation soapAction="http://www.inter-data.com/GetWeeklySBIRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IndoEconoCatorHttpGet" type="s0:IndoEconoCatorHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetCurrentCPI">
+      <http:operation location="/GetCurrentCPI" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForex">
+      <http:operation location="/GetCurrentForex" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <http:operation location="/GetCurrentForexBI" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <http:operation location="/GetCurrentSBIRates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentJSX">
+      <http:operation location="/GetCurrentJSX" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyForex">
+      <http:operation location="/GetDailyForex" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyForexBI">
+      <http:operation location="/GetDailyForexBI" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyJSX">
+      <http:operation location="/GetDailyJSX" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <http:operation location="/GetMonthlyCPI" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <http:operation location="/GetWeeklySBIRates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IndoEconoCatorHttpPost" type="s0:IndoEconoCatorHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetCurrentCPI">
+      <http:operation location="/GetCurrentCPI" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForex">
+      <http:operation location="/GetCurrentForex" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentForexBI">
+      <http:operation location="/GetCurrentForexBI" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentSBIRates">
+      <http:operation location="/GetCurrentSBIRates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCurrentJSX">
+      <http:operation location="/GetCurrentJSX" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyForex">
+      <http:operation location="/GetDailyForex" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyForexBI">
+      <http:operation location="/GetDailyForexBI" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDailyJSX">
+      <http:operation location="/GetDailyJSX" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMonthlyCPI">
+      <http:operation location="/GetMonthlyCPI" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeeklySBIRates">
+      <http:operation location="/GetWeeklySBIRates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IndoEconoCator">
+    <port name="IndoEconoCatorSoap" binding="s0:IndoEconoCatorSoap">
+      <soap:address location="http://hosting.msugs.ch/permai/IndoEconoCator.asmx" />
+    </port>
+    <port name="IndoEconoCatorHttpGet" binding="s0:IndoEconoCatorHttpGet">
+      <http:address location="http://hosting.msugs.ch/permai/IndoEconoCator.asmx" />
+    </port>
+    <port name="IndoEconoCatorHttpPost" binding="s0:IndoEconoCatorHttpPost">
+      <http:address location="http://hosting.msugs.ch/permai/IndoEconoCator.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+
+<definitions name="Replace.creplace" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="ReplaceFirstRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="TextToBeReplaced" type="xsd:string"/>
+        <part name="ReplaceWith" type="xsd:string"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+        <part name="NewText" type="xsd:string"/>
+    </message>
+    <message name="ReplaceFirstResponse">
+        <part name="NewText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="ReplaceAllRequest">
+        <part name="FullText" type="xsd:string"/>
+        <part name="TextToBeReplaced" type="xsd:string"/>
+        <part name="ReplaceWith" type="xsd:string"/>
+        <part name="IsCaseSensitive" type="xsd:boolean"/>
+        <part name="NewText" type="xsd:string"/>
+    </message>
+    <message name="ReplaceAllResponse">
+        <part name="NewText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Replace.creplacePortType">
+        <operation name="ReplaceFirst">
+            <input message="tns:ReplaceFirstRequest"/>
+            <output message="tns:ReplaceFirstResponse"/>
+        </operation>
+        <operation name="ReplaceAll">
+            <input message="tns:ReplaceAllRequest"/>
+            <output message="tns:ReplaceAllResponse"/>
+        </operation>
+    </portType>
+    <binding name="Replace.creplacebinding" type="tns:Replace.creplacePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ReplaceFirst">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml#ReplaceFirst"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="ReplaceAll">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml#ReplaceAll"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Replace/CReplace.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Replace.creplaceService">
+        <port name="Replace.creplacePort" binding="tns:Replace.creplacebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/strings.cgi"/>
+        </port>
+    </service>
+</definitions>

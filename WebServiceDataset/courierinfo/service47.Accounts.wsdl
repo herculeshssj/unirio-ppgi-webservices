@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotnet.za.net/GetTransport" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:i0="http://www.dotnet.za.net/GetTransport/SearchResults.xsd" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotnet.za.net/GetTransport" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="http://www.dotnet.za.net/GetTransport/SearchResults.xsd" location="http://www.dotnet.za.net/GetTransport/services/CustomerAPI.asmx?schema=SearchResults" />
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotnet.za.net/GetTransport">
+      <s:import namespace="http://www.dotnet.za.net/GetTransport/SearchResults.xsd" />
+      <s:element name="FindTransporter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Mass" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Length" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Breadth" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="DepartureZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationZip" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryTime" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxPrice" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindTransporterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindTransporterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.dotnet.za.net/GetTransport/SearchResults.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransporter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TransporterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransporterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTransporterResult" type="s0:TransporterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransporterInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalAddress1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalAddress2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalAddress3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalAddress1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalAddress2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalAddress3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TransporterServiceID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerPhone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Mass" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Length" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Breadth" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="DepartureAddress1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DepartureAddress2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DepartureZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationAddress2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendOrderResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResults" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any namespace="http://www.dotnet.za.net/GetTransport/SearchResults.xsd" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransporterInfo" type="s0:TransporterInfo" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="FindTransporterSoapIn">
+    <part name="parameters" element="s0:FindTransporter" />
+  </message>
+  <message name="FindTransporterSoapOut">
+    <part name="parameters" element="s0:FindTransporterResponse" />
+  </message>
+  <message name="GetTransporterSoapIn">
+    <part name="parameters" element="s0:GetTransporter" />
+  </message>
+  <message name="GetTransporterSoapOut">
+    <part name="parameters" element="s0:GetTransporterResponse" />
+  </message>
+  <message name="SendOrderSoapIn">
+    <part name="parameters" element="s0:SendOrder" />
+  </message>
+  <message name="SendOrderSoapOut">
+    <part name="parameters" element="s0:SendOrderResponse" />
+  </message>
+  <message name="FindTransporterHttpGetIn">
+    <part name="Mass" type="s:string" />
+    <part name="Length" type="s:string" />
+    <part name="Breadth" type="s:string" />
+    <part name="Height" type="s:string" />
+    <part name="DepartureZip" type="s:string" />
+    <part name="DestinationZip" type="s:string" />
+    <part name="DeliveryTime" type="s:string" />
+    <part name="MaxPrice" type="s:string" />
+  </message>
+  <message name="FindTransporterHttpGetOut">
+    <part name="Body" element="s0:SearchResults" />
+  </message>
+  <message name="GetTransporterHttpGetIn">
+    <part name="TransporterID" type="s:string" />
+  </message>
+  <message name="GetTransporterHttpGetOut">
+    <part name="Body" element="s0:TransporterInfo" />
+  </message>
+  <message name="SendOrderHttpGetIn">
+    <part name="TransporterServiceID" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+    <part name="CustomerPhone" type="s:string" />
+    <part name="Mass" type="s:string" />
+    <part name="Length" type="s:string" />
+    <part name="Breadth" type="s:string" />
+    <part name="Height" type="s:string" />
+    <part name="DepartureAddress1" type="s:string" />
+    <part name="DepartureAddress2" type="s:string" />
+    <part name="DepartureZip" type="s:string" />
+    <part name="DestinationAddress1" type="s:string" />
+    <part name="DestinationAddress2" type="s:string" />
+    <part name="DestinationZip" type="s:string" />
+  </message>
+  <message name="SendOrderHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="FindTransporterHttpPostIn">
+    <part name="Mass" type="s:string" />
+    <part name="Length" type="s:string" />
+    <part name="Breadth" type="s:string" />
+    <part name="Height" type="s:string" />
+    <part name="DepartureZip" type="s:string" />
+    <part name="DestinationZip" type="s:string" />
+    <part name="DeliveryTime" type="s:string" />
+    <part name="MaxPrice" type="s:string" />
+  </message>
+  <message name="FindTransporterHttpPostOut">
+    <part name="Body" element="s0:SearchResults" />
+  </message>
+  <message name="GetTransporterHttpPostIn">
+    <part name="TransporterID" type="s:string" />
+  </message>
+  <message name="GetTransporterHttpPostOut">
+    <part name="Body" element="s0:TransporterInfo" />
+  </message>
+  <message name="SendOrderHttpPostIn">
+    <part name="TransporterServiceID" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+    <part name="CustomerPhone" type="s:string" />
+    <part name="Mass" type="s:string" />
+    <part name="Length" type="s:string" />
+    <part name="Breadth" type="s:string" />
+    <part name="Height" type="s:string" />
+    <part name="DepartureAddress1" type="s:string" />
+    <part name="DepartureAddress2" type="s:string" />
+    <part name="DepartureZip" type="s:string" />
+    <part name="DestinationAddress1" type="s:string" />
+    <part name="DestinationAddress2" type="s:string" />
+    <part name="DestinationZip" type="s:string" />
+  </message>
+  <message name="SendOrderHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="CustomerAPISoap">
+    <operation name="FindTransporter">
+      <input message="s0:FindTransporterSoapIn" />
+      <output message="s0:FindTransporterSoapOut" />
+    </operation>
+    <operation name="GetTransporter">
+      <input message="s0:GetTransporterSoapIn" />
+      <output message="s0:GetTransporterSoapOut" />
+    </operation>
+    <operation name="SendOrder">
+      <input message="s0:SendOrderSoapIn" />
+      <output message="s0:SendOrderSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CustomerAPIHttpGet">
+    <operation name="FindTransporter">
+      <input message="s0:FindTransporterHttpGetIn" />
+      <output message="s0:FindTransporterHttpGetOut" />
+    </operation>
+    <operation name="GetTransporter">
+      <input message="s0:GetTransporterHttpGetIn" />
+      <output message="s0:GetTransporterHttpGetOut" />
+    </operation>
+    <operation name="SendOrder">
+      <input message="s0:SendOrderHttpGetIn" />
+      <output message="s0:SendOrderHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CustomerAPIHttpPost">
+    <operation name="FindTransporter">
+      <input message="s0:FindTransporterHttpPostIn" />
+      <output message="s0:FindTransporterHttpPostOut" />
+    </operation>
+    <operation name="GetTransporter">
+      <input message="s0:GetTransporterHttpPostIn" />
+      <output message="s0:GetTransporterHttpPostOut" />
+    </operation>
+    <operation name="SendOrder">
+      <input message="s0:SendOrderHttpPostIn" />
+      <output message="s0:SendOrderHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CustomerAPISoap" type="s0:CustomerAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindTransporter">
+      <soap:operation soapAction="http://www.dotnet.za.net/GetTransport/FindTransporter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTransporter">
+      <soap:operation soapAction="http://www.dotnet.za.net/GetTransport/GetTransporter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendOrder">
+      <soap:operation soapAction="http://www.dotnet.za.net/GetTransport/SendOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CustomerAPIHttpGet" type="s0:CustomerAPIHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindTransporter">
+      <http:operation location="/FindTransporter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTransporter">
+      <http:operation location="/GetTransporter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendOrder">
+      <http:operation location="/SendOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CustomerAPIHttpPost" type="s0:CustomerAPIHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindTransporter">
+      <http:operation location="/FindTransporter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTransporter">
+      <http:operation location="/GetTransporter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendOrder">
+      <http:operation location="/SendOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CustomerAPI">
+    <port name="CustomerAPISoap" binding="s0:CustomerAPISoap">
+      <soap:address location="http://www.dotnet.za.net/GetTransport/services/CustomerAPI.asmx" />
+    </port>
+    <port name="CustomerAPIHttpGet" binding="s0:CustomerAPIHttpGet">
+      <http:address location="http://www.dotnet.za.net/GetTransport/services/CustomerAPI.asmx" />
+    </port>
+    <port name="CustomerAPIHttpPost" binding="s0:CustomerAPIHttpPost">
+      <http:address location="http://www.dotnet.za.net/GetTransport/services/CustomerAPI.asmx" />
+    </port>
+  </service>
+</definitions>

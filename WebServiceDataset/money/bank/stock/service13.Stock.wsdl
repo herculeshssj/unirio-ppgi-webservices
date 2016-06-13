@@ -1,0 +1,109 @@
+<?xml version="1.0" ?><definitions name="MBWSSoapService" 
+targetNamespace="http://www.extensio.com/sd/MBWSSoapServices.wsdl" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:tns="http://www.extensio.com/sd/MBWSSoapServices.wsdl">
+<message name="loginRequest">
+<part name="userName" type="xsd:string" /> 
+<part name="authenticationToken" type="xsd:string" /> 
+</message>
+<message name="loginResponse">
+<part name="return" type="xsd:string" /> 
+</message>
+<message name="logoutRequest">
+<part name="loginToken" type="xsd:string" /> 
+</message>
+<message name="logoutResponse">
+<part name="return" type="xsd:string" /> 
+</message><message name="getServiceResponseRequest">
+<part name="loginToken" type="xsd:string" /> 
+<part name="serviceName" type="xsd:string" /> 
+<part name="inputText" type="xsd:string" /> 
+</message>
+<message name="getServiceResponseResponse">
+<part name="return" type="xsd:string" /> 
+</message>
+<message name="getServiceResponsePublicRequest">
+<part name="serviceName" type="xsd:string" /> 
+<part name="inputText" type="xsd:string" /> 
+</message>
+<message name="getServiceResponsePublicResponse">
+<part name="return" type="xsd:string" /> 
+</message>
+<portType name="MBWSPortType">
+<operation name="login">
+<input message="tns:loginRequest" name="login" /> 
+<output message="tns:loginResponse" name="loginResponse" /> 
+</operation>
+<operation name="logout">
+<input message="tns:logoutRequest" name="logout" /> 
+<output message="tns:logoutResponse" name="logoutResponse" /> 
+</operation>
+<operation name="getServiceResponse">
+<input message="tns:getServiceResponseRequest" name="getServiceResponse" /> 
+<output message="tns:getServiceResponseResponse" 
+name="getServiceResponseResponse" /> 
+<documentation>The response of this Web Service is HTML and can be viewed in 
+any browser.</documentation> 
+</operation>
+<operation name="getServiceResponsePublic">
+<input message="tns:getServiceResponsePublicRequest" 
+name="getServiceResponsePublic" /> 
+<output message="tns:getServiceResponsePublicResponse" 
+name="getServiceResponsePublicResponse" /> 
+<documentation>The response of this Web Service is HTML and can be viewed in 
+any browser.</documentation>  </operation>
+</portType><binding name="MBWSSoapBinding" type="tns:MBWSPortType">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+<operation name="login">
+<soap:operation soapAction="" /> 
+<input>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</output>
+</operation>
+<operation name="logout">
+<soap:operation soapAction="" /> 
+<input>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</output>
+</operation>
+<operation name="getServiceResponse">
+<soap:operation soapAction="" /> 
+<input>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</output>
+</operation>
+<operation name="getServiceResponsePublic">
+<soap:operation soapAction="" /> 
+<input>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:MBWS-SoapServices" 
+encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+</output>
+</operation>
+</binding>
+<service name="MBSoapService">
+<documentation></documentation> 
+<port name="MBWSSoapPort" binding="tns:MBWSSoapBinding">
+<soap:address 
+location="http://www.extensio.com:8080/ExtensioInfoServer/servlet/rpcrouter" 
+/></port></service></definitions>

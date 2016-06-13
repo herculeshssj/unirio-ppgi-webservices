@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://212.9.74.244/GTINInstant" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://212.9.74.244/GTINInstant" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://212.9.74.244/GTINInstant">
+      <s:element name="getSKUimage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gtin" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ImageQuality" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSKUimageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSKUimageResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSKUmasterimage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gtin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSKUmasterimageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSKUmasterimageResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSKUdescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gtin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSKUdescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSKUdescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="getSKUimageSoapIn">
+    <part name="parameters" element="s0:getSKUimage" />
+  </message>
+  <message name="getSKUimageSoapOut">
+    <part name="parameters" element="s0:getSKUimageResponse" />
+  </message>
+  <message name="getSKUmasterimageSoapIn">
+    <part name="parameters" element="s0:getSKUmasterimage" />
+  </message>
+  <message name="getSKUmasterimageSoapOut">
+    <part name="parameters" element="s0:getSKUmasterimageResponse" />
+  </message>
+  <message name="getSKUdescriptionSoapIn">
+    <part name="parameters" element="s0:getSKUdescription" />
+  </message>
+  <message name="getSKUdescriptionSoapOut">
+    <part name="parameters" element="s0:getSKUdescriptionResponse" />
+  </message>
+  <message name="getSKUimageHttpGetIn">
+    <part name="gtin" type="s:string" />
+    <part name="ImageSize" type="s:string" />
+    <part name="ImageQuality" type="s:string" />
+  </message>
+  <message name="getSKUimageHttpGetOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="getSKUmasterimageHttpGetIn">
+    <part name="gtin" type="s:string" />
+  </message>
+  <message name="getSKUmasterimageHttpGetOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="getSKUdescriptionHttpGetIn">
+    <part name="gtin" type="s:string" />
+  </message>
+  <message name="getSKUdescriptionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getSKUimageHttpPostIn">
+    <part name="gtin" type="s:string" />
+    <part name="ImageSize" type="s:string" />
+    <part name="ImageQuality" type="s:string" />
+  </message>
+  <message name="getSKUimageHttpPostOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="getSKUmasterimageHttpPostIn">
+    <part name="gtin" type="s:string" />
+  </message>
+  <message name="getSKUmasterimageHttpPostOut">
+    <part name="Body" element="s0:base64Binary" />
+  </message>
+  <message name="getSKUdescriptionHttpPostIn">
+    <part name="gtin" type="s:string" />
+  </message>
+  <message name="getSKUdescriptionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="getSKUcardSoap">
+    <operation name="getSKUimage">
+      <documentation>Returns SKU image within a given image size in pixels and JPEG quality.&lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)&lt;br&gt;ImageSize: image width/height (Maximum 500 pixels)&lt;br&gt;ImageQuality: Compression quality. Range from 1 (Low) to 120 (Best)</documentation>
+      <input message="s0:getSKUimageSoapIn" />
+      <output message="s0:getSKUimageSoapOut" />
+    </operation>
+    <operation name="getSKUmasterimage">
+      <documentation>Returns SKU master image. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUmasterimageSoapIn" />
+      <output message="s0:getSKUmasterimageSoapOut" />
+    </operation>
+    <operation name="getSKUdescription">
+      <documentation>Returns SKU description. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUdescriptionSoapIn" />
+      <output message="s0:getSKUdescriptionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="getSKUcardHttpGet">
+    <operation name="getSKUimage">
+      <documentation>Returns SKU image within a given image size in pixels and JPEG quality.&lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)&lt;br&gt;ImageSize: image width/height (Maximum 500 pixels)&lt;br&gt;ImageQuality: Compression quality. Range from 1 (Low) to 120 (Best)</documentation>
+      <input message="s0:getSKUimageHttpGetIn" />
+      <output message="s0:getSKUimageHttpGetOut" />
+    </operation>
+    <operation name="getSKUmasterimage">
+      <documentation>Returns SKU master image. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUmasterimageHttpGetIn" />
+      <output message="s0:getSKUmasterimageHttpGetOut" />
+    </operation>
+    <operation name="getSKUdescription">
+      <documentation>Returns SKU description. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUdescriptionHttpGetIn" />
+      <output message="s0:getSKUdescriptionHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="getSKUcardHttpPost">
+    <operation name="getSKUimage">
+      <documentation>Returns SKU image within a given image size in pixels and JPEG quality.&lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)&lt;br&gt;ImageSize: image width/height (Maximum 500 pixels)&lt;br&gt;ImageQuality: Compression quality. Range from 1 (Low) to 120 (Best)</documentation>
+      <input message="s0:getSKUimageHttpPostIn" />
+      <output message="s0:getSKUimageHttpPostOut" />
+    </operation>
+    <operation name="getSKUmasterimage">
+      <documentation>Returns SKU master image. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUmasterimageHttpPostIn" />
+      <output message="s0:getSKUmasterimageHttpPostOut" />
+    </operation>
+    <operation name="getSKUdescription">
+      <documentation>Returns SKU description. &lt;br&gt;gtin: EAN/UCC-13, UCC-12, EAN/UCC-8 Codes in a 14 digit format (Prefaced with zeros - Example:  08436021230270)</documentation>
+      <input message="s0:getSKUdescriptionHttpPostIn" />
+      <output message="s0:getSKUdescriptionHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="getSKUcardSoap" type="s0:getSKUcardSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="getSKUimage">
+      <soap:operation soapAction="http://212.9.74.244/GTINInstant/getSKUimage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSKUmasterimage">
+      <soap:operation soapAction="http://212.9.74.244/GTINInstant/getSKUmasterimage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSKUdescription">
+      <soap:operation soapAction="http://212.9.74.244/GTINInstant/getSKUdescription" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getSKUcardHttpGet" type="s0:getSKUcardHttpGet">
+    <http:binding verb="GET" />
+    <operation name="getSKUimage">
+      <http:operation location="/getSKUimage" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSKUmasterimage">
+      <http:operation location="/getSKUmasterimage" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSKUdescription">
+      <http:operation location="/getSKUdescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="getSKUcardHttpPost" type="s0:getSKUcardHttpPost">
+    <http:binding verb="POST" />
+    <operation name="getSKUimage">
+      <http:operation location="/getSKUimage" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSKUmasterimage">
+      <http:operation location="/getSKUmasterimage" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSKUdescription">
+      <http:operation location="/getSKUdescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="getSKUcard">
+    <port name="getSKUcardSoap" binding="s0:getSKUcardSoap">
+      <soap:address location="http://212.9.74.244/GTINInstant/getSKUcard.asmx" />
+    </port>
+    <port name="getSKUcardHttpGet" binding="s0:getSKUcardHttpGet">
+      <http:address location="http://212.9.74.244/GTINInstant/getSKUcard.asmx" />
+    </port>
+    <port name="getSKUcardHttpPost" binding="s0:getSKUcardHttpPost">
+      <http:address location="http://212.9.74.244/GTINInstant/getSKUcard.asmx" />
+    </port>
+  </service>
+</definitions>

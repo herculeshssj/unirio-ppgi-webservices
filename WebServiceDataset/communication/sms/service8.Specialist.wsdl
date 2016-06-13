@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://sms.cellcom.co.il/smsgate/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://sms.cellcom.co.il/smsgate/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://sms.cellcom.co.il/smsgate/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sms.cellcom.co.il/smsgate/">
+      <s:element name="WapPush">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pushUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WapPushResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WapPushResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telWork" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telFax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telHome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telCell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendVCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendVCardResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapBookmark">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bookmarkName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="urlAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendWapBookmarkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendWapBookmarkResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinarySMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmDataHexDigits" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ValidityPeriod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_Protocol_Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_dcs" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_udh" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBinarySMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendBinarySMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSmsToTargetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TargetList" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Validity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replace" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendSmsToTargetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSmsToTargetListResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendImmediateDisplay">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Validity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replace" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendImmediateDisplayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendImmediateDisplayResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Validity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replace" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNewMedia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SmType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Lang" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Replace" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Urgency" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Privacy" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="immediateDisplay" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_udh_inside_Text" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gsm_user_data_header" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_Protocol_Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gsm_dcs" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendNewMediaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendNewMediaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Target" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelSMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+    <s:schema targetNamespace="http://sms.cellcom.co.il/smsgate/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="WapPushSoapIn">
+    <part name="parameters" element="s0:WapPush" />
+  </message>
+  <message name="WapPushSoapOut">
+    <part name="parameters" element="s0:WapPushResponse" />
+  </message>
+  <message name="SendVCardSoapIn">
+    <part name="parameters" element="s0:SendVCard" />
+  </message>
+  <message name="SendVCardSoapOut">
+    <part name="parameters" element="s0:SendVCardResponse" />
+  </message>
+  <message name="SendWapBookmarkSoapIn">
+    <part name="parameters" element="s0:SendWapBookmark" />
+  </message>
+  <message name="SendWapBookmarkSoapOut">
+    <part name="parameters" element="s0:SendWapBookmarkResponse" />
+  </message>
+  <message name="SendBinarySMSSoapIn">
+    <part name="parameters" element="s0:SendBinarySMS" />
+  </message>
+  <message name="SendBinarySMSSoapOut">
+    <part name="parameters" element="s0:SendBinarySMSResponse" />
+  </message>
+  <message name="SendSmsToTargetListSoapIn">
+    <part name="parameters" element="s0:SendSmsToTargetList" />
+  </message>
+  <message name="SendSmsToTargetListSoapOut">
+    <part name="parameters" element="s0:SendSmsToTargetListResponse" />
+  </message>
+  <message name="SendImmediateDisplaySoapIn">
+    <part name="parameters" element="s0:SendImmediateDisplay" />
+  </message>
+  <message name="SendImmediateDisplaySoapOut">
+    <part name="parameters" element="s0:SendImmediateDisplayResponse" />
+  </message>
+  <message name="SendSMSSoapIn">
+    <part name="parameters" element="s0:SendSMS" />
+  </message>
+  <message name="SendSMSSoapOut">
+    <part name="parameters" element="s0:SendSMSResponse" />
+  </message>
+  <message name="SendNewMediaSoapIn">
+    <part name="parameters" element="s0:SendNewMedia" />
+  </message>
+  <message name="SendNewMediaSoapOut">
+    <part name="parameters" element="s0:SendNewMediaResponse" />
+  </message>
+  <message name="CancelSMSSoapIn">
+    <part name="parameters" element="s0:CancelSMS" />
+  </message>
+  <message name="CancelSMSSoapOut">
+    <part name="parameters" element="s0:CancelSMSResponse" />
+  </message>
+  <message name="WapPushHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="pushUrl" type="s:string" />
+    <part name="description" type="s:string" />
+  </message>
+  <message name="WapPushHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendVCardHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="name" type="s:string" />
+    <part name="telWork" type="s:string" />
+    <part name="telFax" type="s:string" />
+    <part name="telHome" type="s:string" />
+    <part name="telCell" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="email" type="s:string" />
+    <part name="note" type="s:string" />
+  </message>
+  <message name="SendVCardHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendWapBookmarkHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="bookmarkName" type="s:string" />
+    <part name="urlAddress" type="s:string" />
+  </message>
+  <message name="SendWapBookmarkHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendBinarySMSHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="SmDataHexDigits" type="s:string" />
+    <part name="ValidityPeriod" type="s:string" />
+    <part name="Gsm_Protocol_Id" type="s:string" />
+    <part name="Gsm_dcs" type="s:string" />
+    <part name="Gsm_udh" type="s:string" />
+  </message>
+  <message name="SendBinarySMSHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendSmsToTargetListHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="TargetList" type="s1:StringArray" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendSmsToTargetListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="SendImmediateDisplayHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendImmediateDisplayHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendSMSHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendSMSHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendNewMediaHttpGetIn">
+    <part name="Text" type="s:string" />
+    <part name="Data" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="SmType" type="s:string" />
+    <part name="Lang" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+    <part name="Urgency" type="s:string" />
+    <part name="Privacy" type="s:string" />
+    <part name="immediateDisplay" type="s:string" />
+    <part name="Gsm_udh_inside_Text" type="s:string" />
+    <part name="Gsm_user_data_header" type="s:string" />
+    <part name="Gsm_Protocol_Id" type="s:string" />
+    <part name="Gsm_dcs" type="s:string" />
+  </message>
+  <message name="SendNewMediaHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CancelSMSHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="MessageID" type="s:string" />
+  </message>
+  <message name="CancelSMSHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="WapPushHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="pushUrl" type="s:string" />
+    <part name="description" type="s:string" />
+  </message>
+  <message name="WapPushHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendVCardHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="name" type="s:string" />
+    <part name="telWork" type="s:string" />
+    <part name="telFax" type="s:string" />
+    <part name="telHome" type="s:string" />
+    <part name="telCell" type="s:string" />
+    <part name="address" type="s:string" />
+    <part name="email" type="s:string" />
+    <part name="note" type="s:string" />
+  </message>
+  <message name="SendVCardHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendWapBookmarkHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="target" type="s:string" />
+    <part name="bookmarkName" type="s:string" />
+    <part name="urlAddress" type="s:string" />
+  </message>
+  <message name="SendWapBookmarkHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendBinarySMSHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="SmDataHexDigits" type="s:string" />
+    <part name="ValidityPeriod" type="s:string" />
+    <part name="Gsm_Protocol_Id" type="s:string" />
+    <part name="Gsm_dcs" type="s:string" />
+    <part name="Gsm_udh" type="s:string" />
+  </message>
+  <message name="SendBinarySMSHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendSmsToTargetListHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="TargetList" type="s1:StringArray" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendSmsToTargetListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="SendImmediateDisplayHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendImmediateDisplayHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendSMSHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+  </message>
+  <message name="SendSMSHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendNewMediaHttpPostIn">
+    <part name="Text" type="s:string" />
+    <part name="Data" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="Source" type="s:string" />
+    <part name="SmType" type="s:string" />
+    <part name="Lang" type="s:string" />
+    <part name="Validity" type="s:string" />
+    <part name="Replace" type="s:string" />
+    <part name="Urgency" type="s:string" />
+    <part name="Privacy" type="s:string" />
+    <part name="immediateDisplay" type="s:string" />
+    <part name="Gsm_udh_inside_Text" type="s:string" />
+    <part name="Gsm_user_data_header" type="s:string" />
+    <part name="Gsm_Protocol_Id" type="s:string" />
+    <part name="Gsm_dcs" type="s:string" />
+  </message>
+  <message name="SendNewMediaHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CancelSMSHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Target" type="s:string" />
+    <part name="MessageID" type="s:string" />
+  </message>
+  <message name="CancelSMSHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="Service1Soap">
+    <operation name="WapPush">
+      <documentation>Send wap url using wap push. Use description to send push service indication or empty description to send push service load.</documentation>
+      <input message="s0:WapPushSoapIn" />
+      <output message="s0:WapPushSoapOut" />
+    </operation>
+    <operation name="SendVCard">
+      <documentation>Send vCard business card using Nokia smart messaging</documentation>
+      <input message="s0:SendVCardSoapIn" />
+      <output message="s0:SendVCardSoapOut" />
+    </operation>
+    <operation name="SendWapBookmark">
+      <documentation>Send Wap bookmark using Nokia smart messaging</documentation>
+      <input message="s0:SendWapBookmarkSoapIn" />
+      <output message="s0:SendWapBookmarkSoapOut" />
+    </operation>
+    <operation name="SendBinarySMS">
+      <documentation>Send binary message to Cellcom subscriber.</documentation>
+      <input message="s0:SendBinarySMSSoapIn" />
+      <output message="s0:SendBinarySMSSoapOut" />
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <documentation>Send text message to Cellcom subscriber list.</documentation>
+      <input message="s0:SendSmsToTargetListSoapIn" />
+      <output message="s0:SendSmsToTargetListSoapOut" />
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <documentation>Send a message that will be dispalyed immediately.</documentation>
+      <input message="s0:SendImmediateDisplaySoapIn" />
+      <output message="s0:SendImmediateDisplaySoapOut" />
+    </operation>
+    <operation name="SendSMS">
+      <documentation>Send text message to Cellcom subscriber.</documentation>
+      <input message="s0:SendSMSSoapIn" />
+      <output message="s0:SendSMSSoapOut" />
+    </operation>
+    <operation name="SendNewMedia">
+      <documentation>Send text message for New Media.</documentation>
+      <input message="s0:SendNewMediaSoapIn" />
+      <output message="s0:SendNewMediaSoapOut" />
+    </operation>
+    <operation name="CancelSMS">
+      <documentation>Cancel a message which was sent but not yet received.</documentation>
+      <input message="s0:CancelSMSSoapIn" />
+      <output message="s0:CancelSMSSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpGet">
+    <operation name="WapPush">
+      <documentation>Send wap url using wap push. Use description to send push service indication or empty description to send push service load.</documentation>
+      <input message="s0:WapPushHttpGetIn" />
+      <output message="s0:WapPushHttpGetOut" />
+    </operation>
+    <operation name="SendVCard">
+      <documentation>Send vCard business card using Nokia smart messaging</documentation>
+      <input message="s0:SendVCardHttpGetIn" />
+      <output message="s0:SendVCardHttpGetOut" />
+    </operation>
+    <operation name="SendWapBookmark">
+      <documentation>Send Wap bookmark using Nokia smart messaging</documentation>
+      <input message="s0:SendWapBookmarkHttpGetIn" />
+      <output message="s0:SendWapBookmarkHttpGetOut" />
+    </operation>
+    <operation name="SendBinarySMS">
+      <documentation>Send binary message to Cellcom subscriber.</documentation>
+      <input message="s0:SendBinarySMSHttpGetIn" />
+      <output message="s0:SendBinarySMSHttpGetOut" />
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <documentation>Send text message to Cellcom subscriber list.</documentation>
+      <input message="s0:SendSmsToTargetListHttpGetIn" />
+      <output message="s0:SendSmsToTargetListHttpGetOut" />
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <documentation>Send a message that will be dispalyed immediately.</documentation>
+      <input message="s0:SendImmediateDisplayHttpGetIn" />
+      <output message="s0:SendImmediateDisplayHttpGetOut" />
+    </operation>
+    <operation name="SendSMS">
+      <documentation>Send text message to Cellcom subscriber.</documentation>
+      <input message="s0:SendSMSHttpGetIn" />
+      <output message="s0:SendSMSHttpGetOut" />
+    </operation>
+    <operation name="SendNewMedia">
+      <documentation>Send text message for New Media.</documentation>
+      <input message="s0:SendNewMediaHttpGetIn" />
+      <output message="s0:SendNewMediaHttpGetOut" />
+    </operation>
+    <operation name="CancelSMS">
+      <documentation>Cancel a message which was sent but not yet received.</documentation>
+      <input message="s0:CancelSMSHttpGetIn" />
+      <output message="s0:CancelSMSHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpPost">
+    <operation name="WapPush">
+      <documentation>Send wap url using wap push. Use description to send push service indication or empty description to send push service load.</documentation>
+      <input message="s0:WapPushHttpPostIn" />
+      <output message="s0:WapPushHttpPostOut" />
+    </operation>
+    <operation name="SendVCard">
+      <documentation>Send vCard business card using Nokia smart messaging</documentation>
+      <input message="s0:SendVCardHttpPostIn" />
+      <output message="s0:SendVCardHttpPostOut" />
+    </operation>
+    <operation name="SendWapBookmark">
+      <documentation>Send Wap bookmark using Nokia smart messaging</documentation>
+      <input message="s0:SendWapBookmarkHttpPostIn" />
+      <output message="s0:SendWapBookmarkHttpPostOut" />
+    </operation>
+    <operation name="SendBinarySMS">
+      <documentation>Send binary message to Cellcom subscriber.</documentation>
+      <input message="s0:SendBinarySMSHttpPostIn" />
+      <output message="s0:SendBinarySMSHttpPostOut" />
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <documentation>Send text message to Cellcom subscriber list.</documentation>
+      <input message="s0:SendSmsToTargetListHttpPostIn" />
+      <output message="s0:SendSmsToTargetListHttpPostOut" />
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <documentation>Send a message that will be dispalyed immediately.</documentation>
+      <input message="s0:SendImmediateDisplayHttpPostIn" />
+      <output message="s0:SendImmediateDisplayHttpPostOut" />
+    </operation>
+    <operation name="SendSMS">
+      <documentation>Send text message to Cellcom subscriber.</documentation>
+      <input message="s0:SendSMSHttpPostIn" />
+      <output message="s0:SendSMSHttpPostOut" />
+    </operation>
+    <operation name="SendNewMedia">
+      <documentation>Send text message for New Media.</documentation>
+      <input message="s0:SendNewMediaHttpPostIn" />
+      <output message="s0:SendNewMediaHttpPostOut" />
+    </operation>
+    <operation name="CancelSMS">
+      <documentation>Cancel a message which was sent but not yet received.</documentation>
+      <input message="s0:CancelSMSHttpPostIn" />
+      <output message="s0:CancelSMSHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Service1Soap" type="s0:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="WapPush">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/WapPush" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendVCard">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendVCard" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendWapBookmark">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendWapBookmark" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendBinarySMS">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendBinarySMS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendSmsToTargetList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendImmediateDisplay" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendSMS">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendSMS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendNewMedia">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/SendNewMedia" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelSMS">
+      <soap:operation soapAction="http://sms.cellcom.co.il/smsgate/CancelSMS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpGet" type="s0:Service1HttpGet">
+    <http:binding verb="GET" />
+    <operation name="WapPush">
+      <http:operation location="/WapPush" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendVCard">
+      <http:operation location="/SendVCard" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendWapBookmark">
+      <http:operation location="/SendWapBookmark" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendBinarySMS">
+      <http:operation location="/SendBinarySMS" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <http:operation location="/SendSmsToTargetList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <http:operation location="/SendImmediateDisplay" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendNewMedia">
+      <http:operation location="/SendNewMedia" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelSMS">
+      <http:operation location="/CancelSMS" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpPost" type="s0:Service1HttpPost">
+    <http:binding verb="POST" />
+    <operation name="WapPush">
+      <http:operation location="/WapPush" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendVCard">
+      <http:operation location="/SendVCard" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendWapBookmark">
+      <http:operation location="/SendWapBookmark" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendBinarySMS">
+      <http:operation location="/SendBinarySMS" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendSmsToTargetList">
+      <http:operation location="/SendSmsToTargetList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendImmediateDisplay">
+      <http:operation location="/SendImmediateDisplay" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendNewMedia">
+      <http:operation location="/SendNewMedia" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelSMS">
+      <http:operation location="/CancelSMS" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service1">
+    <documentation>Cellcom SMS Gateway</documentation>
+    <port name="Service1Soap" binding="s0:Service1Soap">
+      <soap:address location="http://sms.cellcom.co.il/SmsGate/SmsGate.asmx" />
+    </port>
+    <port name="Service1HttpGet" binding="s0:Service1HttpGet">
+      <http:address location="http://sms.cellcom.co.il/SmsGate/SmsGate.asmx" />
+    </port>
+    <port name="Service1HttpPost" binding="s0:Service1HttpPost">
+      <http:address location="http://sms.cellcom.co.il/SmsGate/SmsGate.asmx" />
+    </port>
+  </service>
+</definitions>

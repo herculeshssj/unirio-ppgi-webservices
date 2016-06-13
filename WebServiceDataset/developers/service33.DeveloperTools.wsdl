@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated 11/07/01 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.02.813.0 -->
+<definitions name="Logon" targetNamespace="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:wsdlns="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:typens="http://www.coldrooster.com/ssf/2001/11/type" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="http://www.coldrooster.com/ssf/2001/11/type" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+		</schema>
+	</types>
+	<message name="Logon.Logon">
+		<part name="LicenseeName" type="xsd:string"/>
+		<part name="Password" type="xsd:string"/>
+	</message>
+	<message name="Logon.LogonResponse">
+		<part name="Result" type="xsd:string"/>
+	</message>
+	<portType name="LogonSoapPort">
+		<operation name="Logon" parameterOrder="LicenseeName Password">
+			<input message="wsdlns:Logon.Logon"/>
+			<output message="wsdlns:Logon.LogonResponse"/>
+		</operation>
+	</portType>
+	<binding name="LogonSoapBinding" type="wsdlns:LogonSoapPort">
+		<stk:binding preferredEncoding="UTF-8"/>
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="Logon">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Logon.Logon"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="Logon">
+		<port name="LogonSoapPort" binding="wsdlns:LogonSoapBinding">
+			<soap:address location="https://coldrooster.com/SSF/Logon.asp"/>
+		</port>
+	</service>
+</definitions>

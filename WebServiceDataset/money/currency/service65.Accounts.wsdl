@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http/www.pointwsp.net/ws/finance" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http/www.pointwsp.net/ws/finance" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http/www.pointwsp.net/ws/finance">
+      <s:element name="GetRatesXML">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRatesXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRatesXMLResult" type="s0:currencyrates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="currencyrates">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="basecurrency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ratelist" type="s0:ArrayOfCurrency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurrency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="currency" nillable="true" type="s0:currency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="currency">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ratedate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="unit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rate" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="currencyrates" nillable="true" type="s0:currencyrates" />
+    </s:schema>
+  </types>
+  <message name="GetRatesXMLSoapIn">
+    <part name="parameters" element="s0:GetRatesXML" />
+  </message>
+  <message name="GetRatesXMLSoapOut">
+    <part name="parameters" element="s0:GetRatesXMLResponse" />
+  </message>
+  <message name="GetRatesXMLHttpGetIn" />
+  <message name="GetRatesXMLHttpGetOut">
+    <part name="Body" element="s0:currencyrates" />
+  </message>
+  <message name="GetRatesXMLHttpPostIn" />
+  <message name="GetRatesXMLHttpPostOut">
+    <part name="Body" element="s0:currencyrates" />
+  </message>
+  <portType name="pwspNoCentrbankCurRatesSoap">
+    <operation name="GetRatesXML">
+      <documentation>Last daily rates quoted by norwegian central bank</documentation>
+      <input message="s0:GetRatesXMLSoapIn" />
+      <output message="s0:GetRatesXMLSoapOut" />
+    </operation>
+  </portType>
+  <portType name="pwspNoCentrbankCurRatesHttpGet">
+    <operation name="GetRatesXML">
+      <documentation>Last daily rates quoted by norwegian central bank</documentation>
+      <input message="s0:GetRatesXMLHttpGetIn" />
+      <output message="s0:GetRatesXMLHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="pwspNoCentrbankCurRatesHttpPost">
+    <operation name="GetRatesXML">
+      <documentation>Last daily rates quoted by norwegian central bank</documentation>
+      <input message="s0:GetRatesXMLHttpPostIn" />
+      <output message="s0:GetRatesXMLHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="pwspNoCentrbankCurRatesSoap" type="s0:pwspNoCentrbankCurRatesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetRatesXML">
+      <soap:operation soapAction="http/www.pointwsp.net/ws/finance/GetRatesXML" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="pwspNoCentrbankCurRatesHttpGet" type="s0:pwspNoCentrbankCurRatesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetRatesXML">
+      <http:operation location="/GetRatesXML" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="pwspNoCentrbankCurRatesHttpPost" type="s0:pwspNoCentrbankCurRatesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetRatesXML">
+      <http:operation location="/GetRatesXML" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="pwspNoCentrbankCurRates">
+    <documentation>Shows norwegian central bank daily rates</documentation>
+    <port name="pwspNoCentrbankCurRatesSoap" binding="s0:pwspNoCentrbankCurRatesSoap">
+      <soap:address location="http://server1.pointwsp.net/ws/finance/currency.asmx" />
+    </port>
+    <port name="pwspNoCentrbankCurRatesHttpGet" binding="s0:pwspNoCentrbankCurRatesHttpGet">
+      <http:address location="http://server1.pointwsp.net/ws/finance/currency.asmx" />
+    </port>
+    <port name="pwspNoCentrbankCurRatesHttpPost" binding="s0:pwspNoCentrbankCurRatesHttpPost">
+      <http:address location="http://server1.pointwsp.net/ws/finance/currency.asmx" />
+    </port>
+  </service>
+</definitions>

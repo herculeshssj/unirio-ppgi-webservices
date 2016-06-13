@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="WebMastersTips.cwebmastertips" targetNamespace="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" xmlns:tns="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetWebMasterTipsRequest">
+    </message>
+    <message name="GetWebMasterTipsResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetWebMasterTipsRecordsetRequest">
+        <part name="recWMTips" type="xsd:string"/>
+    </message>
+    <message name="GetWebMasterTipsRecordsetResponse">
+        <part name="recWMTips" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="WebMastersTips.cwebmastertipsPortType">
+        <operation name="GetWebMasterTips">
+            <input message="tns:GetWebMasterTipsRequest"/>
+            <output message="tns:GetWebMasterTipsResponse"/>
+        </operation>
+        <operation name="GetWebMasterTipsRecordset">
+            <input message="tns:GetWebMasterTipsRecordsetRequest"/>
+            <output message="tns:GetWebMasterTipsRecordsetResponse"/>
+        </operation>
+    </portType>
+    <binding name="WebMastersTips.cwebmastertipsbinding" type="tns:WebMastersTips.cwebmastertipsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetWebMasterTips">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml#GetWebMasterTips"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetWebMasterTipsRecordset">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml#GetWebMasterTipsRecordset"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/WebMastersTips/CWebMasterTips.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WebMastersTips.cwebmastertipsService">
+        <port name="WebMastersTips.cwebmastertipsPort" binding="tns:WebMastersTips.cwebmastertipsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/webmastertips.cgi"/>
+        </port>
+    </service>
+</definitions>

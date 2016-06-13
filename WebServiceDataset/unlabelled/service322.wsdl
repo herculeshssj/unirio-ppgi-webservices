@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://aspnet.lamaan.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://aspnet.lamaan.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://aspnet.lamaan.com/webservices/">
+      <s:element name="GetQuranVerseArabic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="surahNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="verseNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuranVerseArabicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuranVerseArabicResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuranVerseEnglish">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="surahNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="verseNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuranVerseEnglishResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuranVerseEnglishResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetQuranVerseArabicSoapIn">
+    <part name="parameters" element="s0:GetQuranVerseArabic" />
+  </message>
+  <message name="GetQuranVerseArabicSoapOut">
+    <part name="parameters" element="s0:GetQuranVerseArabicResponse" />
+  </message>
+  <message name="GetQuranVerseEnglishSoapIn">
+    <part name="parameters" element="s0:GetQuranVerseEnglish" />
+  </message>
+  <message name="GetQuranVerseEnglishSoapOut">
+    <part name="parameters" element="s0:GetQuranVerseEnglishResponse" />
+  </message>
+  <portType name="QuranVerseSoap">
+    <operation name="GetQuranVerseArabic">
+      <input message="s0:GetQuranVerseArabicSoapIn" />
+      <output message="s0:GetQuranVerseArabicSoapOut" />
+    </operation>
+    <operation name="GetQuranVerseEnglish">
+      <input message="s0:GetQuranVerseEnglishSoapIn" />
+      <output message="s0:GetQuranVerseEnglishSoapOut" />
+    </operation>
+  </portType>
+  <binding name="QuranVerseSoap" type="s0:QuranVerseSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuranVerseArabic">
+      <soap:operation soapAction="http://aspnet.lamaan.com/webservices/GetQuranVerseArabic" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQuranVerseEnglish">
+      <soap:operation soapAction="http://aspnet.lamaan.com/webservices/GetQuranVerseEnglish" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="QuranVerse">
+    <port name="QuranVerseSoap" binding="s0:QuranVerseSoap">
+      <soap:address location="http://aspnet.lamaan.com/webservices/QuranVerse.asmx" />
+    </port>
+  </service>
+</definitions>

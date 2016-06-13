@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetWeatherByZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherByZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherByZipResult" type="s0:Weather" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Weather">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Windchill" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HeatIndex" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Humidity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dewpoint" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Wind" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pressure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conditions" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Visibility" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sunrise" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sunset" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Moonrise" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Moonset" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWeatherByCityState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherByCityStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherByCityStateResult" type="s0:Weather" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherByIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherByIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherByIPResult" type="s0:Weather" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Weather" nillable="true" type="s0:Weather" />
+    </s:schema>
+  </types>
+  <message name="GetWeatherByZipSoapIn">
+    <part name="parameters" element="s0:GetWeatherByZip" />
+  </message>
+  <message name="GetWeatherByZipSoapOut">
+    <part name="parameters" element="s0:GetWeatherByZipResponse" />
+  </message>
+  <message name="GetWeatherByCityStateSoapIn">
+    <part name="parameters" element="s0:GetWeatherByCityState" />
+  </message>
+  <message name="GetWeatherByCityStateSoapOut">
+    <part name="parameters" element="s0:GetWeatherByCityStateResponse" />
+  </message>
+  <message name="GetWeatherByIPSoapIn">
+    <part name="parameters" element="s0:GetWeatherByIP" />
+  </message>
+  <message name="GetWeatherByIPSoapOut">
+    <part name="parameters" element="s0:GetWeatherByIPResponse" />
+  </message>
+  <message name="GetWeatherByZipHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByZipHttpGetOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <message name="GetWeatherByCityStateHttpGetIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByCityStateHttpGetOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <message name="GetWeatherByIPHttpGetIn">
+    <part name="IPAddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByIPHttpGetOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <message name="GetWeatherByZipHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByZipHttpPostOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <message name="GetWeatherByCityStateHttpPostIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByCityStateHttpPostOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <message name="GetWeatherByIPHttpPostIn">
+    <part name="IPAddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetWeatherByIPHttpPostOut">
+    <part name="Body" element="s0:Weather" />
+  </message>
+  <portType name="DOTSFastWeatherSoap">
+    <operation name="GetWeatherByZip">
+      <documentation>Returns the weather for a given US postal code.</documentation>
+      <input message="s0:GetWeatherByZipSoapIn" />
+      <output message="s0:GetWeatherByZipSoapOut" />
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <documentation>Returns the weather for a given US city and state.</documentation>
+      <input message="s0:GetWeatherByCityStateSoapIn" />
+      <output message="s0:GetWeatherByCityStateSoapOut" />
+    </operation>
+    <operation name="GetWeatherByIP">
+      <documentation>Returns the weather for a given IP Address.</documentation>
+      <input message="s0:GetWeatherByIPSoapIn" />
+      <output message="s0:GetWeatherByIPSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastWeatherHttpGet">
+    <operation name="GetWeatherByZip">
+      <documentation>Returns the weather for a given US postal code.</documentation>
+      <input message="s0:GetWeatherByZipHttpGetIn" />
+      <output message="s0:GetWeatherByZipHttpGetOut" />
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <documentation>Returns the weather for a given US city and state.</documentation>
+      <input message="s0:GetWeatherByCityStateHttpGetIn" />
+      <output message="s0:GetWeatherByCityStateHttpGetOut" />
+    </operation>
+    <operation name="GetWeatherByIP">
+      <documentation>Returns the weather for a given IP Address.</documentation>
+      <input message="s0:GetWeatherByIPHttpGetIn" />
+      <output message="s0:GetWeatherByIPHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastWeatherHttpPost">
+    <operation name="GetWeatherByZip">
+      <documentation>Returns the weather for a given US postal code.</documentation>
+      <input message="s0:GetWeatherByZipHttpPostIn" />
+      <output message="s0:GetWeatherByZipHttpPostOut" />
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <documentation>Returns the weather for a given US city and state.</documentation>
+      <input message="s0:GetWeatherByCityStateHttpPostIn" />
+      <output message="s0:GetWeatherByCityStateHttpPostOut" />
+    </operation>
+    <operation name="GetWeatherByIP">
+      <documentation>Returns the weather for a given IP Address.</documentation>
+      <input message="s0:GetWeatherByIPHttpPostIn" />
+      <output message="s0:GetWeatherByIPHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSFastWeatherSoap" type="s0:DOTSFastWeatherSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetWeatherByZip">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetWeatherByZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetWeatherByCityState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByIP">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetWeatherByIP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastWeatherHttpGet" type="s0:DOTSFastWeatherHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetWeatherByZip">
+      <http:operation location="/GetWeatherByZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <http:operation location="/GetWeatherByCityState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByIP">
+      <http:operation location="/GetWeatherByIP" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastWeatherHttpPost" type="s0:DOTSFastWeatherHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetWeatherByZip">
+      <http:operation location="/GetWeatherByZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByCityState">
+      <http:operation location="/GetWeatherByCityState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeatherByIP">
+      <http:operation location="/GetWeatherByIP" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSFastWeather">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSFastWeatherSoap" binding="s0:DOTSFastWeatherSoap">
+      <soap:address location="http://ws2.serviceobjects.net/fw/FastWeather.asmx" />
+    </port>
+    <port name="DOTSFastWeatherHttpGet" binding="s0:DOTSFastWeatherHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/fw/FastWeather.asmx" />
+    </port>
+    <port name="DOTSFastWeatherHttpPost" binding="s0:DOTSFastWeatherHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/fw/FastWeather.asmx" />
+    </port>
+  </service>
+</definitions>

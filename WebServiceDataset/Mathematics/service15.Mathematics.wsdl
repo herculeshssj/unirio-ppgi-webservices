@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<definitions name="LastDayMonth.clastdayprevious" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/LastDayMonth/CLastDayPrevious.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/LastDayMonth/CLastDayPrevious.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="LastDayOfPreviousMonthRequest">
+        <part name="sDate" type="xsd:string"/>
+    </message>
+    <message name="LastDayOfPreviousMonthResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="LastDayMonth.clastdaypreviousPortType">
+        <operation name="LastDayOfPreviousMonth">
+            <input message="tns:LastDayOfPreviousMonthRequest"/>
+            <output message="tns:LastDayOfPreviousMonthResponse"/>
+        </operation>
+    </portType>
+    <binding name="LastDayMonth.clastdaypreviousbinding" type="tns:LastDayMonth.clastdaypreviousPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="LastDayOfPreviousMonth">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/LastDayMonth/CLastDayPrevious.xml#LastDayOfPreviousMonth"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LastDayMonth/CLastDayPrevious.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LastDayMonth/CLastDayPrevious.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="LastDayMonth.clastdaypreviousService">
+        <port name="LastDayMonth.clastdaypreviousPort" binding="tns:LastDayMonth.clastdaypreviousbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lastdaymonth.cgi"/>
+        </port>
+    </service>
+</definitions>

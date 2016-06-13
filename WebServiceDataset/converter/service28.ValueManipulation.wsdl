@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ConvertTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Temperature" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="FromUnit" type="s0:TemperatureUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="ToUnit" type="s0:TemperatureUnit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="TemperatureUnit">
+        <s:restriction base="s:string">
+          <s:enumeration value="degreeCelsius" />
+          <s:enumeration value="degreeFahrenheit" />
+          <s:enumeration value="degreeRankine" />
+          <s:enumeration value="degreeReaumur" />
+          <s:enumeration value="kelvin" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ConvertTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertTempResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ConvertTempSoapIn">
+    <part name="parameters" element="s0:ConvertTemp" />
+  </message>
+  <message name="ConvertTempSoapOut">
+    <part name="parameters" element="s0:ConvertTempResponse" />
+  </message>
+  <message name="ConvertTempHttpGetIn">
+    <part name="Temperature" type="s:string" />
+    <part name="FromUnit" type="s:string" />
+    <part name="ToUnit" type="s:string" />
+  </message>
+  <message name="ConvertTempHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ConvertTempHttpPostIn">
+    <part name="Temperature" type="s:string" />
+    <part name="FromUnit" type="s:string" />
+    <part name="ToUnit" type="s:string" />
+  </message>
+  <message name="ConvertTempHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="ConvertTemperatureSoap">
+    <operation name="ConvertTemp">
+      <input message="s0:ConvertTempSoapIn" />
+      <output message="s0:ConvertTempSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertTemperatureHttpGet">
+    <operation name="ConvertTemp">
+      <input message="s0:ConvertTempHttpGetIn" />
+      <output message="s0:ConvertTempHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertTemperatureHttpPost">
+    <operation name="ConvertTemp">
+      <input message="s0:ConvertTempHttpPostIn" />
+      <output message="s0:ConvertTempHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ConvertTemperatureSoap" type="s0:ConvertTemperatureSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ConvertTemp">
+      <soap:operation soapAction="http://www.webserviceX.NET/ConvertTemp" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertTemperatureHttpGet" type="s0:ConvertTemperatureHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ConvertTemp">
+      <http:operation location="/ConvertTemp" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertTemperatureHttpPost" type="s0:ConvertTemperatureHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ConvertTemp">
+      <http:operation location="/ConvertTemp" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ConvertTemperature">
+    <port name="ConvertTemperatureSoap" binding="s0:ConvertTemperatureSoap">
+      <soap:address location="http://www.webservicex.net/ConvertTemperature.asmx" />
+    </port>
+    <port name="ConvertTemperatureHttpGet" binding="s0:ConvertTemperatureHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertTemperature.asmx" />
+    </port>
+    <port name="ConvertTemperatureHttpPost" binding="s0:ConvertTemperatureHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertTemperature.asmx" />
+    </port>
+  </service>
+</definitions>

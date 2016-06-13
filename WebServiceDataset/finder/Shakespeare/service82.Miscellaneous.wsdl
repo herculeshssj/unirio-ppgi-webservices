@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IShakespeareservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="GetShakespeareInsultRequest"/>
+  <message name="GetShakespeareInsultResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IShakespeare">
+    <operation name="GetShakespeareInsult">
+      <input message="tns:GetShakespeareInsultRequest"/>
+      <output message="tns:GetShakespeareInsultResponse"/>
+    </operation>
+  </portType>
+  <binding name="IShakespearebinding" type="tns:IShakespeare">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetShakespeareInsult">
+      <soap:operation soapAction="urn:ShakesIntf-IShakespeare#GetShakespeareInsult" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ShakesIntf-IShakespeare"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ShakesIntf-IShakespeare"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IShakespeareservice">
+    <port name="IShakespearePort" binding="tns:IShakespearebinding">
+      <soap:address location="http://www.nickhodges.com/bin/ShakespeareWS.exe/soap/IShakespeare"/>
+    </port>
+  </service>
+</definitions>
+

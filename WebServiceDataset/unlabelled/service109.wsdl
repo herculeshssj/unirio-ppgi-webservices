@@ -1,0 +1,45 @@
+<definitions name="imstatus" targetNamespace="SoapInterop" xmlns:wsdlns="SoapInterop" xmlns:typens="SoapInterop" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns="http://schemas.xmlsoap.org/wsdl/">
+ <types>
+  <schema targetNamespace="SoapInterop" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+  </schema>
+ </types>
+
+ <message name="StatusRequest">
+    <part name="UserName" type="xsd:string" />
+  </message>
+
+ <message name="StatusResponse">
+    <part name="Status" type="xsd:string" />
+ </message>
+
+
+ <portType name="imstatusPortType">
+  <operation name="Status">
+    <documentation>M$N Instant Messenger Status</documentation> 
+    <input message="wsdlns:StatusRequest"/>
+    <output message="wsdlns:StatusResponse"/>
+  </operation>
+ </portType>
+
+ <binding name="imstatusBinding" type="wsdlns:imstatusPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+   <operation name="Status">
+    <soap:operation soapAction="#Status"/>
+     <input>
+      <soap:body use="encoded" namespace="SoapInterop" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+     </input>
+     <output>
+      <soap:body use="encoded" namespace="SoapInterop" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+     </output>
+    </operation>
+ </binding>
+
+ <service name="imstatus">
+  <documentation>M$N Instant Messenger Status</documentation> 
+  <port name="IBaseDataTypes" binding="wsdlns:imstatusBinding">
+   <soap:address location="http://www.x-ws.de/cgi-bin/msn/imstatus.wsdl"/>
+  </port>
+</service>
+</definitions>
+
+

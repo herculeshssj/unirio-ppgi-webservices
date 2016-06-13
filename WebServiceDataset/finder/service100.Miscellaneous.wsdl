@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="FindVideoGames">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindVideoGamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindVideoGamesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindVideoGamesSoapIn">
+    <part name="parameters" element="s0:FindVideoGames" />
+  </message>
+  <message name="FindVideoGamesSoapOut">
+    <part name="parameters" element="s0:FindVideoGamesResponse" />
+  </message>
+  <message name="FindVideoGamesHttpGetIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindVideoGamesHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindVideoGamesHttpPostIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindVideoGamesHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="VideoGamesFinderSoap">
+    <operation name="FindVideoGames">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the video games search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindVideoGamesSoapIn" />
+      <output message="s0:FindVideoGamesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="VideoGamesFinderHttpGet">
+    <operation name="FindVideoGames">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the video games search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindVideoGamesHttpGetIn" />
+      <output message="s0:FindVideoGamesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="VideoGamesFinderHttpPost">
+    <operation name="FindVideoGames">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the video games search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindVideoGamesHttpPostIn" />
+      <output message="s0:FindVideoGamesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="VideoGamesFinderSoap" type="s0:VideoGamesFinderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindVideoGames">
+      <soap:operation soapAction="http://xmlme.com/WebServices/FindVideoGames" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="VideoGamesFinderHttpGet" type="s0:VideoGamesFinderHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindVideoGames">
+      <http:operation location="/FindVideoGames" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="VideoGamesFinderHttpPost" type="s0:VideoGamesFinderHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindVideoGames">
+      <http:operation location="/FindVideoGames" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="VideoGamesFinder">
+    <port name="VideoGamesFinderSoap" binding="s0:VideoGamesFinderSoap">
+      <soap:address location="http://www.xmlme.com/WSVideoGames.asmx" />
+    </port>
+    <port name="VideoGamesFinderHttpGet" binding="s0:VideoGamesFinderHttpGet">
+      <http:address location="http://www.xmlme.com/WSVideoGames.asmx" />
+    </port>
+    <port name="VideoGamesFinderHttpPost" binding="s0:VideoGamesFinderHttpPost">
+      <http:address location="http://www.xmlme.com/WSVideoGames.asmx" />
+    </port>
+  </service>
+</definitions>

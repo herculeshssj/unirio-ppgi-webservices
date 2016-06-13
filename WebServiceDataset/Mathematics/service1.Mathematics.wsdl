@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-16' ?> 
+ <!-- Generated 02/07/01 by Microsoft SOAP SDK WSDL File Generator, Version 1.0 --> 
+<definitions  name ='Calculator'   targetNamespace = 'http://www.itfinity.net/soap/Calculator/Calculator.wsdl'
+	 xmlns:tns='http://www.itfinity.net/soap/Calculator/Calculator.wsdl' 
+	 xmlns:xsd1='http://www.itfinity.net/soap/Calculator/Calculator.xsd' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://www.itfinity.net/soap/Calculator/Calculator.xsd'
+      xmlns='http://www.w3.org/1999/XMLSchema'>
+    </schema>
+  </types>
+  <message name='Evaluate'>
+    <part name='Expression' type='string'/>
+  </message>
+  <message name='EvaluateResponse'>
+    <part name='Result' type='string'/>
+  </message>
+  <portType name='CalculatorPortType'>
+    <operation name='Evaluate' parameterOrder='EvaluateInput1'>
+      <input message='tns:Evaluate' />
+      <output message='tns:EvaluateResponse' />
+    </operation>
+  </portType>
+  <binding name='CalculatorBinding' type='tns:CalculatorPortType' >
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='Evaluate' >
+      <soap:operation soapAction='http://www.itfinity.net/soap/Calculator/default.asp' />
+      <input>
+        <soap:body use='encoded' namespace='http://www.itfinity.net/soap/Calculator/Calculator.xsd'  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://www.itfinity.net/soap/Calculator/Calculator.xsd'  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='Calculator' >
+    <port name='CalculatorPortType' binding='tns:CalculatorBinding' >
+      <soap:address location='http://www.itfinity.net/soap/Calculator/default.asp' />
+    </port>
+  </service>
+</definitions>

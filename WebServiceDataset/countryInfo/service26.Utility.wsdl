@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/ForiegnPostalRates" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/ForiegnPostalRates" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/ForiegnPostalRates">
+      <s:element name="GetForiegnPostalRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MailType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pounds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ounces" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetForiegnPostalRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetForiegnPostalRatesResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetForiegnPostalRatesSoapIn">
+    <part name="parameters" element="s0:GetForiegnPostalRates" />
+  </message>
+  <message name="GetForiegnPostalRatesSoapOut">
+    <part name="parameters" element="s0:GetForiegnPostalRatesResponse" />
+  </message>
+  <message name="GetForiegnPostalRatesHttpGetIn">
+    <part name="MailType" type="s:string" />
+    <part name="Pounds" type="s:string" />
+    <part name="Ounces" type="s:string" />
+    <part name="Country" type="s:string" />
+  </message>
+  <message name="GetForiegnPostalRatesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetForiegnPostalRatesHttpPostIn">
+    <part name="MailType" type="s:string" />
+    <part name="Pounds" type="s:string" />
+    <part name="Ounces" type="s:string" />
+    <part name="Country" type="s:string" />
+  </message>
+  <message name="GetForiegnPostalRatesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="ForeignPostalRatesSoap">
+    <operation name="GetForiegnPostalRates">
+      <input message="s0:GetForiegnPostalRatesSoapIn" />
+      <output message="s0:GetForiegnPostalRatesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ForeignPostalRatesHttpGet">
+    <operation name="GetForiegnPostalRates">
+      <input message="s0:GetForiegnPostalRatesHttpGetIn" />
+      <output message="s0:GetForiegnPostalRatesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ForeignPostalRatesHttpPost">
+    <operation name="GetForiegnPostalRates">
+      <input message="s0:GetForiegnPostalRatesHttpPostIn" />
+      <output message="s0:GetForiegnPostalRatesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ForeignPostalRatesSoap" type="s0:ForeignPostalRatesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetForiegnPostalRates">
+      <soap:operation soapAction="http://innergears.com/WebServices/ForiegnPostalRates/GetForiegnPostalRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForeignPostalRatesHttpGet" type="s0:ForeignPostalRatesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetForiegnPostalRates">
+      <http:operation location="/GetForiegnPostalRates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForeignPostalRatesHttpPost" type="s0:ForeignPostalRatesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetForiegnPostalRates">
+      <http:operation location="/GetForiegnPostalRates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ForeignPostalRates">
+    <port name="ForeignPostalRatesSoap" binding="s0:ForeignPostalRatesSoap">
+      <soap:address location="http://www.innergears.com/WebServices/ForiegnPostalRates/ForiegnPostalRates.asmx" />
+    </port>
+    <port name="ForeignPostalRatesHttpGet" binding="s0:ForeignPostalRatesHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/ForiegnPostalRates/ForiegnPostalRates.asmx" />
+    </port>
+    <port name="ForeignPostalRatesHttpPost" binding="s0:ForeignPostalRatesHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/ForiegnPostalRates/ForiegnPostalRates.asmx" />
+    </port>
+  </service>
+</definitions>

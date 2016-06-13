@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetTaxInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TaxType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTaxInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTaxInfoResult" type="s0:TaxInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TaxInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountyFIPS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateAbbreviation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalTaxRate" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalTaxExempt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StateRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountyRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountyDistrictRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityDistrictRate" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TaxInfo" nillable="true" type="s0:TaxInfo" />
+    </s:schema>
+  </types>
+  <message name="GetTaxInfoSoapIn">
+    <part name="parameters" element="s0:GetTaxInfo" />
+  </message>
+  <message name="GetTaxInfoSoapOut">
+    <part name="parameters" element="s0:GetTaxInfoResponse" />
+  </message>
+  <message name="GetTaxInfoHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="TaxType" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetTaxInfoHttpGetOut">
+    <part name="Body" element="s0:TaxInfo" />
+  </message>
+  <message name="GetTaxInfoHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="TaxType" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetTaxInfoHttpPostOut">
+    <part name="Body" element="s0:TaxInfo" />
+  </message>
+  <portType name="DOTSFastTaxSoap">
+    <operation name="GetTaxInfo">
+      <documentation>Returns tax information for a given tax type and 5-digit zip code. Possible tax types are 'Sales' and 'Use'.</documentation>
+      <input message="s0:GetTaxInfoSoapIn" />
+      <output message="s0:GetTaxInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastTaxHttpGet">
+    <operation name="GetTaxInfo">
+      <documentation>Returns tax information for a given tax type and 5-digit zip code. Possible tax types are 'Sales' and 'Use'.</documentation>
+      <input message="s0:GetTaxInfoHttpGetIn" />
+      <output message="s0:GetTaxInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSFastTaxHttpPost">
+    <operation name="GetTaxInfo">
+      <documentation>Returns tax information for a given tax type and 5-digit zip code. Possible tax types are 'Sales' and 'Use'.</documentation>
+      <input message="s0:GetTaxInfoHttpPostIn" />
+      <output message="s0:GetTaxInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSFastTaxSoap" type="s0:DOTSFastTaxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTaxInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetTaxInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastTaxHttpGet" type="s0:DOTSFastTaxHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTaxInfo">
+      <http:operation location="/GetTaxInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSFastTaxHttpPost" type="s0:DOTSFastTaxHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTaxInfo">
+      <http:operation location="/GetTaxInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSFastTax">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSFastTaxSoap" binding="s0:DOTSFastTaxSoap">
+      <soap:address location="http://ws2.serviceobjects.net/ft/FastTax.asmx" />
+    </port>
+    <port name="DOTSFastTaxHttpGet" binding="s0:DOTSFastTaxHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/ft/FastTax.asmx" />
+    </port>
+    <port name="DOTSFastTaxHttpPost" binding="s0:DOTSFastTaxHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/ft/FastTax.asmx" />
+    </port>
+  </service>
+</definitions>

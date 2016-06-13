@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="machnumber" targetNamespace="http://www.smittyweb.com/machnumber.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.smittyweb.com/machnumber.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.smittyweb.com/machnumber.xsd1">
+	<types>
+		<xsd:schema targetNamespace="http://www.smittyweb.com/machnumber.xsd1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.smittyweb.com/machnumber.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.smittyweb.com/machnumber.xsd1"/>
+	</types>
+	<message name="calc_mach_numberRequest">
+		<part name="velocity" type="xsd:float">
+			<documentation>The local velocity in miles/hour</documentation>
+		</part>
+		<part name="altitude" type="xsd:float">
+			<documentation>The altitude (feet) the object is traveling. Zero feet is sea level, etc.</documentation>
+		</part>
+	</message>
+	<message name="calc_mach_numberResponse">
+		<part name="mach_number" type="xsd:float">
+			<documentation>The ratio of the  local velocity to the local speed of sound</documentation>
+		</part>
+	</message>
+	<portType name="machnumberPortType">
+		<operation name="calc_mach_number">
+			<input message="tns:calc_mach_numberRequest"/>
+			<output message="tns:calc_mach_numberResponse"/>
+		</operation>
+	</portType>
+	<binding name="machnumberBinding" type="tns:machnumberPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="calc_mach_number">
+			<soap:operation soapAction="Mach#calc_mach_number"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="Mach" parts="altitude velocity" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="Mach" parts="mach_number" use="encoded"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="machnumber">
+		<port binding="tns:machnumberBinding" name="machnumberPort">
+			<soap:address location="http://www.cgi101.com/~msmithso/soap.cgi"/>
+		</port>
+	</service>
+</definitions>

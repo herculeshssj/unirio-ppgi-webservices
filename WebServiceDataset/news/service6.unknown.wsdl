@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+
+<!-- WSDL opisanie za Bulport Weather Service
+Uslugite sa v period na izgrazdane i testvane. Konsultirajte se s tozi fajl otnosno bydeshti promeni. -->
+
+<definitions name="urn:WapBgWS"
+             targetNamespace="urn:WapBgWS"
+             xmlns:bns="urn:WapBgWS"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+          
+
+
+  <message name="responceWapDirCategory">
+    <part name="wapDirCategoryId"            type="xsd:string"/>
+    <part name="wapDirNewsCategoryName"            type="xsd:string"/>
+  <part name="wapDirNewsCategoryDescription"            type="xsd:string"/>
+    </message>
+
+
+  <message name="getWapDirSite">
+    <part name="catId"            type="xsd:string"/>
+  </message>
+
+
+  <message name="responceWapDirSite">
+    <part name="wapbgSiteId"            type="xsd:string"/>
+    <part name="wapbgSiteTitle"              type="xsd:string"/>
+    <part name="wapbgSiteDescription"          type="xsd:string"/>
+    <part name="wapbgSiteUrl"     type="xsd:string"/>
+    <part name="wapbgSiteAdded"       type="xsd:string"/>
+    <part name="wapbgSiteClickUrl"     type="xsd:string"/>
+    <part name="wapbgSiteClickEmUrl"     type="xsd:string"/>
+  </message>
+
+  <message name="responceWapDownloadCategory">
+    <part name="wapDownloadCategory"            type="xsd:string"/>
+  </message>
+
+  <message name="responceWapDownloadSite">
+    <part name="wapbgDownloadAppId"            type="xsd:string"/>
+     <part name="wapbgDownloadAppTitle"            type="xsd:string"/>
+    <part name="wapbgDownloadAppDescription"            type="xsd:string"/>
+    <part name="wapbgDownloadAppUrl"            type="xsd:string"/>
+    <part name="wapbgDownloadAppCounter"            type="xsd:string"/>
+    <part name="wapbgDownloadClickUrl"            type="xsd:string"/>
+    <part name="wapbgDownloadVendorTitle"            type="xsd:string"/>
+    <part name="wapbgDownloadVendorUrl"            type="xsd:string"/>
+  </message>
+
+  <message name="getWapDownloadSite">
+    <part name="catId"            type="xsd:int"/>
+  </message>
+
+  <message name="responceWapbgNewsList">
+    <part name="wapbgNewsId"         type="xsd:string"/>
+    <part name="wapbgNewsTitle"         type="xsd:string"/>
+    <part name="wapbgNewsPosted"         type="xsd:string"/>
+        <part name="wapbgNewsUrl"         type="xsd:string"/>
+  </message>
+
+  <message name="getWapbgNewsList">
+    <part name="howMuch"            type="xsd:int"/>
+  </message>
+
+
+  <message name="responceWapbgNewsLast">
+    <part name="wapbgNewsId"            type="xsd:string"/>
+    <part name="wapbgNewsTitle"              type="xsd:string"/>
+    <part name="wapbgNewsPosted"          type="xsd:string"/>
+    <part name="wapbgNewsUrl"     type="xsd:string"/>
+    <part name="wapbgNewsMainText"       type="xsd:string"/>
+    <part name="wapbgNewsMoreText"     type="xsd:string"/>
+  </message>
+
+  <message name="responceWapbgNewsLastByCat">
+    <part name="wapbgNewsId"            type="xsd:string"/>
+    <part name="wapbgNewsTitle"              type="xsd:string"/>
+    <part name="wapbgNewsPosted"          type="xsd:string"/>
+    <part name="wapbgNewsUrl"     type="xsd:string"/>
+    <part name="wapbgNewsMainText"       type="xsd:string"/>
+    <part name="wapbgNewsMoreText"     type="xsd:string"/>
+   </message>
+
+
+  <message name="getWapbgNewsLastByCat">
+    <part name="categoryId"         type="xsd:string"/>
+  </message>
+
+
+  <message name="responceWapbgNewsCategory">
+    <part name="wapbgNewsCategoryId"       type="xsd:string"/>
+    <part name="wapbgNewsCategoryName"       type="xsd:string"/>
+    <part name="wapbgNewsCategoryUrl"       type="xsd:string"/>
+  </message>
+
+
+
+
+  <portType name="WapBgWSPort">
+
+    <operation name="getWapDirCategory">
+      <output message="bns:responceWapDirCategory"/>
+    </operation>
+
+
+    <operation name="getWapDirSite">
+      <input message="bns:getWapDirSite"/>
+      <output message="bns:responceWapDirSite"/>
+    </operation>
+
+
+    <operation name="getWapDownloadCategory">
+      <output message="bns:responceWapDownloadCategory"/>
+    </operation>
+
+    <operation name="getWapDownloadSite">
+      <input message="bns:getWapDownloadSite"/>
+      <output message="bns:responceWapDownloadSite"/>
+    </operation>
+
+
+    <operation name="getWapbgNewsList">
+          <input message="bns:getWapbgNewsList"/>
+      <output message="bns:responceWapbgNewsList"/>
+    </operation>
+
+    <operation name="getWapbgNewsLast">
+      <output message="bns:responceWapbgNewsLast"/>
+    </operation>
+
+    <operation name="getWapbgNewsLastByCat">
+      <input message="bns:getWapbgNewsLastByCat"/>
+      <output message="bns:responceWapbgNewsLastByCat"/>
+    </operation>
+
+    <operation name="getWapbgNewsCategory">
+      <output message="bns:responceWapbgNewsCategory"/>
+    </operation>
+
+  </portType>
+
+
+
+
+  <binding name="WapBgWSBinding" type="bns:WapBgWSPort">
+    <soap:binding style="rpc"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+
+
+
+    <operation name="getWapDirCategory">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+
+
+    <operation name="getWapDirSite">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+
+    <operation name="getWapDownloadCategory">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+
+
+    <operation name="getWapDownloadSite">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+
+    <operation name="getWapbgNewsList">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+
+    <operation name="getWapbgNewsLast">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+    <operation name="getWapbgNewsLastByCat">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+
+    <operation name="getWapbgNewsCategory">
+      <soap:operation soapAction="urn:WapBgService"/>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WapBgWS"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+
+  <service name="WapBgWebService">
+      <document>
+      Pylno opisanie na uslugite shte otkriete na 
+      URL: http://dev.bulport.com/ws/
+    </document>
+    <port name="WapBgWSPort" binding="bns:WapBgWSBinding">
+      <soap:address location="http://services.bulport.com/wap-bg/"/>
+    </port>
+  </service>
+
+</definitions>

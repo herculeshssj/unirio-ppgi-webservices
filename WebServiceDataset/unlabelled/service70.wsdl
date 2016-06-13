@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+   xmlns:tns="http://tempuri.org/"
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+   targetNamespace="http://tempuri.org/"
+   xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+
+
+           <message name="verify" >
+
+  <part name="Message" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="MessageDigest" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+  <message name="verifyResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:boolean" />
+
+
+  </message>
+
+
+
+
+
+           <message name="digest" >
+
+  <part name="Message" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  <part name="Algorithm" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+  <message name="digestResponse" >
+
+  <part name="result" xmlns:partns="http://www.w3.org/2001/XMLSchema" type="partns:string" />
+
+
+  </message>
+
+
+
+
+
+
+           <portType name="MDPort" >
+
+  <operation name="verify"  >
+    <input message="tns:verify" />
+
+    <output message="tns:verifyResponse" />
+
+
+  </operation>
+
+  <operation name="digest"  >
+    <input message="tns:digest" />
+
+    <output message="tns:digestResponse" />
+
+
+  </operation>
+
+  </portType>
+
+
+
+           <binding name="MDPortSoapBinding"
+           type="tns:MDPort" >
+
+    <soap:binding style="rpc"
+           transport="http://schemas.xmlsoap.org/soap/http" />
+
+  <operation name="verify" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  <operation name="digest" >
+    <soap:operation
+    soapAction=""
+    style="rpc" />
+
+    <input>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </input>
+    <output>
+
+
+      <soap:body use="encoded" namespace="http://tempuri.org/"
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+
+
+
+    </output>
+
+  </operation>
+
+
+  </binding>
+
+
+     <service name="MD" >
+
+    <port name="MDPort"
+      binding="tns:MDPortSoapBinding">
+     <soap:address location="http://www.adis.dynu.com:80/web-services/md"/>
+    </port>
+
+  </service>
+
+</definitions>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.baccar-inc.com/ws/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.baccar-inc.com/ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.baccar-inc.com/ws/">
+      <s:element name="LicenseKey">
+        <s:complexType />
+      </s:element>
+      <s:element name="LicenseKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityInfoResult" type="s0:CityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ZIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="CityInfo" nillable="true" type="s0:CityInfo" />
+    </s:schema>
+  </types>
+  <message name="LicenseKeySoapIn">
+    <part name="parameters" element="s0:LicenseKey" />
+  </message>
+  <message name="LicenseKeySoapOut">
+    <part name="parameters" element="s0:LicenseKeyResponse" />
+  </message>
+  <message name="GetCityInfoSoapIn">
+    <part name="parameters" element="s0:GetCityInfo" />
+  </message>
+  <message name="GetCityInfoSoapOut">
+    <part name="parameters" element="s0:GetCityInfoResponse" />
+  </message>
+  <message name="LicenseKeyHttpGetIn" />
+  <message name="LicenseKeyHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCityInfoHttpGetIn">
+    <part name="zip" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetCityInfoHttpGetOut">
+    <part name="Body" element="s0:CityInfo" />
+  </message>
+  <message name="LicenseKeyHttpPostIn" />
+  <message name="LicenseKeyHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCityInfoHttpPostIn">
+    <part name="zip" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetCityInfoHttpPostOut">
+    <part name="Body" element="s0:CityInfo" />
+  </message>
+  <portType name="ZipCodeSoap">
+    <operation name="LicenseKey">
+      <documentation>To obtain a license key please visit &lt;A href='http://www.baccar-inc.com/baccar1/WebSrvc.aspx?catID=6&amp;amp;srvID=27'&gt;www.baccar-inc.com&lt;/A&gt;</documentation>
+      <input message="s0:LicenseKeySoapIn" />
+      <output message="s0:LicenseKeySoapOut" />
+    </operation>
+    <operation name="GetCityInfo">
+      <input message="s0:GetCityInfoSoapIn" />
+      <output message="s0:GetCityInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ZipCodeHttpGet">
+    <operation name="LicenseKey">
+      <documentation>To obtain a license key please visit &lt;A href='http://www.baccar-inc.com/baccar1/WebSrvc.aspx?catID=6&amp;amp;srvID=27'&gt;www.baccar-inc.com&lt;/A&gt;</documentation>
+      <input message="s0:LicenseKeyHttpGetIn" />
+      <output message="s0:LicenseKeyHttpGetOut" />
+    </operation>
+    <operation name="GetCityInfo">
+      <input message="s0:GetCityInfoHttpGetIn" />
+      <output message="s0:GetCityInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ZipCodeHttpPost">
+    <operation name="LicenseKey">
+      <documentation>To obtain a license key please visit &lt;A href='http://www.baccar-inc.com/baccar1/WebSrvc.aspx?catID=6&amp;amp;srvID=27'&gt;www.baccar-inc.com&lt;/A&gt;</documentation>
+      <input message="s0:LicenseKeyHttpPostIn" />
+      <output message="s0:LicenseKeyHttpPostOut" />
+    </operation>
+    <operation name="GetCityInfo">
+      <input message="s0:GetCityInfoHttpPostIn" />
+      <output message="s0:GetCityInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ZipCodeSoap" type="s0:ZipCodeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="LicenseKey">
+      <soap:operation soapAction="http://www.baccar-inc.com/ws/LicenseKey" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCityInfo">
+      <soap:operation soapAction="http://www.baccar-inc.com/ws/GetCityInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipCodeHttpGet" type="s0:ZipCodeHttpGet">
+    <http:binding verb="GET" />
+    <operation name="LicenseKey">
+      <http:operation location="/LicenseKey" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCityInfo">
+      <http:operation location="/GetCityInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ZipCodeHttpPost" type="s0:ZipCodeHttpPost">
+    <http:binding verb="POST" />
+    <operation name="LicenseKey">
+      <http:operation location="/LicenseKey" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCityInfo">
+      <http:operation location="/GetCityInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ZipCode">
+    <documentation>&lt;A href='http://www.baccar-inc.com/baccar1/WebSrvc.aspx?catID=6&amp;amp;srvID=27'&gt;&lt;img src='/images/Baccar_logo-s.gif'&gt;&lt;/A&gt;&lt;P&gt;Retrieve basic information about U.S. Cities for a given ZIP code.</documentation>
+    <port name="ZipCodeSoap" binding="s0:ZipCodeSoap">
+      <soap:address location="https://www.baccar-inc.com/ws/Data/ZipCode/ZipCode.asmx" />
+    </port>
+    <port name="ZipCodeHttpGet" binding="s0:ZipCodeHttpGet">
+      <http:address location="https://www.baccar-inc.com/ws/Data/ZipCode/ZipCode.asmx" />
+    </port>
+    <port name="ZipCodeHttpPost" binding="s0:ZipCodeHttpPost">
+      <http:address location="https://www.baccar-inc.com/ws/Data/ZipCode/ZipCode.asmx" />
+    </port>
+  </service>
+</definitions>

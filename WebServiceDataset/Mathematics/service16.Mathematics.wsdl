@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<definitions name="Lottery.generatenumbers" targetNamespace="http://sal006.salnetwork.com:83/lucin/Lottery/GenerateNumbers.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/Lottery/GenerateNumbers.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetLotteryNumbersRequest">
+        <part name="HighestNumber" type="xsd:long"/>
+        <part name="TotalNumbers" type="xsd:long"/>
+    </message>
+    <message name="GetLotteryNumbersResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Lottery.generatenumbersPortType">
+        <operation name="GetLotteryNumbers">
+            <input message="tns:GetLotteryNumbersRequest"/>
+            <output message="tns:GetLotteryNumbersResponse"/>
+        </operation>
+    </portType>
+    <binding name="Lottery.generatenumbersbinding" type="tns:Lottery.generatenumbersPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLotteryNumbers">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/Lottery/GenerateNumbers.xml#GetLotteryNumbers"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/Lottery/GenerateNumbers.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/Lottery/GenerateNumbers.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Lottery.generatenumbersService">
+        <port name="Lottery.generatenumbersPort" binding="tns:Lottery.generatenumbersbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lottery.cgi"/>
+        </port>
+    </service>
+</definitions>

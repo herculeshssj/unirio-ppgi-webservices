@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<definitions name="MP3Charts" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://webservices.mp3.com/MP3ChartsMP3Charts.wsdl" xmlns:tns="http://webservices.mp3.com/MP3ChartsMP3Charts.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsdl="http://webservices.mp3.com/MP3Charts">
+	<types>
+		<schema targetNamespace="http://webservices.mp3.com/MP3Charts" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<element minOccurs="1" maxOccurs="1" name="get_top_songsRequest" type="string" />
+			<complexType name="song_info">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="artist" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="title" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="id" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="lofiplay" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="genrename" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="rank" type="string" />
+				</sequence>
+			</complexType>
+			<element minOccurs="1" maxOccurs="unbounded" name="get_top_songsResponse" wsdl:arrayType="xsdl:song_info[]" />
+			<element minOccurs="1" maxOccurs="1" name="get_genre_listRequest" type="string" />
+			<complexType name="genre_info">
+				<sequence>
+					<element minOccurs="1" maxOccurs="1" name="id" type="string" />
+					<element minOccurs="1" maxOccurs="1" name="name" type="string" />
+				</sequence>
+			</complexType>
+			<element minOccurs="1" maxOccurs="unbounded" name="get_genre_listResponse" wsdl:arrayType="xsdl:genre_info[]" />
+		</schema>
+	</types>
+	<message name="get_genre_listRequest">
+		<part name="msg" type="xsdl:get_genre_listRequest"/>
+	</message>
+	<message name="get_genre_listResponse">
+		<part name="msg" type="xsdl:get_genre_listResponse"/>
+	</message>
+	<message name="get_top_songsRequest">
+		<part name="msg" type="xsdl:get_top_songsRequest"/>
+	</message>
+	<message name="get_top_songsResponse">
+		<part name="msg" type="xsdl:get_top_songsResponse"/>
+	</message>
+	<portType name="MP3.comMP3ChartsPortType">
+		<operation name="get_genre_list">
+			<input message="tns:get_genre_listRequest" />
+			<output message="tns:get_genre_listResponse" />
+		</operation>
+		<operation name="get_top_songs">
+			<input message="tns:get_top_songsRequest" />
+			<output message="tns:get_top_songsResponse" />
+		</operation>
+	</portType>
+	<binding name="MP3.comMP3ChartsBinding" type="tns:MP3.comMP3ChartsPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+			<operation name="get_genre_list">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="encoded" namespace="urn:MP3Charts" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</input>
+				<output>
+					<soap:body use="encoded" namespace="urn:MP3Charts" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</output>
+			</operation>
+			<operation name="get_top_songs">
+				<soap:operation soapAction=""/>
+				<input>
+					<soap:body use="encoded" namespace="urn:MP3Charts" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</input>
+				<output>
+					<soap:body use="encoded" namespace="urn:MP3Charts" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+				</output>
+			</operation>
+	</binding>
+	<service name="MP3Charts">
+		<documentation>
+			Charts and Genre information from MP3.com
+		</documentation>
+		<port name="MP3.comMP3ChartsPort" binding="tns:MP3.comMP3ChartsBinding">
+			<soap:address location="http://webservices.mp3.com/MP3Charts"/>
+		</port>
+	</service>
+</definitions>

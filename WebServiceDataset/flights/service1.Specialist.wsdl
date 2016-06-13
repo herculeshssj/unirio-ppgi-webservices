@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AdvancedTravelInformation"
+  targetNamespace="http://www.advancedtravelserverservice.com/AdvancedTravelServer"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:interface="http://www.advancedtravelserverservice.com/AdvancedTravelServer-interface"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:types="http://www.advancedtravelserverservice.com/AdvancedTravelServer"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<types>
+  <xsd:schema
+      targetNamespace="http://www.advancedtravelserverservice.com/AdvancedTravelServer-interface/types/"
+        xmlns="http://www.w3.org/2001/XMLSchema/">
+    <xsd:complexType name="TravelInformation">
+       <xsd:sequence>
+          <xsd:element name="departAirportCode" type="xsd:string"/>
+          <xsd:element name="departAirline" type="xsd:string"/>
+          <xsd:element name="departFlightNumber" type="xsd:string"/>
+          <xsd:element name="arriveAirportCode" type="xsd:string"/>
+          <xsd:element name="returnAirline" type="xsd:string"/>
+          <xsd:element name="returnFlightNumber" type="xsd:string"/>
+          <xsd:element name="departTemperature" type="xsd:string"/>
+          <xsd:element name="arriveTemperature" type="xsd:string"/>
+          <xsd:element name="departAirlineStockTicker" type="xsd:string"/>
+          <xsd:element name="returnAirlineStockTicker" type="xsd:string"/>
+          <xsd:element name="departWind" type="xsd:string"/>
+          <xsd:element name="arriveWind" type="xsd:string"/>
+          <xsd:element name="departPressure" type="xsd:string"/>
+          <xsd:element name="arrivePressure" type="xsd:string"/>
+          <xsd:element name="departSky" type="xsd:string"/>
+          <xsd:element name="arriveSky" type="xsd:string"/>
+          <xsd:element name="price" type="xsd:double"/>
+          <xsd:element name="departAirlineStockAsk" type="xsd:double"/>
+          <xsd:element name="returnAirlineStockAsk" type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+  </xsd:schema>
+</types>
+
+<message name="InlookupConnectionRequest">
+  <part name="meth1_inType1"
+      type="xsd:string"/>
+  <part name="meth1_inType2"
+      type="xsd:string"/>
+  <part name="meth1_inType3"
+      type="xsd:string"/>
+  <part name="meth1_inType4"
+    type="xsd:string"/>
+</message>
+
+<message name="OutlookupConnectionResponse">
+  <part name="meth1_outType"
+    type="types:TravelInformation"/>
+</message>
+<portType
+      name="AdvancedTravelInformation">
+  <operation
+        name="lookupConnection">
+    <input
+        message="tns:InlookupConnectionRequest"/>
+    <output
+    message="tns:OutlookupConnectionResponse"/>
+  </operation>
+</portType>
+
+<binding
+    name="AdvancedTravelInformationBinding"
+      type="tns:AdvancedTravelInformation">
+  <soap:binding style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation
+        name="lookupConnection">
+    <soap:operation
+          soapAction="urn:advancedtravel"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:advancedtravel"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:advancedtravel" use="encoded"/>
+    </output>
+  </operation>
+</binding>
+
+<service
+      name="AdvancedTravelInformation">
+  <documentation>IBM WSTK V2.4 generated service definition file</documentation>
+  <port
+      binding="interface:AdvancedTravelInformationBinding"
+        name="AdvancedTravelInformationPort">
+    <soap:address location="http://www.iternum.net/soap/servlet/rpcrouter"/>
+  </port>
+</service>
+
+</definitions>

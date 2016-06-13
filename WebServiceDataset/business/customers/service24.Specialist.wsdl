@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated 11/07/01 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.02.813.0 -->
+<!-- Manually modified and maintained since 11/07/01 -->
+<definitions name="Account" targetNamespace="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:wsdlns="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:typens="http://www.coldrooster.com/ssf/2001/11/type" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="http://www.coldrooster.com/ssf/2001/11/type" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+		</schema>
+	</types>
+	<message name="Account.MoveFavorite">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FavID" type="xsd:int"/>
+		<part name="NewCatID" type="xsd:int"/>
+	</message>
+	<message name="Account.MoveFavoriteResponse">
+	</message>
+	<message name="Account.GetFavorites">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+	</message>
+	<message name="Account.GetFavoritesResponse">
+		<part name="Result" type="xsd:string"/>
+	</message>
+	<message name="Account.AddCategory">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="ParentID" type="xsd:int"/>
+		<part name="FriendlyName" type="xsd:string"/>
+	</message>
+	<message name="Account.AddCategoryResponse">
+		<part name="Result" type="xsd:int"/>
+	</message>
+	<message name="Account.AddFavorite">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FriendlyName" type="xsd:string"/>
+		<part name="uri" type="xsd:string"/>
+		<part name="ParentID" type="xsd:int"/>
+	</message>
+	<message name="Account.AddFavoriteResponse">
+		<part name="Result" type="xsd:int"/>
+	</message>
+	<message name="Account.RenameCategory">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="CatID" type="xsd:int"/>
+		<part name="NewName" type="xsd:string"/>
+	</message>
+	<message name="Account.RenameCategoryResponse">
+	</message>
+	<message name="Account.CopyFavoriteToNewCategory">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FavID" type="xsd:int"/>
+		<part name="NewCatID" type="xsd:int"/>
+	</message>
+	<message name="Account.CopyFavoriteToNewCategoryResponse">
+		<part name="Result" type="xsd:int"/>
+	</message>
+	<message name="Account.CopyFavoriteInCategory">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FavID" type="xsd:int"/>
+		<part name="FriendlyName" type="xsd:string"/>
+	</message>
+	<message name="Account.CopyFavoriteInCategoryResponse">
+		<part name="Result" type="xsd:int"/>
+	</message>
+	<message name="Account.RenameFavorite">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FavID" type="xsd:int"/>
+		<part name="NewName" type="xsd:string"/>
+	</message>
+	<message name="Account.RenameFavoriteResponse">
+	</message>
+	<message name="Account.DeleteFavorite">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="FavID" type="xsd:int"/>
+	</message>
+	<message name="Account.DeleteFavoriteResponse">
+	</message>
+	<message name="Account.DeleteCategory">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+		<part name="CatID" type="xsd:int"/>
+	</message>
+	<message name="Account.DeleteCategoryResponse">
+	</message>
+	<message name="Account.AddUser">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+	</message>
+	<message name="Account.AddUserResponse">
+	</message>
+	<message name="Account.DeleteUser">
+		<part name="key" type="xsd:string"/>
+		<part name="Username" type="xsd:string"/>
+	</message>
+	<message name="Account.DeleteUserResponse">
+	</message>
+	<portType name="AccountSoapPort">
+		<operation name="MoveFavorite" parameterOrder="key Username FavID NewCatID">
+			<input message="wsdlns:Account.MoveFavorite"/>
+			<output message="wsdlns:Account.MoveFavoriteResponse"/>
+		</operation>
+		<operation name="GetFavorites" parameterOrder="key Username">
+			<input message="wsdlns:Account.GetFavorites"/>
+			<output message="wsdlns:Account.GetFavoritesResponse"/>
+		</operation>
+		<operation name="AddCategory" parameterOrder="key Username ParentID FriendlyName">
+			<input message="wsdlns:Account.AddCategory"/>
+			<output message="wsdlns:Account.AddCategoryResponse"/>
+		</operation>
+		<operation name="AddFavorite" parameterOrder="key Username FriendlyName uri ParentID">
+			<input message="wsdlns:Account.AddFavorite"/>
+			<output message="wsdlns:Account.AddFavoriteResponse"/>
+		</operation>
+		<operation name="RenameCategory" parameterOrder="key Username CatID NewName">
+			<input message="wsdlns:Account.RenameCategory"/>
+			<output message="wsdlns:Account.RenameCategoryResponse"/>
+		</operation>
+		<operation name="CopyFavoriteToNewCategory" parameterOrder="key Username FavID NewCatID">
+			<input message="wsdlns:Account.CopyFavoriteToNewCategory"/>
+			<output message="wsdlns:Account.CopyFavoriteToNewCategoryResponse"/>
+		</operation>
+		<operation name="CopyFavoriteInCategory" parameterOrder="key Username FavID FriendlyName">
+			<input message="wsdlns:Account.CopyFavoriteInCategory"/>
+			<output message="wsdlns:Account.CopyFavoriteInCategoryResponse"/>
+		</operation>
+		<operation name="RenameFavorite" parameterOrder="key Username FavID NewName">
+			<input message="wsdlns:Account.RenameFavorite"/>
+			<output message="wsdlns:Account.RenameFavoriteResponse"/>
+		</operation>
+		<operation name="DeleteFavorite" parameterOrder="key Username FavID">
+			<input message="wsdlns:Account.DeleteFavorite"/>
+			<output message="wsdlns:Account.DeleteFavoriteResponse"/>
+		</operation>
+		<operation name="DeleteCategory" parameterOrder="key Username CatID">
+			<input message="wsdlns:Account.DeleteCategory"/>
+			<output message="wsdlns:Account.DeleteCategoryResponse"/>
+		</operation>
+		<operation name="AddUser" parameterOrder="key Username">
+			<input message="wsdlns:Account.AddUser"/>
+			<output message="wsdlns:Account.AddUserResponse"/>
+		</operation>
+		<operation name="DeleteUser" parameterOrder="key Username">
+			<input message="wsdlns:Account.DeleteUser"/>
+			<output message="wsdlns:Account.DeleteUserResponse"/>
+		</operation>
+	</portType>
+	<binding name="AccountSoapBinding" type="wsdlns:AccountSoapPort">
+		<stk:binding preferredEncoding="UTF-8"/>
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="MoveFavorite">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.MoveFavorite"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetFavorites">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.GetFavorites"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="AddCategory">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.AddCategory"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="AddFavorite">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.AddFavorite"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="RenameCategory">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.RenameCategory"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="CopyFavoriteToNewCategory">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.CopyFavoriteToNewCategory"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="CopyFavoriteInCategory">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.CopyFavoriteInCategory"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="RenameFavorite">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.RenameFavorite"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="DeleteFavorite">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.DeleteFavorite"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="DeleteCategory">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.DeleteCategory"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="AddUser">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.AddUser"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="DeleteUser">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Account.DeleteUser"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="Account">
+		<port name="AccountSoapPort" binding="wsdlns:AccountSoapBinding">
+			<soap:address location="http://coldrooster.com/SSF/Account.asp"/>
+		</port>
+	</service>
+</definitions>

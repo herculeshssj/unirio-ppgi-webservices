@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Workflow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parmXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WorkflowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkflowResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="WorkflowSoapIn">
+    <part name="parameters" element="s0:Workflow" />
+  </message>
+  <message name="WorkflowSoapOut">
+    <part name="parameters" element="s0:WorkflowResponse" />
+  </message>
+  <message name="WorkflowHttpGetIn">
+    <part name="parmXML" type="s:string" />
+  </message>
+  <message name="WorkflowHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="WorkflowHttpPostIn">
+    <part name="parmXML" type="s:string" />
+  </message>
+  <message name="WorkflowHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="Service1Soap">
+    <operation name="Workflow">
+      <input message="s0:WorkflowSoapIn" />
+      <output message="s0:WorkflowSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpGet">
+    <operation name="Workflow">
+      <input message="s0:WorkflowHttpGetIn" />
+      <output message="s0:WorkflowHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpPost">
+    <operation name="Workflow">
+      <input message="s0:WorkflowHttpPostIn" />
+      <output message="s0:WorkflowHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Service1Soap" type="s0:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Workflow">
+      <soap:operation soapAction="http://tempuri.org/Workflow" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpGet" type="s0:Service1HttpGet">
+    <http:binding verb="GET" />
+    <operation name="Workflow">
+      <http:operation location="/Workflow" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpPost" type="s0:Service1HttpPost">
+    <http:binding verb="POST" />
+    <operation name="Workflow">
+      <http:operation location="/Workflow" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service1">
+    <port name="Service1Soap" binding="s0:Service1Soap">
+      <soap:address location="http://68.16.242.252/wfservice/wfservice.asmx" />
+    </port>
+    <port name="Service1HttpGet" binding="s0:Service1HttpGet">
+      <http:address location="http://68.16.242.252/wfservice/wfservice.asmx" />
+    </port>
+    <port name="Service1HttpPost" binding="s0:Service1HttpPost">
+      <http:address location="http://68.16.242.252/wfservice/wfservice.asmx" />
+    </port>
+  </service>
+</definitions>

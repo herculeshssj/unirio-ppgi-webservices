@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GlossaryService" targetNamespace="http://www.luhala.com/Glossary" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.luhala.com/Glossary">
+<types>
+  <schema targetNamespace="http://www.luhala.com/Glossary" xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+      <element name="Results" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+   </schema>
+</types>
+<message name="InDefinitions">
+  <part name="word" type="xsd:string" /> 
+</message>
+<message name="OutDefinitions">
+  <part name="result" type="tns:Results" /> 
+</message>
+<message name="InSynonyms">
+  <part name="word" type="xsd:string" /> 
+</message>
+<message name="OutSynonyms">
+  <part name="result" type="tns:Results" /> 
+</message>
+
+<portType name="GlossaryServicePort">
+ <operation name="definitions">
+  <input message="InDefinitions" /> 
+  <output message="OutDefinitions" /> 
+ </operation>
+ <operation name="synonyms">
+  <input message="InSynonyms" /> 
+  <output message="OutSynonyms" /> 
+ </operation>
+</portType>
+<binding name="GlossaryServiceBinding" type="GlossaryServicePort">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+  <operation name="definitions">
+   <soap:operation soapAction="http://www.luhala.com/Glossary#definitions" /> 
+  <input>
+     <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.luhala.com/Glossary" use="encoded" /> 
+  </input>
+  <output>
+  <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.luhala.com/Glossary" use="encoded" /> 
+  </output>
+  </operation>
+
+  <operation name="synonyms">
+   <soap:operation soapAction="http://www.luhala.com/Glossary#synonyms" /> 
+  <input>
+     <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.luhala.com/Glossary" use="encoded" /> 
+  </input>
+  <output>
+  <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.luhala.com/Glossary" use="encoded" /> 
+  </output>
+  </operation>
+  </binding>
+<service name="GlossaryService">
+  <documentation>The Glossary Service provides both definition as well as synonym lookups for nouns</documentation>
+  <port binding="GlossaryServiceBinding" name="GlossaryServicePort">
+  <soap:address location="http://www.luhala.com/cgi-bin/glossary.pl" /> 
+  </port>
+  </service>
+</definitions>

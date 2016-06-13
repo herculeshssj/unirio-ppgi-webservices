@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IADPNewHotServiceservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="urn:uADPNewHotRecord">
+  <types>
+    <xs:schema targetNamespace="urn:uADPNewHotRecord" xmlns="urn:uADPNewHotRecord">
+      <xs:complexType name="TADPNewHotRecordArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="ns1:TADPNewHotRecord[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TADPNewHotRecord">
+        <xs:sequence>
+          <xs:element name="Title" type="xs:string"/>
+          <xs:element name="Description" type="xs:string"/>
+          <xs:element name="URL" type="xs:string"/>
+          <xs:element name="WhenWhere" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="GetTheNewsRequest"/>
+  <message name="GetTheNewsResponse">
+    <part name="return" type="ns1:TADPNewHotRecordArray"/>
+  </message>
+  <portType name="IADPNewHotService">
+    <operation name="GetTheNews">
+      <input message="tns:GetTheNewsRequest"/>
+      <output message="tns:GetTheNewsResponse"/>
+    </operation>
+  </portType>
+  <binding name="IADPNewHotServicebinding" type="tns:IADPNewHotService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetTheNews">
+      <soap:operation soapAction="urn:ADPNewHotServiceIntf-IADPNewHotService#GetTheNews" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ADPNewHotServiceIntf-IADPNewHotService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ADPNewHotServiceIntf-IADPNewHotService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IADPNewHotServiceservice">
+    <port name="IADPNewHotServicePort" binding="tns:IADPNewHotServicebinding">
+      <soap:address location="http://sf.hr/cgi-bin/ADPNewHotService.exe/soap/IADPNewHotService"/>
+    </port>
+  </service>
+</definitions>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<definitions name="Languages.clanguages" targetNamespace="http://sal006.salnetwork.com:83/retail/Languages/CLanguages.xml" xmlns:tns="http://sal006.salnetwork.com:83/retail/Languages/CLanguages.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetLaguagesRequest">
+        <part name="RecLanguages" type="xsd:string"/>
+    </message>
+    <message name="GetLaguagesResponse">
+        <part name="RecLanguages" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Languages.clanguagesPortType">
+        <operation name="GetLaguages">
+            <input message="tns:GetLaguagesRequest"/>
+            <output message="tns:GetLaguagesResponse"/>
+        </operation>
+    </portType>
+    <binding name="Languages.clanguagesbinding" type="tns:Languages.clanguagesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLaguages">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/Languages/CLanguages.xml#GetLaguages"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Languages/CLanguages.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Languages/CLanguages.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Languages.clanguagesService">
+        <port name="Languages.clanguagesPort" binding="tns:Languages.clanguagesbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lclanguagecodes.cgi"/>
+        </port>
+    </service>
+</definitions>

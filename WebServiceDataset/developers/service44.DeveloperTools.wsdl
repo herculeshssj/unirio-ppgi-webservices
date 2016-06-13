@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="LookupPort">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="portNumberOrName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="page" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LookupPortResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LookupPortResult" type="s0:PortDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PortDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="portNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="portDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="nbrItems" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="portProtocol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="links" type="s0:ArrayOfPortLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPortLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PortLink" nillable="true" type="s0:PortLink" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PortLink">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="linkurl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="linkdesc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PortDetails" nillable="true" type="s0:PortDetails" />
+    </s:schema>
+  </types>
+  <message name="LookupPortSoapIn">
+    <part name="parameters" element="s0:LookupPort" />
+  </message>
+  <message name="LookupPortSoapOut">
+    <part name="parameters" element="s0:LookupPortResponse" />
+  </message>
+  <message name="LookupPortHttpGetIn">
+    <part name="portNumberOrName" type="s:string" />
+    <part name="page" type="s:string" />
+  </message>
+  <message name="LookupPortHttpGetOut">
+    <part name="Body" element="s0:PortDetails" />
+  </message>
+  <message name="LookupPortHttpPostIn">
+    <part name="portNumberOrName" type="s:string" />
+    <part name="page" type="s:string" />
+  </message>
+  <message name="LookupPortHttpPostOut">
+    <part name="Body" element="s0:PortDetails" />
+  </message>
+  <portType name="wsPortLookUpSoap">
+    <operation name="LookupPort">
+      <documentation>Obtain information about known programs(valid and viruses) which run on a specific port number. Searches can be by port number or application name(ex. PCAnywhere or 5631. Page is actually the row(0 based) in the dataset you want(nbr of rows available returned with each call).</documentation>
+      <input message="s0:LookupPortSoapIn" />
+      <output message="s0:LookupPortSoapOut" />
+    </operation>
+  </portType>
+  <portType name="wsPortLookUpHttpGet">
+    <operation name="LookupPort">
+      <documentation>Obtain information about known programs(valid and viruses) which run on a specific port number. Searches can be by port number or application name(ex. PCAnywhere or 5631. Page is actually the row(0 based) in the dataset you want(nbr of rows available returned with each call).</documentation>
+      <input message="s0:LookupPortHttpGetIn" />
+      <output message="s0:LookupPortHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="wsPortLookUpHttpPost">
+    <operation name="LookupPort">
+      <documentation>Obtain information about known programs(valid and viruses) which run on a specific port number. Searches can be by port number or application name(ex. PCAnywhere or 5631. Page is actually the row(0 based) in the dataset you want(nbr of rows available returned with each call).</documentation>
+      <input message="s0:LookupPortHttpPostIn" />
+      <output message="s0:LookupPortHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="wsPortLookUpSoap" type="s0:wsPortLookUpSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="LookupPort">
+      <soap:operation soapAction="http://tempuri.org/LookupPort" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsPortLookUpHttpGet" type="s0:wsPortLookUpHttpGet">
+    <http:binding verb="GET" />
+    <operation name="LookupPort">
+      <http:operation location="/LookupPort" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsPortLookUpHttpPost" type="s0:wsPortLookUpHttpPost">
+    <http:binding verb="POST" />
+    <operation name="LookupPort">
+      <http:operation location="/LookupPort" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsPortLookUp">
+    <port name="wsPortLookUpSoap" binding="s0:wsPortLookUpSoap">
+      <soap:address location="http://www.nakedvariables.com/webservices/wsportlookup.asmx" />
+    </port>
+    <port name="wsPortLookUpHttpGet" binding="s0:wsPortLookUpHttpGet">
+      <http:address location="http://www.nakedvariables.com/webservices/wsportlookup.asmx" />
+    </port>
+    <port name="wsPortLookUpHttpPost" binding="s0:wsPortLookUpHttpPost">
+      <http:address location="http://www.nakedvariables.com/webservices/wsportlookup.asmx" />
+    </port>
+  </service>
+</definitions>

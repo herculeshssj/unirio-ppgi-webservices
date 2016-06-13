@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IJiveservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="StrToJiveRequest">
+    <part name="sSource" type="xs:string"/>
+  </message>
+  <message name="StrToJiveResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IJive">
+    <operation name="StrToJive">
+      <input message="StrToJiveRequest"/>
+      <output message="StrToJiveResponse"/>
+    </operation>
+  </portType>
+  <binding name="IJivebinding" type="IJive">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="StrToJive">
+      <soap:operation soapAction="urn:JiveIntf-IJive#StrToJive"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:JiveIntf-IJive"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:JiveIntf-IJive"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IJiveservice">
+    <port name="IJivePort" binding="IJivebinding">
+      <soap:address location="http://www.craigmurphy.com/cgi-bin/JiveWS.exe/soap/IJive"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.icutebot.com/WebDictionary" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.icutebot.com/WebDictionary" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.icutebot.com/WebDictionary">
+      <s:element name="Translate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="word" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromLangName" type="s0:LanguageName" />
+            <s:element minOccurs="1" maxOccurs="1" name="toLangName" type="s0:LanguageName" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="LanguageName">
+        <s:restriction base="s:string">
+          <s:enumeration value="Perl" />
+          <s:enumeration value="PHP" />
+          <s:enumeration value="VBScript" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="TranslateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TranslateResult" type="s0:ArrayOfSynonym" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSynonym">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Synonym" nillable="true" type="s0:Synonym" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Synonym">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SynonymSet" type="s0:ArrayOfDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Definition" nillable="true" type="s0:Definition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Definition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LanguageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KeywordType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Arguments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SeeAlso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LookUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="word" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="langName" type="s0:LanguageName" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LookUpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LookUpResult" type="s0:ArrayOfDefinition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="langName" type="s0:LanguageName" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllResult" type="s0:KeywordList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="KeywordList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Keyword" type="s0:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfSynonym" nillable="true" type="s0:ArrayOfSynonym" />
+      <s:element name="ArrayOfDefinition" nillable="true" type="s0:ArrayOfDefinition" />
+      <s:element name="KeywordList" nillable="true" type="s0:KeywordList" />
+    </s:schema>
+  </types>
+  <message name="TranslateSoapIn">
+    <part name="parameters" element="s0:Translate" />
+  </message>
+  <message name="TranslateSoapOut">
+    <part name="parameters" element="s0:TranslateResponse" />
+  </message>
+  <message name="LookUpSoapIn">
+    <part name="parameters" element="s0:LookUp" />
+  </message>
+  <message name="LookUpSoapOut">
+    <part name="parameters" element="s0:LookUpResponse" />
+  </message>
+  <message name="ListAllSoapIn">
+    <part name="parameters" element="s0:ListAll" />
+  </message>
+  <message name="ListAllSoapOut">
+    <part name="parameters" element="s0:ListAllResponse" />
+  </message>
+  <message name="TranslateHttpGetIn">
+    <part name="word" type="s:string" />
+    <part name="fromLangName" type="s:string" />
+    <part name="toLangName" type="s:string" />
+  </message>
+  <message name="TranslateHttpGetOut">
+    <part name="Body" element="s0:ArrayOfSynonym" />
+  </message>
+  <message name="LookUpHttpGetIn">
+    <part name="word" type="s:string" />
+    <part name="langName" type="s:string" />
+  </message>
+  <message name="LookUpHttpGetOut">
+    <part name="Body" element="s0:ArrayOfDefinition" />
+  </message>
+  <message name="ListAllHttpGetIn">
+    <part name="langName" type="s:string" />
+  </message>
+  <message name="ListAllHttpGetOut">
+    <part name="Body" element="s0:KeywordList" />
+  </message>
+  <message name="TranslateHttpPostIn">
+    <part name="word" type="s:string" />
+    <part name="fromLangName" type="s:string" />
+    <part name="toLangName" type="s:string" />
+  </message>
+  <message name="TranslateHttpPostOut">
+    <part name="Body" element="s0:ArrayOfSynonym" />
+  </message>
+  <message name="LookUpHttpPostIn">
+    <part name="word" type="s:string" />
+    <part name="langName" type="s:string" />
+  </message>
+  <message name="LookUpHttpPostOut">
+    <part name="Body" element="s0:ArrayOfDefinition" />
+  </message>
+  <message name="ListAllHttpPostIn">
+    <part name="langName" type="s:string" />
+  </message>
+  <message name="ListAllHttpPostOut">
+    <part name="Body" element="s0:KeywordList" />
+  </message>
+  <portType name="WebDictionarySoap">
+    <operation name="Translate">
+      <documentation>Translate keywords from one web language to the other(s)</documentation>
+      <input message="s0:TranslateSoapIn" />
+      <output message="s0:TranslateSoapOut" />
+    </operation>
+    <operation name="LookUp">
+      <documentation>Lookup the given keyword in the one language and return a well-formed definition of the given word</documentation>
+      <input message="s0:LookUpSoapIn" />
+      <output message="s0:LookUpSoapOut" />
+    </operation>
+    <operation name="ListAll">
+      <documentation>List all the keywords of a given language in our dictionary</documentation>
+      <input message="s0:ListAllSoapIn" />
+      <output message="s0:ListAllSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WebDictionaryHttpGet">
+    <operation name="Translate">
+      <documentation>Translate keywords from one web language to the other(s)</documentation>
+      <input message="s0:TranslateHttpGetIn" />
+      <output message="s0:TranslateHttpGetOut" />
+    </operation>
+    <operation name="LookUp">
+      <documentation>Lookup the given keyword in the one language and return a well-formed definition of the given word</documentation>
+      <input message="s0:LookUpHttpGetIn" />
+      <output message="s0:LookUpHttpGetOut" />
+    </operation>
+    <operation name="ListAll">
+      <documentation>List all the keywords of a given language in our dictionary</documentation>
+      <input message="s0:ListAllHttpGetIn" />
+      <output message="s0:ListAllHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WebDictionaryHttpPost">
+    <operation name="Translate">
+      <documentation>Translate keywords from one web language to the other(s)</documentation>
+      <input message="s0:TranslateHttpPostIn" />
+      <output message="s0:TranslateHttpPostOut" />
+    </operation>
+    <operation name="LookUp">
+      <documentation>Lookup the given keyword in the one language and return a well-formed definition of the given word</documentation>
+      <input message="s0:LookUpHttpPostIn" />
+      <output message="s0:LookUpHttpPostOut" />
+    </operation>
+    <operation name="ListAll">
+      <documentation>List all the keywords of a given language in our dictionary</documentation>
+      <input message="s0:ListAllHttpPostIn" />
+      <output message="s0:ListAllHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WebDictionarySoap" type="s0:WebDictionarySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Translate">
+      <soap:operation soapAction="http://www.icutebot.com/WebDictionary/Translate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LookUp">
+      <soap:operation soapAction="http://www.icutebot.com/WebDictionary/LookUp" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListAll">
+      <soap:operation soapAction="http://www.icutebot.com/WebDictionary/ListAll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebDictionaryHttpGet" type="s0:WebDictionaryHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Translate">
+      <http:operation location="/Translate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookUp">
+      <http:operation location="/LookUp" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListAll">
+      <http:operation location="/ListAll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebDictionaryHttpPost" type="s0:WebDictionaryHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Translate">
+      <http:operation location="/Translate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookUp">
+      <http:operation location="/LookUp" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListAll">
+      <http:operation location="/ListAll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebDictionary">
+    <port name="WebDictionarySoap" binding="s0:WebDictionarySoap">
+      <soap:address location="http://www.contest.eraserver.net/WebDictionary/WebDictionary.asmx" />
+    </port>
+    <port name="WebDictionaryHttpGet" binding="s0:WebDictionaryHttpGet">
+      <http:address location="http://www.contest.eraserver.net/WebDictionary/WebDictionary.asmx" />
+    </port>
+    <port name="WebDictionaryHttpPost" binding="s0:WebDictionaryHttpPost">
+      <http:address location="http://www.contest.eraserver.net/WebDictionary/WebDictionary.asmx" />
+    </port>
+  </service>
+</definitions>

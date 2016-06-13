@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <definitions name="TranslatorService" targetNamespace="http://www.shermanchen.com:9080/TranslatorWeb/wsdl/TranslatorService.wsdl" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:tns="http://www.shermanchen.com:9080/TranslatorWeb/wsdl/TranslatorService.wsdl">
+ 
+ <message name="translateRequest">
+  <part name="cDNA" type="xsd:string" /> 
+  </message>
+ <message name="translateResponse">
+  <part name="result" type="xsd:string" /> 
+  </message>
+ <portType name="Translator">
+ <operation name="translate" parameterOrder="cDNA">
+  <input message="tns:translateRequest" name="translateRequest" /> 
+  <output message="tns:translateResponse" name="translateResponse" /> 
+  </operation>
+  </portType>
+ <binding name="TranslatorBinding" type="tns:Translator">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+ <operation name="translate">
+  <soap:operation soapAction="" style="rpc" /> 
+ <input name="translateRequest">
+  <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Translator" use="encoded" /> 
+  </input>
+ <output name="translateResponse">
+  <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Translator" use="encoded" /> 
+  </output>
+  </operation>
+  </binding>
+ <service name="TranslatorService">
+ <port binding="tns:TranslatorBinding" name="TranslatorPort">
+  <soap:address location="http://www.shermanchen.com:9080/TranslatorWeb/servlet/rpcrouter" /> 
+  </port>
+  </service>
+  </definitions>

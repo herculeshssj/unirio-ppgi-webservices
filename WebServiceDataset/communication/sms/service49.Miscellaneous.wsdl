@@ -1,0 +1,1613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="https://www.sms.smart421.com/webserv" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="https://www.sms.smart421.com/webserv" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://www.sms.smart421.com/webserv">
+      <s:element name="IsValidCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustMobileNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustPIN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustMobileNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddNewCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPrePayProductForCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentReference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPrePayProductForCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPrePayProductForCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPerMsgProductForCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PaymentReference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPerMsgProductForCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPerMsgProductForCustomerResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CntOfProductsForCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CntOfProductsForCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CntOfProductsForCustResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductIDForCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductIDForCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetProductIDForCustResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CntOfProductsForAff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CntOfProductsForAffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CntOfProductsForAffResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductIDForAff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductIDForAffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetProductIDForAffResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductDescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToggleAlertsOn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToggleAlertsOnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToggleAlertsOnResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToggleAlertsOff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToggleAlertsOffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToggleAlertsOffResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductAlertStateForCust">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CustID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductAlertStateForCustResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductAlertStateForCustResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleMessageForProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProductID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SchedDateTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleMessageForProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleMessageForProductResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleMessageForKeyWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SchedDateTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleMessageForKeyWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ScheduleMessageForKeyWordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfAllCustomersForKeyWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfAllCustomersForKeyWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfAllCustomersForKeyWordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfActiveCustomersForKeyWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfActiveCustomersForKeyWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfActiveCustomersForKeyWordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfInActiveCustomersForKeyWord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="KeyWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfInActiveCustomersForKeyWordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfInActiveCustomersForKeyWordResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitAlertByEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitAlertByEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitAlertByEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitAlertByEmailFromSMTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailSubject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailBody" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitAlertByEmailFromSMTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitAlertByEmailFromSMTPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="IsValidCustomerSoapIn">
+    <part name="parameters" element="s0:IsValidCustomer" />
+  </message>
+  <message name="IsValidCustomerSoapOut">
+    <part name="parameters" element="s0:IsValidCustomerResponse" />
+  </message>
+  <message name="AddNewCustomerSoapIn">
+    <part name="parameters" element="s0:AddNewCustomer" />
+  </message>
+  <message name="AddNewCustomerSoapOut">
+    <part name="parameters" element="s0:AddNewCustomerResponse" />
+  </message>
+  <message name="AddPrePayProductForCustomerSoapIn">
+    <part name="parameters" element="s0:AddPrePayProductForCustomer" />
+  </message>
+  <message name="AddPrePayProductForCustomerSoapOut">
+    <part name="parameters" element="s0:AddPrePayProductForCustomerResponse" />
+  </message>
+  <message name="AddPerMsgProductForCustomerSoapIn">
+    <part name="parameters" element="s0:AddPerMsgProductForCustomer" />
+  </message>
+  <message name="AddPerMsgProductForCustomerSoapOut">
+    <part name="parameters" element="s0:AddPerMsgProductForCustomerResponse" />
+  </message>
+  <message name="CntOfProductsForCustSoapIn">
+    <part name="parameters" element="s0:CntOfProductsForCust" />
+  </message>
+  <message name="CntOfProductsForCustSoapOut">
+    <part name="parameters" element="s0:CntOfProductsForCustResponse" />
+  </message>
+  <message name="GetProductIDForCustSoapIn">
+    <part name="parameters" element="s0:GetProductIDForCust" />
+  </message>
+  <message name="GetProductIDForCustSoapOut">
+    <part name="parameters" element="s0:GetProductIDForCustResponse" />
+  </message>
+  <message name="CntOfProductsForAffSoapIn">
+    <part name="parameters" element="s0:CntOfProductsForAff" />
+  </message>
+  <message name="CntOfProductsForAffSoapOut">
+    <part name="parameters" element="s0:CntOfProductsForAffResponse" />
+  </message>
+  <message name="GetProductIDForAffSoapIn">
+    <part name="parameters" element="s0:GetProductIDForAff" />
+  </message>
+  <message name="GetProductIDForAffSoapOut">
+    <part name="parameters" element="s0:GetProductIDForAffResponse" />
+  </message>
+  <message name="GetProductDescriptionSoapIn">
+    <part name="parameters" element="s0:GetProductDescription" />
+  </message>
+  <message name="GetProductDescriptionSoapOut">
+    <part name="parameters" element="s0:GetProductDescriptionResponse" />
+  </message>
+  <message name="ToggleAlertsOnSoapIn">
+    <part name="parameters" element="s0:ToggleAlertsOn" />
+  </message>
+  <message name="ToggleAlertsOnSoapOut">
+    <part name="parameters" element="s0:ToggleAlertsOnResponse" />
+  </message>
+  <message name="ToggleAlertsOffSoapIn">
+    <part name="parameters" element="s0:ToggleAlertsOff" />
+  </message>
+  <message name="ToggleAlertsOffSoapOut">
+    <part name="parameters" element="s0:ToggleAlertsOffResponse" />
+  </message>
+  <message name="GetProductAlertStateForCustSoapIn">
+    <part name="parameters" element="s0:GetProductAlertStateForCust" />
+  </message>
+  <message name="GetProductAlertStateForCustSoapOut">
+    <part name="parameters" element="s0:GetProductAlertStateForCustResponse" />
+  </message>
+  <message name="ScheduleMessageForProductSoapIn">
+    <part name="parameters" element="s0:ScheduleMessageForProduct" />
+  </message>
+  <message name="ScheduleMessageForProductSoapOut">
+    <part name="parameters" element="s0:ScheduleMessageForProductResponse" />
+  </message>
+  <message name="ScheduleMessageForKeyWordSoapIn">
+    <part name="parameters" element="s0:ScheduleMessageForKeyWord" />
+  </message>
+  <message name="ScheduleMessageForKeyWordSoapOut">
+    <part name="parameters" element="s0:ScheduleMessageForKeyWordResponse" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordSoapIn">
+    <part name="parameters" element="s0:CountOfAllCustomersForKeyWord" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordSoapOut">
+    <part name="parameters" element="s0:CountOfAllCustomersForKeyWordResponse" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordSoapIn">
+    <part name="parameters" element="s0:CountOfActiveCustomersForKeyWord" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordSoapOut">
+    <part name="parameters" element="s0:CountOfActiveCustomersForKeyWordResponse" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordSoapIn">
+    <part name="parameters" element="s0:CountOfInActiveCustomersForKeyWord" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordSoapOut">
+    <part name="parameters" element="s0:CountOfInActiveCustomersForKeyWordResponse" />
+  </message>
+  <message name="SubmitAlertByEmailSoapIn">
+    <part name="parameters" element="s0:SubmitAlertByEmail" />
+  </message>
+  <message name="SubmitAlertByEmailSoapOut">
+    <part name="parameters" element="s0:SubmitAlertByEmailResponse" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPSoapIn">
+    <part name="parameters" element="s0:SubmitAlertByEmailFromSMTP" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPSoapOut">
+    <part name="parameters" element="s0:SubmitAlertByEmailFromSMTPResponse" />
+  </message>
+  <message name="IsValidCustomerHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustMobileNo" type="s:string" />
+    <part name="CustPIN" type="s:string" />
+  </message>
+  <message name="IsValidCustomerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddNewCustomerHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustMobileNo" type="s:string" />
+    <part name="CustName" type="s:string" />
+  </message>
+  <message name="AddNewCustomerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddPrePayProductForCustomerHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="PaymentReference" type="s:string" />
+  </message>
+  <message name="AddPrePayProductForCustomerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddPerMsgProductForCustomerHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="PaymentReference" type="s:string" />
+  </message>
+  <message name="AddPerMsgProductForCustomerHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CntOfProductsForCustHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+  </message>
+  <message name="CntOfProductsForCustHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductIDForCustHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="Index" type="s:string" />
+  </message>
+  <message name="GetProductIDForCustHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CntOfProductsForAffHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+  </message>
+  <message name="CntOfProductsForAffHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductIDForAffHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="Index" type="s:string" />
+  </message>
+  <message name="GetProductIDForAffHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductDescriptionHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="GetProductDescriptionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ToggleAlertsOnHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="ToggleAlertsOnHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ToggleAlertsOffHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="ToggleAlertsOffHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetProductAlertStateForCustHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="GetProductAlertStateForCustHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ScheduleMessageForProductHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="Msg" type="s:string" />
+    <part name="SchedDateTime" type="s:string" />
+  </message>
+  <message name="ScheduleMessageForProductHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ScheduleMessageForKeyWordHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+    <part name="Msg" type="s:string" />
+    <part name="SchedDateTime" type="s:string" />
+  </message>
+  <message name="ScheduleMessageForKeyWordHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SubmitAlertByEmailHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="EmailFrom" type="s:string" />
+    <part name="EmailTo" type="s:string" />
+    <part name="EmailSubject" type="s:string" />
+    <part name="EmailBody" type="s:string" />
+  </message>
+  <message name="SubmitAlertByEmailHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="EmailFrom" type="s:string" />
+    <part name="EmailTo" type="s:string" />
+    <part name="EmailSubject" type="s:string" />
+    <part name="EmailBody" type="s:string" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsValidCustomerHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustMobileNo" type="s:string" />
+    <part name="CustPIN" type="s:string" />
+  </message>
+  <message name="IsValidCustomerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddNewCustomerHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustMobileNo" type="s:string" />
+    <part name="CustName" type="s:string" />
+  </message>
+  <message name="AddNewCustomerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddPrePayProductForCustomerHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="PaymentReference" type="s:string" />
+  </message>
+  <message name="AddPrePayProductForCustomerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="AddPerMsgProductForCustomerHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="PaymentReference" type="s:string" />
+  </message>
+  <message name="AddPerMsgProductForCustomerHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CntOfProductsForCustHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+  </message>
+  <message name="CntOfProductsForCustHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductIDForCustHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="Index" type="s:string" />
+  </message>
+  <message name="GetProductIDForCustHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CntOfProductsForAffHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+  </message>
+  <message name="CntOfProductsForAffHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductIDForAffHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="Index" type="s:string" />
+  </message>
+  <message name="GetProductIDForAffHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetProductDescriptionHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="GetProductDescriptionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ToggleAlertsOnHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="ToggleAlertsOnHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ToggleAlertsOffHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="ToggleAlertsOffHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetProductAlertStateForCustHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CustID" type="s:string" />
+    <part name="ProductID" type="s:string" />
+  </message>
+  <message name="GetProductAlertStateForCustHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ScheduleMessageForProductHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="ProductID" type="s:string" />
+    <part name="Msg" type="s:string" />
+    <part name="SchedDateTime" type="s:string" />
+  </message>
+  <message name="ScheduleMessageForProductHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="ScheduleMessageForKeyWordHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+    <part name="Msg" type="s:string" />
+    <part name="SchedDateTime" type="s:string" />
+  </message>
+  <message name="ScheduleMessageForKeyWordHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfAllCustomersForKeyWordHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfActiveCustomersForKeyWordHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="CountOfInActiveCustomersForKeyWordHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="SubmitAlertByEmailHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="EmailFrom" type="s:string" />
+    <part name="EmailTo" type="s:string" />
+    <part name="EmailSubject" type="s:string" />
+    <part name="EmailBody" type="s:string" />
+  </message>
+  <message name="SubmitAlertByEmailHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="EmailFrom" type="s:string" />
+    <part name="EmailTo" type="s:string" />
+    <part name="EmailSubject" type="s:string" />
+    <part name="EmailBody" type="s:string" />
+  </message>
+  <message name="SubmitAlertByEmailFromSMTPHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="InfoTainmentWSSoap">
+    <operation name="IsValidCustomer">
+      <documentation>Validate a customer exists on infoTainment system&lt;BR&gt;(returns the actual customer id if the customer exists or -1 if the customer does not exist).</documentation>
+      <input message="s0:IsValidCustomerSoapIn" />
+      <output message="s0:IsValidCustomerSoapOut" />
+    </operation>
+    <operation name="AddNewCustomer">
+      <documentation>Add a new customer to the infoTainment system&lt;BR&gt;(returns the customer id on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddNewCustomerSoapIn" />
+      <output message="s0:AddNewCustomerSoapOut" />
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <documentation>Add a pre pay product for a customer (e.g Subscription payment via credit card)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPrePayProductForCustomerSoapIn" />
+      <output message="s0:AddPrePayProductForCustomerSoapOut" />
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <documentation>Add a per message product for a customer (charge is debited from customers mobile phone bill)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPerMsgProductForCustomerSoapIn" />
+      <output message="s0:AddPerMsgProductForCustomerSoapOut" />
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <documentation>Return a count of products for a customer&lt;BR&gt;(returns count on a successful request or -1 on an exception).</documentation>
+      <input message="s0:CntOfProductsForCustSoapIn" />
+      <output message="s0:CntOfProductsForCustSoapOut" />
+    </operation>
+    <operation name="GetProductIDForCust">
+      <documentation>Return the product ID for a customer&lt;BR&gt;(returns the actual product ID for a customer based on an index passed in or -1 on an exception).</documentation>
+      <input message="s0:GetProductIDForCustSoapIn" />
+      <output message="s0:GetProductIDForCustSoapOut" />
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <documentation>Return the count of products for an affiliate&lt;BR&gt;Returns -1 on an exception.</documentation>
+      <input message="s0:CntOfProductsForAffSoapIn" />
+      <output message="s0:CntOfProductsForAffSoapOut" />
+    </operation>
+    <operation name="GetProductIDForAff">
+      <documentation>Return the product ID for a customer(returns the actual product ID for an affiliate based on an index passed in).</documentation>
+      <input message="s0:GetProductIDForAffSoapIn" />
+      <output message="s0:GetProductIDForAffSoapOut" />
+    </operation>
+    <operation name="GetProductDescription">
+      <documentation>Return the actual product description for a product by the actual product ID.</documentation>
+      <input message="s0:GetProductDescriptionSoapIn" />
+      <output message="s0:GetProductDescriptionSoapOut" />
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <documentation>Toggle Alerts On for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOnSoapIn" />
+      <output message="s0:ToggleAlertsOnSoapOut" />
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <documentation>Toggle Alerts Off for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOffSoapIn" />
+      <output message="s0:ToggleAlertsOffSoapOut" />
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <documentation>Inspect the current alert state(ON/OFF) for a product for a customer.</documentation>
+      <input message="s0:GetProductAlertStateForCustSoapIn" />
+      <output message="s0:GetProductAlertStateForCustSoapOut" />
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <documentation>Schedule a message for delivery by using the actual product ID.</documentation>
+      <input message="s0:ScheduleMessageForProductSoapIn" />
+      <output message="s0:ScheduleMessageForProductSoapOut" />
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <documentation>Schedule a message for delivery by using the product keyword.</documentation>
+      <input message="s0:ScheduleMessageForKeyWordSoapIn" />
+      <output message="s0:ScheduleMessageForKeyWordSoapOut" />
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <documentation>Return a count of all customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfAllCustomersForKeyWordSoapIn" />
+      <output message="s0:CountOfAllCustomersForKeyWordSoapOut" />
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <documentation>Return a count of all active customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfActiveCustomersForKeyWordSoapIn" />
+      <output message="s0:CountOfActiveCustomersForKeyWordSoapOut" />
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <documentation>Return a count of all inactive customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfInActiveCustomersForKeyWordSoapIn" />
+      <output message="s0:CountOfInActiveCustomersForKeyWordSoapOut" />
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <documentation>Submit an Alert By Email.</documentation>
+      <input message="s0:SubmitAlertByEmailSoapIn" />
+      <output message="s0:SubmitAlertByEmailSoapOut" />
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <documentation>Submit an Alert By Email from SMTP.</documentation>
+      <input message="s0:SubmitAlertByEmailFromSMTPSoapIn" />
+      <output message="s0:SubmitAlertByEmailFromSMTPSoapOut" />
+    </operation>
+  </portType>
+  <portType name="InfoTainmentWSHttpGet">
+    <operation name="IsValidCustomer">
+      <documentation>Validate a customer exists on infoTainment system&lt;BR&gt;(returns the actual customer id if the customer exists or -1 if the customer does not exist).</documentation>
+      <input message="s0:IsValidCustomerHttpGetIn" />
+      <output message="s0:IsValidCustomerHttpGetOut" />
+    </operation>
+    <operation name="AddNewCustomer">
+      <documentation>Add a new customer to the infoTainment system&lt;BR&gt;(returns the customer id on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddNewCustomerHttpGetIn" />
+      <output message="s0:AddNewCustomerHttpGetOut" />
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <documentation>Add a pre pay product for a customer (e.g Subscription payment via credit card)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPrePayProductForCustomerHttpGetIn" />
+      <output message="s0:AddPrePayProductForCustomerHttpGetOut" />
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <documentation>Add a per message product for a customer (charge is debited from customers mobile phone bill)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPerMsgProductForCustomerHttpGetIn" />
+      <output message="s0:AddPerMsgProductForCustomerHttpGetOut" />
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <documentation>Return a count of products for a customer&lt;BR&gt;(returns count on a successful request or -1 on an exception).</documentation>
+      <input message="s0:CntOfProductsForCustHttpGetIn" />
+      <output message="s0:CntOfProductsForCustHttpGetOut" />
+    </operation>
+    <operation name="GetProductIDForCust">
+      <documentation>Return the product ID for a customer&lt;BR&gt;(returns the actual product ID for a customer based on an index passed in or -1 on an exception).</documentation>
+      <input message="s0:GetProductIDForCustHttpGetIn" />
+      <output message="s0:GetProductIDForCustHttpGetOut" />
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <documentation>Return the count of products for an affiliate&lt;BR&gt;Returns -1 on an exception.</documentation>
+      <input message="s0:CntOfProductsForAffHttpGetIn" />
+      <output message="s0:CntOfProductsForAffHttpGetOut" />
+    </operation>
+    <operation name="GetProductIDForAff">
+      <documentation>Return the product ID for a customer(returns the actual product ID for an affiliate based on an index passed in).</documentation>
+      <input message="s0:GetProductIDForAffHttpGetIn" />
+      <output message="s0:GetProductIDForAffHttpGetOut" />
+    </operation>
+    <operation name="GetProductDescription">
+      <documentation>Return the actual product description for a product by the actual product ID.</documentation>
+      <input message="s0:GetProductDescriptionHttpGetIn" />
+      <output message="s0:GetProductDescriptionHttpGetOut" />
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <documentation>Toggle Alerts On for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOnHttpGetIn" />
+      <output message="s0:ToggleAlertsOnHttpGetOut" />
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <documentation>Toggle Alerts Off for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOffHttpGetIn" />
+      <output message="s0:ToggleAlertsOffHttpGetOut" />
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <documentation>Inspect the current alert state(ON/OFF) for a product for a customer.</documentation>
+      <input message="s0:GetProductAlertStateForCustHttpGetIn" />
+      <output message="s0:GetProductAlertStateForCustHttpGetOut" />
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <documentation>Schedule a message for delivery by using the actual product ID.</documentation>
+      <input message="s0:ScheduleMessageForProductHttpGetIn" />
+      <output message="s0:ScheduleMessageForProductHttpGetOut" />
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <documentation>Schedule a message for delivery by using the product keyword.</documentation>
+      <input message="s0:ScheduleMessageForKeyWordHttpGetIn" />
+      <output message="s0:ScheduleMessageForKeyWordHttpGetOut" />
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <documentation>Return a count of all customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfAllCustomersForKeyWordHttpGetIn" />
+      <output message="s0:CountOfAllCustomersForKeyWordHttpGetOut" />
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <documentation>Return a count of all active customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfActiveCustomersForKeyWordHttpGetIn" />
+      <output message="s0:CountOfActiveCustomersForKeyWordHttpGetOut" />
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <documentation>Return a count of all inactive customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfInActiveCustomersForKeyWordHttpGetIn" />
+      <output message="s0:CountOfInActiveCustomersForKeyWordHttpGetOut" />
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <documentation>Submit an Alert By Email.</documentation>
+      <input message="s0:SubmitAlertByEmailHttpGetIn" />
+      <output message="s0:SubmitAlertByEmailHttpGetOut" />
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <documentation>Submit an Alert By Email from SMTP.</documentation>
+      <input message="s0:SubmitAlertByEmailFromSMTPHttpGetIn" />
+      <output message="s0:SubmitAlertByEmailFromSMTPHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="InfoTainmentWSHttpPost">
+    <operation name="IsValidCustomer">
+      <documentation>Validate a customer exists on infoTainment system&lt;BR&gt;(returns the actual customer id if the customer exists or -1 if the customer does not exist).</documentation>
+      <input message="s0:IsValidCustomerHttpPostIn" />
+      <output message="s0:IsValidCustomerHttpPostOut" />
+    </operation>
+    <operation name="AddNewCustomer">
+      <documentation>Add a new customer to the infoTainment system&lt;BR&gt;(returns the customer id on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddNewCustomerHttpPostIn" />
+      <output message="s0:AddNewCustomerHttpPostOut" />
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <documentation>Add a pre pay product for a customer (e.g Subscription payment via credit card)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPrePayProductForCustomerHttpPostIn" />
+      <output message="s0:AddPrePayProductForCustomerHttpPostOut" />
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <documentation>Add a per message product for a customer (charge is debited from customers mobile phone bill)&lt;BR&gt;(Returns the Customer product ID on successful completion or -1 on an exception).</documentation>
+      <input message="s0:AddPerMsgProductForCustomerHttpPostIn" />
+      <output message="s0:AddPerMsgProductForCustomerHttpPostOut" />
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <documentation>Return a count of products for a customer&lt;BR&gt;(returns count on a successful request or -1 on an exception).</documentation>
+      <input message="s0:CntOfProductsForCustHttpPostIn" />
+      <output message="s0:CntOfProductsForCustHttpPostOut" />
+    </operation>
+    <operation name="GetProductIDForCust">
+      <documentation>Return the product ID for a customer&lt;BR&gt;(returns the actual product ID for a customer based on an index passed in or -1 on an exception).</documentation>
+      <input message="s0:GetProductIDForCustHttpPostIn" />
+      <output message="s0:GetProductIDForCustHttpPostOut" />
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <documentation>Return the count of products for an affiliate&lt;BR&gt;Returns -1 on an exception.</documentation>
+      <input message="s0:CntOfProductsForAffHttpPostIn" />
+      <output message="s0:CntOfProductsForAffHttpPostOut" />
+    </operation>
+    <operation name="GetProductIDForAff">
+      <documentation>Return the product ID for a customer(returns the actual product ID for an affiliate based on an index passed in).</documentation>
+      <input message="s0:GetProductIDForAffHttpPostIn" />
+      <output message="s0:GetProductIDForAffHttpPostOut" />
+    </operation>
+    <operation name="GetProductDescription">
+      <documentation>Return the actual product description for a product by the actual product ID.</documentation>
+      <input message="s0:GetProductDescriptionHttpPostIn" />
+      <output message="s0:GetProductDescriptionHttpPostOut" />
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <documentation>Toggle Alerts On for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOnHttpPostIn" />
+      <output message="s0:ToggleAlertsOnHttpPostOut" />
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <documentation>Toggle Alerts Off for a specific product for a customer.</documentation>
+      <input message="s0:ToggleAlertsOffHttpPostIn" />
+      <output message="s0:ToggleAlertsOffHttpPostOut" />
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <documentation>Inspect the current alert state(ON/OFF) for a product for a customer.</documentation>
+      <input message="s0:GetProductAlertStateForCustHttpPostIn" />
+      <output message="s0:GetProductAlertStateForCustHttpPostOut" />
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <documentation>Schedule a message for delivery by using the actual product ID.</documentation>
+      <input message="s0:ScheduleMessageForProductHttpPostIn" />
+      <output message="s0:ScheduleMessageForProductHttpPostOut" />
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <documentation>Schedule a message for delivery by using the product keyword.</documentation>
+      <input message="s0:ScheduleMessageForKeyWordHttpPostIn" />
+      <output message="s0:ScheduleMessageForKeyWordHttpPostOut" />
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <documentation>Return a count of all customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfAllCustomersForKeyWordHttpPostIn" />
+      <output message="s0:CountOfAllCustomersForKeyWordHttpPostOut" />
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <documentation>Return a count of all active customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfActiveCustomersForKeyWordHttpPostIn" />
+      <output message="s0:CountOfActiveCustomersForKeyWordHttpPostOut" />
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <documentation>Return a count of all inactive customers for a specific product by keyword.</documentation>
+      <input message="s0:CountOfInActiveCustomersForKeyWordHttpPostIn" />
+      <output message="s0:CountOfInActiveCustomersForKeyWordHttpPostOut" />
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <documentation>Submit an Alert By Email.</documentation>
+      <input message="s0:SubmitAlertByEmailHttpPostIn" />
+      <output message="s0:SubmitAlertByEmailHttpPostOut" />
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <documentation>Submit an Alert By Email from SMTP.</documentation>
+      <input message="s0:SubmitAlertByEmailFromSMTPHttpPostIn" />
+      <output message="s0:SubmitAlertByEmailFromSMTPHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="InfoTainmentWSSoap" type="s0:InfoTainmentWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="IsValidCustomer">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/IsValidCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddNewCustomer">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/AddNewCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/AddPrePayProductForCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/AddPerMsgProductForCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/CntOfProductsForCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForCust">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/GetProductIDForCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/CntOfProductsForAff" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForAff">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/GetProductIDForAff" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetProductDescription">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/GetProductDescription" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/ToggleAlertsOn" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/ToggleAlertsOff" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/GetProductAlertStateForCust" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/ScheduleMessageForProduct" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/ScheduleMessageForKeyWord" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/CountOfAllCustomersForKeyWord" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/CountOfActiveCustomersForKeyWord" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/CountOfInActiveCustomersForKeyWord" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/SubmitAlertByEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <soap:operation soapAction="https://www.sms.smart421.com/webserv/SubmitAlertByEmailFromSMTP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="InfoTainmentWSHttpGet" type="s0:InfoTainmentWSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="IsValidCustomer">
+      <http:operation location="/IsValidCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddNewCustomer">
+      <http:operation location="/AddNewCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <http:operation location="/AddPrePayProductForCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <http:operation location="/AddPerMsgProductForCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <http:operation location="/CntOfProductsForCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForCust">
+      <http:operation location="/GetProductIDForCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <http:operation location="/CntOfProductsForAff" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForAff">
+      <http:operation location="/GetProductIDForAff" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductDescription">
+      <http:operation location="/GetProductDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <http:operation location="/ToggleAlertsOn" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <http:operation location="/ToggleAlertsOff" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <http:operation location="/GetProductAlertStateForCust" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <http:operation location="/ScheduleMessageForProduct" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <http:operation location="/ScheduleMessageForKeyWord" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <http:operation location="/CountOfAllCustomersForKeyWord" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <http:operation location="/CountOfActiveCustomersForKeyWord" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <http:operation location="/CountOfInActiveCustomersForKeyWord" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <http:operation location="/SubmitAlertByEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <http:operation location="/SubmitAlertByEmailFromSMTP" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="InfoTainmentWSHttpPost" type="s0:InfoTainmentWSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="IsValidCustomer">
+      <http:operation location="/IsValidCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddNewCustomer">
+      <http:operation location="/AddNewCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddPrePayProductForCustomer">
+      <http:operation location="/AddPrePayProductForCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddPerMsgProductForCustomer">
+      <http:operation location="/AddPerMsgProductForCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForCust">
+      <http:operation location="/CntOfProductsForCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForCust">
+      <http:operation location="/GetProductIDForCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CntOfProductsForAff">
+      <http:operation location="/CntOfProductsForAff" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductIDForAff">
+      <http:operation location="/GetProductIDForAff" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductDescription">
+      <http:operation location="/GetProductDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOn">
+      <http:operation location="/ToggleAlertsOn" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ToggleAlertsOff">
+      <http:operation location="/ToggleAlertsOff" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProductAlertStateForCust">
+      <http:operation location="/GetProductAlertStateForCust" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForProduct">
+      <http:operation location="/ScheduleMessageForProduct" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ScheduleMessageForKeyWord">
+      <http:operation location="/ScheduleMessageForKeyWord" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfAllCustomersForKeyWord">
+      <http:operation location="/CountOfAllCustomersForKeyWord" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfActiveCustomersForKeyWord">
+      <http:operation location="/CountOfActiveCustomersForKeyWord" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfInActiveCustomersForKeyWord">
+      <http:operation location="/CountOfInActiveCustomersForKeyWord" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmail">
+      <http:operation location="/SubmitAlertByEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SubmitAlertByEmailFromSMTP">
+      <http:operation location="/SubmitAlertByEmailFromSMTP" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="InfoTainmentWS">
+    <documentation>&lt;a href=http://www.smart421.com&gt;&lt;img src=images/smartlogo.gif width=178 height=33 border=0 alt=Smart421 Home&gt;&lt;/a&gt;&lt;/td&gt;&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;h2&gt;A Managed Reverse Billing SMS Solution&lt;/h2&gt;To find out more &lt;A HREF=http://www.smart421.com/technologies/mobile/index.asp&gt;click here&lt;/a&gt;&lt;br&gt;&amp;nbsp;&lt;br&gt;&lt;b&gt;Part of the Smart421 mobile suite of products&lt;/b&gt;</documentation>
+    <port name="InfoTainmentWSSoap" binding="s0:InfoTainmentWSSoap">
+      <soap:address location="https://www.sms.smart421.com/WebServ/InfoT-WS.asmx" />
+    </port>
+    <port name="InfoTainmentWSHttpGet" binding="s0:InfoTainmentWSHttpGet">
+      <http:address location="https://www.sms.smart421.com/WebServ/InfoT-WS.asmx" />
+    </port>
+    <port name="InfoTainmentWSHttpPost" binding="s0:InfoTainmentWSHttpPost">
+      <http:address location="https://www.sms.smart421.com/WebServ/InfoT-WS.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+
+<definitions name="PersonsAge.ccalcage" targetNamespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="YearsOldAtDateRequest">
+        <part name="BirthDate" type="xsd:string"/>
+        <part name="AtDate" type="xsd:string"/>
+    </message>
+    <message name="YearsOldAtDateResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="ExactAgeTodayRequest">
+        <part name="BirthDate" type="xsd:string"/>
+    </message>
+    <message name="ExactAgeTodayResponse">
+        <part name="BirthDate" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="YearsOldTodayRequest">
+        <part name="varBirthDate" type="xsd:string"/>
+    </message>
+    <message name="YearsOldTodayResponse">
+        <part name="varBirthDate" type="xsd:string"/>
+        <part name="Return" type="xsd:short"/>
+    </message>
+    <portType name="PersonsAge.ccalcagePortType">
+        <operation name="YearsOldAtDate">
+            <input message="tns:YearsOldAtDateRequest"/>
+            <output message="tns:YearsOldAtDateResponse"/>
+        </operation>
+        <operation name="ExactAgeToday">
+            <input message="tns:ExactAgeTodayRequest"/>
+            <output message="tns:ExactAgeTodayResponse"/>
+        </operation>
+        <operation name="YearsOldToday">
+            <input message="tns:YearsOldTodayRequest"/>
+            <output message="tns:YearsOldTodayResponse"/>
+        </operation>
+    </portType>
+    <binding name="PersonsAge.ccalcagebinding" type="tns:PersonsAge.ccalcagePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="YearsOldAtDate">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml#YearsOldAtDate"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="ExactAgeToday">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml#ExactAgeToday"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="YearsOldToday">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml#YearsOldToday"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/PersonsAge/CCalcAge.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="PersonsAge.ccalcageService">
+        <port name="PersonsAge.ccalcagePort" binding="tns:PersonsAge.ccalcagebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/personsage.cgi"/>
+        </port>
+    </service>
+</definitions>

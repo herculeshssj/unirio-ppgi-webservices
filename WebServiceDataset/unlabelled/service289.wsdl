@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IHaddockservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="urn:uLang">
+  <types>
+    <xs:schema targetNamespace="urn:uLang" xmlns="urn:uLang">
+      <xs:complexType name="TLangArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="ns1:TLanguage[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TLanguage">
+        <xs:sequence>
+          <xs:element name="LanguageCode" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="CurseRequest">
+    <part name="LangCode" type="xs:string"/>
+  </message>
+  <message name="CurseResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="GetCurseLanguagesRequest"/>
+  <message name="GetCurseLanguagesResponse">
+    <part name="return" type="ns1:TLangArray"/>
+  </message>
+  <portType name="IHaddock">
+    <operation name="Curse">
+      <input message="tns:CurseRequest"/>
+      <output message="tns:CurseResponse"/>
+    </operation>
+    <operation name="GetCurseLanguages">
+      <input message="tns:GetCurseLanguagesRequest"/>
+      <output message="tns:GetCurseLanguagesResponse"/>
+    </operation>
+  </portType>
+  <binding name="IHaddockbinding" type="tns:IHaddock">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Curse">
+      <soap:operation soapAction="urn:HaddockIntf-IHaddock#Curse" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:HaddockIntf-IHaddock"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:HaddockIntf-IHaddock"/>
+      </output>
+    </operation>
+    <operation name="GetCurseLanguages">
+      <soap:operation soapAction="urn:HaddockIntf-IHaddock#GetCurseLanguages" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:HaddockIntf-IHaddock"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:HaddockIntf-IHaddock"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IHaddockservice">
+    <port name="IHaddockPort" binding="tns:IHaddockbinding">
+      <soap:address location="http://www2.tankebolaget.com:8080/scripts/Haddock.exe/soap/IHaddock"/>
+    </port>
+  </service>
+</definitions>
+

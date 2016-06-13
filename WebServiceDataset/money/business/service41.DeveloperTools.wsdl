@@ -1,0 +1,143 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+		xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+		xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+		xmlns:tns="http://www.ocash.com/webservices/basictransactionservices.wsdl" 
+		targetNamespace="http://www.ocash.com/webservices/basictransactionservices.wsdl">
+	<types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://www.ocash.com/webservices/basictransactionservices.wsdl">
+			<xs:element name="SubmitBill">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="SecurityCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="SellerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BuyerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="Amount" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="ItemDescription" type="xs:string"/>
+						<xs:element minOccurs="0" maxOccurs="1" name="Comments" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SubmitBillResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusDescription" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StatusBill">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="SecurityCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="SellerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BuyerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillNumber" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StatusBillResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusDescription" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkBillComplete">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="SecurityCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="SellerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BuyerAccountNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillNumber" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarkBillCompleteResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillNumber" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusCode" type="xs:string"/>
+						<xs:element minOccurs="1" maxOccurs="1" name="BillStatusDescription" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</types>
+	<message name="SubmitBillSoapIn">
+		<part name="parameters" element="tns:SubmitBill"/>
+	</message>
+	<message name="SubmitBillSoapOut">
+		<part name="parameters" element="tns:SubmitBillResponse"/>
+	</message>
+	<message name="StatusBillSoapIn">
+		<part name="parameters" element="tns:StatusBill"/>
+	</message>
+	<message name="StatusBillSoapOut">
+		<part name="parameters" element="tns:StatusBillResponse"/>
+	</message>
+	<message name="MarkBillCompleteSoapIn">
+		<part name="parameters" element="tns:MarkBillComplete"/>
+	</message>
+	<message name="MarkBillCompleteSoapOut">
+		<part name="parameters" element="tns:MarkBillCompleteResponse"/>
+	</message>
+	<portType name="OCashBasicServicePortType">
+		<operation name="SubmitBill">
+			<documentation>Sends a new bill to the OCash member.</documentation>
+			<input message="tns:SubmitBillSoapIn"/>
+			<output message="tns:SubmitBillSoapOut"/>
+		</operation>
+		<operation name="StatusBill">
+			<documentation>Get the status of an existing bill.</documentation>
+			<input message="tns:StatusBillSoapIn"/>
+			<output message="tns:StatusBillSoapOut"/>
+		</operation>
+		<operation name="MarkBillComplete">
+			<documentation>Mark a bill as complete. Used to indicate that the seller has shipped, downloaded or delivered the products purchased with the bill.</documentation>
+			<input message="tns:MarkBillCompleteSoapIn"/>
+			<output message="tns:MarkBillCompleteSoapOut"/>
+		</operation>
+	</portType>
+	<binding name="OCashBasicServiceSoapBinding" type="tns:OCashBasicServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="SubmitBill">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="StatusBill">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="MarkBillComplete">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="OCashBasicService">
+		<documentation>OCash basic services sending a bill, querying status of a bill and marking a bill as complete.</documentation>
+		<port name="OCashBasicServicePortType" binding="tns:OCashBasicServiceSoapBinding">
+			<soap:address location="https://www.ocash.com/ocash/servlet/messagerouter"/>
+		</port>
+	</service>
+</definitions>

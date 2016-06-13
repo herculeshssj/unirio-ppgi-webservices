@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="lockNetWS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="lockNetWS" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="lockNetWS">
+      <s:element name="ValidateLockNetKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateLockNetKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidateLockNetKeyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLockNetCustomerKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLockNetCustomerKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLockNetCustomerKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="ValidateLockNetKeySoapIn">
+    <part name="parameters" element="s0:ValidateLockNetKey" />
+  </message>
+  <message name="ValidateLockNetKeySoapOut">
+    <part name="parameters" element="s0:ValidateLockNetKeyResponse" />
+  </message>
+  <message name="getLockNetCustomerKeySoapIn">
+    <part name="parameters" element="s0:getLockNetCustomerKey" />
+  </message>
+  <message name="getLockNetCustomerKeySoapOut">
+    <part name="parameters" element="s0:getLockNetCustomerKeyResponse" />
+  </message>
+  <message name="ValidateLockNetKeyHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="UserKey" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+    <part name="CustomerKey" type="s:string" />
+  </message>
+  <message name="ValidateLockNetKeyHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="getLockNetCustomerKeyHttpGetIn">
+    <part name="LoginName" type="s:string" />
+    <part name="LoginPassword" type="s:string" />
+    <part name="UserName" type="s:string" />
+    <part name="UserKey" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+  </message>
+  <message name="getLockNetCustomerKeyHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ValidateLockNetKeyHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="UserKey" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+    <part name="CustomerKey" type="s:string" />
+  </message>
+  <message name="ValidateLockNetKeyHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="getLockNetCustomerKeyHttpPostIn">
+    <part name="LoginName" type="s:string" />
+    <part name="LoginPassword" type="s:string" />
+    <part name="UserName" type="s:string" />
+    <part name="UserKey" type="s:string" />
+    <part name="CustomerName" type="s:string" />
+  </message>
+  <message name="getLockNetCustomerKeyHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="lockNetClassWSSoap">
+    <operation name="ValidateLockNetKey">
+      <documentation>To validate customer key&lt;i&gt;(only for registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:ValidateLockNetKeySoapIn" />
+      <output message="s0:ValidateLockNetKeySoapOut" />
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <documentation>To get new customer key &lt;i&gt;(only for authenticated and registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:getLockNetCustomerKeySoapIn" />
+      <output message="s0:getLockNetCustomerKeySoapOut" />
+    </operation>
+  </portType>
+  <portType name="lockNetClassWSHttpGet">
+    <operation name="ValidateLockNetKey">
+      <documentation>To validate customer key&lt;i&gt;(only for registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:ValidateLockNetKeyHttpGetIn" />
+      <output message="s0:ValidateLockNetKeyHttpGetOut" />
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <documentation>To get new customer key &lt;i&gt;(only for authenticated and registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:getLockNetCustomerKeyHttpGetIn" />
+      <output message="s0:getLockNetCustomerKeyHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="lockNetClassWSHttpPost">
+    <operation name="ValidateLockNetKey">
+      <documentation>To validate customer key&lt;i&gt;(only for registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:ValidateLockNetKeyHttpPostIn" />
+      <output message="s0:ValidateLockNetKeyHttpPostOut" />
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <documentation>To get new customer key &lt;i&gt;(only for authenticated and registered users)&lt;/i&gt;.</documentation>
+      <input message="s0:getLockNetCustomerKeyHttpPostIn" />
+      <output message="s0:getLockNetCustomerKeyHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="lockNetClassWSSoap" type="s0:lockNetClassWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ValidateLockNetKey">
+      <soap:operation soapAction="lockNetWS/ValidateLockNetKey" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <soap:operation soapAction="lockNetWS/getLockNetCustomerKey" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="lockNetClassWSHttpGet" type="s0:lockNetClassWSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ValidateLockNetKey">
+      <http:operation location="/ValidateLockNetKey" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <http:operation location="/getLockNetCustomerKey" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="lockNetClassWSHttpPost" type="s0:lockNetClassWSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ValidateLockNetKey">
+      <http:operation location="/ValidateLockNetKey" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getLockNetCustomerKey">
+      <http:operation location="/getLockNetCustomerKey" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="lockNetClassWS">
+    <documentation>&lt;b&gt;lockNetClassWS&lt;/b&gt; is a keys generator and keys validator Web Service that provides a remote interface for customers authentication. It is based on .net System.Security.Cryptography and can be used as online authentication system for Web Application, Service and Components. &lt;b&gt;lockNetClassWS&lt;/b&gt; comes as free Web Service with a maximum 3 keys for each unique user. To get more keys it needs to be purcased.&lt;br /&gt;More informations about this webservice at &lt;b&gt;&lt;a href="http://net.intranext.it"&gt;http://net.intranext.it&lt;/a&gt;&lt;/b&gt; or sending an e-mail to &lt;b&gt;&lt;a href="mailto:lnws@intranext.it"&gt;lnws@intranext.it&lt;/a&gt;&lt;/b&gt;&lt;br /&gt;&lt;i&gt;All rights reserved ©2002 Intranext s.a.s IT&lt;/i&gt;</documentation>
+    <port name="lockNetClassWSSoap" binding="s0:lockNetClassWSSoap">
+      <soap:address location="http://inext.www1.dotnetplayground.com/lockNetWS.asmx" />
+    </port>
+    <port name="lockNetClassWSHttpGet" binding="s0:lockNetClassWSHttpGet">
+      <http:address location="http://inext.www1.dotnetplayground.com/lockNetWS.asmx" />
+    </port>
+    <port name="lockNetClassWSHttpPost" binding="s0:lockNetClassWSHttpPost">
+      <http:address location="http://inext.www1.dotnetplayground.com/lockNetWS.asmx" />
+    </port>
+  </service>
+</definitions>

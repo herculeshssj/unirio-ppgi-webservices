@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IWagAddressServerSingleservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="GetFirstRequest">
+    <part name="PostCode" type="xs:string"/>
+    <part name="HouseNo" type="xs:string"/>
+  </message>
+  <message name="GetFirstResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IWagAddressServerSingle">
+    <operation name="GetFirst">
+      <input message="tns:GetFirstRequest"/>
+      <output message="tns:GetFirstResponse"/>
+    </operation>
+  </portType>
+  <binding name="IWagAddressServerSinglebinding" type="tns:IWagAddressServerSingle">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetFirst">
+      <soap:operation soapAction="urn:WagAddressServerSingleIntf-IWagAddressServerSingle#GetFirst" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WagAddressServerSingleIntf-IWagAddressServerSingle"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WagAddressServerSingleIntf-IWagAddressServerSingle"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IWagAddressServerSingleservice">
+    <port name="IWagAddressServerSinglePort" binding="tns:IWagAddressServerSinglebinding">
+      <soap:address location="http://62.212.78.36/cgi-bin/WagAddressServerSingle.exe/soap/IWagAddressServerSingle"/>
+    </port>
+  </service>
+</definitions>
+

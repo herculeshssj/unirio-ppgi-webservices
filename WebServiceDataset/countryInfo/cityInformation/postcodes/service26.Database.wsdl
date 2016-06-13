@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://trwest.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://trwest.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://trwest.com/webservices/">
+      <s:element name="FindAbbreviations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAbbreviationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAbbreviationsResult" type="s0:ArrayOfStateProvince" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateProvince">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateProvince" type="s0:StateProvince" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateProvince">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Abbrev" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindAbbreviation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAbbreviationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAbbreviationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfStateProvince" nillable="true" type="s0:ArrayOfStateProvince" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindAbbreviationsSoapIn">
+    <part name="parameters" element="s0:FindAbbreviations" />
+  </message>
+  <message name="FindAbbreviationsSoapOut">
+    <part name="parameters" element="s0:FindAbbreviationsResponse" />
+  </message>
+  <message name="FindAbbreviationSoapIn">
+    <part name="parameters" element="s0:FindAbbreviation" />
+  </message>
+  <message name="FindAbbreviationSoapOut">
+    <part name="parameters" element="s0:FindAbbreviationResponse" />
+  </message>
+  <message name="FindAbbreviationsHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindAbbreviationsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateProvince" />
+  </message>
+  <message name="FindAbbreviationHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindAbbreviationHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindAbbreviationsHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindAbbreviationsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateProvince" />
+  </message>
+  <message name="FindAbbreviationHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindAbbreviationHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="AbbreviationsSoap">
+    <operation name="FindAbbreviations">
+      <documentation>Input partial U.S state or Canadian province name get back matching states/provinces and their abbreviations</documentation>
+      <input message="s0:FindAbbreviationsSoapIn" />
+      <output message="s0:FindAbbreviationsSoapOut" />
+    </operation>
+    <operation name="FindAbbreviation">
+      <documentation>Input full U.S state or Canadian province name get back state/province's abbreviation</documentation>
+      <input message="s0:FindAbbreviationSoapIn" />
+      <output message="s0:FindAbbreviationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AbbreviationsHttpGet">
+    <operation name="FindAbbreviations">
+      <documentation>Input partial U.S state or Canadian province name get back matching states/provinces and their abbreviations</documentation>
+      <input message="s0:FindAbbreviationsHttpGetIn" />
+      <output message="s0:FindAbbreviationsHttpGetOut" />
+    </operation>
+    <operation name="FindAbbreviation">
+      <documentation>Input full U.S state or Canadian province name get back state/province's abbreviation</documentation>
+      <input message="s0:FindAbbreviationHttpGetIn" />
+      <output message="s0:FindAbbreviationHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AbbreviationsHttpPost">
+    <operation name="FindAbbreviations">
+      <documentation>Input partial U.S state or Canadian province name get back matching states/provinces and their abbreviations</documentation>
+      <input message="s0:FindAbbreviationsHttpPostIn" />
+      <output message="s0:FindAbbreviationsHttpPostOut" />
+    </operation>
+    <operation name="FindAbbreviation">
+      <documentation>Input full U.S state or Canadian province name get back state/province's abbreviation</documentation>
+      <input message="s0:FindAbbreviationHttpPostIn" />
+      <output message="s0:FindAbbreviationHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AbbreviationsSoap" type="s0:AbbreviationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindAbbreviations">
+      <soap:operation soapAction="http://trwest.com/webservices/FindAbbreviations" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindAbbreviation">
+      <soap:operation soapAction="http://trwest.com/webservices/FindAbbreviation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AbbreviationsHttpGet" type="s0:AbbreviationsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindAbbreviations">
+      <http:operation location="/FindAbbreviations" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindAbbreviation">
+      <http:operation location="/FindAbbreviation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AbbreviationsHttpPost" type="s0:AbbreviationsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindAbbreviations">
+      <http:operation location="/FindAbbreviations" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindAbbreviation">
+      <http:operation location="/FindAbbreviation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Abbreviations">
+    <port name="AbbreviationsSoap" binding="s0:AbbreviationsSoap">
+      <soap:address location="http://www.dev1.eraserver.net/trwest/StateAbbreviations/Abbreviations.asmx" />
+    </port>
+    <port name="AbbreviationsHttpGet" binding="s0:AbbreviationsHttpGet">
+      <http:address location="http://www.dev1.eraserver.net/trwest/StateAbbreviations/Abbreviations.asmx" />
+    </port>
+    <port name="AbbreviationsHttpPost" binding="s0:AbbreviationsHttpPost">
+      <http:address location="http://www.dev1.eraserver.net/trwest/StateAbbreviations/Abbreviations.asmx" />
+    </port>
+  </service>
+</definitions>

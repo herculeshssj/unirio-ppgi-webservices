@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:intf="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="AirFareQuoteRequest"><sequence><element name="outwardDate" nillable="true" type="xsd:dateTime"/><element name="returnDate" nillable="true" type="xsd:dateTime"/><element name="originAirport" nillable="true" type="xsd:string"/><element name="destinationAirport" nillable="true" type="xsd:string"/></sequence></complexType><element name="AirFareQuoteRequest" nillable="true" type="impl:AirFareQuoteRequest"/><complexType name="AirFareQuote"><sequence><element name="airlineName" nillable="true" type="xsd:string"/><element name="fare" type="xsd:float"/><element name="outwardTime" nillable="true" type="xsd:dateTime"/><element name="returnTime" nillable="true" type="xsd:dateTime"/><element name="errorOccurred" type="xsd:boolean"/><element name="scrapeError" type="xsd:boolean"/><element name="errorMessage" nillable="true" type="xsd:string"/></sequence></complexType><complexType name="ArrayOfAirFareQuote"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="impl:AirFareQuote[]"/></restriction></complexContent></complexType><element name="ArrayOfAirFareQuote" nillable="true" type="impl:ArrayOfAirFareQuote"/><complexType name="ArrayOf_xsd_string"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/></restriction></complexContent></complexType><element name="ArrayOf_xsd_string" nillable="true" type="impl:ArrayOf_xsd_string"/></schema></wsdl:types>
+  <wsdl:message name="getAirFareQuoteResponse">
+    <wsdl:part name="getAirFareQuoteReturn" type="intf:ArrayOfAirFareQuote"/>
+  </wsdl:message>
+  <wsdl:message name="getAirlinesResponse">
+    <wsdl:part name="getAirlinesReturn" type="intf:ArrayOf_xsd_string"/>
+  </wsdl:message>
+  <wsdl:message name="getAirlinesRequest">
+  </wsdl:message>
+  <wsdl:message name="getAirFareQuoteRequest">
+    <wsdl:part name="in0" type="intf:AirFareQuoteRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="SBGGetAirFareQuote">
+    <wsdl:operation name="getAirFareQuote" parameterOrder="in0">
+      <wsdl:input name="getAirFareQuoteRequest" message="intf:getAirFareQuoteRequest"/>
+      <wsdl:output name="getAirFareQuoteResponse" message="intf:getAirFareQuoteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAirlines">
+      <wsdl:input name="getAirlinesRequest" message="intf:getAirlinesRequest"/>
+      <wsdl:output name="getAirlinesResponse" message="intf:getAirlinesResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SBGGetAirFareQuoteSoapBinding" type="intf:SBGGetAirFareQuote">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAirFareQuote">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAirFareQuoteRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk"/>
+      </wsdl:input>
+      <wsdl:output name="getAirFareQuoteResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAirlines">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAirlinesRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk"/>
+      </wsdl:input>
+      <wsdl:output name="getAirlinesResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SBGAirFareQuotes.sbg.travel.ws.dsdata.co.uk"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SBGGetAirFareQuoteService">
+    <wsdl:port name="SBGGetAirFareQuote" binding="intf:SBGGetAirFareQuoteSoapBinding">
+      <wsdlsoap:address location="http://wavendon.dsdata.co.uk:8080/axis/services/SBGGetAirFareQuote"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

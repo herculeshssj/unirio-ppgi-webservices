@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://xform.metaverse.cc/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xform.metaverse.cc/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xform.metaverse.cc/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xform.metaverse.cc/">
+      <s:element name="DeliverForTransformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="document" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="settings" type="s0:XFormTransformSettings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XFormTransformSettings">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UseArtificialIntelligence" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="OptionalClientApplicationName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnDocumentProperties" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeliverForTransformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverForTransformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PickUpForTransformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PickUpForTransformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PickUpForTransformationResult" type="s0:XFormTransformResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XFormTransformResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:XFormStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Xml" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Successful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FailMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmbeddedGraphics" type="s0:ArrayOfBase64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="XFormStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Waiting" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="Completed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeliverForComparison">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licenseKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="document1" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="document2" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeliverForComparisonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverForComparisonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PickUpForComparison">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ticket" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PickUpForComparisonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PickUpForComparisonResult" type="s0:XFormCompareResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XFormCompareResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:XFormStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Document" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="Successful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FailMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="XFormTransformResult" nillable="true" type="s0:XFormTransformResult" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="XFormCompareResult" nillable="true" type="s0:XFormCompareResult" />
+    </s:schema>
+    <s:schema targetNamespace="http://xform.metaverse.cc/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="DeliverForTransformationSoapIn">
+    <part name="parameters" element="s0:DeliverForTransformation" />
+  </message>
+  <message name="DeliverForTransformationSoapOut">
+    <part name="parameters" element="s0:DeliverForTransformationResponse" />
+  </message>
+  <message name="PickUpForTransformationSoapIn">
+    <part name="parameters" element="s0:PickUpForTransformation" />
+  </message>
+  <message name="PickUpForTransformationSoapOut">
+    <part name="parameters" element="s0:PickUpForTransformationResponse" />
+  </message>
+  <message name="DeliverForComparisonSoapIn">
+    <part name="parameters" element="s0:DeliverForComparison" />
+  </message>
+  <message name="DeliverForComparisonSoapOut">
+    <part name="parameters" element="s0:DeliverForComparisonResponse" />
+  </message>
+  <message name="PickUpForComparisonSoapIn">
+    <part name="parameters" element="s0:PickUpForComparison" />
+  </message>
+  <message name="PickUpForComparisonSoapOut">
+    <part name="parameters" element="s0:PickUpForComparisonResponse" />
+  </message>
+  <message name="PickUpForTransformationHttpGetIn">
+    <part name="licenseKey" type="s:string" />
+    <part name="ticket" type="s:string" />
+  </message>
+  <message name="PickUpForTransformationHttpGetOut">
+    <part name="Body" element="s0:XFormTransformResult" />
+  </message>
+  <message name="DeliverForComparisonHttpGetIn">
+    <part name="licenseKey" type="s:string" />
+    <part name="document1" type="s1:StringArray" />
+    <part name="document2" type="s1:StringArray" />
+  </message>
+  <message name="DeliverForComparisonHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PickUpForComparisonHttpGetIn">
+    <part name="ticket" type="s:string" />
+    <part name="licenseKey" type="s:string" />
+  </message>
+  <message name="PickUpForComparisonHttpGetOut">
+    <part name="Body" element="s0:XFormCompareResult" />
+  </message>
+  <message name="PickUpForTransformationHttpPostIn">
+    <part name="licenseKey" type="s:string" />
+    <part name="ticket" type="s:string" />
+  </message>
+  <message name="PickUpForTransformationHttpPostOut">
+    <part name="Body" element="s0:XFormTransformResult" />
+  </message>
+  <message name="DeliverForComparisonHttpPostIn">
+    <part name="licenseKey" type="s:string" />
+    <part name="document1" type="s1:StringArray" />
+    <part name="document2" type="s1:StringArray" />
+  </message>
+  <message name="DeliverForComparisonHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PickUpForComparisonHttpPostIn">
+    <part name="ticket" type="s:string" />
+    <part name="licenseKey" type="s:string" />
+  </message>
+  <message name="PickUpForComparisonHttpPostOut">
+    <part name="Body" element="s0:XFormCompareResult" />
+  </message>
+  <portType name="XFormWebServiceSoap">
+    <operation name="DeliverForTransformation">
+      <documentation>Delivers a word document for Word to Xml Transformation. Returns a ticket to pickup transformed xml.</documentation>
+      <input message="s0:DeliverForTransformationSoapIn" />
+      <output message="s0:DeliverForTransformationSoapOut" />
+    </operation>
+    <operation name="PickUpForTransformation">
+      <documentation>Given a ticket, picks up transformed xml.</documentation>
+      <input message="s0:PickUpForTransformationSoapIn" />
+      <output message="s0:PickUpForTransformationSoapOut" />
+    </operation>
+    <operation name="DeliverForComparison">
+      <documentation>Delivers two Word documents for comparison operation. Returns a ticket to pickup Word comparison document.</documentation>
+      <input message="s0:DeliverForComparisonSoapIn" />
+      <output message="s0:DeliverForComparisonSoapOut" />
+    </operation>
+    <operation name="PickUpForComparison">
+      <documentation>Given a ticket, picks up a Word comparison document.</documentation>
+      <input message="s0:PickUpForComparisonSoapIn" />
+      <output message="s0:PickUpForComparisonSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XFormWebServiceHttpGet">
+    <operation name="PickUpForTransformation">
+      <documentation>Given a ticket, picks up transformed xml.</documentation>
+      <input message="s0:PickUpForTransformationHttpGetIn" />
+      <output message="s0:PickUpForTransformationHttpGetOut" />
+    </operation>
+    <operation name="DeliverForComparison">
+      <documentation>Delivers two Word documents for comparison operation. Returns a ticket to pickup Word comparison document.</documentation>
+      <input message="s0:DeliverForComparisonHttpGetIn" />
+      <output message="s0:DeliverForComparisonHttpGetOut" />
+    </operation>
+    <operation name="PickUpForComparison">
+      <documentation>Given a ticket, picks up a Word comparison document.</documentation>
+      <input message="s0:PickUpForComparisonHttpGetIn" />
+      <output message="s0:PickUpForComparisonHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XFormWebServiceHttpPost">
+    <operation name="PickUpForTransformation">
+      <documentation>Given a ticket, picks up transformed xml.</documentation>
+      <input message="s0:PickUpForTransformationHttpPostIn" />
+      <output message="s0:PickUpForTransformationHttpPostOut" />
+    </operation>
+    <operation name="DeliverForComparison">
+      <documentation>Delivers two Word documents for comparison operation. Returns a ticket to pickup Word comparison document.</documentation>
+      <input message="s0:DeliverForComparisonHttpPostIn" />
+      <output message="s0:DeliverForComparisonHttpPostOut" />
+    </operation>
+    <operation name="PickUpForComparison">
+      <documentation>Given a ticket, picks up a Word comparison document.</documentation>
+      <input message="s0:PickUpForComparisonHttpPostIn" />
+      <output message="s0:PickUpForComparisonHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XFormWebServiceSoap" type="s0:XFormWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="DeliverForTransformation">
+      <soap:operation soapAction="http://xform.metaverse.cc/DeliverForTransformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PickUpForTransformation">
+      <soap:operation soapAction="http://xform.metaverse.cc/PickUpForTransformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeliverForComparison">
+      <soap:operation soapAction="http://xform.metaverse.cc/DeliverForComparison" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PickUpForComparison">
+      <soap:operation soapAction="http://xform.metaverse.cc/PickUpForComparison" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XFormWebServiceHttpGet" type="s0:XFormWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="PickUpForTransformation">
+      <http:operation location="/PickUpForTransformation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeliverForComparison">
+      <http:operation location="/DeliverForComparison" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PickUpForComparison">
+      <http:operation location="/PickUpForComparison" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XFormWebServiceHttpPost" type="s0:XFormWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="PickUpForTransformation">
+      <http:operation location="/PickUpForTransformation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeliverForComparison">
+      <http:operation location="/DeliverForComparison" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PickUpForComparison">
+      <http:operation location="/PickUpForComparison" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XFormWebService">
+    <port name="XFormWebServiceSoap" binding="s0:XFormWebServiceSoap">
+      <soap:address location="http://xform.metaverse.cc/xformservice.asmx" />
+    </port>
+    <port name="XFormWebServiceHttpGet" binding="s0:XFormWebServiceHttpGet">
+      <http:address location="http://xform.metaverse.cc/xformservice.asmx" />
+    </port>
+    <port name="XFormWebServiceHttpPost" binding="s0:XFormWebServiceHttpPost">
+      <http:address location="http://xform.metaverse.cc/xformservice.asmx" />
+    </port>
+  </service>
+</definitions>

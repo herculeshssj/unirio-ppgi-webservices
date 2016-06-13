@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xeeinc.com/Xee" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xeeinc.com/Xee" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xeeinc.com/Xee">
+      <s:element name="GetAreaCodesForCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaCodesForCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreaCodesForCityResult" type="s0:ArrayOfGetAreaCodesForCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetAreaCodesForCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetAreaCodesForCity" type="s0:GetAreaCodesForCity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetAreaCodesForCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAreaCodesForState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAreaCodesForStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAreaCodesForStateResult" type="s0:ArrayOfGetAreaCodesForState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetAreaCodesForState">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetAreaCodesForState" type="s0:GetAreaCodesForState" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetAreaCodesForState">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RateBasicInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Org_Area_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Org_Switch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dest_Area_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dest_Switch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RateBasicInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateBasicInformationResult" type="s0:CallDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CallDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mileage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigLATA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrigCLLI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestLATA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestCLLI" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfGetAreaCodesForCity" nillable="true" type="s0:ArrayOfGetAreaCodesForCity" />
+      <s:element name="ArrayOfGetAreaCodesForState" nillable="true" type="s0:ArrayOfGetAreaCodesForState" />
+      <s:element name="CallDetail" nillable="true" type="s0:CallDetail" />
+    </s:schema>
+  </types>
+  <message name="GetAreaCodesForCitySoapIn">
+    <part name="parameters" element="s0:GetAreaCodesForCity" />
+  </message>
+  <message name="GetAreaCodesForCitySoapOut">
+    <part name="parameters" element="s0:GetAreaCodesForCityResponse" />
+  </message>
+  <message name="GetAreaCodesForStateSoapIn">
+    <part name="parameters" element="s0:GetAreaCodesForState" />
+  </message>
+  <message name="GetAreaCodesForStateSoapOut">
+    <part name="parameters" element="s0:GetAreaCodesForStateResponse" />
+  </message>
+  <message name="RateBasicInformationSoapIn">
+    <part name="parameters" element="s0:RateBasicInformation" />
+  </message>
+  <message name="RateBasicInformationSoapOut">
+    <part name="parameters" element="s0:RateBasicInformationResponse" />
+  </message>
+  <message name="GetAreaCodesForCityHttpGetIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+  </message>
+  <message name="GetAreaCodesForCityHttpGetOut">
+    <part name="Body" element="s0:ArrayOfGetAreaCodesForCity" />
+  </message>
+  <message name="GetAreaCodesForStateHttpGetIn">
+    <part name="State" type="s:string" />
+  </message>
+  <message name="GetAreaCodesForStateHttpGetOut">
+    <part name="Body" element="s0:ArrayOfGetAreaCodesForState" />
+  </message>
+  <message name="RateBasicInformationHttpGetIn">
+    <part name="Org_Area_Code" type="s:string" />
+    <part name="Org_Switch" type="s:string" />
+    <part name="Dest_Area_Code" type="s:string" />
+    <part name="Dest_Switch" type="s:string" />
+  </message>
+  <message name="RateBasicInformationHttpGetOut">
+    <part name="Body" element="s0:CallDetail" />
+  </message>
+  <message name="GetAreaCodesForCityHttpPostIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+  </message>
+  <message name="GetAreaCodesForCityHttpPostOut">
+    <part name="Body" element="s0:ArrayOfGetAreaCodesForCity" />
+  </message>
+  <message name="GetAreaCodesForStateHttpPostIn">
+    <part name="State" type="s:string" />
+  </message>
+  <message name="GetAreaCodesForStateHttpPostOut">
+    <part name="Body" element="s0:ArrayOfGetAreaCodesForState" />
+  </message>
+  <message name="RateBasicInformationHttpPostIn">
+    <part name="Org_Area_Code" type="s:string" />
+    <part name="Org_Switch" type="s:string" />
+    <part name="Dest_Area_Code" type="s:string" />
+    <part name="Dest_Switch" type="s:string" />
+  </message>
+  <message name="RateBasicInformationHttpPostOut">
+    <part name="Body" element="s0:CallDetail" />
+  </message>
+  <portType name="RateInfoClassSoap">
+    <operation name="GetAreaCodesForCity">
+      <documentation>Description: Returns three digit area codes for any US city/town.</documentation>
+      <input message="s0:GetAreaCodesForCitySoapIn" />
+      <output message="s0:GetAreaCodesForCitySoapOut" />
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <documentation>Description: Returns all area codes in effect for any state.</documentation>
+      <input message="s0:GetAreaCodesForStateSoapIn" />
+      <output message="s0:GetAreaCodesForStateSoapOut" />
+    </operation>
+    <operation name="RateBasicInformation">
+      <documentation>Description: Returns Mileage, Orig/Dest: City, State, Zip, County LATA and Central Office Code (CLLI) for any US phone exchange.</documentation>
+      <input message="s0:RateBasicInformationSoapIn" />
+      <output message="s0:RateBasicInformationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RateInfoClassHttpGet">
+    <operation name="GetAreaCodesForCity">
+      <documentation>Description: Returns three digit area codes for any US city/town.</documentation>
+      <input message="s0:GetAreaCodesForCityHttpGetIn" />
+      <output message="s0:GetAreaCodesForCityHttpGetOut" />
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <documentation>Description: Returns all area codes in effect for any state.</documentation>
+      <input message="s0:GetAreaCodesForStateHttpGetIn" />
+      <output message="s0:GetAreaCodesForStateHttpGetOut" />
+    </operation>
+    <operation name="RateBasicInformation">
+      <documentation>Description: Returns Mileage, Orig/Dest: City, State, Zip, County LATA and Central Office Code (CLLI) for any US phone exchange.</documentation>
+      <input message="s0:RateBasicInformationHttpGetIn" />
+      <output message="s0:RateBasicInformationHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RateInfoClassHttpPost">
+    <operation name="GetAreaCodesForCity">
+      <documentation>Description: Returns three digit area codes for any US city/town.</documentation>
+      <input message="s0:GetAreaCodesForCityHttpPostIn" />
+      <output message="s0:GetAreaCodesForCityHttpPostOut" />
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <documentation>Description: Returns all area codes in effect for any state.</documentation>
+      <input message="s0:GetAreaCodesForStateHttpPostIn" />
+      <output message="s0:GetAreaCodesForStateHttpPostOut" />
+    </operation>
+    <operation name="RateBasicInformation">
+      <documentation>Description: Returns Mileage, Orig/Dest: City, State, Zip, County LATA and Central Office Code (CLLI) for any US phone exchange.</documentation>
+      <input message="s0:RateBasicInformationHttpPostIn" />
+      <output message="s0:RateBasicInformationHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RateInfoClassSoap" type="s0:RateInfoClassSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetAreaCodesForCity">
+      <soap:operation soapAction="http://www.xeeinc.com/Xee/GetAreaCodesForCity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <soap:operation soapAction="http://www.xeeinc.com/Xee/GetAreaCodesForState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RateBasicInformation">
+      <soap:operation soapAction="http://www.xeeinc.com/Xee/RateBasicInformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RateInfoClassHttpGet" type="s0:RateInfoClassHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetAreaCodesForCity">
+      <http:operation location="/GetAreaCodesForCity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <http:operation location="/GetAreaCodesForState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RateBasicInformation">
+      <http:operation location="/RateBasicInformation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RateInfoClassHttpPost" type="s0:RateInfoClassHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetAreaCodesForCity">
+      <http:operation location="/GetAreaCodesForCity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAreaCodesForState">
+      <http:operation location="/GetAreaCodesForState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RateBasicInformation">
+      <http:operation location="/RateBasicInformation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RateInfoClass">
+    <port name="RateInfoClassSoap" binding="s0:RateInfoClassSoap">
+      <soap:address location="http://www.xeeinc.com/RateInformation/RateInfo.asmx" />
+    </port>
+    <port name="RateInfoClassHttpGet" binding="s0:RateInfoClassHttpGet">
+      <http:address location="http://www.xeeinc.com/RateInformation/RateInfo.asmx" />
+    </port>
+    <port name="RateInfoClassHttpPost" binding="s0:RateInfoClassHttpPost">
+      <http:address location="http://www.xeeinc.com/RateInformation/RateInfo.asmx" />
+    </port>
+  </service>
+</definitions>

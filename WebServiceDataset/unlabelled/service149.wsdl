@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IPGPKeyServerservice" targetNamespace="http://www.marotz.se/" xmlns:tns="http://www.marotz.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <message name="QueryKeyServer0Request">
+    <part name="AQueryStr" type="xs:string"/>
+    <part name="AExactMatch" type="xs:boolean"/>
+    <part name="AIncludeSignatures" type="xs:boolean"/>
+  </message>
+  <message name="QueryKeyServer0Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="RetrieveKeyBlock1Request">
+    <part name="AKeyID" type="xs:int"/>
+  </message>
+  <message name="RetrieveKeyBlock1Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="SubmitKeyBlock2Request">
+    <part name="AArmoredKeyData" type="xs:string"/>
+  </message>
+  <message name="SubmitKeyBlock2Response"/>
+  <portType name="IPGPKeyServer">
+    <operation name="QueryKeyServer">
+      <input message="tns:QueryKeyServer0Request"/>
+      <output message="tns:QueryKeyServer0Response"/>
+    </operation>
+    <operation name="RetrieveKeyBlock">
+      <input message="tns:RetrieveKeyBlock1Request"/>
+      <output message="tns:RetrieveKeyBlock1Response"/>
+    </operation>
+    <operation name="SubmitKeyBlock">
+      <input message="tns:SubmitKeyBlock2Request"/>
+      <output message="tns:SubmitKeyBlock2Response"/>
+    </operation>
+  </portType>
+  <binding name="IPGPKeyServerbinding" type="tns:IPGPKeyServer">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="QueryKeyServer">
+      <soap:operation soapAction="urn:PGPKeyServerIntf-IPGPKeyServer#QueryKeyServer" style="rpc"/>
+      <input message="tns:QueryKeyServer0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </input>
+      <output message="tns:QueryKeyServer0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </output>
+    </operation>
+    <operation name="RetrieveKeyBlock">
+      <soap:operation soapAction="urn:PGPKeyServerIntf-IPGPKeyServer#RetrieveKeyBlock" style="rpc"/>
+      <input message="tns:RetrieveKeyBlock1Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </input>
+      <output message="tns:RetrieveKeyBlock1Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </output>
+    </operation>
+    <operation name="SubmitKeyBlock">
+      <soap:operation soapAction="urn:PGPKeyServerIntf-IPGPKeyServer#SubmitKeyBlock" style="rpc"/>
+      <input message="tns:SubmitKeyBlock2Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </input>
+      <output message="tns:SubmitKeyBlock2Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:PGPKeyServerIntf-IPGPKeyServer"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IPGPKeyServerservice">
+    <port name="IPGPKeyServerPort" binding="tns:IPGPKeyServerbinding">
+      <soap:address location="http://www.marotz.se/PGPKeyServer/PGPKeyServiceX.exe/soap/IPGPKeyServer"/>
+    </port>
+  </service>
+</definitions>
+

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://jlz.free.fr" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://jlz.free.fr" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://jlz.free.fr">
+      <s:element name="Fete">
+        <s:complexType />
+      </s:element>
+      <s:element name="FeteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FeteResult" type="s0:FeteStruct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FeteStruct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ethy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Expl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FeteDuJourTitre">
+        <s:complexType />
+      </s:element>
+      <s:element name="FeteDuJourTitreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FeteDuJourTitreResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FeteDuJourDescription">
+        <s:complexType />
+      </s:element>
+      <s:element name="FeteDuJourDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FeteDuJourDescriptionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FeteStruct" type="s0:FeteStruct" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FeteSoapIn">
+    <part name="parameters" element="s0:Fete" />
+  </message>
+  <message name="FeteSoapOut">
+    <part name="parameters" element="s0:FeteResponse" />
+  </message>
+  <message name="FeteDuJourTitreSoapIn">
+    <part name="parameters" element="s0:FeteDuJourTitre" />
+  </message>
+  <message name="FeteDuJourTitreSoapOut">
+    <part name="parameters" element="s0:FeteDuJourTitreResponse" />
+  </message>
+  <message name="FeteDuJourDescriptionSoapIn">
+    <part name="parameters" element="s0:FeteDuJourDescription" />
+  </message>
+  <message name="FeteDuJourDescriptionSoapOut">
+    <part name="parameters" element="s0:FeteDuJourDescriptionResponse" />
+  </message>
+  <message name="FeteHttpGetIn" />
+  <message name="FeteHttpGetOut">
+    <part name="Body" element="s0:FeteStruct" />
+  </message>
+  <message name="FeteDuJourTitreHttpGetIn" />
+  <message name="FeteDuJourTitreHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FeteDuJourDescriptionHttpGetIn" />
+  <message name="FeteDuJourDescriptionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FeteHttpPostIn" />
+  <message name="FeteHttpPostOut">
+    <part name="Body" element="s0:FeteStruct" />
+  </message>
+  <message name="FeteDuJourTitreHttpPostIn" />
+  <message name="FeteDuJourTitreHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FeteDuJourDescriptionHttpPostIn" />
+  <message name="FeteDuJourDescriptionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="wsFeteSoap">
+    <operation name="Fete">
+      <input message="s0:FeteSoapIn" />
+      <output message="s0:FeteSoapOut" />
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <input message="s0:FeteDuJourTitreSoapIn" />
+      <output message="s0:FeteDuJourTitreSoapOut" />
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <input message="s0:FeteDuJourDescriptionSoapIn" />
+      <output message="s0:FeteDuJourDescriptionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="wsFeteHttpGet">
+    <operation name="Fete">
+      <input message="s0:FeteHttpGetIn" />
+      <output message="s0:FeteHttpGetOut" />
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <input message="s0:FeteDuJourTitreHttpGetIn" />
+      <output message="s0:FeteDuJourTitreHttpGetOut" />
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <input message="s0:FeteDuJourDescriptionHttpGetIn" />
+      <output message="s0:FeteDuJourDescriptionHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="wsFeteHttpPost">
+    <operation name="Fete">
+      <input message="s0:FeteHttpPostIn" />
+      <output message="s0:FeteHttpPostOut" />
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <input message="s0:FeteDuJourTitreHttpPostIn" />
+      <output message="s0:FeteDuJourTitreHttpPostOut" />
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <input message="s0:FeteDuJourDescriptionHttpPostIn" />
+      <output message="s0:FeteDuJourDescriptionHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="wsFeteSoap" type="s0:wsFeteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Fete">
+      <soap:operation soapAction="http://jlz.free.fr/Fete" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <soap:operation soapAction="http://jlz.free.fr/FeteDuJourTitre" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <soap:operation soapAction="http://jlz.free.fr/FeteDuJourDescription" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsFeteHttpGet" type="s0:wsFeteHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Fete">
+      <http:operation location="/Fete" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <http:operation location="/FeteDuJourTitre" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <http:operation location="/FeteDuJourDescription" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsFeteHttpPost" type="s0:wsFeteHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Fete">
+      <http:operation location="/Fete" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourTitre">
+      <http:operation location="/FeteDuJourTitre" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FeteDuJourDescription">
+      <http:operation location="/FeteDuJourDescription" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsFete">
+    <port name="wsFeteSoap" binding="s0:wsFeteSoap">
+      <soap:address location="http://zappy.www4.dotnetplayground.com/fete.asmx" />
+    </port>
+    <port name="wsFeteHttpGet" binding="s0:wsFeteHttpGet">
+      <http:address location="http://zappy.www4.dotnetplayground.com/fete.asmx" />
+    </port>
+    <port name="wsFeteHttpPost" binding="s0:wsFeteHttpPost">
+      <http:address location="http://zappy.www4.dotnetplayground.com/fete.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ISearchSwedishPersonservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns1="urn:TeliaASP">
+  <types>
+    <xs:schema targetNamespace="urn:TeliaASP" xmlns="urn:TeliaASP">
+      <xs:simpleType name="TStringType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="stExact"/>
+          <xs:enumeration value="stTrunc"/>
+          <xs:enumeration value="stFuzzy"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </types>
+  <message name="HTMLSearchAddress0Request">
+    <part name="fName" type="xs:string"/>
+    <part name="lName" type="xs:string"/>
+    <part name="Address" type="xs:string"/>
+    <part name="ZipCode" type="xs:string"/>
+    <part name="City" type="xs:string"/>
+  </message>
+  <message name="HTMLSearchAddress0Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="HTMLSearchAddressEx1Request">
+    <part name="fName" type="xs:string"/>
+    <part name="fNameType" type="ns1:TStringType"/>
+    <part name="lName" type="xs:string"/>
+    <part name="lNameType" type="ns1:TStringType"/>
+    <part name="Address" type="xs:string"/>
+    <part name="addressType" type="ns1:TStringType"/>
+    <part name="ZipCode" type="xs:string"/>
+    <part name="City" type="xs:string"/>
+  </message>
+  <message name="HTMLSearchAddressEx1Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="HTMLSearchPhone2Request">
+    <part name="area" type="xs:string"/>
+    <part name="number" type="xs:string"/>
+  </message>
+  <message name="HTMLSearchPhone2Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="XMLSearchAddress3Request">
+    <part name="fName" type="xs:string"/>
+    <part name="lName" type="xs:string"/>
+    <part name="Address" type="xs:string"/>
+    <part name="ZipCode" type="xs:string"/>
+    <part name="City" type="xs:string"/>
+  </message>
+  <message name="XMLSearchAddress3Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="XMLSearchAddressEx4Request">
+    <part name="fName" type="xs:string"/>
+    <part name="fNameType" type="ns1:TStringType"/>
+    <part name="lName" type="xs:string"/>
+    <part name="lNameType" type="ns1:TStringType"/>
+    <part name="Address" type="xs:string"/>
+    <part name="addressType" type="ns1:TStringType"/>
+    <part name="ZipCode" type="xs:string"/>
+    <part name="City" type="xs:string"/>
+  </message>
+  <message name="XMLSearchAddressEx4Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="XMLSearchPhone5Request">
+    <part name="area" type="xs:string"/>
+    <part name="number" type="xs:string"/>
+  </message>
+  <message name="XMLSearchPhone5Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="IsAlive6Request"/>
+  <message name="IsAlive6Response">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <portType name="ISearchSwedishPerson">
+    <operation name="HTMLSearchAddress">
+      <input message="tns:HTMLSearchAddress0Request"/>
+      <output message="tns:HTMLSearchAddress0Response"/>
+    </operation>
+    <operation name="HTMLSearchAddressEx">
+      <input message="tns:HTMLSearchAddressEx1Request"/>
+      <output message="tns:HTMLSearchAddressEx1Response"/>
+    </operation>
+    <operation name="HTMLSearchPhone">
+      <input message="tns:HTMLSearchPhone2Request"/>
+      <output message="tns:HTMLSearchPhone2Response"/>
+    </operation>
+    <operation name="XMLSearchAddress">
+      <input message="tns:XMLSearchAddress3Request"/>
+      <output message="tns:XMLSearchAddress3Response"/>
+    </operation>
+    <operation name="XMLSearchAddressEx">
+      <input message="tns:XMLSearchAddressEx4Request"/>
+      <output message="tns:XMLSearchAddressEx4Response"/>
+    </operation>
+    <operation name="XMLSearchPhone">
+      <input message="tns:XMLSearchPhone5Request"/>
+      <output message="tns:XMLSearchPhone5Response"/>
+    </operation>
+    <operation name="IsAlive">
+      <input message="tns:IsAlive6Request"/>
+      <output message="tns:IsAlive6Response"/>
+    </operation>
+  </portType>
+  <binding name="ISearchSwedishPersonbinding" type="tns:ISearchSwedishPerson">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="HTMLSearchAddress">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#HTMLSearchAddress" style="rpc"/>
+      <input message="tns:HTMLSearchAddress0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:HTMLSearchAddress0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="HTMLSearchAddressEx">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#HTMLSearchAddressEx" style="rpc"/>
+      <input message="tns:HTMLSearchAddressEx1Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:HTMLSearchAddressEx1Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="HTMLSearchPhone">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#HTMLSearchPhone" style="rpc"/>
+      <input message="tns:HTMLSearchPhone2Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:HTMLSearchPhone2Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="XMLSearchAddress">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#XMLSearchAddress" style="rpc"/>
+      <input message="tns:XMLSearchAddress3Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:XMLSearchAddress3Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="XMLSearchAddressEx">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#XMLSearchAddressEx" style="rpc"/>
+      <input message="tns:XMLSearchAddressEx4Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:XMLSearchAddressEx4Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="XMLSearchPhone">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#XMLSearchPhone" style="rpc"/>
+      <input message="tns:XMLSearchPhone5Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:XMLSearchPhone5Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+    <operation name="IsAlive">
+      <soap:operation soapAction="urn:SearchSwedishPersonIntf-ISearchSwedishPerson#IsAlive" style="rpc"/>
+      <input message="tns:IsAlive6Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </input>
+      <output message="tns:IsAlive6Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SearchSwedishPersonIntf-ISearchSwedishPerson"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ISearchSwedishPersonservice">
+    <port name="ISearchSwedishPersonPort" binding="tns:ISearchSwedishPersonbinding">
+      <soap:address location="http://www.marotz.se/scripts/SearchPerson.exe/soap/ISearchSwedishPerson"/>
+    </port>
+  </service>
+</definitions>
+

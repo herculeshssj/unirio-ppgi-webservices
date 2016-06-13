@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="USFootballNews.cusfootballnews" targetNamespace="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" xmlns:tns="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetAmericanFootballNewsRequest">
+    </message>
+    <message name="GetAmericanFootballNewsResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="AmericanFootballRecordsetRequest">
+        <part name="recUSFootball" type="xsd:string"/>
+    </message>
+    <message name="AmericanFootballRecordsetResponse">
+        <part name="recUSFootball" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="USFootballNews.cusfootballnewsPortType">
+        <operation name="GetAmericanFootballNews">
+            <input message="tns:GetAmericanFootballNewsRequest"/>
+            <output message="tns:GetAmericanFootballNewsResponse"/>
+        </operation>
+        <operation name="AmericanFootballRecordset">
+            <input message="tns:AmericanFootballRecordsetRequest"/>
+            <output message="tns:AmericanFootballRecordsetResponse"/>
+        </operation>
+    </portType>
+    <binding name="USFootballNews.cusfootballnewsbinding" type="tns:USFootballNews.cusfootballnewsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetAmericanFootballNews">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml#GetAmericanFootballNews"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="AmericanFootballRecordset">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml#AmericanFootballRecordset"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/USFootballNews/CUSFootballNews.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="USFootballNews.cusfootballnewsService">
+        <port name="USFootballNews.cusfootballnewsPort" binding="tns:USFootballNews.cusfootballnewsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/usfootballnews.cgi"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,2147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://www.mediacode.com/muse.net/webservices/literalTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.mediacode.com/muse.net/webservices" xmlns:s2="http://www.mediacode.com/muse.net/webservices/AbstractTypes" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.mediacode.com/muse.net/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://www.mediacode.com/muse.net/webservices">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <s:complexType name="ArrayOfString">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s:string[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.mediacode.com/muse.net/webservices/literalTypes">
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.mediacode.com/muse.net/webservices/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="deleteCollectionSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+  </message>
+  <message name="deleteCollectionSoapOut" />
+  <message name="updateAccountInfoSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pNewEmail" type="s:string" />
+    <part name="pNewPassword" type="s:string" />
+    <part name="pNewAlias" type="s:string" />
+  </message>
+  <message name="updateAccountInfoSoapOut" />
+  <message name="addBookmarkSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+    <part name="pName" type="s:string" />
+  </message>
+  <message name="addBookmarkSoapOut" />
+  <message name="deleteBookmarkSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+  </message>
+  <message name="deleteBookmarkSoapOut" />
+  <message name="getBookmarksSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getBookmarksSoapOut">
+    <part name="getBookmarksResult" type="s:string" />
+  </message>
+  <message name="getUserPropertiesSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="getUserPropertiesSoapOut">
+    <part name="getUserPropertiesResult" type="s:string" />
+  </message>
+  <message name="getAccountInfoSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getAccountInfoSoapOut">
+    <part name="getAccountInfoResult" type="s:string" />
+  </message>
+  <message name="getMediaStatsSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getMediaStatsSoapOut">
+    <part name="getMediaStatsResult" type="s:string" />
+  </message>
+  <message name="setUserPropertiesSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="setUserPropertiesSoapOut" />
+  <message name="loginAffiliateClientSoapIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientSoapOut">
+    <part name="loginAffiliateClientResult" type="s:string" />
+  </message>
+  <message name="loginClientSoapIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientSoapOut">
+    <part name="loginClientResult" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxySoapIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxySoapOut">
+    <part name="loginAffiliateClientThroughProxyResult" type="s:string" />
+  </message>
+  <message name="loginClientThroughProxySoapIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientThroughProxySoapOut">
+    <part name="loginClientThroughProxyResult" type="s:string" />
+  </message>
+  <message name="loginSoapIn">
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginSoapOut">
+    <part name="loginResult" type="s:string" />
+  </message>
+  <message name="loginAdditionalClientSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+  </message>
+  <message name="loginAdditionalClientSoapOut" />
+  <message name="logoutClientSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="logoutClientSoapOut" />
+  <message name="logoutSoapIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutSoapOut" />
+  <message name="logoutAllClientsSoapIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutAllClientsSoapOut" />
+  <message name="getAudioPropertiesSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:boolean" />
+  </message>
+  <message name="getAudioPropertiesSoapOut">
+    <part name="getAudioPropertiesResult" type="s:string" />
+  </message>
+  <message name="getVideoPropertiesSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:boolean" />
+  </message>
+  <message name="getVideoPropertiesSoapOut">
+    <part name="getVideoPropertiesResult" type="s:string" />
+  </message>
+  <message name="getCollectionListSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pIncludeOffline" type="s:boolean" />
+  </message>
+  <message name="getCollectionListSoapOut">
+    <part name="getCollectionListResult" type="s:string" />
+  </message>
+  <message name="getUserCollectionListSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pAlias" type="s:string" />
+  </message>
+  <message name="getUserCollectionListSoapOut">
+    <part name="getUserCollectionListResult" type="s:string" />
+  </message>
+  <message name="createPlaylistSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s0:ArrayOfString" />
+  </message>
+  <message name="createPlaylistSoapOut">
+    <part name="createPlaylistResult" type="s:string" />
+  </message>
+  <message name="getPlaylistListSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getPlaylistListSoapOut">
+    <part name="getPlaylistListResult" type="s:string" />
+  </message>
+  <message name="getPlaylistMediaSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="getPlaylistMediaSoapOut">
+    <part name="getPlaylistMediaResult" type="s:string" />
+  </message>
+  <message name="getMediaSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s0:ArrayOfString" />
+  </message>
+  <message name="getMediaSoapOut">
+    <part name="getMediaResult" type="s:string" />
+  </message>
+  <message name="getUpToDateMediaURIsSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s0:ArrayOfString" />
+  </message>
+  <message name="getUpToDateMediaURIsSoapOut">
+    <part name="getUpToDateMediaURIsResult" type="s:string" />
+  </message>
+  <message name="updatePlaylistSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s0:ArrayOfString" />
+  </message>
+  <message name="updatePlaylistSoapOut" />
+  <message name="deletePlaylistSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="deletePlaylistSoapOut" />
+  <message name="initPlaybackSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+    <part name="pMediaIds" type="s0:ArrayOfString" />
+  </message>
+  <message name="initPlaybackSoapOut" />
+  <message name="getMusicInfoSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+  </message>
+  <message name="getMusicInfoSoapOut">
+    <part name="getMusicInfoResult" type="s:string" />
+  </message>
+  <message name="noopSoapIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="noopSoapOut">
+    <part name="noopResult" type="s:boolean" />
+  </message>
+  <message name="updateMediaPropertiesSoapIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pUpdateXML" type="s:string" />
+  </message>
+  <message name="updateMediaPropertiesSoapOut">
+    <part name="updateMediaPropertiesResult" type="s:string" />
+  </message>
+  <message name="userExistsSoapIn">
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="userExistsSoapOut">
+    <part name="userExistsResult" type="s:boolean" />
+  </message>
+  <message name="deleteCollectionHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+  </message>
+  <message name="deleteCollectionHttpGetOut" />
+  <message name="updateAccountInfoHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pNewEmail" type="s:string" />
+    <part name="pNewPassword" type="s:string" />
+    <part name="pNewAlias" type="s:string" />
+  </message>
+  <message name="updateAccountInfoHttpGetOut" />
+  <message name="addBookmarkHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+    <part name="pName" type="s:string" />
+  </message>
+  <message name="addBookmarkHttpGetOut" />
+  <message name="deleteBookmarkHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+  </message>
+  <message name="deleteBookmarkHttpGetOut" />
+  <message name="getBookmarksHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getBookmarksHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUserPropertiesHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="getUserPropertiesHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getAccountInfoHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getAccountInfoHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getMediaStatsHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getMediaStatsHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="setUserPropertiesHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="setUserPropertiesHttpGetOut" />
+  <message name="loginAffiliateClientHttpGetIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginClientHttpGetIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxyHttpGetIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxyHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginClientThroughProxyHttpGetIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientThroughProxyHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginHttpGetIn">
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginAdditionalClientHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+  </message>
+  <message name="loginAdditionalClientHttpGetOut" />
+  <message name="logoutClientHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="logoutClientHttpGetOut" />
+  <message name="logoutHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutHttpGetOut" />
+  <message name="logoutAllClientsHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutAllClientsHttpGetOut" />
+  <message name="getAudioPropertiesHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getAudioPropertiesHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getVideoPropertiesHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getVideoPropertiesHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getCollectionListHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getCollectionListHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUserCollectionListHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pAlias" type="s:string" />
+  </message>
+  <message name="getUserCollectionListHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="createPlaylistHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="createPlaylistHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getPlaylistListHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getPlaylistListHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getPlaylistMediaHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="getPlaylistMediaHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getMediaHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="getMediaHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUpToDateMediaURIsHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="getUpToDateMediaURIsHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="updatePlaylistHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="updatePlaylistHttpGetOut" />
+  <message name="deletePlaylistHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="deletePlaylistHttpGetOut" />
+  <message name="initPlaybackHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="initPlaybackHttpGetOut" />
+  <message name="getMusicInfoHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+  </message>
+  <message name="getMusicInfoHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="noopHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="noopHttpGetOut">
+    <part name="Body" element="s1:boolean" />
+  </message>
+  <message name="updateMediaPropertiesHttpGetIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pUpdateXML" type="s:string" />
+  </message>
+  <message name="updateMediaPropertiesHttpGetOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="userExistsHttpGetIn">
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="userExistsHttpGetOut">
+    <part name="Body" element="s1:boolean" />
+  </message>
+  <message name="deleteCollectionHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+  </message>
+  <message name="deleteCollectionHttpPostOut" />
+  <message name="updateAccountInfoHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pNewEmail" type="s:string" />
+    <part name="pNewPassword" type="s:string" />
+    <part name="pNewAlias" type="s:string" />
+  </message>
+  <message name="updateAccountInfoHttpPostOut" />
+  <message name="addBookmarkHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+    <part name="pName" type="s:string" />
+  </message>
+  <message name="addBookmarkHttpPostOut" />
+  <message name="deleteBookmarkHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pUrl" type="s:string" />
+  </message>
+  <message name="deleteBookmarkHttpPostOut" />
+  <message name="getBookmarksHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getBookmarksHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUserPropertiesHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="getUserPropertiesHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getAccountInfoHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getAccountInfoHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getMediaStatsHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getMediaStatsHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="setUserPropertiesHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPropertyXML" type="s:string" />
+  </message>
+  <message name="setUserPropertiesHttpPostOut" />
+  <message name="loginAffiliateClientHttpPostIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginClientHttpPostIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxyHttpPostIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pAffiliateId" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginAffiliateClientThroughProxyHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginClientThroughProxyHttpPostIn">
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+    <part name="pIP" type="s:string" />
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginClientThroughProxyHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginHttpPostIn">
+    <part name="pClientVersion" type="s:string" />
+  </message>
+  <message name="loginHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="loginAdditionalClientHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pPassword" type="s:string" />
+  </message>
+  <message name="loginAdditionalClientHttpPostOut" />
+  <message name="logoutClientHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="logoutClientHttpPostOut" />
+  <message name="logoutHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutHttpPostOut" />
+  <message name="logoutAllClientsHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="logoutAllClientsHttpPostOut" />
+  <message name="getAudioPropertiesHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getAudioPropertiesHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getVideoPropertiesHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getVideoPropertiesHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getCollectionListHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pIncludeOffline" type="s:string" />
+  </message>
+  <message name="getCollectionListHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUserCollectionListHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pAlias" type="s:string" />
+  </message>
+  <message name="getUserCollectionListHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="createPlaylistHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="createPlaylistHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getPlaylistListHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="getPlaylistListHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getPlaylistMediaHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="getPlaylistMediaHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getMediaHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="getMediaHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="getUpToDateMediaURIsHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="getUpToDateMediaURIsHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="updatePlaylistHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+    <part name="pName" type="s:string" />
+    <part name="pDescription" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="updatePlaylistHttpPostOut" />
+  <message name="deletePlaylistHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pPlaylistId" type="s:string" />
+  </message>
+  <message name="deletePlaylistHttpPostOut" />
+  <message name="initPlaybackHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pCollectionId" type="s:string" />
+    <part name="pMediaIds" type="s2:StringArray" />
+  </message>
+  <message name="initPlaybackHttpPostOut" />
+  <message name="getMusicInfoHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pSearchXML" type="s:string" />
+  </message>
+  <message name="getMusicInfoHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="noopHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+  </message>
+  <message name="noopHttpPostOut">
+    <part name="Body" element="s1:boolean" />
+  </message>
+  <message name="updateMediaPropertiesHttpPostIn">
+    <part name="pSessionId" type="s:string" />
+    <part name="pUpdateXML" type="s:string" />
+  </message>
+  <message name="updateMediaPropertiesHttpPostOut">
+    <part name="Body" element="s1:string" />
+  </message>
+  <message name="userExistsHttpPostIn">
+    <part name="pEmail" type="s:string" />
+  </message>
+  <message name="userExistsHttpPostOut">
+    <part name="Body" element="s1:boolean" />
+  </message>
+  <portType name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceSoap">
+    <operation name="deleteCollection">
+      <documentation>Deletes specified collection.</documentation>
+      <input message="s0:deleteCollectionSoapIn" />
+      <output message="s0:deleteCollectionSoapOut" />
+    </operation>
+    <operation name="updateAccountInfo">
+      <documentation>Updates account information. Requires old password to be passed for additional security. pNewEmail and pNewAlias must be unique, pass current value if you dont want certain argument to be changed.</documentation>
+      <input message="s0:updateAccountInfoSoapIn" />
+      <output message="s0:updateAccountInfoSoapOut" />
+    </operation>
+    <operation name="addBookmark">
+      <documentation>Adds a bookmark to user's bookmark list.</documentation>
+      <input message="s0:addBookmarkSoapIn" />
+      <output message="s0:addBookmarkSoapOut" />
+    </operation>
+    <operation name="deleteBookmark">
+      <documentation>Deletes a bookmark from user's bookmark list.</documentation>
+      <input message="s0:deleteBookmarkSoapIn" />
+      <output message="s0:deleteBookmarkSoapOut" />
+    </operation>
+    <operation name="getBookmarks">
+      <documentation>Returns list of user bookmarks sorted alphabetically by their name.</documentation>
+      <input message="s0:getBookmarksSoapIn" />
+      <output message="s0:getBookmarksSoapOut" />
+    </operation>
+    <operation name="getUserProperties">
+      <documentation>Retrieves user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getUserPropertiesSoapIn" />
+      <output message="s0:getUserPropertiesSoapOut" />
+    </operation>
+    <operation name="getAccountInfo">
+      <documentation>Retrieves account information such as Alias, date created and date expires. NOTE: Nodes Collections and Media are depricated and will be removed soon.</documentation>
+      <input message="s0:getAccountInfoSoapIn" />
+      <output message="s0:getAccountInfoSoapOut" />
+    </operation>
+    <operation name="getMediaStats">
+      <documentation>Retrieves statistical information regarding user's collections and last played/added media.</documentation>
+      <input message="s0:getMediaStatsSoapIn" />
+      <output message="s0:getMediaStatsSoapOut" />
+    </operation>
+    <operation name="setUserProperties">
+      <documentation>Sets user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:setUserPropertiesSoapIn" />
+      <output message="s0:setUserPropertiesSoapOut" />
+    </operation>
+    <operation name="loginAffiliateClient">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginAffiliateClientSoapIn" />
+      <output message="s0:loginAffiliateClientSoapOut" />
+    </operation>
+    <operation name="loginClient">
+      <documentation>Logs client into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginClientSoapIn" />
+      <output message="s0:loginClientSoapOut" />
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginAffiliateClientThroughProxySoapIn" />
+      <output message="s0:loginAffiliateClientThroughProxySoapOut" />
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <documentation>Logs client into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginClientThroughProxySoapIn" />
+      <output message="s0:loginClientThroughProxySoapOut" />
+    </operation>
+    <operation name="login">
+      <documentation>Used to create a read only session in order to browse read-only collections and perform other functions not requiring user context. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;</documentation>
+      <input message="s0:loginSoapIn" />
+      <output message="s0:loginSoapOut" />
+    </operation>
+    <operation name="loginAdditionalClient">
+      <documentation>Adds/logs additional users into an active session. Password must be MD5 encoded.</documentation>
+      <input message="s0:loginAdditionalClientSoapIn" />
+      <output message="s0:loginAdditionalClientSoapOut" />
+    </operation>
+    <operation name="logoutClient">
+      <documentation>Logs out one of the users from an active session.</documentation>
+      <input message="s0:logoutClientSoapIn" />
+      <output message="s0:logoutClientSoapOut" />
+    </operation>
+    <operation name="logout">
+      <documentation>Use this function in combination with login. This functions works virtually the same way as logoutAllClients does.</documentation>
+      <input message="s0:logoutSoapIn" />
+      <output message="s0:logoutSoapOut" />
+    </operation>
+    <operation name="logoutAllClients">
+      <documentation>Logs out all of the users from an active session, then terminates the session.</documentation>
+      <input message="s0:logoutAllClientsSoapIn" />
+      <output message="s0:logoutAllClientsSoapOut" />
+    </operation>
+    <operation name="getAudioProperties">
+      <documentation>Searches the database for audio media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseAudioMediaSearch-v1.2.xsd'&gt;MuseAudioMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseAudioMediaSearch-v1.2.xml'&gt;MuseAudioMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getAudioPropertiesSoapIn" />
+      <output message="s0:getAudioPropertiesSoapOut" />
+    </operation>
+    <operation name="getVideoProperties">
+      <documentation>Searches the database for video media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseVideoMediaSearch-v1.2.xsd'&gt;MuseVideoMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseVideoMediaSearch-v1.2.xml'&gt;MuseVideoMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getVideoPropertiesSoapIn" />
+      <output message="s0:getVideoPropertiesSoapOut" />
+    </operation>
+    <operation name="getCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getCollectionListSoapIn" />
+      <output message="s0:getCollectionListSoapOut" />
+    </operation>
+    <operation name="getUserCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getUserCollectionListSoapIn" />
+      <output message="s0:getUserCollectionListSoapOut" />
+    </operation>
+    <operation name="createPlaylist">
+      <documentation>Creates named playlist for a user and stores track listing based on media Ids passed, returns playlist Id.</documentation>
+      <input message="s0:createPlaylistSoapIn" />
+      <output message="s0:createPlaylistSoapOut" />
+    </operation>
+    <operation name="getPlaylistList">
+      <documentation>Returns XML containing list of playlist for a particular user.</documentation>
+      <input message="s0:getPlaylistListSoapIn" />
+      <output message="s0:getPlaylistListSoapOut" />
+    </operation>
+    <operation name="getPlaylistMedia">
+      <documentation>Returns playlist XML containing list of the media in the playlist and full set of all media properties. Media that you no longer have access to still appears in the list but does not contain any of it's properties except it's Id. Full URI will be returned for media that is online.</documentation>
+      <input message="s0:getPlaylistMediaSoapIn" />
+      <output message="s0:getPlaylistMediaSoapOut" />
+    </operation>
+    <operation name="getMedia">
+      <documentation>Returns XML containing full media elements for each media ID passed.</documentation>
+      <input message="s0:getMediaSoapIn" />
+      <output message="s0:getMediaSoapOut" />
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <documentation>Returns XML containing vaild up-to-date URI for each media ID passed (can be used to create .m3u/.pls playlists, etc.</documentation>
+      <input message="s0:getUpToDateMediaURIsSoapIn" />
+      <output message="s0:getUpToDateMediaURIsSoapOut" />
+    </operation>
+    <operation name="updatePlaylist">
+      <documentation>Deletes all entries from specified playlist and inserts new track listing and updated name and description of the playlist.</documentation>
+      <input message="s0:updatePlaylistSoapIn" />
+      <output message="s0:updatePlaylistSoapOut" />
+    </operation>
+    <operation name="deletePlaylist">
+      <documentation>Deletes playlist.</documentation>
+      <input message="s0:deletePlaylistSoapIn" />
+      <output message="s0:deletePlaylistSoapOut" />
+    </operation>
+    <operation name="initPlayback">
+      <documentation>Initializes playback of media on remote device identified by pCollectionId.</documentation>
+      <input message="s0:initPlaybackSoapIn" />
+      <output message="s0:initPlaybackSoapOut" />
+    </operation>
+    <operation name="getMusicInfo">
+      <documentation>Retrieves information about music artists and their albums. For pSearchXML definition and examples please refer to: &lt;a href='MusicInfoSearch-v1.1.xsd'&gt;MusicInfoSearch-v1.1.xsd&lt;/a&gt; and &lt;a href='MusicInfoSearch-v1.1.xml'&gt;MusicInfoSearch-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getMusicInfoSoapIn" />
+      <output message="s0:getMusicInfoSoapOut" />
+    </operation>
+    <operation name="noop">
+      <documentation>Does nothing except update the last active status of the client.</documentation>
+      <input message="s0:noopSoapIn" />
+      <output message="s0:noopSoapOut" />
+    </operation>
+    <operation name="updateMediaProperties">
+      <documentation>Receives request for media properties update, sends update requests to appropriate agents and updates properties in the database if agents report a successfull change.&lt;br&gt;For pUpdateXML definition and examples please refer to &lt;a href='MuseMediaUpdate-v1.1.xsd'&gt;MuseMediaUpdate-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseMediaUpdate-v1.1.xml'&gt;MuseMediaUpdate-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:updateMediaPropertiesSoapIn" />
+      <output message="s0:updateMediaPropertiesSoapOut" />
+    </operation>
+    <operation name="userExists">
+      <documentation>Checks to see if a user with provided email address already exists.</documentation>
+      <input message="s0:userExistsSoapIn" />
+      <output message="s0:userExistsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpGet">
+    <operation name="deleteCollection">
+      <documentation>Deletes specified collection.</documentation>
+      <input message="s0:deleteCollectionHttpGetIn" />
+      <output message="s0:deleteCollectionHttpGetOut" />
+    </operation>
+    <operation name="updateAccountInfo">
+      <documentation>Updates account information. Requires old password to be passed for additional security. pNewEmail and pNewAlias must be unique, pass current value if you dont want certain argument to be changed.</documentation>
+      <input message="s0:updateAccountInfoHttpGetIn" />
+      <output message="s0:updateAccountInfoHttpGetOut" />
+    </operation>
+    <operation name="addBookmark">
+      <documentation>Adds a bookmark to user's bookmark list.</documentation>
+      <input message="s0:addBookmarkHttpGetIn" />
+      <output message="s0:addBookmarkHttpGetOut" />
+    </operation>
+    <operation name="deleteBookmark">
+      <documentation>Deletes a bookmark from user's bookmark list.</documentation>
+      <input message="s0:deleteBookmarkHttpGetIn" />
+      <output message="s0:deleteBookmarkHttpGetOut" />
+    </operation>
+    <operation name="getBookmarks">
+      <documentation>Returns list of user bookmarks sorted alphabetically by their name.</documentation>
+      <input message="s0:getBookmarksHttpGetIn" />
+      <output message="s0:getBookmarksHttpGetOut" />
+    </operation>
+    <operation name="getUserProperties">
+      <documentation>Retrieves user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getUserPropertiesHttpGetIn" />
+      <output message="s0:getUserPropertiesHttpGetOut" />
+    </operation>
+    <operation name="getAccountInfo">
+      <documentation>Retrieves account information such as Alias, date created and date expires. NOTE: Nodes Collections and Media are depricated and will be removed soon.</documentation>
+      <input message="s0:getAccountInfoHttpGetIn" />
+      <output message="s0:getAccountInfoHttpGetOut" />
+    </operation>
+    <operation name="getMediaStats">
+      <documentation>Retrieves statistical information regarding user's collections and last played/added media.</documentation>
+      <input message="s0:getMediaStatsHttpGetIn" />
+      <output message="s0:getMediaStatsHttpGetOut" />
+    </operation>
+    <operation name="setUserProperties">
+      <documentation>Sets user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:setUserPropertiesHttpGetIn" />
+      <output message="s0:setUserPropertiesHttpGetOut" />
+    </operation>
+    <operation name="loginAffiliateClient">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginAffiliateClientHttpGetIn" />
+      <output message="s0:loginAffiliateClientHttpGetOut" />
+    </operation>
+    <operation name="loginClient">
+      <documentation>Logs client into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginClientHttpGetIn" />
+      <output message="s0:loginClientHttpGetOut" />
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginAffiliateClientThroughProxyHttpGetIn" />
+      <output message="s0:loginAffiliateClientThroughProxyHttpGetOut" />
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <documentation>Logs client into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginClientThroughProxyHttpGetIn" />
+      <output message="s0:loginClientThroughProxyHttpGetOut" />
+    </operation>
+    <operation name="login">
+      <documentation>Used to create a read only session in order to browse read-only collections and perform other functions not requiring user context. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;</documentation>
+      <input message="s0:loginHttpGetIn" />
+      <output message="s0:loginHttpGetOut" />
+    </operation>
+    <operation name="loginAdditionalClient">
+      <documentation>Adds/logs additional users into an active session. Password must be MD5 encoded.</documentation>
+      <input message="s0:loginAdditionalClientHttpGetIn" />
+      <output message="s0:loginAdditionalClientHttpGetOut" />
+    </operation>
+    <operation name="logoutClient">
+      <documentation>Logs out one of the users from an active session.</documentation>
+      <input message="s0:logoutClientHttpGetIn" />
+      <output message="s0:logoutClientHttpGetOut" />
+    </operation>
+    <operation name="logout">
+      <documentation>Use this function in combination with login. This functions works virtually the same way as logoutAllClients does.</documentation>
+      <input message="s0:logoutHttpGetIn" />
+      <output message="s0:logoutHttpGetOut" />
+    </operation>
+    <operation name="logoutAllClients">
+      <documentation>Logs out all of the users from an active session, then terminates the session.</documentation>
+      <input message="s0:logoutAllClientsHttpGetIn" />
+      <output message="s0:logoutAllClientsHttpGetOut" />
+    </operation>
+    <operation name="getAudioProperties">
+      <documentation>Searches the database for audio media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseAudioMediaSearch-v1.2.xsd'&gt;MuseAudioMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseAudioMediaSearch-v1.2.xml'&gt;MuseAudioMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getAudioPropertiesHttpGetIn" />
+      <output message="s0:getAudioPropertiesHttpGetOut" />
+    </operation>
+    <operation name="getVideoProperties">
+      <documentation>Searches the database for video media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseVideoMediaSearch-v1.2.xsd'&gt;MuseVideoMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseVideoMediaSearch-v1.2.xml'&gt;MuseVideoMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getVideoPropertiesHttpGetIn" />
+      <output message="s0:getVideoPropertiesHttpGetOut" />
+    </operation>
+    <operation name="getCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getCollectionListHttpGetIn" />
+      <output message="s0:getCollectionListHttpGetOut" />
+    </operation>
+    <operation name="getUserCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getUserCollectionListHttpGetIn" />
+      <output message="s0:getUserCollectionListHttpGetOut" />
+    </operation>
+    <operation name="createPlaylist">
+      <documentation>Creates named playlist for a user and stores track listing based on media Ids passed, returns playlist Id.</documentation>
+      <input message="s0:createPlaylistHttpGetIn" />
+      <output message="s0:createPlaylistHttpGetOut" />
+    </operation>
+    <operation name="getPlaylistList">
+      <documentation>Returns XML containing list of playlist for a particular user.</documentation>
+      <input message="s0:getPlaylistListHttpGetIn" />
+      <output message="s0:getPlaylistListHttpGetOut" />
+    </operation>
+    <operation name="getPlaylistMedia">
+      <documentation>Returns playlist XML containing list of the media in the playlist and full set of all media properties. Media that you no longer have access to still appears in the list but does not contain any of it's properties except it's Id. Full URI will be returned for media that is online.</documentation>
+      <input message="s0:getPlaylistMediaHttpGetIn" />
+      <output message="s0:getPlaylistMediaHttpGetOut" />
+    </operation>
+    <operation name="getMedia">
+      <documentation>Returns XML containing full media elements for each media ID passed.</documentation>
+      <input message="s0:getMediaHttpGetIn" />
+      <output message="s0:getMediaHttpGetOut" />
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <documentation>Returns XML containing vaild up-to-date URI for each media ID passed (can be used to create .m3u/.pls playlists, etc.</documentation>
+      <input message="s0:getUpToDateMediaURIsHttpGetIn" />
+      <output message="s0:getUpToDateMediaURIsHttpGetOut" />
+    </operation>
+    <operation name="updatePlaylist">
+      <documentation>Deletes all entries from specified playlist and inserts new track listing and updated name and description of the playlist.</documentation>
+      <input message="s0:updatePlaylistHttpGetIn" />
+      <output message="s0:updatePlaylistHttpGetOut" />
+    </operation>
+    <operation name="deletePlaylist">
+      <documentation>Deletes playlist.</documentation>
+      <input message="s0:deletePlaylistHttpGetIn" />
+      <output message="s0:deletePlaylistHttpGetOut" />
+    </operation>
+    <operation name="initPlayback">
+      <documentation>Initializes playback of media on remote device identified by pCollectionId.</documentation>
+      <input message="s0:initPlaybackHttpGetIn" />
+      <output message="s0:initPlaybackHttpGetOut" />
+    </operation>
+    <operation name="getMusicInfo">
+      <documentation>Retrieves information about music artists and their albums. For pSearchXML definition and examples please refer to: &lt;a href='MusicInfoSearch-v1.1.xsd'&gt;MusicInfoSearch-v1.1.xsd&lt;/a&gt; and &lt;a href='MusicInfoSearch-v1.1.xml'&gt;MusicInfoSearch-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getMusicInfoHttpGetIn" />
+      <output message="s0:getMusicInfoHttpGetOut" />
+    </operation>
+    <operation name="noop">
+      <documentation>Does nothing except update the last active status of the client.</documentation>
+      <input message="s0:noopHttpGetIn" />
+      <output message="s0:noopHttpGetOut" />
+    </operation>
+    <operation name="updateMediaProperties">
+      <documentation>Receives request for media properties update, sends update requests to appropriate agents and updates properties in the database if agents report a successfull change.&lt;br&gt;For pUpdateXML definition and examples please refer to &lt;a href='MuseMediaUpdate-v1.1.xsd'&gt;MuseMediaUpdate-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseMediaUpdate-v1.1.xml'&gt;MuseMediaUpdate-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:updateMediaPropertiesHttpGetIn" />
+      <output message="s0:updateMediaPropertiesHttpGetOut" />
+    </operation>
+    <operation name="userExists">
+      <documentation>Checks to see if a user with provided email address already exists.</documentation>
+      <input message="s0:userExistsHttpGetIn" />
+      <output message="s0:userExistsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpPost">
+    <operation name="deleteCollection">
+      <documentation>Deletes specified collection.</documentation>
+      <input message="s0:deleteCollectionHttpPostIn" />
+      <output message="s0:deleteCollectionHttpPostOut" />
+    </operation>
+    <operation name="updateAccountInfo">
+      <documentation>Updates account information. Requires old password to be passed for additional security. pNewEmail and pNewAlias must be unique, pass current value if you dont want certain argument to be changed.</documentation>
+      <input message="s0:updateAccountInfoHttpPostIn" />
+      <output message="s0:updateAccountInfoHttpPostOut" />
+    </operation>
+    <operation name="addBookmark">
+      <documentation>Adds a bookmark to user's bookmark list.</documentation>
+      <input message="s0:addBookmarkHttpPostIn" />
+      <output message="s0:addBookmarkHttpPostOut" />
+    </operation>
+    <operation name="deleteBookmark">
+      <documentation>Deletes a bookmark from user's bookmark list.</documentation>
+      <input message="s0:deleteBookmarkHttpPostIn" />
+      <output message="s0:deleteBookmarkHttpPostOut" />
+    </operation>
+    <operation name="getBookmarks">
+      <documentation>Returns list of user bookmarks sorted alphabetically by their name.</documentation>
+      <input message="s0:getBookmarksHttpPostIn" />
+      <output message="s0:getBookmarksHttpPostOut" />
+    </operation>
+    <operation name="getUserProperties">
+      <documentation>Retrieves user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getUserPropertiesHttpPostIn" />
+      <output message="s0:getUserPropertiesHttpPostOut" />
+    </operation>
+    <operation name="getAccountInfo">
+      <documentation>Retrieves account information such as Alias, date created and date expires. NOTE: Nodes Collections and Media are depricated and will be removed soon.</documentation>
+      <input message="s0:getAccountInfoHttpPostIn" />
+      <output message="s0:getAccountInfoHttpPostOut" />
+    </operation>
+    <operation name="getMediaStats">
+      <documentation>Retrieves statistical information regarding user's collections and last played/added media.</documentation>
+      <input message="s0:getMediaStatsHttpPostIn" />
+      <output message="s0:getMediaStatsHttpPostOut" />
+    </operation>
+    <operation name="setUserProperties">
+      <documentation>Sets user properties described in pPropertyXML.&lt;br&gt;For pPropertyXML definition and examples please refer to: &lt;a href='MuseUserProperties-v1.1.xsd'&gt;MuseUserProperties-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseUserProperties-v1.1.xml'&gt;MuseUserProperties-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:setUserPropertiesHttpPostIn" />
+      <output message="s0:setUserPropertiesHttpPostOut" />
+    </operation>
+    <operation name="loginAffiliateClient">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginAffiliateClientHttpPostIn" />
+      <output message="s0:loginAffiliateClientHttpPostOut" />
+    </operation>
+    <operation name="loginClient">
+      <documentation>Logs client into the system and returns sessionId. Determines client's IP address which is used to authenticate playback on agents. Password must be MD5 encoded.  pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Do not use this function if your client is server based (PHP/ASP) since your server's IP will be retrieved and used instead of clients IP, preventing client from playing back media on his machine. Use loginClientThroughProxy function instead.</documentation>
+      <input message="s0:loginClientHttpPostIn" />
+      <output message="s0:loginClientHttpPostOut" />
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <documentation>Logs Muse affiliate and partner clients into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: Regular Muse users who are not members of our affiliate or partner programs can't use this function to login. Affiliates and partners can use this function to limit access to their client programs/sites to their members only.&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginAffiliateClientThroughProxyHttpPostIn" />
+      <output message="s0:loginAffiliateClientThroughProxyHttpPostOut" />
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <documentation>Logs client into the system and returns sessionId. Client's IP address must be passed in order to authenticate playback on agents. Password must be MD5 encoded. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;NOTE: This function is designed for ASP/PHP clients that must pass clients IP address.</documentation>
+      <input message="s0:loginClientThroughProxyHttpPostIn" />
+      <output message="s0:loginClientThroughProxyHttpPostOut" />
+    </operation>
+    <operation name="login">
+      <documentation>Used to create a read only session in order to browse read-only collections and perform other functions not requiring user context. pClientVersion used to identify your client (i.e. 'Muse/DHTML 1.0' or 'Peters Cool Agent 2.3' etc).&lt;br&gt;</documentation>
+      <input message="s0:loginHttpPostIn" />
+      <output message="s0:loginHttpPostOut" />
+    </operation>
+    <operation name="loginAdditionalClient">
+      <documentation>Adds/logs additional users into an active session. Password must be MD5 encoded.</documentation>
+      <input message="s0:loginAdditionalClientHttpPostIn" />
+      <output message="s0:loginAdditionalClientHttpPostOut" />
+    </operation>
+    <operation name="logoutClient">
+      <documentation>Logs out one of the users from an active session.</documentation>
+      <input message="s0:logoutClientHttpPostIn" />
+      <output message="s0:logoutClientHttpPostOut" />
+    </operation>
+    <operation name="logout">
+      <documentation>Use this function in combination with login. This functions works virtually the same way as logoutAllClients does.</documentation>
+      <input message="s0:logoutHttpPostIn" />
+      <output message="s0:logoutHttpPostOut" />
+    </operation>
+    <operation name="logoutAllClients">
+      <documentation>Logs out all of the users from an active session, then terminates the session.</documentation>
+      <input message="s0:logoutAllClientsHttpPostIn" />
+      <output message="s0:logoutAllClientsHttpPostOut" />
+    </operation>
+    <operation name="getAudioProperties">
+      <documentation>Searches the database for audio media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseAudioMediaSearch-v1.2.xsd'&gt;MuseAudioMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseAudioMediaSearch-v1.2.xml'&gt;MuseAudioMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getAudioPropertiesHttpPostIn" />
+      <output message="s0:getAudioPropertiesHttpPostOut" />
+    </operation>
+    <operation name="getVideoProperties">
+      <documentation>Searches the database for video media described by set of paramters passed within pSearchXML.&lt;br&gt;If no collections are passed withing pSearchXML, service will search against all collections accessable to this session. pIncludeOffline indicates weather to include offline collections in that case.&lt;br&gt;For pSearchXML definition and examples please refer to: &lt;a href='MuseVideoMediaSearch-v1.2.xsd'&gt;MuseVideoMediaSearch-v1.2.xsd&lt;/a&gt; and &lt;a href='MuseVideoMediaSearch-v1.2.xml'&gt;MuseVideoMediaSearch-v1.2.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getVideoPropertiesHttpPostIn" />
+      <output message="s0:getVideoPropertiesHttpPostOut" />
+    </operation>
+    <operation name="getCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getCollectionListHttpPostIn" />
+      <output message="s0:getCollectionListHttpPostOut" />
+    </operation>
+    <operation name="getUserCollectionList">
+      <documentation>Gets list of all collections available for particular session. pIncludeOffline indicates weather to return offline collections.</documentation>
+      <input message="s0:getUserCollectionListHttpPostIn" />
+      <output message="s0:getUserCollectionListHttpPostOut" />
+    </operation>
+    <operation name="createPlaylist">
+      <documentation>Creates named playlist for a user and stores track listing based on media Ids passed, returns playlist Id.</documentation>
+      <input message="s0:createPlaylistHttpPostIn" />
+      <output message="s0:createPlaylistHttpPostOut" />
+    </operation>
+    <operation name="getPlaylistList">
+      <documentation>Returns XML containing list of playlist for a particular user.</documentation>
+      <input message="s0:getPlaylistListHttpPostIn" />
+      <output message="s0:getPlaylistListHttpPostOut" />
+    </operation>
+    <operation name="getPlaylistMedia">
+      <documentation>Returns playlist XML containing list of the media in the playlist and full set of all media properties. Media that you no longer have access to still appears in the list but does not contain any of it's properties except it's Id. Full URI will be returned for media that is online.</documentation>
+      <input message="s0:getPlaylistMediaHttpPostIn" />
+      <output message="s0:getPlaylistMediaHttpPostOut" />
+    </operation>
+    <operation name="getMedia">
+      <documentation>Returns XML containing full media elements for each media ID passed.</documentation>
+      <input message="s0:getMediaHttpPostIn" />
+      <output message="s0:getMediaHttpPostOut" />
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <documentation>Returns XML containing vaild up-to-date URI for each media ID passed (can be used to create .m3u/.pls playlists, etc.</documentation>
+      <input message="s0:getUpToDateMediaURIsHttpPostIn" />
+      <output message="s0:getUpToDateMediaURIsHttpPostOut" />
+    </operation>
+    <operation name="updatePlaylist">
+      <documentation>Deletes all entries from specified playlist and inserts new track listing and updated name and description of the playlist.</documentation>
+      <input message="s0:updatePlaylistHttpPostIn" />
+      <output message="s0:updatePlaylistHttpPostOut" />
+    </operation>
+    <operation name="deletePlaylist">
+      <documentation>Deletes playlist.</documentation>
+      <input message="s0:deletePlaylistHttpPostIn" />
+      <output message="s0:deletePlaylistHttpPostOut" />
+    </operation>
+    <operation name="initPlayback">
+      <documentation>Initializes playback of media on remote device identified by pCollectionId.</documentation>
+      <input message="s0:initPlaybackHttpPostIn" />
+      <output message="s0:initPlaybackHttpPostOut" />
+    </operation>
+    <operation name="getMusicInfo">
+      <documentation>Retrieves information about music artists and their albums. For pSearchXML definition and examples please refer to: &lt;a href='MusicInfoSearch-v1.1.xsd'&gt;MusicInfoSearch-v1.1.xsd&lt;/a&gt; and &lt;a href='MusicInfoSearch-v1.1.xml'&gt;MusicInfoSearch-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:getMusicInfoHttpPostIn" />
+      <output message="s0:getMusicInfoHttpPostOut" />
+    </operation>
+    <operation name="noop">
+      <documentation>Does nothing except update the last active status of the client.</documentation>
+      <input message="s0:noopHttpPostIn" />
+      <output message="s0:noopHttpPostOut" />
+    </operation>
+    <operation name="updateMediaProperties">
+      <documentation>Receives request for media properties update, sends update requests to appropriate agents and updates properties in the database if agents report a successfull change.&lt;br&gt;For pUpdateXML definition and examples please refer to &lt;a href='MuseMediaUpdate-v1.1.xsd'&gt;MuseMediaUpdate-v1.1.xsd&lt;/a&gt; and &lt;a href='MuseMediaUpdate-v1.1.xml'&gt;MuseMediaUpdate-v1.1.xml&lt;/a&gt;.</documentation>
+      <input message="s0:updateMediaPropertiesHttpPostIn" />
+      <output message="s0:updateMediaPropertiesHttpPostOut" />
+    </operation>
+    <operation name="userExists">
+      <documentation>Checks to see if a user with provided email address already exists.</documentation>
+      <input message="s0:userExistsHttpPostIn" />
+      <output message="s0:userExistsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceSoap" type="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="deleteCollection">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/deleteCollection" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="updateAccountInfo">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/updateAccountInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="addBookmark">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/addBookmark" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="deleteBookmark">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/deleteBookmark" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getBookmarks">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getBookmarks" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getUserProperties">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getUserProperties" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getAccountInfo">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getAccountInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getMediaStats">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getMediaStats" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="setUserProperties">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/setUserProperties" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="loginAffiliateClient">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/loginAffiliateClient" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="loginClient">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/loginClient" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/loginAffiliateClientThroughProxy" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/loginClientThroughProxy" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="login">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/login" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="loginAdditionalClient">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/loginAdditionalClient" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="logoutClient">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/logoutClient" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="logout">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/logout" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="logoutAllClients">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/logoutAllClients" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getAudioProperties">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getAudioProperties" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getVideoProperties">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getVideoProperties" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getCollectionList">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getCollectionList" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getUserCollectionList">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getUserCollectionList" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="createPlaylist">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/createPlaylist" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getPlaylistList">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getPlaylistList" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getPlaylistMedia">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getPlaylistMedia" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getMedia">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getMedia" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getUpToDateMediaURIs" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="updatePlaylist">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/updatePlaylist" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="deletePlaylist">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/deletePlaylist" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="initPlayback">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/initPlayback" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="getMusicInfo">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/getMusicInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="noop">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/noop" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="updateMediaProperties">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/updateMediaProperties" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="userExists">
+      <soap:operation soapAction="http://www.mediacode.com/muse.net/webservices/userExists" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.mediacode.com/muse.net/webservices" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpGet" type="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="deleteCollection">
+      <http:operation location="/deleteCollection" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="updateAccountInfo">
+      <http:operation location="/updateAccountInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="addBookmark">
+      <http:operation location="/addBookmark" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="deleteBookmark">
+      <http:operation location="/deleteBookmark" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="getBookmarks">
+      <http:operation location="/getBookmarks" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUserProperties">
+      <http:operation location="/getUserProperties" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAccountInfo">
+      <http:operation location="/getAccountInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getMediaStats">
+      <http:operation location="/getMediaStats" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setUserProperties">
+      <http:operation location="/setUserProperties" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="loginAffiliateClient">
+      <http:operation location="/loginAffiliateClient" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginClient">
+      <http:operation location="/loginClient" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <http:operation location="/loginAffiliateClientThroughProxy" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <http:operation location="/loginClientThroughProxy" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="login">
+      <http:operation location="/login" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginAdditionalClient">
+      <http:operation location="/loginAdditionalClient" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="logoutClient">
+      <http:operation location="/logoutClient" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="logout">
+      <http:operation location="/logout" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="logoutAllClients">
+      <http:operation location="/logoutAllClients" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="getAudioProperties">
+      <http:operation location="/getAudioProperties" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getVideoProperties">
+      <http:operation location="/getVideoProperties" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCollectionList">
+      <http:operation location="/getCollectionList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUserCollectionList">
+      <http:operation location="/getUserCollectionList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="createPlaylist">
+      <http:operation location="/createPlaylist" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPlaylistList">
+      <http:operation location="/getPlaylistList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPlaylistMedia">
+      <http:operation location="/getPlaylistMedia" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getMedia">
+      <http:operation location="/getMedia" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <http:operation location="/getUpToDateMediaURIs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updatePlaylist">
+      <http:operation location="/updatePlaylist" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="deletePlaylist">
+      <http:operation location="/deletePlaylist" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="initPlayback">
+      <http:operation location="/initPlayback" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="getMusicInfo">
+      <http:operation location="/getMusicInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="noop">
+      <http:operation location="/noop" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateMediaProperties">
+      <http:operation location="/updateMediaProperties" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="userExists">
+      <http:operation location="/userExists" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpPost" type="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="deleteCollection">
+      <http:operation location="/deleteCollection" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="updateAccountInfo">
+      <http:operation location="/updateAccountInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="addBookmark">
+      <http:operation location="/addBookmark" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="deleteBookmark">
+      <http:operation location="/deleteBookmark" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="getBookmarks">
+      <http:operation location="/getBookmarks" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUserProperties">
+      <http:operation location="/getUserProperties" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAccountInfo">
+      <http:operation location="/getAccountInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getMediaStats">
+      <http:operation location="/getMediaStats" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setUserProperties">
+      <http:operation location="/setUserProperties" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="loginAffiliateClient">
+      <http:operation location="/loginAffiliateClient" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginClient">
+      <http:operation location="/loginClient" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginAffiliateClientThroughProxy">
+      <http:operation location="/loginAffiliateClientThroughProxy" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginClientThroughProxy">
+      <http:operation location="/loginClientThroughProxy" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="login">
+      <http:operation location="/login" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="loginAdditionalClient">
+      <http:operation location="/loginAdditionalClient" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="logoutClient">
+      <http:operation location="/logoutClient" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="logout">
+      <http:operation location="/logout" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="logoutAllClients">
+      <http:operation location="/logoutAllClients" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="getAudioProperties">
+      <http:operation location="/getAudioProperties" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getVideoProperties">
+      <http:operation location="/getVideoProperties" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCollectionList">
+      <http:operation location="/getCollectionList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUserCollectionList">
+      <http:operation location="/getUserCollectionList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="createPlaylist">
+      <http:operation location="/createPlaylist" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPlaylistList">
+      <http:operation location="/getPlaylistList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getPlaylistMedia">
+      <http:operation location="/getPlaylistMedia" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getMedia">
+      <http:operation location="/getMedia" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getUpToDateMediaURIs">
+      <http:operation location="/getUpToDateMediaURIs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updatePlaylist">
+      <http:operation location="/updatePlaylist" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="deletePlaylist">
+      <http:operation location="/deletePlaylist" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="initPlayback">
+      <http:operation location="/initPlayback" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="getMusicInfo">
+      <http:operation location="/getMusicInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="noop">
+      <http:operation location="/noop" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateMediaProperties">
+      <http:operation location="/updateMediaProperties" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="userExists">
+      <http:operation location="/userExists" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Muse.net_x0020_Client_x0020_Web_x0020_Service">
+    <documentation>This service is used by Muse.net clients to communicate with our system and obtain information about available media and resources.</documentation>
+    <port name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceSoap" binding="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceSoap">
+      <soap:address location="http://clientservice.muse.net/ClientService.asmx" />
+    </port>
+    <port name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpGet" binding="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpGet">
+      <http:address location="http://clientservice.muse.net/ClientService.asmx" />
+    </port>
+    <port name="Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpPost" binding="s0:Muse.net_x0020_Client_x0020_Web_x0020_ServiceHttpPost">
+      <http:address location="http://clientservice.muse.net/ClientService.asmx" />
+    </port>
+  </service>
+</definitions>

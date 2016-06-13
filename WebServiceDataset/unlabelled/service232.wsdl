@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="WhoAmI">
+        <s:complexType />
+      </s:element>
+      <s:element name="WhoAmIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WhoAmIResult" type="s0:HostInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HostInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IPList" type="s0:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Aliases" type="s0:ArrayOfString1" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IPAddress" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString1">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Alias" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetHostInfoByIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHostInfoByIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHostInfoByIPResult" type="s0:HostInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHostInfoByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHostInfoByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHostInfoByNameResult" type="s0:HostInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="WhoAmISoapIn">
+    <part name="parameters" element="s0:WhoAmI" />
+  </message>
+  <message name="WhoAmISoapOut">
+    <part name="parameters" element="s0:WhoAmIResponse" />
+  </message>
+  <message name="GetHostInfoByIPSoapIn">
+    <part name="parameters" element="s0:GetHostInfoByIP" />
+  </message>
+  <message name="GetHostInfoByIPSoapOut">
+    <part name="parameters" element="s0:GetHostInfoByIPResponse" />
+  </message>
+  <message name="GetHostInfoByNameSoapIn">
+    <part name="parameters" element="s0:GetHostInfoByName" />
+  </message>
+  <message name="GetHostInfoByNameSoapOut">
+    <part name="parameters" element="s0:GetHostInfoByNameResponse" />
+  </message>
+  <portType name="YourHostSoap">
+    <operation name="WhoAmI">
+      <input message="s0:WhoAmISoapIn" />
+      <output message="s0:WhoAmISoapOut" />
+    </operation>
+    <operation name="GetHostInfoByIP">
+      <input message="s0:GetHostInfoByIPSoapIn" />
+      <output message="s0:GetHostInfoByIPSoapOut" />
+    </operation>
+    <operation name="GetHostInfoByName">
+      <input message="s0:GetHostInfoByNameSoapIn" />
+      <output message="s0:GetHostInfoByNameSoapOut" />
+    </operation>
+  </portType>
+  <binding name="YourHostSoap" type="s0:YourHostSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="WhoAmI">
+      <soap:operation soapAction="http://tempuri.org/WhoAmI" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetHostInfoByIP">
+      <soap:operation soapAction="http://tempuri.org/GetHostInfoByIP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetHostInfoByName">
+      <soap:operation soapAction="http://tempuri.org/GetHostInfoByName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="YourHost">
+    <port name="YourHostSoap" binding="s0:YourHostSoap">
+      <soap:address location="http://www.esynaps.com/webservices/YourHostInfo.asmx" />
+    </port>
+  </service>
+</definitions>

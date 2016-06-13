@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xignite.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="Lookup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:LookupType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="LookupType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Stock" />
+          <s:enumeration value="Fund" />
+          <s:enumeration value="Index" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="LookupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LookupResult" type="s0:ArrayOfLookupItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLookupItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LookupItem" nillable="true" type="s0:LookupItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LookupItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Market" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryOrIndustry" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LookupStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LookupStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LookupStockResult" type="s0:ArrayOfLookupItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LookupFund">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LookupFundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LookupFundResult" type="s0:ArrayOfLookupItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCUSIPStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCUSIPStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCUSIPStockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCUSIPFund">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCUSIPFundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCUSIPFundResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrowthStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsOfHistory" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrowthStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGrowthStatisticsResult" type="s0:StockGrowthStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StockGrowthStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrowthLow" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GrowthHigh" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mean" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="StdDev" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MeanOfRollingMean" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingMean" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MeanOfRollingStdDev" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingStdDev" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MonthsOfHistory" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AsOfDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGrowthStatisticsHistorical">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AsOfDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsOfHistory" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGrowthStatisticsHistoricalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGrowthStatisticsHistoricalResult" type="s0:StockGrowthStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSplitRatio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ToDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSplitRatioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSplitRatioResult" type="s0:Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ratio" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfLookupItem" nillable="true" type="s0:ArrayOfLookupItem" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="StockGrowthStatistics" nillable="true" type="s0:StockGrowthStatistics" />
+      <s:element name="Result" nillable="true" type="s0:Result" />
+    </s:schema>
+  </types>
+  <message name="LookupSoapIn">
+    <part name="parameters" element="s0:Lookup" />
+  </message>
+  <message name="LookupSoapOut">
+    <part name="parameters" element="s0:LookupResponse" />
+  </message>
+  <message name="LookupStockSoapIn">
+    <part name="parameters" element="s0:LookupStock" />
+  </message>
+  <message name="LookupStockSoapOut">
+    <part name="parameters" element="s0:LookupStockResponse" />
+  </message>
+  <message name="LookupFundSoapIn">
+    <part name="parameters" element="s0:LookupFund" />
+  </message>
+  <message name="LookupFundSoapOut">
+    <part name="parameters" element="s0:LookupFundResponse" />
+  </message>
+  <message name="GetCUSIPStockSoapIn">
+    <part name="parameters" element="s0:GetCUSIPStock" />
+  </message>
+  <message name="GetCUSIPStockSoapOut">
+    <part name="parameters" element="s0:GetCUSIPStockResponse" />
+  </message>
+  <message name="GetCUSIPFundSoapIn">
+    <part name="parameters" element="s0:GetCUSIPFund" />
+  </message>
+  <message name="GetCUSIPFundSoapOut">
+    <part name="parameters" element="s0:GetCUSIPFundResponse" />
+  </message>
+  <message name="GetGrowthStatisticsSoapIn">
+    <part name="parameters" element="s0:GetGrowthStatistics" />
+  </message>
+  <message name="GetGrowthStatisticsSoapOut">
+    <part name="parameters" element="s0:GetGrowthStatisticsResponse" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalSoapIn">
+    <part name="parameters" element="s0:GetGrowthStatisticsHistorical" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalSoapOut">
+    <part name="parameters" element="s0:GetGrowthStatisticsHistoricalResponse" />
+  </message>
+  <message name="GetSplitRatioSoapIn">
+    <part name="parameters" element="s0:GetSplitRatio" />
+  </message>
+  <message name="GetSplitRatioSoapOut">
+    <part name="parameters" element="s0:GetSplitRatioResponse" />
+  </message>
+  <message name="LookupHttpGetIn">
+    <part name="Name" type="s:string" />
+    <part name="Type" type="s:string" />
+  </message>
+  <message name="LookupHttpGetOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="LookupStockHttpGetIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="LookupStockHttpGetOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="LookupFundHttpGetIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="LookupFundHttpGetOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="GetCUSIPStockHttpGetIn">
+    <part name="Symbol" type="s:string" />
+  </message>
+  <message name="GetCUSIPStockHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCUSIPFundHttpGetIn">
+    <part name="Symbol" type="s:string" />
+  </message>
+  <message name="GetCUSIPFundHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetGrowthStatisticsHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="MonthsOfHistory" type="s:string" />
+  </message>
+  <message name="GetGrowthStatisticsHttpGetOut">
+    <part name="Body" element="s0:StockGrowthStatistics" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="AsOfDate" type="s:string" />
+    <part name="MonthsOfHistory" type="s:string" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalHttpGetOut">
+    <part name="Body" element="s0:StockGrowthStatistics" />
+  </message>
+  <message name="GetSplitRatioHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="FromDate" type="s:string" />
+    <part name="ToDate" type="s:string" />
+  </message>
+  <message name="GetSplitRatioHttpGetOut">
+    <part name="Body" element="s0:Result" />
+  </message>
+  <message name="LookupHttpPostIn">
+    <part name="Name" type="s:string" />
+    <part name="Type" type="s:string" />
+  </message>
+  <message name="LookupHttpPostOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="LookupStockHttpPostIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="LookupStockHttpPostOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="LookupFundHttpPostIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="LookupFundHttpPostOut">
+    <part name="Body" element="s0:ArrayOfLookupItem" />
+  </message>
+  <message name="GetCUSIPStockHttpPostIn">
+    <part name="Symbol" type="s:string" />
+  </message>
+  <message name="GetCUSIPStockHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCUSIPFundHttpPostIn">
+    <part name="Symbol" type="s:string" />
+  </message>
+  <message name="GetCUSIPFundHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetGrowthStatisticsHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="MonthsOfHistory" type="s:string" />
+  </message>
+  <message name="GetGrowthStatisticsHttpPostOut">
+    <part name="Body" element="s0:StockGrowthStatistics" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="AsOfDate" type="s:string" />
+    <part name="MonthsOfHistory" type="s:string" />
+  </message>
+  <message name="GetGrowthStatisticsHistoricalHttpPostOut">
+    <part name="Body" element="s0:StockGrowthStatistics" />
+  </message>
+  <message name="GetSplitRatioHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="FromDate" type="s:string" />
+    <part name="ToDate" type="s:string" />
+  </message>
+  <message name="GetSplitRatioHttpPostOut">
+    <part name="Body" element="s0:Result" />
+  </message>
+  <portType name="XigniteSecuritySoap">
+    <operation name="Lookup">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock, fund, or index based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupSoapIn" />
+      <output message="s0:LookupSoapOut" />
+    </operation>
+    <operation name="LookupStock">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupStockSoapIn" />
+      <output message="s0:LookupStockSoapOut" />
+    </operation>
+    <operation name="LookupFund">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a mutual fund based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupFundSoapIn" />
+      <output message="s0:LookupFundSoapOut" />
+    </operation>
+    <operation name="GetCUSIPStock">
+      <documentation>&lt;br&gt;Get a CUSIP for an equity based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPStockSoapIn" />
+      <output message="s0:GetCUSIPStockSoapOut" />
+    </operation>
+    <operation name="GetCUSIPFund">
+      <documentation>&lt;br&gt;Get a CUSIP for a mutual fund based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPFundSoapIn" />
+      <output message="s0:GetCUSIPFundSoapOut" />
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <documentation>&lt;br&gt;Get statistics on the mean and standard deviation for a stock growth as of today.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsSoapIn" />
+      <output message="s0:GetGrowthStatisticsSoapOut" />
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <documentation>&lt;br&gt;Get statistics such as mean and standard deviation for a stock growth as of a past date.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsHistoricalSoapIn" />
+      <output message="s0:GetGrowthStatisticsHistoricalSoapOut" />
+    </operation>
+    <operation name="GetSplitRatio">
+      <documentation>&lt;br&gt;Get the split ratio for a US Domestic Stock between two different dates.&lt;br&gt;&amp;#183; Source: &lt;b&gt;www.BigCharts.Com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetSplitRatioSoapIn" />
+      <output message="s0:GetSplitRatioSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteSecurityHttpGet">
+    <operation name="Lookup">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock, fund, or index based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupHttpGetIn" />
+      <output message="s0:LookupHttpGetOut" />
+    </operation>
+    <operation name="LookupStock">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupStockHttpGetIn" />
+      <output message="s0:LookupStockHttpGetOut" />
+    </operation>
+    <operation name="LookupFund">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a mutual fund based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupFundHttpGetIn" />
+      <output message="s0:LookupFundHttpGetOut" />
+    </operation>
+    <operation name="GetCUSIPStock">
+      <documentation>&lt;br&gt;Get a CUSIP for an equity based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPStockHttpGetIn" />
+      <output message="s0:GetCUSIPStockHttpGetOut" />
+    </operation>
+    <operation name="GetCUSIPFund">
+      <documentation>&lt;br&gt;Get a CUSIP for a mutual fund based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPFundHttpGetIn" />
+      <output message="s0:GetCUSIPFundHttpGetOut" />
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <documentation>&lt;br&gt;Get statistics on the mean and standard deviation for a stock growth as of today.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsHttpGetIn" />
+      <output message="s0:GetGrowthStatisticsHttpGetOut" />
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <documentation>&lt;br&gt;Get statistics such as mean and standard deviation for a stock growth as of a past date.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsHistoricalHttpGetIn" />
+      <output message="s0:GetGrowthStatisticsHistoricalHttpGetOut" />
+    </operation>
+    <operation name="GetSplitRatio">
+      <documentation>&lt;br&gt;Get the split ratio for a US Domestic Stock between two different dates.&lt;br&gt;&amp;#183; Source: &lt;b&gt;www.BigCharts.Com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetSplitRatioHttpGetIn" />
+      <output message="s0:GetSplitRatioHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteSecurityHttpPost">
+    <operation name="Lookup">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock, fund, or index based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupHttpPostIn" />
+      <output message="s0:LookupHttpPostOut" />
+    </operation>
+    <operation name="LookupStock">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a stock based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupStockHttpPostIn" />
+      <output message="s0:LookupStockHttpPostOut" />
+    </operation>
+    <operation name="LookupFund">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10483"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Lookup a mutual fund based on a name.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:LookupFundHttpPostIn" />
+      <output message="s0:LookupFundHttpPostOut" />
+    </operation>
+    <operation name="GetCUSIPStock">
+      <documentation>&lt;br&gt;Get a CUSIP for an equity based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPStockHttpPostIn" />
+      <output message="s0:GetCUSIPStockHttpPostOut" />
+    </operation>
+    <operation name="GetCUSIPFund">
+      <documentation>&lt;br&gt;Get a CUSIP for a mutual fund based on its symbol.&lt;br&gt;&amp;#183; CUSIP are unique security identifiers managed by &lt;b&gt;www.CUSIP.com&lt;/b&gt;.&lt;/br&gt;&amp;#183; Source: &lt;b&gt;www.Fidelity.com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetCUSIPFundHttpPostIn" />
+      <output message="s0:GetCUSIPFundHttpPostOut" />
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <documentation>&lt;br&gt;Get statistics on the mean and standard deviation for a stock growth as of today.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsHttpPostIn" />
+      <output message="s0:GetGrowthStatisticsHttpPostOut" />
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <documentation>&lt;br&gt;Get statistics such as mean and standard deviation for a stock growth as of a past date.&lt;br&gt;&amp;#183; Useful to perform simulations on the price of a stock.&lt;br&gt;&amp;#183; Source: &lt;b&gt;Yahoo! Finance&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetGrowthStatisticsHistoricalHttpPostIn" />
+      <output message="s0:GetGrowthStatisticsHistoricalHttpPostOut" />
+    </operation>
+    <operation name="GetSplitRatio">
+      <documentation>&lt;br&gt;Get the split ratio for a US Domestic Stock between two different dates.&lt;br&gt;&amp;#183; Source: &lt;b&gt;www.BigCharts.Com&lt;/b&gt;. Also subject to their Terms of Use.&lt;br&gt;</documentation>
+      <input message="s0:GetSplitRatioHttpPostIn" />
+      <output message="s0:GetSplitRatioHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XigniteSecuritySoap" type="s0:XigniteSecuritySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Lookup">
+      <soap:operation soapAction="http://www.xignite.com/services/Lookup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LookupStock">
+      <soap:operation soapAction="http://www.xignite.com/services/LookupStock" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LookupFund">
+      <soap:operation soapAction="http://www.xignite.com/services/LookupFund" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPStock">
+      <soap:operation soapAction="http://www.xignite.com/services/GetCUSIPStock" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPFund">
+      <soap:operation soapAction="http://www.xignite.com/services/GetCUSIPFund" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGrowthStatistics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <soap:operation soapAction="http://www.xignite.com/services/GetGrowthStatisticsHistorical" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSplitRatio">
+      <soap:operation soapAction="http://www.xignite.com/services/GetSplitRatio" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteSecurityHttpGet" type="s0:XigniteSecurityHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Lookup">
+      <http:operation location="/Lookup" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookupStock">
+      <http:operation location="/LookupStock" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookupFund">
+      <http:operation location="/LookupFund" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPStock">
+      <http:operation location="/GetCUSIPStock" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPFund">
+      <http:operation location="/GetCUSIPFund" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <http:operation location="/GetGrowthStatistics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <http:operation location="/GetGrowthStatisticsHistorical" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSplitRatio">
+      <http:operation location="/GetSplitRatio" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteSecurityHttpPost" type="s0:XigniteSecurityHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Lookup">
+      <http:operation location="/Lookup" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookupStock">
+      <http:operation location="/LookupStock" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LookupFund">
+      <http:operation location="/LookupFund" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPStock">
+      <http:operation location="/GetCUSIPStock" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCUSIPFund">
+      <http:operation location="/GetCUSIPFund" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatistics">
+      <http:operation location="/GetGrowthStatistics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetGrowthStatisticsHistorical">
+      <http:operation location="/GetGrowthStatisticsHistorical" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSplitRatio">
+      <http:operation location="/GetSplitRatio" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XigniteSecurity">
+    <port name="XigniteSecuritySoap" binding="s0:XigniteSecuritySoap">
+      <soap:address location="http://www.xignite.com/xsecurity.asmx" />
+    </port>
+    <port name="XigniteSecurityHttpGet" binding="s0:XigniteSecurityHttpGet">
+      <http:address location="http://www.xignite.com/xsecurity.asmx" />
+    </port>
+    <port name="XigniteSecurityHttpPost" binding="s0:XigniteSecurityHttpPost">
+      <http:address location="http://www.xignite.com/xsecurity.asmx" />
+    </port>
+  </service>
+</definitions>

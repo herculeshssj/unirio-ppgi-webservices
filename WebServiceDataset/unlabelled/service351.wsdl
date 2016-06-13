@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="GetCustomNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Topic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetCustomNewsSoapIn">
+    <part name="parameters" element="s0:GetCustomNews" />
+  </message>
+  <message name="GetCustomNewsSoapOut">
+    <part name="parameters" element="s0:GetCustomNewsResponse" />
+  </message>
+  <message name="GetCustomNewsHttpGetIn">
+    <part name="Topic" type="s:string" />
+  </message>
+  <message name="GetCustomNewsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCustomNewsHttpPostIn">
+    <part name="Topic" type="s:string" />
+  </message>
+  <message name="GetCustomNewsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="GetCustomNewsSoap">
+    <operation name="GetCustomNews">
+      <documentation>&lt;h3&gt;Submit a News Topic and a List of Articles will be returned in XML from the Moreover News Service. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetCustomNewsSoapIn" />
+      <output message="s0:GetCustomNewsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GetCustomNewsHttpGet">
+    <operation name="GetCustomNews">
+      <documentation>&lt;h3&gt;Submit a News Topic and a List of Articles will be returned in XML from the Moreover News Service. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetCustomNewsHttpGetIn" />
+      <output message="s0:GetCustomNewsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GetCustomNewsHttpPost">
+    <operation name="GetCustomNews">
+      <documentation>&lt;h3&gt;Submit a News Topic and a List of Articles will be returned in XML from the Moreover News Service. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetCustomNewsHttpPostIn" />
+      <output message="s0:GetCustomNewsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GetCustomNewsSoap" type="s0:GetCustomNewsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetCustomNews">
+      <soap:operation soapAction="http://xmlme.com/WebServices/GetCustomNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetCustomNewsHttpGet" type="s0:GetCustomNewsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetCustomNews">
+      <http:operation location="/GetCustomNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GetCustomNewsHttpPost" type="s0:GetCustomNewsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetCustomNews">
+      <http:operation location="/GetCustomNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GetCustomNews">
+    <port name="GetCustomNewsSoap" binding="s0:GetCustomNewsSoap">
+      <soap:address location="http://www.xmlme.com/WSCustNews.asmx" />
+    </port>
+    <port name="GetCustomNewsHttpGet" binding="s0:GetCustomNewsHttpGet">
+      <http:address location="http://www.xmlme.com/WSCustNews.asmx" />
+    </port>
+    <port name="GetCustomNewsHttpPost" binding="s0:GetCustomNewsHttpPost">
+      <http:address location="http://www.xmlme.com/WSCustNews.asmx" />
+    </port>
+  </service>
+</definitions>

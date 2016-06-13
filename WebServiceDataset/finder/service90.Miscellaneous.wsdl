@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="FindSportingGoods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSportingGoodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSportingGoodsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindSportingGoodsSoapIn">
+    <part name="parameters" element="s0:FindSportingGoods" />
+  </message>
+  <message name="FindSportingGoodsSoapOut">
+    <part name="parameters" element="s0:FindSportingGoodsResponse" />
+  </message>
+  <message name="FindSportingGoodsHttpGetIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindSportingGoodsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindSportingGoodsHttpPostIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindSportingGoodsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="SportingGoodsFinderSoap">
+    <operation name="FindSportingGoods">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the sporting goods search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindSportingGoodsSoapIn" />
+      <output message="s0:FindSportingGoodsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SportingGoodsFinderHttpGet">
+    <operation name="FindSportingGoods">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the sporting goods search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindSportingGoodsHttpGetIn" />
+      <output message="s0:FindSportingGoodsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SportingGoodsFinderHttpPost">
+    <operation name="FindSportingGoods">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the sporting goods search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindSportingGoodsHttpPostIn" />
+      <output message="s0:FindSportingGoodsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SportingGoodsFinderSoap" type="s0:SportingGoodsFinderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindSportingGoods">
+      <soap:operation soapAction="http://xmlme.com/WebServices/FindSportingGoods" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SportingGoodsFinderHttpGet" type="s0:SportingGoodsFinderHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindSportingGoods">
+      <http:operation location="/FindSportingGoods" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SportingGoodsFinderHttpPost" type="s0:SportingGoodsFinderHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindSportingGoods">
+      <http:operation location="/FindSportingGoods" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SportingGoodsFinder">
+    <port name="SportingGoodsFinderSoap" binding="s0:SportingGoodsFinderSoap">
+      <soap:address location="http://www.xmlme.com/WSSportingGoods.asmx" />
+    </port>
+    <port name="SportingGoodsFinderHttpGet" binding="s0:SportingGoodsFinderHttpGet">
+      <http:address location="http://www.xmlme.com/WSSportingGoods.asmx" />
+    </port>
+    <port name="SportingGoodsFinderHttpPost" binding="s0:SportingGoodsFinderHttpPost">
+      <http:address location="http://www.xmlme.com/WSSportingGoods.asmx" />
+    </port>
+  </service>
+</definitions>

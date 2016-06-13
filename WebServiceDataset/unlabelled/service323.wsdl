@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IMsSessionBrokerServiceservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="CreateNewSessionRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="TimeOutInMinutes" type="xs:unsignedInt"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="CreateNewSessionResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SetSessionInfoRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SessionID" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="AName" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="AValue" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SetSessionInfoResponse"/>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetSessionInfoRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SessionID" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="AName" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetSessionInfoResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionInfoRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SessionID" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="AName" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionInfoResponse"/>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="ClearSessionInfoRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SessionID" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="ClearSessionInfoResponse"/>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SessionID" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionResponse"/>
+  <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="IMsSessionBrokerService">
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="CreateNewSession">
+      <input message="tns:CreateNewSessionRequest"/>
+      <output message="tns:CreateNewSessionResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SetSessionInfo">
+      <input message="tns:SetSessionInfoRequest"/>
+      <output message="tns:SetSessionInfoResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetSessionInfo">
+      <input message="tns:GetSessionInfoRequest"/>
+      <output message="tns:GetSessionInfoResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionInfo">
+      <input message="tns:DeleteSessionInfoRequest"/>
+      <output message="tns:DeleteSessionInfoResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="ClearSessionInfo">
+      <input message="tns:ClearSessionInfoRequest"/>
+      <output message="tns:ClearSessionInfoResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSession">
+      <input message="tns:DeleteSessionRequest"/>
+      <output message="tns:DeleteSessionResponse"/>
+    </operation>
+  </portType>
+  <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="IMsSessionBrokerServicebinding" type="tns:IMsSessionBrokerService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="CreateNewSession">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#CreateNewSession" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SetSessionInfo">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#SetSessionInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetSessionInfo">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#GetSessionInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSessionInfo">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#DeleteSessionInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="ClearSessionInfo">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#ClearSessionInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSession">
+      <soap:operation soapAction="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService#DeleteSession" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:MsSessionBrokerServiceIntf-IMsSessionBrokerService"/>
+      </output>
+    </operation>
+  </binding>
+  <service xmlns="http://schemas.xmlsoap.org/wsdl/" name="IMsSessionBrokerServiceservice">
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="IMsSessionBrokerServicePort" binding="tns:IMsSessionBrokerServicebinding">
+      <soap:address location="http://webservices.matlus.com/scripts/sessionservice.dll/soap/IMsSessionBrokerService"/>
+    </port>
+  </service>
+</definitions>
+

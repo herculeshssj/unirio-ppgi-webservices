@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://webservices.domeindokter.be/wsDomainDoctor" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://webservices.domeindokter.be/wsDomainDoctor" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.domeindokter.be/wsDomainDoctor">
+      <s:element name="CheckAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="domainName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckAllResult" type="s0:DomainDoctorResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DomainDoctorResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Results" type="s0:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DomainDoctorCheck2Consult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Details">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s0:DomainDoctorTestResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:DomainDoctorTestType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Output" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DomainDoctorTestResult">
+        <s:restriction base="s:string">
+          <s:enumeration value="Passed" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="Skipped" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DomainDoctorTestType">
+        <s:restriction base="s:string">
+          <s:enumeration value="IsRegistered" />
+          <s:enumeration value="NameServers" />
+          <s:enumeration value="StartOfAuthority" />
+          <s:enumeration value="WebServerConfig" />
+          <s:enumeration value="WebServerPing" />
+          <s:enumeration value="WebServerOpen" />
+          <s:enumeration value="MailServerConfig" />
+          <s:enumeration value="MailServerPing" />
+          <s:enumeration value="MailServerOpen" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CheckPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckPasswordResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOne">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="domainName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="checkType" type="s0:DomainDoctorTestType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckOneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckOneResult" type="s0:DomainDoctorResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DomainDoctorResult" nillable="true" type="s0:DomainDoctorResult" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="CheckAllSoapIn">
+    <part name="parameters" element="s0:CheckAll" />
+  </message>
+  <message name="CheckAllSoapOut">
+    <part name="parameters" element="s0:CheckAllResponse" />
+  </message>
+  <message name="CheckPasswordSoapIn">
+    <part name="parameters" element="s0:CheckPassword" />
+  </message>
+  <message name="CheckPasswordSoapOut">
+    <part name="parameters" element="s0:CheckPasswordResponse" />
+  </message>
+  <message name="CheckOneSoapIn">
+    <part name="parameters" element="s0:CheckOne" />
+  </message>
+  <message name="CheckOneSoapOut">
+    <part name="parameters" element="s0:CheckOneResponse" />
+  </message>
+  <message name="AboutSoapIn">
+    <part name="parameters" element="s0:About" />
+  </message>
+  <message name="AboutSoapOut">
+    <part name="parameters" element="s0:AboutResponse" />
+  </message>
+  <message name="CheckAllHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="domainName" type="s:string" />
+  </message>
+  <message name="CheckAllHttpGetOut">
+    <part name="Body" element="s0:DomainDoctorResult" />
+  </message>
+  <message name="CheckPasswordHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="CheckPasswordHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="CheckOneHttpGetIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="domainName" type="s:string" />
+    <part name="checkType" type="s:string" />
+  </message>
+  <message name="CheckOneHttpGetOut">
+    <part name="Body" element="s0:DomainDoctorResult" />
+  </message>
+  <message name="AboutHttpGetIn" />
+  <message name="AboutHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CheckAllHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="domainName" type="s:string" />
+  </message>
+  <message name="CheckAllHttpPostOut">
+    <part name="Body" element="s0:DomainDoctorResult" />
+  </message>
+  <message name="CheckPasswordHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="CheckPasswordHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="CheckOneHttpPostIn">
+    <part name="email" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="domainName" type="s:string" />
+    <part name="checkType" type="s:string" />
+  </message>
+  <message name="CheckOneHttpPostOut">
+    <part name="Body" element="s0:DomainDoctorResult" />
+  </message>
+  <message name="AboutHttpPostIn" />
+  <message name="AboutHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="wsDomainDoctorSoap">
+    <operation name="CheckAll">
+      <documentation>Checks your domain name entirely.</documentation>
+      <input message="s0:CheckAllSoapIn" />
+      <output message="s0:CheckAllSoapOut" />
+    </operation>
+    <operation name="CheckPassword">
+      <documentation>Checks id your email and password are correct.</documentation>
+      <input message="s0:CheckPasswordSoapIn" />
+      <output message="s0:CheckPasswordSoapOut" />
+    </operation>
+    <operation name="CheckOne">
+      <documentation>Does a selected check on your domain name.</documentation>
+      <input message="s0:CheckOneSoapIn" />
+      <output message="s0:CheckOneSoapOut" />
+    </operation>
+    <operation name="About">
+      <documentation>About the 2-Consult DomainDoctor.</documentation>
+      <input message="s0:AboutSoapIn" />
+      <output message="s0:AboutSoapOut" />
+    </operation>
+  </portType>
+  <portType name="wsDomainDoctorHttpGet">
+    <operation name="CheckAll">
+      <documentation>Checks your domain name entirely.</documentation>
+      <input message="s0:CheckAllHttpGetIn" />
+      <output message="s0:CheckAllHttpGetOut" />
+    </operation>
+    <operation name="CheckPassword">
+      <documentation>Checks id your email and password are correct.</documentation>
+      <input message="s0:CheckPasswordHttpGetIn" />
+      <output message="s0:CheckPasswordHttpGetOut" />
+    </operation>
+    <operation name="CheckOne">
+      <documentation>Does a selected check on your domain name.</documentation>
+      <input message="s0:CheckOneHttpGetIn" />
+      <output message="s0:CheckOneHttpGetOut" />
+    </operation>
+    <operation name="About">
+      <documentation>About the 2-Consult DomainDoctor.</documentation>
+      <input message="s0:AboutHttpGetIn" />
+      <output message="s0:AboutHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="wsDomainDoctorHttpPost">
+    <operation name="CheckAll">
+      <documentation>Checks your domain name entirely.</documentation>
+      <input message="s0:CheckAllHttpPostIn" />
+      <output message="s0:CheckAllHttpPostOut" />
+    </operation>
+    <operation name="CheckPassword">
+      <documentation>Checks id your email and password are correct.</documentation>
+      <input message="s0:CheckPasswordHttpPostIn" />
+      <output message="s0:CheckPasswordHttpPostOut" />
+    </operation>
+    <operation name="CheckOne">
+      <documentation>Does a selected check on your domain name.</documentation>
+      <input message="s0:CheckOneHttpPostIn" />
+      <output message="s0:CheckOneHttpPostOut" />
+    </operation>
+    <operation name="About">
+      <documentation>About the 2-Consult DomainDoctor.</documentation>
+      <input message="s0:AboutHttpPostIn" />
+      <output message="s0:AboutHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="wsDomainDoctorSoap" type="s0:wsDomainDoctorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CheckAll">
+      <soap:operation soapAction="http://webservices.domeindokter.be/wsDomainDoctor/CheckAll" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckPassword">
+      <soap:operation soapAction="http://webservices.domeindokter.be/wsDomainDoctor/CheckPassword" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckOne">
+      <soap:operation soapAction="http://webservices.domeindokter.be/wsDomainDoctor/CheckOne" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="About">
+      <soap:operation soapAction="http://webservices.domeindokter.be/wsDomainDoctor/About" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsDomainDoctorHttpGet" type="s0:wsDomainDoctorHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CheckAll">
+      <http:operation location="/CheckAll" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckPassword">
+      <http:operation location="/CheckPassword" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckOne">
+      <http:operation location="/CheckOne" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="About">
+      <http:operation location="/About" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="wsDomainDoctorHttpPost" type="s0:wsDomainDoctorHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CheckAll">
+      <http:operation location="/CheckAll" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckPassword">
+      <http:operation location="/CheckPassword" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckOne">
+      <http:operation location="/CheckOne" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="About">
+      <http:operation location="/About" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="wsDomainDoctor">
+    <documentation>2-Consult DomainDoctor. Click &lt;a href='http://www.domain-analyzer.com/'&gt;here&lt;/a&gt; to obtain username and password. Registration is &lt;B&gt;free&lt;/B&gt;.</documentation>
+    <port name="wsDomainDoctorSoap" binding="s0:wsDomainDoctorSoap">
+      <soap:address location="http://webservices.domaindoctor.be/wsDomainDoctor.asmx" />
+    </port>
+    <port name="wsDomainDoctorHttpGet" binding="s0:wsDomainDoctorHttpGet">
+      <http:address location="http://webservices.domaindoctor.be/wsDomainDoctor.asmx" />
+    </port>
+    <port name="wsDomainDoctorHttpPost" binding="s0:wsDomainDoctorHttpPost">
+      <http:address location="http://webservices.domaindoctor.be/wsDomainDoctor.asmx" />
+    </port>
+  </service>
+</definitions>

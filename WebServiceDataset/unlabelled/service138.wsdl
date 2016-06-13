@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://localhost/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://localhost/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/">
+      <s:element name="GetTerms">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTermsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTermsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDefinition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Term" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDefinitionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDefinitionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetTermsSoapIn">
+    <part name="parameters" element="s0:GetTerms" />
+  </message>
+  <message name="GetTermsSoapOut">
+    <part name="parameters" element="s0:GetTermsResponse" />
+  </message>
+  <message name="GetDefinitionSoapIn">
+    <part name="parameters" element="s0:GetDefinition" />
+  </message>
+  <message name="GetDefinitionSoapOut">
+    <part name="parameters" element="s0:GetDefinitionResponse" />
+  </message>
+  <message name="GetTermsHttpGetIn" />
+  <message name="GetTermsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetDefinitionHttpGetIn">
+    <part name="Term" type="s:string" />
+  </message>
+  <message name="GetDefinitionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTermsHttpPostIn" />
+  <message name="GetTermsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetDefinitionHttpPostIn">
+    <part name="Term" type="s:string" />
+  </message>
+  <message name="GetDefinitionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsSoap">
+    <operation name="GetTerms">
+      <documentation>Returns an array of SQL terms</documentation>
+      <input message="s0:GetTermsSoapIn" />
+      <output message="s0:GetTermsSoapOut" />
+    </operation>
+    <operation name="GetDefinition">
+      <documentation>Returns a definition for the SQL term entered</documentation>
+      <input message="s0:GetDefinitionSoapIn" />
+      <output message="s0:GetDefinitionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpGet">
+    <operation name="GetTerms">
+      <documentation>Returns an array of SQL terms</documentation>
+      <input message="s0:GetTermsHttpGetIn" />
+      <output message="s0:GetTermsHttpGetOut" />
+    </operation>
+    <operation name="GetDefinition">
+      <documentation>Returns a definition for the SQL term entered</documentation>
+      <input message="s0:GetDefinitionHttpGetIn" />
+      <output message="s0:GetDefinitionHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpPost">
+    <operation name="GetTerms">
+      <documentation>Returns an array of SQL terms</documentation>
+      <input message="s0:GetTermsHttpPostIn" />
+      <output message="s0:GetTermsHttpPostOut" />
+    </operation>
+    <operation name="GetDefinition">
+      <documentation>Returns a definition for the SQL term entered</documentation>
+      <input message="s0:GetDefinitionHttpPostIn" />
+      <output message="s0:GetDefinitionHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsSoap" type="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTerms">
+      <soap:operation soapAction="http://localhost/GetTerms" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDefinition">
+      <soap:operation soapAction="http://localhost/GetDefinition" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpGet" type="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTerms">
+      <http:operation location="/GetTerms" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDefinition">
+      <http:operation location="/GetDefinition" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpPost" type="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTerms">
+      <http:operation location="/GetTerms" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDefinition">
+      <http:operation location="/GetDefinition" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SQL_x0020_Terms_x0020_and_x0020_Definitions">
+    <documentation>This web service returns a list of terms, or a definition for the SQL term that is entered.</documentation>
+    <port name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsSoap" binding="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsSoap">
+      <soap:address location="http://studentweb.seaed.com/webservices/TermsService/sqlterms.asmx" />
+    </port>
+    <port name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpGet" binding="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpGet">
+      <http:address location="http://studentweb.seaed.com/webservices/TermsService/sqlterms.asmx" />
+    </port>
+    <port name="SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpPost" binding="s0:SQL_x0020_Terms_x0020_and_x0020_DefinitionsHttpPost">
+      <http:address location="http://studentweb.seaed.com/webservices/TermsService/sqlterms.asmx" />
+    </port>
+  </service>
+</definitions>

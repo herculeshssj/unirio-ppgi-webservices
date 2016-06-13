@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<wsdl:definitions name="http___ewsdemo_webmethods_com_wmpayflow_sample" targetNamespace="http://ewsdemo.webmethods.com/"
+			xmlns:webM="http://www.webMethods.com/noNamespace/"
+			xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://ewsdemo.webmethods.com/">
+	<wsdl:types>
+		
+<xsd:schema
+            targetNamespace="http://www.webMethods.com/noNamespace/"
+            xmlns="http://www.webMethods.com/noNamespace/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" >
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="Credit_ApprovalInput">
+		<wsdl:part name="ccno" type="xsd:string"/>
+		<wsdl:part name="expdate" type="xsd:string"/>
+		<wsdl:part name="amt" type="xsd:string"/>
+		<wsdl:part name="comment" type="xsd:string"/>
+		<wsdl:part name="invoice_num" type="xsd:string"/>
+		<wsdl:part name="Street" type="xsd:string"/>
+		<wsdl:part name="City" type="xsd:string"/>
+		<wsdl:part name="State" type="xsd:string"/>
+		<wsdl:part name="Zip" type="xsd:string"/>
+		<wsdl:part name="Country" type="xsd:string"/>
+	</wsdl:message>
+	
+	<wsdl:message name="Credit_ApprovalOutput">
+		<wsdl:part name="AuthCode" type="xsd:string"/>
+		<wsdl:part name="Message" type="xsd:string"/>
+		<wsdl:part name="PNRef" type="xsd:string"/>
+	</wsdl:message>
+	<wsdl:portType name="http___ewsdemo_webmethods_com_wmpayflow_samplePortType">
+		<wsdl:operation name="Credit_Approval">
+			<wsdl:input message="tns:Credit_ApprovalInput"/>
+			<wsdl:output message="tns:Credit_ApprovalOutput"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="http___ewsdemo_webmethods_com_wmpayflow_sampleBinding" type="tns:http___ewsdemo_webmethods_com_wmpayflow_samplePortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+		<wsdl:operation name="Credit_Approval">
+			<soap:operation soapAction=""/>
+			<wsdl:input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ewsdemo.webmethods.com/wmpayflow.sample" use="encoded"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ewsdemo.webmethods.com/wmpayflow.sample" use="encoded"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="http___ewsdemo_webmethods_com_wmpayflow_sampleService">
+		<wsdl:port name="http___ewsdemo_webmethods_com_wmpayflow_samplePort0" binding="tns:http___ewsdemo_webmethods_com_wmpayflow_sampleBinding">
+			<soap:address location="http://ewsdemo.webmethods.com:80/soap/rpc"/>
+		</wsdl:port>
+	</wsdl:service>
+	</wsdl:definitions>

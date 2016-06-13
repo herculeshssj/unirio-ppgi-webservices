@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<definitions name="NorthWind.cmsaccess" targetNamespace="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="RetrieveRequest">
+        <part name="RetrieveSQL" type="xsd:string"/>
+        <part name="RecReturn" type="xsd:string"/>
+    </message>
+    <message name="RetrieveResponse">
+        <part name="RecReturn" type="xsd:string"/>
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <message name="ExecuteRequest">
+        <part name="ExecuteSQL" type="xsd:string"/>
+    </message>
+    <message name="ExecuteResponse">
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <portType name="NorthWind.cmsaccessPortType">
+        <operation name="Retrieve">
+            <input message="tns:RetrieveRequest"/>
+            <output message="tns:RetrieveResponse"/>
+        </operation>
+        <operation name="Execute">
+            <input message="tns:ExecuteRequest"/>
+            <output message="tns:ExecuteResponse"/>
+        </operation>
+    </portType>
+    <binding name="NorthWind.cmsaccessbinding" type="tns:NorthWind.cmsaccessPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Retrieve">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml#Retrieve"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Execute">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml#Execute"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/NorthWind/CMSAccess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="NorthWind.cmsaccessService">
+        <port name="NorthWind.cmsaccessPort" binding="tns:NorthWind.cmsaccessbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lcnorthwind.cgi"/>
+        </port>
+    </service>
+</definitions>

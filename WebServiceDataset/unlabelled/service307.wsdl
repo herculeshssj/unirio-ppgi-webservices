@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NFLNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="NFLNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NFLNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="NFLNewsSoapIn">
+    <part name="parameters" element="s0:NFLNews" />
+  </message>
+  <message name="NFLNewsSoapOut">
+    <part name="parameters" element="s0:NFLNewsResponse" />
+  </message>
+  <portType name="NFLNewsSoap">
+    <operation name="NFLNews">
+      <input message="s0:NFLNewsSoapIn" />
+      <output message="s0:NFLNewsSoapOut" />
+    </operation>
+  </portType>
+  <binding name="NFLNewsSoap" type="s0:NFLNewsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NFLNews">
+      <soap:operation soapAction="http://tempuri.org/NFLNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NFLNews">
+    <port name="NFLNewsSoap" binding="s0:NFLNewsSoap">
+      <soap:address location="http://www.esynaps.com/WebServices/NFLNews.asmx" />
+    </port>
+  </service>
+</definitions>

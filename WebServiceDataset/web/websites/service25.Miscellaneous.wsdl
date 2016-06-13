@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="CoolSites.ccoolsites" targetNamespace="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" xmlns:tns="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetLatestCoolSitesRequest">
+    </message>
+    <message name="GetLatestCoolSitesResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LatestCoolSitesRecordsetRequest">
+        <part name="recCoolSites" type="xsd:string"/>
+    </message>
+    <message name="LatestCoolSitesRecordsetResponse">
+        <part name="recCoolSites" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CoolSites.ccoolsitesPortType">
+        <operation name="GetLatestCoolSites">
+            <input message="tns:GetLatestCoolSitesRequest"/>
+            <output message="tns:GetLatestCoolSitesResponse"/>
+        </operation>
+        <operation name="LatestCoolSitesRecordset">
+            <input message="tns:LatestCoolSitesRecordsetRequest"/>
+            <output message="tns:LatestCoolSitesRecordsetResponse"/>
+        </operation>
+    </portType>
+    <binding name="CoolSites.ccoolsitesbinding" type="tns:CoolSites.ccoolsitesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetLatestCoolSites">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml#GetLatestCoolSites"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LatestCoolSitesRecordset">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml#LatestCoolSitesRecordset"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/Gwen/CoolSites/CCoolSites.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CoolSites.ccoolsitesService">
+        <port name="CoolSites.ccoolsitesPort" binding="tns:CoolSites.ccoolsitesbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/coolsites.cgi"/>
+        </port>
+    </service>
+</definitions>

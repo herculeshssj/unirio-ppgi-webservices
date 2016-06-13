@@ -1,0 +1,2811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="TrackingAll" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="TrackingAll" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="TrackingAll">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="setCustomerPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CUSTOMER_Active" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setCustomerPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setCustomerPermissionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setOperatorPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_OPER" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OPER_Active" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setOperatorPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setOperatorPermissionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setCompanyPermission">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_COMPANY" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="COMPANY_Active" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setCompanyPermissionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setCompanyPermissionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedTrackingAccess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedTrackingAccessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSpecifiedTrackingAccessResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCustomerAccess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCustomerAccessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSpecifiedCustomerAccessResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllCustomerAccess">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllCustomerAccessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllCustomerAccessResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCompanyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCompanyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCompanyListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOperatorsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getOperatorsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getOperatorsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCustomerListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_COMPANY" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSpecifiedCompanyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSpecifiedCustomerResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showAllTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customerUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showAllTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="showAllTrackingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showSpecifiedTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customerUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showSpecifiedTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="showSpecifiedTrackingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSpecifiedTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSpecifiedTrackingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showTrackingHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customerUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showTrackingHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="showTrackingHistoryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTrackingHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTrackingHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTrackingHistoryResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCustomerTrackingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllTrackingResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerCompanyName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerCompanyNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCustomerCompanyNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCompanyName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_COMPANY" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCompanyNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCompanyNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_ContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_ContactTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Region" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_HandPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addOperator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OPER_Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OPER_PassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addOperatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addOperatorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_CompanyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_ContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_ContactTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Region" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_HandPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="adminUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_COMPANY" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_ContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_ContactTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Region" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_HandPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPANY_Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_CompanyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_ContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_ContactTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Region" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_HandPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateCustomerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_STATUS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsc_STATUS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsc_STATUS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_CUSTOMER" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="cd_DOSSIER" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsc_DOSSIER" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_STATUS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMMENTS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addTrackingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateTracking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="operPassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_TRACKING" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_STATUS" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMMENTS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailNotificationSmtpServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SendMailWithPriority" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateTrackingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateTrackingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="setCustomerPermissionSoapIn">
+    <part name="parameters" element="s0:setCustomerPermission" />
+  </message>
+  <message name="setCustomerPermissionSoapOut">
+    <part name="parameters" element="s0:setCustomerPermissionResponse" />
+  </message>
+  <message name="setOperatorPermissionSoapIn">
+    <part name="parameters" element="s0:setOperatorPermission" />
+  </message>
+  <message name="setOperatorPermissionSoapOut">
+    <part name="parameters" element="s0:setOperatorPermissionResponse" />
+  </message>
+  <message name="setCompanyPermissionSoapIn">
+    <part name="parameters" element="s0:setCompanyPermission" />
+  </message>
+  <message name="setCompanyPermissionSoapOut">
+    <part name="parameters" element="s0:setCompanyPermissionResponse" />
+  </message>
+  <message name="getSpecifiedTrackingAccessSoapIn">
+    <part name="parameters" element="s0:getSpecifiedTrackingAccess" />
+  </message>
+  <message name="getSpecifiedTrackingAccessSoapOut">
+    <part name="parameters" element="s0:getSpecifiedTrackingAccessResponse" />
+  </message>
+  <message name="getSpecifiedCustomerAccessSoapIn">
+    <part name="parameters" element="s0:getSpecifiedCustomerAccess" />
+  </message>
+  <message name="getSpecifiedCustomerAccessSoapOut">
+    <part name="parameters" element="s0:getSpecifiedCustomerAccessResponse" />
+  </message>
+  <message name="getAllCustomerAccessSoapIn">
+    <part name="parameters" element="s0:getAllCustomerAccess" />
+  </message>
+  <message name="getAllCustomerAccessSoapOut">
+    <part name="parameters" element="s0:getAllCustomerAccessResponse" />
+  </message>
+  <message name="getCompanyListSoapIn">
+    <part name="parameters" element="s0:getCompanyList" />
+  </message>
+  <message name="getCompanyListSoapOut">
+    <part name="parameters" element="s0:getCompanyListResponse" />
+  </message>
+  <message name="getOperatorsListSoapIn">
+    <part name="parameters" element="s0:getOperatorsList" />
+  </message>
+  <message name="getOperatorsListSoapOut">
+    <part name="parameters" element="s0:getOperatorsListResponse" />
+  </message>
+  <message name="getCustomerListSoapIn">
+    <part name="parameters" element="s0:getCustomerList" />
+  </message>
+  <message name="getCustomerListSoapOut">
+    <part name="parameters" element="s0:getCustomerListResponse" />
+  </message>
+  <message name="getSpecifiedCompanySoapIn">
+    <part name="parameters" element="s0:getSpecifiedCompany" />
+  </message>
+  <message name="getSpecifiedCompanySoapOut">
+    <part name="parameters" element="s0:getSpecifiedCompanyResponse" />
+  </message>
+  <message name="getSpecifiedCustomerSoapIn">
+    <part name="parameters" element="s0:getSpecifiedCustomer" />
+  </message>
+  <message name="getSpecifiedCustomerSoapOut">
+    <part name="parameters" element="s0:getSpecifiedCustomerResponse" />
+  </message>
+  <message name="showAllTrackingSoapIn">
+    <part name="parameters" element="s0:showAllTracking" />
+  </message>
+  <message name="showAllTrackingSoapOut">
+    <part name="parameters" element="s0:showAllTrackingResponse" />
+  </message>
+  <message name="showSpecifiedTrackingSoapIn">
+    <part name="parameters" element="s0:showSpecifiedTracking" />
+  </message>
+  <message name="showSpecifiedTrackingSoapOut">
+    <part name="parameters" element="s0:showSpecifiedTrackingResponse" />
+  </message>
+  <message name="getSpecifiedTrackingSoapIn">
+    <part name="parameters" element="s0:getSpecifiedTracking" />
+  </message>
+  <message name="getSpecifiedTrackingSoapOut">
+    <part name="parameters" element="s0:getSpecifiedTrackingResponse" />
+  </message>
+  <message name="showTrackingHistorySoapIn">
+    <part name="parameters" element="s0:showTrackingHistory" />
+  </message>
+  <message name="showTrackingHistorySoapOut">
+    <part name="parameters" element="s0:showTrackingHistoryResponse" />
+  </message>
+  <message name="getTrackingHistorySoapIn">
+    <part name="parameters" element="s0:getTrackingHistory" />
+  </message>
+  <message name="getTrackingHistorySoapOut">
+    <part name="parameters" element="s0:getTrackingHistoryResponse" />
+  </message>
+  <message name="getCustomerTrackingSoapIn">
+    <part name="parameters" element="s0:getCustomerTracking" />
+  </message>
+  <message name="getCustomerTrackingSoapOut">
+    <part name="parameters" element="s0:getCustomerTrackingResponse" />
+  </message>
+  <message name="getAllTrackingSoapIn">
+    <part name="parameters" element="s0:getAllTracking" />
+  </message>
+  <message name="getAllTrackingSoapOut">
+    <part name="parameters" element="s0:getAllTrackingResponse" />
+  </message>
+  <message name="getAllStatusSoapIn">
+    <part name="parameters" element="s0:getAllStatus" />
+  </message>
+  <message name="getAllStatusSoapOut">
+    <part name="parameters" element="s0:getAllStatusResponse" />
+  </message>
+  <message name="getCustomerCompanyNameSoapIn">
+    <part name="parameters" element="s0:getCustomerCompanyName" />
+  </message>
+  <message name="getCustomerCompanyNameSoapOut">
+    <part name="parameters" element="s0:getCustomerCompanyNameResponse" />
+  </message>
+  <message name="getCompanyNameSoapIn">
+    <part name="parameters" element="s0:getCompanyName" />
+  </message>
+  <message name="getCompanyNameSoapOut">
+    <part name="parameters" element="s0:getCompanyNameResponse" />
+  </message>
+  <message name="addCompanySoapIn">
+    <part name="parameters" element="s0:addCompany" />
+  </message>
+  <message name="addCompanySoapOut">
+    <part name="parameters" element="s0:addCompanyResponse" />
+  </message>
+  <message name="addOperatorSoapIn">
+    <part name="parameters" element="s0:addOperator" />
+  </message>
+  <message name="addOperatorSoapOut">
+    <part name="parameters" element="s0:addOperatorResponse" />
+  </message>
+  <message name="addCustomerSoapIn">
+    <part name="parameters" element="s0:addCustomer" />
+  </message>
+  <message name="addCustomerSoapOut">
+    <part name="parameters" element="s0:addCustomerResponse" />
+  </message>
+  <message name="updateCompanySoapIn">
+    <part name="parameters" element="s0:updateCompany" />
+  </message>
+  <message name="updateCompanySoapOut">
+    <part name="parameters" element="s0:updateCompanyResponse" />
+  </message>
+  <message name="updateCustomerSoapIn">
+    <part name="parameters" element="s0:updateCustomer" />
+  </message>
+  <message name="updateCustomerSoapOut">
+    <part name="parameters" element="s0:updateCustomerResponse" />
+  </message>
+  <message name="updateStatusSoapIn">
+    <part name="parameters" element="s0:updateStatus" />
+  </message>
+  <message name="updateStatusSoapOut">
+    <part name="parameters" element="s0:updateStatusResponse" />
+  </message>
+  <message name="addStatusSoapIn">
+    <part name="parameters" element="s0:addStatus" />
+  </message>
+  <message name="addStatusSoapOut">
+    <part name="parameters" element="s0:addStatusResponse" />
+  </message>
+  <message name="addTrackingSoapIn">
+    <part name="parameters" element="s0:addTracking" />
+  </message>
+  <message name="addTrackingSoapOut">
+    <part name="parameters" element="s0:addTrackingResponse" />
+  </message>
+  <message name="updateTrackingSoapIn">
+    <part name="parameters" element="s0:updateTracking" />
+  </message>
+  <message name="updateTrackingSoapOut">
+    <part name="parameters" element="s0:updateTrackingResponse" />
+  </message>
+  <message name="validateUserSoapIn">
+    <part name="parameters" element="s0:validateUser" />
+  </message>
+  <message name="validateUserSoapOut">
+    <part name="parameters" element="s0:validateUserResponse" />
+  </message>
+  <message name="setCustomerPermissionHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="CUSTOMER_Active" type="s:string" />
+  </message>
+  <message name="setCustomerPermissionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setOperatorPermissionHttpGetIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+    <part name="id_OPER" type="s:string" />
+    <part name="OPER_Active" type="s:string" />
+  </message>
+  <message name="setOperatorPermissionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setCompanyPermissionHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+    <part name="COMPANY_Active" type="s:string" />
+  </message>
+  <message name="setCompanyPermissionHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getSpecifiedTrackingAccessHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getSpecifiedTrackingAccessHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCustomerAccessHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getSpecifiedCustomerAccessHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllCustomerAccessHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllCustomerAccessHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCompanyListHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+  </message>
+  <message name="getCompanyListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getOperatorsListHttpGetIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+  </message>
+  <message name="getOperatorsListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerListHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getCustomerListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCompanyHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+  </message>
+  <message name="getSpecifiedCompanyHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCustomerHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getSpecifiedCustomerHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showAllTrackingHttpGetIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+  </message>
+  <message name="showAllTrackingHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showSpecifiedTrackingHttpGetIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="showSpecifiedTrackingHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedTrackingHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getSpecifiedTrackingHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showTrackingHistoryHttpGetIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="showTrackingHistoryHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getTrackingHistoryHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getTrackingHistoryHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerTrackingHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getCustomerTrackingHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllTrackingHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllTrackingHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllStatusHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllStatusHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerCompanyNameHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getCustomerCompanyNameHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getCompanyNameHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+  </message>
+  <message name="getCompanyNameHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCompanyHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="COMPANY_username" type="s:string" />
+    <part name="COMPANY_password" type="s:string" />
+    <part name="COMPANY_name" type="s:string" />
+    <part name="COMPANY_ContactName" type="s:string" />
+    <part name="COMPANY_ContactTitle" type="s:string" />
+    <part name="COMPANY_Address" type="s:string" />
+    <part name="COMPANY_City" type="s:string" />
+    <part name="COMPANY_Region" type="s:string" />
+    <part name="COMPANY_PostalCode" type="s:string" />
+    <part name="COMPANY_Country" type="s:string" />
+    <part name="COMPANY_Phone" type="s:string" />
+    <part name="COMPANY_Fax" type="s:string" />
+    <part name="COMPANY_HandPhone" type="s:string" />
+    <part name="COMPANY_Email" type="s:string" />
+  </message>
+  <message name="addCompanyHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addOperatorHttpGetIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+    <part name="OPER_Username" type="s:string" />
+    <part name="OPER_PassWord" type="s:string" />
+  </message>
+  <message name="addOperatorHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCustomerHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="CUSTOMER_Username" type="s:string" />
+    <part name="CUSTOMER_PassWord" type="s:string" />
+    <part name="CUSTOMER_CompanyName" type="s:string" />
+    <part name="CUSTOMER_ContactName" type="s:string" />
+    <part name="CUSTOMER_ContactTitle" type="s:string" />
+    <part name="CUSTOMER_Address" type="s:string" />
+    <part name="CUSTOMER_City" type="s:string" />
+    <part name="CUSTOMER_Region" type="s:string" />
+    <part name="CUSTOMER_PostalCode" type="s:string" />
+    <part name="CUSTOMER_Country" type="s:string" />
+    <part name="CUSTOMER_Phone" type="s:string" />
+    <part name="CUSTOMER_Fax" type="s:string" />
+    <part name="CUSTOMER_HandPhone" type="s:string" />
+    <part name="CUSTOMER_Email" type="s:string" />
+  </message>
+  <message name="addCustomerHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCompanyHttpGetIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+    <part name="COMPANY_name" type="s:string" />
+    <part name="COMPANY_ContactName" type="s:string" />
+    <part name="COMPANY_ContactTitle" type="s:string" />
+    <part name="COMPANY_Address" type="s:string" />
+    <part name="COMPANY_City" type="s:string" />
+    <part name="COMPANY_Region" type="s:string" />
+    <part name="COMPANY_PostalCode" type="s:string" />
+    <part name="COMPANY_Country" type="s:string" />
+    <part name="COMPANY_Phone" type="s:string" />
+    <part name="COMPANY_Fax" type="s:string" />
+    <part name="COMPANY_HandPhone" type="s:string" />
+    <part name="COMPANY_Email" type="s:string" />
+  </message>
+  <message name="updateCompanyHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCustomerHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="CUSTOMER_Username" type="s:string" />
+    <part name="CUSTOMER_PassWord" type="s:string" />
+    <part name="CUSTOMER_CompanyName" type="s:string" />
+    <part name="CUSTOMER_ContactName" type="s:string" />
+    <part name="CUSTOMER_ContactTitle" type="s:string" />
+    <part name="CUSTOMER_Address" type="s:string" />
+    <part name="CUSTOMER_City" type="s:string" />
+    <part name="CUSTOMER_Region" type="s:string" />
+    <part name="CUSTOMER_PostalCode" type="s:string" />
+    <part name="CUSTOMER_Country" type="s:string" />
+    <part name="CUSTOMER_Phone" type="s:string" />
+    <part name="CUSTOMER_Fax" type="s:string" />
+    <part name="CUSTOMER_HandPhone" type="s:string" />
+    <part name="CUSTOMER_Email" type="s:string" />
+  </message>
+  <message name="updateCustomerHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateStatusHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="dsc_STATUS" type="s:string" />
+  </message>
+  <message name="updateStatusHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addStatusHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="dsc_STATUS" type="s:string" />
+  </message>
+  <message name="addStatusHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addTrackingHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="cd_DOSSIER" type="s:string" />
+    <part name="dsc_DOSSIER" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="COMMENTS" type="s:string" />
+  </message>
+  <message name="addTrackingHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateTrackingHttpGetIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="COMMENTS" type="s:string" />
+    <part name="MailNotificationSmtpServer" type="s:string" />
+    <part name="SendMailWithPriority" type="s:string" />
+  </message>
+  <message name="updateTrackingHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="validateUserHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="GroupID" type="s:string" />
+  </message>
+  <message name="validateUserHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="setCustomerPermissionHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="CUSTOMER_Active" type="s:string" />
+  </message>
+  <message name="setCustomerPermissionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setOperatorPermissionHttpPostIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+    <part name="id_OPER" type="s:string" />
+    <part name="OPER_Active" type="s:string" />
+  </message>
+  <message name="setOperatorPermissionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="setCompanyPermissionHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+    <part name="COMPANY_Active" type="s:string" />
+  </message>
+  <message name="setCompanyPermissionHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getSpecifiedTrackingAccessHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getSpecifiedTrackingAccessHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCustomerAccessHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getSpecifiedCustomerAccessHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllCustomerAccessHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllCustomerAccessHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCompanyListHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+  </message>
+  <message name="getCompanyListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getOperatorsListHttpPostIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+  </message>
+  <message name="getOperatorsListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerListHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getCustomerListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCompanyHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+  </message>
+  <message name="getSpecifiedCompanyHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedCustomerHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getSpecifiedCustomerHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showAllTrackingHttpPostIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+  </message>
+  <message name="showAllTrackingHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showSpecifiedTrackingHttpPostIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="showSpecifiedTrackingHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getSpecifiedTrackingHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getSpecifiedTrackingHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="showTrackingHistoryHttpPostIn">
+    <part name="customerUserName" type="s:string" />
+    <part name="customerPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="showTrackingHistoryHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getTrackingHistoryHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+  </message>
+  <message name="getTrackingHistoryHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerTrackingHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getCustomerTrackingHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllTrackingHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllTrackingHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getAllStatusHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+  </message>
+  <message name="getAllStatusHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCustomerCompanyNameHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+  </message>
+  <message name="getCustomerCompanyNameHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getCompanyNameHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+  </message>
+  <message name="getCompanyNameHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCompanyHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="COMPANY_username" type="s:string" />
+    <part name="COMPANY_password" type="s:string" />
+    <part name="COMPANY_name" type="s:string" />
+    <part name="COMPANY_ContactName" type="s:string" />
+    <part name="COMPANY_ContactTitle" type="s:string" />
+    <part name="COMPANY_Address" type="s:string" />
+    <part name="COMPANY_City" type="s:string" />
+    <part name="COMPANY_Region" type="s:string" />
+    <part name="COMPANY_PostalCode" type="s:string" />
+    <part name="COMPANY_Country" type="s:string" />
+    <part name="COMPANY_Phone" type="s:string" />
+    <part name="COMPANY_Fax" type="s:string" />
+    <part name="COMPANY_HandPhone" type="s:string" />
+    <part name="COMPANY_Email" type="s:string" />
+  </message>
+  <message name="addCompanyHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addOperatorHttpPostIn">
+    <part name="companyUserName" type="s:string" />
+    <part name="companyPassWord" type="s:string" />
+    <part name="OPER_Username" type="s:string" />
+    <part name="OPER_PassWord" type="s:string" />
+  </message>
+  <message name="addOperatorHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addCustomerHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="CUSTOMER_Username" type="s:string" />
+    <part name="CUSTOMER_PassWord" type="s:string" />
+    <part name="CUSTOMER_CompanyName" type="s:string" />
+    <part name="CUSTOMER_ContactName" type="s:string" />
+    <part name="CUSTOMER_ContactTitle" type="s:string" />
+    <part name="CUSTOMER_Address" type="s:string" />
+    <part name="CUSTOMER_City" type="s:string" />
+    <part name="CUSTOMER_Region" type="s:string" />
+    <part name="CUSTOMER_PostalCode" type="s:string" />
+    <part name="CUSTOMER_Country" type="s:string" />
+    <part name="CUSTOMER_Phone" type="s:string" />
+    <part name="CUSTOMER_Fax" type="s:string" />
+    <part name="CUSTOMER_HandPhone" type="s:string" />
+    <part name="CUSTOMER_Email" type="s:string" />
+  </message>
+  <message name="addCustomerHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCompanyHttpPostIn">
+    <part name="adminUserName" type="s:string" />
+    <part name="adminPassWord" type="s:string" />
+    <part name="id_COMPANY" type="s:string" />
+    <part name="COMPANY_name" type="s:string" />
+    <part name="COMPANY_ContactName" type="s:string" />
+    <part name="COMPANY_ContactTitle" type="s:string" />
+    <part name="COMPANY_Address" type="s:string" />
+    <part name="COMPANY_City" type="s:string" />
+    <part name="COMPANY_Region" type="s:string" />
+    <part name="COMPANY_PostalCode" type="s:string" />
+    <part name="COMPANY_Country" type="s:string" />
+    <part name="COMPANY_Phone" type="s:string" />
+    <part name="COMPANY_Fax" type="s:string" />
+    <part name="COMPANY_HandPhone" type="s:string" />
+    <part name="COMPANY_Email" type="s:string" />
+  </message>
+  <message name="updateCompanyHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateCustomerHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="CUSTOMER_Username" type="s:string" />
+    <part name="CUSTOMER_PassWord" type="s:string" />
+    <part name="CUSTOMER_CompanyName" type="s:string" />
+    <part name="CUSTOMER_ContactName" type="s:string" />
+    <part name="CUSTOMER_ContactTitle" type="s:string" />
+    <part name="CUSTOMER_Address" type="s:string" />
+    <part name="CUSTOMER_City" type="s:string" />
+    <part name="CUSTOMER_Region" type="s:string" />
+    <part name="CUSTOMER_PostalCode" type="s:string" />
+    <part name="CUSTOMER_Country" type="s:string" />
+    <part name="CUSTOMER_Phone" type="s:string" />
+    <part name="CUSTOMER_Fax" type="s:string" />
+    <part name="CUSTOMER_HandPhone" type="s:string" />
+    <part name="CUSTOMER_Email" type="s:string" />
+  </message>
+  <message name="updateCustomerHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateStatusHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="dsc_STATUS" type="s:string" />
+  </message>
+  <message name="updateStatusHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addStatusHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="dsc_STATUS" type="s:string" />
+  </message>
+  <message name="addStatusHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="addTrackingHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_CUSTOMER" type="s:string" />
+    <part name="cd_DOSSIER" type="s:string" />
+    <part name="dsc_DOSSIER" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="COMMENTS" type="s:string" />
+  </message>
+  <message name="addTrackingHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="updateTrackingHttpPostIn">
+    <part name="operUserName" type="s:string" />
+    <part name="operPassWord" type="s:string" />
+    <part name="id_TRACKING" type="s:string" />
+    <part name="id_STATUS" type="s:string" />
+    <part name="COMMENTS" type="s:string" />
+    <part name="MailNotificationSmtpServer" type="s:string" />
+    <part name="SendMailWithPriority" type="s:string" />
+  </message>
+  <message name="updateTrackingHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="validateUserHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="GroupID" type="s:string" />
+  </message>
+  <message name="validateUserHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="TrackingAllSoap">
+    <operation name="setCustomerPermission">
+      <documentation>To allow or deny the system access to the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCustomerPermissionSoapIn" />
+      <output message="s0:setCustomerPermissionSoapOut" />
+    </operation>
+    <operation name="setOperatorPermission">
+      <documentation>To allow or deny the system access to the specified operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:setOperatorPermissionSoapIn" />
+      <output message="s0:setOperatorPermissionSoapOut" />
+    </operation>
+    <operation name="setCompanyPermission">
+      <documentation>To allow or deny the system access to the specified company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCompanyPermissionSoapIn" />
+      <output message="s0:setCompanyPermissionSoapOut" />
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <documentation>To get the specified tracking system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingAccessSoapIn" />
+      <output message="s0:getSpecifiedTrackingAccessSoapOut" />
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <documentation>To get the specified customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerAccessSoapIn" />
+      <output message="s0:getSpecifiedCustomerAccessSoapOut" />
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <documentation>To get the customers service access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllCustomerAccessSoapIn" />
+      <output message="s0:getAllCustomerAccessSoapOut" />
+    </operation>
+    <operation name="getCompanyList">
+      <documentation>To get the traking companies list &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyListSoapIn" />
+      <output message="s0:getCompanyListSoapOut" />
+    </operation>
+    <operation name="getOperatorsList">
+      <documentation>To get the company operators list &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:getOperatorsListSoapIn" />
+      <output message="s0:getOperatorsListSoapOut" />
+    </operation>
+    <operation name="getCustomerList">
+      <documentation>To get the full customers list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerListSoapIn" />
+      <output message="s0:getCustomerListSoapOut" />
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <documentation>To get informations about the specified tracking company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCompanySoapIn" />
+      <output message="s0:getSpecifiedCompanySoapOut" />
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <documentation>To get informations about the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerSoapIn" />
+      <output message="s0:getSpecifiedCustomerSoapOut" />
+    </operation>
+    <operation name="showAllTracking">
+      <documentation>To show to the customer a full tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showAllTrackingSoapIn" />
+      <output message="s0:showAllTrackingSoapOut" />
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showSpecifiedTrackingSoapIn" />
+      <output message="s0:showSpecifiedTrackingSoapOut" />
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <documentation>To get the specified tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingSoapIn" />
+      <output message="s0:getSpecifiedTrackingSoapOut" />
+    </operation>
+    <operation name="showTrackingHistory">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showTrackingHistorySoapIn" />
+      <output message="s0:showTrackingHistorySoapOut" />
+    </operation>
+    <operation name="getTrackingHistory">
+      <documentation>To get the specified tracking history report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getTrackingHistorySoapIn" />
+      <output message="s0:getTrackingHistorySoapOut" />
+    </operation>
+    <operation name="getCustomerTracking">
+      <documentation>To get the customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerTrackingSoapIn" />
+      <output message="s0:getCustomerTrackingSoapOut" />
+    </operation>
+    <operation name="getAllTracking">
+      <documentation>To get the full customers tracking report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllTrackingSoapIn" />
+      <output message="s0:getAllTrackingSoapOut" />
+    </operation>
+    <operation name="getAllStatus">
+      <documentation>To get the status type list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllStatusSoapIn" />
+      <output message="s0:getAllStatusSoapOut" />
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <documentation>To get the customer company name &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerCompanyNameSoapIn" />
+      <output message="s0:getCustomerCompanyNameSoapOut" />
+    </operation>
+    <operation name="getCompanyName">
+      <documentation>To get the tracking company name &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyNameSoapIn" />
+      <output message="s0:getCompanyNameSoapOut" />
+    </operation>
+    <operation name="addCompany">
+      <documentation>To add a trusted company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCompanySoapIn" />
+      <output message="s0:addCompanySoapOut" />
+    </operation>
+    <operation name="addOperator">
+      <documentation>To add an operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:addOperatorSoapIn" />
+      <output message="s0:addOperatorSoapOut" />
+    </operation>
+    <operation name="addCustomer">
+      <documentation>To add a customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCustomerSoapIn" />
+      <output message="s0:addCustomerSoapOut" />
+    </operation>
+    <operation name="updateCompany">
+      <documentation>To edit the company informations &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCompanySoapIn" />
+      <output message="s0:updateCompanySoapOut" />
+    </operation>
+    <operation name="updateCustomer">
+      <documentation>To edit the customer informations &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCustomerSoapIn" />
+      <output message="s0:updateCustomerSoapOut" />
+    </operation>
+    <operation name="updateStatus">
+      <documentation>To update a status type description &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateStatusSoapIn" />
+      <output message="s0:updateStatusSoapOut" />
+    </operation>
+    <operation name="addStatus">
+      <documentation>To add a status type &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addStatusSoapIn" />
+      <output message="s0:addStatusSoapOut" />
+    </operation>
+    <operation name="addTracking">
+      <documentation>To add a new tracking &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addTrackingSoapIn" />
+      <output message="s0:addTrackingSoapOut" />
+    </operation>
+    <operation name="updateTracking">
+      <documentation>To update a tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateTrackingSoapIn" />
+      <output message="s0:updateTrackingSoapOut" />
+    </operation>
+    <operation name="validateUser">
+      <documentation>To validate an user &lt;i&gt;(for all)&lt;/i&gt;.</documentation>
+      <input message="s0:validateUserSoapIn" />
+      <output message="s0:validateUserSoapOut" />
+    </operation>
+  </portType>
+  <portType name="TrackingAllHttpGet">
+    <operation name="setCustomerPermission">
+      <documentation>To allow or deny the system access to the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCustomerPermissionHttpGetIn" />
+      <output message="s0:setCustomerPermissionHttpGetOut" />
+    </operation>
+    <operation name="setOperatorPermission">
+      <documentation>To allow or deny the system access to the specified operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:setOperatorPermissionHttpGetIn" />
+      <output message="s0:setOperatorPermissionHttpGetOut" />
+    </operation>
+    <operation name="setCompanyPermission">
+      <documentation>To allow or deny the system access to the specified company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCompanyPermissionHttpGetIn" />
+      <output message="s0:setCompanyPermissionHttpGetOut" />
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <documentation>To get the specified tracking system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingAccessHttpGetIn" />
+      <output message="s0:getSpecifiedTrackingAccessHttpGetOut" />
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <documentation>To get the specified customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerAccessHttpGetIn" />
+      <output message="s0:getSpecifiedCustomerAccessHttpGetOut" />
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <documentation>To get the customers service access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllCustomerAccessHttpGetIn" />
+      <output message="s0:getAllCustomerAccessHttpGetOut" />
+    </operation>
+    <operation name="getCompanyList">
+      <documentation>To get the traking companies list &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyListHttpGetIn" />
+      <output message="s0:getCompanyListHttpGetOut" />
+    </operation>
+    <operation name="getOperatorsList">
+      <documentation>To get the company operators list &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:getOperatorsListHttpGetIn" />
+      <output message="s0:getOperatorsListHttpGetOut" />
+    </operation>
+    <operation name="getCustomerList">
+      <documentation>To get the full customers list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerListHttpGetIn" />
+      <output message="s0:getCustomerListHttpGetOut" />
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <documentation>To get informations about the specified tracking company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCompanyHttpGetIn" />
+      <output message="s0:getSpecifiedCompanyHttpGetOut" />
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <documentation>To get informations about the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerHttpGetIn" />
+      <output message="s0:getSpecifiedCustomerHttpGetOut" />
+    </operation>
+    <operation name="showAllTracking">
+      <documentation>To show to the customer a full tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showAllTrackingHttpGetIn" />
+      <output message="s0:showAllTrackingHttpGetOut" />
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showSpecifiedTrackingHttpGetIn" />
+      <output message="s0:showSpecifiedTrackingHttpGetOut" />
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <documentation>To get the specified tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingHttpGetIn" />
+      <output message="s0:getSpecifiedTrackingHttpGetOut" />
+    </operation>
+    <operation name="showTrackingHistory">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showTrackingHistoryHttpGetIn" />
+      <output message="s0:showTrackingHistoryHttpGetOut" />
+    </operation>
+    <operation name="getTrackingHistory">
+      <documentation>To get the specified tracking history report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getTrackingHistoryHttpGetIn" />
+      <output message="s0:getTrackingHistoryHttpGetOut" />
+    </operation>
+    <operation name="getCustomerTracking">
+      <documentation>To get the customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerTrackingHttpGetIn" />
+      <output message="s0:getCustomerTrackingHttpGetOut" />
+    </operation>
+    <operation name="getAllTracking">
+      <documentation>To get the full customers tracking report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllTrackingHttpGetIn" />
+      <output message="s0:getAllTrackingHttpGetOut" />
+    </operation>
+    <operation name="getAllStatus">
+      <documentation>To get the status type list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllStatusHttpGetIn" />
+      <output message="s0:getAllStatusHttpGetOut" />
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <documentation>To get the customer company name &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerCompanyNameHttpGetIn" />
+      <output message="s0:getCustomerCompanyNameHttpGetOut" />
+    </operation>
+    <operation name="getCompanyName">
+      <documentation>To get the tracking company name &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyNameHttpGetIn" />
+      <output message="s0:getCompanyNameHttpGetOut" />
+    </operation>
+    <operation name="addCompany">
+      <documentation>To add a trusted company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCompanyHttpGetIn" />
+      <output message="s0:addCompanyHttpGetOut" />
+    </operation>
+    <operation name="addOperator">
+      <documentation>To add an operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:addOperatorHttpGetIn" />
+      <output message="s0:addOperatorHttpGetOut" />
+    </operation>
+    <operation name="addCustomer">
+      <documentation>To add a customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCustomerHttpGetIn" />
+      <output message="s0:addCustomerHttpGetOut" />
+    </operation>
+    <operation name="updateCompany">
+      <documentation>To edit the company informations &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCompanyHttpGetIn" />
+      <output message="s0:updateCompanyHttpGetOut" />
+    </operation>
+    <operation name="updateCustomer">
+      <documentation>To edit the customer informations &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCustomerHttpGetIn" />
+      <output message="s0:updateCustomerHttpGetOut" />
+    </operation>
+    <operation name="updateStatus">
+      <documentation>To update a status type description &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateStatusHttpGetIn" />
+      <output message="s0:updateStatusHttpGetOut" />
+    </operation>
+    <operation name="addStatus">
+      <documentation>To add a status type &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addStatusHttpGetIn" />
+      <output message="s0:addStatusHttpGetOut" />
+    </operation>
+    <operation name="addTracking">
+      <documentation>To add a new tracking &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addTrackingHttpGetIn" />
+      <output message="s0:addTrackingHttpGetOut" />
+    </operation>
+    <operation name="updateTracking">
+      <documentation>To update a tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateTrackingHttpGetIn" />
+      <output message="s0:updateTrackingHttpGetOut" />
+    </operation>
+    <operation name="validateUser">
+      <documentation>To validate an user &lt;i&gt;(for all)&lt;/i&gt;.</documentation>
+      <input message="s0:validateUserHttpGetIn" />
+      <output message="s0:validateUserHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="TrackingAllHttpPost">
+    <operation name="setCustomerPermission">
+      <documentation>To allow or deny the system access to the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCustomerPermissionHttpPostIn" />
+      <output message="s0:setCustomerPermissionHttpPostOut" />
+    </operation>
+    <operation name="setOperatorPermission">
+      <documentation>To allow or deny the system access to the specified operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:setOperatorPermissionHttpPostIn" />
+      <output message="s0:setOperatorPermissionHttpPostOut" />
+    </operation>
+    <operation name="setCompanyPermission">
+      <documentation>To allow or deny the system access to the specified company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:setCompanyPermissionHttpPostIn" />
+      <output message="s0:setCompanyPermissionHttpPostOut" />
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <documentation>To get the specified tracking system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingAccessHttpPostIn" />
+      <output message="s0:getSpecifiedTrackingAccessHttpPostOut" />
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <documentation>To get the specified customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerAccessHttpPostIn" />
+      <output message="s0:getSpecifiedCustomerAccessHttpPostOut" />
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <documentation>To get the customers service access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllCustomerAccessHttpPostIn" />
+      <output message="s0:getAllCustomerAccessHttpPostOut" />
+    </operation>
+    <operation name="getCompanyList">
+      <documentation>To get the traking companies list &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyListHttpPostIn" />
+      <output message="s0:getCompanyListHttpPostOut" />
+    </operation>
+    <operation name="getOperatorsList">
+      <documentation>To get the company operators list &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:getOperatorsListHttpPostIn" />
+      <output message="s0:getOperatorsListHttpPostOut" />
+    </operation>
+    <operation name="getCustomerList">
+      <documentation>To get the full customers list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerListHttpPostIn" />
+      <output message="s0:getCustomerListHttpPostOut" />
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <documentation>To get informations about the specified tracking company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCompanyHttpPostIn" />
+      <output message="s0:getSpecifiedCompanyHttpPostOut" />
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <documentation>To get informations about the specified customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedCustomerHttpPostIn" />
+      <output message="s0:getSpecifiedCustomerHttpPostOut" />
+    </operation>
+    <operation name="showAllTracking">
+      <documentation>To show to the customer a full tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showAllTrackingHttpPostIn" />
+      <output message="s0:showAllTrackingHttpPostOut" />
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showSpecifiedTrackingHttpPostIn" />
+      <output message="s0:showSpecifiedTrackingHttpPostOut" />
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <documentation>To get the specified tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getSpecifiedTrackingHttpPostIn" />
+      <output message="s0:getSpecifiedTrackingHttpPostOut" />
+    </operation>
+    <operation name="showTrackingHistory">
+      <documentation>To show to the customer the specified tracking status report &lt;i&gt;(only for customers)&lt;/i&gt;.</documentation>
+      <input message="s0:showTrackingHistoryHttpPostIn" />
+      <output message="s0:showTrackingHistoryHttpPostOut" />
+    </operation>
+    <operation name="getTrackingHistory">
+      <documentation>To get the specified tracking history report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getTrackingHistoryHttpPostIn" />
+      <output message="s0:getTrackingHistoryHttpPostOut" />
+    </operation>
+    <operation name="getCustomerTracking">
+      <documentation>To get the customer system access report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerTrackingHttpPostIn" />
+      <output message="s0:getCustomerTrackingHttpPostOut" />
+    </operation>
+    <operation name="getAllTracking">
+      <documentation>To get the full customers tracking report &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllTrackingHttpPostIn" />
+      <output message="s0:getAllTrackingHttpPostOut" />
+    </operation>
+    <operation name="getAllStatus">
+      <documentation>To get the status type list &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getAllStatusHttpPostIn" />
+      <output message="s0:getAllStatusHttpPostOut" />
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <documentation>To get the customer company name &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCustomerCompanyNameHttpPostIn" />
+      <output message="s0:getCustomerCompanyNameHttpPostOut" />
+    </operation>
+    <operation name="getCompanyName">
+      <documentation>To get the tracking company name &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:getCompanyNameHttpPostIn" />
+      <output message="s0:getCompanyNameHttpPostOut" />
+    </operation>
+    <operation name="addCompany">
+      <documentation>To add a trusted company &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCompanyHttpPostIn" />
+      <output message="s0:addCompanyHttpPostOut" />
+    </operation>
+    <operation name="addOperator">
+      <documentation>To add an operator &lt;i&gt;(only for companies)&lt;/i&gt;.</documentation>
+      <input message="s0:addOperatorHttpPostIn" />
+      <output message="s0:addOperatorHttpPostOut" />
+    </operation>
+    <operation name="addCustomer">
+      <documentation>To add a customer &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addCustomerHttpPostIn" />
+      <output message="s0:addCustomerHttpPostOut" />
+    </operation>
+    <operation name="updateCompany">
+      <documentation>To edit the company informations &lt;i&gt;(only for administrators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCompanyHttpPostIn" />
+      <output message="s0:updateCompanyHttpPostOut" />
+    </operation>
+    <operation name="updateCustomer">
+      <documentation>To edit the customer informations &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateCustomerHttpPostIn" />
+      <output message="s0:updateCustomerHttpPostOut" />
+    </operation>
+    <operation name="updateStatus">
+      <documentation>To update a status type description &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateStatusHttpPostIn" />
+      <output message="s0:updateStatusHttpPostOut" />
+    </operation>
+    <operation name="addStatus">
+      <documentation>To add a status type &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addStatusHttpPostIn" />
+      <output message="s0:addStatusHttpPostOut" />
+    </operation>
+    <operation name="addTracking">
+      <documentation>To add a new tracking &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:addTrackingHttpPostIn" />
+      <output message="s0:addTrackingHttpPostOut" />
+    </operation>
+    <operation name="updateTracking">
+      <documentation>To update a tracking status &lt;i&gt;(only for operators)&lt;/i&gt;.</documentation>
+      <input message="s0:updateTrackingHttpPostIn" />
+      <output message="s0:updateTrackingHttpPostOut" />
+    </operation>
+    <operation name="validateUser">
+      <documentation>To validate an user &lt;i&gt;(for all)&lt;/i&gt;.</documentation>
+      <input message="s0:validateUserHttpPostIn" />
+      <output message="s0:validateUserHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="TrackingAllSoap" type="s0:TrackingAllSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="setCustomerPermission">
+      <soap:operation soapAction="TrackingAll/setCustomerPermission" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setOperatorPermission">
+      <soap:operation soapAction="TrackingAll/setOperatorPermission" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="setCompanyPermission">
+      <soap:operation soapAction="TrackingAll/setCompanyPermission" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <soap:operation soapAction="TrackingAll/getSpecifiedTrackingAccess" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <soap:operation soapAction="TrackingAll/getSpecifiedCustomerAccess" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <soap:operation soapAction="TrackingAll/getAllCustomerAccess" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCompanyList">
+      <soap:operation soapAction="TrackingAll/getCompanyList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getOperatorsList">
+      <soap:operation soapAction="TrackingAll/getOperatorsList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCustomerList">
+      <soap:operation soapAction="TrackingAll/getCustomerList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <soap:operation soapAction="TrackingAll/getSpecifiedCompany" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <soap:operation soapAction="TrackingAll/getSpecifiedCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="showAllTracking">
+      <soap:operation soapAction="TrackingAll/showAllTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <soap:operation soapAction="TrackingAll/showSpecifiedTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <soap:operation soapAction="TrackingAll/getSpecifiedTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="showTrackingHistory">
+      <soap:operation soapAction="TrackingAll/showTrackingHistory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getTrackingHistory">
+      <soap:operation soapAction="TrackingAll/getTrackingHistory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCustomerTracking">
+      <soap:operation soapAction="TrackingAll/getCustomerTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllTracking">
+      <soap:operation soapAction="TrackingAll/getAllTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAllStatus">
+      <soap:operation soapAction="TrackingAll/getAllStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <soap:operation soapAction="TrackingAll/getCustomerCompanyName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCompanyName">
+      <soap:operation soapAction="TrackingAll/getCompanyName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addCompany">
+      <soap:operation soapAction="TrackingAll/addCompany" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addOperator">
+      <soap:operation soapAction="TrackingAll/addOperator" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addCustomer">
+      <soap:operation soapAction="TrackingAll/addCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateCompany">
+      <soap:operation soapAction="TrackingAll/updateCompany" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateCustomer">
+      <soap:operation soapAction="TrackingAll/updateCustomer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateStatus">
+      <soap:operation soapAction="TrackingAll/updateStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addStatus">
+      <soap:operation soapAction="TrackingAll/addStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="addTracking">
+      <soap:operation soapAction="TrackingAll/addTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updateTracking">
+      <soap:operation soapAction="TrackingAll/updateTracking" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validateUser">
+      <soap:operation soapAction="TrackingAll/validateUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TrackingAllHttpGet" type="s0:TrackingAllHttpGet">
+    <http:binding verb="GET" />
+    <operation name="setCustomerPermission">
+      <http:operation location="/setCustomerPermission" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setOperatorPermission">
+      <http:operation location="/setOperatorPermission" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setCompanyPermission">
+      <http:operation location="/setCompanyPermission" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <http:operation location="/getSpecifiedTrackingAccess" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <http:operation location="/getSpecifiedCustomerAccess" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <http:operation location="/getAllCustomerAccess" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCompanyList">
+      <http:operation location="/getCompanyList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getOperatorsList">
+      <http:operation location="/getOperatorsList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerList">
+      <http:operation location="/getCustomerList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <http:operation location="/getSpecifiedCompany" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <http:operation location="/getSpecifiedCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showAllTracking">
+      <http:operation location="/showAllTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <http:operation location="/showSpecifiedTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <http:operation location="/getSpecifiedTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showTrackingHistory">
+      <http:operation location="/showTrackingHistory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getTrackingHistory">
+      <http:operation location="/getTrackingHistory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerTracking">
+      <http:operation location="/getCustomerTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllTracking">
+      <http:operation location="/getAllTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllStatus">
+      <http:operation location="/getAllStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <http:operation location="/getCustomerCompanyName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCompanyName">
+      <http:operation location="/getCompanyName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCompany">
+      <http:operation location="/addCompany" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addOperator">
+      <http:operation location="/addOperator" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCustomer">
+      <http:operation location="/addCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCompany">
+      <http:operation location="/updateCompany" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCustomer">
+      <http:operation location="/updateCustomer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateStatus">
+      <http:operation location="/updateStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addStatus">
+      <http:operation location="/addStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addTracking">
+      <http:operation location="/addTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateTracking">
+      <http:operation location="/updateTracking" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateUser">
+      <http:operation location="/validateUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TrackingAllHttpPost" type="s0:TrackingAllHttpPost">
+    <http:binding verb="POST" />
+    <operation name="setCustomerPermission">
+      <http:operation location="/setCustomerPermission" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setOperatorPermission">
+      <http:operation location="/setOperatorPermission" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="setCompanyPermission">
+      <http:operation location="/setCompanyPermission" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTrackingAccess">
+      <http:operation location="/getSpecifiedTrackingAccess" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomerAccess">
+      <http:operation location="/getSpecifiedCustomerAccess" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllCustomerAccess">
+      <http:operation location="/getAllCustomerAccess" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCompanyList">
+      <http:operation location="/getCompanyList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getOperatorsList">
+      <http:operation location="/getOperatorsList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerList">
+      <http:operation location="/getCustomerList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCompany">
+      <http:operation location="/getSpecifiedCompany" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedCustomer">
+      <http:operation location="/getSpecifiedCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showAllTracking">
+      <http:operation location="/showAllTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showSpecifiedTracking">
+      <http:operation location="/showSpecifiedTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getSpecifiedTracking">
+      <http:operation location="/getSpecifiedTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showTrackingHistory">
+      <http:operation location="/showTrackingHistory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getTrackingHistory">
+      <http:operation location="/getTrackingHistory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerTracking">
+      <http:operation location="/getCustomerTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllTracking">
+      <http:operation location="/getAllTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAllStatus">
+      <http:operation location="/getAllStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCustomerCompanyName">
+      <http:operation location="/getCustomerCompanyName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCompanyName">
+      <http:operation location="/getCompanyName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCompany">
+      <http:operation location="/addCompany" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addOperator">
+      <http:operation location="/addOperator" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addCustomer">
+      <http:operation location="/addCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCompany">
+      <http:operation location="/updateCompany" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateCustomer">
+      <http:operation location="/updateCustomer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateStatus">
+      <http:operation location="/updateStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addStatus">
+      <http:operation location="/addStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="addTracking">
+      <http:operation location="/addTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="updateTracking">
+      <http:operation location="/updateTracking" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateUser">
+      <http:operation location="/validateUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TrackingAll">
+    <documentation>&lt;b&gt;TrackingAll&lt;/b&gt; is a tracking webservice system to track orders, delivering, shipping and so on.&lt;br /&gt;It can be used from any kind of companies to give an eccelent tracking support service to their customers.&lt;br /&gt;TrackingAll gives a full control to the tracking operators increasing the customer satisfaction.&lt;br /&gt;Four levels access, tracking history, cutomers system access reports and tracking e-mail notification are supported.&lt;br /&gt;&lt;br /&gt;More informations about this webservice at &lt;b&gt;&lt;a href="http://net.intranext.it/tracking/"&gt;http://net.intranext.it/tracking/&lt;/a&gt;&lt;/b&gt; or sending an e-mail to &lt;b&gt;&lt;a href="mailto:tws@intranext.it"&gt;tws@intranext.it&lt;/a&gt;&lt;/b&gt;&lt;br /&gt;&lt;i&gt;All rights reserved ©2002 Intranext s.a.s IT&lt;/i&gt;</documentation>
+    <port name="TrackingAllSoap" binding="s0:TrackingAllSoap">
+      <soap:address location="http://inext.www1.dotnetplayground.com/TrackingAll.asmx" />
+    </port>
+    <port name="TrackingAllHttpGet" binding="s0:TrackingAllHttpGet">
+      <http:address location="http://inext.www1.dotnetplayground.com/TrackingAll.asmx" />
+    </port>
+    <port name="TrackingAllHttpPost" binding="s0:TrackingAllHttpPost">
+      <http:address location="http://inext.www1.dotnetplayground.com/TrackingAll.asmx" />
+    </port>
+  </service>
+</definitions>

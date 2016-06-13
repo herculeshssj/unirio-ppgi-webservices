@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="strings" xmlns:tns="http://tempuri.org"
+xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:typens='http://tempuri.org/type' 
+xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+	<schema targetNamespace="http://tempuri.org/type"
+    elementFormDefault="qualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+     xmlns:tns="http://tempuri.org"
+      xmlns:typens="http://tempuri.org/type"
+     >
+		<complexType name="tokens">
+			<sequence>
+				<any minOccurs='0' maxOccurs='unbounded' namespace='#any' processContents='skip'/>
+			</sequence>
+		</complexType>
+	</schema>
+  </types>
+  <message name="alignRequest">
+    <part name="padding" type="xsd:string" />
+
+    <part name="alignment" type="xsd:string" />
+  </message>
+
+  <message name="alignResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="decodeUriRequest">
+  </message>
+
+  <message name="decodeUriResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="encodeUriRequest">
+  </message>
+
+  <message name="encodeUriResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="paddingRequest">
+    <part name="num" type="xsd:string" />
+
+    <part name="str" type="xsd:string" />
+  </message>
+
+  <message name="paddingResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="tokenizeRequest">
+    <part name="delimiters" type="xsd:string" />
+  </message>
+
+  <message name="tokenizeResponse">
+    <part name="tokens" type="typens:tokens" />
+  </message>
+
+  <message name="alignIRequest">
+    <part name="context" type="xsd:string" />
+
+    <part name="padding" type="xsd:string" />
+
+    <part name="alignment" type="xsd:string" />
+  </message>
+
+  <message name="alignIResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="decodeUriIRequest">
+    <part name="context" type="xsd:string" />
+  </message>
+
+  <message name="decodeUriIResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="encodeUriIRequest">
+    <part name="context" type="xsd:string" />
+  </message>
+
+  <message name="encodeUriIResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+
+  <message name="tokenizeIRequest">
+    <part name="context" type="xsd:string" />
+
+    <part name="delimiters" type="xsd:string" />
+  </message>
+
+  <message name="tokenizeIResponse">
+    <part name="tokens" type="typens:tokens" />
+  </message>
+
+  <portType name="stringPort">
+    <operation name="align">
+      <input message="tns:alignRequest" name="align" />
+
+      <output message="tns:alignResponse" name="align" />
+    </operation>
+
+    <operation name="decodeUri">
+      <input message="tns:decodeUriRequest" name="decodeUri" />
+
+      <output message="tns:decodeUriResponse" name="decodeUri" />
+    </operation>
+
+    <operation name="encodeUri">
+      <input message="tns:encodeUriRequest" name="encodeUri" />
+
+      <output message="tns:encodeUriResponse" name="encodeUri" />
+    </operation>
+
+    <operation name="padding">
+      <input message="tns:paddingRequest" name="padding" />
+
+      <output message="tns:paddingResponse" name="padding" />
+    </operation>
+
+    <operation name="tokenize">
+      <input message="tns:tokenizeRequest" name="tokenize" />
+
+      <output message="tns:tokenizeResponse" name="tokenize" />
+    </operation>
+  </portType>
+
+  <portType name="stringPortI">
+    <operation name="alignI">
+      <input message="tns:alignIRequest" name="align" />
+
+      <output message="tns:alignIResponse" name="align" />
+    </operation>
+
+    <operation name="decodeUriI">
+      <input message="tns:decodeUriIRequest" name="decodeUri" />
+
+      <output message="tns:decodeUriIResponse" name="decodeUri" />
+    </operation>
+
+    <operation name="encodeUriI">
+      <input message="tns:encodeUriIRequest" name="encodeUri" />
+
+      <output message="tns:encodeUriIResponse" name="encodeUri" />
+    </operation>
+
+    <operation name="tokenizeI">
+      <input message="tns:tokenizeIRequest" name="tokenize" />
+
+      <output message="tns:tokenizeIResponse" name="tokenize" />
+    </operation>
+  </portType>
+
+  <binding name="stringBinding" type="tns:stringPort">
+    <stk:binding preferredEncoding="UTF-8" />
+
+    <soap:binding style="rpc"
+    transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <operation name="align">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.align" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="decodeUri">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.decodeUri" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="encodeUri">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.encodeUri" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="padding">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.padding" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="tokenize">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.tokenize" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+
+  <binding name="stringBindingI" type="tns:stringPortI">
+    <stk:binding preferredEncoding="UTF-8" />
+
+    <soap:binding style="rpc"
+    transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <operation name="alignI">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.align" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="decodeUriI">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.decodeUri" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="encodeUriI">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.encodeUri" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+
+    <operation name="tokenizeI">
+      <soap:operation
+      soapAction="http://tempuri.org/action/string.tokenize" />
+
+      <input>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+
+      <output>
+        <soap:body use="encoded"
+        namespace="http://tempuri.org/message/"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+
+  <service name="strings">
+    <port name="stringPort" binding="tns:stringBinding">
+      <soap:address
+      location="http://www.bayes.co.uk/xml/utils/strings/service/strings.asp" />
+    </port>
+
+    <port name="stringPortI" binding="tns:stringBindingI">
+      <soap:address
+      location="http://www.bayes.co.uk/xml/utils/strings/service/strings.asp" />
+    </port>
+  </service>
+</definitions>
+

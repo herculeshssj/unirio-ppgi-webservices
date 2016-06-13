@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IPrimeGeneratorservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="primegeneratorRequest">
+    <part name="valstart" type="xs:string"/>
+    <part name="valend" type="xs:string"/>
+  </message>
+  <message name="primegeneratorResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IPrimeGenerator">
+    <operation name="primegenerator">
+      <input message="tns:primegeneratorRequest"/>
+      <output message="tns:primegeneratorResponse"/>
+    </operation>
+  </portType>
+  <binding name="IPrimeGeneratorbinding" type="tns:IPrimeGenerator">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="primegenerator">
+      <soap:operation soapAction="urn:UnitIPrimeGenerator-IPrimeGenerator#primegenerator"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UnitIPrimeGenerator-IPrimeGenerator"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:UnitIPrimeGenerator-IPrimeGenerator"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IPrimeGeneratorservice">
+    <port name="IPrimeGeneratorPort" binding="tns:IPrimeGeneratorbinding">
+      <soap:address location="http://www.jusufdarmawan.com/wsprimegenerator.exe/soap/IPrimeGenerator"/>
+    </port>
+  </service>
+</definitions>

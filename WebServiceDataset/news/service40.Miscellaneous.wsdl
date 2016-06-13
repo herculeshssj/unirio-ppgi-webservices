@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+ <!-- Generated 12/15/2001 07:56:22 PM by West Wind wwSOAP WSDL Generator 1.50  --> 
+<definitions  name ='foxcentral'   targetNamespace = 'http://tempuri.org/wsdl/'
+	 xmlns:wsdlns='http://tempuri.org/wsdl/' 
+	 xmlns:typens='http://tempuri.org/type' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+	 xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://tempuri.org/type'
+      xmlns='http://www.w3.org/2001/XMLSchema'
+      xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+      xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+      elementFormDefault='qualified'>
+    </schema>
+  </types>
+  	<message name='foxcentral.GetNewsItems'>
+		   <part name='lnDays' type='xsd:int'/>
+		   <part name='lnProvider' type='xsd:int'/>
+		   <part name='lcType' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetNewsItemsResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetItems'>
+		   <part name='ldLastOn' type='xsd:dateTime'/>
+		   <part name='ldTimeZone' type='xsd:int'/>
+		   <part name='lnProvider' type='xsd:int'/>
+		   <part name='lcType' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetItemsResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.AddItem'>
+		   <part name='lcSubject' type='xsd:string'/>
+		   <part name='lcContent' type='xsd:string'/>
+		   <part name='lcLink' type='xsd:string'/>
+		   <part name='ldDate' type='xsd:dateTime'/>
+		   <part name='lnProviderPk' type='xsd:int'/>
+		   <part name='lcPassword' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.AddItemResponse'>
+  		<part name='Result' type='xsd:int'/>
+	</message>
+	<message name='foxcentral.SaveItemEx'>
+		   <part name='lcXMLNewsItem' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.SaveItemExResponse'>
+  		<part name='Result' type='xsd:int'/>
+	</message>
+	<message name='foxcentral.GetItemEx'>
+		   <part name='lnPK' type='xsd:int'/>
+	</message>
+	<message name='foxcentral.GetItemExResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.DeleteItem'>
+		   <part name='lnPK' type='xsd:int'/>
+		   <part name='lcPassword' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.DeleteItemResponse'>
+  		<part name='Result' type='xsd:boolean'/>
+	</message>
+	<message name='foxcentral.GetProviders'>
+	</message>
+	<message name='foxcentral.GetProvidersResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetProviderEx'>
+		   <part name='lnProviderPk' type='xsd:int'/>
+		   <part name='lcPassword' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetProviderExResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.SaveProviderEx'>
+		   <part name='lcXML' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.SaveProviderExResponse'>
+  		<part name='Result' type='xsd:boolean'/>
+	</message>
+	<message name='foxcentral.GetTypes'>
+	</message>
+	<message name='foxcentral.GetTypesResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetResources'>
+		   <part name='lcType' type='xsd:string'/>
+		   <part name='lnProvider' type='xsd:int'/>
+	</message>
+	<message name='foxcentral.GetResourcesResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetResourcesWithFilter'>
+		   <part name='lcType' type='xsd:string'/>
+		   <part name='lnProvider' type='xsd:int'/>
+		   <part name='ldFromDate' type='xsd:dateTime'/>
+		   <part name='ldToDate' type='xsd:dateTime'/>
+		   <part name='lcKeywords' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.GetResourcesWithFilterResponse'>
+  		<part name='Result' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.SaveResourceEx'>
+		   <part name='lcXMLResourceItem' type='xsd:string'/>
+	</message>
+	<message name='foxcentral.SaveResourceExResponse'>
+  		<part name='Result' type='xsd:int'/>
+	</message>
+
+  <portType name='foxcentralSoapPort'>
+     	<operation name="GetNewsItems"   parameterOrder="lnDays lnProvider lcType">
+      <documentation>Retrieves all the current news for the last number of days specified</documentation>
+		<input message="wsdlns:foxcentral.GetNewsItems" /> 
+		<output message="wsdlns:foxcentral.GetNewsItemsResponse" />
+	</operation>
+	<operation name="GetItems"   parameterOrder="ldLastOn ldTimeZone lnProvider lcType">
+      <documentation>Retrieves all the current news from a given date forward</documentation>
+		<input message="wsdlns:foxcentral.GetItems" /> 
+		<output message="wsdlns:foxcentral.GetItemsResponse" />
+	</operation>
+	<operation name="AddItem"   parameterOrder="lcSubject lcContent lcLink ldDate lnProviderPk lcPassword">
+      <documentation>Add a News Item to the FoxCentral news table.</documentation>
+		<input message="wsdlns:foxcentral.AddItem" /> 
+		<output message="wsdlns:foxcentral.AddItemResponse" />
+	</operation>
+	<operation name="SaveItemEx"   parameterOrder="lcXMLNewsItem">
+      <documentation>Saves an Item from an XML Object representation</documentation>
+		<input message="wsdlns:foxcentral.SaveItemEx" /> 
+		<output message="wsdlns:foxcentral.SaveItemExResponse" />
+	</operation>
+	<operation name="GetItemEx"   parameterOrder="lnPK">
+      <documentation>Retrieves an an item as an XML object representation</documentation>
+		<input message="wsdlns:foxcentral.GetItemEx" /> 
+		<output message="wsdlns:foxcentral.GetItemExResponse" />
+	</operation>
+	<operation name="DeleteItem"   parameterOrder="lnPK lcPassword">
+      <documentation>Deletes an item by PK</documentation>
+		<input message="wsdlns:foxcentral.DeleteItem" /> 
+		<output message="wsdlns:foxcentral.DeleteItemResponse" />
+	</operation>
+	<operation name="GetProviders"   parameterOrder="">
+      <documentation>Returns a list of all available providers as an XML cursor.</documentation>
+		<input message="wsdlns:foxcentral.GetProviders" /> 
+		<output message="wsdlns:foxcentral.GetProvidersResponse" />
+	</operation>
+	<operation name="GetProviderEx"   parameterOrder="lnProviderPk lcPassword">
+      <documentation>Retrieves a provider as an XML object representation.</documentation>
+		<input message="wsdlns:foxcentral.GetProviderEx" /> 
+		<output message="wsdlns:foxcentral.GetProviderExResponse" />
+	</operation>
+	<operation name="SaveProviderEx"   parameterOrder="lcXML">
+      <documentation>Saves a provider from an XML object representation</documentation>
+		<input message="wsdlns:foxcentral.SaveProviderEx" /> 
+		<output message="wsdlns:foxcentral.SaveProviderExResponse" />
+	</operation>
+	<operation name="GetTypes"   parameterOrder="">
+      <documentation>Returns an XML cursor of types available</documentation>
+		<input message="wsdlns:foxcentral.GetTypes" /> 
+		<output message="wsdlns:foxcentral.GetTypesResponse" />
+	</operation>
+	<operation name="GetResources"   parameterOrder="lcType lnProvider">
+      <documentation>Returns an XML cursor for the specified FoxPro resources.</documentation>
+		<input message="wsdlns:foxcentral.GetResources" /> 
+		<output message="wsdlns:foxcentral.GetResourcesResponse" />
+	</operation>
+	<operation name="GetResourcesWithFilter"   parameterOrder="lcType lnProvider ldFromDate ldToDate lcKeywords">
+      <documentation>Returns an XML cursor for the specified FoxPro resources.</documentation>
+		<input message="wsdlns:foxcentral.GetResourcesWithFilter" /> 
+		<output message="wsdlns:foxcentral.GetResourcesWithFilterResponse" />
+	</operation>
+	<operation name="SaveResourceEx"   parameterOrder="lcXMLResourceItem">
+      <documentation>Saves a Resource from an XML Object representation</documentation>
+		<input message="wsdlns:foxcentral.SaveResourceEx" /> 
+		<output message="wsdlns:foxcentral.SaveResourceExResponse" />
+	</operation>
+
+  </portType>
+  <binding name='foxcentralSoapBinding' type='wsdlns:foxcentralSoapPort' >
+    <stk:binding preferredEncoding='UTF-8'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+    	<operation name="GetNewsItems">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetNewsItems" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetItems">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetItems" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="AddItem">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.AddItem" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="SaveItemEx">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.SaveItemEx" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetItemEx">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetItemEx" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="DeleteItem">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.DeleteItem" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetProviders">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetProviders" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetProviderEx">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetProviderEx" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="SaveProviderEx">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.SaveProviderEx" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetTypes">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetTypes" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetResources">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetResources" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="GetResourcesWithFilter">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.GetResourcesWithFilter" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+	<operation name="SaveResourceEx">
+		<soap:operation soapAction="http://tempuri.org/action/foxcentral.SaveResourceEx" />
+		<input>
+		  <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</input>
+      <output>
+      <soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+		</output>
+	</operation>
+
+  </binding>
+  <service name='foxcentral' >
+    <port name='foxcentralSoapPort' binding='wsdlns:foxcentralSoapBinding' >
+      <soap:address location='http://www.foxcentral.net/foxcentral.wwsoap?wsFoxCentral' />
+    </port>
+  </service>
+</definitions>

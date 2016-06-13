@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IEuroservice" targetNamespace="http://tempuri.org/" xmlns:targetNamespace="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="FromEuroRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="Currency" type="xs:string"></part>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="Amount" type="xs:double"></part>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="FromEuroResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:double"></part>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="ToEuroRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="Currency" type="xs:string"></part>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="Amount" type="xs:double"></part>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="ToEuroResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:double"></part>
+  </message>
+  <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="IEuro">
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="FromEuro">
+      <input message="targetNamespace:FromEuroRequest"></input>
+      <output message="targetNamespace:FromEuroResponse"></output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="ToEuro">
+      <input message="targetNamespace:ToEuroRequest"></input>
+      <output message="targetNamespace:ToEuroResponse"></output>
+    </operation>
+  </portType>
+  <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="IEurobinding" type="targetNamespace:IEuro">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="FromEuro">
+      <soap:operation soapAction="urn:Euro-IEuro#FromEuro"></soap:operation>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Euro-IEuro"></soap:body>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Euro-IEuro"></soap:body>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="ToEuro">
+      <soap:operation soapAction="urn:Euro-IEuro#ToEuro"></soap:operation>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Euro-IEuro"></soap:body>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Euro-IEuro"></soap:body>
+      </output>
+    </operation>
+  </binding>
+  <service xmlns="http://schemas.xmlsoap.org/wsdl/" name="IEuroservice">
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="IEuroPort" binding="targetNamespace:IEurobinding">
+      <soap:address location="http://www.drbob42.co.uk/cgi-bin/Euro42/soap/IEuro"></soap:address>
+    </port>
+  </service>
+</definitions>
+

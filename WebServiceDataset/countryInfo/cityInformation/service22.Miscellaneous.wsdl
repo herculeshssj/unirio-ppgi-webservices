@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://circle24.com/webservices/WorldTime" targetNamespace="http://circle24.com/webservices/WorldTime" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://circle24.com/webservices/WorldTime">
+      <s:element name="GetTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="City" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetTimeResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetTimeSoapIn">
+    <part name="parameters" element="s0:GetTime" />
+  </message>
+  <message name="GetTimeSoapOut">
+    <part name="parameters" element="s0:GetTimeResponse" />
+  </message>
+  <message name="GetTimeHttpGetIn">
+    <part name="City" type="s:string" />
+  </message>
+  <message name="GetTimeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTimeHttpPostIn">
+    <part name="City" type="s:string" />
+  </message>
+  <message name="GetTimeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="WorldTimeSoap">
+    <operation name="GetTime">
+      <documentation>Enter the name of a city to test the application. For eg; New York</documentation>
+      <input message="s0:GetTimeSoapIn" />
+      <output message="s0:GetTimeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WorldTimeHttpGet">
+    <operation name="GetTime">
+      <documentation>Enter the name of a city to test the application. For eg; New York</documentation>
+      <input message="s0:GetTimeHttpGetIn" />
+      <output message="s0:GetTimeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WorldTimeHttpPost">
+    <operation name="GetTime">
+      <documentation>Enter the name of a city to test the application. For eg; New York</documentation>
+      <input message="s0:GetTimeHttpPostIn" />
+      <output message="s0:GetTimeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WorldTimeSoap" type="s0:WorldTimeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTime">
+      <soap:operation soapAction="http://circle24.com/webservices/WorldTime/GetTime" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WorldTimeHttpGet" type="s0:WorldTimeHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTime">
+      <http:operation location="/GetTime" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WorldTimeHttpPost" type="s0:WorldTimeHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTime">
+      <http:operation location="/GetTime" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WorldTime">
+    <documentation>A Web Service which displays the current local time of any city around the world.</documentation>
+    <port name="WorldTimeSoap" binding="s0:WorldTimeSoap">
+      <soap:address location="http://upload.eraserver.net/circle24/worldtime/worldtime.asmx" />
+    </port>
+    <port name="WorldTimeHttpGet" binding="s0:WorldTimeHttpGet">
+      <http:address location="http://upload.eraserver.net/circle24/worldtime/worldtime.asmx" />
+    </port>
+    <port name="WorldTimeHttpPost" binding="s0:WorldTimeHttpPost">
+      <http:address location="http://upload.eraserver.net/circle24/worldtime/worldtime.asmx" />
+    </port>
+  </service>
+</definitions>

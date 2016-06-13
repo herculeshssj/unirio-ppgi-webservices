@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://schemas.netedgesoftware.net/StockInfo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://schemas.netedgesoftware.net/StockInfo" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.netedgesoftware.net/StockInfo">
+      <s:element name="GetHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offline" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHistoryResult" type="s0:ArrayOfLineItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItem" type="s0:LineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LineItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Open" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="High" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Low" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Close" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Volume" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="wsdldb">
+        <s:complexType />
+      </s:element>
+      <s:element name="wsdldbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsdldbResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfLineItem" nillable="true" type="s0:ArrayOfLineItem" />
+    </s:schema>
+  </types>
+  <message name="GetHistorySoapIn">
+    <part name="parameters" element="s0:GetHistory" />
+  </message>
+  <message name="GetHistorySoapOut">
+    <part name="parameters" element="s0:GetHistoryResponse" />
+  </message>
+  <message name="wsdldbSoapIn">
+    <part name="parameters" element="s0:wsdldb" />
+  </message>
+  <message name="wsdldbSoapOut">
+    <part name="parameters" element="s0:wsdldbResponse" />
+  </message>
+  <message name="GetHistoryHttpGetIn">
+    <part name="symbol" type="s:string" />
+    <part name="offline" type="s:string" />
+  </message>
+  <message name="GetHistoryHttpGetOut">
+    <part name="Body" element="s0:ArrayOfLineItem" />
+  </message>
+  <message name="wsdldbHttpGetIn" />
+  <message name="wsdldbHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="GetHistoryHttpPostIn">
+    <part name="symbol" type="s:string" />
+    <part name="offline" type="s:string" />
+  </message>
+  <message name="GetHistoryHttpPostOut">
+    <part name="Body" element="s0:ArrayOfLineItem" />
+  </message>
+  <message name="wsdldbHttpPostIn" />
+  <message name="wsdldbHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="StockInfoSoap">
+    <operation name="GetHistory">
+      <documentation>Get a history of stock data for a specific stock ticker symbol.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='StockInfoVB.asmx/GetHistory?symbol=MSFT&amp;offline=false'&gt;Example input: symbol=MSFT, offline=false&lt;/a&gt;</documentation>
+      <input message="s0:GetHistorySoapIn" />
+      <output message="s0:GetHistorySoapOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbSoapIn" />
+      <output message="s0:wsdldbSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StockInfoHttpGet">
+    <operation name="GetHistory">
+      <documentation>Get a history of stock data for a specific stock ticker symbol.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='StockInfoVB.asmx/GetHistory?symbol=MSFT&amp;offline=false'&gt;Example input: symbol=MSFT, offline=false&lt;/a&gt;</documentation>
+      <input message="s0:GetHistoryHttpGetIn" />
+      <output message="s0:GetHistoryHttpGetOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbHttpGetIn" />
+      <output message="s0:wsdldbHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StockInfoHttpPost">
+    <operation name="GetHistory">
+      <documentation>Get a history of stock data for a specific stock ticker symbol.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='StockInfoVB.asmx/GetHistory?symbol=MSFT&amp;offline=false'&gt;Example input: symbol=MSFT, offline=false&lt;/a&gt;</documentation>
+      <input message="s0:GetHistoryHttpPostIn" />
+      <output message="s0:GetHistoryHttpPostOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbHttpPostIn" />
+      <output message="s0:wsdldbHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StockInfoSoap" type="s0:StockInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetHistory">
+      <soap:operation soapAction="http://schemas.netedgesoftware.net/StockInfo/GetHistory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <soap:operation soapAction="http://schemas.netedgesoftware.net/StockInfo/wsdldb" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockInfoHttpGet" type="s0:StockInfoHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetHistory">
+      <http:operation location="/GetHistory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <http:operation location="/wsdldb" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockInfoHttpPost" type="s0:StockInfoHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetHistory">
+      <http:operation location="/GetHistory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <http:operation location="/wsdldb" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StockInfo">
+    <documentation>Retrieve real time stock quotes over the Internet.  There is one web method in this service, GetHistory.  GetHistory accepts a stock ticker symbol and a true/false value for whether to query the Internet or use offline data.  The offline data option is useful if you are working offline or if the source for stock data is temporarily unavailable.</documentation>
+    <port name="StockInfoSoap" binding="s0:StockInfoSoap">
+      <soap:address location="http://ws.netedgesoftware.com/wsenabler/1.0/StockInfoVB.asmx" />
+    </port>
+    <port name="StockInfoHttpGet" binding="s0:StockInfoHttpGet">
+      <http:address location="http://ws.netedgesoftware.com/wsenabler/1.0/StockInfoVB.asmx" />
+    </port>
+    <port name="StockInfoHttpPost" binding="s0:StockInfoHttpPost">
+      <http:address location="http://ws.netedgesoftware.com/wsenabler/1.0/StockInfoVB.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<definitions name="ReverseText.creverse" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/ReverseText/CReverse.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/ReverseText/CReverse.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="ReverseTextRequest">
+        <part name="OriginalText" type="xsd:string"/>
+    </message>
+    <message name="ReverseTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="ReverseText.creversePortType">
+        <operation name="ReverseText">
+            <input message="tns:ReverseTextRequest"/>
+            <output message="tns:ReverseTextResponse"/>
+        </operation>
+    </portType>
+    <binding name="ReverseText.creversebinding" type="tns:ReverseText.creversePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ReverseText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/ReverseText/CReverse.xml#ReverseText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/ReverseText/CReverse.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/ReverseText/CReverse.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="ReverseText.creverseService">
+        <port name="ReverseText.creversePort" binding="tns:ReverseText.creversebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/strings.cgi"/>
+        </port>
+    </service>
+</definitions>

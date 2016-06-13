@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myasptools.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myasptools.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myasptools.com/">
+      <s:element name="TrackingInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackingInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingInfoResult" type="s0:UPSTrackResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UPSTrackResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="shipment" type="s0:UPSShipment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSShipment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="shipper" type="s0:UPSShipper" />
+          <s:element minOccurs="0" maxOccurs="1" name="shipto" type="s0:UPSShipTo" />
+          <s:element minOccurs="0" maxOccurs="1" name="package" type="s0:UPSPackage" />
+          <s:element minOccurs="0" maxOccurs="1" name="service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pickupdate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="scheduleddeliverydate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSShipper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="shippernumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s0:UPSAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="streeaddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="stateprovince" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="postalcode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSShipTo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s0:UPSAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSPackage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="trackingnumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="packageweight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="activities" type="s0:ArrayOfUPSActivity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUPSActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UPSActivity" nillable="true" type="s0:UPSActivity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UPSActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="s0:UPSAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="time" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TrackingLicInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackingLicInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingLicInfoResult" type="s0:UPSTrackResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPSTrackResponse" nillable="true" type="s0:UPSTrackResponse" />
+    </s:schema>
+  </types>
+  <message name="TrackingInfoSoapIn">
+    <part name="parameters" element="s0:TrackingInfo" />
+  </message>
+  <message name="TrackingInfoSoapOut">
+    <part name="parameters" element="s0:TrackingInfoResponse" />
+  </message>
+  <message name="TrackingLicInfoSoapIn">
+    <part name="parameters" element="s0:TrackingLicInfo" />
+  </message>
+  <message name="TrackingLicInfoSoapOut">
+    <part name="parameters" element="s0:TrackingLicInfoResponse" />
+  </message>
+  <message name="TrackingInfoHttpGetIn">
+    <part name="TrackingNumber" type="s:string" />
+  </message>
+  <message name="TrackingInfoHttpGetOut">
+    <part name="Body" element="s0:UPSTrackResponse" />
+  </message>
+  <message name="TrackingLicInfoHttpGetIn">
+    <part name="TrackingNumber" type="s:string" />
+    <part name="LicNumber" type="s:string" />
+  </message>
+  <message name="TrackingLicInfoHttpGetOut">
+    <part name="Body" element="s0:UPSTrackResponse" />
+  </message>
+  <message name="TrackingInfoHttpPostIn">
+    <part name="TrackingNumber" type="s:string" />
+  </message>
+  <message name="TrackingInfoHttpPostOut">
+    <part name="Body" element="s0:UPSTrackResponse" />
+  </message>
+  <message name="TrackingLicInfoHttpPostIn">
+    <part name="TrackingNumber" type="s:string" />
+    <part name="LicNumber" type="s:string" />
+  </message>
+  <message name="TrackingLicInfoHttpPostOut">
+    <part name="Body" element="s0:UPSTrackResponse" />
+  </message>
+  <portType name="UPSTrackingSoap">
+    <operation name="TrackingInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingInfoSoapIn" />
+      <output message="s0:TrackingInfoSoapOut" />
+    </operation>
+    <operation name="TrackingLicInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingLicInfoSoapIn" />
+      <output message="s0:TrackingLicInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UPSTrackingHttpGet">
+    <operation name="TrackingInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingInfoHttpGetIn" />
+      <output message="s0:TrackingInfoHttpGetOut" />
+    </operation>
+    <operation name="TrackingLicInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingLicInfoHttpGetIn" />
+      <output message="s0:TrackingLicInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UPSTrackingHttpPost">
+    <operation name="TrackingInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingInfoHttpPostIn" />
+      <output message="s0:TrackingInfoHttpPostOut" />
+    </operation>
+    <operation name="TrackingLicInfo">
+      <documentation>TrackingInfo retrieves UPS tracking information based on tracking number</documentation>
+      <input message="s0:TrackingLicInfoHttpPostIn" />
+      <output message="s0:TrackingLicInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UPSTrackingSoap" type="s0:UPSTrackingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="TrackingInfo">
+      <soap:operation soapAction="http://www.myasptools.com/TrackingInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TrackingLicInfo">
+      <soap:operation soapAction="http://www.myasptools.com/TrackingLicInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UPSTrackingHttpGet" type="s0:UPSTrackingHttpGet">
+    <http:binding verb="GET" />
+    <operation name="TrackingInfo">
+      <http:operation location="/TrackingInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="TrackingLicInfo">
+      <http:operation location="/TrackingLicInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UPSTrackingHttpPost" type="s0:UPSTrackingHttpPost">
+    <http:binding verb="POST" />
+    <operation name="TrackingInfo">
+      <http:operation location="/TrackingInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="TrackingLicInfo">
+      <http:operation location="/TrackingLicInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UPSTracking">
+    <port name="UPSTrackingSoap" binding="s0:UPSTrackingSoap">
+      <soap:address location="http://glkev.webs.innerhost.com/glkev_ws/UPSTracking.asmx" />
+    </port>
+    <port name="UPSTrackingHttpGet" binding="s0:UPSTrackingHttpGet">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/UPSTracking.asmx" />
+    </port>
+    <port name="UPSTrackingHttpPost" binding="s0:UPSTrackingHttpPost">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/UPSTracking.asmx" />
+    </port>
+  </service>
+</definitions>

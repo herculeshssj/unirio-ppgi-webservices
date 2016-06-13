@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myweb.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myweb.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myweb.com/webservices/">
+      <s:element name="GetSiteInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GL" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="LWL" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pipedia" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="baseht" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pumpcl" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="flow1" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pipelength" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="suctiondia" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSiteInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSiteInfoResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="GetSiteInfoSoapIn">
+    <part name="parameters" element="s0:GetSiteInfo" />
+  </message>
+  <message name="GetSiteInfoSoapOut">
+    <part name="parameters" element="s0:GetSiteInfoResponse" />
+  </message>
+  <message name="GetSiteInfoHttpGetIn">
+    <part name="GL" type="s:string" />
+    <part name="LWL" type="s:string" />
+    <part name="pipedia" type="s:string" />
+    <part name="baseht" type="s:string" />
+    <part name="pumpcl" type="s:string" />
+    <part name="flow1" type="s:string" />
+    <part name="pipelength" type="s:string" />
+    <part name="suctiondia" type="s:string" />
+  </message>
+  <message name="GetSiteInfoHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="GetSiteInfoHttpPostIn">
+    <part name="GL" type="s:string" />
+    <part name="LWL" type="s:string" />
+    <part name="pipedia" type="s:string" />
+    <part name="baseht" type="s:string" />
+    <part name="pumpcl" type="s:string" />
+    <part name="flow1" type="s:string" />
+    <part name="pipelength" type="s:string" />
+    <part name="suctiondia" type="s:string" />
+  </message>
+  <message name="GetSiteInfoHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="NPSHAcalcWebServiceSoap">
+    <operation name="GetSiteInfo">
+      <documentation>This method call will calculate NPSH available for the given site conditions.&lt;br&gt;&lt;br&gt;The input parameters are:&lt;br&gt;&lt;br&gt;&lt;b&gt;GL&lt;/b&gt; - Ground Level (Mtrs.)&lt;br&gt;&lt;b&gt;LWL&lt;/b&gt; - Lower Water Level (Mtrs.) &lt;br&gt; &lt;b&gt;pipedia&lt;/b&gt; - Suction Pipe diameter (mm) &lt;br&gt; &lt;b&gt;baseht&lt;/b&gt; - Pumpset Base Height including base plate and grouting (Mtrs.) &lt;br&gt; &lt;b&gt;flow1&lt;/b&gt; - Pump Flow (Cubic meters/Hour) &lt;br&gt; &lt;b&gt;pipelength&lt;/b&gt; - Length of suction piping (Mtrs.) &lt;br&gt; &lt;b&gt;suctiondia&lt;/b&gt; - Diameter of the Suction pipe (mm.) </documentation>
+      <input message="s0:GetSiteInfoSoapIn" />
+      <output message="s0:GetSiteInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="NPSHAcalcWebServiceHttpGet">
+    <operation name="GetSiteInfo">
+      <documentation>This method call will calculate NPSH available for the given site conditions.&lt;br&gt;&lt;br&gt;The input parameters are:&lt;br&gt;&lt;br&gt;&lt;b&gt;GL&lt;/b&gt; - Ground Level (Mtrs.)&lt;br&gt;&lt;b&gt;LWL&lt;/b&gt; - Lower Water Level (Mtrs.) &lt;br&gt; &lt;b&gt;pipedia&lt;/b&gt; - Suction Pipe diameter (mm) &lt;br&gt; &lt;b&gt;baseht&lt;/b&gt; - Pumpset Base Height including base plate and grouting (Mtrs.) &lt;br&gt; &lt;b&gt;flow1&lt;/b&gt; - Pump Flow (Cubic meters/Hour) &lt;br&gt; &lt;b&gt;pipelength&lt;/b&gt; - Length of suction piping (Mtrs.) &lt;br&gt; &lt;b&gt;suctiondia&lt;/b&gt; - Diameter of the Suction pipe (mm.) </documentation>
+      <input message="s0:GetSiteInfoHttpGetIn" />
+      <output message="s0:GetSiteInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="NPSHAcalcWebServiceHttpPost">
+    <operation name="GetSiteInfo">
+      <documentation>This method call will calculate NPSH available for the given site conditions.&lt;br&gt;&lt;br&gt;The input parameters are:&lt;br&gt;&lt;br&gt;&lt;b&gt;GL&lt;/b&gt; - Ground Level (Mtrs.)&lt;br&gt;&lt;b&gt;LWL&lt;/b&gt; - Lower Water Level (Mtrs.) &lt;br&gt; &lt;b&gt;pipedia&lt;/b&gt; - Suction Pipe diameter (mm) &lt;br&gt; &lt;b&gt;baseht&lt;/b&gt; - Pumpset Base Height including base plate and grouting (Mtrs.) &lt;br&gt; &lt;b&gt;flow1&lt;/b&gt; - Pump Flow (Cubic meters/Hour) &lt;br&gt; &lt;b&gt;pipelength&lt;/b&gt; - Length of suction piping (Mtrs.) &lt;br&gt; &lt;b&gt;suctiondia&lt;/b&gt; - Diameter of the Suction pipe (mm.) </documentation>
+      <input message="s0:GetSiteInfoHttpPostIn" />
+      <output message="s0:GetSiteInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="NPSHAcalcWebServiceSoap" type="s0:NPSHAcalcWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSiteInfo">
+      <soap:operation soapAction="http://www.myweb.com/webservices/GetSiteInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NPSHAcalcWebServiceHttpGet" type="s0:NPSHAcalcWebServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSiteInfo">
+      <http:operation location="/GetSiteInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NPSHAcalcWebServiceHttpPost" type="s0:NPSHAcalcWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSiteInfo">
+      <http:operation location="/GetSiteInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NPSHAcalcWebService">
+    <port name="NPSHAcalcWebServiceSoap" binding="s0:NPSHAcalcWebServiceSoap">
+      <soap:address location="http://www31.brinkster.com/inetserv/NPSHA1.asmx" />
+    </port>
+    <port name="NPSHAcalcWebServiceHttpGet" binding="s0:NPSHAcalcWebServiceHttpGet">
+      <http:address location="http://www31.brinkster.com/inetserv/NPSHA1.asmx" />
+    </port>
+    <port name="NPSHAcalcWebServiceHttpPost" binding="s0:NPSHAcalcWebServiceHttpPost">
+      <http:address location="http://www31.brinkster.com/inetserv/NPSHA1.asmx" />
+    </port>
+  </service>
+</definitions>

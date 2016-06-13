@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myasptools.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myasptools.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myasptools.com/">
+      <s:element name="GetRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="srcCurrency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="srcCurrency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destCurrency" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicRateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetRateSoapIn">
+    <part name="parameters" element="s0:GetRate" />
+  </message>
+  <message name="GetRateSoapOut">
+    <part name="parameters" element="s0:GetRateResponse" />
+  </message>
+  <message name="GetLicRateSoapIn">
+    <part name="parameters" element="s0:GetLicRate" />
+  </message>
+  <message name="GetLicRateSoapOut">
+    <part name="parameters" element="s0:GetLicRateResponse" />
+  </message>
+  <message name="GetRateHttpGetIn">
+    <part name="srcCurrency" type="s:string" />
+    <part name="destCurrency" type="s:string" />
+  </message>
+  <message name="GetRateHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLicRateHttpGetIn">
+    <part name="srcCurrency" type="s:string" />
+    <part name="destCurrency" type="s:string" />
+    <part name="LicNumber" type="s:string" />
+  </message>
+  <message name="GetLicRateHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRateHttpPostIn">
+    <part name="srcCurrency" type="s:string" />
+    <part name="destCurrency" type="s:string" />
+  </message>
+  <message name="GetRateHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetLicRateHttpPostIn">
+    <part name="srcCurrency" type="s:string" />
+    <part name="destCurrency" type="s:string" />
+    <part name="LicNumber" type="s:string" />
+  </message>
+  <message name="GetLicRateHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CurrencywsSoap">
+    <operation name="GetRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetRateSoapIn" />
+      <output message="s0:GetRateSoapOut" />
+    </operation>
+    <operation name="GetLicRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetLicRateSoapIn" />
+      <output message="s0:GetLicRateSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencywsHttpGet">
+    <operation name="GetRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetRateHttpGetIn" />
+      <output message="s0:GetRateHttpGetOut" />
+    </operation>
+    <operation name="GetLicRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetLicRateHttpGetIn" />
+      <output message="s0:GetLicRateHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CurrencywsHttpPost">
+    <operation name="GetRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetRateHttpPostIn" />
+      <output message="s0:GetRateHttpPostOut" />
+    </operation>
+    <operation name="GetLicRate">
+      <documentation>This method returns the currency conversion ratio between two countries</documentation>
+      <input message="s0:GetLicRateHttpPostIn" />
+      <output message="s0:GetLicRateHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CurrencywsSoap" type="s0:CurrencywsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetRate">
+      <soap:operation soapAction="http://www.myasptools.com/GetRate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLicRate">
+      <soap:operation soapAction="http://www.myasptools.com/GetLicRate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencywsHttpGet" type="s0:CurrencywsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetRate">
+      <http:operation location="/GetRate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicRate">
+      <http:operation location="/GetLicRate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CurrencywsHttpPost" type="s0:CurrencywsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetRate">
+      <http:operation location="/GetRate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicRate">
+      <http:operation location="/GetLicRate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Currencyws">
+    <port name="CurrencywsSoap" binding="s0:CurrencywsSoap">
+      <soap:address location="http://glkev.webs.innerhost.com/glkev_ws/Currencyws.asmx" />
+    </port>
+    <port name="CurrencywsHttpGet" binding="s0:CurrencywsHttpGet">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/Currencyws.asmx" />
+    </port>
+    <port name="CurrencywsHttpPost" binding="s0:CurrencywsHttpPost">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/Currencyws.asmx" />
+    </port>
+  </service>
+</definitions>

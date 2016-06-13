@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlns.netedgesoftware.net/Biblio" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlns.netedgesoftware.net/Biblio" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlns.netedgesoftware.net/Biblio">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="Logon">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogonResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoggedOnUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoggedOnUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoggedOnUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Logoff">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogoffResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="tbl_Authors">
+        <s:complexType />
+      </s:element>
+      <s:element name="tbl_AuthorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_AuthorsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tbl_Publishers">
+        <s:complexType />
+      </s:element>
+      <s:element name="tbl_PublishersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_PublishersResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tbl_TitleAuthor">
+        <s:complexType />
+      </s:element>
+      <s:element name="tbl_TitleAuthorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_TitleAuthorResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="tbl_Titles">
+        <s:complexType />
+      </s:element>
+      <s:element name="tbl_TitlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tbl_TitlesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="vw_AllTitles">
+        <s:complexType />
+      </s:element>
+      <s:element name="vw_AllTitlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vw_AllTitlesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTitles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="words" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="matchOp" type="s0:MatchOperation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MatchOperation">
+        <s:restriction base="s:string">
+          <s:enumeration value="MatchAll" />
+          <s:enumeration value="MatchAny" />
+          <s:enumeration value="MatchSequence" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SearchTitlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTitlesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountTitleSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="words" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="matchOp" type="s0:MatchOperation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountTitleSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountTitleSearchResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUniqueWordsInTitles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUniqueWordsInTitlesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUniqueWordsInTitlesResult" type="s0:ArrayOfWordFrequency" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWordFrequency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WordFrequency" type="s0:WordFrequency" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WordFrequency">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="word" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="frequency" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QuerySql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuerySqlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QuerySqlResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSqlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecuteSqlResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryTableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunStoredProcedure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="procedureName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunStoredProcedureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunStoredProcedureResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsdldb">
+        <s:complexType />
+      </s:element>
+      <s:element name="wsdldbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsdldbResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="ArrayOfWordFrequency" nillable="true" type="s0:ArrayOfWordFrequency" />
+    </s:schema>
+  </types>
+  <message name="LogonSoapIn">
+    <part name="parameters" element="s0:Logon" />
+  </message>
+  <message name="LogonSoapOut">
+    <part name="parameters" element="s0:LogonResponse" />
+  </message>
+  <message name="LoggedOnUserSoapIn">
+    <part name="parameters" element="s0:LoggedOnUser" />
+  </message>
+  <message name="LoggedOnUserSoapOut">
+    <part name="parameters" element="s0:LoggedOnUserResponse" />
+  </message>
+  <message name="LogoffSoapIn">
+    <part name="parameters" element="s0:Logoff" />
+  </message>
+  <message name="LogoffSoapOut">
+    <part name="parameters" element="s0:LogoffResponse" />
+  </message>
+  <message name="tbl_AuthorsSoapIn">
+    <part name="parameters" element="s0:tbl_Authors" />
+  </message>
+  <message name="tbl_AuthorsSoapOut">
+    <part name="parameters" element="s0:tbl_AuthorsResponse" />
+  </message>
+  <message name="tbl_PublishersSoapIn">
+    <part name="parameters" element="s0:tbl_Publishers" />
+  </message>
+  <message name="tbl_PublishersSoapOut">
+    <part name="parameters" element="s0:tbl_PublishersResponse" />
+  </message>
+  <message name="tbl_TitleAuthorSoapIn">
+    <part name="parameters" element="s0:tbl_TitleAuthor" />
+  </message>
+  <message name="tbl_TitleAuthorSoapOut">
+    <part name="parameters" element="s0:tbl_TitleAuthorResponse" />
+  </message>
+  <message name="tbl_TitlesSoapIn">
+    <part name="parameters" element="s0:tbl_Titles" />
+  </message>
+  <message name="tbl_TitlesSoapOut">
+    <part name="parameters" element="s0:tbl_TitlesResponse" />
+  </message>
+  <message name="vw_AllTitlesSoapIn">
+    <part name="parameters" element="s0:vw_AllTitles" />
+  </message>
+  <message name="vw_AllTitlesSoapOut">
+    <part name="parameters" element="s0:vw_AllTitlesResponse" />
+  </message>
+  <message name="SearchTitlesSoapIn">
+    <part name="parameters" element="s0:SearchTitles" />
+  </message>
+  <message name="SearchTitlesSoapOut">
+    <part name="parameters" element="s0:SearchTitlesResponse" />
+  </message>
+  <message name="CountTitleSearchSoapIn">
+    <part name="parameters" element="s0:CountTitleSearch" />
+  </message>
+  <message name="CountTitleSearchSoapOut">
+    <part name="parameters" element="s0:CountTitleSearchResponse" />
+  </message>
+  <message name="GetUniqueWordsInTitlesSoapIn">
+    <part name="parameters" element="s0:GetUniqueWordsInTitles" />
+  </message>
+  <message name="GetUniqueWordsInTitlesSoapOut">
+    <part name="parameters" element="s0:GetUniqueWordsInTitlesResponse" />
+  </message>
+  <message name="QuerySqlSoapIn">
+    <part name="parameters" element="s0:QuerySql" />
+  </message>
+  <message name="QuerySqlSoapOut">
+    <part name="parameters" element="s0:QuerySqlResponse" />
+  </message>
+  <message name="ExecuteSqlSoapIn">
+    <part name="parameters" element="s0:ExecuteSql" />
+  </message>
+  <message name="ExecuteSqlSoapOut">
+    <part name="parameters" element="s0:ExecuteSqlResponse" />
+  </message>
+  <message name="QueryTableSoapIn">
+    <part name="parameters" element="s0:QueryTable" />
+  </message>
+  <message name="QueryTableSoapOut">
+    <part name="parameters" element="s0:QueryTableResponse" />
+  </message>
+  <message name="RunStoredProcedureSoapIn">
+    <part name="parameters" element="s0:RunStoredProcedure" />
+  </message>
+  <message name="RunStoredProcedureSoapOut">
+    <part name="parameters" element="s0:RunStoredProcedureResponse" />
+  </message>
+  <message name="wsdldbSoapIn">
+    <part name="parameters" element="s0:wsdldb" />
+  </message>
+  <message name="wsdldbSoapOut">
+    <part name="parameters" element="s0:wsdldbResponse" />
+  </message>
+  <message name="LogonHttpGetIn">
+    <part name="userid" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="LogonHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="LoggedOnUserHttpGetIn" />
+  <message name="LoggedOnUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LogoffHttpGetIn" />
+  <message name="LogoffHttpGetOut" />
+  <message name="tbl_AuthorsHttpGetIn" />
+  <message name="tbl_AuthorsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_PublishersHttpGetIn" />
+  <message name="tbl_PublishersHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_TitleAuthorHttpGetIn" />
+  <message name="tbl_TitleAuthorHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_TitlesHttpGetIn" />
+  <message name="tbl_TitlesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="vw_AllTitlesHttpGetIn" />
+  <message name="vw_AllTitlesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="SearchTitlesHttpGetIn">
+    <part name="words" type="s:string" />
+    <part name="matchOp" type="s:string" />
+  </message>
+  <message name="SearchTitlesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="CountTitleSearchHttpGetIn">
+    <part name="words" type="s:string" />
+    <part name="matchOp" type="s:string" />
+  </message>
+  <message name="CountTitleSearchHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetUniqueWordsInTitlesHttpGetIn" />
+  <message name="GetUniqueWordsInTitlesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfWordFrequency" />
+  </message>
+  <message name="QuerySqlHttpGetIn">
+    <part name="sql" type="s:string" />
+  </message>
+  <message name="QuerySqlHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="ExecuteSqlHttpGetIn">
+    <part name="sql" type="s:string" />
+  </message>
+  <message name="ExecuteSqlHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="QueryTableHttpGetIn">
+    <part name="tableName" type="s:string" />
+  </message>
+  <message name="QueryTableHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RunStoredProcedureHttpGetIn">
+    <part name="procedureName" type="s:string" />
+  </message>
+  <message name="RunStoredProcedureHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="wsdldbHttpGetIn" />
+  <message name="wsdldbHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="LogonHttpPostIn">
+    <part name="userid" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="LogonHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="LoggedOnUserHttpPostIn" />
+  <message name="LoggedOnUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LogoffHttpPostIn" />
+  <message name="LogoffHttpPostOut" />
+  <message name="tbl_AuthorsHttpPostIn" />
+  <message name="tbl_AuthorsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_PublishersHttpPostIn" />
+  <message name="tbl_PublishersHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_TitleAuthorHttpPostIn" />
+  <message name="tbl_TitleAuthorHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="tbl_TitlesHttpPostIn" />
+  <message name="tbl_TitlesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="vw_AllTitlesHttpPostIn" />
+  <message name="vw_AllTitlesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="SearchTitlesHttpPostIn">
+    <part name="words" type="s:string" />
+    <part name="matchOp" type="s:string" />
+  </message>
+  <message name="SearchTitlesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="CountTitleSearchHttpPostIn">
+    <part name="words" type="s:string" />
+    <part name="matchOp" type="s:string" />
+  </message>
+  <message name="CountTitleSearchHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetUniqueWordsInTitlesHttpPostIn" />
+  <message name="GetUniqueWordsInTitlesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfWordFrequency" />
+  </message>
+  <message name="QuerySqlHttpPostIn">
+    <part name="sql" type="s:string" />
+  </message>
+  <message name="QuerySqlHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="ExecuteSqlHttpPostIn">
+    <part name="sql" type="s:string" />
+  </message>
+  <message name="ExecuteSqlHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="QueryTableHttpPostIn">
+    <part name="tableName" type="s:string" />
+  </message>
+  <message name="QueryTableHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RunStoredProcedureHttpPostIn">
+    <part name="procedureName" type="s:string" />
+  </message>
+  <message name="RunStoredProcedureHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="wsdldbHttpPostIn" />
+  <message name="wsdldbHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="BiblioDbServiceSoap">
+    <operation name="Logon">
+      <documentation>Logon to the Biblio service.  Use any non-empty user id and a password of &lt;i&gt;please&lt;/i&gt;.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/Logon?userid=johns&amp;password=please'&gt;Example input: userid=johns, password=please&lt;/a&gt;</documentation>
+      <input message="s0:LogonSoapIn" />
+      <output message="s0:LogonSoapOut" />
+    </operation>
+    <operation name="LoggedOnUser">
+      <documentation>Return the userid of the logged on user, if any.</documentation>
+      <input message="s0:LoggedOnUserSoapIn" />
+      <output message="s0:LoggedOnUserSoapOut" />
+    </operation>
+    <operation name="Logoff">
+      <documentation>Logoff from the Biblio service.</documentation>
+      <input message="s0:LogoffSoapIn" />
+      <output message="s0:LogoffSoapOut" />
+    </operation>
+    <operation name="tbl_Authors">
+      <documentation>Query the contents of the [Authors] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_AuthorsSoapIn" />
+      <output message="s0:tbl_AuthorsSoapOut" />
+    </operation>
+    <operation name="tbl_Publishers">
+      <documentation>Query the contents of the [Publishers] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_PublishersSoapIn" />
+      <output message="s0:tbl_PublishersSoapOut" />
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <documentation>Query the contents of the [Title Author] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitleAuthorSoapIn" />
+      <output message="s0:tbl_TitleAuthorSoapOut" />
+    </operation>
+    <operation name="tbl_Titles">
+      <documentation>Query the contents of the [Titles] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitlesSoapIn" />
+      <output message="s0:tbl_TitlesSoapOut" />
+    </operation>
+    <operation name="vw_AllTitles">
+      <documentation>Query the contents of the [All Titles] view.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:vw_AllTitlesSoapIn" />
+      <output message="s0:vw_AllTitlesSoapOut" />
+    </operation>
+    <operation name="SearchTitles">
+      <documentation>Search all titles for one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/SearchTitles?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:SearchTitlesSoapIn" />
+      <output message="s0:SearchTitlesSoapOut" />
+    </operation>
+    <operation name="CountTitleSearch">
+      <documentation>Count the number of titles matching one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/CountTitleSearch?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:CountTitleSearchSoapIn" />
+      <output message="s0:CountTitleSearchSoapOut" />
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <documentation>Get the master list of unique words in all titles.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:GetUniqueWordsInTitlesSoapIn" />
+      <output message="s0:GetUniqueWordsInTitlesSoapOut" />
+    </operation>
+    <operation name="QuerySql">
+      <documentation>Query the database with the given sql and return the results as a DataSet.</documentation>
+      <input message="s0:QuerySqlSoapIn" />
+      <output message="s0:QuerySqlSoapOut" />
+    </operation>
+    <operation name="ExecuteSql">
+      <documentation>Execute the given sql and return the number of records affected.</documentation>
+      <input message="s0:ExecuteSqlSoapIn" />
+      <output message="s0:ExecuteSqlSoapOut" />
+    </operation>
+    <operation name="QueryTable">
+      <documentation>Query the contents of a table.</documentation>
+      <input message="s0:QueryTableSoapIn" />
+      <output message="s0:QueryTableSoapOut" />
+    </operation>
+    <operation name="RunStoredProcedure">
+      <documentation>Run a stored procdure that takes no parameters and returns a DataSet.</documentation>
+      <input message="s0:RunStoredProcedureSoapIn" />
+      <output message="s0:RunStoredProcedureSoapOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbSoapIn" />
+      <output message="s0:wsdldbSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BiblioDbServiceHttpGet">
+    <operation name="Logon">
+      <documentation>Logon to the Biblio service.  Use any non-empty user id and a password of &lt;i&gt;please&lt;/i&gt;.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/Logon?userid=johns&amp;password=please'&gt;Example input: userid=johns, password=please&lt;/a&gt;</documentation>
+      <input message="s0:LogonHttpGetIn" />
+      <output message="s0:LogonHttpGetOut" />
+    </operation>
+    <operation name="LoggedOnUser">
+      <documentation>Return the userid of the logged on user, if any.</documentation>
+      <input message="s0:LoggedOnUserHttpGetIn" />
+      <output message="s0:LoggedOnUserHttpGetOut" />
+    </operation>
+    <operation name="Logoff">
+      <documentation>Logoff from the Biblio service.</documentation>
+      <input message="s0:LogoffHttpGetIn" />
+      <output message="s0:LogoffHttpGetOut" />
+    </operation>
+    <operation name="tbl_Authors">
+      <documentation>Query the contents of the [Authors] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_AuthorsHttpGetIn" />
+      <output message="s0:tbl_AuthorsHttpGetOut" />
+    </operation>
+    <operation name="tbl_Publishers">
+      <documentation>Query the contents of the [Publishers] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_PublishersHttpGetIn" />
+      <output message="s0:tbl_PublishersHttpGetOut" />
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <documentation>Query the contents of the [Title Author] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitleAuthorHttpGetIn" />
+      <output message="s0:tbl_TitleAuthorHttpGetOut" />
+    </operation>
+    <operation name="tbl_Titles">
+      <documentation>Query the contents of the [Titles] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitlesHttpGetIn" />
+      <output message="s0:tbl_TitlesHttpGetOut" />
+    </operation>
+    <operation name="vw_AllTitles">
+      <documentation>Query the contents of the [All Titles] view.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:vw_AllTitlesHttpGetIn" />
+      <output message="s0:vw_AllTitlesHttpGetOut" />
+    </operation>
+    <operation name="SearchTitles">
+      <documentation>Search all titles for one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/SearchTitles?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:SearchTitlesHttpGetIn" />
+      <output message="s0:SearchTitlesHttpGetOut" />
+    </operation>
+    <operation name="CountTitleSearch">
+      <documentation>Count the number of titles matching one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/CountTitleSearch?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:CountTitleSearchHttpGetIn" />
+      <output message="s0:CountTitleSearchHttpGetOut" />
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <documentation>Get the master list of unique words in all titles.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:GetUniqueWordsInTitlesHttpGetIn" />
+      <output message="s0:GetUniqueWordsInTitlesHttpGetOut" />
+    </operation>
+    <operation name="QuerySql">
+      <documentation>Query the database with the given sql and return the results as a DataSet.</documentation>
+      <input message="s0:QuerySqlHttpGetIn" />
+      <output message="s0:QuerySqlHttpGetOut" />
+    </operation>
+    <operation name="ExecuteSql">
+      <documentation>Execute the given sql and return the number of records affected.</documentation>
+      <input message="s0:ExecuteSqlHttpGetIn" />
+      <output message="s0:ExecuteSqlHttpGetOut" />
+    </operation>
+    <operation name="QueryTable">
+      <documentation>Query the contents of a table.</documentation>
+      <input message="s0:QueryTableHttpGetIn" />
+      <output message="s0:QueryTableHttpGetOut" />
+    </operation>
+    <operation name="RunStoredProcedure">
+      <documentation>Run a stored procdure that takes no parameters and returns a DataSet.</documentation>
+      <input message="s0:RunStoredProcedureHttpGetIn" />
+      <output message="s0:RunStoredProcedureHttpGetOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbHttpGetIn" />
+      <output message="s0:wsdldbHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BiblioDbServiceHttpPost">
+    <operation name="Logon">
+      <documentation>Logon to the Biblio service.  Use any non-empty user id and a password of &lt;i&gt;please&lt;/i&gt;.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/Logon?userid=johns&amp;password=please'&gt;Example input: userid=johns, password=please&lt;/a&gt;</documentation>
+      <input message="s0:LogonHttpPostIn" />
+      <output message="s0:LogonHttpPostOut" />
+    </operation>
+    <operation name="LoggedOnUser">
+      <documentation>Return the userid of the logged on user, if any.</documentation>
+      <input message="s0:LoggedOnUserHttpPostIn" />
+      <output message="s0:LoggedOnUserHttpPostOut" />
+    </operation>
+    <operation name="Logoff">
+      <documentation>Logoff from the Biblio service.</documentation>
+      <input message="s0:LogoffHttpPostIn" />
+      <output message="s0:LogoffHttpPostOut" />
+    </operation>
+    <operation name="tbl_Authors">
+      <documentation>Query the contents of the [Authors] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_AuthorsHttpPostIn" />
+      <output message="s0:tbl_AuthorsHttpPostOut" />
+    </operation>
+    <operation name="tbl_Publishers">
+      <documentation>Query the contents of the [Publishers] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_PublishersHttpPostIn" />
+      <output message="s0:tbl_PublishersHttpPostOut" />
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <documentation>Query the contents of the [Title Author] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitleAuthorHttpPostIn" />
+      <output message="s0:tbl_TitleAuthorHttpPostOut" />
+    </operation>
+    <operation name="tbl_Titles">
+      <documentation>Query the contents of the [Titles] table.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:tbl_TitlesHttpPostIn" />
+      <output message="s0:tbl_TitlesHttpPostOut" />
+    </operation>
+    <operation name="vw_AllTitles">
+      <documentation>Query the contents of the [All Titles] view.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:vw_AllTitlesHttpPostIn" />
+      <output message="s0:vw_AllTitlesHttpPostOut" />
+    </operation>
+    <operation name="SearchTitles">
+      <documentation>Search all titles for one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/SearchTitles?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:SearchTitlesHttpPostIn" />
+      <output message="s0:SearchTitlesHttpPostOut" />
+    </operation>
+    <operation name="CountTitleSearch">
+      <documentation>Count the number of titles matching one or more space-delimited words, ignoring upper/lower case.  The matchOp parameter must be &lt;i&gt;MatchAll&lt;/i&gt;, &lt;i&gt;MatchAny&lt;/i&gt;, or &lt;i&gt;MatchSequence&lt;/i&gt;.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.&lt;br&gt;&lt;br&gt;&lt;a target=_blank href='Biblio.asmx/CountTitleSearch?words=abc%20software&amp;matchOp=MatchAny'&gt;Example input: words="abc software", matchOp=MatchAny&lt;/a&gt;</documentation>
+      <input message="s0:CountTitleSearchHttpPostIn" />
+      <output message="s0:CountTitleSearchHttpPostOut" />
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <documentation>Get the master list of unique words in all titles.&lt;br&gt;&lt;br&gt;You must be logged on to the web service or the web method will fail.  In the browser, the failure is simply reported as an internal server error.</documentation>
+      <input message="s0:GetUniqueWordsInTitlesHttpPostIn" />
+      <output message="s0:GetUniqueWordsInTitlesHttpPostOut" />
+    </operation>
+    <operation name="QuerySql">
+      <documentation>Query the database with the given sql and return the results as a DataSet.</documentation>
+      <input message="s0:QuerySqlHttpPostIn" />
+      <output message="s0:QuerySqlHttpPostOut" />
+    </operation>
+    <operation name="ExecuteSql">
+      <documentation>Execute the given sql and return the number of records affected.</documentation>
+      <input message="s0:ExecuteSqlHttpPostIn" />
+      <output message="s0:ExecuteSqlHttpPostOut" />
+    </operation>
+    <operation name="QueryTable">
+      <documentation>Query the contents of a table.</documentation>
+      <input message="s0:QueryTableHttpPostIn" />
+      <output message="s0:QueryTableHttpPostOut" />
+    </operation>
+    <operation name="RunStoredProcedure">
+      <documentation>Run a stored procdure that takes no parameters and returns a DataSet.</documentation>
+      <input message="s0:RunStoredProcedureHttpPostIn" />
+      <output message="s0:RunStoredProcedureHttpPostOut" />
+    </operation>
+    <operation name="wsdldb">
+      <documentation>A system generated web method that returns a WSDL-DB document.  WSDL-DB is an add-on specification to WSDL from NetEdge Software that provides metadata to interpret the web methods in this web service as elements of a database.</documentation>
+      <input message="s0:wsdldbHttpPostIn" />
+      <output message="s0:wsdldbHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BiblioDbServiceSoap" type="s0:BiblioDbServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Logon">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/Logon" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LoggedOnUser">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/LoggedOnUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Logoff">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/Logoff" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="tbl_Authors">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/tbl_Authors" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="tbl_Publishers">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/tbl_Publishers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/tbl_TitleAuthor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="tbl_Titles">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/tbl_Titles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="vw_AllTitles">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/vw_AllTitles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchTitles">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/SearchTitles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountTitleSearch">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/CountTitleSearch" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/GetUniqueWordsInTitles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QuerySql">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/QuerySql" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteSql">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/ExecuteSql" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="QueryTable">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/QueryTable" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RunStoredProcedure">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/RunStoredProcedure" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <soap:operation soapAction="http://xmlns.netedgesoftware.net/Biblio/wsdldb" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BiblioDbServiceHttpGet" type="s0:BiblioDbServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Logon">
+      <http:operation location="/Logon" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LoggedOnUser">
+      <http:operation location="/LoggedOnUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Logoff">
+      <http:operation location="/Logoff" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="tbl_Authors">
+      <http:operation location="/tbl_Authors" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_Publishers">
+      <http:operation location="/tbl_Publishers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <http:operation location="/tbl_TitleAuthor" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_Titles">
+      <http:operation location="/tbl_Titles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="vw_AllTitles">
+      <http:operation location="/vw_AllTitles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchTitles">
+      <http:operation location="/SearchTitles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountTitleSearch">
+      <http:operation location="/CountTitleSearch" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <http:operation location="/GetUniqueWordsInTitles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuerySql">
+      <http:operation location="/QuerySql" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ExecuteSql">
+      <http:operation location="/ExecuteSql" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QueryTable">
+      <http:operation location="/QueryTable" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RunStoredProcedure">
+      <http:operation location="/RunStoredProcedure" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <http:operation location="/wsdldb" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BiblioDbServiceHttpPost" type="s0:BiblioDbServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Logon">
+      <http:operation location="/Logon" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LoggedOnUser">
+      <http:operation location="/LoggedOnUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Logoff">
+      <http:operation location="/Logoff" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="tbl_Authors">
+      <http:operation location="/tbl_Authors" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_Publishers">
+      <http:operation location="/tbl_Publishers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_TitleAuthor">
+      <http:operation location="/tbl_TitleAuthor" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="tbl_Titles">
+      <http:operation location="/tbl_Titles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="vw_AllTitles">
+      <http:operation location="/vw_AllTitles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchTitles">
+      <http:operation location="/SearchTitles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountTitleSearch">
+      <http:operation location="/CountTitleSearch" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUniqueWordsInTitles">
+      <http:operation location="/GetUniqueWordsInTitles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QuerySql">
+      <http:operation location="/QuerySql" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ExecuteSql">
+      <http:operation location="/ExecuteSql" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="QueryTable">
+      <http:operation location="/QueryTable" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RunStoredProcedure">
+      <http:operation location="/RunStoredProcedure" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="wsdldb">
+      <http:operation location="/wsdldb" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BiblioDbService">
+    <documentation>Access the standard Biblio database.  There is one method for each table, view, and stored procedure in Biblio. You must be logged on to the web service or the web methods will fail.  In the browser, the failure is simply reported as an internal server error.  See the Logon, Logoff and LoggedOnUser web methods for details including a sample userid and password.</documentation>
+    <port name="BiblioDbServiceSoap" binding="s0:BiblioDbServiceSoap">
+      <soap:address location="http://ws.netedgesoftware.com/wsenabler/1.0/Biblio.asmx" />
+    </port>
+    <port name="BiblioDbServiceHttpGet" binding="s0:BiblioDbServiceHttpGet">
+      <http:address location="http://ws.netedgesoftware.com/wsenabler/1.0/Biblio.asmx" />
+    </port>
+    <port name="BiblioDbServiceHttpPost" binding="s0:BiblioDbServiceHttpPost">
+      <http:address location="http://ws.netedgesoftware.com/wsenabler/1.0/Biblio.asmx" />
+    </port>
+  </service>
+</definitions>

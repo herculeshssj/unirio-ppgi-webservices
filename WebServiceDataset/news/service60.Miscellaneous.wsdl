@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IMouseservice" targetNamespace="http://www.alternativa.co.il/soapServices/" xmlns:tns="http://www.alternativa.co.il/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="mouseXmlRequest"/>
+  <message name="mouseXmlResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IMouse">
+    <operation name="mouseXml">
+      <input message="tns:mouseXmlRequest"/>
+      <output message="tns:mouseXmlResponse"/>
+    </operation>
+  </portType>
+  <binding name="IMousebinding" type="tns:IMouse">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="mouseXml">
+      <soap:operation soapAction="urn:mouseI-IMouse#mouseXml"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:mouseI-IMouse"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:mouseI-IMouse"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IMouseservice">
+    <port name="IMousePort" binding="tns:IMousebinding">
+      <soap:address location="http://www.alternativa.co.il/service/mouse.exe/soap/IMouse"/>
+    </port>
+  </service>
+</definitions>

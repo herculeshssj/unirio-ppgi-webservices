@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotsite.spb.ru/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotsite.spb.ru/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotsite.spb.ru/webservices/">
+      <s:element name="GetUserGroupsQuantity">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserGroupsQuantityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserGroupsQuantityResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserGroup_SE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userGroupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userGroupMission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administrator" type="s0:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICQ" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateUserGroup_SEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateUserGroup_SEResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userGroupName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userGroupMission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorFirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorLastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="administratorICQ" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateUserGroupResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupInfoFromID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userGroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupInfoFromIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGroupInfoFromIDResult" type="s0:UserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mission" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FoundationDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Administrator" type="s0:User" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EmailPassword2UserGroupAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmailPassword2UserGroupAdminResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoginUserGroupAdmin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminEMail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adminPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginUserGroupAdminResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginUserGroupAdminResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindGroupsByLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindGroupsByLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindGroupsByLocationResult" type="s0:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserGroup" nillable="true" type="s0:UserGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindUserGroupsByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindUserGroupsByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindUserGroupsByNameResult" type="s0:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindUserGroupsByNameNLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindUserGroupsByNameNLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindUserGroupsByNameNLocationResult" type="s0:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupAdminsEmails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserGroupAdminsEmailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGroupAdminsEmailsResult" type="s0:ArrayOfMailRecipient" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMailRecipient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MailRecipient" nillable="true" type="s0:MailRecipient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MailRecipient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserGroups">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserGroupsResult" type="s0:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecentResult" type="s0:ArrayOfUserGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGroupResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddUserToGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserToGroupResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsAnAdministrator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsAnAdministratorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsAnAdministratorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProposedTopics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProposedTopicsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProposedTopicsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsAMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsAMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsAMemberResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserFromGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserFromGroupResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProposeTopic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="groupID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="topic" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProposeTopicResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="UserGroup" nillable="true" type="s0:UserGroup" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfUserGroup" nillable="true" type="s0:ArrayOfUserGroup" />
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetUserGroupsQuantitySoapIn">
+    <part name="parameters" element="s0:GetUserGroupsQuantity" />
+  </message>
+  <message name="GetUserGroupsQuantitySoapOut">
+    <part name="parameters" element="s0:GetUserGroupsQuantityResponse" />
+  </message>
+  <message name="CreateUserGroup_SESoapIn">
+    <part name="parameters" element="s0:CreateUserGroup_SE" />
+  </message>
+  <message name="CreateUserGroup_SESoapOut">
+    <part name="parameters" element="s0:CreateUserGroup_SEResponse" />
+  </message>
+  <message name="CreateUserGroupSoapIn">
+    <part name="parameters" element="s0:CreateUserGroup" />
+  </message>
+  <message name="CreateUserGroupSoapOut">
+    <part name="parameters" element="s0:CreateUserGroupResponse" />
+  </message>
+  <message name="GetUserGroupInfoFromIDSoapIn">
+    <part name="parameters" element="s0:GetUserGroupInfoFromID" />
+  </message>
+  <message name="GetUserGroupInfoFromIDSoapOut">
+    <part name="parameters" element="s0:GetUserGroupInfoFromIDResponse" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminSoapIn">
+    <part name="parameters" element="s0:EmailPassword2UserGroupAdmin" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminSoapOut">
+    <part name="parameters" element="s0:EmailPassword2UserGroupAdminResponse" />
+  </message>
+  <message name="LoginUserGroupAdminSoapIn">
+    <part name="parameters" element="s0:LoginUserGroupAdmin" />
+  </message>
+  <message name="LoginUserGroupAdminSoapOut">
+    <part name="parameters" element="s0:LoginUserGroupAdminResponse" />
+  </message>
+  <message name="FindGroupsByLocationSoapIn">
+    <part name="parameters" element="s0:FindGroupsByLocation" />
+  </message>
+  <message name="FindGroupsByLocationSoapOut">
+    <part name="parameters" element="s0:FindGroupsByLocationResponse" />
+  </message>
+  <message name="FindUserGroupsByNameSoapIn">
+    <part name="parameters" element="s0:FindUserGroupsByName" />
+  </message>
+  <message name="FindUserGroupsByNameSoapOut">
+    <part name="parameters" element="s0:FindUserGroupsByNameResponse" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationSoapIn">
+    <part name="parameters" element="s0:FindUserGroupsByNameNLocation" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationSoapOut">
+    <part name="parameters" element="s0:FindUserGroupsByNameNLocationResponse" />
+  </message>
+  <message name="GetUserGroupAdminsEmailsSoapIn">
+    <part name="parameters" element="s0:GetUserGroupAdminsEmails" />
+  </message>
+  <message name="GetUserGroupAdminsEmailsSoapOut">
+    <part name="parameters" element="s0:GetUserGroupAdminsEmailsResponse" />
+  </message>
+  <message name="GetUserGroupsSoapIn">
+    <part name="parameters" element="s0:GetUserGroups" />
+  </message>
+  <message name="GetUserGroupsSoapOut">
+    <part name="parameters" element="s0:GetUserGroupsResponse" />
+  </message>
+  <message name="GetRecentSoapIn">
+    <part name="parameters" element="s0:GetRecent" />
+  </message>
+  <message name="GetRecentSoapOut">
+    <part name="parameters" element="s0:GetRecentResponse" />
+  </message>
+  <message name="DeleteGroupSoapIn">
+    <part name="parameters" element="s0:DeleteGroup" />
+  </message>
+  <message name="DeleteGroupSoapOut">
+    <part name="parameters" element="s0:DeleteGroupResponse" />
+  </message>
+  <message name="AddUserToGroupSoapIn">
+    <part name="parameters" element="s0:AddUserToGroup" />
+  </message>
+  <message name="AddUserToGroupSoapOut">
+    <part name="parameters" element="s0:AddUserToGroupResponse" />
+  </message>
+  <message name="IsAnAdministratorSoapIn">
+    <part name="parameters" element="s0:IsAnAdministrator" />
+  </message>
+  <message name="IsAnAdministratorSoapOut">
+    <part name="parameters" element="s0:IsAnAdministratorResponse" />
+  </message>
+  <message name="GetProposedTopicsSoapIn">
+    <part name="parameters" element="s0:GetProposedTopics" />
+  </message>
+  <message name="GetProposedTopicsSoapOut">
+    <part name="parameters" element="s0:GetProposedTopicsResponse" />
+  </message>
+  <message name="IsAMemberSoapIn">
+    <part name="parameters" element="s0:IsAMember" />
+  </message>
+  <message name="IsAMemberSoapOut">
+    <part name="parameters" element="s0:IsAMemberResponse" />
+  </message>
+  <message name="RemoveUserFromGroupSoapIn">
+    <part name="parameters" element="s0:RemoveUserFromGroup" />
+  </message>
+  <message name="RemoveUserFromGroupSoapOut">
+    <part name="parameters" element="s0:RemoveUserFromGroupResponse" />
+  </message>
+  <message name="ProposeTopicSoapIn">
+    <part name="parameters" element="s0:ProposeTopic" />
+  </message>
+  <message name="ProposeTopicSoapOut">
+    <part name="parameters" element="s0:ProposeTopicResponse" />
+  </message>
+  <message name="GetUserGroupsQuantityHttpGetIn" />
+  <message name="GetUserGroupsQuantityHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateUserGroupHttpGetIn">
+    <part name="userGroupName" type="s:string" />
+    <part name="userGroupMission" type="s:string" />
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+    <part name="administratorUserName" type="s:string" />
+    <part name="administratorPassword" type="s:string" />
+    <part name="administratorFirstName" type="s:string" />
+    <part name="administratorLastName" type="s:string" />
+    <part name="administratorEmail" type="s:string" />
+    <part name="administratorICQ" type="s:string" />
+  </message>
+  <message name="CreateUserGroupHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetUserGroupInfoFromIDHttpGetIn">
+    <part name="userGroupID" type="s:string" />
+  </message>
+  <message name="GetUserGroupInfoFromIDHttpGetOut">
+    <part name="Body" element="s0:UserGroup" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminHttpGetIn">
+    <part name="groupID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminHttpGetOut" />
+  <message name="LoginUserGroupAdminHttpGetIn">
+    <part name="groupID" type="s:string" />
+    <part name="adminEMail" type="s:string" />
+    <part name="adminPassword" type="s:string" />
+  </message>
+  <message name="LoginUserGroupAdminHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="FindGroupsByLocationHttpGetIn">
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+  </message>
+  <message name="FindGroupsByLocationHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="FindUserGroupsByNameHttpGetIn">
+    <part name="name" type="s:string" />
+  </message>
+  <message name="FindUserGroupsByNameHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationHttpGetIn">
+    <part name="name" type="s:string" />
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="GetUserGroupsHttpGetIn" />
+  <message name="GetUserGroupsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="GetRecentHttpGetIn">
+    <part name="from" type="s:string" />
+  </message>
+  <message name="GetRecentHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="IsAnAdministratorHttpGetIn">
+    <part name="groupID" type="s:string" />
+    <part name="userID" type="s:string" />
+  </message>
+  <message name="IsAnAdministratorHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetProposedTopicsHttpGetIn">
+    <part name="groupID" type="s:string" />
+  </message>
+  <message name="GetProposedTopicsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="IsAMemberHttpGetIn">
+    <part name="userID" type="s:string" />
+    <part name="groupID" type="s:string" />
+  </message>
+  <message name="IsAMemberHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetUserGroupsQuantityHttpPostIn" />
+  <message name="GetUserGroupsQuantityHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="CreateUserGroupHttpPostIn">
+    <part name="userGroupName" type="s:string" />
+    <part name="userGroupMission" type="s:string" />
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+    <part name="administratorUserName" type="s:string" />
+    <part name="administratorPassword" type="s:string" />
+    <part name="administratorFirstName" type="s:string" />
+    <part name="administratorLastName" type="s:string" />
+    <part name="administratorEmail" type="s:string" />
+    <part name="administratorICQ" type="s:string" />
+  </message>
+  <message name="CreateUserGroupHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetUserGroupInfoFromIDHttpPostIn">
+    <part name="userGroupID" type="s:string" />
+  </message>
+  <message name="GetUserGroupInfoFromIDHttpPostOut">
+    <part name="Body" element="s0:UserGroup" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminHttpPostIn">
+    <part name="groupID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="EmailPassword2UserGroupAdminHttpPostOut" />
+  <message name="LoginUserGroupAdminHttpPostIn">
+    <part name="groupID" type="s:string" />
+    <part name="adminEMail" type="s:string" />
+    <part name="adminPassword" type="s:string" />
+  </message>
+  <message name="LoginUserGroupAdminHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="FindGroupsByLocationHttpPostIn">
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+  </message>
+  <message name="FindGroupsByLocationHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="FindUserGroupsByNameHttpPostIn">
+    <part name="name" type="s:string" />
+  </message>
+  <message name="FindUserGroupsByNameHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationHttpPostIn">
+    <part name="name" type="s:string" />
+    <part name="country" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="city" type="s:string" />
+  </message>
+  <message name="FindUserGroupsByNameNLocationHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="GetUserGroupsHttpPostIn" />
+  <message name="GetUserGroupsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="GetRecentHttpPostIn">
+    <part name="from" type="s:string" />
+  </message>
+  <message name="GetRecentHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserGroup" />
+  </message>
+  <message name="IsAnAdministratorHttpPostIn">
+    <part name="groupID" type="s:string" />
+    <part name="userID" type="s:string" />
+  </message>
+  <message name="IsAnAdministratorHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetProposedTopicsHttpPostIn">
+    <part name="groupID" type="s:string" />
+  </message>
+  <message name="GetProposedTopicsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="IsAMemberHttpPostIn">
+    <part name="userID" type="s:string" />
+    <part name="groupID" type="s:string" />
+  </message>
+  <message name="IsAMemberHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="UserGroupServiceSoap">
+    <operation name="GetUserGroupsQuantity">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? ÐºÐ¾Ð»Ð¸Ñ?ÐµÑ?Ñ?Ð²Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsQuantitySoapIn" />
+      <output message="s0:GetUserGroupsQuantitySoapOut" />
+    </operation>
+    <operation name="CreateUserGroup_SE">
+      <documentation>Ð¡Ð¾Ð·Ð´Ð°ÐµÑ? Ð½Ð¾Ð²Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ñ? Ð·Ð°Ð´Ð°Ð½Ð½Ñ?Ð¼ Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð¾Ð¼</documentation>
+      <input message="s0:CreateUserGroup_SESoapIn" />
+      <output message="s0:CreateUserGroup_SESoapOut" />
+    </operation>
+    <operation name="CreateUserGroup">
+      <documentation>Ð¡Ð¾Ð·Ð´Ð°ÐµÑ? Ð½Ð¾Ð²Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¸ Ñ?Ñ?ÐµÐ±Ñ?ÐµÑ? Ñ?Ð²Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ? Ð¿Ð¾Ð»ÐµÐ¹ Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:CreateUserGroupSoapIn" />
+      <output message="s0:CreateUserGroupSoapOut" />
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ð¸Ð½Ñ?Ð¾Ñ?Ð¼Ð°Ñ?Ð¸Ñ? Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿Ðµ Ð¿Ð¾ ÐµÐµ Ð¸Ð´ÐµÐ½Ñ?Ð¸Ñ?Ð¸ÐºÐ°Ñ?Ð¾Ñ?Ñ?</documentation>
+      <input message="s0:GetUserGroupInfoFromIDSoapIn" />
+      <output message="s0:GetUserGroupInfoFromIDSoapOut" />
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <documentation>Ð?Ñ?Ñ?Ñ?Ð»Ð°ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:EmailPassword2UserGroupAdminSoapIn" />
+      <output message="s0:EmailPassword2UserGroupAdminSoapOut" />
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð¸ Ð°Ð´Ñ?ÐµÑ? Ð¿Ð¾Ñ?Ñ?Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:LoginUserGroupAdminSoapIn" />
+      <output message="s0:LoginUserGroupAdminSoapOut" />
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindGroupsByLocationSoapIn" />
+      <output message="s0:FindGroupsByLocationSoapOut" />
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameSoapIn" />
+      <output message="s0:FindUserGroupsByNameSoapOut" />
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ? Ð¸ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameNLocationSoapIn" />
+      <output message="s0:FindUserGroupsByNameNLocationSoapOut" />
+    </operation>
+    <operation name="GetUserGroupAdminsEmails">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð°Ð´Ñ?ÐµÑ?Ð¾Ð² Ð¿Ð¾Ñ?Ñ?Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð¾Ð°</documentation>
+      <input message="s0:GetUserGroupAdminsEmailsSoapIn" />
+      <output message="s0:GetUserGroupAdminsEmailsSoapOut" />
+    </operation>
+    <operation name="GetUserGroups">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsSoapIn" />
+      <output message="s0:GetUserGroupsSoapOut" />
+    </operation>
+    <operation name="GetRecent">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð½ÐµÐ´Ð°Ð²Ð½Ð¾ Ñ?Ð¾Ð·Ð´Ð°Ð½Ð½Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetRecentSoapIn" />
+      <output message="s0:GetRecentSoapOut" />
+    </operation>
+    <operation name="DeleteGroup">
+      <documentation>Ð£Ð´Ð°Ð»Ñ?ÐµÑ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:DeleteGroupSoapIn" />
+      <output message="s0:DeleteGroupSoapOut" />
+    </operation>
+    <operation name="AddUserToGroup">
+      <documentation>Ð?Ð¾Ð±Ð°Ð²Ð»Ñ?ÐµÑ? Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ð² Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:AddUserToGroupSoapIn" />
+      <output message="s0:AddUserToGroupSoapOut" />
+    </operation>
+    <operation name="IsAnAdministrator">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð¾Ð¼</documentation>
+      <input message="s0:IsAnAdministratorSoapIn" />
+      <output message="s0:IsAnAdministratorSoapOut" />
+    </operation>
+    <operation name="GetProposedTopics">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð¿Ñ?ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ?Ñ? Ñ?ÐµÐ¼</documentation>
+      <input message="s0:GetProposedTopicsSoapIn" />
+      <output message="s0:GetProposedTopicsSoapOut" />
+    </operation>
+    <operation name="IsAMember">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ñ?Ð»ÐµÐ½Ð¾Ð¼ Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:IsAMemberSoapIn" />
+      <output message="s0:IsAMemberSoapOut" />
+    </operation>
+    <operation name="RemoveUserFromGroup">
+      <documentation>Ð£Ð´Ð°Ð»Ñ?ÐµÑ? Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ð¸Ð· Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:RemoveUserFromGroupSoapIn" />
+      <output message="s0:RemoveUserFromGroupSoapOut" />
+    </operation>
+    <operation name="ProposeTopic">
+      <documentation>Ð?Ñ?ÐµÐ´Ð»Ð°Ð³Ð°ÐµÑ? Ñ?ÐµÐ¼Ñ?</documentation>
+      <input message="s0:ProposeTopicSoapIn" />
+      <output message="s0:ProposeTopicSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UserGroupServiceHttpGet">
+    <operation name="GetUserGroupsQuantity">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? ÐºÐ¾Ð»Ð¸Ñ?ÐµÑ?Ñ?Ð²Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsQuantityHttpGetIn" />
+      <output message="s0:GetUserGroupsQuantityHttpGetOut" />
+    </operation>
+    <operation name="CreateUserGroup">
+      <documentation>Ð¡Ð¾Ð·Ð´Ð°ÐµÑ? Ð½Ð¾Ð²Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¸ Ñ?Ñ?ÐµÐ±Ñ?ÐµÑ? Ñ?Ð²Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ? Ð¿Ð¾Ð»ÐµÐ¹ Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:CreateUserGroupHttpGetIn" />
+      <output message="s0:CreateUserGroupHttpGetOut" />
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ð¸Ð½Ñ?Ð¾Ñ?Ð¼Ð°Ñ?Ð¸Ñ? Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿Ðµ Ð¿Ð¾ ÐµÐµ Ð¸Ð´ÐµÐ½Ñ?Ð¸Ñ?Ð¸ÐºÐ°Ñ?Ð¾Ñ?Ñ?</documentation>
+      <input message="s0:GetUserGroupInfoFromIDHttpGetIn" />
+      <output message="s0:GetUserGroupInfoFromIDHttpGetOut" />
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <documentation>Ð?Ñ?Ñ?Ñ?Ð»Ð°ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:EmailPassword2UserGroupAdminHttpGetIn" />
+      <output message="s0:EmailPassword2UserGroupAdminHttpGetOut" />
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð¸ Ð°Ð´Ñ?ÐµÑ? Ð¿Ð¾Ñ?Ñ?Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:LoginUserGroupAdminHttpGetIn" />
+      <output message="s0:LoginUserGroupAdminHttpGetOut" />
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindGroupsByLocationHttpGetIn" />
+      <output message="s0:FindGroupsByLocationHttpGetOut" />
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameHttpGetIn" />
+      <output message="s0:FindUserGroupsByNameHttpGetOut" />
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ? Ð¸ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameNLocationHttpGetIn" />
+      <output message="s0:FindUserGroupsByNameNLocationHttpGetOut" />
+    </operation>
+    <operation name="GetUserGroups">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsHttpGetIn" />
+      <output message="s0:GetUserGroupsHttpGetOut" />
+    </operation>
+    <operation name="GetRecent">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð½ÐµÐ´Ð°Ð²Ð½Ð¾ Ñ?Ð¾Ð·Ð´Ð°Ð½Ð½Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetRecentHttpGetIn" />
+      <output message="s0:GetRecentHttpGetOut" />
+    </operation>
+    <operation name="IsAnAdministrator">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð¾Ð¼</documentation>
+      <input message="s0:IsAnAdministratorHttpGetIn" />
+      <output message="s0:IsAnAdministratorHttpGetOut" />
+    </operation>
+    <operation name="GetProposedTopics">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð¿Ñ?ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ?Ñ? Ñ?ÐµÐ¼</documentation>
+      <input message="s0:GetProposedTopicsHttpGetIn" />
+      <output message="s0:GetProposedTopicsHttpGetOut" />
+    </operation>
+    <operation name="IsAMember">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ñ?Ð»ÐµÐ½Ð¾Ð¼ Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:IsAMemberHttpGetIn" />
+      <output message="s0:IsAMemberHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UserGroupServiceHttpPost">
+    <operation name="GetUserGroupsQuantity">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? ÐºÐ¾Ð»Ð¸Ñ?ÐµÑ?Ñ?Ð²Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsQuantityHttpPostIn" />
+      <output message="s0:GetUserGroupsQuantityHttpPostOut" />
+    </operation>
+    <operation name="CreateUserGroup">
+      <documentation>Ð¡Ð¾Ð·Ð´Ð°ÐµÑ? Ð½Ð¾Ð²Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¸ Ñ?Ñ?ÐµÐ±Ñ?ÐµÑ? Ñ?Ð²Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸Ñ? Ð¿Ð¾Ð»ÐµÐ¹ Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:CreateUserGroupHttpPostIn" />
+      <output message="s0:CreateUserGroupHttpPostOut" />
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ð¸Ð½Ñ?Ð¾Ñ?Ð¼Ð°Ñ?Ð¸Ñ? Ð¾ Ð³Ñ?Ñ?Ð¿Ð¿Ðµ Ð¿Ð¾ ÐµÐµ Ð¸Ð´ÐµÐ½Ñ?Ð¸Ñ?Ð¸ÐºÐ°Ñ?Ð¾Ñ?Ñ?</documentation>
+      <input message="s0:GetUserGroupInfoFromIDHttpPostIn" />
+      <output message="s0:GetUserGroupInfoFromIDHttpPostOut" />
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <documentation>Ð?Ñ?Ñ?Ñ?Ð»Ð°ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:EmailPassword2UserGroupAdminHttpPostIn" />
+      <output message="s0:EmailPassword2UserGroupAdminHttpPostOut" />
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ? Ð¿Ð°Ñ?Ð¾Ð»Ñ? Ð¸ Ð°Ð´Ñ?ÐµÑ? Ð¿Ð¾Ñ?Ñ?Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð°</documentation>
+      <input message="s0:LoginUserGroupAdminHttpPostIn" />
+      <output message="s0:LoginUserGroupAdminHttpPostOut" />
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindGroupsByLocationHttpPostIn" />
+      <output message="s0:FindGroupsByLocationHttpPostOut" />
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameHttpPostIn" />
+      <output message="s0:FindUserGroupsByNameHttpPostOut" />
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <documentation>Ð?Ð°Ñ?Ð¾Ð´Ð¸Ñ? Ð³Ñ?Ñ?Ð¿Ð¿Ñ? Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ñ? Ð¸ Ñ?Ð°Ñ?Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ?</documentation>
+      <input message="s0:FindUserGroupsByNameNLocationHttpPostIn" />
+      <output message="s0:FindUserGroupsByNameNLocationHttpPostOut" />
+    </operation>
+    <operation name="GetUserGroups">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetUserGroupsHttpPostIn" />
+      <output message="s0:GetUserGroupsHttpPostOut" />
+    </operation>
+    <operation name="GetRecent">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð½ÐµÐ´Ð°Ð²Ð½Ð¾ Ñ?Ð¾Ð·Ð´Ð°Ð½Ð½Ñ?Ñ? Ð³Ñ?Ñ?Ð¿Ð¿</documentation>
+      <input message="s0:GetRecentHttpPostIn" />
+      <output message="s0:GetRecentHttpPostOut" />
+    </operation>
+    <operation name="IsAnAdministrator">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ð°Ð´Ð¼Ð¸Ð½Ð¸Ñ?Ñ?Ñ?Ð°Ñ?Ð¾Ñ?Ð¾Ð¼</documentation>
+      <input message="s0:IsAnAdministratorHttpPostIn" />
+      <output message="s0:IsAnAdministratorHttpPostOut" />
+    </operation>
+    <operation name="GetProposedTopics">
+      <documentation>Ð?Ð¾Ð·Ð²Ñ?Ð°Ñ?Ð°ÐµÑ? Ñ?Ð¿Ð¸Ñ?Ð¾Ðº Ð¿Ñ?ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ?Ñ? Ñ?ÐµÐ¼</documentation>
+      <input message="s0:GetProposedTopicsHttpPostIn" />
+      <output message="s0:GetProposedTopicsHttpPostOut" />
+    </operation>
+    <operation name="IsAMember">
+      <documentation>Ð?Ñ?Ð¾Ð²ÐµÑ?Ñ?ÐµÑ?, Ñ?Ð²Ð»Ñ?ÐµÑ?Ñ?Ñ? Ð»Ð¸ Ð¿Ð¾Ð»Ñ?Ð·Ð¾Ð²Ð°Ñ?ÐµÐ»Ñ? Ñ?Ð»ÐµÐ½Ð¾Ð¼ Ð³Ñ?Ñ?Ð¿Ð¿Ñ?</documentation>
+      <input message="s0:IsAMemberHttpPostIn" />
+      <output message="s0:IsAMemberHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UserGroupServiceSoap" type="s0:UserGroupServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetUserGroupsQuantity">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetUserGroupsQuantity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateUserGroup_SE">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/CreateUserGroup_SE" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateUserGroup">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/CreateUserGroup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetUserGroupInfoFromID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/EmailPassword2UserGroupAdmin" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/LoginUserGroupAdmin" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/FindGroupsByLocation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/FindUserGroupsByName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/FindUserGroupsByNameNLocation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserGroupAdminsEmails">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetUserGroupAdminsEmails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserGroups">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetUserGroups" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRecent">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetRecent" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteGroup">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/DeleteGroup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddUserToGroup">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/AddUserToGroup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsAnAdministrator">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/IsAnAdministrator" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetProposedTopics">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetProposedTopics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsAMember">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/IsAMember" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveUserFromGroup">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/RemoveUserFromGroup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ProposeTopic">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/ProposeTopic" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UserGroupServiceHttpGet" type="s0:UserGroupServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetUserGroupsQuantity">
+      <http:operation location="/GetUserGroupsQuantity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateUserGroup">
+      <http:operation location="/CreateUserGroup" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <http:operation location="/GetUserGroupInfoFromID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <http:operation location="/EmailPassword2UserGroupAdmin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <http:operation location="/LoginUserGroupAdmin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <http:operation location="/FindGroupsByLocation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <http:operation location="/FindUserGroupsByName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <http:operation location="/FindUserGroupsByNameNLocation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserGroups">
+      <http:operation location="/GetUserGroups" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRecent">
+      <http:operation location="/GetRecent" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsAnAdministrator">
+      <http:operation location="/IsAnAdministrator" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProposedTopics">
+      <http:operation location="/GetProposedTopics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsAMember">
+      <http:operation location="/IsAMember" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UserGroupServiceHttpPost" type="s0:UserGroupServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetUserGroupsQuantity">
+      <http:operation location="/GetUserGroupsQuantity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateUserGroup">
+      <http:operation location="/CreateUserGroup" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserGroupInfoFromID">
+      <http:operation location="/GetUserGroupInfoFromID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="EmailPassword2UserGroupAdmin">
+      <http:operation location="/EmailPassword2UserGroupAdmin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="LoginUserGroupAdmin">
+      <http:operation location="/LoginUserGroupAdmin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindGroupsByLocation">
+      <http:operation location="/FindGroupsByLocation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByName">
+      <http:operation location="/FindUserGroupsByName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindUserGroupsByNameNLocation">
+      <http:operation location="/FindUserGroupsByNameNLocation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserGroups">
+      <http:operation location="/GetUserGroups" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRecent">
+      <http:operation location="/GetRecent" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsAnAdministrator">
+      <http:operation location="/IsAnAdministrator" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetProposedTopics">
+      <http:operation location="/GetProposedTopics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsAMember">
+      <http:operation location="/IsAMember" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UserGroupService">
+    <port name="UserGroupServiceSoap" binding="s0:UserGroupServiceSoap">
+      <soap:address location="http://www.dotsite.spb.ru/webservices/UserGroupService.asmx" />
+    </port>
+    <port name="UserGroupServiceHttpGet" binding="s0:UserGroupServiceHttpGet">
+      <http:address location="http://www.dotsite.spb.ru/webservices/UserGroupService.asmx" />
+    </port>
+    <port name="UserGroupServiceHttpPost" binding="s0:UserGroupServiceHttpPost">
+      <http:address location="http://www.dotsite.spb.ru/webservices/UserGroupService.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-16' ?> 
+ <!-- Generated 01/15/01 by Microsoft SOAP SDK WSDL File Generator, Version 1.0 --> 
+<definitions  name ='exrates'   targetNamespace = 'http://www.itfinity.net/soap/exrates/exrates.wsdl'
+	 xmlns:tns='http://www.itfinity.net/soap/exrates/exrates.wsdl' 
+	 xmlns:xsd1='http://www.itfinity.net/soap/exrates/exrates.xsd' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://www.itfinity.net/soap/exrates/exrates.xsd'
+      xmlns='http://www.w3.org/1999/XMLSchema'>
+    </schema>
+  </types>
+  <message name='GetRate'>
+    <part name='fromCurr' type='string'/>
+    <part name='ToCurr' type='string'/>
+  </message>
+  <message name='GetRateResponse'>
+    <part name='Result' type='string'/>
+  </message>
+  <portType name='exratesPortType'>
+    <operation name='GetRate' parameterOrder='GetRateInput1 GetRateInput2'>
+      <input message='tns:GetRate' />
+      <output message='tns:GetRateResponse' />
+    </operation>
+  </portType>
+  <binding name='exratesBinding' type='tns:exratesPortType' >
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='GetRate' >
+      <soap:operation soapAction='http://www.itfinity.net/soap/exrates/default.asp' />
+      <input>
+        <soap:body use='encoded' namespace='http://www.itfinity.net/soap/exrates/exrates.xsd'  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://www.itfinity.net/soap/exrates/exrates.xsd'  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='exrates' >
+    <port name='exratesPortType' binding='tns:exratesBinding' >
+      <soap:address location='http://www.itfinity.net/soap/exrates/default.asp' />
+    </port>
+  </service>
+</definitions>

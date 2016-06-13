@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.PerfectXML.com/NETWebSvcs/MusicTeachers/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.PerfectXML.com/NETWebSvcs/MusicTeachers/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.PerfectXML.com/NETWebSvcs/MusicTeachers/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="FindMusicTeachers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Instrument" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SkillLevel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Style" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Radius" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RestrictResultsCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindMusicTeachersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindMusicTeachersResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="FindMusicTeachersSoapIn">
+    <part name="parameters" element="s0:FindMusicTeachers" />
+  </message>
+  <message name="FindMusicTeachersSoapOut">
+    <part name="parameters" element="s0:FindMusicTeachersResponse" />
+  </message>
+  <message name="FindMusicTeachersHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+    <part name="Instrument" type="s:string" />
+    <part name="SkillLevel" type="s:string" />
+    <part name="Style" type="s:string" />
+    <part name="Radius" type="s:string" />
+    <part name="RestrictResultsCount" type="s:string" />
+  </message>
+  <message name="FindMusicTeachersHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="FindMusicTeachersHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+    <part name="Instrument" type="s:string" />
+    <part name="SkillLevel" type="s:string" />
+    <part name="Style" type="s:string" />
+    <part name="Radius" type="s:string" />
+    <part name="RestrictResultsCount" type="s:string" />
+  </message>
+  <message name="FindMusicTeachersHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="SearchMusicTeachersSoap">
+    <operation name="FindMusicTeachers">
+      <documentation>Only the Zipcode parameter is required. If you do not want to specify the value for any other parameter, write &lt;b&gt;0&lt;/b&gt; as the value to omit that parameter. You can restrict the result count by specifying a positive value for last parameter(&lt;b&gt;RestrictResultsCount&lt;/b&gt;).&lt;br&gt;&lt;br&gt;Pass &lt;b&gt;RestrictResultsCount&lt;/b&gt; as &lt;b&gt;-1&lt;/b&gt; to get all results and &lt;b&gt;0&lt;/b&gt; to just get summary results.&lt;br&gt;Pass &lt;b&gt;Radius&lt;/b&gt; as 5 or 10 to get the best results.&lt;blockquote&gt;&lt;b&gt;Instruments&lt;/b&gt;: Piano, Guitar, Drums, Bass Guitar, Voice, Cello , Violin, Viola, Trumpet, Trombone, Saxophone, Clarinet, Tuba, Banjo, Percussion, Double Bass, Keyboard, Flute, Oboe, Bassoon, French Horn, Timpani, Mandolin, Accordion, Organ, Theory, Recording, Harp, Marimba, Bagpipes, Recorder, Harmonica, Ear Training, Other, Dulcimer, Handbells, Euphonium, Conducting, Lute, Ukulele&lt;br&gt;&lt;br&gt;&lt;b&gt;Styles&lt;/b&gt;: Pop  Rock, Classical, Jazz, Broadway, Folk, Blues, Country, Ethnic World, Other&lt;br&gt;&lt;br&gt;&lt;b&gt;Skill Levels&lt;/b&gt;: Beginner, Intermediate, Advanced, Professional.&lt;br/&gt;&lt;/blockquote&gt;</documentation>
+      <input message="s0:FindMusicTeachersSoapIn" />
+      <output message="s0:FindMusicTeachersSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SearchMusicTeachersHttpGet">
+    <operation name="FindMusicTeachers">
+      <documentation>Only the Zipcode parameter is required. If you do not want to specify the value for any other parameter, write &lt;b&gt;0&lt;/b&gt; as the value to omit that parameter. You can restrict the result count by specifying a positive value for last parameter(&lt;b&gt;RestrictResultsCount&lt;/b&gt;).&lt;br&gt;&lt;br&gt;Pass &lt;b&gt;RestrictResultsCount&lt;/b&gt; as &lt;b&gt;-1&lt;/b&gt; to get all results and &lt;b&gt;0&lt;/b&gt; to just get summary results.&lt;br&gt;Pass &lt;b&gt;Radius&lt;/b&gt; as 5 or 10 to get the best results.&lt;blockquote&gt;&lt;b&gt;Instruments&lt;/b&gt;: Piano, Guitar, Drums, Bass Guitar, Voice, Cello , Violin, Viola, Trumpet, Trombone, Saxophone, Clarinet, Tuba, Banjo, Percussion, Double Bass, Keyboard, Flute, Oboe, Bassoon, French Horn, Timpani, Mandolin, Accordion, Organ, Theory, Recording, Harp, Marimba, Bagpipes, Recorder, Harmonica, Ear Training, Other, Dulcimer, Handbells, Euphonium, Conducting, Lute, Ukulele&lt;br&gt;&lt;br&gt;&lt;b&gt;Styles&lt;/b&gt;: Pop  Rock, Classical, Jazz, Broadway, Folk, Blues, Country, Ethnic World, Other&lt;br&gt;&lt;br&gt;&lt;b&gt;Skill Levels&lt;/b&gt;: Beginner, Intermediate, Advanced, Professional.&lt;br/&gt;&lt;/blockquote&gt;</documentation>
+      <input message="s0:FindMusicTeachersHttpGetIn" />
+      <output message="s0:FindMusicTeachersHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SearchMusicTeachersHttpPost">
+    <operation name="FindMusicTeachers">
+      <documentation>Only the Zipcode parameter is required. If you do not want to specify the value for any other parameter, write &lt;b&gt;0&lt;/b&gt; as the value to omit that parameter. You can restrict the result count by specifying a positive value for last parameter(&lt;b&gt;RestrictResultsCount&lt;/b&gt;).&lt;br&gt;&lt;br&gt;Pass &lt;b&gt;RestrictResultsCount&lt;/b&gt; as &lt;b&gt;-1&lt;/b&gt; to get all results and &lt;b&gt;0&lt;/b&gt; to just get summary results.&lt;br&gt;Pass &lt;b&gt;Radius&lt;/b&gt; as 5 or 10 to get the best results.&lt;blockquote&gt;&lt;b&gt;Instruments&lt;/b&gt;: Piano, Guitar, Drums, Bass Guitar, Voice, Cello , Violin, Viola, Trumpet, Trombone, Saxophone, Clarinet, Tuba, Banjo, Percussion, Double Bass, Keyboard, Flute, Oboe, Bassoon, French Horn, Timpani, Mandolin, Accordion, Organ, Theory, Recording, Harp, Marimba, Bagpipes, Recorder, Harmonica, Ear Training, Other, Dulcimer, Handbells, Euphonium, Conducting, Lute, Ukulele&lt;br&gt;&lt;br&gt;&lt;b&gt;Styles&lt;/b&gt;: Pop  Rock, Classical, Jazz, Broadway, Folk, Blues, Country, Ethnic World, Other&lt;br&gt;&lt;br&gt;&lt;b&gt;Skill Levels&lt;/b&gt;: Beginner, Intermediate, Advanced, Professional.&lt;br/&gt;&lt;/blockquote&gt;</documentation>
+      <input message="s0:FindMusicTeachersHttpPostIn" />
+      <output message="s0:FindMusicTeachersHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SearchMusicTeachersSoap" type="s0:SearchMusicTeachersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindMusicTeachers">
+      <soap:operation soapAction="http://www.PerfectXML.com/NETWebSvcs/MusicTeachers/FindMusicTeachers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SearchMusicTeachersHttpGet" type="s0:SearchMusicTeachersHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindMusicTeachers">
+      <http:operation location="/FindMusicTeachers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SearchMusicTeachersHttpPost" type="s0:SearchMusicTeachersHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindMusicTeachers">
+      <http:operation location="/FindMusicTeachers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SearchMusicTeachers">
+    <documentation>Web Service built using .NET Framework (Build v1.0.3705) and Visual Studio .NET (Build 7.0.9466)&lt;br&gt;&lt;/br&gt;This Web Service can be used to &lt;b&gt;locate music teachers based on Zip code and various other optional conditions&lt;/b&gt;, like Instrument, Style, Skill Level, and Radius distance from the specified Zip. This Web Service is created by &lt;a href=http://www.PerfectXML.com target=_blank&gt;PerfectXML Team&lt;/a&gt;.&lt;br&gt;&lt;br&gt;Please email your questions/comments/suggestions to &lt;a href=mailto:darshan@PerfectXML.com&gt;&lt;b&gt;darshan@PerfectXML.com&lt;/b&gt;&lt;/a&gt;.&lt;br&gt;&lt;br&gt;This Web Service is intended only for non-commercial, personal use.&lt;br&gt;&lt;a href=http://www.musicstaff.com target=_blank&gt;&lt;img src=images/Music.jpg border=0 width=142 height=40 hspace=4 vspace=2&gt;&lt;/a&gt; &lt;b&gt;Many thanks to &lt;a href=http://www.musicstaff.com target=_blank&gt;www.MusicStaff.com&lt;/a&gt; for allowing us to use the data from their Web site&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;br&gt;For &lt;b&gt;more information on Web Services&lt;/b&gt;, visit &lt;a href=http://www.PerfectXML.com/WebSvc1.asp target=_blank&gt;PerfectXML Web Services focus section&lt;/a&gt;.&lt;br&gt;&lt;table width=100% border=0 cellpadding=3 cellspacing=1 bgcolor=#EEEEEE&gt;&lt;tr&gt;&lt;td bgcolor=#FFFFFF align=center&gt;&lt;IFRAME SRC='http://ad.doubleclick.net/adi/N815.perfxml/B1060649;sz=468x60;ord=[timestamp]?' WIDTH=470 HEIGHT=62 MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no BORDERCOLOR='#000000'&gt; &lt;SCRIPT language='JavaScript1.1' SRC='http://ad.doubleclick.net/adj/N815.perfxml/B1060649;abr=!ie;sz=468x60;ord=[timestamp]?'&gt; &lt;/SCRIPT&gt; &lt;NOSCRIPT&gt; &lt;A HREF='http://ad.doubleclick.net/jump/N815.perfxml/B1060649;abr=!ie4;abr=!ie5;sz=468x60;ord=[timestamp]?'&gt; &lt;IMG SRC='http://ad.doubleclick.net/ad/N815.perfxml/B1060649;abr=!ie4;abr=!ie5;sz=468x60;ord=[timestamp]?' BORDER=0 WIDTH=468 HEIGHT=60 ALT='Alt Text'&gt;Alt Text&lt;/A&gt; &lt;/NOSCRIPT&gt; &lt;/IFRAME&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+    <port name="SearchMusicTeachersSoap" binding="s0:SearchMusicTeachersSoap">
+      <soap:address location="http://www.perfectxml.net/WebServices/MusicTeachers/MusicTeachers.asmx" />
+    </port>
+    <port name="SearchMusicTeachersHttpGet" binding="s0:SearchMusicTeachersHttpGet">
+      <http:address location="http://www.perfectxml.net/WebServices/MusicTeachers/MusicTeachers.asmx" />
+    </port>
+    <port name="SearchMusicTeachersHttpPost" binding="s0:SearchMusicTeachersHttpPost">
+      <http:address location="http://www.perfectxml.net/WebServices/MusicTeachers/MusicTeachers.asmx" />
+    </port>
+  </service>
+</definitions>

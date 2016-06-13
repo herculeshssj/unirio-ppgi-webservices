@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<definitions name="FrancsToEuros.cfrancstoeuros" targetNamespace="http://sal006.salnetwork.com:83/freevbcode/FrancsToEuros/CFrancsToEuros.xml" xmlns:tns="http://sal006.salnetwork.com:83/freevbcode/FrancsToEuros/CFrancsToEuros.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="ConvertToConvertToEurosRequest">
+        <part name="Francs" type="xsd:string"/>
+    </message>
+    <message name="ConvertToConvertToEurosResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="FrancsToEuros.cfrancstoeurosPortType">
+        <operation name="ConvertToConvertToEuros">
+            <input message="tns:ConvertToConvertToEurosRequest"/>
+            <output message="tns:ConvertToConvertToEurosResponse"/>
+        </operation>
+    </portType>
+    <binding name="FrancsToEuros.cfrancstoeurosbinding" type="tns:FrancsToEuros.cfrancstoeurosPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ConvertToConvertToEuros">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/freevbcode/FrancsToEuros/CFrancsToEuros.xml#ConvertToConvertToEuros"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/freevbcode/FrancsToEuros/CFrancsToEuros.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/freevbcode/FrancsToEuros/CFrancsToEuros.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="FrancsToEuros.cfrancstoeurosService">
+        <port name="FrancsToEuros.cfrancstoeurosPort" binding="tns:FrancsToEuros.cfrancstoeurosbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/francstoeuros.cgi"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://vbcentral.net/ShipService/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://vbcentral.net/ShipService/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://vbcentral.net/ShipService/">
+      <s:element name="HelloShipRater">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TestReturnData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloShipRaterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloShipRaterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShipRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shipper" type="s0:ShipperEnum" />
+            <s:element minOccurs="1" maxOccurs="1" name="Packaging" type="s0:PackageTypeEnum" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pounds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ounces" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="ShipperEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="AirBorne" />
+          <s:enumeration value="DHL" />
+          <s:enumeration value="FedEx" />
+          <s:enumeration value="UPS" />
+          <s:enumeration value="USPS" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PackageTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="MyPacking" />
+          <s:enumeration value="Letter" />
+          <s:enumeration value="Envelope" />
+          <s:enumeration value="Box" />
+          <s:enumeration value="ExtraLargeBox" />
+          <s:enumeration value="Tube" />
+          <s:enumeration value="Pak" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetShipRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShipRatesResult" type="s0:ArrayOfRater" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRater">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Rater" nillable="true" type="s0:Rater" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Rater">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetQuickRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shipper" type="s0:ShipperEnum" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Weight" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuickRatesResult" type="s0:ArrayOfRater" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackPackage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shipper" type="s0:ShipperEnum" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrackPackageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrackPackageResult" type="s0:ArrayOfTracker" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTracker">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tracker" nillable="true" type="s0:Tracker" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tracker">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveredTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SignedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReportTrackingProblem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TrackingNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shipper" type="s0:ShipperEnum" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportTrackingProblemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReportTrackingProblemResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityFromZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityFromZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityFromZipResult" type="s0:ArrayOfZipLocator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfZipLocator">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZipLocator" nillable="true" type="s0:ZipLocator" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZipLocator">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetZipFromCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZipFromCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZipFromCityResult" type="s0:ArrayOfZipLocator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="EmailToUser" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountInfoResult" type="s0:AccountInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AccountInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipRaterID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateOpened" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateExpires" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastLogOn" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetContactInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetContactInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetContactInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPackageTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPackageTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPackageTypesResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetShippers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetShippersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShippersResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="HelloShipRaterSoapIn">
+    <part name="parameters" element="s0:HelloShipRater" />
+  </message>
+  <message name="HelloShipRaterSoapOut">
+    <part name="parameters" element="s0:HelloShipRaterResponse" />
+  </message>
+  <message name="GetShipRatesSoapIn">
+    <part name="parameters" element="s0:GetShipRates" />
+  </message>
+  <message name="GetShipRatesSoapOut">
+    <part name="parameters" element="s0:GetShipRatesResponse" />
+  </message>
+  <message name="GetQuickRatesSoapIn">
+    <part name="parameters" element="s0:GetQuickRates" />
+  </message>
+  <message name="GetQuickRatesSoapOut">
+    <part name="parameters" element="s0:GetQuickRatesResponse" />
+  </message>
+  <message name="TrackPackageSoapIn">
+    <part name="parameters" element="s0:TrackPackage" />
+  </message>
+  <message name="TrackPackageSoapOut">
+    <part name="parameters" element="s0:TrackPackageResponse" />
+  </message>
+  <message name="ReportTrackingProblemSoapIn">
+    <part name="parameters" element="s0:ReportTrackingProblem" />
+  </message>
+  <message name="ReportTrackingProblemSoapOut">
+    <part name="parameters" element="s0:ReportTrackingProblemResponse" />
+  </message>
+  <message name="GetCityFromZipSoapIn">
+    <part name="parameters" element="s0:GetCityFromZip" />
+  </message>
+  <message name="GetCityFromZipSoapOut">
+    <part name="parameters" element="s0:GetCityFromZipResponse" />
+  </message>
+  <message name="GetZipFromCitySoapIn">
+    <part name="parameters" element="s0:GetZipFromCity" />
+  </message>
+  <message name="GetZipFromCitySoapOut">
+    <part name="parameters" element="s0:GetZipFromCityResponse" />
+  </message>
+  <message name="GetAccountInfoSoapIn">
+    <part name="parameters" element="s0:GetAccountInfo" />
+  </message>
+  <message name="GetAccountInfoSoapOut">
+    <part name="parameters" element="s0:GetAccountInfoResponse" />
+  </message>
+  <message name="SetContactInfoSoapIn">
+    <part name="parameters" element="s0:SetContactInfo" />
+  </message>
+  <message name="SetContactInfoSoapOut">
+    <part name="parameters" element="s0:SetContactInfoResponse" />
+  </message>
+  <message name="GetPackageTypesSoapIn">
+    <part name="parameters" element="s0:GetPackageTypes" />
+  </message>
+  <message name="GetPackageTypesSoapOut">
+    <part name="parameters" element="s0:GetPackageTypesResponse" />
+  </message>
+  <message name="GetShippersSoapIn">
+    <part name="parameters" element="s0:GetShippers" />
+  </message>
+  <message name="GetShippersSoapOut">
+    <part name="parameters" element="s0:GetShippersResponse" />
+  </message>
+  <portType name="ServicesSoap">
+    <operation name="HelloShipRater">
+      <documentation>Used to test service connection. Returns the data passed in plus current date and time.</documentation>
+      <input message="s0:HelloShipRaterSoapIn" />
+      <output message="s0:HelloShipRaterSoapOut" />
+    </operation>
+    <operation name="GetShipRates">
+      <documentation>Get shipment rates&lt;br&gt;&lt;br&gt;All shippers require a minimum of a ShipperName, ZipCode, PackageType, and Weight.</documentation>
+      <input message="s0:GetShipRatesSoapIn" />
+      <output message="s0:GetShipRatesSoapOut" />
+    </operation>
+    <operation name="GetQuickRates">
+      <documentation>Gets quick shipment rates&lt;br&gt;&lt;br&gt;By default this rate will use a 1 pound box that is personally packed.&lt;BR&gt;You can override the weight by entering in a new value.</documentation>
+      <input message="s0:GetQuickRatesSoapIn" />
+      <output message="s0:GetQuickRatesSoapOut" />
+    </operation>
+    <operation name="TrackPackage">
+      <documentation>Tracks a package from a shipper.</documentation>
+      <input message="s0:TrackPackageSoapIn" />
+      <output message="s0:TrackPackageSoapOut" />
+    </operation>
+    <operation name="ReportTrackingProblem">
+      <documentation>Reports a tracking problem with a valid tracking number.&lt;BR&gt;All cases will be reviewed and responded to within 48 hours.</documentation>
+      <input message="s0:ReportTrackingProblemSoapIn" />
+      <output message="s0:ReportTrackingProblemSoapOut" />
+    </operation>
+    <operation name="GetCityFromZip">
+      <documentation>Get all cities from zip code</documentation>
+      <input message="s0:GetCityFromZipSoapIn" />
+      <output message="s0:GetCityFromZipSoapOut" />
+    </operation>
+    <operation name="GetZipFromCity">
+      <documentation>Get all zip codes from city, state</documentation>
+      <input message="s0:GetZipFromCitySoapIn" />
+      <output message="s0:GetZipFromCitySoapOut" />
+    </operation>
+    <operation name="GetAccountInfo">
+      <documentation>Gets account information. Option to return email info to user.</documentation>
+      <input message="s0:GetAccountInfoSoapIn" />
+      <output message="s0:GetAccountInfoSoapOut" />
+    </operation>
+    <operation name="SetContactInfo">
+      <documentation>Updates contact information</documentation>
+      <input message="s0:SetContactInfoSoapIn" />
+      <output message="s0:SetContactInfoSoapOut" />
+    </operation>
+    <operation name="GetPackageTypes">
+      <documentation>Gets a list of the different package types</documentation>
+      <input message="s0:GetPackageTypesSoapIn" />
+      <output message="s0:GetPackageTypesSoapOut" />
+    </operation>
+    <operation name="GetShippers">
+      <documentation>Gets a list of the different shippers</documentation>
+      <input message="s0:GetShippersSoapIn" />
+      <output message="s0:GetShippersSoapOut" />
+    </operation>
+  </portType>
+  <binding name="ServicesSoap" type="s0:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="HelloShipRater">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/HelloShipRater" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetShipRates">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetShipRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQuickRates">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetQuickRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TrackPackage">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/TrackPackage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReportTrackingProblem">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/ReportTrackingProblem" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCityFromZip">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetCityFromZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetZipFromCity">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetZipFromCity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAccountInfo">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetAccountInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetContactInfo">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/SetContactInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPackageTypes">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetPackageTypes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetShippers">
+      <soap:operation soapAction="http://vbcentral.net/ShipService/GetShippers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Services">
+    <documentation>&lt;H1&gt;Ship Rater Web Services&lt;/H1&gt;&lt;br&gt;These services offer an comparative rate between shippers.&lt;br&gt;&lt;br&gt;For help contact &lt;a href=mailto:support@shiprater.com&gt;Ship Rater Technical Support.&lt;/a&gt;&lt;br&gt;&lt;br&gt;For developer support navigate to the &lt;a href=http://www.vbcentral.net/ShipRater/dev/resources.asp&gt;developer support area.&lt;/a&gt;</documentation>
+    <port name="ServicesSoap" binding="s0:ServicesSoap">
+      <soap:address location="http://www.vbcentral.net/ShipService/Services.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="RecipeLookup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DrinkName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeLookupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeLookupResult" type="s0:ReceipeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReceipeInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Recipe" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mixing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Glass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLiquor" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RecipeDrinkList">
+        <s:complexType />
+      </s:element>
+      <s:element name="RecipeDrinkListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeDrinkListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeGlassList">
+        <s:complexType />
+      </s:element>
+      <s:element name="RecipeGlassListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeGlassListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeLiquorList">
+        <s:complexType />
+      </s:element>
+      <s:element name="RecipeLiquorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeLiquorListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeSelectByGlass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Glass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeSelectByGlassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeSelectByGlassResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeLookupByLiquor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Liquor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecipeLookupByLiquorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeLookupByLiquorResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPCUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitOfMeasure" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Manufacture" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPCUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UPCUpdateResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPCLookup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPCLookupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPCLookupResult" type="s0:UPCLookupInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UPCLookupInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Confidence" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitOfMeasure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Manufacture" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ZipCodeLookup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipCodeLookupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCodeLookupResult" type="s0:ZipCodeLookupInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ZipCodeLookupInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Confidence" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReceipeInfo" nillable="true" type="s0:ReceipeInfo" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="long" type="s:long" />
+      <s:element name="UPCLookupInfo" nillable="true" type="s0:UPCLookupInfo" />
+      <s:element name="ZipCodeLookupInfo" nillable="true" type="s0:ZipCodeLookupInfo" />
+    </s:schema>
+  </types>
+  <message name="RecipeLookupSoapIn">
+    <part name="parameters" element="s0:RecipeLookup" />
+  </message>
+  <message name="RecipeLookupSoapOut">
+    <part name="parameters" element="s0:RecipeLookupResponse" />
+  </message>
+  <message name="RecipeDrinkListSoapIn">
+    <part name="parameters" element="s0:RecipeDrinkList" />
+  </message>
+  <message name="RecipeDrinkListSoapOut">
+    <part name="parameters" element="s0:RecipeDrinkListResponse" />
+  </message>
+  <message name="RecipeGlassListSoapIn">
+    <part name="parameters" element="s0:RecipeGlassList" />
+  </message>
+  <message name="RecipeGlassListSoapOut">
+    <part name="parameters" element="s0:RecipeGlassListResponse" />
+  </message>
+  <message name="RecipeLiquorListSoapIn">
+    <part name="parameters" element="s0:RecipeLiquorList" />
+  </message>
+  <message name="RecipeLiquorListSoapOut">
+    <part name="parameters" element="s0:RecipeLiquorListResponse" />
+  </message>
+  <message name="RecipeSelectByGlassSoapIn">
+    <part name="parameters" element="s0:RecipeSelectByGlass" />
+  </message>
+  <message name="RecipeSelectByGlassSoapOut">
+    <part name="parameters" element="s0:RecipeSelectByGlassResponse" />
+  </message>
+  <message name="RecipeLookupByLiquorSoapIn">
+    <part name="parameters" element="s0:RecipeLookupByLiquor" />
+  </message>
+  <message name="RecipeLookupByLiquorSoapOut">
+    <part name="parameters" element="s0:RecipeLookupByLiquorResponse" />
+  </message>
+  <message name="UPCUpdateSoapIn">
+    <part name="parameters" element="s0:UPCUpdate" />
+  </message>
+  <message name="UPCUpdateSoapOut">
+    <part name="parameters" element="s0:UPCUpdateResponse" />
+  </message>
+  <message name="UPCLookupSoapIn">
+    <part name="parameters" element="s0:UPCLookup" />
+  </message>
+  <message name="UPCLookupSoapOut">
+    <part name="parameters" element="s0:UPCLookupResponse" />
+  </message>
+  <message name="ZipCodeLookupSoapIn">
+    <part name="parameters" element="s0:ZipCodeLookup" />
+  </message>
+  <message name="ZipCodeLookupSoapOut">
+    <part name="parameters" element="s0:ZipCodeLookupResponse" />
+  </message>
+  <message name="RecipeLookupHttpGetIn">
+    <part name="DrinkName" type="s:string" />
+  </message>
+  <message name="RecipeLookupHttpGetOut">
+    <part name="Body" element="s0:ReceipeInfo" />
+  </message>
+  <message name="RecipeDrinkListHttpGetIn" />
+  <message name="RecipeDrinkListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeGlassListHttpGetIn" />
+  <message name="RecipeGlassListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeLiquorListHttpGetIn" />
+  <message name="RecipeLiquorListHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeSelectByGlassHttpGetIn">
+    <part name="Glass" type="s:string" />
+  </message>
+  <message name="RecipeSelectByGlassHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeLookupByLiquorHttpGetIn">
+    <part name="Liquor" type="s:string" />
+  </message>
+  <message name="RecipeLookupByLiquorHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="UPCUpdateHttpGetIn">
+    <part name="UPC" type="s:string" />
+    <part name="UnitOfMeasure" type="s:string" />
+    <part name="Manufacture" type="s:string" />
+    <part name="Description" type="s:string" />
+  </message>
+  <message name="UPCUpdateHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="UPCLookupHttpGetIn">
+    <part name="UPC" type="s:string" />
+  </message>
+  <message name="UPCLookupHttpGetOut">
+    <part name="Body" element="s0:UPCLookupInfo" />
+  </message>
+  <message name="ZipCodeLookupHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="ZipCodeLookupHttpGetOut">
+    <part name="Body" element="s0:ZipCodeLookupInfo" />
+  </message>
+  <message name="RecipeLookupHttpPostIn">
+    <part name="DrinkName" type="s:string" />
+  </message>
+  <message name="RecipeLookupHttpPostOut">
+    <part name="Body" element="s0:ReceipeInfo" />
+  </message>
+  <message name="RecipeDrinkListHttpPostIn" />
+  <message name="RecipeDrinkListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeGlassListHttpPostIn" />
+  <message name="RecipeGlassListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeLiquorListHttpPostIn" />
+  <message name="RecipeLiquorListHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeSelectByGlassHttpPostIn">
+    <part name="Glass" type="s:string" />
+  </message>
+  <message name="RecipeSelectByGlassHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="RecipeLookupByLiquorHttpPostIn">
+    <part name="Liquor" type="s:string" />
+  </message>
+  <message name="RecipeLookupByLiquorHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="UPCUpdateHttpPostIn">
+    <part name="UPC" type="s:string" />
+    <part name="UnitOfMeasure" type="s:string" />
+    <part name="Manufacture" type="s:string" />
+    <part name="Description" type="s:string" />
+  </message>
+  <message name="UPCUpdateHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="UPCLookupHttpPostIn">
+    <part name="UPC" type="s:string" />
+  </message>
+  <message name="UPCLookupHttpPostOut">
+    <part name="Body" element="s0:UPCLookupInfo" />
+  </message>
+  <message name="ZipCodeLookupHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="ZipCodeLookupHttpPostOut">
+    <part name="Body" element="s0:ZipCodeLookupInfo" />
+  </message>
+  <portType name="pos_publicSoap">
+    <operation name="RecipeLookup">
+      <documentation>Lookup a Drink Recipe</documentation>
+      <input message="s0:RecipeLookupSoapIn" />
+      <output message="s0:RecipeLookupSoapOut" />
+    </operation>
+    <operation name="RecipeDrinkList">
+      <documentation>Download Drink List</documentation>
+      <input message="s0:RecipeDrinkListSoapIn" />
+      <output message="s0:RecipeDrinkListSoapOut" />
+    </operation>
+    <operation name="RecipeGlassList">
+      <documentation>Download Glass List</documentation>
+      <input message="s0:RecipeGlassListSoapIn" />
+      <output message="s0:RecipeGlassListSoapOut" />
+    </operation>
+    <operation name="RecipeLiquorList">
+      <documentation>Download Liquor List</documentation>
+      <input message="s0:RecipeLiquorListSoapIn" />
+      <output message="s0:RecipeLiquorListSoapOut" />
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <documentation>Select By Glass</documentation>
+      <input message="s0:RecipeSelectByGlassSoapIn" />
+      <output message="s0:RecipeSelectByGlassSoapOut" />
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <documentation>Lookup Drink List by Liquor</documentation>
+      <input message="s0:RecipeLookupByLiquorSoapIn" />
+      <output message="s0:RecipeLookupByLiquorSoapOut" />
+    </operation>
+    <operation name="UPCUpdate">
+      <documentation>Update UPC Information</documentation>
+      <input message="s0:UPCUpdateSoapIn" />
+      <output message="s0:UPCUpdateSoapOut" />
+    </operation>
+    <operation name="UPCLookup">
+      <documentation>Lookup UPC Information</documentation>
+      <input message="s0:UPCLookupSoapIn" />
+      <output message="s0:UPCLookupSoapOut" />
+    </operation>
+    <operation name="ZipCodeLookup">
+      <documentation>Lookup ZipCode Information</documentation>
+      <input message="s0:ZipCodeLookupSoapIn" />
+      <output message="s0:ZipCodeLookupSoapOut" />
+    </operation>
+  </portType>
+  <portType name="pos_publicHttpGet">
+    <operation name="RecipeLookup">
+      <documentation>Lookup a Drink Recipe</documentation>
+      <input message="s0:RecipeLookupHttpGetIn" />
+      <output message="s0:RecipeLookupHttpGetOut" />
+    </operation>
+    <operation name="RecipeDrinkList">
+      <documentation>Download Drink List</documentation>
+      <input message="s0:RecipeDrinkListHttpGetIn" />
+      <output message="s0:RecipeDrinkListHttpGetOut" />
+    </operation>
+    <operation name="RecipeGlassList">
+      <documentation>Download Glass List</documentation>
+      <input message="s0:RecipeGlassListHttpGetIn" />
+      <output message="s0:RecipeGlassListHttpGetOut" />
+    </operation>
+    <operation name="RecipeLiquorList">
+      <documentation>Download Liquor List</documentation>
+      <input message="s0:RecipeLiquorListHttpGetIn" />
+      <output message="s0:RecipeLiquorListHttpGetOut" />
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <documentation>Select By Glass</documentation>
+      <input message="s0:RecipeSelectByGlassHttpGetIn" />
+      <output message="s0:RecipeSelectByGlassHttpGetOut" />
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <documentation>Lookup Drink List by Liquor</documentation>
+      <input message="s0:RecipeLookupByLiquorHttpGetIn" />
+      <output message="s0:RecipeLookupByLiquorHttpGetOut" />
+    </operation>
+    <operation name="UPCUpdate">
+      <documentation>Update UPC Information</documentation>
+      <input message="s0:UPCUpdateHttpGetIn" />
+      <output message="s0:UPCUpdateHttpGetOut" />
+    </operation>
+    <operation name="UPCLookup">
+      <documentation>Lookup UPC Information</documentation>
+      <input message="s0:UPCLookupHttpGetIn" />
+      <output message="s0:UPCLookupHttpGetOut" />
+    </operation>
+    <operation name="ZipCodeLookup">
+      <documentation>Lookup ZipCode Information</documentation>
+      <input message="s0:ZipCodeLookupHttpGetIn" />
+      <output message="s0:ZipCodeLookupHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="pos_publicHttpPost">
+    <operation name="RecipeLookup">
+      <documentation>Lookup a Drink Recipe</documentation>
+      <input message="s0:RecipeLookupHttpPostIn" />
+      <output message="s0:RecipeLookupHttpPostOut" />
+    </operation>
+    <operation name="RecipeDrinkList">
+      <documentation>Download Drink List</documentation>
+      <input message="s0:RecipeDrinkListHttpPostIn" />
+      <output message="s0:RecipeDrinkListHttpPostOut" />
+    </operation>
+    <operation name="RecipeGlassList">
+      <documentation>Download Glass List</documentation>
+      <input message="s0:RecipeGlassListHttpPostIn" />
+      <output message="s0:RecipeGlassListHttpPostOut" />
+    </operation>
+    <operation name="RecipeLiquorList">
+      <documentation>Download Liquor List</documentation>
+      <input message="s0:RecipeLiquorListHttpPostIn" />
+      <output message="s0:RecipeLiquorListHttpPostOut" />
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <documentation>Select By Glass</documentation>
+      <input message="s0:RecipeSelectByGlassHttpPostIn" />
+      <output message="s0:RecipeSelectByGlassHttpPostOut" />
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <documentation>Lookup Drink List by Liquor</documentation>
+      <input message="s0:RecipeLookupByLiquorHttpPostIn" />
+      <output message="s0:RecipeLookupByLiquorHttpPostOut" />
+    </operation>
+    <operation name="UPCUpdate">
+      <documentation>Update UPC Information</documentation>
+      <input message="s0:UPCUpdateHttpPostIn" />
+      <output message="s0:UPCUpdateHttpPostOut" />
+    </operation>
+    <operation name="UPCLookup">
+      <documentation>Lookup UPC Information</documentation>
+      <input message="s0:UPCLookupHttpPostIn" />
+      <output message="s0:UPCLookupHttpPostOut" />
+    </operation>
+    <operation name="ZipCodeLookup">
+      <documentation>Lookup ZipCode Information</documentation>
+      <input message="s0:ZipCodeLookupHttpPostIn" />
+      <output message="s0:ZipCodeLookupHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="pos_publicSoap" type="s0:pos_publicSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="RecipeLookup">
+      <soap:operation soapAction="http://tempuri.org/RecipeLookup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RecipeDrinkList">
+      <soap:operation soapAction="http://tempuri.org/RecipeDrinkList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RecipeGlassList">
+      <soap:operation soapAction="http://tempuri.org/RecipeGlassList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RecipeLiquorList">
+      <soap:operation soapAction="http://tempuri.org/RecipeLiquorList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <soap:operation soapAction="http://tempuri.org/RecipeSelectByGlass" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <soap:operation soapAction="http://tempuri.org/RecipeLookupByLiquor" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UPCUpdate">
+      <soap:operation soapAction="http://tempuri.org/UPCUpdate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UPCLookup">
+      <soap:operation soapAction="http://tempuri.org/UPCLookup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ZipCodeLookup">
+      <soap:operation soapAction="http://tempuri.org/ZipCodeLookup" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="pos_publicHttpGet" type="s0:pos_publicHttpGet">
+    <http:binding verb="GET" />
+    <operation name="RecipeLookup">
+      <http:operation location="/RecipeLookup" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeDrinkList">
+      <http:operation location="/RecipeDrinkList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeGlassList">
+      <http:operation location="/RecipeGlassList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeLiquorList">
+      <http:operation location="/RecipeLiquorList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <http:operation location="/RecipeSelectByGlass" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <http:operation location="/RecipeLookupByLiquor" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UPCUpdate">
+      <http:operation location="/UPCUpdate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UPCLookup">
+      <http:operation location="/UPCLookup" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipCodeLookup">
+      <http:operation location="/ZipCodeLookup" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="pos_publicHttpPost" type="s0:pos_publicHttpPost">
+    <http:binding verb="POST" />
+    <operation name="RecipeLookup">
+      <http:operation location="/RecipeLookup" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeDrinkList">
+      <http:operation location="/RecipeDrinkList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeGlassList">
+      <http:operation location="/RecipeGlassList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeLiquorList">
+      <http:operation location="/RecipeLiquorList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeSelectByGlass">
+      <http:operation location="/RecipeSelectByGlass" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RecipeLookupByLiquor">
+      <http:operation location="/RecipeLookupByLiquor" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UPCUpdate">
+      <http:operation location="/UPCUpdate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UPCLookup">
+      <http:operation location="/UPCLookup" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ZipCodeLookup">
+      <http:operation location="/ZipCodeLookup" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="pos_public">
+    <port name="pos_publicSoap" binding="s0:pos_publicSoap">
+      <soap:address location="http://iis1.grantparksoftware.com/gps/pos_public.asmx" />
+    </port>
+    <port name="pos_publicHttpGet" binding="s0:pos_publicHttpGet">
+      <http:address location="http://iis1.grantparksoftware.com/gps/pos_public.asmx" />
+    </port>
+    <port name="pos_publicHttpPost" binding="s0:pos_publicHttpPost">
+      <http:address location="http://iis1.grantparksoftware.com/gps/pos_public.asmx" />
+    </port>
+  </service>
+</definitions>

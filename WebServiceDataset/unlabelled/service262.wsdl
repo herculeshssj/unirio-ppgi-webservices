@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+ <!-- Generated 04/22/02 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.02.813.0 --> 
+<definitions  name ='SecureXML'   targetNamespace = 'http://tempuri.org/wsdl/'
+	 xmlns:wsdlns='http://tempuri.org/wsdl/' 
+	 xmlns:typens='http://tempuri.org/type' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+	 xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://tempuri.org/type'
+      xmlns='http://www.w3.org/2001/XMLSchema'
+      xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+      xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+      elementFormDefault='qualified'>
+    </schema>
+  </types>
+  <message name='Signature.SecureXMLVerify'>
+    <part name='signedXML' type='xsd:string'/>
+  </message>
+  <message name='Signature.SecureXMLVerifyResponse'>
+    <part name='Result' type='xsd:string'/>
+  </message>
+  <portType name='SignatureSoapPort'>
+    <operation name='SecureXMLVerify' parameterOrder='signedXML'>
+      <input message='wsdlns:Signature.SecureXMLVerify' />
+      <output message='wsdlns:Signature.SecureXMLVerifyResponse' />
+    </operation>
+  </portType>
+  <binding name='SignatureSoapBinding' type='wsdlns:SignatureSoapPort' >
+    <stk:binding preferredEncoding='UTF-8'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='SecureXMLVerify' >
+      <soap:operation soapAction='http://tempuri.org/action/Signature.SecureXMLVerify' />
+      <input>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='SecureXML' >
+    <port name='SignatureSoapPort' binding='wsdlns:SignatureSoapBinding' >
+      <soap:address location='http://www.securexml.net/SecureXML/SecureXML.wsdl' />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.pdaschedule.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.pdaschedule.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.pdaschedule.com">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sLeague" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sDay" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetScheduleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetScheduleSoapIn">
+    <part name="parameters" element="s0:GetSchedule" />
+  </message>
+  <message name="GetScheduleSoapOut">
+    <part name="parameters" element="s0:GetScheduleResponse" />
+  </message>
+  <message name="GetScheduleHttpGetIn">
+    <part name="sLeague" type="s:string" />
+    <part name="sDay" type="s:string" />
+  </message>
+  <message name="GetScheduleHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetScheduleHttpPostIn">
+    <part name="sLeague" type="s:string" />
+    <part name="sDay" type="s:string" />
+  </message>
+  <message name="GetScheduleHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="PDAscheduleSoap">
+    <operation name="GetSchedule">
+      <documentation>Get schedule by league by day. Input parameters: sLeague=MLB, NFL, NBA, NHL;  sDay=Yesterday, Today, Tommorow;</documentation>
+      <input message="s0:GetScheduleSoapIn" />
+      <output message="s0:GetScheduleSoapOut" />
+    </operation>
+  </portType>
+  <portType name="PDAscheduleHttpGet">
+    <operation name="GetSchedule">
+      <documentation>Get schedule by league by day. Input parameters: sLeague=MLB, NFL, NBA, NHL;  sDay=Yesterday, Today, Tommorow;</documentation>
+      <input message="s0:GetScheduleHttpGetIn" />
+      <output message="s0:GetScheduleHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="PDAscheduleHttpPost">
+    <operation name="GetSchedule">
+      <documentation>Get schedule by league by day. Input parameters: sLeague=MLB, NFL, NBA, NHL;  sDay=Yesterday, Today, Tommorow;</documentation>
+      <input message="s0:GetScheduleHttpPostIn" />
+      <output message="s0:GetScheduleHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="PDAscheduleSoap" type="s0:PDAscheduleSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSchedule">
+      <soap:operation soapAction="http://www.pdaschedule.com/GetSchedule" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PDAscheduleHttpGet" type="s0:PDAscheduleHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSchedule">
+      <http:operation location="/GetSchedule" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PDAscheduleHttpPost" type="s0:PDAscheduleHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSchedule">
+      <http:operation location="/GetSchedule" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PDAschedule">
+    <documentation>&lt;a href='http://www.PDAschedule.com'&gt;PDAschedule.com&lt;/a&gt; provides web service to get MLB, NHL, NFL, NBA schedule/score.</documentation>
+    <port name="PDAscheduleSoap" binding="s0:PDAscheduleSoap">
+      <soap:address location="http://www.pdaschedule.com/ws/pdaschedule.asmx" />
+    </port>
+    <port name="PDAscheduleHttpGet" binding="s0:PDAscheduleHttpGet">
+      <http:address location="http://www.pdaschedule.com/ws/pdaschedule.asmx" />
+    </port>
+    <port name="PDAscheduleHttpPost" binding="s0:PDAscheduleHttpPost">
+      <http:address location="http://www.pdaschedule.com/ws/pdaschedule.asmx" />
+    </port>
+  </service>
+</definitions>

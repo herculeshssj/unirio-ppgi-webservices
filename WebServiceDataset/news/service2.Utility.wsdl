@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myasptools.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myasptools.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myasptools.com/">
+      <s:element name="GetNewsCategory">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewsCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsCategoryResult" type="s0:ArrayOfNewsCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNewsCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewsCategory" nillable="true" type="s0:NewsCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NewsCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Channel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Feed" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLicNewsCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicNewsCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicNewsCategoryResult" type="s0:ArrayOfNewsCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIndustryNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="industry" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIndustryNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIndustryNewsResult" type="s0:ArrayOfBusinessShortNews" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessShortNews">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessShortNews" nillable="true" type="s0:BusinessShortNews" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessShortNews">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Headline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cluster" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLicIndustryNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="industry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicIndustryNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicIndustryNewsResult" type="s0:ArrayOfBusinessShortNews" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfNewsCategory" nillable="true" type="s0:ArrayOfNewsCategory" />
+      <s:element name="ArrayOfBusinessShortNews" nillable="true" type="s0:ArrayOfBusinessShortNews" />
+    </s:schema>
+  </types>
+  <message name="GetNewsCategorySoapIn">
+    <part name="parameters" element="s0:GetNewsCategory" />
+  </message>
+  <message name="GetNewsCategorySoapOut">
+    <part name="parameters" element="s0:GetNewsCategoryResponse" />
+  </message>
+  <message name="GetLicNewsCategorySoapIn">
+    <part name="parameters" element="s0:GetLicNewsCategory" />
+  </message>
+  <message name="GetLicNewsCategorySoapOut">
+    <part name="parameters" element="s0:GetLicNewsCategoryResponse" />
+  </message>
+  <message name="GetIndustryNewsSoapIn">
+    <part name="parameters" element="s0:GetIndustryNews" />
+  </message>
+  <message name="GetIndustryNewsSoapOut">
+    <part name="parameters" element="s0:GetIndustryNewsResponse" />
+  </message>
+  <message name="GetLicIndustryNewsSoapIn">
+    <part name="parameters" element="s0:GetLicIndustryNews" />
+  </message>
+  <message name="GetLicIndustryNewsSoapOut">
+    <part name="parameters" element="s0:GetLicIndustryNewsResponse" />
+  </message>
+  <message name="GetNewsCategoryHttpGetIn" />
+  <message name="GetNewsCategoryHttpGetOut">
+    <part name="Body" element="s0:ArrayOfNewsCategory" />
+  </message>
+  <message name="GetLicNewsCategoryHttpGetIn">
+    <part name="licNum" type="s:string" />
+  </message>
+  <message name="GetLicNewsCategoryHttpGetOut">
+    <part name="Body" element="s0:ArrayOfNewsCategory" />
+  </message>
+  <message name="GetIndustryNewsHttpGetIn">
+    <part name="industry" type="s:string" />
+  </message>
+  <message name="GetIndustryNewsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfBusinessShortNews" />
+  </message>
+  <message name="GetLicIndustryNewsHttpGetIn">
+    <part name="industry" type="s:string" />
+    <part name="LicNum" type="s:string" />
+  </message>
+  <message name="GetLicIndustryNewsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfBusinessShortNews" />
+  </message>
+  <message name="GetNewsCategoryHttpPostIn" />
+  <message name="GetNewsCategoryHttpPostOut">
+    <part name="Body" element="s0:ArrayOfNewsCategory" />
+  </message>
+  <message name="GetLicNewsCategoryHttpPostIn">
+    <part name="licNum" type="s:string" />
+  </message>
+  <message name="GetLicNewsCategoryHttpPostOut">
+    <part name="Body" element="s0:ArrayOfNewsCategory" />
+  </message>
+  <message name="GetIndustryNewsHttpPostIn">
+    <part name="industry" type="s:string" />
+  </message>
+  <message name="GetIndustryNewsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfBusinessShortNews" />
+  </message>
+  <message name="GetLicIndustryNewsHttpPostIn">
+    <part name="industry" type="s:string" />
+    <part name="LicNum" type="s:string" />
+  </message>
+  <message name="GetLicIndustryNewsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfBusinessShortNews" />
+  </message>
+  <portType name="BusinessNewsSoap">
+    <operation name="GetNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetNewsCategorySoapIn" />
+      <output message="s0:GetNewsCategorySoapOut" />
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetLicNewsCategorySoapIn" />
+      <output message="s0:GetLicNewsCategorySoapOut" />
+    </operation>
+    <operation name="GetIndustryNews">
+      <documentation>This method retrives a list of news for a specific category. Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetIndustryNewsSoapIn" />
+      <output message="s0:GetIndustryNewsSoapOut" />
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <documentation>This method retrives a list of news for a specific category (license code is needed). Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetLicIndustryNewsSoapIn" />
+      <output message="s0:GetLicIndustryNewsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BusinessNewsHttpGet">
+    <operation name="GetNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetNewsCategoryHttpGetIn" />
+      <output message="s0:GetNewsCategoryHttpGetOut" />
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetLicNewsCategoryHttpGetIn" />
+      <output message="s0:GetLicNewsCategoryHttpGetOut" />
+    </operation>
+    <operation name="GetIndustryNews">
+      <documentation>This method retrives a list of news for a specific category. Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetIndustryNewsHttpGetIn" />
+      <output message="s0:GetIndustryNewsHttpGetOut" />
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <documentation>This method retrives a list of news for a specific category (license code is needed). Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetLicIndustryNewsHttpGetIn" />
+      <output message="s0:GetLicIndustryNewsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BusinessNewsHttpPost">
+    <operation name="GetNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetNewsCategoryHttpPostIn" />
+      <output message="s0:GetNewsCategoryHttpPostOut" />
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <documentation>This method retrives a list of news categories.</documentation>
+      <input message="s0:GetLicNewsCategoryHttpPostIn" />
+      <output message="s0:GetLicNewsCategoryHttpPostOut" />
+    </operation>
+    <operation name="GetIndustryNews">
+      <documentation>This method retrives a list of news for a specific category. Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetIndustryNewsHttpPostIn" />
+      <output message="s0:GetIndustryNewsHttpPostOut" />
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <documentation>This method retrives a list of news for a specific category (license code is needed). Key in "CRM news" to see the news list.</documentation>
+      <input message="s0:GetLicIndustryNewsHttpPostIn" />
+      <output message="s0:GetLicIndustryNewsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BusinessNewsSoap" type="s0:BusinessNewsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetNewsCategory">
+      <soap:operation soapAction="http://www.myasptools.com/GetNewsCategory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <soap:operation soapAction="http://www.myasptools.com/GetLicNewsCategory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetIndustryNews">
+      <soap:operation soapAction="http://www.myasptools.com/GetIndustryNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <soap:operation soapAction="http://www.myasptools.com/GetLicIndustryNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BusinessNewsHttpGet" type="s0:BusinessNewsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetNewsCategory">
+      <http:operation location="/GetNewsCategory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <http:operation location="/GetLicNewsCategory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetIndustryNews">
+      <http:operation location="/GetIndustryNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <http:operation location="/GetLicIndustryNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BusinessNewsHttpPost" type="s0:BusinessNewsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetNewsCategory">
+      <http:operation location="/GetNewsCategory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicNewsCategory">
+      <http:operation location="/GetLicNewsCategory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetIndustryNews">
+      <http:operation location="/GetIndustryNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicIndustryNews">
+      <http:operation location="/GetLicIndustryNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BusinessNews">
+    <port name="BusinessNewsSoap" binding="s0:BusinessNewsSoap">
+      <soap:address location="http://glkev.webs.innerhost.com/glkev_ws/businessnews.asmx" />
+    </port>
+    <port name="BusinessNewsHttpGet" binding="s0:BusinessNewsHttpGet">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/businessnews.asmx" />
+    </port>
+    <port name="BusinessNewsHttpPost" binding="s0:BusinessNewsHttpPost">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/businessnews.asmx" />
+    </port>
+  </service>
+</definitions>

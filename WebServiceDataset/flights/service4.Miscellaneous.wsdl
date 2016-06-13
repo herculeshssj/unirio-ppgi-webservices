@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://www.aeroflot.ru/literalTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.aeroflot.ru/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.aeroflot.ru/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://www.aeroflot.ru/">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <s:complexType name="ArrayOfAirport">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:Airport[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Airport">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDateTime">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s:dateTime[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlight">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:Flight[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Flight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="flt_pk" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_inter" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="calc" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="union_flight_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_check" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_board" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlightDetail">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:FlightDetail[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FlightDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flight_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="aircraft_type" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="bort" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_f" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_c" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_y" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="calc" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="city_dep" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_dep" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="code_dep" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="terminal_dep" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="city_arr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_arr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="code_arr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="terminal_arr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFlightShort">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:FlightShort[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FlightShort">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="flt_pk" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_dep" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_inter" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="airport_arr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_dep" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aeroflot.ru/literalTypes">
+      <s:element name="ArrayOfAirport" nillable="true" type="s1:ArrayOfAirport" />
+      <s:complexType name="ArrayOfAirport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="s1:Airport" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Airport">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Airport" nillable="true" type="s1:Airport" />
+      <s:element name="ArrayOfDateTime" nillable="true" type="s1:ArrayOfDateTime" />
+      <s:complexType name="ArrayOfDateTime">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="dateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfFlight" nillable="true" type="s1:ArrayOfFlight" />
+      <s:complexType name="ArrayOfFlight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Flight" nillable="true" type="s1:Flight" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Flight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="flt_pk" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_inter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="calc" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="union_flight_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_check" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_board" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfFlightDetail" nillable="true" type="s1:ArrayOfFlightDetail" />
+      <s:complexType name="ArrayOfFlightDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightDetail" nillable="true" type="s1:FlightDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flight_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="aircraft_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bort" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_f" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_c" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="seats_y" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="plan_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fact_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real_dep" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="real_arr" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="calc" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city_dep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_dep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="code_dep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="terminal_dep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city_arr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_arr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="code_arr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="terminal_arr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfFlightShort" nillable="true" type="s1:ArrayOfFlightShort" />
+      <s:complexType name="ArrayOfFlightShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FlightShort" nillable="true" type="s1:FlightShort" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FlightShort">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="flt_pk" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="flight_no" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_dep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_inter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="airport_arr" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="sched_dep" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="AirportListSoapIn" />
+  <message name="AirportListSoapOut">
+    <part name="AirportListResult" type="s0:ArrayOfAirport" />
+  </message>
+  <message name="AirportInfoSoapIn">
+    <part name="code" type="s:string" />
+  </message>
+  <message name="AirportInfoSoapOut">
+    <part name="AirportInfoResult" type="s0:Airport" />
+  </message>
+  <message name="DateListSoapIn" />
+  <message name="DateListSoapOut">
+    <part name="DateListResult" type="s0:ArrayOfDateTime" />
+  </message>
+  <message name="ArrivalSoapIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="ArrivalSoapOut">
+    <part name="ArrivalResult" type="s0:ArrayOfFlight" />
+  </message>
+  <message name="DepartureSoapIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="DepartureSoapOut">
+    <part name="DepartureResult" type="s0:ArrayOfFlight" />
+  </message>
+  <message name="FlightInfoSoapIn">
+    <part name="flt_pk" type="s:string" />
+  </message>
+  <message name="FlightInfoSoapOut">
+    <part name="FlightInfoResult" type="s0:ArrayOfFlightDetail" />
+  </message>
+  <message name="FlightSearchSoapIn">
+    <part name="flight_no" type="s:string" />
+  </message>
+  <message name="FlightSearchSoapOut">
+    <part name="FlightSearchResult" type="s0:ArrayOfFlightShort" />
+  </message>
+  <message name="AirportListHttpGetIn" />
+  <message name="AirportListHttpGetOut">
+    <part name="Body" element="s1:ArrayOfAirport" />
+  </message>
+  <message name="AirportInfoHttpGetIn">
+    <part name="code" type="s:string" />
+  </message>
+  <message name="AirportInfoHttpGetOut">
+    <part name="Body" element="s1:Airport" />
+  </message>
+  <message name="DateListHttpGetIn" />
+  <message name="DateListHttpGetOut">
+    <part name="Body" element="s1:ArrayOfDateTime" />
+  </message>
+  <message name="ArrivalHttpGetIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="ArrivalHttpGetOut">
+    <part name="Body" element="s1:ArrayOfFlight" />
+  </message>
+  <message name="DepartureHttpGetIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="DepartureHttpGetOut">
+    <part name="Body" element="s1:ArrayOfFlight" />
+  </message>
+  <message name="FlightInfoHttpGetIn">
+    <part name="flt_pk" type="s:string" />
+  </message>
+  <message name="FlightInfoHttpGetOut">
+    <part name="Body" element="s1:ArrayOfFlightDetail" />
+  </message>
+  <message name="FlightSearchHttpGetIn">
+    <part name="flight_no" type="s:string" />
+  </message>
+  <message name="FlightSearchHttpGetOut">
+    <part name="Body" element="s1:ArrayOfFlightShort" />
+  </message>
+  <message name="AirportListHttpPostIn" />
+  <message name="AirportListHttpPostOut">
+    <part name="Body" element="s1:ArrayOfAirport" />
+  </message>
+  <message name="AirportInfoHttpPostIn">
+    <part name="code" type="s:string" />
+  </message>
+  <message name="AirportInfoHttpPostOut">
+    <part name="Body" element="s1:Airport" />
+  </message>
+  <message name="DateListHttpPostIn" />
+  <message name="DateListHttpPostOut">
+    <part name="Body" element="s1:ArrayOfDateTime" />
+  </message>
+  <message name="ArrivalHttpPostIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="ArrivalHttpPostOut">
+    <part name="Body" element="s1:ArrayOfFlight" />
+  </message>
+  <message name="DepartureHttpPostIn">
+    <part name="code" type="s:string" />
+    <part name="date" type="s:string" />
+  </message>
+  <message name="DepartureHttpPostOut">
+    <part name="Body" element="s1:ArrayOfFlight" />
+  </message>
+  <message name="FlightInfoHttpPostIn">
+    <part name="flt_pk" type="s:string" />
+  </message>
+  <message name="FlightInfoHttpPostOut">
+    <part name="Body" element="s1:ArrayOfFlightDetail" />
+  </message>
+  <message name="FlightSearchHttpPostIn">
+    <part name="flight_no" type="s:string" />
+  </message>
+  <message name="FlightSearchHttpPostOut">
+    <part name="Body" element="s1:ArrayOfFlightShort" />
+  </message>
+  <portType name="FlightStatusSoap">
+    <operation name="AirportList">
+      <input message="s0:AirportListSoapIn" />
+      <output message="s0:AirportListSoapOut" />
+    </operation>
+    <operation name="AirportInfo">
+      <input message="s0:AirportInfoSoapIn" />
+      <output message="s0:AirportInfoSoapOut" />
+    </operation>
+    <operation name="DateList">
+      <input message="s0:DateListSoapIn" />
+      <output message="s0:DateListSoapOut" />
+    </operation>
+    <operation name="Arrival">
+      <input message="s0:ArrivalSoapIn" />
+      <output message="s0:ArrivalSoapOut" />
+    </operation>
+    <operation name="Departure">
+      <input message="s0:DepartureSoapIn" />
+      <output message="s0:DepartureSoapOut" />
+    </operation>
+    <operation name="FlightInfo">
+      <input message="s0:FlightInfoSoapIn" />
+      <output message="s0:FlightInfoSoapOut" />
+    </operation>
+    <operation name="FlightSearch">
+      <input message="s0:FlightSearchSoapIn" />
+      <output message="s0:FlightSearchSoapOut" />
+    </operation>
+  </portType>
+  <portType name="FlightStatusHttpGet">
+    <operation name="AirportList">
+      <input message="s0:AirportListHttpGetIn" />
+      <output message="s0:AirportListHttpGetOut" />
+    </operation>
+    <operation name="AirportInfo">
+      <input message="s0:AirportInfoHttpGetIn" />
+      <output message="s0:AirportInfoHttpGetOut" />
+    </operation>
+    <operation name="DateList">
+      <input message="s0:DateListHttpGetIn" />
+      <output message="s0:DateListHttpGetOut" />
+    </operation>
+    <operation name="Arrival">
+      <input message="s0:ArrivalHttpGetIn" />
+      <output message="s0:ArrivalHttpGetOut" />
+    </operation>
+    <operation name="Departure">
+      <input message="s0:DepartureHttpGetIn" />
+      <output message="s0:DepartureHttpGetOut" />
+    </operation>
+    <operation name="FlightInfo">
+      <input message="s0:FlightInfoHttpGetIn" />
+      <output message="s0:FlightInfoHttpGetOut" />
+    </operation>
+    <operation name="FlightSearch">
+      <input message="s0:FlightSearchHttpGetIn" />
+      <output message="s0:FlightSearchHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="FlightStatusHttpPost">
+    <operation name="AirportList">
+      <input message="s0:AirportListHttpPostIn" />
+      <output message="s0:AirportListHttpPostOut" />
+    </operation>
+    <operation name="AirportInfo">
+      <input message="s0:AirportInfoHttpPostIn" />
+      <output message="s0:AirportInfoHttpPostOut" />
+    </operation>
+    <operation name="DateList">
+      <input message="s0:DateListHttpPostIn" />
+      <output message="s0:DateListHttpPostOut" />
+    </operation>
+    <operation name="Arrival">
+      <input message="s0:ArrivalHttpPostIn" />
+      <output message="s0:ArrivalHttpPostOut" />
+    </operation>
+    <operation name="Departure">
+      <input message="s0:DepartureHttpPostIn" />
+      <output message="s0:DepartureHttpPostOut" />
+    </operation>
+    <operation name="FlightInfo">
+      <input message="s0:FlightInfoHttpPostIn" />
+      <output message="s0:FlightInfoHttpPostOut" />
+    </operation>
+    <operation name="FlightSearch">
+      <input message="s0:FlightSearchHttpPostIn" />
+      <output message="s0:FlightSearchHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="FlightStatusSoap" type="s0:FlightStatusSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="AirportList">
+      <soap:operation soapAction="http://www.aeroflot.ru/AirportList" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="AirportInfo">
+      <soap:operation soapAction="http://www.aeroflot.ru/AirportInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="DateList">
+      <soap:operation soapAction="http://www.aeroflot.ru/DateList" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Arrival">
+      <soap:operation soapAction="http://www.aeroflot.ru/Arrival" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Departure">
+      <soap:operation soapAction="http://www.aeroflot.ru/Departure" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="FlightInfo">
+      <soap:operation soapAction="http://www.aeroflot.ru/FlightInfo" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="FlightSearch">
+      <soap:operation soapAction="http://www.aeroflot.ru/FlightSearch" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.aeroflot.ru/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="FlightStatusHttpGet" type="s0:FlightStatusHttpGet">
+    <http:binding verb="GET" />
+    <operation name="AirportList">
+      <http:operation location="/AirportList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AirportInfo">
+      <http:operation location="/AirportInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DateList">
+      <http:operation location="/DateList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Arrival">
+      <http:operation location="/Arrival" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Departure">
+      <http:operation location="/Departure" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FlightInfo">
+      <http:operation location="/FlightInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FlightSearch">
+      <http:operation location="/FlightSearch" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="FlightStatusHttpPost" type="s0:FlightStatusHttpPost">
+    <http:binding verb="POST" />
+    <operation name="AirportList">
+      <http:operation location="/AirportList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AirportInfo">
+      <http:operation location="/AirportInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DateList">
+      <http:operation location="/DateList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Arrival">
+      <http:operation location="/Arrival" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Departure">
+      <http:operation location="/Departure" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FlightInfo">
+      <http:operation location="/FlightInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FlightSearch">
+      <http:operation location="/FlightSearch" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="FlightStatus">
+    <port name="FlightStatusSoap" binding="s0:FlightStatusSoap">
+      <soap:address location="http://webservices.aeroflot.ru/FlightStatus.asmx" />
+    </port>
+    <port name="FlightStatusHttpGet" binding="s0:FlightStatusHttpGet">
+      <http:address location="http://webservices.aeroflot.ru/FlightStatus.asmx" />
+    </port>
+    <port name="FlightStatusHttpPost" binding="s0:FlightStatusHttpPost">
+      <http:address location="http://webservices.aeroflot.ru/FlightStatus.asmx" />
+    </port>
+  </service>
+</definitions>

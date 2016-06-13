@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+
+<definitions name="SimpleCalculator.csimplecalc" targetNamespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" xmlns:tns="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="AddRequest">
+        <part name="X" type="xsd:long"/>
+        <part name="Y" type="xsd:long"/>
+    </message>
+    <message name="AddResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="SubtractRequest">
+        <part name="X" type="xsd:long"/>
+        <part name="Y" type="xsd:long"/>
+    </message>
+    <message name="SubtractResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="DivideRequest">
+        <part name="X" type="xsd:long"/>
+        <part name="Y" type="xsd:long"/>
+    </message>
+    <message name="DivideResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="MultiplyRequest">
+        <part name="X" type="xsd:long"/>
+        <part name="Y" type="xsd:long"/>
+    </message>
+    <message name="MultiplyResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="SimpleCalculator.csimplecalcPortType">
+        <operation name="Add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+        <operation name="Subtract">
+            <input message="tns:SubtractRequest"/>
+            <output message="tns:SubtractResponse"/>
+        </operation>
+        <operation name="Divide">
+            <input message="tns:DivideRequest"/>
+            <output message="tns:DivideResponse"/>
+        </operation>
+        <operation name="Multiply">
+            <input message="tns:MultiplyRequest"/>
+            <output message="tns:MultiplyResponse"/>
+        </operation>
+    </portType>
+    <binding name="SimpleCalculator.csimplecalcbinding" type="tns:SimpleCalculator.csimplecalcPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Add">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml#Add"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Subtract">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml#Subtract"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Divide">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml#Divide"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Multiply">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml#Multiply"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/SimpleCalculator/CSimpleCalc.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="SimpleCalculator.csimplecalcService">
+        <port name="SimpleCalculator.csimplecalcPort" binding="tns:SimpleCalculator.csimplecalcbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/simplecalc.cgi"/>
+        </port>
+    </service>
+</definitions>

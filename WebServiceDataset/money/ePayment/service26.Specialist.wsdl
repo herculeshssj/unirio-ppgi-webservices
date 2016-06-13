@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns0="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+      <xsd:element name="GetFedACHCities">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="state" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedACHCitiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="cities" type="tns0:ArrayOfstring"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfstring">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="500" name="string" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetFedACHStates">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedACHStatesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="states" type="tns0:ArrayOfstring"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedwireCities">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="state" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedwireCitiesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="cities" type="tns0:ArrayOfstring"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedwireStates">
+        <xsd:complexType>
+          <xsd:sequence/>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetFedwireStatesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="states" type="tns0:ArrayOfstring"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LookupFedACHParticipant">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="city" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="state" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="routingNumber" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="count" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LookupFedACHParticipantResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="count" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="participantInfo" type="tns0:ArrayOffedACHParticipantInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOffedACHParticipantInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="150" name="fedACHParticipantInfo" type="tns0:fedACHParticipantInfo"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fedACHParticipantInfo">
+        <xsd:sequence>
+          <xsd:element name="routingNumber" type="xsd:string"/>
+          <xsd:element name="officeCode" type="xsd:string"/>
+          <xsd:element name="servicingFRBNumber" type="xsd:string"/>
+          <xsd:element name="recordType" type="xsd:string"/>
+          <xsd:element name="changeDate" type="xsd:string"/>
+          <xsd:element name="newRoutingNumber" type="xsd:string"/>
+          <xsd:element name="customerName" type="xsd:string"/>
+          <xsd:element name="address" type="xsd:string"/>
+          <xsd:element name="state" type="xsd:string"/>
+          <xsd:element name="city" type="xsd:string"/>
+          <xsd:element name="zip" type="xsd:string"/>
+          <xsd:element name="zipExtension" type="xsd:string"/>
+          <xsd:element name="telephoneAreaCode" type="xsd:string"/>
+          <xsd:element name="telephonePrefix" type="xsd:string"/>
+          <xsd:element name="telephoneSuffix" type="xsd:string"/>
+          <xsd:element name="institutionStatus" type="xsd:string"/>
+          <xsd:element name="dataViewCode" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LookupFedwireParticipant">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="name" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="city" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="state" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="routingNumber" type="xsd:string"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="count" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LookupFedwireParticipantResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="return" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="count" type="xsd:int"/>
+            <xsd:element minOccurs="0" maxOccurs="1" name="participantInfo" type="tns0:ArrayOffedwireParticipantInfo"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOffedwireParticipantInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="150" name="fedwireParticipantInfo" type="tns0:fedwireParticipantInfo"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fedwireParticipantInfo">
+        <xsd:sequence>
+          <xsd:element name="routingNumber" type="xsd:string"/>
+          <xsd:element name="telegraphicName" type="xsd:string"/>
+          <xsd:element name="customerName" type="xsd:string"/>
+          <xsd:element name="state" type="xsd:string"/>
+          <xsd:element name="city" type="xsd:string"/>
+          <xsd:element name="fundsTransferStatus" type="xsd:string"/>
+          <xsd:element name="fundsSettlementOnlyStatus" type="xsd:string"/>
+          <xsd:element name="bookEntrySecuritiesTransferStatus" type="xsd:string"/>
+          <xsd:element name="changeDate" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="GetFedACHCitiesSoapIn">
+    <part name="parameters" element="tns0:GetFedACHCities"/>
+  </message>
+  <message name="GetFedACHCitiesSoapOut">
+    <part name="parameters" element="tns0:GetFedACHCitiesResponse"/>
+  </message>
+  <message name="GetFedACHStatesSoapIn">
+    <part name="parameters" element="tns0:GetFedACHStates"/>
+  </message>
+  <message name="GetFedACHStatesSoapOut">
+    <part name="parameters" element="tns0:GetFedACHStatesResponse"/>
+  </message>
+  <message name="GetFedwireCitiesSoapIn">
+    <part name="parameters" element="tns0:GetFedwireCities"/>
+  </message>
+  <message name="GetFedwireCitiesSoapOut">
+    <part name="parameters" element="tns0:GetFedwireCitiesResponse"/>
+  </message>
+  <message name="GetFedwireStatesSoapIn">
+    <part name="parameters" element="tns0:GetFedwireStates"/>
+  </message>
+  <message name="GetFedwireStatesSoapOut">
+    <part name="parameters" element="tns0:GetFedwireStatesResponse"/>
+  </message>
+  <message name="LookupFedACHParticipantSoapIn">
+    <part name="parameters" element="tns0:LookupFedACHParticipant"/>
+  </message>
+  <message name="LookupFedACHParticipantSoapOut">
+    <part name="parameters" element="tns0:LookupFedACHParticipantResponse"/>
+  </message>
+  <message name="LookupFedwireParticipantSoapIn">
+    <part name="parameters" element="tns0:LookupFedwireParticipant"/>
+  </message>
+  <message name="LookupFedwireParticipantSoapOut">
+    <part name="parameters" element="tns0:LookupFedwireParticipantResponse"/>
+  </message>
+  <portType name="FedRoutingDirectoryServiceSoap" type="tns:FedRoutingDirectoryServiceSoap">
+    <operation name="GetFedACHCities">
+      <input message="tns:GetFedACHCitiesSoapIn"/>
+      <output message="tns:GetFedACHCitiesSoapOut"/>
+    </operation>
+    <operation name="GetFedACHStates">
+      <input message="tns:GetFedACHStatesSoapIn"/>
+      <output message="tns:GetFedACHStatesSoapOut"/>
+    </operation>
+    <operation name="GetFedwireCities">
+      <input message="tns:GetFedwireCitiesSoapIn"/>
+      <output message="tns:GetFedwireCitiesSoapOut"/>
+    </operation>
+    <operation name="GetFedwireStates">
+      <input message="tns:GetFedwireStatesSoapIn"/>
+      <output message="tns:GetFedwireStatesSoapOut"/>
+    </operation>
+    <operation name="LookupFedACHParticipant">
+      <input message="tns:LookupFedACHParticipantSoapIn"/>
+      <output message="tns:LookupFedACHParticipantSoapOut"/>
+    </operation>
+    <operation name="LookupFedwireParticipant">
+      <input message="tns:LookupFedwireParticipantSoapIn"/>
+      <output message="tns:LookupFedwireParticipantSoapOut"/>
+    </operation>
+  </portType>
+  <binding name="FedRoutingDirectoryServiceSoap" type="tns:FedRoutingDirectoryServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="GetFedACHCities">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/GetFedACHCities" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetFedACHStates">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/GetFedACHStates" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetFedwireCities">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/GetFedwireCities" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetFedwireStates">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/GetFedwireStates" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="LookupFedACHParticipant">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/LookupFedACHParticipant" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="LookupFedwireParticipant">
+      <soap:operation soapAction="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService/LookupFedwireParticipant" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="FedRoutingDirectoryService">
+    <documentation>This service provides a search interface for the Federal Reserve E-Payments Routing Directory. The search is done on a copy of the FRB directory which is updated daily. The actual directory can be found at http://www.fedwiredirectory.frb.org</documentation>
+    <port name="FedRoutingDirectoryServiceSoap" binding="tns:FedRoutingDirectoryServiceSoap">
+      <soap:address location="http://demo.soapam.com:80/fedepaydirectory/FedEpayDirectoryService"/>
+    </port>
+  </service>
+</definitions>

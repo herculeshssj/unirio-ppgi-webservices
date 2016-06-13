@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Search">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="KeyWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SearchSoapIn">
+    <part name="parameters" element="s0:Search" />
+  </message>
+  <message name="SearchSoapOut">
+    <part name="parameters" element="s0:SearchResponse" />
+  </message>
+  <message name="SearchHttpGetIn">
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="SearchHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SearchHttpPostIn">
+    <part name="KeyWord" type="s:string" />
+  </message>
+  <message name="SearchHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="WebSearchWSSoap">
+    <operation name="Search">
+      <input message="s0:SearchSoapIn" />
+      <output message="s0:SearchSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WebSearchWSHttpGet">
+    <operation name="Search">
+      <input message="s0:SearchHttpGetIn" />
+      <output message="s0:SearchHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WebSearchWSHttpPost">
+    <operation name="Search">
+      <input message="s0:SearchHttpPostIn" />
+      <output message="s0:SearchHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WebSearchWSSoap" type="s0:WebSearchWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/Search" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebSearchWSHttpGet" type="s0:WebSearchWSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Search">
+      <http:operation location="/Search" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WebSearchWSHttpPost" type="s0:WebSearchWSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Search">
+      <http:operation location="/Search" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WebSearchWS">
+    <port name="WebSearchWSSoap" binding="s0:WebSearchWSSoap">
+      <soap:address location="http://www.esynaps.com/WebServices/SearchWS.asmx" />
+    </port>
+    <port name="WebSearchWSHttpGet" binding="s0:WebSearchWSHttpGet">
+      <http:address location="http://www.esynaps.com/WebServices/SearchWS.asmx" />
+    </port>
+    <port name="WebSearchWSHttpPost" binding="s0:WebSearchWSHttpPost">
+      <http:address location="http://www.esynaps.com/WebServices/SearchWS.asmx" />
+    </port>
+  </service>
+</definitions>

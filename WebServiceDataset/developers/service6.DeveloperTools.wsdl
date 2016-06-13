@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IBidiservice" targetNamespace="http://www.massrawa.com/soapServices/" xmlns:tns="http://www.massrawa.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="reorderRequest">
+    <part name="text" type="xs:string"/>
+  </message>
+  <message name="reorderResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IBidi">
+    <operation name="reorder">
+      <input message="tns:reorderRequest"/>
+      <output message="tns:reorderResponse"/>
+    </operation>
+  </portType>
+  <binding name="IBidibinding" type="tns:IBidi">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="reorder">
+      <soap:operation soapAction="urn:bidiI-IBidi#reorder"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:bidiI-IBidi"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:bidiI-IBidi"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IBidiservice">
+    <port name="IBidiPort" binding="tns:IBidibinding">
+      <soap:address location="http://www.alternativa.co.il/service/bidi.exe/soap/IBidi"/>
+    </port>
+  </service>
+</definitions>

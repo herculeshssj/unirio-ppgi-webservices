@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ws.AcrossCommunications.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.AcrossCommunications.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.AcrossCommunications.com/">
+      <s:element name="SetSearchString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSearchStringResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSearchString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTargetSMSpin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Release">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strGuidNotification" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReleaseResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SetSearchStringSoapIn">
+    <part name="parameters" element="s0:SetSearchString" />
+  </message>
+  <message name="SetSearchStringSoapOut">
+    <part name="parameters" element="s0:SetSearchStringResponse" />
+  </message>
+  <message name="GetSearchStringSoapIn">
+    <part name="parameters" element="s0:GetSearchString" />
+  </message>
+  <message name="GetSearchStringSoapOut">
+    <part name="parameters" element="s0:GetSearchStringResponse" />
+  </message>
+  <message name="SendSoapIn">
+    <part name="parameters" element="s0:Send" />
+  </message>
+  <message name="SendSoapOut">
+    <part name="parameters" element="s0:SendResponse" />
+  </message>
+  <message name="ReleaseSoapIn">
+    <part name="parameters" element="s0:Release" />
+  </message>
+  <message name="ReleaseSoapOut">
+    <part name="parameters" element="s0:ReleaseResponse" />
+  </message>
+  <message name="SetSearchStringHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strValue" type="s:string" />
+  </message>
+  <message name="SetSearchStringHttpGetOut" />
+  <message name="GetSearchStringHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="GetSearchStringHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strTargetSMSpin" type="s:string" />
+    <part name="strText" type="s:string" />
+  </message>
+  <message name="SendHttpGetOut" />
+  <message name="ReleaseHttpGetIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="ReleaseHttpGetOut" />
+  <message name="SetSearchStringHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strValue" type="s:string" />
+  </message>
+  <message name="SetSearchStringHttpPostOut" />
+  <message name="GetSearchStringHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="GetSearchStringHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+    <part name="strTargetSMSpin" type="s:string" />
+    <part name="strText" type="s:string" />
+  </message>
+  <message name="SendHttpPostOut" />
+  <message name="ReleaseHttpPostIn">
+    <part name="strGuidNotification" type="s:string" />
+  </message>
+  <message name="ReleaseHttpPostOut" />
+  <portType name="SMSSoap">
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringSoapIn" />
+      <output message="s0:SetSearchStringSoapOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringSoapIn" />
+      <output message="s0:GetSearchStringSoapOut" />
+    </operation>
+    <operation name="Send">
+      <input message="s0:SendSoapIn" />
+      <output message="s0:SendSoapOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseSoapIn" />
+      <output message="s0:ReleaseSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpGet">
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringHttpGetIn" />
+      <output message="s0:SetSearchStringHttpGetOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringHttpGetIn" />
+      <output message="s0:GetSearchStringHttpGetOut" />
+    </operation>
+    <operation name="Send">
+      <input message="s0:SendHttpGetIn" />
+      <output message="s0:SendHttpGetOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseHttpGetIn" />
+      <output message="s0:ReleaseHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpPost">
+    <operation name="SetSearchString">
+      <input message="s0:SetSearchStringHttpPostIn" />
+      <output message="s0:SetSearchStringHttpPostOut" />
+    </operation>
+    <operation name="GetSearchString">
+      <input message="s0:GetSearchStringHttpPostIn" />
+      <output message="s0:GetSearchStringHttpPostOut" />
+    </operation>
+    <operation name="Send">
+      <input message="s0:SendHttpPostIn" />
+      <output message="s0:SendHttpPostOut" />
+    </operation>
+    <operation name="Release">
+      <input message="s0:ReleaseHttpPostIn" />
+      <output message="s0:ReleaseHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SMSSoap" type="s0:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SetSearchString">
+      <soap:operation soapAction="http://ws.AcrossCommunications.com/SetSearchString" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSearchString">
+      <soap:operation soapAction="http://ws.AcrossCommunications.com/GetSearchString" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Send">
+      <soap:operation soapAction="http://ws.AcrossCommunications.com/Send" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Release">
+      <soap:operation soapAction="http://ws.AcrossCommunications.com/Release" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SMSHttpGet" type="s0:SMSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SetSearchString">
+      <http:operation location="/SetSearchString" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetSearchString">
+      <http:operation location="/GetSearchString" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Send">
+      <http:operation location="/Send" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+    <operation name="Release">
+      <http:operation location="/Release" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output />
+    </operation>
+  </binding>
+  <binding name="SMSHttpPost" type="s0:SMSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SetSearchString">
+      <http:operation location="/SetSearchString" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="GetSearchString">
+      <http:operation location="/GetSearchString" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Send">
+      <http:operation location="/Send" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+    <operation name="Release">
+      <http:operation location="/Release" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output />
+    </operation>
+  </binding>
+  <service name="SMS">
+    <port name="SMSSoap" binding="s0:SMSSoap">
+      <soap:address location="http://ws.acrosscommunications.com/SMS.asmx" />
+    </port>
+    <port name="SMSHttpGet" binding="s0:SMSHttpGet">
+      <http:address location="http://ws.acrosscommunications.com/SMS.asmx" />
+    </port>
+    <port name="SMSHttpPost" binding="s0:SMSHttpPost">
+      <http:address location="http://ws.acrosscommunications.com/SMS.asmx" />
+    </port>
+  </service>
+</definitions>

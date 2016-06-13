@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://gbx2.brinkster.net/gustavoPares/webServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://gbx2.brinkster.net/gustavoPares/webServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://gbx2.brinkster.net/gustavoPares/webServices/">
+      <s:element name="breakEvenPointinUnits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="unitPrice" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitVariableCost" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedCosts" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="breakEvenPointinUnitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="breakEvenPointinUnitsResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="breakEvenPointinCash">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="unitPrice" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="unitVariableCost" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="fixedCosts" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="breakEvenPointinCashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="breakEvenPointinCashResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="float" type="s:float" />
+    </s:schema>
+  </types>
+  <message name="breakEvenPointinUnitsSoapIn">
+    <part name="parameters" element="s0:breakEvenPointinUnits" />
+  </message>
+  <message name="breakEvenPointinUnitsSoapOut">
+    <part name="parameters" element="s0:breakEvenPointinUnitsResponse" />
+  </message>
+  <message name="breakEvenPointinCashSoapIn">
+    <part name="parameters" element="s0:breakEvenPointinCash" />
+  </message>
+  <message name="breakEvenPointinCashSoapOut">
+    <part name="parameters" element="s0:breakEvenPointinCashResponse" />
+  </message>
+  <message name="breakEvenPointinUnitsHttpGetIn">
+    <part name="unitPrice" type="s:string" />
+    <part name="unitVariableCost" type="s:string" />
+    <part name="fixedCosts" type="s:string" />
+  </message>
+  <message name="breakEvenPointinUnitsHttpGetOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <message name="breakEvenPointinCashHttpGetIn">
+    <part name="unitPrice" type="s:string" />
+    <part name="unitVariableCost" type="s:string" />
+    <part name="fixedCosts" type="s:string" />
+  </message>
+  <message name="breakEvenPointinCashHttpGetOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <message name="breakEvenPointinUnitsHttpPostIn">
+    <part name="unitPrice" type="s:string" />
+    <part name="unitVariableCost" type="s:string" />
+    <part name="fixedCosts" type="s:string" />
+  </message>
+  <message name="breakEvenPointinUnitsHttpPostOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <message name="breakEvenPointinCashHttpPostIn">
+    <part name="unitPrice" type="s:string" />
+    <part name="unitVariableCost" type="s:string" />
+    <part name="fixedCosts" type="s:string" />
+  </message>
+  <message name="breakEvenPointinCashHttpPostOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <portType name="AccountingSoap">
+    <operation name="breakEvenPointinUnits">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in units.&lt;/u&gt; Break even point is the number of units to produce where your profits equals your costs both variable and fixed.</documentation>
+      <input message="s0:breakEvenPointinUnitsSoapIn" />
+      <output message="s0:breakEvenPointinUnitsSoapOut" />
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in cash.&lt;/u&gt; Break even in cash is the earnings needed to equal the incomes with the costs.</documentation>
+      <input message="s0:breakEvenPointinCashSoapIn" />
+      <output message="s0:breakEvenPointinCashSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AccountingHttpGet">
+    <operation name="breakEvenPointinUnits">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in units.&lt;/u&gt; Break even point is the number of units to produce where your profits equals your costs both variable and fixed.</documentation>
+      <input message="s0:breakEvenPointinUnitsHttpGetIn" />
+      <output message="s0:breakEvenPointinUnitsHttpGetOut" />
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in cash.&lt;/u&gt; Break even in cash is the earnings needed to equal the incomes with the costs.</documentation>
+      <input message="s0:breakEvenPointinCashHttpGetIn" />
+      <output message="s0:breakEvenPointinCashHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AccountingHttpPost">
+    <operation name="breakEvenPointinUnits">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in units.&lt;/u&gt; Break even point is the number of units to produce where your profits equals your costs both variable and fixed.</documentation>
+      <input message="s0:breakEvenPointinUnitsHttpPostIn" />
+      <output message="s0:breakEvenPointinUnitsHttpPostOut" />
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;u&gt;Calculates the break even point in cash.&lt;/u&gt; Break even in cash is the earnings needed to equal the incomes with the costs.</documentation>
+      <input message="s0:breakEvenPointinCashHttpPostIn" />
+      <output message="s0:breakEvenPointinCashHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AccountingSoap" type="s0:AccountingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="breakEvenPointinUnits">
+      <soap:operation soapAction="http://gbx2.brinkster.net/gustavoPares/webServices/breakEvenPointinUnits" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <soap:operation soapAction="http://gbx2.brinkster.net/gustavoPares/webServices/breakEvenPointinCash" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AccountingHttpGet" type="s0:AccountingHttpGet">
+    <http:binding verb="GET" />
+    <operation name="breakEvenPointinUnits">
+      <http:operation location="/breakEvenPointinUnits" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <http:operation location="/breakEvenPointinCash" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AccountingHttpPost" type="s0:AccountingHttpPost">
+    <http:binding verb="POST" />
+    <operation name="breakEvenPointinUnits">
+      <http:operation location="/breakEvenPointinUnits" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="breakEvenPointinCash">
+      <http:operation location="/breakEvenPointinCash" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Accounting">
+    <port name="AccountingSoap" binding="s0:AccountingSoap">
+      <soap:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Accounting.asmx" />
+    </port>
+    <port name="AccountingHttpGet" binding="s0:AccountingHttpGet">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Accounting.asmx" />
+    </port>
+    <port name="AccountingHttpPost" binding="s0:AccountingHttpPost">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Accounting.asmx" />
+    </port>
+  </service>
+</definitions>

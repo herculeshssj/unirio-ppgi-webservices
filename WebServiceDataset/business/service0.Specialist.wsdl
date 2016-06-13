@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="IPlanManager_Service"
+  targetNamespace="http://www.iternum.com/IPlanManager"
+  xmlns:wsdlns='http://tempuri.org/wsdl/' 
+  xmlns:typens='http://tempuri.org/type' 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema/">
+
+<types>
+  <xsd:schema targetNamespace="http://tempuri.org/type"
+        xmlns="http://www.w3.org/2001/XMLSchema/">
+    <xsd:complexType name="PlannedAction">
+      <xsd:element name="id" type="xsd:long" value="0"/>
+      <xsd:element name="createDate" type="xsd:timeInstant"/>
+      <xsd:element name="title" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="type" type="xsd:string"/>
+      <xsd:element name="startDateTime" type="xsd:timeInstant"/>
+      <xsd:element name="endDateTime" type="xsd:long"/>
+      <xsd:element name="owner" type="xsd:long"/>
+      <xsd:element name="assignedTo" type="xsd:long"/>
+      <xsd:element name="alert" type="xsd:boolean"/>
+      <xsd:element name="alertOffset" type="xsd:long"/>
+    </xsd:complexType>
+    <xsd:complexType name="SoapLogin">
+      <xsd:element name="username" type="xsd:string"/>
+      <xsd:element name="password" type="xsd:string"/>
+    </xsd:complexType>
+  </xsd:schema>
+</types>
+
+<message name="IngetOwnedActionsRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="username" type="xsd:string"/>
+  <part name="type" type="xsd:string"/>
+  <part name="startDateTime" type="xsd:timeInstant"/>
+  <part name="endDateTime" type="xsd:timeInstant"/>
+</message>
+
+<message name="OutgetOwnedActionsResponse">
+  <part name="plannedAction" type="typens:PlannedAction"/>
+</message>
+
+<message name="IncreateActionRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="plannedAction" type="typens:PlannedAction"/>
+</message>
+
+<message name="OutcreateActionResponse">
+  <part name="plannedAction" type="typens:PlannedAction"/>
+</message>
+
+<message name="IndeleteActionRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="plannedAction" type="typens:PlannedAction"/>
+</message>
+
+<message name="OutdeleteActionResponse">
+  <part name="ok" type="xsd:boolean"/>
+</message>
+
+<message name="InmodifyActionRequest">
+  <part name="login" type="typens:SoapLogin"/>
+  <part name="plannedAction" type="typens:PlannedAction"/>
+</message>
+
+<message name="OutmodifyActionResponse">
+  <part name="ok" type="xsd:boolean"/>
+</message>
+
+<portType name="IPlanManager_Service">
+  <operation name="getOwnedActions">
+    <input message="wsdlns:IngetOwnedActionsRequest"/>
+    <output message="wsdlns:OutgetOwnedActionsResponse"/>
+  </operation>
+
+  <operation name="createAction">
+    <input message="wsdlns:IncreateActionRequest"/>
+    <output message="wsdlns:OutcreateActionResponse"/>
+  </operation>
+
+  <operation name="deleteAction">
+    <input message="wsdlns:IndeleteActionRequest"/>
+    <output message="wsdlns:OutdeleteActionResponse"/>
+  </operation>
+
+  <operation name="modifyAction">
+    <input message="wsdlns:InmodifyActionRequest"/>
+    <output message="wsdlns:OutmodifyActionResponse"/>
+  </operation>
+</portType>
+
+
+<binding name="IPlanManager_ServiceBinding" type="wsdlns:IPlanManager_Service">
+  <soap:binding style="rpc"
+      transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getOwnedActions">
+    <soap:operation
+          soapAction="urn:iplanmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="createAction">
+    <soap:operation soapAction="urn:iplanmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+      use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="deleteAction">
+    <soap:operation soapAction="urn:iplanmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+  <operation name="modifyAction">
+    <soap:operation
+          soapAction="urn:iplanmanager-service"/>
+    <input>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+          use="encoded"/>
+    </input>
+    <output>
+      <soap:body
+          encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+          namespace="urn:iplanmanager-service"
+      use="encoded"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="IPlanManager_Service">
+  <documentation>Service definiton file for IPlan</documentation>
+  <port binding="wsdlns:IPlanManager_ServiceBinding" name="IPlanManager_ServicePort">
+    <soap:address location="http://www.iternum.net/soap/servlet/rpcrouter"/>
+  </port>
+</service>
+
+</definitions>

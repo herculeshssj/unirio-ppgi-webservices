@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetProxyCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSDLLocation" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProxyCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProxyCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetProxyCodeSoapIn">
+    <part name="parameters" element="s0:GetProxyCode" />
+  </message>
+  <message name="GetProxyCodeSoapOut">
+    <part name="parameters" element="s0:GetProxyCodeResponse" />
+  </message>
+  <portType name="CodeGeneratorSoap">
+    <operation name="GetProxyCode">
+      <input message="s0:GetProxyCodeSoapIn" />
+      <output message="s0:GetProxyCodeSoapOut" />
+    </operation>
+  </portType>
+  <binding name="CodeGeneratorSoap" type="s0:CodeGeneratorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetProxyCode">
+      <soap:operation soapAction="http://tempuri.org/GetProxyCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CodeGenerator">
+    <port name="CodeGeneratorSoap" binding="s0:CodeGeneratorSoap">
+      <soap:address location="http://www.esynaps.com/webservices/codegenerator.asmx" />
+    </port>
+  </service>
+</definitions>

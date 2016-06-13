@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://chatlog.net" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://chatlog.net" xmlns:intf="http://chatlog.net" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://rating.chatlog.net" xmlns:tns2="http://userlist.chatlog.net" xmlns:tns3="http://nickseach.chatlog.net" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><wsdl:types><schema targetNamespace="http://rating.chatlog.net" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="ChatInfo"><sequence><element name="url" nillable="true" type="xsd:string"/><element name="name" nillable="true" type="xsd:string"/><element name="female" type="xsd:int"/><element name="male" type="xsd:int"/><element name="all" type="xsd:int"/><element name="id" type="xsd:int"/></sequence></complexType><complexType name="RatingType"><sequence><element name="description" nillable="true" type="xsd:string"/><element name="value" type="xsd:long"/><element name="id" type="xsd:int"/></sequence></complexType></schema><schema targetNamespace="http://chatlog.net" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="ArrayOf_xsd_string"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/></restriction></complexContent></complexType><complexType name="ArrayOf_xsd_int"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:int[]"/></restriction></complexContent></complexType><complexType name="ArrayOf_tns2_RatingType"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:RatingType[]"/></restriction></complexContent></complexType><complexType name="ArrayOf_tns2_ChatInfo"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:ChatInfo[]"/></restriction></complexContent></complexType><complexType name="ArrayOf_tns4_SeachRezult"><complexContent><restriction base="soapenc:Array"><attribute ref="soapenc:arrayType" wsdl:arrayType="tns3:SeachRezult[]"/></restriction></complexContent></complexType></schema><schema targetNamespace="http://userlist.chatlog.net" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="UserListData"><sequence><element name="userList" nillable="true" type="impl:ArrayOf_xsd_string"/><element name="time" nillable="true" type="xsd:dateTime"/></sequence></complexType></schema><schema targetNamespace="http://nickseach.chatlog.net" xmlns="http://www.w3.org/2001/XMLSchema"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="SeachRezult"><sequence><element name="rangeF" type="xsd:double"/><element name="rangeE" type="xsd:double"/><element name="lastTime" nillable="true" type="xsd:dateTime"/><element name="chatUrl" nillable="true" type="xsd:string"/><element name="rangeD" type="xsd:double"/><element name="rangeC" type="xsd:double"/><element name="rangeB" type="xsd:double"/><element name="rangeA" type="xsd:double"/><element name="percent" type="xsd:double"/><element name="chatName" nillable="true" type="xsd:string"/><element name="rangeH" type="xsd:double"/><element name="rangeG" type="xsd:double"/></sequence></complexType></schema></wsdl:types>
+  <wsdl:message name="getUserListResponse">
+    <wsdl:part name="getUserListReturn" type="tns2:UserListData"/>
+  </wsdl:message>
+  <wsdl:message name="getUserListRequest">
+    <wsdl:part name="county" type="xsd:int"/>
+    <wsdl:part name="chatId" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="getRatingResponse">
+    <wsdl:part name="getRatingReturn" type="impl:ArrayOf_tns2_ChatInfo"/>
+  </wsdl:message>
+  <wsdl:message name="getRatingRequest">
+    <wsdl:part name="county" type="xsd:int"/>
+    <wsdl:part name="type" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="getAccessibleCountriesRequest">
+  </wsdl:message>
+  <wsdl:message name="seachNickResponse">
+    <wsdl:part name="seachNickReturn" type="impl:ArrayOf_tns4_SeachRezult"/>
+  </wsdl:message>
+  <wsdl:message name="seachOfMaskRequest">
+    <wsdl:part name="county" type="xsd:int"/>
+    <wsdl:part name="mask" type="xsd:string"/>
+    <wsdl:part name="chatId" type="xsd:int"/>
+    <wsdl:part name="startTimePoint" type="xsd:dateTime"/>
+    <wsdl:part name="endTimePoint" type="xsd:dateTime"/>
+    <wsdl:part name="shift" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="getAccessibleRatingTypesResponse">
+    <wsdl:part name="getAccessibleRatingTypesReturn" type="impl:ArrayOf_tns2_RatingType"/>
+  </wsdl:message>
+  <wsdl:message name="seachNickRequest">
+    <wsdl:part name="county" type="xsd:int"/>
+    <wsdl:part name="nick" type="xsd:string"/>
+    <wsdl:part name="chatId" type="xsd:int"/>
+    <wsdl:part name="startTimePoint" type="xsd:dateTime"/>
+    <wsdl:part name="endTimePoint" type="xsd:dateTime"/>
+    <wsdl:part name="shift" type="xsd:boolean"/>
+  </wsdl:message>
+  <wsdl:message name="getAccessibleRatingTypesRequest">
+    <wsdl:part name="county" type="xsd:int"/>
+  </wsdl:message>
+  <wsdl:message name="seachOfMaskResponse">
+    <wsdl:part name="seachOfMaskReturn" type="impl:ArrayOf_xsd_string"/>
+  </wsdl:message>
+  <wsdl:message name="getAccessibleCountriesResponse">
+    <wsdl:part name="getAccessibleCountriesReturn" type="impl:ArrayOf_xsd_int"/>
+  </wsdl:message>
+  <wsdl:portType name="ChatLog">
+    <wsdl:operation name="getUserList" parameterOrder="county chatId">
+      <wsdl:input message="impl:getUserListRequest" name="getUserListRequest"/>
+      <wsdl:output message="impl:getUserListResponse" name="getUserListResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessibleCountries">
+      <wsdl:input message="impl:getAccessibleCountriesRequest" name="getAccessibleCountriesRequest"/>
+      <wsdl:output message="impl:getAccessibleCountriesResponse" name="getAccessibleCountriesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessibleRatingTypes" parameterOrder="county">
+      <wsdl:input message="impl:getAccessibleRatingTypesRequest" name="getAccessibleRatingTypesRequest"/>
+      <wsdl:output message="impl:getAccessibleRatingTypesResponse" name="getAccessibleRatingTypesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getRating" parameterOrder="county type">
+      <wsdl:input message="impl:getRatingRequest" name="getRatingRequest"/>
+      <wsdl:output message="impl:getRatingResponse" name="getRatingResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="seachOfMask" parameterOrder="county mask chatId startTimePoint endTimePoint shift">
+      <wsdl:input message="impl:seachOfMaskRequest" name="seachOfMaskRequest"/>
+      <wsdl:output message="impl:seachOfMaskResponse" name="seachOfMaskResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="seachNick" parameterOrder="county nick chatId startTimePoint endTimePoint shift">
+      <wsdl:input message="impl:seachNickRequest" name="seachNickRequest"/>
+      <wsdl:output message="impl:seachNickResponse" name="seachNickResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="chatlogSoapBinding" type="impl:ChatLog">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getUserList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getUserListRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getUserListResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessibleCountries">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAccessibleCountriesRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getAccessibleCountriesResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccessibleRatingTypes">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAccessibleRatingTypesRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getAccessibleRatingTypesResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRating">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getRatingRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="getRatingResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seachOfMask">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="seachOfMaskRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="seachOfMaskResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="seachNick">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="seachNickRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="seachNickResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://chatlog.net" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ChatLogService">
+    <wsdl:port binding="impl:chatlogSoapBinding" name="chatlog">
+      <wsdlsoap:address location="http://www.chatlog.net/services/chatlog"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

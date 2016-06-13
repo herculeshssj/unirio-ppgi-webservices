@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="urn:www-esendex-net:virtualmodemservice" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="urn:www-esendex-net:virtualmodemservice" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="urn:www-esendex-net:virtualmodemservice">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SendTextMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="to" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ServiceHeader" type="s0:ServiceHeader" />
+      <s:complexType name="ServiceHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModemReference" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessages">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessagesResult" type="s0:ArrayOfMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="s0:Message" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentAt" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceivedAt" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s0:Content" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Content">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:ContentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ContentType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Text" />
+          <s:enumeration value="Binary" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="DeleteMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessageResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="SendTextMessageSoapIn">
+    <part name="parameters" element="s0:SendTextMessage" />
+  </message>
+  <message name="SendTextMessageSoapOut">
+    <part name="parameters" element="s0:SendTextMessageResponse" />
+  </message>
+  <message name="SendTextMessageServiceHeader">
+    <part name="ServiceHeader" element="s0:ServiceHeader" />
+  </message>
+  <message name="GetMessagesSoapIn">
+    <part name="parameters" element="s0:GetMessages" />
+  </message>
+  <message name="GetMessagesSoapOut">
+    <part name="parameters" element="s0:GetMessagesResponse" />
+  </message>
+  <message name="GetMessagesServiceHeader">
+    <part name="ServiceHeader" element="s0:ServiceHeader" />
+  </message>
+  <message name="DeleteMessageSoapIn">
+    <part name="parameters" element="s0:DeleteMessage" />
+  </message>
+  <message name="DeleteMessageSoapOut">
+    <part name="parameters" element="s0:DeleteMessageResponse" />
+  </message>
+  <message name="DeleteMessageServiceHeader">
+    <part name="ServiceHeader" element="s0:ServiceHeader" />
+  </message>
+  <portType name="MessageServiceSoap">
+    <operation name="SendTextMessage">
+      <input message="s0:SendTextMessageSoapIn" />
+      <output message="s0:SendTextMessageSoapOut" />
+    </operation>
+    <operation name="GetMessages">
+      <input message="s0:GetMessagesSoapIn" />
+      <output message="s0:GetMessagesSoapOut" />
+    </operation>
+    <operation name="DeleteMessage">
+      <input message="s0:DeleteMessageSoapIn" />
+      <output message="s0:DeleteMessageSoapOut" />
+    </operation>
+  </portType>
+  <portType name="MessageServiceHttpGet" />
+  <portType name="MessageServiceHttpPost" />
+  <binding name="MessageServiceSoap" type="s0:MessageServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendTextMessage">
+      <soap:operation soapAction="urn:www-esendex-net:virtualmodemservice/SendTextMessage" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header d5p1:required="true" message="s0:SendTextMessageServiceHeader" part="ServiceHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMessages">
+      <soap:operation soapAction="urn:www-esendex-net:virtualmodemservice/GetMessages" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header d5p1:required="true" message="s0:GetMessagesServiceHeader" part="ServiceHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteMessage">
+      <soap:operation soapAction="urn:www-esendex-net:virtualmodemservice/DeleteMessage" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header d5p1:required="true" message="s0:DeleteMessageServiceHeader" part="ServiceHeader" use="literal" xmlns:d5p1="http://schemas.xmlsoap.org/wsdl/" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MessageServiceHttpGet" type="s0:MessageServiceHttpGet">
+    <http:binding verb="GET" />
+  </binding>
+  <binding name="MessageServiceHttpPost" type="s0:MessageServiceHttpPost">
+    <http:binding verb="POST" />
+  </binding>
+  <service name="MessageService">
+    <port name="MessageServiceSoap" binding="s0:MessageServiceSoap">
+      <soap:address location="https://www.esendex.com/secure/virtualmodem/services/messageservice.asmx" />
+    </port>
+    <port name="MessageServiceHttpGet" binding="s0:MessageServiceHttpGet">
+      <http:address location="https://www.esendex.com/secure/virtualmodem/services/messageservice.asmx" />
+    </port>
+    <port name="MessageServiceHttpPost" binding="s0:MessageServiceHttpPost">
+      <http:address location="https://www.esendex.com/secure/virtualmodem/services/messageservice.asmx" />
+    </port>
+  </service>
+</definitions>

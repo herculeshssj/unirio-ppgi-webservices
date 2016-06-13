@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://RichSolutions.com/RichPayments/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://RichSolutions.com/RichPayments/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://RichSolutions.com/RichPayments/">
+      <s:element name="GetCardType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCardTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCardTypeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCommercialCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCommercialCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsCommercialCardResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidCardResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidCardLength">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidCardLengthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidCardLengthResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidExpDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExpDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidExpDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidExpDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidMod10">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidMod10Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidMod10Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetCardTypeSoapIn">
+    <part name="parameters" element="s0:GetCardType" />
+  </message>
+  <message name="GetCardTypeSoapOut">
+    <part name="parameters" element="s0:GetCardTypeResponse" />
+  </message>
+  <message name="IsCommercialCardSoapIn">
+    <part name="parameters" element="s0:IsCommercialCard" />
+  </message>
+  <message name="IsCommercialCardSoapOut">
+    <part name="parameters" element="s0:IsCommercialCardResponse" />
+  </message>
+  <message name="ValidCardSoapIn">
+    <part name="parameters" element="s0:ValidCard" />
+  </message>
+  <message name="ValidCardSoapOut">
+    <part name="parameters" element="s0:ValidCardResponse" />
+  </message>
+  <message name="ValidCardLengthSoapIn">
+    <part name="parameters" element="s0:ValidCardLength" />
+  </message>
+  <message name="ValidCardLengthSoapOut">
+    <part name="parameters" element="s0:ValidCardLengthResponse" />
+  </message>
+  <message name="ValidExpDateSoapIn">
+    <part name="parameters" element="s0:ValidExpDate" />
+  </message>
+  <message name="ValidExpDateSoapOut">
+    <part name="parameters" element="s0:ValidExpDateResponse" />
+  </message>
+  <message name="ValidMod10SoapIn">
+    <part name="parameters" element="s0:ValidMod10" />
+  </message>
+  <message name="ValidMod10SoapOut">
+    <part name="parameters" element="s0:ValidMod10Response" />
+  </message>
+  <portType name="CreditCardValidatorSoap">
+    <operation name="GetCardType">
+      <documentation>Returns the card issuer Visa, MasterCard, AMEX, etc., based  on the card number.</documentation>
+      <input message="s0:GetCardTypeSoapIn" />
+      <output message="s0:GetCardTypeSoapOut" />
+    </operation>
+    <operation name="IsCommercialCard">
+      <documentation>Returns (T/F) if the card is a known commercial card (commercial cards require customer code and sales tax amount to receive preferred discount rate pricing.)</documentation>
+      <input message="s0:IsCommercialCardSoapIn" />
+      <output message="s0:IsCommercialCardSoapOut" />
+    </operation>
+    <operation name="ValidCard">
+      <documentation>Validates the credit card by checking the card length based on the card type, performs a mod 10 checksum and validates the expiration date. Returns â??1 if good, 1001 - no card number, 1002 - no exp date, 1003 - invalid card type, 1004 - invalid card length, 1005 - bad mod 10 check, 1006 - bad expiration date.</documentation>
+      <input message="s0:ValidCardSoapIn" />
+      <output message="s0:ValidCardSoapOut" />
+    </operation>
+    <operation name="ValidCardLength">
+      <documentation>Validates the credit card length by checking the card length based on the card type, Returns (T/F).</documentation>
+      <input message="s0:ValidCardLengthSoapIn" />
+      <output message="s0:ValidCardLengthSoapOut" />
+    </operation>
+    <operation name="ValidExpDate">
+      <documentation>Validates the expiration date by making sure it is a valid date and the card has not expired, Returns (T/F).</documentation>
+      <input message="s0:ValidExpDateSoapIn" />
+      <output message="s0:ValidExpDateSoapOut" />
+    </operation>
+    <operation name="ValidMod10">
+      <documentation>Validates the credit card by performing a mod 10 checksum on the card number, Returns (T/F).</documentation>
+      <input message="s0:ValidMod10SoapIn" />
+      <output message="s0:ValidMod10SoapOut" />
+    </operation>
+  </portType>
+  <binding name="CreditCardValidatorSoap" type="s0:CreditCardValidatorSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetCardType">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/GetCardType" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsCommercialCard">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/IsCommercialCard" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidCard">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/ValidCard" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidCardLength">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/ValidCardLength" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidExpDate">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/ValidExpDate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ValidMod10">
+      <soap:operation soapAction="http://RichSolutions.com/RichPayments/ValidMod10" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CreditCardValidator">
+    <documentation>Credit Card Validation and Card Type Web Service by RichSolutions, Inc.</documentation>
+    <port name="CreditCardValidatorSoap" binding="s0:CreditCardValidatorSoap">
+      <soap:address location="http://www.richsolutions.com/RichPayments/RichCardValidator.asmx" />
+    </port>
+  </service>
+</definitions>

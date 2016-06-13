@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="dateTimes" xmlns:tns="http://tempuri.org" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types>
+<schema targetNamespace="http://tempuri.org/type" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<xsd:complexType name="date-formatType">
+<xsd:element name="months">
+<xsd:complexType>
+<xsd:all>
+<xsd:element name="month">
+<xsd:complexType>
+<xsd:attribute name="abbr" type="xsd:string" />
+</xsd:complexType>
+</xsd:element>
+</xsd:all>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="days">
+
+<xsd:complexType>
+<xsd:all>
+<xsd:element name="day">
+<xsd:complexType>
+<xsd:attribute name="abbr" type="xsd:string" />
+</xsd:complexType>
+</xsd:element>
+</xsd:all>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="date-format">
+<xsd:complexType>
+<xsd:all maxOccurs="1">
+<xsd:element ref="months" />
+<xsd:element ref="days" />
+</xsd:all>
+</xsd:complexType>
+
+</xsd:element>
+</xsd:complexType>
+</schema>
+</types>
+<message name="addRequest">
+<part name="date" type="xsd:string" />
+<part name="duration" type="xsd:string" />
+</message>
+<message name="addResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="addDurationRequest">
+<part name="duration1" type="xsd:string" />
+<part name="duration2" type="xsd:string" />
+</message>
+<message name="addDurationResponse">
+<part name="return" type="xsd:string" />
+
+</message>
+<message name="dateRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dateResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="dateTimeRequest">
+</message>
+<message name="dateTimeResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="dayAbbreviationRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayAbbreviationResponse">
+<part name="return" type="xsd:string" />
+
+</message>
+<message name="dayInMonthRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayInMonthResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="dayInWeekRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayInWeekResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="dayInYearRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayInYearResponse">
+
+<part name="return" type="xsd:int" />
+</message>
+<message name="dayNameRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayNameResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="dayOfWeekInMonthRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="dayOfWeekInMonthResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="differenceRequest">
+<part name="date1" type="xsd:string" />
+<part name="date2" type="xsd:string" />
+
+</message>
+<message name="differenceResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="durationRequest">
+<part name="seconds" type="xsd:int" />
+</message>
+<message name="durationResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="formatDateRequest">
+<part name="date" type="xsd:string" />
+<part name="format" type="xsd:string" />
+</message>
+<message name="formatDateResponse">
+<part name="return" type="xsd:string" />
+</message>
+
+<message name="hourInDayRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="hourInDayResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="leapYearRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="leapYearResponse">
+<part name="return" type="xsd:boolean" />
+</message>
+<message name="minuteInHourRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="minuteInHourResponse">
+<part name="return" type="xsd:int" />
+
+</message>
+<message name="monthAbbreviationRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="monthAbbreviationResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="monthInYearRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="monthInYearResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="monthNameRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="monthNameResponse">
+
+<part name="return" type="xsd:string" />
+</message>
+<message name="parseDateRequest">
+<part name="date" type="xsd:string" />
+<part name="input-format" type="xsd:string" />
+</message>
+<message name="parseDateResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="secondInMinuteRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="secondInMinuteResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="secondsRequest">
+<part name="date" type="xsd:string" />
+
+</message>
+<message name="secondsResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="sumRequest">
+<part name="durations" type="xsd:string" />
+</message>
+<message name="sumResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="timeRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="timeResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="weekInMonthRequest">
+
+<part name="date" type="xsd:string" />
+</message>
+<message name="weekInMonthResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="weekInYearRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="weekInYearResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="yearRequest">
+<part name="date" type="xsd:string" />
+</message>
+<message name="yearResponse">
+<part name="return" type="xsd:int" />
+</message>
+
+<message name="dayAbbreviationIRequest">
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="dayAbbreviationIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="dayInWeekIRequest">
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="dayInWeekIResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="dayNameIRequest">
+
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="dayNameIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="dayOfWeekInMonthIRequest">
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="dayOfWeekInMonthIResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="formatDateIRequest">
+<part name="date" type="xsd:string" />
+
+<part name="format" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="formatDateIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="monthAbbreviationIRequest">
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="monthAbbreviationIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="monthNameIRequest">
+<part name="date" type="xsd:string" />
+
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="monthNameIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="parseDateIRequest">
+<part name="date" type="xsd:string" />
+<part name="input-format" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="parseDateIResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="weekInMonthIRequest">
+<part name="date" type="xsd:string" />
+
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="weekInMonthIResponse">
+<part name="return" type="xsd:int" />
+</message>
+<message name="weekInYearIRequest">
+<part name="date" type="xsd:string" />
+<part name="date-format" type="xsd:string" />
+<part name="context" type="xsd:string" />
+</message>
+<message name="weekInYearIResponse">
+<part name="return" type="xsd:int" />
+</message>
+<portType name="datePort">
+<operation name="add">
+<input message="tns:addRequest" name="add" />
+
+<output message="tns:addResponse" name="add" />
+</operation>
+<operation name="addDuration">
+<input message="tns:addDurationRequest" name="addDuration" />
+<output message="tns:addDurationResponse" name="addDuration" />
+</operation>
+<operation name="date">
+<input message="tns:dateRequest" name="date" />
+<output message="tns:dateResponse" name="date" />
+</operation>
+<operation name="dateTime">
+<input message="tns:dateTimeRequest" name="dateTime" />
+<output message="tns:dateTimeResponse" name="dateTime" />
+</operation>
+<operation name="dayAbbreviation">
+<input message="tns:dayAbbreviationRequest" name="dayAbbreviation" />
+<output message="tns:dayAbbreviationResponse" name="dayAbbreviation" />
+
+</operation>
+<operation name="dayInMonth">
+<input message="tns:dayInMonthRequest" name="dayInMonth" />
+<output message="tns:dayInMonthResponse" name="dayInMonth" />
+</operation>
+<operation name="dayInWeek">
+<input message="tns:dayInWeekRequest" name="dayInWeek" />
+<output message="tns:dayInWeekResponse" name="dayInWeek" />
+</operation>
+<operation name="dayInYear">
+<input message="tns:dayInYearRequest" name="dayInYear" />
+<output message="tns:dayInYearResponse" name="dayInYear" />
+</operation>
+<operation name="dayName">
+<input message="tns:dayNameRequest" name="dayName" />
+<output message="tns:dayNameResponse" name="dayName" />
+</operation>
+
+<operation name="dayOfWeekInMonth">
+<input message="tns:dayOfWeekInMonthRequest" name="dayOfWeekInMonth" />
+<output message="tns:dayOfWeekInMonthResponse" name="dayOfWeekInMonth" />
+</operation>
+<operation name="difference">
+<input message="tns:differenceRequest" name="difference" />
+<output message="tns:differenceResponse" name="difference" />
+</operation>
+<operation name="duration">
+<input message="tns:durationRequest" name="duration" />
+<output message="tns:durationResponse" name="duration" />
+</operation>
+<operation name="formatDate">
+<input message="tns:formatDateRequest" name="formatDate" />
+<output message="tns:formatDateResponse" name="formatDate" />
+</operation>
+<operation name="hourInDay">
+
+<input message="tns:hourInDayRequest" name="hourInDay" />
+<output message="tns:hourInDayResponse" name="hourInDay" />
+</operation>
+<operation name="leapYear">
+<input message="tns:leapYearRequest" name="leapYear" />
+<output message="tns:leapYearResponse" name="leapYear" />
+</operation>
+<operation name="minuteInHour">
+<input message="tns:minuteInHourRequest" name="minuteInHour" />
+<output message="tns:minuteInHourResponse" name="minuteInHour" />
+</operation>
+<operation name="monthAbbreviation">
+<input message="tns:monthAbbreviationRequest" name="monthAbbreviation" />
+<output message="tns:monthAbbreviationResponse" name="monthAbbreviation" />
+</operation>
+<operation name="monthInYear">
+<input message="tns:monthInYearRequest" name="monthInYear" />
+
+<output message="tns:monthInYearResponse" name="monthInYear" />
+</operation>
+<operation name="monthName">
+<input message="tns:monthNameRequest" name="monthName" />
+<output message="tns:monthNameResponse" name="monthName" />
+</operation>
+<operation name="parseDate">
+<input message="tns:parseDateRequest" name="parseDate" />
+<output message="tns:parseDateResponse" name="parseDate" />
+</operation>
+<operation name="secondInMinute">
+<input message="tns:secondInMinuteRequest" name="secondInMinute" />
+<output message="tns:secondInMinuteResponse" name="secondInMinute" />
+</operation>
+<operation name="seconds">
+<input message="tns:secondsRequest" name="seconds" />
+<output message="tns:secondsResponse" name="seconds" />
+
+</operation>
+<operation name="sum">
+<input message="tns:sumRequest" name="sum" />
+<output message="tns:sumResponse" name="sum" />
+</operation>
+<operation name="time">
+<input message="tns:timeRequest" name="time" />
+<output message="tns:timeResponse" name="time" />
+</operation>
+<operation name="weekInMonth">
+<input message="tns:weekInMonthRequest" name="weekInMonth" />
+<output message="tns:weekInMonthResponse" name="weekInMonth" />
+</operation>
+<operation name="weekInYear">
+<input message="tns:weekInYearRequest" name="weekInYear" />
+<output message="tns:weekInYearResponse" name="weekInYear" />
+</operation>
+
+<operation name="year">
+<input message="tns:yearRequest" name="year" />
+<output message="tns:yearResponse" name="year" />
+</operation>
+</portType>
+<portType name="datePortI">
+<operation name="dayAbbreviationI">
+<input message="tns:dayAbbreviationIRequest" name="dayAbbreviation" />
+<output message="tns:dayAbbreviationIResponse" name="dayAbbreviation" />
+</operation>
+<operation name="dayInWeekI">
+<input message="tns:dayInWeekIRequest" name="dayInWeek" />
+<output message="tns:dayInWeekIResponse" name="dayInWeek" />
+</operation>
+<operation name="dayNameI">
+<input message="tns:dayNameIRequest" name="dayName" />
+<output message="tns:dayNameIResponse" name="dayName" />
+
+</operation>
+<operation name="dayOfWeekInMonthI">
+<input message="tns:dayOfWeekInMonthIRequest" name="dayOfWeekInMonth" />
+<output message="tns:dayOfWeekInMonthIResponse" name="dayOfWeekInMonth" />
+</operation>
+<operation name="formatDateI">
+<input message="tns:formatDateIRequest" name="formatDate" />
+<output message="tns:formatDateIResponse" name="formatDate" />
+</operation>
+<operation name="monthAbbreviationI">
+<input message="tns:monthAbbreviationIRequest" name="monthAbbreviation" />
+<output message="tns:monthAbbreviationIResponse" name="monthAbbreviation" />
+</operation>
+<operation name="monthNameI">
+<input message="tns:monthNameIRequest" name="monthName" />
+<output message="tns:monthNameIResponse" name="monthName" />
+</operation>
+
+<operation name="parseDateI">
+<input message="tns:parseDateIRequest" name="parseDate" />
+<output message="tns:parseDateIResponse" name="parseDate" />
+</operation>
+<operation name="weekInMonthI">
+<input message="tns:weekInMonthIRequest" name="weekInMonth" />
+<output message="tns:weekInMonthIResponse" name="weekInMonth" />
+</operation>
+<operation name="weekInYearI">
+<input message="tns:weekInYearIRequest" name="weekInYear" />
+<output message="tns:weekInYearIResponse" name="weekInYear" />
+</operation>
+</portType>
+<binding name="dateBinding" type="tns:datePort">
+<stk:binding preferredEncoding="UTF-8" />
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="add">
+
+<soap:operation soapAction="http://tempuri.org/action/date.add" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="addDuration">
+<soap:operation soapAction="http://tempuri.org/action/date.addDuration" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+
+<operation name="date">
+<soap:operation soapAction="http://tempuri.org/action/date.date" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dateTime">
+<soap:operation soapAction="http://tempuri.org/action/date.dateTime" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+
+</operation>
+<operation name="dayAbbreviation">
+<soap:operation soapAction="http://tempuri.org/action/date.dayAbbreviation" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dayInMonth">
+<soap:operation soapAction="http://tempuri.org/action/date.dayInMonth" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+</output>
+</operation>
+<operation name="dayInWeek">
+<soap:operation soapAction="http://tempuri.org/action/date.dayInWeek" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dayInYear">
+<soap:operation soapAction="http://tempuri.org/action/date.dayInYear" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dayName">
+<soap:operation soapAction="http://tempuri.org/action/date.dayName" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dayOfWeekInMonth">
+<soap:operation soapAction="http://tempuri.org/action/date.dayOfWeekInMonth" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="difference">
+<soap:operation soapAction="http://tempuri.org/action/date.difference" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="duration">
+<soap:operation soapAction="http://tempuri.org/action/date.duration" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="formatDate">
+<soap:operation soapAction="http://tempuri.org/action/date.formatDate" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="hourInDay">
+<soap:operation soapAction="http://tempuri.org/action/date.hourInDay" />
+<input>
+
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="leapYear">
+<soap:operation soapAction="http://tempuri.org/action/date.leapYear" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="minuteInHour">
+<soap:operation soapAction="http://tempuri.org/action/date.minuteInHour" />
+
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="monthAbbreviation">
+<soap:operation soapAction="http://tempuri.org/action/date.monthAbbreviation" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="monthInYear">
+
+<soap:operation soapAction="http://tempuri.org/action/date.monthInYear" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="monthName">
+<soap:operation soapAction="http://tempuri.org/action/date.monthName" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+
+<operation name="parseDate">
+<soap:operation soapAction="http://tempuri.org/action/date.parseDate" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="secondInMinute">
+<soap:operation soapAction="http://tempuri.org/action/date.secondInMinute" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+
+</operation>
+<operation name="seconds">
+<soap:operation soapAction="http://tempuri.org/action/date.seconds" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="sum">
+<soap:operation soapAction="http://tempuri.org/action/date.sum" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+</output>
+</operation>
+<operation name="time">
+<soap:operation soapAction="http://tempuri.org/action/date.time" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="weekInMonth">
+<soap:operation soapAction="http://tempuri.org/action/date.weekInMonth" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="weekInYear">
+<soap:operation soapAction="http://tempuri.org/action/date.weekInYear" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="year">
+<soap:operation soapAction="http://tempuri.org/action/date.year" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<binding name="dateBindingI" type="tns:datePortI">
+<stk:binding preferredEncoding="UTF-8" />
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="dayAbbreviationI">
+<soap:operation soapAction="http://tempuri.org/action/date.dayAbbreviation" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+
+<operation name="dayInWeekI">
+<soap:operation soapAction="http://tempuri.org/action/date.dayInWeek" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="dayNameI">
+<soap:operation soapAction="http://tempuri.org/action/date.dayName" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+
+</operation>
+<operation name="dayOfWeekInMonthI">
+<soap:operation soapAction="http://tempuri.org/action/date.dayOfWeekInMonth" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="formatDateI">
+<soap:operation soapAction="http://tempuri.org/action/date.formatDate" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+</output>
+</operation>
+<operation name="monthAbbreviationI">
+<soap:operation soapAction="http://tempuri.org/action/date.monthAbbreviation" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="monthNameI">
+<soap:operation soapAction="http://tempuri.org/action/date.monthName" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="parseDateI">
+<soap:operation soapAction="http://tempuri.org/action/date.parseDate" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="weekInMonthI">
+<soap:operation soapAction="http://tempuri.org/action/date.weekInMonth" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="weekInYearI">
+<soap:operation soapAction="http://tempuri.org/action/date.weekInYear" />
+<input>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="http://tempuri.org/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="dateTimes">
+<port name="datePort" binding="tns:dateBinding">
+<soap:address location="http://158.152.41.79/services/dates/service/datetimes.wsdl" />
+
+</port>
+<port name="datePortI" binding="tns:dateBindingI">
+<soap:address location="http://158.152.41.79/services/dates/service/datetimes.wsdl" />
+</port>
+</service>
+</definitions>

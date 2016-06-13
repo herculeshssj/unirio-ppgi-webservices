@@ -1,0 +1,132 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.rpmfind.RpmService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/rpmfind/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/rpmfind/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xns4="http://systinet.com/wsdl/com/systinet/demo/rpmfind/">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/com/systinet/demo/rpmfind/"/>
+            <xsd:element name="p0" nillable="true" type="xsd:string"/>
+            <xsd:element name="ArrayOfRpmItem_Response" nillable="true"
+                type="xns4:ArrayOfRpmItem"/>
+            <xsd:element name="p0_1" nillable="true" type="xns4:RpmItem"/>
+            <xsd:element name="base64Binary_Response" nillable="true"
+                type="xsd:base64Binary"/>
+        </xsd:schema>
+
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/com/systinet/demo/rpmfind/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:complexType name="RpmItem">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.rpmfind.RpmItem"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="distribution" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="downloadUrl" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="packageName" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="packageUrl" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="summary" nillable="true"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfRpmItem">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.rpmfind.RpmItem;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="RpmItem" nillable="true" type="tns:RpmItem"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='RpmService_search_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='RpmService_search_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfRpmItem_Response'/>
+    </wsdl:message>
+    <wsdl:message name='RpmService_getFile_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='RpmService_getFile_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0_1'/>
+    </wsdl:message>
+    <wsdl:message name='RpmService_getFile_Response'>
+        <wsdl:part name='response' element='ns0:base64Binary_Response'/>
+    </wsdl:message>
+    <wsdl:message name='RpmService_search_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:portType name='RpmService'>
+        <wsdl:operation name='search' parameterOrder='p0'>
+            <wsdl:input message='tns:RpmService_search_1_Request'/>
+            <wsdl:output message='tns:RpmService_search_Response'/>
+            <wsdl:fault name='search_fault1' message='tns:RpmService_search_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='getFile' parameterOrder='p0'>
+            <wsdl:input message='tns:RpmService_getFile_1_Request'/>
+            <wsdl:output message='tns:RpmService_getFile_Response'/>
+            <wsdl:fault name='getFile_fault1' message='tns:RpmService_getFile_java.io.IOException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='RpmService' type='tns:RpmService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='search'>
+            <map:java-operation name='search' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL3JwbWZpbmQvUnBtSXRlbTs='/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/rpmfind/RpmService#search#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL3JwbWZpbmQvUnBtSXRlbTs=' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='search_fault1'>
+                <soap:fault name='search_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/rpmfind/RpmService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='getFile'>
+            <map:java-operation name='getFile' signature='KExjb20vc3lzdGluZXQvZGVtby9ycG1maW5kL1JwbUl0ZW07KVtC'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/rpmfind/RpmService#getFile#KExjb20vc3lzdGluZXQvZGVtby9ycG1maW5kL1JwbUl0ZW07KVtC' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='getFile_fault1'>
+                <soap:fault name='getFile_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/rpmfind/RpmService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='RpmService' binding='tns:RpmService'>
+            <soap:address location='http://soap.systinet.net:6080/RpmFinder/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

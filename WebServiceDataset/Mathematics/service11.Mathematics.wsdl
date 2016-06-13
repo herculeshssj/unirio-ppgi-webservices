@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<definitions name="GetFactorial.cfactorial" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/GetFactorial/CFactorial.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/GetFactorial/CFactorial.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetFactorialRequest">
+        <part name="OriginalValue" type="xsd:long"/>
+    </message>
+    <message name="GetFactorialResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="GetFactorial.cfactorialPortType">
+        <operation name="GetFactorial">
+            <input message="tns:GetFactorialRequest"/>
+            <output message="tns:GetFactorialResponse"/>
+        </operation>
+    </portType>
+    <binding name="GetFactorial.cfactorialbinding" type="tns:GetFactorial.cfactorialPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetFactorial">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/GetFactorial/CFactorial.xml#GetFactorial"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/GetFactorial/CFactorial.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/GetFactorial/CFactorial.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="GetFactorial.cfactorialService">
+        <port name="GetFactorial.cfactorialPort" binding="tns:GetFactorial.cfactorialbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/mathfunctions.cgi"/>
+        </port>
+    </service>
+</definitions>

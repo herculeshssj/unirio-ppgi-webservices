@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/WeatherByZip" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/WeatherByZip" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/WeatherByZip">
+      <s:element name="GetWeatherByZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeatherByZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeatherByZipResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetWeatherByZipSoapIn">
+    <part name="parameters" element="s0:GetWeatherByZip" />
+  </message>
+  <message name="GetWeatherByZipSoapOut">
+    <part name="parameters" element="s0:GetWeatherByZipResponse" />
+  </message>
+  <message name="GetWeatherByZipHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetWeatherByZipHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetWeatherByZipHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetWeatherByZipHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="WeatherByZipSoap">
+    <operation name="GetWeatherByZip">
+      <input message="s0:GetWeatherByZipSoapIn" />
+      <output message="s0:GetWeatherByZipSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WeatherByZipHttpGet">
+    <operation name="GetWeatherByZip">
+      <input message="s0:GetWeatherByZipHttpGetIn" />
+      <output message="s0:GetWeatherByZipHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WeatherByZipHttpPost">
+    <operation name="GetWeatherByZip">
+      <input message="s0:GetWeatherByZipHttpPostIn" />
+      <output message="s0:GetWeatherByZipHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WeatherByZipSoap" type="s0:WeatherByZipSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetWeatherByZip">
+      <soap:operation soapAction="http://innergears.com/WebServices/WeatherByZip/GetWeatherByZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WeatherByZipHttpGet" type="s0:WeatherByZipHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetWeatherByZip">
+      <http:operation location="/GetWeatherByZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WeatherByZipHttpPost" type="s0:WeatherByZipHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetWeatherByZip">
+      <http:operation location="/GetWeatherByZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WeatherByZip">
+    <port name="WeatherByZipSoap" binding="s0:WeatherByZipSoap">
+      <soap:address location="http://www.innergears.com/WebServices/WeatherByZip/WeatherByZip.asmx" />
+    </port>
+    <port name="WeatherByZipHttpGet" binding="s0:WeatherByZipHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/WeatherByZip/WeatherByZip.asmx" />
+    </port>
+    <port name="WeatherByZipHttpPost" binding="s0:WeatherByZipHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/WeatherByZip/WeatherByZip.asmx" />
+    </port>
+  </service>
+</definitions>

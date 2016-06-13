@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://www.interfax.cc/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.interfax.cc" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.interfax.cc" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.interfax.cc">
+      <s:element name="SendCharFax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Data" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendCharFaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendCharFaxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sendfax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendfaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendfaxResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendfaxEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumbers" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FilesData" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileTypes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileSizes" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Postpone" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsHighResolution" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="CSID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReplyAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendfaxExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendfaxExResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FaxStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastTransactionID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxItems" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FaxStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FaxStatusResult" type="s0:ArrayOfFaxItem" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFaxItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FaxItem" type="s0:FaxItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaxItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmitTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostponeTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationFax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemoteCSID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PagesSent" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PagesSubmitted" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FaxStatusXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastTransactionID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxItems" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FaxStatusXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FaxStatusXMLResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotalCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ListSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFaxImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransactionID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFaxImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFaxImageResult" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Image" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="long" type="s:long" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.interfax.cc/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="SendCharFaxSoapIn">
+    <part name="parameters" element="s0:SendCharFax" />
+  </message>
+  <message name="SendCharFaxSoapOut">
+    <part name="parameters" element="s0:SendCharFaxResponse" />
+  </message>
+  <message name="SendfaxSoapIn">
+    <part name="parameters" element="s0:Sendfax" />
+  </message>
+  <message name="SendfaxSoapOut">
+    <part name="parameters" element="s0:SendfaxResponse" />
+  </message>
+  <message name="SendfaxExSoapIn">
+    <part name="parameters" element="s0:SendfaxEx" />
+  </message>
+  <message name="SendfaxExSoapOut">
+    <part name="parameters" element="s0:SendfaxExResponse" />
+  </message>
+  <message name="FaxStatusSoapIn">
+    <part name="parameters" element="s0:FaxStatus" />
+  </message>
+  <message name="FaxStatusSoapOut">
+    <part name="parameters" element="s0:FaxStatusResponse" />
+  </message>
+  <message name="FaxStatusXMLSoapIn">
+    <part name="parameters" element="s0:FaxStatusXML" />
+  </message>
+  <message name="FaxStatusXMLSoapOut">
+    <part name="parameters" element="s0:FaxStatusXMLResponse" />
+  </message>
+  <message name="GetFaxImageSoapIn">
+    <part name="parameters" element="s0:GetFaxImage" />
+  </message>
+  <message name="GetFaxImageSoapOut">
+    <part name="parameters" element="s0:GetFaxImageResponse" />
+  </message>
+  <message name="SendCharFaxHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="Data" type="s:string" />
+    <part name="FileType" type="s:string" />
+  </message>
+  <message name="SendCharFaxHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SendfaxHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="FileData" type="s1:StringArray" />
+    <part name="FileType" type="s:string" />
+  </message>
+  <message name="SendfaxHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SendfaxExHttpGetIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumbers" type="s:string" />
+    <part name="FilesData" type="s1:StringArray" />
+    <part name="FileTypes" type="s:string" />
+    <part name="FileSizes" type="s:string" />
+    <part name="Postpone" type="s:string" />
+    <part name="IsHighResolution" type="s:string" />
+    <part name="CSID" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="ReplyAddress" type="s:string" />
+  </message>
+  <message name="SendfaxExHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SendCharFaxHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="Data" type="s:string" />
+    <part name="FileType" type="s:string" />
+  </message>
+  <message name="SendCharFaxHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SendfaxHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="FileData" type="s1:StringArray" />
+    <part name="FileType" type="s:string" />
+  </message>
+  <message name="SendfaxHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="SendfaxExHttpPostIn">
+    <part name="Username" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="FaxNumbers" type="s:string" />
+    <part name="FilesData" type="s1:StringArray" />
+    <part name="FileTypes" type="s:string" />
+    <part name="FileSizes" type="s:string" />
+    <part name="Postpone" type="s:string" />
+    <part name="IsHighResolution" type="s:string" />
+    <part name="CSID" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="ReplyAddress" type="s:string" />
+  </message>
+  <message name="SendfaxExHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <portType name="InterFaxSoap">
+    <operation name="SendCharFax">
+      <input message="s0:SendCharFaxSoapIn" />
+      <output message="s0:SendCharFaxSoapOut" />
+    </operation>
+    <operation name="Sendfax">
+      <input message="s0:SendfaxSoapIn" />
+      <output message="s0:SendfaxSoapOut" />
+    </operation>
+    <operation name="SendfaxEx">
+      <input message="s0:SendfaxExSoapIn" />
+      <output message="s0:SendfaxExSoapOut" />
+    </operation>
+    <operation name="FaxStatus">
+      <input message="s0:FaxStatusSoapIn" />
+      <output message="s0:FaxStatusSoapOut" />
+    </operation>
+    <operation name="FaxStatusXML">
+      <input message="s0:FaxStatusXMLSoapIn" />
+      <output message="s0:FaxStatusXMLSoapOut" />
+    </operation>
+    <operation name="GetFaxImage">
+      <input message="s0:GetFaxImageSoapIn" />
+      <output message="s0:GetFaxImageSoapOut" />
+    </operation>
+  </portType>
+  <portType name="InterFaxHttpGet">
+    <operation name="SendCharFax">
+      <input message="s0:SendCharFaxHttpGetIn" />
+      <output message="s0:SendCharFaxHttpGetOut" />
+    </operation>
+    <operation name="Sendfax">
+      <input message="s0:SendfaxHttpGetIn" />
+      <output message="s0:SendfaxHttpGetOut" />
+    </operation>
+    <operation name="SendfaxEx">
+      <input message="s0:SendfaxExHttpGetIn" />
+      <output message="s0:SendfaxExHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="InterFaxHttpPost">
+    <operation name="SendCharFax">
+      <input message="s0:SendCharFaxHttpPostIn" />
+      <output message="s0:SendCharFaxHttpPostOut" />
+    </operation>
+    <operation name="Sendfax">
+      <input message="s0:SendfaxHttpPostIn" />
+      <output message="s0:SendfaxHttpPostOut" />
+    </operation>
+    <operation name="SendfaxEx">
+      <input message="s0:SendfaxExHttpPostIn" />
+      <output message="s0:SendfaxExHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="InterFaxSoap" type="s0:InterFaxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendCharFax">
+      <soap:operation soapAction="http://www.interfax.cc/SendCharFax" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Sendfax">
+      <soap:operation soapAction="http://www.interfax.cc/Sendfax" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendfaxEx">
+      <soap:operation soapAction="http://www.interfax.cc/SendfaxEx" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FaxStatus">
+      <soap:operation soapAction="http://www.interfax.cc/FaxStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FaxStatusXML">
+      <soap:operation soapAction="http://www.interfax.cc/FaxStatusXML" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFaxImage">
+      <soap:operation soapAction="http://www.interfax.cc/GetFaxImage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="InterFaxHttpGet" type="s0:InterFaxHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SendCharFax">
+      <http:operation location="/SendCharFax" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Sendfax">
+      <http:operation location="/Sendfax" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendfaxEx">
+      <http:operation location="/SendfaxEx" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="InterFaxHttpPost" type="s0:InterFaxHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SendCharFax">
+      <http:operation location="/SendCharFax" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Sendfax">
+      <http:operation location="/Sendfax" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendfaxEx">
+      <http:operation location="/SendfaxEx" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="InterFax">
+    <port name="InterFaxSoap" binding="s0:InterFaxSoap">
+      <soap:address location="http://www.interfax.cc/webservice/dfs.asmx" />
+    </port>
+    <port name="InterFaxHttpGet" binding="s0:InterFaxHttpGet">
+      <http:address location="http://www.interfax.cc/webservice/dfs.asmx" />
+    </port>
+    <port name="InterFaxHttpPost" binding="s0:InterFaxHttpPost">
+      <http:address location="http://www.interfax.cc/webservice/dfs.asmx" />
+    </port>
+  </service>
+</definitions>

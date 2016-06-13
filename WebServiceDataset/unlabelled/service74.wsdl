@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="lesaYfir">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="lesaYfirResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lesaYfirResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="lesaYfirSoapIn">
+    <part name="parameters" element="s0:lesaYfir" />
+  </message>
+  <message name="lesaYfirSoapOut">
+    <part name="parameters" element="s0:lesaYfirResponse" />
+  </message>
+  <message name="lesaYfirHttpGetIn">
+    <part name="text" type="s:string" />
+  </message>
+  <message name="lesaYfirHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="lesaYfirHttpPostIn">
+    <part name="text" type="s:string" />
+  </message>
+  <message name="lesaYfirHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="PukiSoap">
+    <operation name="lesaYfir">
+      <input message="s0:lesaYfirSoapIn" />
+      <output message="s0:lesaYfirSoapOut" />
+    </operation>
+  </portType>
+  <portType name="PukiHttpGet">
+    <operation name="lesaYfir">
+      <input message="s0:lesaYfirHttpGetIn" />
+      <output message="s0:lesaYfirHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="PukiHttpPost">
+    <operation name="lesaYfir">
+      <input message="s0:lesaYfirHttpPostIn" />
+      <output message="s0:lesaYfirHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="PukiSoap" type="s0:PukiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="lesaYfir">
+      <soap:operation soapAction="http://tempuri.org/lesaYfir" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PukiHttpGet" type="s0:PukiHttpGet">
+    <http:binding verb="GET" />
+    <operation name="lesaYfir">
+      <http:operation location="/lesaYfir" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PukiHttpPost" type="s0:PukiHttpPost">
+    <http:binding verb="POST" />
+    <operation name="lesaYfir">
+      <http:operation location="/lesaYfir" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Puki">
+    <port name="PukiSoap" binding="s0:PukiSoap">
+      <soap:address location="http://www.barnaland.is/dev/puki.asmx" />
+    </port>
+    <port name="PukiHttpGet" binding="s0:PukiHttpGet">
+      <http:address location="http://www.barnaland.is/dev/puki.asmx" />
+    </port>
+    <port name="PukiHttpPost" binding="s0:PukiHttpPost">
+      <http:address location="http://www.barnaland.is/dev/puki.asmx" />
+    </port>
+  </service>
+</definitions>

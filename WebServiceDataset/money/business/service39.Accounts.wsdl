@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="LoanMonthlyPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Months" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoanMonthlyPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanMonthlyPaymentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoanNumberOfPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthlyPayment" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoanNumberOfPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanNumberOfPaymentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeaseMonthlyPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="ResidualValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Months" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeaseMonthlyPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LeaseMonthlyPaymentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="APR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoanAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="ExtraCost" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="InterestRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Months" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="APRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="APRResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="LoanMonthlyPaymentSoapIn">
+    <part name="parameters" element="s0:LoanMonthlyPayment" />
+  </message>
+  <message name="LoanMonthlyPaymentSoapOut">
+    <part name="parameters" element="s0:LoanMonthlyPaymentResponse" />
+  </message>
+  <message name="LoanNumberOfPaymentSoapIn">
+    <part name="parameters" element="s0:LoanNumberOfPayment" />
+  </message>
+  <message name="LoanNumberOfPaymentSoapOut">
+    <part name="parameters" element="s0:LoanNumberOfPaymentResponse" />
+  </message>
+  <message name="LeaseMonthlyPaymentSoapIn">
+    <part name="parameters" element="s0:LeaseMonthlyPayment" />
+  </message>
+  <message name="LeaseMonthlyPaymentSoapOut">
+    <part name="parameters" element="s0:LeaseMonthlyPaymentResponse" />
+  </message>
+  <message name="APRSoapIn">
+    <part name="parameters" element="s0:APR" />
+  </message>
+  <message name="APRSoapOut">
+    <part name="parameters" element="s0:APRResponse" />
+  </message>
+  <message name="LoanMonthlyPaymentHttpGetIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="LoanMonthlyPaymentHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="LoanNumberOfPaymentHttpGetIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="MonthlyPayment" type="s:string" />
+  </message>
+  <message name="LoanNumberOfPaymentHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="LeaseMonthlyPaymentHttpGetIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="ResidualValue" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="LeaseMonthlyPaymentHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="APRHttpGetIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="ExtraCost" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="APRHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="LoanMonthlyPaymentHttpPostIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="LoanMonthlyPaymentHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="LoanNumberOfPaymentHttpPostIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="MonthlyPayment" type="s:string" />
+  </message>
+  <message name="LoanNumberOfPaymentHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="LeaseMonthlyPaymentHttpPostIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="ResidualValue" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="LeaseMonthlyPaymentHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="APRHttpPostIn">
+    <part name="LoanAmount" type="s:string" />
+    <part name="ExtraCost" type="s:string" />
+    <part name="InterestRate" type="s:string" />
+    <part name="Months" type="s:string" />
+  </message>
+  <message name="APRHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="FinanceServiceSoap">
+    <operation name="LoanMonthlyPayment">
+      <input message="s0:LoanMonthlyPaymentSoapIn" />
+      <output message="s0:LoanMonthlyPaymentSoapOut" />
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <input message="s0:LoanNumberOfPaymentSoapIn" />
+      <output message="s0:LoanNumberOfPaymentSoapOut" />
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <input message="s0:LeaseMonthlyPaymentSoapIn" />
+      <output message="s0:LeaseMonthlyPaymentSoapOut" />
+    </operation>
+    <operation name="APR">
+      <input message="s0:APRSoapIn" />
+      <output message="s0:APRSoapOut" />
+    </operation>
+  </portType>
+  <portType name="FinanceServiceHttpGet">
+    <operation name="LoanMonthlyPayment">
+      <input message="s0:LoanMonthlyPaymentHttpGetIn" />
+      <output message="s0:LoanMonthlyPaymentHttpGetOut" />
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <input message="s0:LoanNumberOfPaymentHttpGetIn" />
+      <output message="s0:LoanNumberOfPaymentHttpGetOut" />
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <input message="s0:LeaseMonthlyPaymentHttpGetIn" />
+      <output message="s0:LeaseMonthlyPaymentHttpGetOut" />
+    </operation>
+    <operation name="APR">
+      <input message="s0:APRHttpGetIn" />
+      <output message="s0:APRHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="FinanceServiceHttpPost">
+    <operation name="LoanMonthlyPayment">
+      <input message="s0:LoanMonthlyPaymentHttpPostIn" />
+      <output message="s0:LoanMonthlyPaymentHttpPostOut" />
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <input message="s0:LoanNumberOfPaymentHttpPostIn" />
+      <output message="s0:LoanNumberOfPaymentHttpPostOut" />
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <input message="s0:LeaseMonthlyPaymentHttpPostIn" />
+      <output message="s0:LeaseMonthlyPaymentHttpPostOut" />
+    </operation>
+    <operation name="APR">
+      <input message="s0:APRHttpPostIn" />
+      <output message="s0:APRHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="FinanceServiceSoap" type="s0:FinanceServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="LoanMonthlyPayment">
+      <soap:operation soapAction="http://www.webserviceX.NET/LoanMonthlyPayment" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <soap:operation soapAction="http://www.webserviceX.NET/LoanNumberOfPayment" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <soap:operation soapAction="http://www.webserviceX.NET/LeaseMonthlyPayment" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="APR">
+      <soap:operation soapAction="http://www.webserviceX.NET/APR" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="FinanceServiceHttpGet" type="s0:FinanceServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="LoanMonthlyPayment">
+      <http:operation location="/LoanMonthlyPayment" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <http:operation location="/LoanNumberOfPayment" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <http:operation location="/LeaseMonthlyPayment" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="APR">
+      <http:operation location="/APR" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="FinanceServiceHttpPost" type="s0:FinanceServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="LoanMonthlyPayment">
+      <http:operation location="/LoanMonthlyPayment" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LoanNumberOfPayment">
+      <http:operation location="/LoanNumberOfPayment" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LeaseMonthlyPayment">
+      <http:operation location="/LeaseMonthlyPayment" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="APR">
+      <http:operation location="/APR" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="FinanceService">
+    <port name="FinanceServiceSoap" binding="s0:FinanceServiceSoap">
+      <soap:address location="http://www.webservicex.net/FinanceService.asmx" />
+    </port>
+    <port name="FinanceServiceHttpGet" binding="s0:FinanceServiceHttpGet">
+      <http:address location="http://www.webservicex.net/FinanceService.asmx" />
+    </port>
+    <port name="FinanceServiceHttpPost" binding="s0:FinanceServiceHttpPost">
+      <http:address location="http://www.webservicex.net/FinanceService.asmx" />
+    </port>
+  </service>
+</definitions>

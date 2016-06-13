@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="obterLogradouro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cep" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obterLogradouroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obterLogradouroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obterCEP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Logradouro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obterCEPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obterCEPResult" type="s0:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfAnyType" nillable="true" type="s0:ArrayOfAnyType" />
+    </s:schema>
+  </types>
+  <message name="obterLogradouroSoapIn">
+    <part name="parameters" element="s0:obterLogradouro" />
+  </message>
+  <message name="obterLogradouroSoapOut">
+    <part name="parameters" element="s0:obterLogradouroResponse" />
+  </message>
+  <message name="obterCEPSoapIn">
+    <part name="parameters" element="s0:obterCEP" />
+  </message>
+  <message name="obterCEPSoapOut">
+    <part name="parameters" element="s0:obterCEPResponse" />
+  </message>
+  <message name="obterLogradouroHttpGetIn">
+    <part name="Cep" type="s:string" />
+  </message>
+  <message name="obterLogradouroHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="obterCEPHttpGetIn">
+    <part name="Logradouro" type="s:string" />
+  </message>
+  <message name="obterCEPHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="obterLogradouroHttpPostIn">
+    <part name="Cep" type="s:string" />
+  </message>
+  <message name="obterLogradouroHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="obterCEPHttpPostIn">
+    <part name="Logradouro" type="s:string" />
+  </message>
+  <message name="obterCEPHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <portType name="ConsultaCEPSoap">
+    <operation name="obterLogradouro">
+      <input message="s0:obterLogradouroSoapIn" />
+      <output message="s0:obterLogradouroSoapOut" />
+    </operation>
+    <operation name="obterCEP">
+      <input message="s0:obterCEPSoapIn" />
+      <output message="s0:obterCEPSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ConsultaCEPHttpGet">
+    <operation name="obterLogradouro">
+      <input message="s0:obterLogradouroHttpGetIn" />
+      <output message="s0:obterLogradouroHttpGetOut" />
+    </operation>
+    <operation name="obterCEP">
+      <input message="s0:obterCEPHttpGetIn" />
+      <output message="s0:obterCEPHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ConsultaCEPHttpPost">
+    <operation name="obterLogradouro">
+      <input message="s0:obterLogradouroHttpPostIn" />
+      <output message="s0:obterLogradouroHttpPostOut" />
+    </operation>
+    <operation name="obterCEP">
+      <input message="s0:obterCEPHttpPostIn" />
+      <output message="s0:obterCEPHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ConsultaCEPSoap" type="s0:ConsultaCEPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="obterLogradouro">
+      <soap:operation soapAction="http://tempuri.org/obterLogradouro" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obterCEP">
+      <soap:operation soapAction="http://tempuri.org/obterCEP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConsultaCEPHttpGet" type="s0:ConsultaCEPHttpGet">
+    <http:binding verb="GET" />
+    <operation name="obterLogradouro">
+      <http:operation location="/obterLogradouro" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="obterCEP">
+      <http:operation location="/obterCEP" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConsultaCEPHttpPost" type="s0:ConsultaCEPHttpPost">
+    <http:binding verb="POST" />
+    <operation name="obterLogradouro">
+      <http:operation location="/obterLogradouro" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="obterCEP">
+      <http:operation location="/obterCEP" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ConsultaCEP">
+    <port name="ConsultaCEPSoap" binding="s0:ConsultaCEPSoap">
+      <soap:address location="http://hosting.msugs.ch/byjg/consultacep.asmx" />
+    </port>
+    <port name="ConsultaCEPHttpGet" binding="s0:ConsultaCEPHttpGet">
+      <http:address location="http://hosting.msugs.ch/byjg/consultacep.asmx" />
+    </port>
+    <port name="ConsultaCEPHttpPost" binding="s0:ConsultaCEPHttpPost">
+      <http:address location="http://hosting.msugs.ch/byjg/consultacep.asmx" />
+    </port>
+  </service>
+</definitions>

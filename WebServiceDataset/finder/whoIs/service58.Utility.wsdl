@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<definitions name='Service'
+	targetNamespace='http://tempuri.org/4s4c/1/3/wsdl/def/Service'
+	xmlns='http://schemas.xmlsoap.org/wsdl/'
+	xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns:soap-enc='http://schemas.xmlsoap.org/soap/encoding/'
+	xmlns:tns='http://tempuri.org/4s4c/1/3/wsdl/def/Service'
+	xmlns:mstk2='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	xmlns:w='http://schemas.xmlsoap.org/wsdl/'
+>
+<message name="whoisRequest">
+  <part name="name" type="xsd:string"/>
+</message>
+<message name="whoisResponse">
+  <part name="whoisData" type="xsd:string"/>
+</message>
+<portType name="IwhoisPortType">
+  <operation name="whois">
+    <input  message="tns:whoisRequest" />
+    <output message="tns:whoisResponse" />
+  </operation>
+</portType>
+<binding name="IwhoisBinding" type="tns:IwhoisPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <mstk2:binding preferredEncoding='UTF-8'/>
+  <operation name="whois">
+    <soap:operation soapAction="http://www.pocketsoap.com/whois#whois"/>
+    <input><soap:body use="encoded" namespace="http://www.pocketsoap.com/whois" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="http://www.pocketsoap.com/whois" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="Service">
+  <port name="IwhoisPort" binding="tns:IwhoisBinding">
+    <soap:address location="http://soap.4s4c.com/whois/soap.asp"/>
+  </port>
+</service>
+</definitions>

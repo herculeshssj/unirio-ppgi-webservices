@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="CreditCardFunctions.ccardprocess" targetNamespace="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" xmlns:tns="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="IsCreditCardRequest">
+        <part name="CreditCardNumber" type="xsd:string"/>
+    </message>
+    <message name="IsCreditCardResponse">
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <message name="GenCreditCardRequest">
+        <part name="LengthCardNumber" type="xsd:long"/>
+    </message>
+    <message name="GenCreditCardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CreditCardFunctions.ccardprocessPortType">
+        <operation name="IsCreditCard">
+            <input message="tns:IsCreditCardRequest"/>
+            <output message="tns:IsCreditCardResponse"/>
+        </operation>
+        <operation name="GenCreditCard">
+            <input message="tns:GenCreditCardRequest"/>
+            <output message="tns:GenCreditCardResponse"/>
+        </operation>
+    </portType>
+    <binding name="CreditCardFunctions.ccardprocessbinding" type="tns:CreditCardFunctions.ccardprocessPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="IsCreditCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml#IsCreditCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GenCreditCard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml#GenCreditCard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/CreditCardFunctions/CCardProcess.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CreditCardFunctions.ccardprocessService">
+        <port name="CreditCardFunctions.ccardprocessPort" binding="tns:CreditCardFunctions.ccardprocessbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lccreditcard.cgi"/>
+        </port>
+    </service>
+</definitions>

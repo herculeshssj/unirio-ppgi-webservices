@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNewsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSportNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSportNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSportNewsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GetNewsSoapIn">
+    <part name="parameters" element="s0:GetNews" />
+  </message>
+  <message name="GetNewsSoapOut">
+    <part name="parameters" element="s0:GetNewsResponse" />
+  </message>
+  <message name="GetAllNewsSoapIn">
+    <part name="parameters" element="s0:GetAllNews" />
+  </message>
+  <message name="GetAllNewsSoapOut">
+    <part name="parameters" element="s0:GetAllNewsResponse" />
+  </message>
+  <message name="GetSportNewsSoapIn">
+    <part name="parameters" element="s0:GetSportNews" />
+  </message>
+  <message name="GetSportNewsSoapOut">
+    <part name="parameters" element="s0:GetSportNewsResponse" />
+  </message>
+  <message name="GetNewsHttpGetIn" />
+  <message name="GetNewsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAllNewsHttpGetIn" />
+  <message name="GetAllNewsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetSportNewsHttpGetIn" />
+  <message name="GetSportNewsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetNewsHttpPostIn" />
+  <message name="GetNewsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAllNewsHttpPostIn" />
+  <message name="GetAllNewsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetSportNewsHttpPostIn" />
+  <message name="GetSportNewsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="TeletekstSoap">
+    <operation name="GetNews">
+      <documentation>Get page 101 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetNewsSoapIn" />
+      <output message="s0:GetNewsSoapOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Get page 102 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetAllNewsSoapIn" />
+      <output message="s0:GetAllNewsSoapOut" />
+    </operation>
+    <operation name="GetSportNews">
+      <documentation>Get page 601 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetSportNewsSoapIn" />
+      <output message="s0:GetSportNewsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="TeletekstHttpGet">
+    <operation name="GetNews">
+      <documentation>Get page 101 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetNewsHttpGetIn" />
+      <output message="s0:GetNewsHttpGetOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Get page 102 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetAllNewsHttpGetIn" />
+      <output message="s0:GetAllNewsHttpGetOut" />
+    </operation>
+    <operation name="GetSportNews">
+      <documentation>Get page 601 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetSportNewsHttpGetIn" />
+      <output message="s0:GetSportNewsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="TeletekstHttpPost">
+    <operation name="GetNews">
+      <documentation>Get page 101 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetNewsHttpPostIn" />
+      <output message="s0:GetNewsHttpPostOut" />
+    </operation>
+    <operation name="GetAllNews">
+      <documentation>Get page 102 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetAllNewsHttpPostIn" />
+      <output message="s0:GetAllNewsHttpPostOut" />
+    </operation>
+    <operation name="GetSportNews">
+      <documentation>Get page 601 of the Dutch teletekst page.</documentation>
+      <input message="s0:GetSportNewsHttpPostIn" />
+      <output message="s0:GetSportNewsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="TeletekstSoap" type="s0:TeletekstSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetNews">
+      <soap:operation soapAction="http://tempuri.org/GetNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <soap:operation soapAction="http://tempuri.org/GetAllNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSportNews">
+      <soap:operation soapAction="http://tempuri.org/GetSportNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TeletekstHttpGet" type="s0:TeletekstHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSportNews">
+      <http:operation location="/GetSportNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="TeletekstHttpPost" type="s0:TeletekstHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllNews">
+      <http:operation location="/GetAllNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSportNews">
+      <http:operation location="/GetSportNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Teletekst">
+    <documentation>Teletekst WebServices created by &lt;a href=http://www.reflectionit.nl&gt;Reflection IT&lt;/a&gt;.</documentation>
+    <port name="TeletekstSoap" binding="s0:TeletekstSoap">
+      <soap:address location="http://www.html2xml.nl/Services/Teletekst/Version1/Teletekst.asmx" />
+    </port>
+    <port name="TeletekstHttpGet" binding="s0:TeletekstHttpGet">
+      <http:address location="http://www.html2xml.nl/Services/Teletekst/Version1/Teletekst.asmx" />
+    </port>
+    <port name="TeletekstHttpPost" binding="s0:TeletekstHttpPost">
+      <http:address location="http://www.html2xml.nl/Services/Teletekst/Version1/Teletekst.asmx" />
+    </port>
+  </service>
+</definitions>

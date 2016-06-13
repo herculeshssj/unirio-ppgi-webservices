@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+
+<definitions name="FileSystem.cfilesystem" targetNamespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PutFileRequest">
+        <part name="FileName" type="xsd:string"/>
+        <part name="B64FileContent" type="xsd:string"/>
+        <part name="OverwriteExisting" type="xsd:boolean"/>
+        <part name="IsReadOnly" type="xsd:boolean"/>
+        <part name="IsHidden" type="xsd:boolean"/>
+        <part name="IsSystem" type="xsd:boolean"/>
+    </message>
+    <message name="PutFileResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetFileRequest">
+        <part name="FileName" type="xsd:string"/>
+        <part name="B64FileContent" type="xsd:string"/>
+    </message>
+    <message name="GetFileResponse">
+        <part name="B64FileContent" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DirectoryListingRequest">
+        <part name="Directory" type="xsd:string"/>
+        <part name="recFilelist" type="xsd:string"/>
+    </message>
+    <message name="DirectoryListingResponse">
+        <part name="recFilelist" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="CreateDirectoryRequest">
+        <part name="Directory" type="xsd:string"/>
+        <part name="OverwriteExisting" type="xsd:boolean"/>
+        <part name="IsReadOnly" type="xsd:boolean"/>
+        <part name="IsHidden" type="xsd:boolean"/>
+        <part name="IsSystem" type="xsd:boolean"/>
+    </message>
+    <message name="CreateDirectoryResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="RemoveDirectoryRequest">
+        <part name="Directory" type="xsd:string"/>
+        <part name="ForceDelete" type="xsd:boolean"/>
+    </message>
+    <message name="RemoveDirectoryResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="RemoveFileRequest">
+        <part name="FileName" type="xsd:string"/>
+        <part name="ForceDelete" type="xsd:boolean"/>
+    </message>
+    <message name="RemoveFileResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="FileSystem.cfilesystemPortType">
+        <operation name="PutFile">
+            <input message="tns:PutFileRequest"/>
+            <output message="tns:PutFileResponse"/>
+        </operation>
+        <operation name="GetFile">
+            <input message="tns:GetFileRequest"/>
+            <output message="tns:GetFileResponse"/>
+        </operation>
+        <operation name="DirectoryListing">
+            <input message="tns:DirectoryListingRequest"/>
+            <output message="tns:DirectoryListingResponse"/>
+        </operation>
+        <operation name="CreateDirectory">
+            <input message="tns:CreateDirectoryRequest"/>
+            <output message="tns:CreateDirectoryResponse"/>
+        </operation>
+        <operation name="RemoveDirectory">
+            <input message="tns:RemoveDirectoryRequest"/>
+            <output message="tns:RemoveDirectoryResponse"/>
+        </operation>
+        <operation name="RemoveFile">
+            <input message="tns:RemoveFileRequest"/>
+            <output message="tns:RemoveFileResponse"/>
+        </operation>
+    </portType>
+    <binding name="FileSystem.cfilesystembinding" type="tns:FileSystem.cfilesystemPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="PutFile">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#PutFile"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetFile">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#GetFile"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DirectoryListing">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#DirectoryListing"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="CreateDirectory">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#CreateDirectory"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="RemoveDirectory">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#RemoveDirectory"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="RemoveFile">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml#RemoveFile"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/FileSystem/CFileSystem.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="FileSystem.cfilesystemService">
+        <port name="FileSystem.cfilesystemPort" binding="tns:FileSystem.cfilesystembinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salfilesystem.cgi"/>
+        </port>
+    </service>
+</definitions>

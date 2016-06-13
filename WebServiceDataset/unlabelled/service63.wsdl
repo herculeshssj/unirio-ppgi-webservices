@@ -1,0 +1,103 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.search.zvon.ZVONSearchService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/search/zvon/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/search/zvon/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/com/systinet/demo/search/zvon/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:complexType name="ZVONEntry">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.search.zvon.ZVONEntry"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="author" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="explanation" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="gloss" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="hint" nillable="true" type="xsd:string"/>
+                    <xsd:element name="name" nillable="true" type="xsd:string"/>
+                    <xsd:element name="url" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfZVONEntry">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.search.zvon.ZVONEntry;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="ZVONEntry" nillable="true" type="tns:ZVONEntry"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xns4="http://systinet.com/wsdl/com/systinet/demo/search/zvon/">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/com/systinet/demo/search/zvon/"/>
+            <xsd:element name="p0" nillable="true" type="xsd:string"/>
+            <xsd:element name="p1" type="xsd:boolean"/>
+            <xsd:element name="ArrayOfZVONEntry_Response" nillable="true"
+                type="xns4:ArrayOfZVONEntry"/>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='ZVONSearchService_search_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfZVONEntry_Response'/>
+    </wsdl:message>
+    <wsdl:message name='ZVONSearchService_search_com.systinet.demo.search.SearchException_Fault'>
+        <wsdl:part name='idoox-java-mapping.com.systinet.demo.search.SearchException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='ZVONSearchService_search_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+        <wsdl:part name='p1' element='ns0:p1'/>
+    </wsdl:message>
+    <wsdl:portType name='ZVONSearchService'>
+        <wsdl:operation name='search' parameterOrder='p0 p1'>
+            <wsdl:input message='tns:ZVONSearchService_search_1_Request'/>
+            <wsdl:output message='tns:ZVONSearchService_search_Response'/>
+            <wsdl:fault name='search_fault1' message='tns:ZVONSearchService_search_com.systinet.demo.search.SearchException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='ZVONSearchService' type='tns:ZVONSearchService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='search'>
+            <map:java-operation name='search' signature='KExqYXZhL2xhbmcvU3RyaW5nO1opW0xjb20vc3lzdGluZXQvZGVtby9zZWFyY2gvenZvbi9aVk9ORW50cnk7'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/search/zvon/ZVONSearchService#search#KExqYXZhL2xhbmcvU3RyaW5nO1opW0xjb20vc3lzdGluZXQvZGVtby9zZWFyY2gvenZvbi9aVk9ORW50cnk7' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='search_fault1'>
+                <soap:fault name='search_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/search/zvon/ZVONSearchService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='ZVONSearchService' binding='tns:ZVONSearchService'>
+            <soap:address location='http://soap.systinet.net:6080/ZVONSearch/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

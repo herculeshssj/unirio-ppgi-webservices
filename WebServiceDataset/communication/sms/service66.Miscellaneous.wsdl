@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<definitions name="PacBellMessagingService" targetNamespace="http://www.xmethods.net/sd/PacBellMessagingService.wsdl"  xmlns:tns="http://www.xmethods.net/sd/PacBellMessagingService.wsdl"  xmlns:xsd="http://www.w3.org/1999/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<message name="sendMessageRequest">
+		<part name="From" type="xsd:string"/>
+		<part name="To" type="xsd:string"/>
+		<part name="Text" type="xsd:string"/>
+	</message>
+	<message name="sendMessageResponse">
+		<part name="return" type="xsd:string"/>
+	</message>
+	<portType name="PacBellMessagingPortType">
+		<operation name="sendMessage">
+			<input message="tns:sendMessageRequest" name="sendMessage"/>
+			<output message="tns:sendMessageResponse" name="sendMessageResponse"/>
+		</operation>
+	</portType>
+	<binding name="PacBellMessagingBinding" type="tns:PacBellMessagingPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="sendMessage">
+			<soap:operation soapAction="urn:xmethodsPacBellSMS#sendMessage"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:xmethodsPacBellSMS" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:xmethodsPacBellSMS" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="PacBellMessagingService">
+		<documentation>Sends text messages to Pacific Bell SMS-capable cell phones</documentation>
+		<port name="PacBellMessagingPort" binding="tns:PacBellMessagingBinding">
+			<soap:address location="http://services.xmethods.net:80/perl/soaplite.cgi"/>
+		</port>
+	</service>
+</definitions>

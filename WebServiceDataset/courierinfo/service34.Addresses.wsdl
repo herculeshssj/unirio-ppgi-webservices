@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetShippingRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Weight" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromStateProv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromCountry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToStateProv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToCountry" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Carriers" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShippingRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShippingRatesResult" type="s0:Rates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Rates">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Rate" type="s0:Rate" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Rate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Service" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Postage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Time" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCountryCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountryCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountryCodeResult" type="s0:Country" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Country">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCountryList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCountryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountryListResult" type="s0:Countries" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Countries">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Country" type="s0:Country" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Rates" nillable="true" type="s0:Rates" />
+      <s:element name="Country" nillable="true" type="s0:Country" />
+      <s:element name="Countries" nillable="true" type="s0:Countries" />
+    </s:schema>
+  </types>
+  <message name="GetShippingRatesSoapIn">
+    <part name="parameters" element="s0:GetShippingRates" />
+  </message>
+  <message name="GetShippingRatesSoapOut">
+    <part name="parameters" element="s0:GetShippingRatesResponse" />
+  </message>
+  <message name="GetCountryCodeSoapIn">
+    <part name="parameters" element="s0:GetCountryCode" />
+  </message>
+  <message name="GetCountryCodeSoapOut">
+    <part name="parameters" element="s0:GetCountryCodeResponse" />
+  </message>
+  <message name="GetCountryListSoapIn">
+    <part name="parameters" element="s0:GetCountryList" />
+  </message>
+  <message name="GetCountryListSoapOut">
+    <part name="parameters" element="s0:GetCountryListResponse" />
+  </message>
+  <message name="GetShippingRatesHttpGetIn">
+    <part name="Weight" type="s:string" />
+    <part name="FromCity" type="s:string" />
+    <part name="FromStateProv" type="s:string" />
+    <part name="FromPostalCode" type="s:string" />
+    <part name="FromCountry" type="s:string" />
+    <part name="ToCity" type="s:string" />
+    <part name="ToStateProv" type="s:string" />
+    <part name="ToPostalCode" type="s:string" />
+    <part name="ToCountry" type="s:string" />
+    <part name="Carriers" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetShippingRatesHttpGetOut">
+    <part name="Body" element="s0:Rates" />
+  </message>
+  <message name="GetCountryCodeHttpGetIn">
+    <part name="Country" type="s:string" />
+  </message>
+  <message name="GetCountryCodeHttpGetOut">
+    <part name="Body" element="s0:Country" />
+  </message>
+  <message name="GetCountryListHttpGetIn" />
+  <message name="GetCountryListHttpGetOut">
+    <part name="Body" element="s0:Countries" />
+  </message>
+  <message name="GetShippingRatesHttpPostIn">
+    <part name="Weight" type="s:string" />
+    <part name="FromCity" type="s:string" />
+    <part name="FromStateProv" type="s:string" />
+    <part name="FromPostalCode" type="s:string" />
+    <part name="FromCountry" type="s:string" />
+    <part name="ToCity" type="s:string" />
+    <part name="ToStateProv" type="s:string" />
+    <part name="ToPostalCode" type="s:string" />
+    <part name="ToCountry" type="s:string" />
+    <part name="Carriers" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetShippingRatesHttpPostOut">
+    <part name="Body" element="s0:Rates" />
+  </message>
+  <message name="GetCountryCodeHttpPostIn">
+    <part name="Country" type="s:string" />
+  </message>
+  <message name="GetCountryCodeHttpPostOut">
+    <part name="Body" element="s0:Country" />
+  </message>
+  <message name="GetCountryListHttpPostIn" />
+  <message name="GetCountryListHttpPostOut">
+    <part name="Body" element="s0:Countries" />
+  </message>
+  <portType name="DOTSShippingComparisonSoap">
+    <operation name="GetShippingRates">
+      <documentation>Returns a list of shipping methods and corresponding prices. Enter the weight of the package in lbs.&lt;br&gt;Results returned are from USPS, UPS, FedEx, and DHL.&lt;br&gt;The Carriers parameter is the sum of the values for the carriers you want.&lt;br&gt;1 - USPS&lt;br&gt;2 - UPS&lt;br&gt;4 - DHL&lt;br&gt;8 - FedEx&lt;br&gt;&lt;br&gt;To query USPS and UPS, for example, Carriers would be 3.&lt;br&gt;To query all carriers, Carriers would be 15.</documentation>
+      <input message="s0:GetShippingRatesSoapIn" />
+      <output message="s0:GetShippingRatesSoapOut" />
+    </operation>
+    <operation name="GetCountryCode">
+      <documentation>Returns the country code for a given country. The country code is needed for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryCodeSoapIn" />
+      <output message="s0:GetCountryCodeSoapOut" />
+    </operation>
+    <operation name="GetCountryList">
+      <documentation>Returns a list of countries and corresponding country codes for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryListSoapIn" />
+      <output message="s0:GetCountryListSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSShippingComparisonHttpGet">
+    <operation name="GetShippingRates">
+      <documentation>Returns a list of shipping methods and corresponding prices. Enter the weight of the package in lbs.&lt;br&gt;Results returned are from USPS, UPS, FedEx, and DHL.&lt;br&gt;The Carriers parameter is the sum of the values for the carriers you want.&lt;br&gt;1 - USPS&lt;br&gt;2 - UPS&lt;br&gt;4 - DHL&lt;br&gt;8 - FedEx&lt;br&gt;&lt;br&gt;To query USPS and UPS, for example, Carriers would be 3.&lt;br&gt;To query all carriers, Carriers would be 15.</documentation>
+      <input message="s0:GetShippingRatesHttpGetIn" />
+      <output message="s0:GetShippingRatesHttpGetOut" />
+    </operation>
+    <operation name="GetCountryCode">
+      <documentation>Returns the country code for a given country. The country code is needed for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryCodeHttpGetIn" />
+      <output message="s0:GetCountryCodeHttpGetOut" />
+    </operation>
+    <operation name="GetCountryList">
+      <documentation>Returns a list of countries and corresponding country codes for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryListHttpGetIn" />
+      <output message="s0:GetCountryListHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSShippingComparisonHttpPost">
+    <operation name="GetShippingRates">
+      <documentation>Returns a list of shipping methods and corresponding prices. Enter the weight of the package in lbs.&lt;br&gt;Results returned are from USPS, UPS, FedEx, and DHL.&lt;br&gt;The Carriers parameter is the sum of the values for the carriers you want.&lt;br&gt;1 - USPS&lt;br&gt;2 - UPS&lt;br&gt;4 - DHL&lt;br&gt;8 - FedEx&lt;br&gt;&lt;br&gt;To query USPS and UPS, for example, Carriers would be 3.&lt;br&gt;To query all carriers, Carriers would be 15.</documentation>
+      <input message="s0:GetShippingRatesHttpPostIn" />
+      <output message="s0:GetShippingRatesHttpPostOut" />
+    </operation>
+    <operation name="GetCountryCode">
+      <documentation>Returns the country code for a given country. The country code is needed for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryCodeHttpPostIn" />
+      <output message="s0:GetCountryCodeHttpPostOut" />
+    </operation>
+    <operation name="GetCountryList">
+      <documentation>Returns a list of countries and corresponding country codes for the GetShippingRates method.</documentation>
+      <input message="s0:GetCountryListHttpPostIn" />
+      <output message="s0:GetCountryListHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSShippingComparisonSoap" type="s0:DOTSShippingComparisonSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetShippingRates">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetShippingRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCountryCode">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetCountryCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCountryList">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetCountryList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSShippingComparisonHttpGet" type="s0:DOTSShippingComparisonHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetShippingRates">
+      <http:operation location="/GetShippingRates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryCode">
+      <http:operation location="/GetCountryCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryList">
+      <http:operation location="/GetCountryList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSShippingComparisonHttpPost" type="s0:DOTSShippingComparisonHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetShippingRates">
+      <http:operation location="/GetShippingRates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryCode">
+      <http:operation location="/GetCountryCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryList">
+      <http:operation location="/GetCountryList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSShippingComparison">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSShippingComparisonSoap" binding="s0:DOTSShippingComparisonSoap">
+      <soap:address location="http://ws2.serviceobjects.net/pc/packcost.asmx" />
+    </port>
+    <port name="DOTSShippingComparisonHttpGet" binding="s0:DOTSShippingComparisonHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/pc/packcost.asmx" />
+    </port>
+    <port name="DOTSShippingComparisonHttpPost" binding="s0:DOTSShippingComparisonHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/pc/packcost.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+
+<definitions name="LoanPayments.cloanpayments" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="MonthlyPaymentsRequest">
+        <part name="LoanAmount" type="xsd:double"/>
+        <part name="Rate" type="xsd:double"/>
+        <part name="NumberOfMonths" type="xsd:long"/>
+    </message>
+    <message name="MonthlyPaymentsResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="TotalRepaidRequest">
+        <part name="LoanAmount" type="xsd:double"/>
+        <part name="Rate" type="xsd:double"/>
+        <part name="NumberOfMonths" type="xsd:long"/>
+    </message>
+    <message name="TotalRepaidResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="YearsToMonthsRequest">
+        <part name="NumberOfYears" type="xsd:long"/>
+    </message>
+    <message name="YearsToMonthsResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="LoanPayments.cloanpaymentsPortType">
+        <operation name="MonthlyPayments">
+            <input message="tns:MonthlyPaymentsRequest"/>
+            <output message="tns:MonthlyPaymentsResponse"/>
+        </operation>
+        <operation name="TotalRepaid">
+            <input message="tns:TotalRepaidRequest"/>
+            <output message="tns:TotalRepaidResponse"/>
+        </operation>
+        <operation name="YearsToMonths">
+            <input message="tns:YearsToMonthsRequest"/>
+            <output message="tns:YearsToMonthsResponse"/>
+        </operation>
+    </portType>
+    <binding name="LoanPayments.cloanpaymentsbinding" type="tns:LoanPayments.cloanpaymentsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="MonthlyPayments">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml#MonthlyPayments"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="TotalRepaid">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml#TotalRepaid"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="YearsToMonths">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml#YearsToMonths"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/LoanPayments/CLoanPayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="LoanPayments.cloanpaymentsService">
+        <port name="LoanPayments.cloanpaymentsPort" binding="tns:LoanPayments.cloanpaymentsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/finance.cgi"/>
+        </port>
+    </service>
+</definitions>

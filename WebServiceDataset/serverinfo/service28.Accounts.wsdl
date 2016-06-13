@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+
+<definitions name="CTime.ctime" targetNamespace="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetServerTimeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ServerTime" type="xsd:string"/>
+    </message>
+    <message name="GetServerTimeResponse">
+        <part name="ServerTime" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CTime.ctimePortType">
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="GetServerTime">
+            <input message="tns:GetServerTimeRequest"/>
+            <output message="tns:GetServerTimeResponse"/>
+        </operation>
+    </portType>
+    <binding name="CTime.ctimebinding" type="tns:CTime.ctimePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetServerTime">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml#GetServerTime"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CTime/CTime.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CTime.ctimeService">
+        <port name="CTime.ctimePort" binding="tns:CTime.ctimebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

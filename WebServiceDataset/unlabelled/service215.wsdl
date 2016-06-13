@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IgetNumbersservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="getLottoNumbersRequest">
+    <part name="Min" type="xs:int"/>
+    <part name="Max" type="xs:int"/>
+    <part name="Numbers" type="xs:int"/>
+    <part name="count" type="xs:int"/>
+  </message>
+  <message name="getLottoNumbersResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IgetNumbers">
+    <operation name="getLottoNumbers">
+      <input message="tns:getLottoNumbersRequest"/>
+      <output message="tns:getLottoNumbersResponse"/>
+    </operation>
+  </portType>
+  <binding name="IgetNumbersbinding" type="tns:IgetNumbers">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getLottoNumbers">
+      <soap:operation soapAction="urn:getNumbersIntf-IgetNumbers#getLottoNumbers" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:getNumbersIntf-IgetNumbers"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:getNumbersIntf-IgetNumbers"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IgetNumbersservice">
+    <port name="IgetNumbersPort" binding="tns:IgetNumbersbinding">
+      <soap:address location="http://reto.checkit.ch/Scripts/Lotto.dll/soap/IgetNumbers"/>
+    </port>
+  </service>
+</definitions>
+

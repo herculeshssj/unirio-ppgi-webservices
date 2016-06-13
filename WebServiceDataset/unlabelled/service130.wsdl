@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://dotnet.cyberthink.net/computerdictionary" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://dotnet.cyberthink.net/computerdictionary" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://dotnet.cyberthink.net/computerdictionary">
+      <s:element name="SearchTerm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sTerm" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTermResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTermResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTermByCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sCategory" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchTermByCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchTermByCategoryResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="SearchTermSoapIn">
+    <part name="parameters" element="s0:SearchTerm" />
+  </message>
+  <message name="SearchTermSoapOut">
+    <part name="parameters" element="s0:SearchTermResponse" />
+  </message>
+  <message name="SearchTermByCategorySoapIn">
+    <part name="parameters" element="s0:SearchTermByCategory" />
+  </message>
+  <message name="SearchTermByCategorySoapOut">
+    <part name="parameters" element="s0:SearchTermByCategoryResponse" />
+  </message>
+  <message name="SearchTermHttpGetIn">
+    <part name="sTerm" type="s:string" />
+  </message>
+  <message name="SearchTermHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchTermByCategoryHttpGetIn">
+    <part name="sCategory" type="s:string" />
+  </message>
+  <message name="SearchTermByCategoryHttpGetOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchTermHttpPostIn">
+    <part name="sTerm" type="s:string" />
+  </message>
+  <message name="SearchTermHttpPostOut">
+    <part name="Body" />
+  </message>
+  <message name="SearchTermByCategoryHttpPostIn">
+    <part name="sCategory" type="s:string" />
+  </message>
+  <message name="SearchTermByCategoryHttpPostOut">
+    <part name="Body" />
+  </message>
+  <portType name="ComputerDictionarySoap">
+    <operation name="SearchTerm">
+      <input message="s0:SearchTermSoapIn" />
+      <output message="s0:SearchTermSoapOut" />
+    </operation>
+    <operation name="SearchTermByCategory">
+      <input message="s0:SearchTermByCategorySoapIn" />
+      <output message="s0:SearchTermByCategorySoapOut" />
+    </operation>
+  </portType>
+  <portType name="ComputerDictionaryHttpGet">
+    <operation name="SearchTerm">
+      <input message="s0:SearchTermHttpGetIn" />
+      <output message="s0:SearchTermHttpGetOut" />
+    </operation>
+    <operation name="SearchTermByCategory">
+      <input message="s0:SearchTermByCategoryHttpGetIn" />
+      <output message="s0:SearchTermByCategoryHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ComputerDictionaryHttpPost">
+    <operation name="SearchTerm">
+      <input message="s0:SearchTermHttpPostIn" />
+      <output message="s0:SearchTermHttpPostOut" />
+    </operation>
+    <operation name="SearchTermByCategory">
+      <input message="s0:SearchTermByCategoryHttpPostIn" />
+      <output message="s0:SearchTermByCategoryHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ComputerDictionarySoap" type="s0:ComputerDictionarySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SearchTerm">
+      <soap:operation soapAction="http://dotnet.cyberthink.net/computerdictionary/SearchTerm" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchTermByCategory">
+      <soap:operation soapAction="http://dotnet.cyberthink.net/computerdictionary/SearchTermByCategory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ComputerDictionaryHttpGet" type="s0:ComputerDictionaryHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SearchTerm">
+      <http:operation location="/SearchTerm" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchTermByCategory">
+      <http:operation location="/SearchTermByCategory" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ComputerDictionaryHttpPost" type="s0:ComputerDictionaryHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SearchTerm">
+      <http:operation location="/SearchTerm" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+    <operation name="SearchTermByCategory">
+      <http:operation location="/SearchTermByCategory" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:content part="Body" type="text/xml" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ComputerDictionary">
+    <port name="ComputerDictionarySoap" binding="s0:ComputerDictionarySoap">
+      <soap:address location="http://dotnet.cyberthink.net/computerdictionary/computerdictionary.asmx" />
+    </port>
+    <port name="ComputerDictionaryHttpGet" binding="s0:ComputerDictionaryHttpGet">
+      <http:address location="http://dotnet.cyberthink.net/computerdictionary/computerdictionary.asmx" />
+    </port>
+    <port name="ComputerDictionaryHttpPost" binding="s0:ComputerDictionaryHttpPost">
+      <http:address location="http://dotnet.cyberthink.net/computerdictionary/computerdictionary.asmx" />
+    </port>
+  </service>
+</definitions>

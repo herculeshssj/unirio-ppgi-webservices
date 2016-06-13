@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ntg.webs.innerhost.com/rsafunctions/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ntg.webs.innerhost.com/rsafunctions/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ntg.webs.innerhost.com/rsafunctions/">
+      <s:element name="RegisterUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MailBox" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MinRSAKeySize">
+        <s:complexType />
+      </s:element>
+      <s:element name="MinRSAKeySizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MinRSAKeySizeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MaxRSAKeySize">
+        <s:complexType />
+      </s:element>
+      <s:element name="MaxRSAKeySizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MaxRSAKeySizeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsRSAKeyLengthValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="KeyLength" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsRSAKeyLengthValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsRSAKeyLengthValidResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateKeys">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="KeySize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateKeysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateKeysResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RSAEncryptData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HexData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RSAEncryptDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RSAEncryptDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RSADecryptData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HexData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RSADecryptDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RSADecryptDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="RegisterUserSoapIn">
+    <part name="parameters" element="s0:RegisterUser" />
+  </message>
+  <message name="RegisterUserSoapOut">
+    <part name="parameters" element="s0:RegisterUserResponse" />
+  </message>
+  <message name="ActivateUserSoapIn">
+    <part name="parameters" element="s0:ActivateUser" />
+  </message>
+  <message name="ActivateUserSoapOut">
+    <part name="parameters" element="s0:ActivateUserResponse" />
+  </message>
+  <message name="MinRSAKeySizeSoapIn">
+    <part name="parameters" element="s0:MinRSAKeySize" />
+  </message>
+  <message name="MinRSAKeySizeSoapOut">
+    <part name="parameters" element="s0:MinRSAKeySizeResponse" />
+  </message>
+  <message name="MaxRSAKeySizeSoapIn">
+    <part name="parameters" element="s0:MaxRSAKeySize" />
+  </message>
+  <message name="MaxRSAKeySizeSoapOut">
+    <part name="parameters" element="s0:MaxRSAKeySizeResponse" />
+  </message>
+  <message name="IsRSAKeyLengthValidSoapIn">
+    <part name="parameters" element="s0:IsRSAKeyLengthValid" />
+  </message>
+  <message name="IsRSAKeyLengthValidSoapOut">
+    <part name="parameters" element="s0:IsRSAKeyLengthValidResponse" />
+  </message>
+  <message name="GenerateKeysSoapIn">
+    <part name="parameters" element="s0:GenerateKeys" />
+  </message>
+  <message name="GenerateKeysSoapOut">
+    <part name="parameters" element="s0:GenerateKeysResponse" />
+  </message>
+  <message name="RSAEncryptDataSoapIn">
+    <part name="parameters" element="s0:RSAEncryptData" />
+  </message>
+  <message name="RSAEncryptDataSoapOut">
+    <part name="parameters" element="s0:RSAEncryptDataResponse" />
+  </message>
+  <message name="RSADecryptDataSoapIn">
+    <part name="parameters" element="s0:RSADecryptData" />
+  </message>
+  <message name="RSADecryptDataSoapOut">
+    <part name="parameters" element="s0:RSADecryptDataResponse" />
+  </message>
+  <message name="RegisterUserHttpGetIn">
+    <part name="MailBox" type="s:string" />
+  </message>
+  <message name="RegisterUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ActivateUserHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+  </message>
+  <message name="ActivateUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MinRSAKeySizeHttpGetIn" />
+  <message name="MinRSAKeySizeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MaxRSAKeySizeHttpGetIn" />
+  <message name="MaxRSAKeySizeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsRSAKeyLengthValidHttpGetIn">
+    <part name="KeyLength" type="s:string" />
+  </message>
+  <message name="IsRSAKeyLengthValidHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GenerateKeysHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="KeySize" type="s:string" />
+  </message>
+  <message name="GenerateKeysHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RSAEncryptDataHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="HexData" type="s:string" />
+  </message>
+  <message name="RSAEncryptDataHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RSADecryptDataHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="HexData" type="s:string" />
+  </message>
+  <message name="RSADecryptDataHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RegisterUserHttpPostIn">
+    <part name="MailBox" type="s:string" />
+  </message>
+  <message name="RegisterUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ActivateUserHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+  </message>
+  <message name="ActivateUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MinRSAKeySizeHttpPostIn" />
+  <message name="MinRSAKeySizeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MaxRSAKeySizeHttpPostIn" />
+  <message name="MaxRSAKeySizeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsRSAKeyLengthValidHttpPostIn">
+    <part name="KeyLength" type="s:string" />
+  </message>
+  <message name="IsRSAKeyLengthValidHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GenerateKeysHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="KeySize" type="s:string" />
+  </message>
+  <message name="GenerateKeysHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RSAEncryptDataHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="HexData" type="s:string" />
+  </message>
+  <message name="RSAEncryptDataHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="RSADecryptDataHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="UserPwd" type="s:string" />
+    <part name="HexData" type="s:string" />
+  </message>
+  <message name="RSADecryptDataHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="RSAFuncsSoap">
+    <operation name="RegisterUser">
+      <documentation>Registers a new user with the RSA Functions web service. The registration process requires a &lt;u&gt;valid&lt;/u&gt; mailbox. The actual user ID and password will be send to the mailbox. After calling this method, you must call &lt;a href="rsafuncs.asmx?op=ActivateUser"&gt;ActivateUser&lt;/a&gt; to activate the created user.</documentation>
+      <input message="s0:RegisterUserSoapIn" />
+      <output message="s0:RegisterUserSoapOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activates a registered user. You &lt;b&gt;must&lt;/b&gt; call &lt;a href="RSAFuncs.asmx?op=RegisterUser"&gt;RegisterUser&lt;/a&gt; prior to calling this method.</documentation>
+      <input message="s0:ActivateUserSoapIn" />
+      <output message="s0:ActivateUserSoapOut" />
+    </operation>
+    <operation name="MinRSAKeySize">
+      <documentation>Returns the minimum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MinRSAKeySizeSoapIn" />
+      <output message="s0:MinRSAKeySizeSoapOut" />
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <documentation>Returns the maximum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MaxRSAKeySizeSoapIn" />
+      <output message="s0:MaxRSAKeySizeSoapOut" />
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <documentation>Checks whether a specific RSA key length is valid.</documentation>
+      <input message="s0:IsRSAKeyLengthValidSoapIn" />
+      <output message="s0:IsRSAKeyLengthValidSoapOut" />
+    </operation>
+    <operation name="GenerateKeys">
+      <documentation>Generates a new set of private/public keys. The new key pair is send to you be e-mail.</documentation>
+      <input message="s0:GenerateKeysSoapIn" />
+      <output message="s0:GenerateKeysSoapOut" />
+    </operation>
+    <operation name="RSAEncryptData">
+      <documentation>Encrypts plain text data with your public key. The plain text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the encrypted data in the form &lt;b&gt;OK&lt;i&gt;EncryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSAEncryptDataSoapIn" />
+      <output message="s0:RSAEncryptDataSoapOut" />
+    </operation>
+    <operation name="RSADecryptData">
+      <documentation>Decrypts encrypted text data by using your private key. The encrypted text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the decrypted data in the form &lt;b&gt;OK&lt;i&gt;DecryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSADecryptDataSoapIn" />
+      <output message="s0:RSADecryptDataSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RSAFuncsHttpGet">
+    <operation name="RegisterUser">
+      <documentation>Registers a new user with the RSA Functions web service. The registration process requires a &lt;u&gt;valid&lt;/u&gt; mailbox. The actual user ID and password will be send to the mailbox. After calling this method, you must call &lt;a href="rsafuncs.asmx?op=ActivateUser"&gt;ActivateUser&lt;/a&gt; to activate the created user.</documentation>
+      <input message="s0:RegisterUserHttpGetIn" />
+      <output message="s0:RegisterUserHttpGetOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activates a registered user. You &lt;b&gt;must&lt;/b&gt; call &lt;a href="RSAFuncs.asmx?op=RegisterUser"&gt;RegisterUser&lt;/a&gt; prior to calling this method.</documentation>
+      <input message="s0:ActivateUserHttpGetIn" />
+      <output message="s0:ActivateUserHttpGetOut" />
+    </operation>
+    <operation name="MinRSAKeySize">
+      <documentation>Returns the minimum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MinRSAKeySizeHttpGetIn" />
+      <output message="s0:MinRSAKeySizeHttpGetOut" />
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <documentation>Returns the maximum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MaxRSAKeySizeHttpGetIn" />
+      <output message="s0:MaxRSAKeySizeHttpGetOut" />
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <documentation>Checks whether a specific RSA key length is valid.</documentation>
+      <input message="s0:IsRSAKeyLengthValidHttpGetIn" />
+      <output message="s0:IsRSAKeyLengthValidHttpGetOut" />
+    </operation>
+    <operation name="GenerateKeys">
+      <documentation>Generates a new set of private/public keys. The new key pair is send to you be e-mail.</documentation>
+      <input message="s0:GenerateKeysHttpGetIn" />
+      <output message="s0:GenerateKeysHttpGetOut" />
+    </operation>
+    <operation name="RSAEncryptData">
+      <documentation>Encrypts plain text data with your public key. The plain text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the encrypted data in the form &lt;b&gt;OK&lt;i&gt;EncryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSAEncryptDataHttpGetIn" />
+      <output message="s0:RSAEncryptDataHttpGetOut" />
+    </operation>
+    <operation name="RSADecryptData">
+      <documentation>Decrypts encrypted text data by using your private key. The encrypted text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the decrypted data in the form &lt;b&gt;OK&lt;i&gt;DecryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSADecryptDataHttpGetIn" />
+      <output message="s0:RSADecryptDataHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RSAFuncsHttpPost">
+    <operation name="RegisterUser">
+      <documentation>Registers a new user with the RSA Functions web service. The registration process requires a &lt;u&gt;valid&lt;/u&gt; mailbox. The actual user ID and password will be send to the mailbox. After calling this method, you must call &lt;a href="rsafuncs.asmx?op=ActivateUser"&gt;ActivateUser&lt;/a&gt; to activate the created user.</documentation>
+      <input message="s0:RegisterUserHttpPostIn" />
+      <output message="s0:RegisterUserHttpPostOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activates a registered user. You &lt;b&gt;must&lt;/b&gt; call &lt;a href="RSAFuncs.asmx?op=RegisterUser"&gt;RegisterUser&lt;/a&gt; prior to calling this method.</documentation>
+      <input message="s0:ActivateUserHttpPostIn" />
+      <output message="s0:ActivateUserHttpPostOut" />
+    </operation>
+    <operation name="MinRSAKeySize">
+      <documentation>Returns the minimum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MinRSAKeySizeHttpPostIn" />
+      <output message="s0:MinRSAKeySizeHttpPostOut" />
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <documentation>Returns the maximum RSA key size, in bits, supported by this service.</documentation>
+      <input message="s0:MaxRSAKeySizeHttpPostIn" />
+      <output message="s0:MaxRSAKeySizeHttpPostOut" />
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <documentation>Checks whether a specific RSA key length is valid.</documentation>
+      <input message="s0:IsRSAKeyLengthValidHttpPostIn" />
+      <output message="s0:IsRSAKeyLengthValidHttpPostOut" />
+    </operation>
+    <operation name="GenerateKeys">
+      <documentation>Generates a new set of private/public keys. The new key pair is send to you be e-mail.</documentation>
+      <input message="s0:GenerateKeysHttpPostIn" />
+      <output message="s0:GenerateKeysHttpPostOut" />
+    </operation>
+    <operation name="RSAEncryptData">
+      <documentation>Encrypts plain text data with your public key. The plain text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the encrypted data in the form &lt;b&gt;OK&lt;i&gt;EncryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSAEncryptDataHttpPostIn" />
+      <output message="s0:RSAEncryptDataHttpPostOut" />
+    </operation>
+    <operation name="RSADecryptData">
+      <documentation>Decrypts encrypted text data by using your private key. The encrypted text data is in hexadecimal form. If the function fails, it will return an error message. Otherwise, it will return the decrypted data in the form &lt;b&gt;OK&lt;i&gt;DecryptedData&lt;/i&gt;&lt;/b&gt;.</documentation>
+      <input message="s0:RSADecryptDataHttpPostIn" />
+      <output message="s0:RSADecryptDataHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RSAFuncsSoap" type="s0:RSAFuncsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="RegisterUser">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/RegisterUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/ActivateUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="MinRSAKeySize">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/MinRSAKeySize" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/MaxRSAKeySize" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/IsRSAKeyLengthValid" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GenerateKeys">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/GenerateKeys" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RSAEncryptData">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/RSAEncryptData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RSADecryptData">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/rsafunctions/RSADecryptData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RSAFuncsHttpGet" type="s0:RSAFuncsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="RegisterUser">
+      <http:operation location="/RegisterUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <http:operation location="/ActivateUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MinRSAKeySize">
+      <http:operation location="/MinRSAKeySize" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <http:operation location="/MaxRSAKeySize" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <http:operation location="/IsRSAKeyLengthValid" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GenerateKeys">
+      <http:operation location="/GenerateKeys" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RSAEncryptData">
+      <http:operation location="/RSAEncryptData" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RSADecryptData">
+      <http:operation location="/RSADecryptData" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RSAFuncsHttpPost" type="s0:RSAFuncsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="RegisterUser">
+      <http:operation location="/RegisterUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <http:operation location="/ActivateUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MinRSAKeySize">
+      <http:operation location="/MinRSAKeySize" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MaxRSAKeySize">
+      <http:operation location="/MaxRSAKeySize" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="IsRSAKeyLengthValid">
+      <http:operation location="/IsRSAKeyLengthValid" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GenerateKeys">
+      <http:operation location="/GenerateKeys" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RSAEncryptData">
+      <http:operation location="/RSAEncryptData" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RSADecryptData">
+      <http:operation location="/RSADecryptData" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RSAFuncs">
+    <documentation>&lt;p&gt;The &lt;b&gt;RSA Functions&lt;/b&gt; web service implements some generic methods that utilize the RSA cryptography provider.&lt;/p&gt;&lt;p&gt;Click &lt;a href="docs.htm"&gt;here&lt;/a&gt; for the documentation of the web service.&lt;/p&gt;&lt;p&gt;Click &lt;a href="http://ntg.webs.innerhost.com/portal/Discussions.aspx?forum_id=6&amp;"&gt;here&lt;/a&gt; for the RSA Functions discussion forum.&lt;/p&gt;&lt;p&gt;Direct any questions or ideas regarding this web service &lt;a href="mailto:nickntg@hotmail.com"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://www.innerhost.com" target="_blank"&gt;&lt;img src="ihlogo.gif" border="0" alt="Web service hosted by iNNERHost"&gt;&lt;/a&gt;&lt;/p&gt;</documentation>
+    <port name="RSAFuncsSoap" binding="s0:RSAFuncsSoap">
+      <soap:address location="http://ntg.webs.innerhost.com/RSAFunctions/RSAFuncs.asmx" />
+    </port>
+    <port name="RSAFuncsHttpGet" binding="s0:RSAFuncsHttpGet">
+      <http:address location="http://ntg.webs.innerhost.com/RSAFunctions/RSAFuncs.asmx" />
+    </port>
+    <port name="RSAFuncsHttpPost" binding="s0:RSAFuncsHttpPost">
+      <http:address location="http://ntg.webs.innerhost.com/RSAFunctions/RSAFuncs.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<definitions name="IsLeapYear.cisleapyear" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/IsLeapYear/CIsLeapYear.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/IsLeapYear/CIsLeapYear.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="IsLeapYearRequest">
+        <part name="WhichYear" type="xsd:long"/>
+    </message>
+    <message name="IsLeapYearResponse">
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <portType name="IsLeapYear.cisleapyearPortType">
+        <operation name="IsLeapYear">
+            <input message="tns:IsLeapYearRequest"/>
+            <output message="tns:IsLeapYearResponse"/>
+        </operation>
+    </portType>
+    <binding name="IsLeapYear.cisleapyearbinding" type="tns:IsLeapYear.cisleapyearPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="IsLeapYear">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/IsLeapYear/CIsLeapYear.xml#IsLeapYear"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/IsLeapYear/CIsLeapYear.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/IsLeapYear/CIsLeapYear.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="IsLeapYear.cisleapyearService">
+        <port name="IsLeapYear.cisleapyearPort" binding="tns:IsLeapYear.cisleapyearbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/isleapyear.cgi"/>
+        </port>
+    </service>
+</definitions>

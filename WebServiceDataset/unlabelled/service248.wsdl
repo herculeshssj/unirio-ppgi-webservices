@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetPhoneInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPhoneInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPhoneInfoResult" type="s0:PhoneInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PhoneInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Providers" type="s0:Providers" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contacts" type="s0:Contacts" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Providers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Provider" type="s0:Provider" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Provider">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contacts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" type="s0:Contact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PhoneInfo" nillable="true" type="s0:PhoneInfo" />
+    </s:schema>
+  </types>
+  <message name="GetPhoneInfoSoapIn">
+    <part name="parameters" element="s0:GetPhoneInfo" />
+  </message>
+  <message name="GetPhoneInfoSoapOut">
+    <part name="parameters" element="s0:GetPhoneInfoResponse" />
+  </message>
+  <message name="GetPhoneInfoHttpGetIn">
+    <part name="PhoneNumber" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetPhoneInfoHttpGetOut">
+    <part name="Body" element="s0:PhoneInfo" />
+  </message>
+  <message name="GetPhoneInfoHttpPostIn">
+    <part name="PhoneNumber" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetPhoneInfoHttpPostOut">
+    <part name="Body" element="s0:PhoneInfo" />
+  </message>
+  <portType name="DOTSGeoPhoneSoap">
+    <operation name="GetPhoneInfo">
+      <documentation>Returns reverse lookup information on a given phone number.</documentation>
+      <input message="s0:GetPhoneInfoSoapIn" />
+      <output message="s0:GetPhoneInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoPhoneHttpGet">
+    <operation name="GetPhoneInfo">
+      <documentation>Returns reverse lookup information on a given phone number.</documentation>
+      <input message="s0:GetPhoneInfoHttpGetIn" />
+      <output message="s0:GetPhoneInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoPhoneHttpPost">
+    <operation name="GetPhoneInfo">
+      <documentation>Returns reverse lookup information on a given phone number.</documentation>
+      <input message="s0:GetPhoneInfoHttpPostIn" />
+      <output message="s0:GetPhoneInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSGeoPhoneSoap" type="s0:DOTSGeoPhoneSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetPhoneInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetPhoneInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoPhoneHttpGet" type="s0:DOTSGeoPhoneHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetPhoneInfo">
+      <http:operation location="/GetPhoneInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoPhoneHttpPost" type="s0:DOTSGeoPhoneHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetPhoneInfo">
+      <http:operation location="/GetPhoneInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSGeoPhone">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSGeoPhoneSoap" binding="s0:DOTSGeoPhoneSoap">
+      <soap:address location="http://ws2.serviceobjects.net/gp/GeoPhone.asmx" />
+    </port>
+    <port name="DOTSGeoPhoneHttpGet" binding="s0:DOTSGeoPhoneHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/gp/GeoPhone.asmx" />
+    </port>
+    <port name="DOTSGeoPhoneHttpPost" binding="s0:DOTSGeoPhoneHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/gp/GeoPhone.asmx" />
+    </port>
+  </service>
+</definitions>

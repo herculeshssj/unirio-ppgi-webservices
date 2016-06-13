@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://parkert.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://parkert.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://parkert.com">
+      <s:element name="RetrieveIncidents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="c" type="s0:Client" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Client">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Passport" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Incidents" type="s0:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Incident">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IncidentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubIncidents" type="s0:ArrayOfAnyType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentIncident" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProblemDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SolutionOrAdvice" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsResolved" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Consultant" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIncident">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Incident" nillable="true" type="s0:Incident" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetrieveIncidentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveIncidentsResult" type="s0:ArrayOfIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveIncidentsByPassport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="passport" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveIncidentsByPassportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveIncidentsByPassportResult" type="s0:ArrayOfIncident" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="passport" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveClientResult" type="s0:Client" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfIncident" nillable="true" type="s0:ArrayOfIncident" />
+      <s:element name="Client" nillable="true" type="s0:Client" />
+    </s:schema>
+  </types>
+  <message name="RetrieveIncidentsSoapIn">
+    <part name="parameters" element="s0:RetrieveIncidents" />
+  </message>
+  <message name="RetrieveIncidentsSoapOut">
+    <part name="parameters" element="s0:RetrieveIncidentsResponse" />
+  </message>
+  <message name="RetrieveIncidentsByPassportSoapIn">
+    <part name="parameters" element="s0:RetrieveIncidentsByPassport" />
+  </message>
+  <message name="RetrieveIncidentsByPassportSoapOut">
+    <part name="parameters" element="s0:RetrieveIncidentsByPassportResponse" />
+  </message>
+  <message name="RetrieveClientSoapIn">
+    <part name="parameters" element="s0:RetrieveClient" />
+  </message>
+  <message name="RetrieveClientSoapOut">
+    <part name="parameters" element="s0:RetrieveClientResponse" />
+  </message>
+  <message name="RetrieveIncidentsByPassportHttpGetIn">
+    <part name="passport" type="s:string" />
+  </message>
+  <message name="RetrieveIncidentsByPassportHttpGetOut">
+    <part name="Body" element="s0:ArrayOfIncident" />
+  </message>
+  <message name="RetrieveClientHttpGetIn">
+    <part name="passport" type="s:string" />
+  </message>
+  <message name="RetrieveClientHttpGetOut">
+    <part name="Body" element="s0:Client" />
+  </message>
+  <message name="RetrieveIncidentsByPassportHttpPostIn">
+    <part name="passport" type="s:string" />
+  </message>
+  <message name="RetrieveIncidentsByPassportHttpPostOut">
+    <part name="Body" element="s0:ArrayOfIncident" />
+  </message>
+  <message name="RetrieveClientHttpPostIn">
+    <part name="passport" type="s:string" />
+  </message>
+  <message name="RetrieveClientHttpPostOut">
+    <part name="Body" element="s0:Client" />
+  </message>
+  <portType name="ClientServicesSoap">
+    <operation name="RetrieveIncidents">
+      <input message="s0:RetrieveIncidentsSoapIn" />
+      <output message="s0:RetrieveIncidentsSoapOut" />
+    </operation>
+    <operation name="RetrieveIncidentsByPassport">
+      <input message="s0:RetrieveIncidentsByPassportSoapIn" />
+      <output message="s0:RetrieveIncidentsByPassportSoapOut" />
+    </operation>
+    <operation name="RetrieveClient">
+      <input message="s0:RetrieveClientSoapIn" />
+      <output message="s0:RetrieveClientSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ClientServicesHttpGet">
+    <operation name="RetrieveIncidentsByPassport">
+      <input message="s0:RetrieveIncidentsByPassportHttpGetIn" />
+      <output message="s0:RetrieveIncidentsByPassportHttpGetOut" />
+    </operation>
+    <operation name="RetrieveClient">
+      <input message="s0:RetrieveClientHttpGetIn" />
+      <output message="s0:RetrieveClientHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ClientServicesHttpPost">
+    <operation name="RetrieveIncidentsByPassport">
+      <input message="s0:RetrieveIncidentsByPassportHttpPostIn" />
+      <output message="s0:RetrieveIncidentsByPassportHttpPostOut" />
+    </operation>
+    <operation name="RetrieveClient">
+      <input message="s0:RetrieveClientHttpPostIn" />
+      <output message="s0:RetrieveClientHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ClientServicesSoap" type="s0:ClientServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="RetrieveIncidents">
+      <soap:operation soapAction="http://parkert.com/RetrieveIncidents" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RetrieveIncidentsByPassport">
+      <soap:operation soapAction="http://parkert.com/RetrieveIncidentsByPassport" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RetrieveClient">
+      <soap:operation soapAction="http://parkert.com/RetrieveClient" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ClientServicesHttpGet" type="s0:ClientServicesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="RetrieveIncidentsByPassport">
+      <http:operation location="/RetrieveIncidentsByPassport" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RetrieveClient">
+      <http:operation location="/RetrieveClient" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ClientServicesHttpPost" type="s0:ClientServicesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="RetrieveIncidentsByPassport">
+      <http:operation location="/RetrieveIncidentsByPassport" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RetrieveClient">
+      <http:operation location="/RetrieveClient" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ClientServices">
+    <port name="ClientServicesSoap" binding="s0:ClientServicesSoap">
+      <soap:address location="http://contest.eraserver.net/SupportingServices/ws/ClientServices.asmx" />
+    </port>
+    <port name="ClientServicesHttpGet" binding="s0:ClientServicesHttpGet">
+      <http:address location="http://contest.eraserver.net/SupportingServices/ws/ClientServices.asmx" />
+    </port>
+    <port name="ClientServicesHttpPost" binding="s0:ClientServicesHttpPost">
+      <http:address location="http://contest.eraserver.net/SupportingServices/ws/ClientServices.asmx" />
+    </port>
+  </service>
+</definitions>

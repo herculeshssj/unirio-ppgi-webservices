@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+ <!-- Generated 01/17/02 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.02.813.0 --> 
+<definitions  name ='WebChart'   targetNamespace = 'http://tempuri.org/wsdl/'
+	 xmlns:wsdlns='http://tempuri.org/wsdl/' 
+	 xmlns:typens='http://tempuri.org/type' 
+	 xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+	 xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+	 xmlns:stk='http://schemas.microsoft.com/soap-toolkit/wsdl-extension'
+	 xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+  <types>
+    <schema targetNamespace='http://tempuri.org/type'
+      xmlns='http://www.w3.org/2001/XMLSchema'
+      xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/'
+      xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+      elementFormDefault='qualified'>
+    </schema>
+  </types>
+  <message name='GxChart.MakeChart'>
+    <part name='sSource' type='xsd:string'/>
+    <part name='nWidth' type='xsd:short'/>
+    <part name='nHeight' type='xsd:short'/>
+    <part name='sType' type='xsd:string'/>
+    <part name='nRotation' type='xsd:short'/>
+    <part name='nInclination' type='xsd:short'/>
+    <part name='sTitle' type='xsd:string'/>
+    <part name='sLegend' type='xsd:string'/>
+    <part name='sLabelTitle' type='xsd:string'/>
+    <part name='sDataTitle' type='xsd:string'/>
+    <part name='sDataLabels' type='xsd:string'/>
+    <part name='sBackground' type='xsd:string'/>
+    <part name='nMarkers' type='xsd:short'/>
+    <part name='sColors' type='xsd:string'/>
+  </message>
+  <message name='GxChart.MakeChartResponse'>
+    <part name='Result' type='xsd:string'/>
+  </message>
+  <portType name='GxChartSoapPort'>
+    <operation name='MakeChart' parameterOrder='sSource nWidth nHeight sType nRotation nInclination sTitle sLegend sLabelTitle sDataTitle sDataLabels sBackground nMarkers sColors'>
+      <input message='wsdlns:GxChart.MakeChart' />
+      <output message='wsdlns:GxChart.MakeChartResponse' />
+    </operation>
+  </portType>
+  <binding name='GxChartSoapBinding' type='wsdlns:GxChartSoapPort' >
+    <stk:binding preferredEncoding='UTF-8'/>
+    <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+    <operation name='MakeChart' >
+      <soap:operation soapAction='http://tempuri.org/action/GxChart.MakeChart' />
+      <input>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </input>
+      <output>
+        <soap:body use='encoded' namespace='http://tempuri.org/message/'
+		  encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+      </output>
+    </operation>
+  </binding>
+  <service name='WebChart' >
+    <port name='GxChartSoapPort' binding='wsdlns:GxChartSoapBinding' >
+      <soap:address location='http://www.gxchart.com/WebChart.asp' />
+    </port>
+  </service>
+</definitions>

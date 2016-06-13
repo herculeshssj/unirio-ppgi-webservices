@@ -1,0 +1,619 @@
+<?xml version="1.0" ?>
+
+<definitions name="CMailingList.cmailinglist" targetNamespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchMailingListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="IsSubscribed" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingListID" type="xsd:long"/>
+        <part name="RecMailingList" type="xsd:string"/>
+    </message>
+    <message name="SearchMailingListResponse">
+        <part name="RecMailingList" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SubscribeToListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="TitleID" type="xsd:long"/>
+        <part name="AddressName" type="xsd:string"/>
+        <part name="EmailAddress" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ReturnMailingID" type="xsd:long"/>
+    </message>
+    <message name="SubscribeToListResponse">
+        <part name="ReturnMailingID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnSubscribeFromListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="UnSubscribeFromListResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetAllMailingsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingID" type="xsd:long"/>
+        <part name="RecMailing" type="xsd:string"/>
+    </message>
+    <message name="GetAllMailingsResponse">
+        <part name="RecMailing" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetMailingListsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingListID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecMailingList" type="xsd:string"/>
+    </message>
+    <message name="GetMailingListsResponse">
+        <part name="RecMailingList" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="AuthoriseSubscriptionRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="AuthoriseSubscriptionResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnAuthoriseSubscriptionRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="UnAuthoriseSubscriptionResponse">
+        <part name="Return" type=""/>
+    </message>
+    <message name="NewMailingListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MailListName" type="xsd:string"/>
+        <part name="MailListDesc" type="xsd:string"/>
+        <part name="HelpText" type="xsd:string"/>
+        <part name="IsClosed" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnMailingListID" type="xsd:long"/>
+    </message>
+    <message name="NewMailingListResponse">
+        <part name="ReturnMailingListID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelMailingListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="DelMailingListResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdMailingListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MailListName" type="xsd:string"/>
+        <part name="MailListDesc" type="xsd:string"/>
+        <part name="HelpText" type="xsd:string"/>
+        <part name="IsClosed" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="UpdMailingListResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSubscribersRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingID" type="xsd:long"/>
+        <part name="RecMailing" type="xsd:string"/>
+    </message>
+    <message name="SearchSubscribersResponse">
+        <part name="RecMailing" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSubscribersReferenceRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingID" type="xsd:long"/>
+        <part name="RecMailing" type="xsd:string"/>
+    </message>
+    <message name="SearchSubscribersReferenceResponse">
+        <part name="RecMailing" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchMailingListReferenceRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingListID" type="xsd:long"/>
+        <part name="RecMailingList" type="xsd:string"/>
+    </message>
+    <message name="SearchMailingListReferenceResponse">
+        <part name="RecMailingList" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchUnAuthorisedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromMailingID" type="xsd:long"/>
+        <part name="RecMailing" type="xsd:string"/>
+    </message>
+    <message name="SearchUnAuthorisedResponse">
+        <part name="RecMailing" type="xsd:string"/>
+        <part name="Return" type=""/>
+    </message>
+    <message name="GetNumMailingListRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ReturnNumMailingList" type="xsd:long"/>
+    </message>
+    <message name="GetNumMailingListResponse">
+        <part name="ReturnNumMailingList" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetNumMailingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ReturnNumMailing" type="xsd:long"/>
+    </message>
+    <message name="GetNumMailingResponse">
+        <part name="ReturnNumMailing" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsAuthorisedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="IsAuthorisedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsSubscribedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+    </message>
+    <message name="IsSubscribedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="ReturnTextID" type="xsd:long"/>
+    </message>
+    <message name="NewTextResponse">
+        <part name="ReturnTextID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="DelTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="LinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnLinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="UnLinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+    </message>
+    <message name="UpdTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="GetTextResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdSubscriptionRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SubscriberCode" type="xsd:string"/>
+        <part name="MailingListID" type="xsd:long"/>
+        <part name="TitleID" type="xsd:long"/>
+        <part name="AddressName" type="xsd:string"/>
+        <part name="EmailAddress" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+    </message>
+    <message name="UpdSubscriptionResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CMailingList.cmailinglistPortType">
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="SearchMailingList">
+            <input message="tns:SearchMailingListRequest"/>
+            <output message="tns:SearchMailingListResponse"/>
+        </operation>
+        <operation name="SubscribeToList">
+            <input message="tns:SubscribeToListRequest"/>
+            <output message="tns:SubscribeToListResponse"/>
+        </operation>
+        <operation name="UnSubscribeFromList">
+            <input message="tns:UnSubscribeFromListRequest"/>
+            <output message="tns:UnSubscribeFromListResponse"/>
+        </operation>
+        <operation name="GetAllMailings">
+            <input message="tns:GetAllMailingsRequest"/>
+            <output message="tns:GetAllMailingsResponse"/>
+        </operation>
+        <operation name="GetMailingLists">
+            <input message="tns:GetMailingListsRequest"/>
+            <output message="tns:GetMailingListsResponse"/>
+        </operation>
+        <operation name="AuthoriseSubscription">
+            <input message="tns:AuthoriseSubscriptionRequest"/>
+            <output message="tns:AuthoriseSubscriptionResponse"/>
+        </operation>
+        <operation name="UnAuthoriseSubscription">
+            <input message="tns:UnAuthoriseSubscriptionRequest"/>
+            <output message="tns:UnAuthoriseSubscriptionResponse"/>
+        </operation>
+        <operation name="NewMailingList">
+            <input message="tns:NewMailingListRequest"/>
+            <output message="tns:NewMailingListResponse"/>
+        </operation>
+        <operation name="DelMailingList">
+            <input message="tns:DelMailingListRequest"/>
+            <output message="tns:DelMailingListResponse"/>
+        </operation>
+        <operation name="UpdMailingList">
+            <input message="tns:UpdMailingListRequest"/>
+            <output message="tns:UpdMailingListResponse"/>
+        </operation>
+        <operation name="SearchSubscribers">
+            <input message="tns:SearchSubscribersRequest"/>
+            <output message="tns:SearchSubscribersResponse"/>
+        </operation>
+        <operation name="SearchSubscribersReference">
+            <input message="tns:SearchSubscribersReferenceRequest"/>
+            <output message="tns:SearchSubscribersReferenceResponse"/>
+        </operation>
+        <operation name="SearchMailingListReference">
+            <input message="tns:SearchMailingListReferenceRequest"/>
+            <output message="tns:SearchMailingListReferenceResponse"/>
+        </operation>
+        <operation name="SearchUnAuthorised">
+            <input message="tns:SearchUnAuthorisedRequest"/>
+            <output message="tns:SearchUnAuthorisedResponse"/>
+        </operation>
+        <operation name="GetNumMailingList">
+            <input message="tns:GetNumMailingListRequest"/>
+            <output message="tns:GetNumMailingListResponse"/>
+        </operation>
+        <operation name="GetNumMailing">
+            <input message="tns:GetNumMailingRequest"/>
+            <output message="tns:GetNumMailingResponse"/>
+        </operation>
+        <operation name="IsAuthorised">
+            <input message="tns:IsAuthorisedRequest"/>
+            <output message="tns:IsAuthorisedResponse"/>
+        </operation>
+        <operation name="IsSubscribed">
+            <input message="tns:IsSubscribedRequest"/>
+            <output message="tns:IsSubscribedResponse"/>
+        </operation>
+        <operation name="NewText">
+            <input message="tns:NewTextRequest"/>
+            <output message="tns:NewTextResponse"/>
+        </operation>
+        <operation name="DelText">
+            <input message="tns:DelTextRequest"/>
+            <output message="tns:DelTextResponse"/>
+        </operation>
+        <operation name="LinkText">
+            <input message="tns:LinkTextRequest"/>
+            <output message="tns:LinkTextResponse"/>
+        </operation>
+        <operation name="UnLinkText">
+            <input message="tns:UnLinkTextRequest"/>
+            <output message="tns:UnLinkTextResponse"/>
+        </operation>
+        <operation name="UpdText">
+            <input message="tns:UpdTextRequest"/>
+            <output message="tns:UpdTextResponse"/>
+        </operation>
+        <operation name="GetText">
+            <input message="tns:GetTextRequest"/>
+            <output message="tns:GetTextResponse"/>
+        </operation>
+        <operation name="UpdSubscription">
+            <input message="tns:UpdSubscriptionRequest"/>
+            <output message="tns:UpdSubscriptionResponse"/>
+        </operation>
+    </portType>
+    <binding name="CMailingList.cmailinglistbinding" type="tns:CMailingList.cmailinglistPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchMailingList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SearchMailingList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SubscribeToList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SubscribeToList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnSubscribeFromList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UnSubscribeFromList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetAllMailings">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#GetAllMailings"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetMailingLists">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#GetMailingLists"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="AuthoriseSubscription">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#AuthoriseSubscription"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnAuthoriseSubscription">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UnAuthoriseSubscription"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewMailingList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#NewMailingList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelMailingList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#DelMailingList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdMailingList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UpdMailingList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSubscribers">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SearchSubscribers"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSubscribersReference">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SearchSubscribersReference"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchMailingListReference">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SearchMailingListReference"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchUnAuthorised">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#SearchUnAuthorised"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumMailingList">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#GetNumMailingList"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumMailing">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#GetNumMailing"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsAuthorised">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#IsAuthorised"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsSubscribed">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#IsSubscribed"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#NewText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#DelText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#LinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnLinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UnLinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UpdText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#GetText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdSubscription">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml#UpdSubscription"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CMailingList/CMailingList.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CMailingList.cmailinglistService">
+        <port name="CMailingList.cmailinglistPort" binding="tns:CMailingList.cmailinglistbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

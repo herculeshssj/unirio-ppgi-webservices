@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="ISpamCheckservice" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/">
+  <message name="CheckMBLRequest">
+    <part name="EmailAddress" type="xs:string"/>
+  </message>
+  <message name="CheckMBLResponse">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <message name="SpamReportRequest">
+    <part name="EmailMessage" type="xs:string"/>
+  </message>
+  <message name="SpamReportResponse">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <portType name="ISpamCheck">
+    <operation name="CheckMBL">
+      <input message="tns:CheckMBLRequest"/>
+      <output message="tns:CheckMBLResponse"/>
+    </operation>
+    <operation name="SpamReport">
+      <input message="tns:SpamReportRequest"/>
+      <output message="tns:SpamReportResponse"/>
+    </operation>
+  </portType>
+  <binding name="ISpamCheckbinding" type="tns:ISpamCheck">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CheckMBL">
+      <soap:operation style="rpc" soapAction="urn:SpamCheckIntf-ISpamCheck#CheckMBL"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:SpamCheckIntf-ISpamCheck" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SpamCheckIntf-ISpamCheck" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+    <operation name="SpamReport">
+      <soap:operation style="rpc" soapAction="urn:SpamCheckIntf-ISpamCheck#SpamReport"/>
+      <input>
+        <soap:body use="encoded" namespace="urn:SpamCheckIntf-ISpamCheck" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SpamCheckIntf-ISpamCheck" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ISpamCheckservice">
+    <port name="ISpamCheckPort" binding="tns:ISpamCheckbinding">
+      <soap:address location="http://soap.prowizorka.com/spam/soap/ISpamCheck"/>
+    </port>
+  </service>
+</definitions>

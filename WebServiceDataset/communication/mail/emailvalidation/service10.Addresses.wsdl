@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ws.cdyne.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ws.cdyne.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.cdyne.com/">
+      <s:element name="VerifyEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerifyEmailResult" type="s0:ReturnIndicator" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnIndicator">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastMailServer" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnCodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReturnCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnCodesResult" type="s0:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReturnIndicator" type="s0:ReturnIndicator" />
+      <s:element name="ArrayOfAnyType" nillable="true" type="s0:ArrayOfAnyType" />
+    </s:schema>
+  </types>
+  <message name="VerifyEmailSoapIn">
+    <part name="parameters" element="s0:VerifyEmail" />
+  </message>
+  <message name="VerifyEmailSoapOut">
+    <part name="parameters" element="s0:VerifyEmailResponse" />
+  </message>
+  <message name="ReturnCodesSoapIn">
+    <part name="parameters" element="s0:ReturnCodes" />
+  </message>
+  <message name="ReturnCodesSoapOut">
+    <part name="parameters" element="s0:ReturnCodesResponse" />
+  </message>
+  <message name="VerifyEmailHttpGetIn">
+    <part name="email" type="s:string" />
+  </message>
+  <message name="VerifyEmailHttpGetOut">
+    <part name="Body" element="s0:ReturnIndicator" />
+  </message>
+  <message name="ReturnCodesHttpGetIn" />
+  <message name="ReturnCodesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="VerifyEmailHttpPostIn">
+    <part name="email" type="s:string" />
+  </message>
+  <message name="VerifyEmailHttpPostOut">
+    <part name="Body" element="s0:ReturnIndicator" />
+  </message>
+  <message name="ReturnCodesHttpPostIn" />
+  <message name="ReturnCodesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <portType name="evSoap">
+    <operation name="VerifyEmail">
+      <input message="s0:VerifyEmailSoapIn" />
+      <output message="s0:VerifyEmailSoapOut" />
+    </operation>
+    <operation name="ReturnCodes">
+      <input message="s0:ReturnCodesSoapIn" />
+      <output message="s0:ReturnCodesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="evHttpGet">
+    <operation name="VerifyEmail">
+      <input message="s0:VerifyEmailHttpGetIn" />
+      <output message="s0:VerifyEmailHttpGetOut" />
+    </operation>
+    <operation name="ReturnCodes">
+      <input message="s0:ReturnCodesHttpGetIn" />
+      <output message="s0:ReturnCodesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="evHttpPost">
+    <operation name="VerifyEmail">
+      <input message="s0:VerifyEmailHttpPostIn" />
+      <output message="s0:VerifyEmailHttpPostOut" />
+    </operation>
+    <operation name="ReturnCodes">
+      <input message="s0:ReturnCodesHttpPostIn" />
+      <output message="s0:ReturnCodesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="evSoap" type="s0:evSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="VerifyEmail">
+      <soap:operation soapAction="http://ws.cdyne.com/VerifyEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReturnCodes">
+      <soap:operation soapAction="http://ws.cdyne.com/ReturnCodes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="evHttpGet" type="s0:evHttpGet">
+    <http:binding verb="GET" />
+    <operation name="VerifyEmail">
+      <http:operation location="/VerifyEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ReturnCodes">
+      <http:operation location="/ReturnCodes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="evHttpPost" type="s0:evHttpPost">
+    <http:binding verb="POST" />
+    <operation name="VerifyEmail">
+      <http:operation location="/VerifyEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ReturnCodes">
+      <http:operation location="/ReturnCodes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ev">
+    <port name="evSoap" binding="s0:evSoap">
+      <soap:address location="http://www.cdyne.com/emailverify/ev.asmx" />
+    </port>
+    <port name="evHttpGet" binding="s0:evHttpGet">
+      <http:address location="http://www.cdyne.com/emailverify/ev.asmx" />
+    </port>
+    <port name="evHttpPost" binding="s0:evHttpPost">
+      <http:address location="http://www.cdyne.com/emailverify/ev.asmx" />
+    </port>
+  </service>
+</definitions>

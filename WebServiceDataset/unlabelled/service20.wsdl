@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xignite.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="GetLifeExpectancy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s0:Gender" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Gender">
+        <s:restriction base="s:string">
+          <s:enumeration value="Male" />
+          <s:enumeration value="Female" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetLifeExpectancyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLifeExpectancyResult" type="s0:LifeExpectancy" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LifeExpectancy">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s0:Gender" />
+          <s:element minOccurs="1" maxOccurs="1" name="LifeExpectancy" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DieNextYear" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProbabilityToDie" type="s0:ArrayOfDeathProbability" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeathProbability">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeathProbability" nillable="true" type="s0:DeathProbability" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeathProbability">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DieThatYear" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dead" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Alive" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAdjustedNPVOfAnAnnuity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s0:Gender" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="DiscountRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdjustedNPVOfAnAnnuityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdjustedNPVOfAnAnnuityResult" type="s0:NetPresentValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NetPresentValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NPV" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdjustedNPV" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscountedCashFlows" type="s0:ArrayOfCashFlow" />
+          <s:element minOccurs="0" maxOccurs="1" name="LifeExpectancy" type="s0:LifeExpectancy" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCashFlow">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CashFlow" nillable="true" type="s0:CashFlow" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CashFlow">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Regular" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Adjusted" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAdjustedNPVOfCashFlowsAsText">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s0:Gender" />
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlows" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DiscountRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdjustedNPVOfCashFlowsAsTextResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdjustedNPVOfCashFlowsAsTextResult" type="s0:NetPresentValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdjustedNPVOfCashFlowsAsClass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Age" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s0:Gender" />
+            <s:element minOccurs="0" maxOccurs="1" name="CashFlows" type="s0:ArrayOfCashFlow" />
+            <s:element minOccurs="1" maxOccurs="1" name="DiscountRate" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAdjustedNPVOfCashFlowsAsClassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAdjustedNPVOfCashFlowsAsClassResult" type="s0:NetPresentValue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Question1" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Question2" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Question3" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Question4" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Question5" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Question6" type="s0:AnswerTypes" />
+            <s:element minOccurs="1" maxOccurs="1" name="Horizon" type="s0:PlanningHorizon" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AnswerTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="StronglyDisagree" />
+          <s:enumeration value="Disagree" />
+          <s:enumeration value="Neutral" />
+          <s:enumeration value="Agree" />
+          <s:enumeration value="StronglyAgree" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PlanningHorizon">
+        <s:restriction base="s:string">
+          <s:enumeration value="ShortTerm" />
+          <s:enumeration value="MediumTerm" />
+          <s:enumeration value="LongTerm" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetAllocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllocationResult" type="s0:ArrayOfAllocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAllocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Allocation" nillable="true" type="s0:Allocation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Allocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LifeExpectancy" nillable="true" type="s0:LifeExpectancy" />
+      <s:element name="NetPresentValue" nillable="true" type="s0:NetPresentValue" />
+      <s:element name="ArrayOfAllocation" nillable="true" type="s0:ArrayOfAllocation" />
+    </s:schema>
+  </types>
+  <message name="GetLifeExpectancySoapIn">
+    <part name="parameters" element="s0:GetLifeExpectancy" />
+  </message>
+  <message name="GetLifeExpectancySoapOut">
+    <part name="parameters" element="s0:GetLifeExpectancyResponse" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuitySoapIn">
+    <part name="parameters" element="s0:GetAdjustedNPVOfAnAnnuity" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuitySoapOut">
+    <part name="parameters" element="s0:GetAdjustedNPVOfAnAnnuityResponse" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextSoapIn">
+    <part name="parameters" element="s0:GetAdjustedNPVOfCashFlowsAsText" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextSoapOut">
+    <part name="parameters" element="s0:GetAdjustedNPVOfCashFlowsAsTextResponse" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsClassSoapIn">
+    <part name="parameters" element="s0:GetAdjustedNPVOfCashFlowsAsClass" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsClassSoapOut">
+    <part name="parameters" element="s0:GetAdjustedNPVOfCashFlowsAsClassResponse" />
+  </message>
+  <message name="GetAllocationSoapIn">
+    <part name="parameters" element="s0:GetAllocation" />
+  </message>
+  <message name="GetAllocationSoapOut">
+    <part name="parameters" element="s0:GetAllocationResponse" />
+  </message>
+  <message name="GetLifeExpectancyHttpGetIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+  </message>
+  <message name="GetLifeExpectancyHttpGetOut">
+    <part name="Body" element="s0:LifeExpectancy" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuityHttpGetIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="DiscountRate" type="s:string" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuityHttpGetOut">
+    <part name="Body" element="s0:NetPresentValue" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextHttpGetIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+    <part name="CashFlows" type="s:string" />
+    <part name="DiscountRate" type="s:string" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextHttpGetOut">
+    <part name="Body" element="s0:NetPresentValue" />
+  </message>
+  <message name="GetAllocationHttpGetIn">
+    <part name="Question1" type="s:string" />
+    <part name="Question2" type="s:string" />
+    <part name="Question3" type="s:string" />
+    <part name="Question4" type="s:string" />
+    <part name="Question5" type="s:string" />
+    <part name="Question6" type="s:string" />
+    <part name="Horizon" type="s:string" />
+  </message>
+  <message name="GetAllocationHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAllocation" />
+  </message>
+  <message name="GetLifeExpectancyHttpPostIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+  </message>
+  <message name="GetLifeExpectancyHttpPostOut">
+    <part name="Body" element="s0:LifeExpectancy" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuityHttpPostIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="DiscountRate" type="s:string" />
+  </message>
+  <message name="GetAdjustedNPVOfAnAnnuityHttpPostOut">
+    <part name="Body" element="s0:NetPresentValue" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextHttpPostIn">
+    <part name="Age" type="s:string" />
+    <part name="Gender" type="s:string" />
+    <part name="CashFlows" type="s:string" />
+    <part name="DiscountRate" type="s:string" />
+  </message>
+  <message name="GetAdjustedNPVOfCashFlowsAsTextHttpPostOut">
+    <part name="Body" element="s0:NetPresentValue" />
+  </message>
+  <message name="GetAllocationHttpPostIn">
+    <part name="Question1" type="s:string" />
+    <part name="Question2" type="s:string" />
+    <part name="Question3" type="s:string" />
+    <part name="Question4" type="s:string" />
+    <part name="Question5" type="s:string" />
+    <part name="Question6" type="s:string" />
+    <part name="Horizon" type="s:string" />
+  </message>
+  <message name="GetAllocationHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAllocation" />
+  </message>
+  <portType name="XigniteRetirementSoap">
+    <operation name="GetLifeExpectancy">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the life expectancy and survival probabilities of an individual.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetLifeExpectancySoapIn" />
+      <output message="s0:GetLifeExpectancySoapOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the Net Present Value of an Annuity adjusted for life expectancy.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfAnAnnuitySoapIn" />
+      <output message="s0:GetAdjustedNPVOfAnAnnuitySoapOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <documentation>&lt;br&gt;Get the Net Present Value of a stream of cash flows adjusted for life expectancy.&lt;br&gt;&amp;#183; Accepts a stream of cash flows separated by commas: e.g., 12000,10000,8000,5000,1000... &lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfCashFlowsAsTextSoapIn" />
+      <output message="s0:GetAdjustedNPVOfCashFlowsAsTextSoapOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsClass">
+      <documentation>&lt;br&gt;Get the Net Present Value of a stream of cash flows adjusted for life expectancy.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfCashFlowsAsClassSoapIn" />
+      <output message="s0:GetAdjustedNPVOfCashFlowsAsClassSoapOut" />
+    </operation>
+    <operation name="GetAllocation">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10466"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a recommended asset allocation based on answers to a set of risk-evaluating questions and a time horizon.&lt;br&gt;&amp;#183; Go to the help page for the text of the questions.&lt;br/&gt;</documentation>
+      <input message="s0:GetAllocationSoapIn" />
+      <output message="s0:GetAllocationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteRetirementHttpGet">
+    <operation name="GetLifeExpectancy">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the life expectancy and survival probabilities of an individual.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetLifeExpectancyHttpGetIn" />
+      <output message="s0:GetLifeExpectancyHttpGetOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the Net Present Value of an Annuity adjusted for life expectancy.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfAnAnnuityHttpGetIn" />
+      <output message="s0:GetAdjustedNPVOfAnAnnuityHttpGetOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <documentation>&lt;br&gt;Get the Net Present Value of a stream of cash flows adjusted for life expectancy.&lt;br&gt;&amp;#183; Accepts a stream of cash flows separated by commas: e.g., 12000,10000,8000,5000,1000... &lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfCashFlowsAsTextHttpGetIn" />
+      <output message="s0:GetAdjustedNPVOfCashFlowsAsTextHttpGetOut" />
+    </operation>
+    <operation name="GetAllocation">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10466"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a recommended asset allocation based on answers to a set of risk-evaluating questions and a time horizon.&lt;br&gt;&amp;#183; Go to the help page for the text of the questions.&lt;br/&gt;</documentation>
+      <input message="s0:GetAllocationHttpGetIn" />
+      <output message="s0:GetAllocationHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteRetirementHttpPost">
+    <operation name="GetLifeExpectancy">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the life expectancy and survival probabilities of an individual.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetLifeExpectancyHttpPostIn" />
+      <output message="s0:GetLifeExpectancyHttpPostOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10370"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get the Net Present Value of an Annuity adjusted for life expectancy.&lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfAnAnnuityHttpPostIn" />
+      <output message="s0:GetAdjustedNPVOfAnAnnuityHttpPostOut" />
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <documentation>&lt;br&gt;Get the Net Present Value of a stream of cash flows adjusted for life expectancy.&lt;br&gt;&amp;#183; Accepts a stream of cash flows separated by commas: e.g., 12000,10000,8000,5000,1000... &lt;br&gt;&amp;#183; Gender is CASE-SENSITIVE: &lt;font style="color:red;font-weight:bold"&gt;Male&lt;/font&gt; or &lt;font style="color:red;font-weight:bold"&gt;Female&lt;/font&gt; are the only valid values.&lt;br&gt;</documentation>
+      <input message="s0:GetAdjustedNPVOfCashFlowsAsTextHttpPostIn" />
+      <output message="s0:GetAdjustedNPVOfCashFlowsAsTextHttpPostOut" />
+    </operation>
+    <operation name="GetAllocation">
+      <documentation>&lt;a href="xserver.aspx?xiv=10414&amp;page=Help&amp;xivv=10466"&gt;&lt;img src="/i/xdemo.gif" border="0"&gt;&lt;/a&gt;&lt;br&gt;Get a recommended asset allocation based on answers to a set of risk-evaluating questions and a time horizon.&lt;br&gt;&amp;#183; Go to the help page for the text of the questions.&lt;br/&gt;</documentation>
+      <input message="s0:GetAllocationHttpPostIn" />
+      <output message="s0:GetAllocationHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XigniteRetirementSoap" type="s0:XigniteRetirementSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLifeExpectancy">
+      <soap:operation soapAction="http://www.xignite.com/services/GetLifeExpectancy" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <soap:operation soapAction="http://www.xignite.com/services/GetAdjustedNPVOfAnAnnuity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <soap:operation soapAction="http://www.xignite.com/services/GetAdjustedNPVOfCashFlowsAsText" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsClass">
+      <soap:operation soapAction="http://www.xignite.com/services/GetAdjustedNPVOfCashFlowsAsClass" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllocation">
+      <soap:operation soapAction="http://www.xignite.com/services/GetAllocation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteRetirementHttpGet" type="s0:XigniteRetirementHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLifeExpectancy">
+      <http:operation location="/GetLifeExpectancy" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <http:operation location="/GetAdjustedNPVOfAnAnnuity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <http:operation location="/GetAdjustedNPVOfCashFlowsAsText" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllocation">
+      <http:operation location="/GetAllocation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteRetirementHttpPost" type="s0:XigniteRetirementHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLifeExpectancy">
+      <http:operation location="/GetLifeExpectancy" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfAnAnnuity">
+      <http:operation location="/GetAdjustedNPVOfAnAnnuity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAdjustedNPVOfCashFlowsAsText">
+      <http:operation location="/GetAdjustedNPVOfCashFlowsAsText" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAllocation">
+      <http:operation location="/GetAllocation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XigniteRetirement">
+    <port name="XigniteRetirementSoap" binding="s0:XigniteRetirementSoap">
+      <soap:address location="http://www.xignite.com/xretirement.asmx" />
+    </port>
+    <port name="XigniteRetirementHttpGet" binding="s0:XigniteRetirementHttpGet">
+      <http:address location="http://www.xignite.com/xretirement.asmx" />
+    </port>
+    <port name="XigniteRetirementHttpPost" binding="s0:XigniteRetirementHttpPost">
+      <http:address location="http://www.xignite.com/xretirement.asmx" />
+    </port>
+  </service>
+</definitions>

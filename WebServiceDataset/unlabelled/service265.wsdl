@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://oakleaf.ws/cfr/toc" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://oakleaf.ws/cfr/toc" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://oakleaf.ws/cfr/toc">
+      <s:element name="GetTocById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strURL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTOCType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTocByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTocByIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTocByLevel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTitleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSubtitleId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strChapterId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSubchapterId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPartId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTOCType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTocByLevelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTocByLevelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetTocByIdSoapIn">
+    <part name="parameters" element="s0:GetTocById" />
+  </message>
+  <message name="GetTocByIdSoapOut">
+    <part name="parameters" element="s0:GetTocByIdResponse" />
+  </message>
+  <message name="GetTocByLevelSoapIn">
+    <part name="parameters" element="s0:GetTocByLevel" />
+  </message>
+  <message name="GetTocByLevelSoapOut">
+    <part name="parameters" element="s0:GetTocByLevelResponse" />
+  </message>
+  <message name="GetTocByIdHttpGetIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strURL" type="s:string" />
+    <part name="strTOCType" type="s:string" />
+    <part name="strId" type="s:string" />
+  </message>
+  <message name="GetTocByIdHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTocByLevelHttpGetIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strTitleId" type="s:string" />
+    <part name="strSubtitleId" type="s:string" />
+    <part name="strChapterId" type="s:string" />
+    <part name="strSubchapterId" type="s:string" />
+    <part name="strPartId" type="s:string" />
+    <part name="strTOCType" type="s:string" />
+  </message>
+  <message name="GetTocByLevelHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTocByIdHttpPostIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strURL" type="s:string" />
+    <part name="strTOCType" type="s:string" />
+    <part name="strId" type="s:string" />
+  </message>
+  <message name="GetTocByIdHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTocByLevelHttpPostIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strTitleId" type="s:string" />
+    <part name="strSubtitleId" type="s:string" />
+    <part name="strChapterId" type="s:string" />
+    <part name="strSubchapterId" type="s:string" />
+    <part name="strPartId" type="s:string" />
+    <part name="strTOCType" type="s:string" />
+  </message>
+  <message name="GetTocByLevelHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CFRTocSoap">
+    <operation name="GetTocById">
+      <documentation>&lt;p&gt;The GetTOCByID Web method accepts a single xsd:string argument value to specify the title, subtitle, chapter, subchapter, and part for HTTP GET or POST operations. GetTOCByID translates the single string argument into the arguments required by the GetTOCByLevel method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetTOCByLevel method, &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strURL&lt;/b&gt; is reserved (leave empty).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a TOC at any level. The format is ti#st#[ch#sc#[pn#]], where # is a letter, number or, if not a subtitle or subchapter, an underscore (_).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;The strId value to return the list of sections from title 15, subtitle C, chapter 20, part 2003 is &lt;b&gt;ti15stCch20sc_pn2003&lt;/b&gt;. Copy the connections string to the strConnect text box and the ID code to the strId text box to run a test. Click &lt;a href='http://www.oakleaf.ws/cfr/opentoc.aspx?tocid=ti15stCch20sc_pn2003'&gt;here&lt;/a&gt; to display the XHTML document returned by this code. Specifying a subtitle isn't required, because CFR chapters are sequential within a title.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetTocByIdSoapIn" />
+      <output message="s0:GetTocByIdSoapOut" />
+    </operation>
+    <operation name="GetTocByLevel">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetTOCByLevel Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) If you leave this and the remaining TOC arguments empty, the response document is a XML TOC document of all titles and subtitles. If you enter a title number, you receive a TOC of chapters and subchapters for the title.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubtitleId&lt;/b&gt; is an optional CFR subtitle letter for those titles having subtitles.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strChapterId&lt;/b&gt; is a CFR chapter number (Arabic, not Roman, numerals). Returning a chapter TOC, which lists the parts and appendices of the chapter, requires at least a strTitleId value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubchapterId&lt;/b&gt; is an optional CFR subchapter letter for those chapters having subchapters.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters), and requires at least a valid title and chapter number. The response document is the TOC for sections and appendices of the specified part, which contain the text of the CFR.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type: XML or XHTML. The default is XML; XHTML documents require a special stylesheet (.css), HTML component (behavior, .htc), and  .gif files, which are specific to the OakLeaf CFR client pages.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;If a TOC is missing (and a few are at this point) or the TOC isn't well-formed, you receive an error message instead of an XML or XHTML document.</documentation>
+      <input message="s0:GetTocByLevelSoapIn" />
+      <output message="s0:GetTocByLevelSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CFRTocHttpGet">
+    <operation name="GetTocById">
+      <documentation>&lt;p&gt;The GetTOCByID Web method accepts a single xsd:string argument value to specify the title, subtitle, chapter, subchapter, and part for HTTP GET or POST operations. GetTOCByID translates the single string argument into the arguments required by the GetTOCByLevel method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetTOCByLevel method, &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strURL&lt;/b&gt; is reserved (leave empty).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a TOC at any level. The format is ti#st#[ch#sc#[pn#]], where # is a letter, number or, if not a subtitle or subchapter, an underscore (_).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;The strId value to return the list of sections from title 15, subtitle C, chapter 20, part 2003 is &lt;b&gt;ti15stCch20sc_pn2003&lt;/b&gt;. Copy the connections string to the strConnect text box and the ID code to the strId text box to run a test. Click &lt;a href='http://www.oakleaf.ws/cfr/opentoc.aspx?tocid=ti15stCch20sc_pn2003'&gt;here&lt;/a&gt; to display the XHTML document returned by this code. Specifying a subtitle isn't required, because CFR chapters are sequential within a title.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetTocByIdHttpGetIn" />
+      <output message="s0:GetTocByIdHttpGetOut" />
+    </operation>
+    <operation name="GetTocByLevel">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetTOCByLevel Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) If you leave this and the remaining TOC arguments empty, the response document is a XML TOC document of all titles and subtitles. If you enter a title number, you receive a TOC of chapters and subchapters for the title.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubtitleId&lt;/b&gt; is an optional CFR subtitle letter for those titles having subtitles.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strChapterId&lt;/b&gt; is a CFR chapter number (Arabic, not Roman, numerals). Returning a chapter TOC, which lists the parts and appendices of the chapter, requires at least a strTitleId value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubchapterId&lt;/b&gt; is an optional CFR subchapter letter for those chapters having subchapters.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters), and requires at least a valid title and chapter number. The response document is the TOC for sections and appendices of the specified part, which contain the text of the CFR.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type: XML or XHTML. The default is XML; XHTML documents require a special stylesheet (.css), HTML component (behavior, .htc), and  .gif files, which are specific to the OakLeaf CFR client pages.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;If a TOC is missing (and a few are at this point) or the TOC isn't well-formed, you receive an error message instead of an XML or XHTML document.</documentation>
+      <input message="s0:GetTocByLevelHttpGetIn" />
+      <output message="s0:GetTocByLevelHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CFRTocHttpPost">
+    <operation name="GetTocById">
+      <documentation>&lt;p&gt;The GetTOCByID Web method accepts a single xsd:string argument value to specify the title, subtitle, chapter, subchapter, and part for HTTP GET or POST operations. GetTOCByID translates the single string argument into the arguments required by the GetTOCByLevel method.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is the same as that for the GetTOCByLevel method, &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strURL&lt;/b&gt; is reserved (leave empty).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strId&lt;/b&gt; is a code to return a TOC at any level. The format is ti#st#[ch#sc#[pn#]], where # is a letter, number or, if not a subtitle or subchapter, an underscore (_).&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type, XML or XHTML. The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;The strId value to return the list of sections from title 15, subtitle C, chapter 20, part 2003 is &lt;b&gt;ti15stCch20sc_pn2003&lt;/b&gt;. Copy the connections string to the strConnect text box and the ID code to the strId text box to run a test. Click &lt;a href='http://www.oakleaf.ws/cfr/opentoc.aspx?tocid=ti15stCch20sc_pn2003'&gt;here&lt;/a&gt; to display the XHTML document returned by this code. Specifying a subtitle isn't required, because CFR chapters are sequential within a title.&lt;/p&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetTocByIdHttpPostIn" />
+      <output message="s0:GetTocByIdHttpPostOut" />
+    </operation>
+    <operation name="GetTocByLevel">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetTOCByLevel Web method accepts the following xsd:string arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) If you leave this and the remaining TOC arguments empty, the response document is a XML TOC document of all titles and subtitles. If you enter a title number, you receive a TOC of chapters and subchapters for the title.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubtitleId&lt;/b&gt; is an optional CFR subtitle letter for those titles having subtitles.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strChapterId&lt;/b&gt; is a CFR chapter number (Arabic, not Roman, numerals). Returning a chapter TOC, which lists the parts and appendices of the chapter, requires at least a strTitleId value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSubchapterId&lt;/b&gt; is an optional CFR subchapter letter for those chapters having subchapters.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strPartId&lt;/b&gt; is a valid part number, which consists of a number (and in some cases, letters), and requires at least a valid title and chapter number. The response document is the TOC for sections and appendices of the specified part, which contain the text of the CFR.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTOCType&lt;/b&gt; specifies the response document type: XML or XHTML. The default is XML; XHTML documents require a special stylesheet (.css), HTML component (behavior, .htc), and  .gif files, which are specific to the OakLeaf CFR client pages.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;If a TOC is missing (and a few are at this point) or the TOC isn't well-formed, you receive an error message instead of an XML or XHTML document.</documentation>
+      <input message="s0:GetTocByLevelHttpPostIn" />
+      <output message="s0:GetTocByLevelHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CFRTocSoap" type="s0:CFRTocSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTocById">
+      <soap:operation soapAction="http://oakleaf.ws/cfr/toc/GetTocById" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTocByLevel">
+      <soap:operation soapAction="http://oakleaf.ws/cfr/toc/GetTocByLevel" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRTocHttpGet" type="s0:CFRTocHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTocById">
+      <http:operation location="/GetTocById" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTocByLevel">
+      <http:operation location="/GetTocByLevel" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRTocHttpPost" type="s0:CFRTocHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTocById">
+      <http:operation location="/GetTocById" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTocByLevel">
+      <http:operation location="/GetTocByLevel" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CFRToc">
+    <documentation>&lt;p&gt;&lt;a href='http://shop.barnesandnoble.com/booksearch/isbnInquiry.asp?isbn=0072223693'&gt;&lt;img src='http://www.oakleaf.ws/BookSmall.jpg' border='0' align='right' hspace='8' vspace='0'&gt;&lt;/a&gt;CFRTocWS is one of three document/literal ASP.NET XML Web services for OakLeaf Systems Code of Federal Regulations (CFR) demonstration/development database. The 1-GB SQL Server 2000 database (CFRSQL) contains the entire text of the 204 volumes of the CFR as individual structured XML documents, which range in size from about 1,000 to more than 500,000 characters. A Visual Basic .NET client handles the transformation from the U.S. Government Printing Office's unstructured SGML to well-formed XML documents. Chapter 9, "Designing the Presentation Layer for XML Web Services," of &lt;i&gt;&lt;a href='http://shop.barnesandnoble.com/booksearch/isbnInquiry.asp?isbn=0072223693'&gt;Visual Basic .NET XML Web Services Developer's Guide&lt;/a&gt;&lt;/i&gt; describes the ASP.NET client consumer of the CFR XML Web services.&lt;/p&gt;&lt;p&gt;CFRTocWS provides basic navigation services to XML Web service client applications. The service returns table of contents (TOC) documents for individual CFR titles, subtitles, chapters, subchapters, and parts. You can specify XML or XHTML as the format for the response document. The XHTML transformation is what you  see when navigating the &lt;a href='http://www.oakleaf.ws/cfr/opentoc.aspx?tocid=tocHome'&gt;OakLeaf CFR Web  site&lt;/a&gt;. This &lt;a href='http://www.fawcette.com/vsm/2002_04/online/online_eprods/dataaccess_rjennings04_22/'&gt;article &lt;/a&gt;describes the DHTML navigation system for the CFR pages.&lt;/p&gt;&lt;p&gt;Click &lt;a href='http://www.oakleaf.ws/cfr/about.aspx'&gt;here&lt;/a&gt; for further  details about the XML and XHTML response document formats. Click &lt;a href='http://www.oakleaf.ws/cfr/CFRToc.xml'&gt;here&lt;/a&gt; to view a sample XML response document and &lt;a href='http://www.oakleaf.ws/cfr/CFRToc.xsd'&gt;here&lt;/a&gt; to view the XSD response document schema.&lt;/p&gt;&lt;p&gt;&lt;b&gt;The OakLeaf Systems CFR XML Web services are for demonstration/development use only and do not return official content of the U.S. CFR. Click &lt;a href='http://www.access.gpo.gov/ecfr/'&gt;here&lt;/a&gt; to go to the official U.S. GPO/NARA eCFR Beta Test Site.&lt;/b&gt;&lt;/p&gt;</documentation>
+    <port name="CFRTocSoap" binding="s0:CFRTocSoap">
+      <soap:address location="http://www.oakleaf.ws/cfrtocws/cfrtocws.asmx" />
+    </port>
+    <port name="CFRTocHttpGet" binding="s0:CFRTocHttpGet">
+      <http:address location="http://www.oakleaf.ws/cfrtocws/cfrtocws.asmx" />
+    </port>
+    <port name="CFRTocHttpPost" binding="s0:CFRTocHttpPost">
+      <http:address location="http://www.oakleaf.ws/cfrtocws/cfrtocws.asmx" />
+    </port>
+  </service>
+</definitions>

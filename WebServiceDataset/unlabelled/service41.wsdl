@@ -1,0 +1,93 @@
+<definitions 
+   xmlns="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+   name="URLjr_Library" 
+   targetNamespace="http://tempuri.org/" 
+   xmlns:tns="http://tempuri.org/" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+   xmlns:ro="urn:URLjr_Library"
+>
+   <types>
+      <xs:schema targetNamespace="urn:URLjr_Library" xmlns="urn:URLjr_Library">
+         <xs:complexType name="URLInfo">
+            <xs:sequence>
+               <xs:element name="URLjr" type="xs:string"/>
+               <xs:element name="URL" type="xs:string"/>
+               <xs:element name="HitCount" type="xs:int"/>
+               <xs:element name="LastHit" type="xs:dateTime"/>
+               <xs:element name="DateEntered" type="xs:dateTime"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </types>
+   <message name="ShrinkURLRequest">
+      <part name="URL" type="xs:string" />
+   </message>
+   <message name="ShrinkURLResponse">
+      <part name="Result" type="xs:string" />
+   </message>
+   <message name="ExpandURLRequest">
+      <part name="URLjr" type="xs:string" />
+   </message>
+   <message name="ExpandURLResponse">
+      <part name="Result" type="xs:string" />
+   </message>
+   <message name="GetURLInfoRequest">
+      <part name="URLjr" type="xs:string" />
+   </message>
+   <message name="GetURLInfoResponse">
+      <part name="Result" type="ro:URLInfo" />
+   </message>
+   <portType name="URLjr_Service">
+      <operation name="ShrinkURL">
+         <input message="tns:ShrinkURLRequest" />
+         <output message="tns:ShrinkURLResponse" />
+      </operation>
+      <operation name="ExpandURL">
+         <input message="tns:ExpandURLRequest" />
+         <output message="tns:ExpandURLResponse" />
+      </operation>
+      <operation name="GetURLInfo">
+         <input message="tns:GetURLInfoRequest" />
+         <output message="tns:GetURLInfoResponse" />
+      </operation>
+   </portType>
+   <binding name="URLjr_ServiceBinding" type="tns:URLjr_Service">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+         <operation name="ShrinkURL">
+            <soap:operation soapAction="urn:URLjr_Library-URLjr_Service#ShrinkURL" style="rpc" />
+            <input message="ShrinkURLRequest">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </input>
+            <output message="ShrinkURLResponse">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </output>
+         </operation>
+         <operation name="ExpandURL">
+            <soap:operation soapAction="urn:URLjr_Library-URLjr_Service#ExpandURL" style="rpc" />
+            <input message="ExpandURLRequest">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </input>
+            <output message="ExpandURLResponse">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </output>
+         </operation>
+         <operation name="GetURLInfo">
+            <soap:operation soapAction="urn:URLjr_Library-URLjr_Service#GetURLInfo" style="rpc" />
+            <input message="GetURLInfoRequest">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </input>
+            <output message="GetURLInfoResponse">
+               <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:URLjr_Library-URLjr_Service" />
+            </output>
+         </operation>
+   </binding>
+   <service name="URLjr_ServiceService">
+      <documentation></documentation>
+      <port name="URLjr_ServicePort" binding="tns:URLjr_ServiceBinding">
+         <soap:address location="http://urljr.com/soap" />
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.codecube.net/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.codecube.net/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.codecube.net/services/">
+      <s:element name="Execute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteParam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteParamResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteParamResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppCounter">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAppCounterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppCounterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="ExecuteSoapIn">
+    <part name="parameters" element="s0:Execute" />
+  </message>
+  <message name="ExecuteSoapOut">
+    <part name="parameters" element="s0:ExecuteResponse" />
+  </message>
+  <message name="ExecuteParamSoapIn">
+    <part name="parameters" element="s0:ExecuteParam" />
+  </message>
+  <message name="ExecuteParamSoapOut">
+    <part name="parameters" element="s0:ExecuteParamResponse" />
+  </message>
+  <message name="GetAppCounterSoapIn">
+    <part name="parameters" element="s0:GetAppCounter" />
+  </message>
+  <message name="GetAppCounterSoapOut">
+    <part name="parameters" element="s0:GetAppCounterResponse" />
+  </message>
+  <message name="ExecuteHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="xml" type="s:string" />
+  </message>
+  <message name="ExecuteHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ExecuteParamHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="xml" type="s:string" />
+    <part name="param" type="s:string" />
+  </message>
+  <message name="ExecuteParamHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAppCounterHttpGetIn" />
+  <message name="GetAppCounterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ExecuteHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="xml" type="s:string" />
+  </message>
+  <message name="ExecuteHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ExecuteParamHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="xml" type="s:string" />
+    <part name="param" type="s:string" />
+  </message>
+  <message name="ExecuteParamHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetAppCounterHttpPostIn" />
+  <message name="GetAppCounterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="XreOnlineSoap">
+    <operation name="Execute">
+      <input message="s0:ExecuteSoapIn" />
+      <output message="s0:ExecuteSoapOut" />
+    </operation>
+    <operation name="ExecuteParam">
+      <input message="s0:ExecuteParamSoapIn" />
+      <output message="s0:ExecuteParamSoapOut" />
+    </operation>
+    <operation name="GetAppCounter">
+      <input message="s0:GetAppCounterSoapIn" />
+      <output message="s0:GetAppCounterSoapOut" />
+    </operation>
+  </portType>
+  <portType name="XreOnlineHttpGet">
+    <operation name="Execute">
+      <input message="s0:ExecuteHttpGetIn" />
+      <output message="s0:ExecuteHttpGetOut" />
+    </operation>
+    <operation name="ExecuteParam">
+      <input message="s0:ExecuteParamHttpGetIn" />
+      <output message="s0:ExecuteParamHttpGetOut" />
+    </operation>
+    <operation name="GetAppCounter">
+      <input message="s0:GetAppCounterHttpGetIn" />
+      <output message="s0:GetAppCounterHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XreOnlineHttpPost">
+    <operation name="Execute">
+      <input message="s0:ExecuteHttpPostIn" />
+      <output message="s0:ExecuteHttpPostOut" />
+    </operation>
+    <operation name="ExecuteParam">
+      <input message="s0:ExecuteParamHttpPostIn" />
+      <output message="s0:ExecuteParamHttpPostOut" />
+    </operation>
+    <operation name="GetAppCounter">
+      <input message="s0:GetAppCounterHttpPostIn" />
+      <output message="s0:GetAppCounterHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XreOnlineSoap" type="s0:XreOnlineSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Execute">
+      <soap:operation soapAction="http://www.codecube.net/services/Execute" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteParam">
+      <soap:operation soapAction="http://www.codecube.net/services/ExecuteParam" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAppCounter">
+      <soap:operation soapAction="http://www.codecube.net/services/GetAppCounter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XreOnlineHttpGet" type="s0:XreOnlineHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Execute">
+      <http:operation location="/Execute" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ExecuteParam">
+      <http:operation location="/ExecuteParam" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAppCounter">
+      <http:operation location="/GetAppCounter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XreOnlineHttpPost" type="s0:XreOnlineHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Execute">
+      <http:operation location="/Execute" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ExecuteParam">
+      <http:operation location="/ExecuteParam" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAppCounter">
+      <http:operation location="/GetAppCounter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XreOnline">
+    <port name="XreOnlineSoap" binding="s0:XreOnlineSoap">
+      <soap:address location="http://www.codecube.net/services/xreonline.asmx" />
+    </port>
+    <port name="XreOnlineHttpGet" binding="s0:XreOnlineHttpGet">
+      <http:address location="http://www.codecube.net/services/xreonline.asmx" />
+    </port>
+    <port name="XreOnlineHttpPost" binding="s0:XreOnlineHttpPost">
+      <http:address location="http://www.codecube.net/services/xreonline.asmx" />
+    </port>
+  </service>
+</definitions>

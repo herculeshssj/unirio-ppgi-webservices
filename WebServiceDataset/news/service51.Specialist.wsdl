@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.aradiorock.com.br/webservices/notasmusicais" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.aradiorock.com.br/webservices/notasmusicais" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.aradiorock.com.br/webservices/notasmusicais">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="NotasMusicais">
+        <s:complexType />
+      </s:element>
+      <s:element name="NotasMusicaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NotasMusicaisResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="NotasMusicaisSoapIn">
+    <part name="parameters" element="s0:NotasMusicais" />
+  </message>
+  <message name="NotasMusicaisSoapOut">
+    <part name="parameters" element="s0:NotasMusicaisResponse" />
+  </message>
+  <message name="NotasMusicaisHttpGetIn" />
+  <message name="NotasMusicaisHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="NotasMusicaisHttpPostIn" />
+  <message name="NotasMusicaisHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="NotasMusicaisSoap">
+    <operation name="NotasMusicais">
+      <input message="s0:NotasMusicaisSoapIn" />
+      <output message="s0:NotasMusicaisSoapOut" />
+    </operation>
+  </portType>
+  <portType name="NotasMusicaisHttpGet">
+    <operation name="NotasMusicais">
+      <input message="s0:NotasMusicaisHttpGetIn" />
+      <output message="s0:NotasMusicaisHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="NotasMusicaisHttpPost">
+    <operation name="NotasMusicais">
+      <input message="s0:NotasMusicaisHttpPostIn" />
+      <output message="s0:NotasMusicaisHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="NotasMusicaisSoap" type="s0:NotasMusicaisSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NotasMusicais">
+      <soap:operation soapAction="http://www.aradiorock.com.br/webservices/notasmusicais/NotasMusicais" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NotasMusicaisHttpGet" type="s0:NotasMusicaisHttpGet">
+    <http:binding verb="GET" />
+    <operation name="NotasMusicais">
+      <http:operation location="/NotasMusicais" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NotasMusicaisHttpPost" type="s0:NotasMusicaisHttpPost">
+    <http:binding verb="POST" />
+    <operation name="NotasMusicais">
+      <http:operation location="/NotasMusicais" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NotasMusicais">
+    <port name="NotasMusicaisSoap" binding="s0:NotasMusicaisSoap">
+      <soap:address location="http://www.aradiorock.com.br/webservices/notasmusicais/notasmusicais.asmx" />
+    </port>
+    <port name="NotasMusicaisHttpGet" binding="s0:NotasMusicaisHttpGet">
+      <http:address location="http://www.aradiorock.com.br/webservices/notasmusicais/notasmusicais.asmx" />
+    </port>
+    <port name="NotasMusicaisHttpPost" binding="s0:NotasMusicaisHttpPost">
+      <http:address location="http://www.aradiorock.com.br/webservices/notasmusicais/notasmusicais.asmx" />
+    </port>
+  </service>
+</definitions>

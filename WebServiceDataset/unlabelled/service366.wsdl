@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<definitions name="CATrafficService" targetNamespace="http://www.xmethods.net/sd/CATrafficService.wsdl" xmlns:tns="http://www.xmethods.net/sd/CATrafficService.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<message name="getTrafficRequest">
+		<part name="hwynums" type="xsd:string"/>
+	</message>
+	<message name="getTrafficResponse">
+		<part name="return" type="xsd:string"/>
+	</message>
+	<portType name="CATrafficPortType">
+		<operation name="getTraffic">
+			<input message="tns:getTrafficRequest" name="getTraffic"/>
+			<output message="tns:getTrafficResponse" name="getTrafficResponse"/>
+		</operation>
+	</portType>
+	<binding name="CATrafficBinding" type="tns:CATrafficPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getTraffic">
+			<soap:operation soapAction="" />
+			<input name="getTraffic">
+				<soap:body use="encoded" namespace="urn:xmethods-CATraffic" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output name="getTrafficResponse">
+				<soap:body use="encoded" namespace="urn:xmethods-CATraffic" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="CATrafficService">
+		<documentation>Provides information on California Highway Conditions.</documentation>
+		<port name="CATrafficPort" binding="tns:CATrafficBinding">
+			<soap:address location="http://services.xmethods.net:80/soap/servlet/rpcrouter"/>
+		</port>
+	</service>
+</definitions>

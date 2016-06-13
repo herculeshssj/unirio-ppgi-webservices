@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://content.metaverse.cc/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://content.metaverse.cc/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://content.metaverse.cc/">
+      <s:element name="ExecuteCQLContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="requests" type="s0:ArrayOfCQLRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCQLRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CQLRequest" nillable="true" type="s0:CQLRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CQLRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Login" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CQLQuery" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecuteCQLContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteCQLContentResult" type="s0:ArrayOfCQLContentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCQLContentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CQLContentResponse" nillable="true" type="s0:CQLContentResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CQLContentResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="LangID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SchemaID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Revision" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CqlContentTypeAlias" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LongDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GetReferences" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RefreshReferences" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Presentation" type="s0:CQLContentPresentationResponse" />
+          <s:element minOccurs="0" maxOccurs="1" name="MvReferences" type="s0:ArrayOfCQLContentReferenceResponse" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:ContentStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomFieldsXml" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentGroupsXml" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CQLContentPresentationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PresentationType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Revision" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:PresentationStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PresentationStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="UpdateAvailable" />
+          <s:enumeration value="NA" />
+          <s:enumeration value="ErrorSchemaIDNotFound" />
+          <s:enumeration value="ErrorPresentationTypeNotFound" />
+          <s:enumeration value="ErrorUnspecified" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfCQLContentReferenceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CQLContentReferenceResponse" nillable="true" type="s0:CQLContentReferenceResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CQLContentReferenceResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Revision" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:ReferenceStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReferenceStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="UpdateAvailable" />
+          <s:enumeration value="ErrorBadContentID" />
+          <s:enumeration value="ErrorUnspecified" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ContentStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="UpdateAvailable" />
+          <s:enumeration value="EarlierUpdateAvailable" />
+          <s:enumeration value="ContentUnavailable" />
+          <s:enumeration value="ContentTypeChange" />
+          <s:enumeration value="ErrorAuthentication" />
+          <s:enumeration value="ErrorBadContentID" />
+          <s:enumeration value="ErrorLanguageNotFound" />
+          <s:enumeration value="ErrorUnspecified" />
+          <s:enumeration value="ErrorAuthorization" />
+          <s:enumeration value="ErrorBadRevision" />
+          <s:enumeration value="ErrorBadContentType" />
+          <s:enumeration value="ErrorContentTransformTypeNotFound" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ExecuteCQL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="requests" type="s0:ArrayOfCQLRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteCQLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteCQLResult" type="s0:ArrayOfCQLResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCQLResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CQLResponse" nillable="true" type="s0:CQLResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CQLResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="XmlResult" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:CQLStatusValues" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CQLStatusValues">
+        <s:restriction base="s:string">
+          <s:enumeration value="OK" />
+          <s:enumeration value="ErrorValidation" />
+          <s:enumeration value="ErrorUnspecified" />
+          <s:enumeration value="ErrorAuthentication" />
+          <s:enumeration value="ErrorAuthorization" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="ExecuteCQLContentSoapIn">
+    <part name="parameters" element="s0:ExecuteCQLContent" />
+  </message>
+  <message name="ExecuteCQLContentSoapOut">
+    <part name="parameters" element="s0:ExecuteCQLContentResponse" />
+  </message>
+  <message name="ExecuteCQLSoapIn">
+    <part name="parameters" element="s0:ExecuteCQL" />
+  </message>
+  <message name="ExecuteCQLSoapOut">
+    <part name="parameters" element="s0:ExecuteCQLResponse" />
+  </message>
+  <portType name="CQLServiceSoap">
+    <operation name="ExecuteCQLContent">
+      <input message="s0:ExecuteCQLContentSoapIn" />
+      <output message="s0:ExecuteCQLContentSoapOut" />
+    </operation>
+    <operation name="ExecuteCQL">
+      <input message="s0:ExecuteCQLSoapIn" />
+      <output message="s0:ExecuteCQLSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CQLServiceHttpGet" />
+  <portType name="CQLServiceHttpPost" />
+  <binding name="CQLServiceSoap" type="s0:CQLServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ExecuteCQLContent">
+      <soap:operation soapAction="http://content.metaverse.cc/ExecuteCQLContent" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ExecuteCQL">
+      <soap:operation soapAction="http://content.metaverse.cc/ExecuteCQL" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CQLServiceHttpGet" type="s0:CQLServiceHttpGet">
+    <http:binding verb="GET" />
+  </binding>
+  <binding name="CQLServiceHttpPost" type="s0:CQLServiceHttpPost">
+    <http:binding verb="POST" />
+  </binding>
+  <service name="CQLService">
+    <port name="CQLServiceSoap" binding="s0:CQLServiceSoap">
+      <soap:address location="https://content.metaverse.cc/ContentServer200/CQLService.asmx" />
+    </port>
+    <port name="CQLServiceHttpGet" binding="s0:CQLServiceHttpGet">
+      <http:address location="https://content.metaverse.cc/ContentServer200/CQLService.asmx" />
+    </port>
+    <port name="CQLServiceHttpPost" binding="s0:CQLServiceHttpPost">
+      <http:address location="https://content.metaverse.cc/ContentServer200/CQLService.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<!-- WSDL description of the WS4lsql Web APIs.
+     The WS4lsql Web APIs are in beta release. All interfaces are subject to
+     change as we refine and extend our APIs. Please see the terms of use
+     for more information. 
+	
+	$Id: ws4lsql.wsdl,v 1.4 2003/03/26 08:00:30 tandat Exp $
+-->
+
+<definitions name="urn:WS4lsql"
+             targetNamespace="urn:WS4lsql"
+             xmlns:typens="urn:WS4lsql"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <!-- Types for search - result elements, directory categories -->
+
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+                targetNamespace="urn:WS4lsql">
+
+            
+      <xsd:complexType name="WS4lsqlResult">
+        <xsd:all>
+          <xsd:element name="LinkResults"              type="typens:LinkElementArray"/>
+	<xsd:element name="CategoryResults"              type="typens:CategoryElementArray"/>
+          <xsd:element name="link_hits"                 type="xsd:int"/>
+          <xsd:element name="category_hits"                  type="xsd:int"/>
+        </xsd:all>
+      </xsd:complexType>
+
+      <xsd:complexType name="LinkElement">
+        <xsd:all>
+		<xsd:element name="ID" type="xsd:int"/>
+		<xsd:element name="Title" type="xsd:string"/>
+		<xsd:element name="URL" type="xsd:string"/>
+		<xsd:element name="Description" type="xsd:string"/>
+		<xsd:element name="LongDescription" type="xsd:string"/>
+		<xsd:element name="BifogadFil" type="xsd:base64Binary"/>
+		<xsd:element name="Location" type="xsd:string"/>
+		<xsd:element name="RSS_XML" type="xsd:string"/>
+		<xsd:element name="NIFid" type="xsd:int"/>
+		<xsd:element name="Contact_Name" type="xsd:string"/>
+		<xsd:element name="Contact_Email" type="xsd:string"/>
+
+        </xsd:all>
+      </xsd:complexType>
+  
+      <xsd:complexType name="LinkElementArray">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+             <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="typens:LinkElement[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+<xsd:complexType name="CategoryElement">
+        <xsd:all>
+          <xsd:element name="Name" type="xsd:string"/>
+          <xsd:element name="FullName" type="xsd:string"/>
+          <xsd:element name="Title_Linked" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+  
+      <xsd:complexType name="CategoryElementArray">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+             <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="typens:CategoryElement[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+    </xsd:schema>
+  </types> 
+
+  <!-- Messages for WS4lsql Web APIs -  search links. -->
+             
+
+
+  <message name="doLinksSearch">
+	<part name="query"              type="xsd:string"/>
+        <part name="catid"	type="xsd:int"/>
+	<part name="bool"	type="xsd:boolean"/>
+	<part name="substring"	type="xsd:boolean"/>
+	<part name="nh"	type="xsd:int"/>
+	<part name="mh"	type="xsd:int"/>
+	<part name="so"	type="xsd:string"/><!-- asc, des -->
+	<part name="sb"	type="xsd:string"/>
+
+  </message>
+
+  <message name="doLinksSearchResponse">
+    <part name="return"         type="typens:WS4lsqlResult"/>           
+  </message>
+
+  <!-- Port for WS4lsqlResult Web APIs, "LinksSearch"  -->
+
+  <portType name="WS4lsqlPort">
+
+    <operation name="doLinksSearch">
+      <input message="typens:doLinksSearch"/>
+      <output message="typens:doLinksSearchResponse"/>
+    </operation>
+
+  </portType>
+
+
+  <!-- Binding for WS4lsql Web APIs - RPC, SOAP over HTTP -->
+
+  <binding name="WS4lsqlBinding" type="typens:WS4lsqlPort">
+    <soap:binding style="rpc"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="doLinksSearch">
+      <soap:operation soapAction="urn:WS4lsql#doLinksSearch"/>
+      <input message="typens:doLinksSearch">
+        <soap:body use="encoded"
+                   namespace="urn:WS4lsql"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+	
+      </input>
+      <output message="typens:doLinksSearchResponse">
+        <soap:body use="encoded"
+                   namespace="urn:WS4lsql"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+  <!-- Endpoint for WS4lsql Web APIs -->
+  <service name="WS4lsqlService">
+    <port name="WS4lsqlPort" binding="typens:WS4lsqlBinding">
+	<soap:address location="http://slashdemocracy.org/cgi-bin/ws4lsql.cgi"/>
+
+    </port>
+  </service>
+
+</definitions>

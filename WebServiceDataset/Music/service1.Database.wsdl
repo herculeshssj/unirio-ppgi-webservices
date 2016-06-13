@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="AlanBushCompositions" 
+				targetNamespace="urn:alanbushtrust-org-uk:soap.service" 
+				xmlns:s="urn:alanbushtrust-org-uk:soap.service" 
+				xmlns:t="urn:alanbushtrust-org-uk:objects"
+				xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+				xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+				xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" 
+				xmlns="http://schemas.xmlsoap.org/wsdl/">
+	
+	<types>
+		<schema targetNamespace="urn:alanbushtrust-org-uk:objects" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+			<complexType name="categories-type">
+				<sequence>
+					<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"/>
+				</sequence>
+			</complexType>
+			<complexType name="compositions-type">
+				<sequence>
+					<any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="skip"/>
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	
+	<message name="GetCategories"/>
+	
+	<message name="GetCategoriesResponse">
+		<part name="categories" type="t:categories-type"/>
+	</message>
+	
+	<message name="GetCompositions">
+		<part name="category-id" type="xsd:string"/>
+	</message>
+	
+	<message name="GetCompositionsResponse">
+		<part name="compositions" type="t:compositions-type"/>
+	</message>
+	
+	<portType name="AlanBushCompositionsPortType">
+		<operation name="GetCategories" parameterOrder="">
+			<input message="s:GetCategories"/>
+			<output message="s:GetCategoriesResponse"/>
+		</operation>
+		<operation name="GetCompositions" parameterOrder="category-id">
+			<input message="s:GetCompositions"/>
+			<output message="s:GetCompositionsResponse"/>
+		</operation>
+	</portType>
+	
+	<binding name="AlanBushCompositionsSoapBinding" type="s:AlanBushCompositionsPortType">
+		<stk:binding preferredEncoding="UTF-8"/>
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetCategories">
+			<soap:operation soapAction="urn:alanbushtrust-org-uk:soap.methods.GetCategories"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:alanbushtrust-org-uk:soap.methods" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:alanbushtrust-org-uk:soap.methods" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetCompositions">
+			<soap:operation soapAction="urn:alanbushtrust-org-uk:soap.methods.GetCompositions"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:alanbushtrust-org-uk:soap.methods" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:alanbushtrust-org-uk:soap.methods" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	
+	<service name="AlanBushCompositions">
+		<port name="AlanBushCompositionsPort" binding="s:AlanBushCompositionsSoapBinding">
+			<soap:address location="http://www.alanbushtrust.org.uk/soap/compositions.asp"/>
+		</port>
+	</service>
+	
+</definitions>

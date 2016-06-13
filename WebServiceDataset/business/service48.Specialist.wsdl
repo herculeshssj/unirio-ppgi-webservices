@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://kull.ch/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://kull.ch/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://kull.ch/webservices/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetLoginInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLoginInformationResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="myDataSet">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyRanges">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCompanyRangesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCompanyRangesResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsCompanyRanges">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRangeLoad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRangeLoadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRangeLoadResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="decRangeLoad" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookedNumbers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCase" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intLineCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intPageNr" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBookedNumbersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetBookedNumbersResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intPageCount" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsBookedNumbers">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservedNumbers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intLineCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intPageNr" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReservedNumbersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetReservedNumbersResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intPageCount" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsReservedNumbers">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAndGetNewNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginAndGetNewNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginAndGetNewNumberResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNewNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetNewNumberResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNewNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BookNumberResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RevokeNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intRangeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RevokeNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RevokeNumberResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorDescription">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intErrorId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorDescriptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetErrorDescriptionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </types>
+  <message name="GetLoginInformationSoapIn">
+    <part name="parameters" element="s0:GetLoginInformation" />
+  </message>
+  <message name="GetLoginInformationSoapOut">
+    <part name="parameters" element="s0:GetLoginInformationResponse" />
+  </message>
+  <message name="GetCompanyRangesSoapIn">
+    <part name="parameters" element="s0:GetCompanyRanges" />
+  </message>
+  <message name="GetCompanyRangesSoapOut">
+    <part name="parameters" element="s0:GetCompanyRangesResponse" />
+  </message>
+  <message name="GetRangeLoadSoapIn">
+    <part name="parameters" element="s0:GetRangeLoad" />
+  </message>
+  <message name="GetRangeLoadSoapOut">
+    <part name="parameters" element="s0:GetRangeLoadResponse" />
+  </message>
+  <message name="GetBookedNumbersSoapIn">
+    <part name="parameters" element="s0:GetBookedNumbers" />
+  </message>
+  <message name="GetBookedNumbersSoapOut">
+    <part name="parameters" element="s0:GetBookedNumbersResponse" />
+  </message>
+  <message name="GetReservedNumbersSoapIn">
+    <part name="parameters" element="s0:GetReservedNumbers" />
+  </message>
+  <message name="GetReservedNumbersSoapOut">
+    <part name="parameters" element="s0:GetReservedNumbersResponse" />
+  </message>
+  <message name="LoginAndGetNewNumberSoapIn">
+    <part name="parameters" element="s0:LoginAndGetNewNumber" />
+  </message>
+  <message name="LoginAndGetNewNumberSoapOut">
+    <part name="parameters" element="s0:LoginAndGetNewNumberResponse" />
+  </message>
+  <message name="GetNewNumberSoapIn">
+    <part name="parameters" element="s0:GetNewNumber" />
+  </message>
+  <message name="GetNewNumberSoapOut">
+    <part name="parameters" element="s0:GetNewNumberResponse" />
+  </message>
+  <message name="BookNumberSoapIn">
+    <part name="parameters" element="s0:BookNumber" />
+  </message>
+  <message name="BookNumberSoapOut">
+    <part name="parameters" element="s0:BookNumberResponse" />
+  </message>
+  <message name="RevokeNumberSoapIn">
+    <part name="parameters" element="s0:RevokeNumber" />
+  </message>
+  <message name="RevokeNumberSoapOut">
+    <part name="parameters" element="s0:RevokeNumberResponse" />
+  </message>
+  <message name="GetErrorDescriptionSoapIn">
+    <part name="parameters" element="s0:GetErrorDescription" />
+  </message>
+  <message name="GetErrorDescriptionSoapOut">
+    <part name="parameters" element="s0:GetErrorDescriptionResponse" />
+  </message>
+  <message name="BookNumberHttpGetIn">
+    <part name="strSessionKey" type="s:string" />
+    <part name="intRangeId" type="s:string" />
+    <part name="intNumber" type="s:string" />
+  </message>
+  <message name="BookNumberHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="RevokeNumberHttpGetIn">
+    <part name="strSessionKey" type="s:string" />
+    <part name="intRangeId" type="s:string" />
+    <part name="intNumber" type="s:string" />
+  </message>
+  <message name="RevokeNumberHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="BookNumberHttpPostIn">
+    <part name="strSessionKey" type="s:string" />
+    <part name="intRangeId" type="s:string" />
+    <part name="intNumber" type="s:string" />
+  </message>
+  <message name="BookNumberHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="RevokeNumberHttpPostIn">
+    <part name="strSessionKey" type="s:string" />
+    <part name="intRangeId" type="s:string" />
+    <part name="intNumber" type="s:string" />
+  </message>
+  <message name="RevokeNumberHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <portType name="ManageNumbersSoap">
+    <operation name="GetLoginInformation">
+      <documentation>This method gets the Login Information of a User.</documentation>
+      <input message="s0:GetLoginInformationSoapIn" />
+      <output message="s0:GetLoginInformationSoapOut" />
+    </operation>
+    <operation name="GetCompanyRanges">
+      <documentation>This method gets the Ranges of a Company.</documentation>
+      <input message="s0:GetCompanyRangesSoapIn" />
+      <output message="s0:GetCompanyRangesSoapOut" />
+    </operation>
+    <operation name="GetRangeLoad">
+      <documentation>This method gets the Load of a Range.</documentation>
+      <input message="s0:GetRangeLoadSoapIn" />
+      <output message="s0:GetRangeLoadSoapOut" />
+    </operation>
+    <operation name="GetBookedNumbers">
+      <documentation>This method gets the booked Numbers of a Range.</documentation>
+      <input message="s0:GetBookedNumbersSoapIn" />
+      <output message="s0:GetBookedNumbersSoapOut" />
+    </operation>
+    <operation name="GetReservedNumbers">
+      <documentation>This method gets the reserved Numbers of a User in a Range.</documentation>
+      <input message="s0:GetReservedNumbersSoapIn" />
+      <output message="s0:GetReservedNumbersSoapOut" />
+    </operation>
+    <operation name="LoginAndGetNewNumber">
+      <documentation>This method logs in and gets the highest available Number of a Range.</documentation>
+      <input message="s0:LoginAndGetNewNumberSoapIn" />
+      <output message="s0:LoginAndGetNewNumberSoapOut" />
+    </operation>
+    <operation name="GetNewNumber">
+      <documentation>This method gets the highest available Number of a Range.</documentation>
+      <input message="s0:GetNewNumberSoapIn" />
+      <output message="s0:GetNewNumberSoapOut" />
+    </operation>
+    <operation name="BookNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:BookNumberSoapIn" />
+      <output message="s0:BookNumberSoapOut" />
+    </operation>
+    <operation name="RevokeNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:RevokeNumberSoapIn" />
+      <output message="s0:RevokeNumberSoapOut" />
+    </operation>
+    <operation name="GetErrorDescription">
+      <documentation>This method gets the Description of an ErrorId.</documentation>
+      <input message="s0:GetErrorDescriptionSoapIn" />
+      <output message="s0:GetErrorDescriptionSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ManageNumbersHttpGet">
+    <operation name="BookNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:BookNumberHttpGetIn" />
+      <output message="s0:BookNumberHttpGetOut" />
+    </operation>
+    <operation name="RevokeNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:RevokeNumberHttpGetIn" />
+      <output message="s0:RevokeNumberHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ManageNumbersHttpPost">
+    <operation name="BookNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:BookNumberHttpPostIn" />
+      <output message="s0:BookNumberHttpPostOut" />
+    </operation>
+    <operation name="RevokeNumber">
+      <documentation>This method books a Number.</documentation>
+      <input message="s0:RevokeNumberHttpPostIn" />
+      <output message="s0:RevokeNumberHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ManageNumbersSoap" type="s0:ManageNumbersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLoginInformation">
+      <soap:operation soapAction="http://kull.ch/webservices/GetLoginInformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCompanyRanges">
+      <soap:operation soapAction="http://kull.ch/webservices/GetCompanyRanges" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRangeLoad">
+      <soap:operation soapAction="http://kull.ch/webservices/GetRangeLoad" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBookedNumbers">
+      <soap:operation soapAction="http://kull.ch/webservices/GetBookedNumbers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetReservedNumbers">
+      <soap:operation soapAction="http://kull.ch/webservices/GetReservedNumbers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LoginAndGetNewNumber">
+      <soap:operation soapAction="http://kull.ch/webservices/LoginAndGetNewNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNewNumber">
+      <soap:operation soapAction="http://kull.ch/webservices/GetNewNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="BookNumber">
+      <soap:operation soapAction="http://kull.ch/webservices/BookNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RevokeNumber">
+      <soap:operation soapAction="http://kull.ch/webservices/RevokeNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetErrorDescription">
+      <soap:operation soapAction="http://kull.ch/webservices/GetErrorDescription" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ManageNumbersHttpGet" type="s0:ManageNumbersHttpGet">
+    <http:binding verb="GET" />
+    <operation name="BookNumber">
+      <http:operation location="/BookNumber" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RevokeNumber">
+      <http:operation location="/RevokeNumber" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ManageNumbersHttpPost" type="s0:ManageNumbersHttpPost">
+    <http:binding verb="POST" />
+    <operation name="BookNumber">
+      <http:operation location="/BookNumber" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RevokeNumber">
+      <http:operation location="/RevokeNumber" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ManageNumbers">
+    <documentation>&lt;img src='images/logokull_1.gif' border='0'&gt;&lt;img src='images/logokull_2.gif' border='0'&gt;&lt;br&gt;&lt;b&gt;Kull AG Numbering Web Service - Manage Numbers&lt;/b&gt;&lt;br&gt;&lt;br&gt;This Web Service can be used to retrieve and manage the continuous and unique  numbers for your company. For more information, see &lt;a href='http://webservices.kull.ch'&gt;Web Services of Kull AG&lt;/a&gt;.&lt;br&gt;&lt;br&gt;Click &lt;a href='mailto:Hunziker@kull.ch'&gt;here&lt;/a&gt; get your login or submit your passport email address for testing or if you would like to use our Web Services in your solutions.</documentation>
+    <port name="ManageNumbersSoap" binding="s0:ManageNumbersSoap">
+      <soap:address location="http://webservices.kull.ch/Numbering/ManageNumbers.asmx" />
+    </port>
+    <port name="ManageNumbersHttpGet" binding="s0:ManageNumbersHttpGet">
+      <http:address location="http://webservices.kull.ch/Numbering/ManageNumbers.asmx" />
+    </port>
+    <port name="ManageNumbersHttpPost" binding="s0:ManageNumbersHttpPost">
+      <http:address location="http://webservices.kull.ch/Numbering/ManageNumbers.asmx" />
+    </port>
+  </service>
+</definitions>

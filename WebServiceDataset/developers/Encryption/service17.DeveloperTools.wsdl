@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www16.brinkster.com/iforum" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www16.brinkster.com/iforum" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www16.brinkster.com/iforum">
+      <s:element name="EncryptionCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paramString" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="paramIntLevel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptionCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptionCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptionCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="paramString" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="paramIntLevel" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptionCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptionCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="EncryptionCodeSoapIn">
+    <part name="parameters" element="s0:EncryptionCode" />
+  </message>
+  <message name="EncryptionCodeSoapOut">
+    <part name="parameters" element="s0:EncryptionCodeResponse" />
+  </message>
+  <message name="DecryptionCodeSoapIn">
+    <part name="parameters" element="s0:DecryptionCode" />
+  </message>
+  <message name="DecryptionCodeSoapOut">
+    <part name="parameters" element="s0:DecryptionCodeResponse" />
+  </message>
+  <message name="EncryptionCodeHttpGetIn">
+    <part name="SerialNumber" type="s:string" />
+    <part name="paramString" type="s:string" />
+    <part name="paramIntLevel" type="s:string" />
+  </message>
+  <message name="EncryptionCodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DecryptionCodeHttpGetIn">
+    <part name="SerialNumber" type="s:string" />
+    <part name="paramString" type="s:string" />
+    <part name="paramIntLevel" type="s:string" />
+  </message>
+  <message name="DecryptionCodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="EncryptionCodeHttpPostIn">
+    <part name="SerialNumber" type="s:string" />
+    <part name="paramString" type="s:string" />
+    <part name="paramIntLevel" type="s:string" />
+  </message>
+  <message name="EncryptionCodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DecryptionCodeHttpPostIn">
+    <part name="SerialNumber" type="s:string" />
+    <part name="paramString" type="s:string" />
+    <part name="paramIntLevel" type="s:string" />
+  </message>
+  <message name="DecryptionCodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="EncodingsServiceSoap">
+    <operation name="EncryptionCode">
+      <input message="s0:EncryptionCodeSoapIn" />
+      <output message="s0:EncryptionCodeSoapOut" />
+    </operation>
+    <operation name="DecryptionCode">
+      <input message="s0:DecryptionCodeSoapIn" />
+      <output message="s0:DecryptionCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="EncodingsServiceHttpGet">
+    <operation name="EncryptionCode">
+      <input message="s0:EncryptionCodeHttpGetIn" />
+      <output message="s0:EncryptionCodeHttpGetOut" />
+    </operation>
+    <operation name="DecryptionCode">
+      <input message="s0:DecryptionCodeHttpGetIn" />
+      <output message="s0:DecryptionCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="EncodingsServiceHttpPost">
+    <operation name="EncryptionCode">
+      <input message="s0:EncryptionCodeHttpPostIn" />
+      <output message="s0:EncryptionCodeHttpPostOut" />
+    </operation>
+    <operation name="DecryptionCode">
+      <input message="s0:DecryptionCodeHttpPostIn" />
+      <output message="s0:DecryptionCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="EncodingsServiceSoap" type="s0:EncodingsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="EncryptionCode">
+      <soap:operation soapAction="http://www16.brinkster.com/iforum/EncryptionCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DecryptionCode">
+      <soap:operation soapAction="http://www16.brinkster.com/iforum/DecryptionCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="EncodingsServiceHttpGet" type="s0:EncodingsServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="EncryptionCode">
+      <http:operation location="/EncryptionCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DecryptionCode">
+      <http:operation location="/DecryptionCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="EncodingsServiceHttpPost" type="s0:EncodingsServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="EncryptionCode">
+      <http:operation location="/EncryptionCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DecryptionCode">
+      <http:operation location="/DecryptionCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EncodingsService">
+    <port name="EncodingsServiceSoap" binding="s0:EncodingsServiceSoap">
+      <soap:address location="http://www25.brinkster.com/balidotnet/EncodingsService.asmx" />
+    </port>
+    <port name="EncodingsServiceHttpGet" binding="s0:EncodingsServiceHttpGet">
+      <http:address location="http://www25.brinkster.com/balidotnet/EncodingsService.asmx" />
+    </port>
+    <port name="EncodingsServiceHttpPost" binding="s0:EncodingsServiceHttpPost">
+      <http:address location="http://www25.brinkster.com/balidotnet/EncodingsService.asmx" />
+    </port>
+  </service>
+</definitions>

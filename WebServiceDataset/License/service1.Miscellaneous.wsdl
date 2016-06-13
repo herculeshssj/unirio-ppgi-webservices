@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AcademicLicenseService" targetNamespace="http://www.capeclear.com/AcademicLicenseService.wsdl" xmlns:xsd1="http://www.capeclear.com/AcademicLicenseService.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.capeclear.com/AcademicLicenseService.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types>
+		<xsd:schema targetNamespace="http://www.capeclear.com/AcademicLicenseService.xsd" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:complexType name="LicenseResult">
+				<xsd:sequence>
+					<xsd:element maxOccurs="1" minOccurs="1" name="accepted" type="xsd:boolean"/>
+					<xsd:element maxOccurs="1" minOccurs="1" name="message" nillable="true" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:simpleType name="AcademicStatus">
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="UNDERGRADUATE"/>
+					<xsd:enumeration value="POSTGRADUATE"/>
+					<xsd:enumeration value="STAFF"/>
+					<xsd:enumeration value="OTHER"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:schema>
+	</types>
+  <message name="requestLicense">
+    <part name="firstName" type="xsd:string"/>
+    <part name="lastName" type="xsd:string"/>
+    <part name="emailAddress" type="xsd:string"/>
+    <part name="status" type="xsd1:AcademicStatus"/>
+    <part name="projectDescription" type="xsd:string"/>
+  </message>
+  <message name="requestLicenseResponse">
+    <part name="return" type="xsd1:LicenseResult"/>
+  </message>
+  <portType name="AcademicLicenseService">
+    <operation name="requestLicense">
+      <input message="tns:requestLicense"/>
+      <output message="tns:requestLicenseResponse"/>
+    </operation>
+  </portType>
+  <binding name="AcademicLicenseServiceBinding" type="tns:AcademicLicenseService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="requestLicense">
+      <soap:operation soapAction="capeconnect:AcademicLicenseService:AcademicLicenseService#requestLicense"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicLicenseService:AcademicLicenseService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicLicenseService:AcademicLicenseService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="AcademicLicenseService">
+<documentation>AcademicLicenseService</documentation>
+    <port name="AcademicLicenseService" binding="tns:AcademicLicenseServiceBinding">
+      <soap:address location="http://localhost:8000/ccx/AcademicLicenseService"/>
+    </port>
+  </service>
+</definitions>

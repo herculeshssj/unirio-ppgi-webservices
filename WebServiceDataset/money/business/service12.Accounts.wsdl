@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="BreakEvenPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FixedCost" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="VariableCost" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="ReturnsPerUnit" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BreakEvenPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BreakEvenPointResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="BreakEvenPointSoapIn">
+    <part name="parameters" element="s0:BreakEvenPoint" />
+  </message>
+  <message name="BreakEvenPointSoapOut">
+    <part name="parameters" element="s0:BreakEvenPointResponse" />
+  </message>
+  <message name="BreakEvenPointHttpGetIn">
+    <part name="FixedCost" type="s:string" />
+    <part name="VariableCost" type="s:string" />
+    <part name="ReturnsPerUnit" type="s:string" />
+  </message>
+  <message name="BreakEvenPointHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="BreakEvenPointHttpPostIn">
+    <part name="FixedCost" type="s:string" />
+    <part name="VariableCost" type="s:string" />
+    <part name="ReturnsPerUnit" type="s:string" />
+  </message>
+  <message name="BreakEvenPointHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="BEPSoap">
+    <operation name="BreakEvenPoint">
+      <documentation>&lt;b&gt;A break-even point defines when an investment will generate a positive return.&lt;/b&gt;&lt;br&gt;&lt;ul&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;A break-even point defines when an   investment will generate a positive return. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Fixed costs are not directly related to the   level of production. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Variable costs change in direct relation to   volume of output. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Total fixed costs do not change as the level   of production increases. &lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;Break-even analysis is a useful tool to study the relationship between fixed costs, variable costs and returns. A break-even point defines when an investment will generate a positive return and can be determined graphically or with simple mathematics. Break-even analysis computes the volume of production at a given price necessary to cover all costs. Break-even price analysis computes the price necessary at a given level of production to cover all costs. To explain how break-even analysis works, it is cessary to define the cost items.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Fixed costs, &lt;/strong&gt;incurred after the decision to enter into a business activity is made, are not directly related to the level of production. Fixed costs include, but are not limited to, depreciation on equipment, interest costs, taxes and general overhead expenses. Total fixed costs are the sum of the fixed costs.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Variable costs&lt;/strong&gt; change in direct relation to volume of output. They may include cost of goods sold or production expenses such as labor and power costs, feed, fuel, veterinary, irrigation and other expenses directly related to the production of a commodity or investment in a capital asset. Total variable costs (TVC) are the sum of the variable costs for the specified level of production or output. Average variable costs are the variable costs per unit of output or of TVC divided by units of output.&lt;/font&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BreakEvenPointSoapIn" />
+      <output message="s0:BreakEvenPointSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BEPHttpGet">
+    <operation name="BreakEvenPoint">
+      <documentation>&lt;b&gt;A break-even point defines when an investment will generate a positive return.&lt;/b&gt;&lt;br&gt;&lt;ul&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;A break-even point defines when an   investment will generate a positive return. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Fixed costs are not directly related to the   level of production. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Variable costs change in direct relation to   volume of output. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Total fixed costs do not change as the level   of production increases. &lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;Break-even analysis is a useful tool to study the relationship between fixed costs, variable costs and returns. A break-even point defines when an investment will generate a positive return and can be determined graphically or with simple mathematics. Break-even analysis computes the volume of production at a given price necessary to cover all costs. Break-even price analysis computes the price necessary at a given level of production to cover all costs. To explain how break-even analysis works, it is cessary to define the cost items.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Fixed costs, &lt;/strong&gt;incurred after the decision to enter into a business activity is made, are not directly related to the level of production. Fixed costs include, but are not limited to, depreciation on equipment, interest costs, taxes and general overhead expenses. Total fixed costs are the sum of the fixed costs.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Variable costs&lt;/strong&gt; change in direct relation to volume of output. They may include cost of goods sold or production expenses such as labor and power costs, feed, fuel, veterinary, irrigation and other expenses directly related to the production of a commodity or investment in a capital asset. Total variable costs (TVC) are the sum of the variable costs for the specified level of production or output. Average variable costs are the variable costs per unit of output or of TVC divided by units of output.&lt;/font&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BreakEvenPointHttpGetIn" />
+      <output message="s0:BreakEvenPointHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BEPHttpPost">
+    <operation name="BreakEvenPoint">
+      <documentation>&lt;b&gt;A break-even point defines when an investment will generate a positive return.&lt;/b&gt;&lt;br&gt;&lt;ul&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;A break-even point defines when an   investment will generate a positive return. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Fixed costs are not directly related to the   level of production. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Variable costs change in direct relation to   volume of output. &lt;/font&gt;&lt;/li&gt;  &lt;li&gt;&lt;font face='Verdana' size='1'&gt;Total fixed costs do not change as the level   of production increases. &lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;Break-even analysis is a useful tool to study the relationship between fixed costs, variable costs and returns. A break-even point defines when an investment will generate a positive return and can be determined graphically or with simple mathematics. Break-even analysis computes the volume of production at a given price necessary to cover all costs. Break-even price analysis computes the price necessary at a given level of production to cover all costs. To explain how break-even analysis works, it is cessary to define the cost items.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Fixed costs, &lt;/strong&gt;incurred after the decision to enter into a business activity is made, are not directly related to the level of production. Fixed costs include, but are not limited to, depreciation on equipment, interest costs, taxes and general overhead expenses. Total fixed costs are the sum of the fixed costs.&lt;/font&gt;&lt;/p&gt;&lt;p&gt;&lt;font face='Verdana' size='1'&gt;&lt;strong&gt;Variable costs&lt;/strong&gt; change in direct relation to volume of output. They may include cost of goods sold or production expenses such as labor and power costs, feed, fuel, veterinary, irrigation and other expenses directly related to the production of a commodity or investment in a capital asset. Total variable costs (TVC) are the sum of the variable costs for the specified level of production or output. Average variable costs are the variable costs per unit of output or of TVC divided by units of output.&lt;/font&gt;&lt;/p&gt;</documentation>
+      <input message="s0:BreakEvenPointHttpPostIn" />
+      <output message="s0:BreakEvenPointHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BEPSoap" type="s0:BEPSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="BreakEvenPoint">
+      <soap:operation soapAction="http://www.webserviceX.NET/BreakEvenPoint" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BEPHttpGet" type="s0:BEPHttpGet">
+    <http:binding verb="GET" />
+    <operation name="BreakEvenPoint">
+      <http:operation location="/BreakEvenPoint" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BEPHttpPost" type="s0:BEPHttpPost">
+    <http:binding verb="POST" />
+    <operation name="BreakEvenPoint">
+      <http:operation location="/BreakEvenPoint" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BEP">
+    <port name="BEPSoap" binding="s0:BEPSoap">
+      <soap:address location="http://www.webservicex.net/bep.asmx" />
+    </port>
+    <port name="BEPHttpGet" binding="s0:BEPHttpGet">
+      <http:address location="http://www.webservicex.net/bep.asmx" />
+    </port>
+    <port name="BEPHttpPost" binding="s0:BEPHttpPost">
+      <http:address location="http://www.webservicex.net/bep.asmx" />
+    </port>
+  </service>
+</definitions>

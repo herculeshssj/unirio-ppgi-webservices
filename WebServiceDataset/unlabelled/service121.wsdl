@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:spamKillerService.email.comms.ws.dsdata.co.uk" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:intf="urn:spamKillerService.email.comms.ws.dsdata.co.uk" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="urn:spamKillerService.email.comms.ws.dsdata.co.uk" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:spamKillerService.email.comms.ws.dsdata.co.uk"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="PurgeRequest"><sequence><element name="serverName" nillable="true" type="xsd:string"/><element name="userName" nillable="true" type="xsd:string"/><element name="password" nillable="true" type="xsd:string"/><element name="serverType" nillable="true" type="xsd:string"/><element name="targetFolder" nillable="true" type="xsd:string"/><element name="moveToFolder" nillable="true" type="xsd:string"/><element name="test" type="xsd:boolean"/><element name="addresses" nillable="true" type="xsd:string" maxOccurs="unbounded"/><element name="subjectPattern" nillable="true" type="xsd:string"/></sequence></complexType><element name="PurgeRequest" nillable="true" type="impl:PurgeRequest"/><complexType name="PurgeResult"><sequence><element name="emailsPurged" type="xsd:int"/><element name="result" type="xsd:int"/><element name="resultDescription" nillable="true" type="xsd:string"/><element name="addressesPurged" nillable="true" type="xsd:string"/><element name="subjectsPurged" nillable="true" type="xsd:string"/></sequence></complexType><element name="PurgeResult" nillable="true" type="impl:PurgeResult"/></schema></wsdl:types>
+  <wsdl:message name="purgeResponse">
+    <wsdl:part name="purgeReturn" type="intf:PurgeResult"/>
+  </wsdl:message>
+  <wsdl:message name="purgeRequest">
+    <wsdl:part name="in0" type="intf:PurgeRequest"/>
+  </wsdl:message>
+  <wsdl:portType name="SpamKiller">
+    <wsdl:operation name="purge" parameterOrder="in0">
+      <wsdl:input name="purgeRequest" message="intf:purgeRequest"/>
+      <wsdl:output name="purgeResponse" message="intf:purgeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SpamKillerSoapBinding" type="intf:SpamKiller">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="purge">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="purgeRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:spamKillerService.email.comms.ws.dsdata.co.uk"/>
+      </wsdl:input>
+      <wsdl:output name="purgeResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:spamKillerService.email.comms.ws.dsdata.co.uk"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SpamKillerService">
+    <wsdl:port name="SpamKiller" binding="intf:SpamKillerSoapBinding">
+      <wsdlsoap:address location="http://wavendon.dsdata.co.uk/axis/services/SpamKiller"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,33 @@
+<?xml version = "1.0"?>
+<definitions name = "DomainCheckerService" targetNamespace = "http://www.xmethods.net/sd/DomainCheckerService.wsdl" xmlns:tns="http://www.xmethods.net/sd/DomainCheckerService.wsdl" xmlns:xsd = "http://www.w3.org/1999/XMLSchema" xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/" xmlns = "http://schemas.xmlsoap.org/wsdl/">
+	<message name = "checkDomainRequest">
+		<part name = "domainname" type = "xsd:string"/>
+	</message>
+	<message name = "checkDomainResponse">
+		<part name = "Result" type = "xsd:string"/>
+	</message>
+	<portType name = "DomainCheckerPortType">
+		<operation name = "checkDomain">
+			<input message = "checkDomainRequest" name = "checkDomain"/>
+			<output message = "checkDomainResponse" name = "checkDomainResponse"/>
+		</operation>
+	</portType>
+	<binding name = "DomainCheckerBinding" type = "DomainCheckerPortType">
+		<soap:binding style = "rpc" transport = "http://schemas.xmlsoap.org/soap/http"/>
+		<operation name = "checkDomain">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use = "encoded" namespace = "urn:xmethods-DomainChecker" encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use = "encoded" namespace = "urn:xmethods-DomainChecker" encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name = "DomainCheckerService">
+		<documentation>Checks the availability of a domain name</documentation>
+		<port name = "DomainCheckerPort" binding = "DomainCheckerBinding">
+			<soap:address location = "http://services.xmethods.net:80/soap"/>
+		</port>
+	</service>
+</definitions>

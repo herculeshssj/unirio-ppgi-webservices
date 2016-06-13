@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="Ieconomicservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="ChangeNumToChineseRequest">
+    <part name="money_num" type="xs:double"/>
+  </message>
+  <message name="ChangeNumToChineseResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="ChangeNumToEnglishRequest">
+    <part name="money_num" type="xs:double"/>
+  </message>
+  <message name="ChangeNumToEnglishResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="Ieconomic">
+    <operation name="ChangeNumToChinese">
+      <input message="tns:ChangeNumToChineseRequest"/>
+      <output message="tns:ChangeNumToChineseResponse"/>
+    </operation>
+    <operation name="ChangeNumToEnglish">
+      <input message="tns:ChangeNumToEnglishRequest"/>
+      <output message="tns:ChangeNumToEnglishResponse"/>
+    </operation>
+  </portType>
+  <binding name="Ieconomicbinding" type="tns:Ieconomic">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ChangeNumToChinese">
+      <soap:operation soapAction="urn:economicIntf-Ieconomic#ChangeNumToChinese" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:economicIntf-Ieconomic"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:economicIntf-Ieconomic"/>
+      </output>
+    </operation>
+    <operation name="ChangeNumToEnglish">
+      <soap:operation soapAction="urn:economicIntf-Ieconomic#ChangeNumToEnglish" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:economicIntf-Ieconomic"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:economicIntf-Ieconomic"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Ieconomicservice">
+    <port name="IeconomicPort" binding="tns:Ieconomicbinding">
+      <soap:address location="http://www.suiyi.com/soap/economic.dll/soap/Ieconomic"/>
+    </port>
+  </service>
+</definitions>
+

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://tempuri.org/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetPictureFolders">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPictureFoldersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPictureFoldersResult" nillable="true" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPictureInfolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="folderName" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPictureInfolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPictureInfolderResult" nillable="true" type="s0:ArrayOfPictureInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPictureInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PictureInfo" type="s0:PictureInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PictureInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Name" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="URL" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FolderName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageFormat" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="ArrayOfPictureInfo" nillable="true" type="s0:ArrayOfPictureInfo" />
+    </s:schema>
+  </types>
+  <message name="GetPictureFoldersSoapIn">
+    <part name="parameters" element="s0:GetPictureFolders" />
+  </message>
+  <message name="GetPictureFoldersSoapOut">
+    <part name="parameters" element="s0:GetPictureFoldersResponse" />
+  </message>
+  <message name="GetPictureInfolderSoapIn">
+    <part name="parameters" element="s0:GetPictureInfolder" />
+  </message>
+  <message name="GetPictureInfolderSoapOut">
+    <part name="parameters" element="s0:GetPictureInfolderResponse" />
+  </message>
+  <message name="GetPictureFoldersHttpGetIn" />
+  <message name="GetPictureFoldersHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetPictureInfolderHttpGetIn">
+    <part name="folderName" type="s:string" />
+  </message>
+  <message name="GetPictureInfolderHttpGetOut">
+    <part name="Body" element="s0:ArrayOfPictureInfo" />
+  </message>
+  <message name="GetPictureFoldersHttpPostIn" />
+  <message name="GetPictureFoldersHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetPictureInfolderHttpPostIn">
+    <part name="folderName" type="s:string" />
+  </message>
+  <message name="GetPictureInfolderHttpPostOut">
+    <part name="Body" element="s0:ArrayOfPictureInfo" />
+  </message>
+  <portType name="ServiceSoap">
+    <operation name="GetPictureFolders">
+      <input message="s0:GetPictureFoldersSoapIn" />
+      <output message="s0:GetPictureFoldersSoapOut" />
+    </operation>
+    <operation name="GetPictureInfolder">
+      <input message="s0:GetPictureInfolderSoapIn" />
+      <output message="s0:GetPictureInfolderSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ServiceHttpGet">
+    <operation name="GetPictureFolders">
+      <input message="s0:GetPictureFoldersHttpGetIn" />
+      <output message="s0:GetPictureFoldersHttpGetOut" />
+    </operation>
+    <operation name="GetPictureInfolder">
+      <input message="s0:GetPictureInfolderHttpGetIn" />
+      <output message="s0:GetPictureInfolderHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ServiceHttpPost">
+    <operation name="GetPictureFolders">
+      <input message="s0:GetPictureFoldersHttpPostIn" />
+      <output message="s0:GetPictureFoldersHttpPostOut" />
+    </operation>
+    <operation name="GetPictureInfolder">
+      <input message="s0:GetPictureInfolderHttpPostIn" />
+      <output message="s0:GetPictureInfolderHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ServiceSoap" type="s0:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetPictureFolders">
+      <soap:operation soapAction="http://tempuri.org/GetPictureFolders" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPictureInfolder">
+      <soap:operation soapAction="http://tempuri.org/GetPictureInfolder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ServiceHttpGet" type="s0:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetPictureFolders">
+      <http:operation location="/GetPictureFolders" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPictureInfolder">
+      <http:operation location="/GetPictureInfolder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ServiceHttpPost" type="s0:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetPictureFolders">
+      <http:operation location="/GetPictureFolders" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPictureInfolder">
+      <http:operation location="/GetPictureInfolder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service">
+    <port name="ServiceSoap" binding="s0:ServiceSoap">
+      <soap:address location="\\premfs5\sites\premium10\desjewels\webroot\webserv\service.asmx " />
+    </port>
+    <port name="ServiceHttpGet" binding="s0:ServiceHttpGet">
+      <http:address location="\\premfs5\sites\premium10\desjewels\webroot\webserv\service.asmx " />
+    </port>
+    <port name="ServiceHttpPost" binding="s0:ServiceHttpPost">
+      <http:address location="\\premfs5\sites\premium10\desjewels\webroot\webserv\service.asmx " />
+    </port>
+  </service>
+</definitions>

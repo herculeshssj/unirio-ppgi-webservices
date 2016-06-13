@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://sjmillerconsultants.com/sms/send" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://sjmillerconsultants.com/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://sjmillerconsultants.com/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sjmillerconsultants.com/webservices">
+      <s:import namespace="http://sjmillerconsultants.com/sms/send" />
+      <s:element name="QuickSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:SMSRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QuickSendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:SMSResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthorizationHeader" type="s0:AuthorizationHeader" />
+      <s:complexType name="AuthorizationHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SessionKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCreditBalance">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCreditBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCreditBalanceResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateUserPhoneResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerificationCodeForUserPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerificationCodeForUserPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVerificationCodeForUserPhoneResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageRecipientStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageRecipientStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageRecipientStatusResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmVerificationCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmVerificationCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmVerificationCodeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sjmillerconsultants.com/sms/send">
+      <s:element name="SMSRequest" type="s1:SMSRequest" />
+      <s:complexType name="SMSRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unicode" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recipients" type="s1:ArrayOfSMSRecipient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSMSRecipient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Recipient" nillable="true" type="s1:SMSRecipient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SMSRecipient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SMSResponse" type="s1:SMSResponse" />
+      <s:complexType name="SMSResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserPhoneMessageId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Credits" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recipients" type="s1:ArrayOfSMSRecipientResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSMSRecipientResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Recipient" nillable="true" type="s1:SMSRecipientResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SMSRecipientResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="QuickSendSoapIn">
+    <part name="parameters" element="s0:QuickSend" />
+  </message>
+  <message name="QuickSendSoapOut">
+    <part name="parameters" element="s0:QuickSendResponse" />
+  </message>
+  <message name="QuickSendAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="SendSoapIn">
+    <part name="parameters" element="s0:Send" />
+  </message>
+  <message name="SendSoapOut">
+    <part name="parameters" element="s0:SendResponse" />
+  </message>
+  <message name="SendAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="GetCreditBalanceSoapIn">
+    <part name="parameters" element="s0:GetCreditBalance" />
+  </message>
+  <message name="GetCreditBalanceSoapOut">
+    <part name="parameters" element="s0:GetCreditBalanceResponse" />
+  </message>
+  <message name="GetCreditBalanceAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="CreateUserPhoneSoapIn">
+    <part name="parameters" element="s0:CreateUserPhone" />
+  </message>
+  <message name="CreateUserPhoneSoapOut">
+    <part name="parameters" element="s0:CreateUserPhoneResponse" />
+  </message>
+  <message name="CreateUserPhoneAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="GetVerificationCodeForUserPhoneSoapIn">
+    <part name="parameters" element="s0:GetVerificationCodeForUserPhone" />
+  </message>
+  <message name="GetVerificationCodeForUserPhoneSoapOut">
+    <part name="parameters" element="s0:GetVerificationCodeForUserPhoneResponse" />
+  </message>
+  <message name="GetVerificationCodeForUserPhoneAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="GetMessageRecipientStatusSoapIn">
+    <part name="parameters" element="s0:GetMessageRecipientStatus" />
+  </message>
+  <message name="GetMessageRecipientStatusSoapOut">
+    <part name="parameters" element="s0:GetMessageRecipientStatusResponse" />
+  </message>
+  <message name="GetMessageRecipientStatusAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <message name="ConfirmVerificationCodeSoapIn">
+    <part name="parameters" element="s0:ConfirmVerificationCode" />
+  </message>
+  <message name="ConfirmVerificationCodeSoapOut">
+    <part name="parameters" element="s0:ConfirmVerificationCodeResponse" />
+  </message>
+  <message name="ConfirmVerificationCodeAuthorizationHeader">
+    <part name="AuthorizationHeader" element="s0:AuthorizationHeader" />
+  </message>
+  <portType name="SMSSoap">
+    <operation name="QuickSend">
+      <documentation>Allows you to send a single SMS message instantly to many recipients.</documentation>
+      <input message="s0:QuickSendSoapIn" />
+      <output message="s0:QuickSendSoapOut" />
+    </operation>
+    <operation name="Send">
+      <documentation>Allows you to send multiple SMS messages, each with its own optional delivery time, to many recipients. String interface for non .Net clients.</documentation>
+      <input message="s0:SendSoapIn" />
+      <output message="s0:SendSoapOut" />
+    </operation>
+    <operation name="GetCreditBalance">
+      <documentation>Returns the number of credits remaining.</documentation>
+      <input message="s0:GetCreditBalanceSoapIn" />
+      <output message="s0:GetCreditBalanceSoapOut" />
+    </operation>
+    <operation name="CreateUserPhone">
+      <documentation>Enables messages to be sent from sjmillerconsultants.com using a specified phone number. A verification code will be issued to the phone after invoking this method.</documentation>
+      <input message="s0:CreateUserPhoneSoapIn" />
+      <output message="s0:CreateUserPhoneSoapOut" />
+    </operation>
+    <operation name="GetVerificationCodeForUserPhone">
+      <documentation>Issues a new verification code to the specified phone. The phone must already have been created in your account.</documentation>
+      <input message="s0:GetVerificationCodeForUserPhoneSoapIn" />
+      <output message="s0:GetVerificationCodeForUserPhoneSoapOut" />
+    </operation>
+    <operation name="GetMessageRecipientStatus">
+      <documentation>Returns the status of a message for a specified recipient number and user phone message id.</documentation>
+      <input message="s0:GetMessageRecipientStatusSoapIn" />
+      <output message="s0:GetMessageRecipientStatusSoapOut" />
+    </operation>
+    <operation name="ConfirmVerificationCode">
+      <documentation>Activates a user phone using the verification code that was issued by the CreateUserPhone method. Once confirmed you may then use the Send method.</documentation>
+      <input message="s0:ConfirmVerificationCodeSoapIn" />
+      <output message="s0:ConfirmVerificationCodeSoapOut" />
+    </operation>
+  </portType>
+  <binding name="SMSSoap" type="s0:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="QuickSend">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/QuickSend" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:QuickSendAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:QuickSendAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="Send">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/Send" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:SendAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:SendAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCreditBalance">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/GetCreditBalance" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetCreditBalanceAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetCreditBalanceAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateUserPhone">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/CreateUserPhone" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:CreateUserPhoneAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:CreateUserPhoneAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetVerificationCodeForUserPhone">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/GetVerificationCodeForUserPhone" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetVerificationCodeForUserPhoneAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetVerificationCodeForUserPhoneAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMessageRecipientStatus">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/GetMessageRecipientStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetMessageRecipientStatusAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:GetMessageRecipientStatusAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+    <operation name="ConfirmVerificationCode">
+      <soap:operation soapAction="http://sjmillerconsultants.com/webservices/ConfirmVerificationCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+        <soap:header message="s0:ConfirmVerificationCodeAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+        <soap:header message="s0:ConfirmVerificationCodeAuthorizationHeader" part="AuthorizationHeader" use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SMS">
+    <port name="SMSSoap" binding="s0:SMSSoap">
+      <soap:address location="http://www.abctext.com/webservices/SMS.asmx" />
+    </port>
+  </service>
+</definitions>

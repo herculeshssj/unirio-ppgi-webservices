@@ -1,0 +1,168 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.ftp.FTPService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/ftp/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/ftp/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:mime='http://schemas.xmlsoap.org/wsdl/mime/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:element name="p0" nillable="true" type="xsd:string"/>
+            <xsd:element name="base64Binary_Response" nillable="true"
+                type="xsd:base64Binary"/>
+            <xsd:element name="p1" nillable="true" type="xsd:string"/>
+            <xsd:element name="p2" nillable="true" type="xsd:string"/>
+            <xsd:element name="long_Response" type="xsd:long"/>
+            <xsd:element name="p3" nillable="true" type="xsd:base64Binary"/>
+            <xsd:element name="p1_1" nillable="true" type="xsd:base64Binary"/>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='FTPService_download_1_Response'>
+        <wsdl:part name='response' element='ns0:base64Binary_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_4_Response'>
+        <wsdl:part name='response' element='ns0:base64Binary_Response'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_1_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_2_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+        <wsdl:part name='p1' element='ns0:p1'/>
+        <wsdl:part name='p2' element='ns0:p2'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_2_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_4_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_3_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_4_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+        <wsdl:part name='p1' element='ns0:p1'/>
+        <wsdl:part name='p2' element='ns0:p2'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_2_Response'>
+        <wsdl:part name='response' element='ns0:long_Response'/>
+        <wsdl:part name='p3' element='ns0:p3'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_3_java.io.IOException_Fault'>
+        <wsdl:part name='idoox-java-mapping.java.io.IOException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='FTPService_download_3_Response'>
+        <wsdl:part name='response' element='ns0:long_Response'/>
+        <wsdl:part name='p1' element='ns0:p1_1'/>
+    </wsdl:message>
+    <wsdl:portType name='FTPService'>
+        <wsdl:operation name='download' parameterOrder='p0'>
+            <wsdl:input name='download_1_input' message='tns:FTPService_download_1_Request'/>
+            <wsdl:output name='download_1_output' message='tns:FTPService_download_1_Response'/>
+            <wsdl:fault name='download_1_fault1' message='tns:FTPService_download_1_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='download' parameterOrder='p0 p1 p2 p3'>
+            <wsdl:input name='download_2_input' message='tns:FTPService_download_2_Request'/>
+            <wsdl:output name='download_2_output' message='tns:FTPService_download_2_Response'/>
+            <wsdl:fault name='download_2_fault1' message='tns:FTPService_download_2_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='download' parameterOrder='p0 p1'>
+            <wsdl:input name='download_3_input' message='tns:FTPService_download_3_Request'/>
+            <wsdl:output name='download_3_output' message='tns:FTPService_download_3_Response'/>
+            <wsdl:fault name='download_3_fault1' message='tns:FTPService_download_3_java.io.IOException_Fault'/>
+        </wsdl:operation>
+        <wsdl:operation name='download' parameterOrder='p0 p1 p2'>
+            <wsdl:input name='download_4_input' message='tns:FTPService_download_4_Request'/>
+            <wsdl:output name='download_4_output' message='tns:FTPService_download_4_Response'/>
+            <wsdl:fault name='download_4_fault1' message='tns:FTPService_download_4_java.io.IOException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='FTPService' type='tns:FTPService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='download'>
+            <map:java-operation name='download' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbQg=='/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService#download#KExqYXZhL2xhbmcvU3RyaW5nOylbQg==' style='document'/>
+            <wsdl:input name='download_1_input'>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output name='download_1_output'>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='download_1_fault1'>
+                <soap:fault name='download_1_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='download'>
+            <map:java-operation name='download' signature='KExqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xvcmcvaWRvb3gvd2FzcC90eXBlcy9SZXNwb25zZU1lc3NhZ2VBdHRhY2htZW50OylK'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService#download#KExqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xvcmcvaWRvb3gvd2FzcC90eXBlcy9SZXNwb25zZU1lc3NhZ2VBdHRhY2htZW50OylK' style='document'/>
+            <wsdl:input name='download_2_input'>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output name='download_2_output'>
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use='literal'/>
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part='p3' type='application/binary'/>
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:output>
+            <wsdl:fault name='download_2_fault1'>
+                <soap:fault name='download_2_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='download'>
+            <map:java-operation name='download' signature='KExqYXZhL2xhbmcvU3RyaW5nO0xvcmcvaWRvb3gvd2FzcC90eXBlcy9SZXNwb25zZU1lc3NhZ2VBdHRhY2htZW50OylK'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService#download#KExqYXZhL2xhbmcvU3RyaW5nO0xvcmcvaWRvb3gvd2FzcC90eXBlcy9SZXNwb25zZU1lc3NhZ2VBdHRhY2htZW50OylK' style='document'/>
+            <wsdl:input name='download_3_input'>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output name='download_3_output'>
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use='literal'/>
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part='p1' type='application/binary'/>
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:output>
+            <wsdl:fault name='download_3_fault1'>
+                <soap:fault name='download_3_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name='download'>
+            <map:java-operation name='download' signature='KExqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nOylbQg=='/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService#download#KExqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nO0xqYXZhL2xhbmcvU3RyaW5nOylbQg==' style='document'/>
+            <wsdl:input name='download_4_input'>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output name='download_4_output'>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='download_4_fault1'>
+                <soap:fault name='download_4_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/ftp/FTPService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='FTPService' binding='tns:FTPService'>
+            <soap:address location='http://soap.systinet.net:6080/FTPService/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

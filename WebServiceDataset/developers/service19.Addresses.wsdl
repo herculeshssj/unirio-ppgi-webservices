@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ICheckDigitservice" targetNamespace="http://www.b3.com.hk" xmlns:tns="http://www.b3.com.hk" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="ISBNRequest">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="ISBNResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="HKIDRequest">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="HKIDResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="EANUCC8Request">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="EANUCC8Response">
+    <part name="return" type="xs:int"/>
+  </message>
+  <message name="UCC12Request">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="UCC12Response">
+    <part name="return" type="xs:int"/>
+  </message>
+  <message name="EANUCC13Request">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="EANUCC13Response">
+    <part name="return" type="xs:int"/>
+  </message>
+  <message name="EANUCC14Request">
+    <part name="Value" type="xs:string"/>
+  </message>
+  <message name="EANUCC14Response">
+    <part name="return" type="xs:int"/>
+  </message>
+  <portType name="ICheckDigit">
+    <operation name="ISBN">
+      <input message="tns:ISBNRequest"/>
+      <output message="tns:ISBNResponse"/>
+    </operation>
+    <operation name="HKID">
+      <input message="tns:HKIDRequest"/>
+      <output message="tns:HKIDResponse"/>
+    </operation>
+    <operation name="EANUCC8">
+      <input message="tns:EANUCC8Request"/>
+      <output message="tns:EANUCC8Response"/>
+    </operation>
+    <operation name="UCC12">
+      <input message="tns:UCC12Request"/>
+      <output message="tns:UCC12Response"/>
+    </operation>
+    <operation name="EANUCC13">
+      <input message="tns:EANUCC13Request"/>
+      <output message="tns:EANUCC13Response"/>
+    </operation>
+    <operation name="EANUCC14">
+      <input message="tns:EANUCC14Request"/>
+      <output message="tns:EANUCC14Response"/>
+    </operation>
+  </portType>
+  <binding name="ICheckDigitbinding" type="tns:ICheckDigit">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ISBN">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#ISBN" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+    <operation name="HKID">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#HKID" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+    <operation name="EANUCC8">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#EANUCC8" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+    <operation name="UCC12">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#UCC12" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+    <operation name="EANUCC13">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#EANUCC13" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+    <operation name="EANUCC14">
+      <soap:operation soapAction="urn:CheckDigitIntf-ICheckDigit#EANUCC14" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:CheckDigitIntf-ICheckDigit"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ICheckDigitservice">
+    <port name="ICheckDigitPort" binding="tns:ICheckDigitbinding">
+      <soap:address location="http://www.b3.com.hk/cgi-bin/b3checkdigit.exe/soap/ICheckDigit"/>
+    </port>
+  </service>
+</definitions>
+

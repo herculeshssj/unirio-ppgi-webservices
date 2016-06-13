@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://gbx2.brinkster.net/gustavoPares/webServices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://gbx2.brinkster.net/gustavoPares/webServices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://gbx2.brinkster.net/gustavoPares/webServices/">
+      <s:element name="puntoEquilibrio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="precioUnitario" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="costoVariableUnitario" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="costoFijo" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="puntoEquilibrioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="puntoEquilibrioResult" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="utilidadNeta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Ventas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="costosVariables" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="costosFijos" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="productosFinancieros" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Impuestos" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="utilidadNetaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="utilidadNetaResult" type="s0:ArrayOfFloat" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFloat">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="float" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="float" type="s:float" />
+      <s:element name="ArrayOfFloat" nillable="true" type="s0:ArrayOfFloat" />
+    </s:schema>
+  </types>
+  <message name="puntoEquilibrioSoapIn">
+    <part name="parameters" element="s0:puntoEquilibrio" />
+  </message>
+  <message name="puntoEquilibrioSoapOut">
+    <part name="parameters" element="s0:puntoEquilibrioResponse" />
+  </message>
+  <message name="utilidadNetaSoapIn">
+    <part name="parameters" element="s0:utilidadNeta" />
+  </message>
+  <message name="utilidadNetaSoapOut">
+    <part name="parameters" element="s0:utilidadNetaResponse" />
+  </message>
+  <message name="puntoEquilibrioHttpGetIn">
+    <part name="precioUnitario" type="s:string" />
+    <part name="costoVariableUnitario" type="s:string" />
+    <part name="costoFijo" type="s:string" />
+  </message>
+  <message name="puntoEquilibrioHttpGetOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <message name="utilidadNetaHttpGetIn">
+    <part name="Ventas" type="s:string" />
+    <part name="costosVariables" type="s:string" />
+    <part name="costosFijos" type="s:string" />
+    <part name="productosFinancieros" type="s:string" />
+    <part name="Impuestos" type="s:string" />
+  </message>
+  <message name="utilidadNetaHttpGetOut">
+    <part name="Body" element="s0:ArrayOfFloat" />
+  </message>
+  <message name="puntoEquilibrioHttpPostIn">
+    <part name="precioUnitario" type="s:string" />
+    <part name="costoVariableUnitario" type="s:string" />
+    <part name="costoFijo" type="s:string" />
+  </message>
+  <message name="puntoEquilibrioHttpPostOut">
+    <part name="Body" element="s0:float" />
+  </message>
+  <message name="utilidadNetaHttpPostIn">
+    <part name="Ventas" type="s:string" />
+    <part name="costosVariables" type="s:string" />
+    <part name="costosFijos" type="s:string" />
+    <part name="productosFinancieros" type="s:string" />
+    <part name="Impuestos" type="s:string" />
+  </message>
+  <message name="utilidadNetaHttpPostOut">
+    <part name="Body" element="s0:ArrayOfFloat" />
+  </message>
+  <portType name="ContabilidadSoap">
+    <operation name="puntoEquilibrio">
+      <documentation>Calculates break even point in units. &lt;u&gt; Calcula el punto de equilibrio en unidades. &lt;/u&gt;</documentation>
+      <input message="s0:puntoEquilibrioSoapIn" />
+      <output message="s0:puntoEquilibrioSoapOut" />
+    </operation>
+    <operation name="utilidadNeta">
+      <documentation>&lt;u&gt;Calculates net profit&lt;/u&gt;, you will receive as result an array of data in this order: Contribution Margin, Operational Profit, Profit Before Taxes, and Net Profit.</documentation>
+      <input message="s0:utilidadNetaSoapIn" />
+      <output message="s0:utilidadNetaSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ContabilidadHttpGet">
+    <operation name="puntoEquilibrio">
+      <documentation>Calculates break even point in units. &lt;u&gt; Calcula el punto de equilibrio en unidades. &lt;/u&gt;</documentation>
+      <input message="s0:puntoEquilibrioHttpGetIn" />
+      <output message="s0:puntoEquilibrioHttpGetOut" />
+    </operation>
+    <operation name="utilidadNeta">
+      <documentation>&lt;u&gt;Calculates net profit&lt;/u&gt;, you will receive as result an array of data in this order: Contribution Margin, Operational Profit, Profit Before Taxes, and Net Profit.</documentation>
+      <input message="s0:utilidadNetaHttpGetIn" />
+      <output message="s0:utilidadNetaHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ContabilidadHttpPost">
+    <operation name="puntoEquilibrio">
+      <documentation>Calculates break even point in units. &lt;u&gt; Calcula el punto de equilibrio en unidades. &lt;/u&gt;</documentation>
+      <input message="s0:puntoEquilibrioHttpPostIn" />
+      <output message="s0:puntoEquilibrioHttpPostOut" />
+    </operation>
+    <operation name="utilidadNeta">
+      <documentation>&lt;u&gt;Calculates net profit&lt;/u&gt;, you will receive as result an array of data in this order: Contribution Margin, Operational Profit, Profit Before Taxes, and Net Profit.</documentation>
+      <input message="s0:utilidadNetaHttpPostIn" />
+      <output message="s0:utilidadNetaHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ContabilidadSoap" type="s0:ContabilidadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="puntoEquilibrio">
+      <soap:operation soapAction="http://gbx2.brinkster.net/gustavoPares/webServices/puntoEquilibrio" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="utilidadNeta">
+      <soap:operation soapAction="http://gbx2.brinkster.net/gustavoPares/webServices/utilidadNeta" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ContabilidadHttpGet" type="s0:ContabilidadHttpGet">
+    <http:binding verb="GET" />
+    <operation name="puntoEquilibrio">
+      <http:operation location="/puntoEquilibrio" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="utilidadNeta">
+      <http:operation location="/utilidadNeta" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ContabilidadHttpPost" type="s0:ContabilidadHttpPost">
+    <http:binding verb="POST" />
+    <operation name="puntoEquilibrio">
+      <http:operation location="/puntoEquilibrio" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="utilidadNeta">
+      <http:operation location="/utilidadNeta" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Contabilidad">
+    <port name="ContabilidadSoap" binding="s0:ContabilidadSoap">
+      <soap:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Contabilidad.asmx" />
+    </port>
+    <port name="ContabilidadHttpGet" binding="s0:ContabilidadHttpGet">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Contabilidad.asmx" />
+    </port>
+    <port name="ContabilidadHttpPost" binding="s0:ContabilidadHttpPost">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Contabilidad.asmx" />
+    </port>
+  </service>
+</definitions>

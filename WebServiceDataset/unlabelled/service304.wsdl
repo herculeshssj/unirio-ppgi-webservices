@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="toPigLatin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="textToTranslate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="toPigLatinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="toPigLatinResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="toPigLatinSoapIn">
+    <part name="parameters" element="s0:toPigLatin" />
+  </message>
+  <message name="toPigLatinSoapOut">
+    <part name="parameters" element="s0:toPigLatinResponse" />
+  </message>
+  <message name="toPigLatinHttpGetIn">
+    <part name="textToTranslate" type="s:string" />
+  </message>
+  <message name="toPigLatinHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="toPigLatinHttpPostIn">
+    <part name="textToTranslate" type="s:string" />
+  </message>
+  <message name="toPigLatinHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="piglatinSoap">
+    <operation name="toPigLatin">
+      <input message="s0:toPigLatinSoapIn" />
+      <output message="s0:toPigLatinSoapOut" />
+    </operation>
+  </portType>
+  <portType name="piglatinHttpGet">
+    <operation name="toPigLatin">
+      <input message="s0:toPigLatinHttpGetIn" />
+      <output message="s0:toPigLatinHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="piglatinHttpPost">
+    <operation name="toPigLatin">
+      <input message="s0:toPigLatinHttpPostIn" />
+      <output message="s0:toPigLatinHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="piglatinSoap" type="s0:piglatinSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="toPigLatin">
+      <soap:operation soapAction="http://tempuri.org/toPigLatin" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="piglatinHttpGet" type="s0:piglatinHttpGet">
+    <http:binding verb="GET" />
+    <operation name="toPigLatin">
+      <http:operation location="/toPigLatin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="piglatinHttpPost" type="s0:piglatinHttpPost">
+    <http:binding verb="POST" />
+    <operation name="toPigLatin">
+      <http:operation location="/toPigLatin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="piglatin">
+    <port name="piglatinSoap" binding="s0:piglatinSoap">
+      <soap:address location="http://www.aspxpressway.com/maincontent/webservices/piglatin.asmx" />
+    </port>
+    <port name="piglatinHttpGet" binding="s0:piglatinHttpGet">
+      <http:address location="http://www.aspxpressway.com/maincontent/webservices/piglatin.asmx" />
+    </port>
+    <port name="piglatinHttpPost" binding="s0:piglatinHttpPost">
+      <http:address location="http://www.aspxpressway.com/maincontent/webservices/piglatin.asmx" />
+    </port>
+  </service>
+</definitions>

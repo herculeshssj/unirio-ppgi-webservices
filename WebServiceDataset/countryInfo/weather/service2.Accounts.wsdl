@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:impl="http://DefaultNamespace-impl" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://DefaultNamespace" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:message name="fetchquakedataResponse">
+    <wsdl:part name="return" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+  </wsdl:message>
+  <wsdl:message name="fetchquakedataRequest">
+    <wsdl:part name="weeks" type="SOAP-ENC:double"/>
+    <wsdl:part name="WDDXorXMLflavor" type="SOAP-ENC:string"/>
+  </wsdl:message>
+  <wsdl:portType name="getQuakeData">
+    <wsdl:operation name="fetchquakedata" parameterOrder="weeks WDDXorXMLflavor">
+      <wsdl:input message="intf:fetchquakedataRequest"/>
+      <wsdl:output message="intf:fetchquakedataResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="getQuakeData.cfcSoapBinding" type="intf:getQuakeData">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="fetchquakedata">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="getQuakeDataService">
+    <wsdl:port name="getQuakeData.cfc" binding="intf:getQuakeData.cfcSoapBinding">
+      <wsdlsoap:address location="http://webservices.tei.or.th/getQuakeData.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

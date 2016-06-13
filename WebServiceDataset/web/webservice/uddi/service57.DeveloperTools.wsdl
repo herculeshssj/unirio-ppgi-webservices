@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="FindBusiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UDDIRegister" type="s0:UDDIRegistry" />
+            <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BusinessStartWith" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="UDDIRegistry">
+        <s:restriction base="s:string">
+          <s:enumeration value="MS" />
+          <s:enumeration value="MST" />
+          <s:enumeration value="IBM" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="FindBusinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBusinessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBusinessInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UDDIBusinessKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBusinessInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBusinessInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindBusinessSoapIn">
+    <part name="parameters" element="s0:FindBusiness" />
+  </message>
+  <message name="FindBusinessSoapOut">
+    <part name="parameters" element="s0:FindBusinessResponse" />
+  </message>
+  <message name="FindBusinessInformationSoapIn">
+    <part name="parameters" element="s0:FindBusinessInformation" />
+  </message>
+  <message name="FindBusinessInformationSoapOut">
+    <part name="parameters" element="s0:FindBusinessInformationResponse" />
+  </message>
+  <message name="FindBusinessHttpGetIn">
+    <part name="UDDIRegister" type="s:string" />
+    <part name="BusinessName" type="s:string" />
+    <part name="BusinessStartWith" type="s:string" />
+  </message>
+  <message name="FindBusinessHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindBusinessInformationHttpGetIn">
+    <part name="UDDIBusinessKey" type="s:string" />
+  </message>
+  <message name="FindBusinessInformationHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindBusinessHttpPostIn">
+    <part name="UDDIRegister" type="s:string" />
+    <part name="BusinessName" type="s:string" />
+    <part name="BusinessStartWith" type="s:string" />
+  </message>
+  <message name="FindBusinessHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindBusinessInformationHttpPostIn">
+    <part name="UDDIBusinessKey" type="s:string" />
+  </message>
+  <message name="FindBusinessInformationHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="UDDIBusinessFinderSoap">
+    <operation name="FindBusiness">
+      <documentation>Search UDDI Registry (Microsoft UDDI,IBM UDDI,Microsoft Test UDDI) by UDDI Registry,Business Name or Business Name start character</documentation>
+      <input message="s0:FindBusinessSoapIn" />
+      <output message="s0:FindBusinessSoapOut" />
+    </operation>
+    <operation name="FindBusinessInformation">
+      <documentation>Find UDDI Business Information(BusinessName,BusinessKey,DISCO,ServiceKey,AccessPoint,Description) for a UDDI BusinessKey</documentation>
+      <input message="s0:FindBusinessInformationSoapIn" />
+      <output message="s0:FindBusinessInformationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UDDIBusinessFinderHttpGet">
+    <operation name="FindBusiness">
+      <documentation>Search UDDI Registry (Microsoft UDDI,IBM UDDI,Microsoft Test UDDI) by UDDI Registry,Business Name or Business Name start character</documentation>
+      <input message="s0:FindBusinessHttpGetIn" />
+      <output message="s0:FindBusinessHttpGetOut" />
+    </operation>
+    <operation name="FindBusinessInformation">
+      <documentation>Find UDDI Business Information(BusinessName,BusinessKey,DISCO,ServiceKey,AccessPoint,Description) for a UDDI BusinessKey</documentation>
+      <input message="s0:FindBusinessInformationHttpGetIn" />
+      <output message="s0:FindBusinessInformationHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UDDIBusinessFinderHttpPost">
+    <operation name="FindBusiness">
+      <documentation>Search UDDI Registry (Microsoft UDDI,IBM UDDI,Microsoft Test UDDI) by UDDI Registry,Business Name or Business Name start character</documentation>
+      <input message="s0:FindBusinessHttpPostIn" />
+      <output message="s0:FindBusinessHttpPostOut" />
+    </operation>
+    <operation name="FindBusinessInformation">
+      <documentation>Find UDDI Business Information(BusinessName,BusinessKey,DISCO,ServiceKey,AccessPoint,Description) for a UDDI BusinessKey</documentation>
+      <input message="s0:FindBusinessInformationHttpPostIn" />
+      <output message="s0:FindBusinessInformationHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UDDIBusinessFinderSoap" type="s0:UDDIBusinessFinderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindBusiness">
+      <soap:operation soapAction="http://www.webserviceX.NET/FindBusiness" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindBusinessInformation">
+      <soap:operation soapAction="http://www.webserviceX.NET/FindBusinessInformation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UDDIBusinessFinderHttpGet" type="s0:UDDIBusinessFinderHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindBusiness">
+      <http:operation location="/FindBusiness" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBusinessInformation">
+      <http:operation location="/FindBusinessInformation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UDDIBusinessFinderHttpPost" type="s0:UDDIBusinessFinderHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindBusiness">
+      <http:operation location="/FindBusiness" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBusinessInformation">
+      <http:operation location="/FindBusinessInformation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UDDIBusinessFinder">
+    <port name="UDDIBusinessFinderSoap" binding="s0:UDDIBusinessFinderSoap">
+      <soap:address location="http://www.webservicex.net/UDDIBusinessFinder.asmx" />
+    </port>
+    <port name="UDDIBusinessFinderHttpGet" binding="s0:UDDIBusinessFinderHttpGet">
+      <http:address location="http://www.webservicex.net/UDDIBusinessFinder.asmx" />
+    </port>
+    <port name="UDDIBusinessFinderHttpPost" binding="s0:UDDIBusinessFinderHttpPost">
+      <http:address location="http://www.webservicex.net/UDDIBusinessFinder.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ISlashdotHeadlineProviderservice" targetNamespace="http://www.marotz.se" xmlns:tns="http://www.marotz.se" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+  <message name="FetchNewHeadlines0Request">
+    <part name="LastFetch" type="xs:dateTime"/>
+  </message>
+  <message name="FetchNewHeadlines0Response">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="ISlashdotHeadlineProvider">
+    <operation name="FetchNewHeadlines">
+      <input message="tns:FetchNewHeadlines0Request"/>
+      <output message="tns:FetchNewHeadlines0Response"/>
+    </operation>
+  </portType>
+  <binding name="ISlashdotHeadlineProviderbinding" type="tns:ISlashdotHeadlineProvider">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="FetchNewHeadlines">
+      <soap:operation soapAction="urn:SlashdotHeadlineProviderIntf-ISlashdotHeadlineProvider#FetchNewHeadlines" style="rpc"/>
+      <input message="tns:FetchNewHeadlines0Request">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SlashdotHeadlineProviderIntf-ISlashdotHeadlineProvider"/>
+      </input>
+      <output message="tns:FetchNewHeadlines0Response">
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SlashdotHeadlineProviderIntf-ISlashdotHeadlineProvider"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ISlashdotHeadlineProviderservice">
+    <port name="ISlashdotHeadlineProviderPort" binding="tns:ISlashdotHeadlineProviderbinding">
+      <soap:address location="http://www.marotz.se/scripts/SlashdotHeadlines.exe/soap/ISlashdotHeadlineProvider"/>
+    </port>
+  </service>
+</definitions>
+

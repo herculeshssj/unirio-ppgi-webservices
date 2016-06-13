@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetLocationByIP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationByIPResult" type="s0:Location" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Certainty" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Network" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Location" nillable="true" type="s0:Location" />
+    </s:schema>
+  </types>
+  <message name="GetLocationByIPSoapIn">
+    <part name="parameters" element="s0:GetLocationByIP" />
+  </message>
+  <message name="GetLocationByIPSoapOut">
+    <part name="parameters" element="s0:GetLocationByIPResponse" />
+  </message>
+  <message name="GetLocationByIPHttpGetIn">
+    <part name="IPAddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLocationByIPHttpGetOut">
+    <part name="Body" element="s0:Location" />
+  </message>
+  <message name="GetLocationByIPHttpPostIn">
+    <part name="IPAddress" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLocationByIPHttpPostOut">
+    <part name="Body" element="s0:Location" />
+  </message>
+  <portType name="DOTSGeoPinPointSoap">
+    <operation name="GetLocationByIP">
+      <documentation>Returns geographic location information for a given IP address.</documentation>
+      <input message="s0:GetLocationByIPSoapIn" />
+      <output message="s0:GetLocationByIPSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoPinPointHttpGet">
+    <operation name="GetLocationByIP">
+      <documentation>Returns geographic location information for a given IP address.</documentation>
+      <input message="s0:GetLocationByIPHttpGetIn" />
+      <output message="s0:GetLocationByIPHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoPinPointHttpPost">
+    <operation name="GetLocationByIP">
+      <documentation>Returns geographic location information for a given IP address.</documentation>
+      <input message="s0:GetLocationByIPHttpPostIn" />
+      <output message="s0:GetLocationByIPHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSGeoPinPointSoap" type="s0:DOTSGeoPinPointSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLocationByIP">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetLocationByIP" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoPinPointHttpGet" type="s0:DOTSGeoPinPointHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLocationByIP">
+      <http:operation location="/GetLocationByIP" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoPinPointHttpPost" type="s0:DOTSGeoPinPointHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLocationByIP">
+      <http:operation location="/GetLocationByIP" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSGeoPinPoint">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSGeoPinPointSoap" binding="s0:DOTSGeoPinPointSoap">
+      <soap:address location="http://ws2.serviceobjects.net/gpp/GeoPinPoint.asmx" />
+    </port>
+    <port name="DOTSGeoPinPointHttpGet" binding="s0:DOTSGeoPinPointHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/gpp/GeoPinPoint.asmx" />
+    </port>
+    <port name="DOTSGeoPinPointHttpPost" binding="s0:DOTSGeoPinPointHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/gpp/GeoPinPoint.asmx" />
+    </port>
+  </service>
+</definitions>

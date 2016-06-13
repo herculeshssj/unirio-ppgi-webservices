@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="GetHTML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RSSURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHTMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHTMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetHTMLSoapIn">
+    <part name="parameters" element="s0:GetHTML" />
+  </message>
+  <message name="GetHTMLSoapOut">
+    <part name="parameters" element="s0:GetHTMLResponse" />
+  </message>
+  <message name="GetHTMLHttpGetIn">
+    <part name="RSSURL" type="s:string" />
+  </message>
+  <message name="GetHTMLHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetHTMLHttpPostIn">
+    <part name="RSSURL" type="s:string" />
+  </message>
+  <message name="GetHTMLHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="RSStoHTMLSoap">
+    <operation name="GetHTML">
+      <documentation>RDF Site Summary (RSS) files, based on XML, provide an open method of syndicating and aggregating Web content. Using RSS files, you can create a data feed that supplies headlines, links, and article summaries from your Web site. This service convert RSS to HTML</documentation>
+      <input message="s0:GetHTMLSoapIn" />
+      <output message="s0:GetHTMLSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RSStoHTMLHttpGet">
+    <operation name="GetHTML">
+      <documentation>RDF Site Summary (RSS) files, based on XML, provide an open method of syndicating and aggregating Web content. Using RSS files, you can create a data feed that supplies headlines, links, and article summaries from your Web site. This service convert RSS to HTML</documentation>
+      <input message="s0:GetHTMLHttpGetIn" />
+      <output message="s0:GetHTMLHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RSStoHTMLHttpPost">
+    <operation name="GetHTML">
+      <documentation>RDF Site Summary (RSS) files, based on XML, provide an open method of syndicating and aggregating Web content. Using RSS files, you can create a data feed that supplies headlines, links, and article summaries from your Web site. This service convert RSS to HTML</documentation>
+      <input message="s0:GetHTMLHttpPostIn" />
+      <output message="s0:GetHTMLHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RSStoHTMLSoap" type="s0:RSStoHTMLSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetHTML">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetHTML" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RSStoHTMLHttpGet" type="s0:RSStoHTMLHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetHTML">
+      <http:operation location="/GetHTML" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RSStoHTMLHttpPost" type="s0:RSStoHTMLHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetHTML">
+      <http:operation location="/GetHTML" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RSStoHTML">
+    <port name="RSStoHTMLSoap" binding="s0:RSStoHTMLSoap">
+      <soap:address location="http://www.webservicex.net/RssToHTML.asmx" />
+    </port>
+    <port name="RSStoHTMLHttpGet" binding="s0:RSStoHTMLHttpGet">
+      <http:address location="http://www.webservicex.net/RssToHTML.asmx" />
+    </port>
+    <port name="RSStoHTMLHttpPost" binding="s0:RSStoHTMLHttpPost">
+      <http:address location="http://www.webservicex.net/RssToHTML.asmx" />
+    </port>
+  </service>
+</definitions>

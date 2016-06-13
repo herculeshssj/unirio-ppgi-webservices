@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://webservices.eraserver.net/MXChecker" targetNamespace="http://webservices.eraserver.net/MXChecker" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservices.eraserver.net/MXChecker">
+      <s:element name="CheckEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessCode" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="emailAddress" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckEmailResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEmailEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessCode" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="emailAddress" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeOut" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckEmailExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckEmailExResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bCheckEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessCode" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="emailAddress" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bCheckEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bCheckEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bCheckEmailEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accessCode" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="emailAddress" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="timeOut" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="bCheckEmailExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bCheckEmailExResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VersionInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="VersionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersionInfoResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="CheckEmailSoapIn">
+    <part name="parameters" element="s0:CheckEmail" />
+  </message>
+  <message name="CheckEmailSoapOut">
+    <part name="parameters" element="s0:CheckEmailResponse" />
+  </message>
+  <message name="CheckEmailExSoapIn">
+    <part name="parameters" element="s0:CheckEmailEx" />
+  </message>
+  <message name="CheckEmailExSoapOut">
+    <part name="parameters" element="s0:CheckEmailExResponse" />
+  </message>
+  <message name="bCheckEmailSoapIn">
+    <part name="parameters" element="s0:bCheckEmail" />
+  </message>
+  <message name="bCheckEmailSoapOut">
+    <part name="parameters" element="s0:bCheckEmailResponse" />
+  </message>
+  <message name="bCheckEmailExSoapIn">
+    <part name="parameters" element="s0:bCheckEmailEx" />
+  </message>
+  <message name="bCheckEmailExSoapOut">
+    <part name="parameters" element="s0:bCheckEmailExResponse" />
+  </message>
+  <message name="VersionInfoSoapIn">
+    <part name="parameters" element="s0:VersionInfo" />
+  </message>
+  <message name="VersionInfoSoapOut">
+    <part name="parameters" element="s0:VersionInfoResponse" />
+  </message>
+  <message name="CheckEmailHttpGetIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+  </message>
+  <message name="CheckEmailHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CheckEmailExHttpGetIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+    <part name="timeOut" type="s:string" />
+  </message>
+  <message name="CheckEmailExHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="bCheckEmailHttpGetIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+  </message>
+  <message name="bCheckEmailHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="bCheckEmailExHttpGetIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+    <part name="timeOut" type="s:string" />
+  </message>
+  <message name="bCheckEmailExHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="VersionInfoHttpGetIn" />
+  <message name="VersionInfoHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CheckEmailHttpPostIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+  </message>
+  <message name="CheckEmailHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CheckEmailExHttpPostIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+    <part name="timeOut" type="s:string" />
+  </message>
+  <message name="CheckEmailExHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="bCheckEmailHttpPostIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+  </message>
+  <message name="bCheckEmailHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="bCheckEmailExHttpPostIn">
+    <part name="accessCode" type="s:string" />
+    <part name="emailAddress" type="s:string" />
+    <part name="timeOut" type="s:string" />
+  </message>
+  <message name="bCheckEmailExHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="VersionInfoHttpPostIn" />
+  <message name="VersionInfoHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="MXCheckerSoap">
+    <operation name="CheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailSoapIn" />
+      <output message="s0:CheckEmailSoapOut" />
+    </operation>
+    <operation name="CheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailExSoapIn" />
+      <output message="s0:CheckEmailExSoapOut" />
+    </operation>
+    <operation name="bCheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailSoapIn" />
+      <output message="s0:bCheckEmailSoapOut" />
+    </operation>
+    <operation name="bCheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailExSoapIn" />
+      <output message="s0:bCheckEmailExSoapOut" />
+    </operation>
+    <operation name="VersionInfo">
+      <documentation>Returns the current version number and date for this web service.</documentation>
+      <input message="s0:VersionInfoSoapIn" />
+      <output message="s0:VersionInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="MXCheckerHttpGet">
+    <operation name="CheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailHttpGetIn" />
+      <output message="s0:CheckEmailHttpGetOut" />
+    </operation>
+    <operation name="CheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailExHttpGetIn" />
+      <output message="s0:CheckEmailExHttpGetOut" />
+    </operation>
+    <operation name="bCheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailHttpGetIn" />
+      <output message="s0:bCheckEmailHttpGetOut" />
+    </operation>
+    <operation name="bCheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailExHttpGetIn" />
+      <output message="s0:bCheckEmailExHttpGetOut" />
+    </operation>
+    <operation name="VersionInfo">
+      <documentation>Returns the current version number and date for this web service.</documentation>
+      <input message="s0:VersionInfoHttpGetIn" />
+      <output message="s0:VersionInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="MXCheckerHttpPost">
+    <operation name="CheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailHttpPostIn" />
+      <output message="s0:CheckEmailHttpPostOut" />
+    </operation>
+    <operation name="CheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns 'OK' if valid else returns error message text. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:CheckEmailExHttpPostIn" />
+      <output message="s0:CheckEmailExHttpPostOut" />
+    </operation>
+    <operation name="bCheckEmail">
+      <documentation>Checks for valid MX record for a given email address. Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailHttpPostIn" />
+      <output message="s0:bCheckEmailHttpPostOut" />
+    </operation>
+    <operation name="bCheckEmailEx">
+      <documentation>Checks for valid MX record for a given email address. Allows you to set the timeout value (in seconds). Returns TRUE if mail server responds positively, FALSE if it does not. Also returns FALSE if the accessCode is invalid. Guests can use zero (0) for the access code.</documentation>
+      <input message="s0:bCheckEmailExHttpPostIn" />
+      <output message="s0:bCheckEmailExHttpPostOut" />
+    </operation>
+    <operation name="VersionInfo">
+      <documentation>Returns the current version number and date for this web service.</documentation>
+      <input message="s0:VersionInfoHttpPostIn" />
+      <output message="s0:VersionInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="MXCheckerSoap" type="s0:MXCheckerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CheckEmail">
+      <soap:operation soapAction="http://webservices.eraserver.net/MXChecker/CheckEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CheckEmailEx">
+      <soap:operation soapAction="http://webservices.eraserver.net/MXChecker/CheckEmailEx" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="bCheckEmail">
+      <soap:operation soapAction="http://webservices.eraserver.net/MXChecker/bCheckEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="bCheckEmailEx">
+      <soap:operation soapAction="http://webservices.eraserver.net/MXChecker/bCheckEmailEx" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VersionInfo">
+      <soap:operation soapAction="http://webservices.eraserver.net/MXChecker/VersionInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MXCheckerHttpGet" type="s0:MXCheckerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CheckEmail">
+      <http:operation location="/CheckEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckEmailEx">
+      <http:operation location="/CheckEmailEx" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="bCheckEmail">
+      <http:operation location="/bCheckEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="bCheckEmailEx">
+      <http:operation location="/bCheckEmailEx" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VersionInfo">
+      <http:operation location="/VersionInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MXCheckerHttpPost" type="s0:MXCheckerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CheckEmail">
+      <http:operation location="/CheckEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CheckEmailEx">
+      <http:operation location="/CheckEmailEx" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="bCheckEmail">
+      <http:operation location="/bCheckEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="bCheckEmailEx">
+      <http:operation location="/bCheckEmailEx" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VersionInfo">
+      <http:operation location="/VersionInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MXChecker">
+    <documentation>Performs validation of email addresses. Provided by &lt;a href='http://WebServices.EraServer.NET'&gt;Eraserver.NET&lt;/a&gt;</documentation>
+    <port name="MXCheckerSoap" binding="s0:MXCheckerSoap">
+      <soap:address location="http://beta2.eraserver.net/webservices/mxchecker/mxchecker.asmx" />
+    </port>
+    <port name="MXCheckerHttpGet" binding="s0:MXCheckerHttpGet">
+      <http:address location="http://beta2.eraserver.net/webservices/mxchecker/mxchecker.asmx" />
+    </port>
+    <port name="MXCheckerHttpPost" binding="s0:MXCheckerHttpPost">
+      <http:address location="http://beta2.eraserver.net/webservices/mxchecker/mxchecker.asmx" />
+    </port>
+  </service>
+</definitions>

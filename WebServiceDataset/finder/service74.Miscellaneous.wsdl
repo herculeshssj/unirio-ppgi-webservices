@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.icuisine.net/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.icuisine.net/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.icuisine.net/webservices">
+      <s:element name="GetRecipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="serviceID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecipeResult" type="s0:WRecipe" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WRecipe">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Directions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Servings" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ingredients" type="s0:ArrayOfWIngredient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWIngredient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="item" type="s0:WIngredient" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WIngredient">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Quantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measurement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchRecipes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="criteria" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="serviceID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchRecipesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchRecipesResult" type="s0:WRecipeResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WRecipeResults">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recipes" type="s0:ArrayOfWRecipe" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfWRecipe">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="item" nillable="true" type="s0:WRecipe" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WRecipe" nillable="true" type="s0:WRecipe" />
+      <s:element name="WRecipeResults" nillable="true" type="s0:WRecipeResults" />
+    </s:schema>
+  </types>
+  <message name="GetRecipeSoapIn">
+    <part name="parameters" element="s0:GetRecipe" />
+  </message>
+  <message name="GetRecipeSoapOut">
+    <part name="parameters" element="s0:GetRecipeResponse" />
+  </message>
+  <message name="SearchRecipesSoapIn">
+    <part name="parameters" element="s0:SearchRecipes" />
+  </message>
+  <message name="SearchRecipesSoapOut">
+    <part name="parameters" element="s0:SearchRecipesResponse" />
+  </message>
+  <message name="GetRecipeHttpGetIn">
+    <part name="guid" type="s:string" />
+    <part name="serviceID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetRecipeHttpGetOut">
+    <part name="Body" element="s0:WRecipe" />
+  </message>
+  <message name="SearchRecipesHttpGetIn">
+    <part name="criteria" type="s:string" />
+    <part name="pageNumber" type="s:string" />
+    <part name="serviceID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="SearchRecipesHttpGetOut">
+    <part name="Body" element="s0:WRecipeResults" />
+  </message>
+  <message name="GetRecipeHttpPostIn">
+    <part name="guid" type="s:string" />
+    <part name="serviceID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetRecipeHttpPostOut">
+    <part name="Body" element="s0:WRecipe" />
+  </message>
+  <message name="SearchRecipesHttpPostIn">
+    <part name="criteria" type="s:string" />
+    <part name="pageNumber" type="s:string" />
+    <part name="serviceID" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="SearchRecipesHttpPostOut">
+    <part name="Body" element="s0:WRecipeResults" />
+  </message>
+  <portType name="RecipeServiceSoap">
+    <operation name="GetRecipe">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:GetRecipeSoapIn" />
+      <output message="s0:GetRecipeSoapOut" />
+    </operation>
+    <operation name="SearchRecipes">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:SearchRecipesSoapIn" />
+      <output message="s0:SearchRecipesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RecipeServiceHttpGet">
+    <operation name="GetRecipe">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:GetRecipeHttpGetIn" />
+      <output message="s0:GetRecipeHttpGetOut" />
+    </operation>
+    <operation name="SearchRecipes">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:SearchRecipesHttpGetIn" />
+      <output message="s0:SearchRecipesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RecipeServiceHttpPost">
+    <operation name="GetRecipe">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:GetRecipeHttpPostIn" />
+      <output message="s0:GetRecipeHttpPostOut" />
+    </operation>
+    <operation name="SearchRecipes">
+      <documentation>Return one recipe based on guid</documentation>
+      <input message="s0:SearchRecipesHttpPostIn" />
+      <output message="s0:SearchRecipesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RecipeServiceSoap" type="s0:RecipeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetRecipe">
+      <soap:operation soapAction="http://www.icuisine.net/webservices/GetRecipe" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchRecipes">
+      <soap:operation soapAction="http://www.icuisine.net/webservices/SearchRecipes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RecipeServiceHttpGet" type="s0:RecipeServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetRecipe">
+      <http:operation location="/GetRecipe" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchRecipes">
+      <http:operation location="/SearchRecipes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RecipeServiceHttpPost" type="s0:RecipeServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetRecipe">
+      <http:operation location="/GetRecipe" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchRecipes">
+      <http:operation location="/SearchRecipes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RecipeService">
+    <port name="RecipeServiceSoap" binding="s0:RecipeServiceSoap">
+      <soap:address location="http://icuisine.net/webservices/RecipeService.asmx" />
+    </port>
+    <port name="RecipeServiceHttpGet" binding="s0:RecipeServiceHttpGet">
+      <http:address location="http://icuisine.net/webservices/RecipeService.asmx" />
+    </port>
+    <port name="RecipeServiceHttpPost" binding="s0:RecipeServiceHttpPost">
+      <http:address location="http://icuisine.net/webservices/RecipeService.asmx" />
+    </port>
+  </service>
+</definitions>

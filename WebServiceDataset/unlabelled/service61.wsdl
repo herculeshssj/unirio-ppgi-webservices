@@ -1,0 +1,214 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.newsfeed.version1.NewsfeedService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/newsfeed/version1/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/newsfeed/version1/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/com/systinet/demo/newsfeed/data/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/wsdl/com/systinet/demo/newsfeed/data/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:complexType name="SimpleURL">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.SimpleURL"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="location" nillable="true"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="NewsChannel">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.NewsChannel"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="copyright" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="description" nillable="true"
+                        type="tns:NewsChannelDescription"/>
+                    <xsd:element name="format" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="generator" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="items" nillable="true"
+                        type="tns:ArrayOfNewsItem"/>
+                    <xsd:element name="lastModified" nillable="true"
+                        type="xsd:dateTime"/>
+                    <xsd:element name="loadTime" type="xsd:long"/>
+                    <xsd:element name="managingEditorEmail" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="updateFrequency" type="xsd:long"/>
+                    <xsd:element name="webmaster" nillable="true"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="NewsChannelDescription">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.NewsChannelDescription"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="categories" nillable="true"
+                        type="tns:ArrayOfNewsCategory"/>
+                    <xsd:element name="description" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="image" nillable="true"
+                        type="tns:NewsImage"/>
+                    <xsd:element name="language" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="location" nillable="true"
+                        type="tns:SimpleURL"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="website" nillable="true"
+                        type="tns:SimpleURL"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="NewsCategory">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.NewsCategory"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="description" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="name" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfNewsCategory">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.newsfeed.data.NewsCategory;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="NewsCategory" nillable="true"
+                        type="tns:NewsCategory"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="NewsImage">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.NewsImage"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="description" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="height" type="xsd:int"/>
+                    <xsd:element name="link" nillable="true"
+                        type="tns:SimpleURL"/>
+                    <xsd:element name="location" nillable="true"
+                        type="tns:SimpleURL"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="width" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="NewsItem">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.newsfeed.data.NewsItem"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="date" nillable="true"
+                        type="xsd:dateTime"/>
+                    <xsd:element name="description" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="guid" nillable="true" type="xsd:string"/>
+                    <xsd:element name="image" nillable="true"
+                        type="tns:NewsImage"/>
+                    <xsd:element name="location" nillable="true"
+                        type="tns:SimpleURL"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfNewsItem">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.newsfeed.data.NewsItem;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="NewsItem" nillable="true" type="tns:NewsItem"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xns4="http://systinet.com/wsdl/com/systinet/demo/newsfeed/data/">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/com/systinet/demo/newsfeed/data/"/>
+            <xsd:element name="p0" nillable="true" type="xns4:SimpleURL"/>
+            <xsd:element name="NewsChannel_Response" nillable="true"
+                type="xns4:NewsChannel"/>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='NewsfeedService_getChannel_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:message name='NewsfeedService_getChannel_Response'>
+        <wsdl:part name='response' element='ns0:NewsChannel_Response'/>
+    </wsdl:message>
+    <wsdl:message name='NewsfeedService_getChannel_com.systinet.demo.newsfeed.data.NewsException_Fault'>
+        <wsdl:part name='idoox-java-mapping.com.systinet.demo.newsfeed.data.NewsException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:portType name='NewsfeedService'>
+        <wsdl:operation name='getChannel' parameterOrder='p0'>
+            <wsdl:input message='tns:NewsfeedService_getChannel_1_Request'/>
+            <wsdl:output message='tns:NewsfeedService_getChannel_Response'/>
+            <wsdl:fault name='getChannel_fault1' message='tns:NewsfeedService_getChannel_com.systinet.demo.newsfeed.data.NewsException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='NewsfeedService' type='tns:NewsfeedService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='getChannel'>
+            <map:java-operation name='getChannel' signature='KExjb20vc3lzdGluZXQvZGVtby9uZXdzZmVlZC9kYXRhL1NpbXBsZVVSTDspTGNvbS9zeXN0aW5ldC9kZW1vL25ld3NmZWVkL2RhdGEvTmV3c0NoYW5uZWw7'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/newsfeed/version1/NewsfeedService#getChannel#KExjb20vc3lzdGluZXQvZGVtby9uZXdzZmVlZC9kYXRhL1NpbXBsZVVSTDspTGNvbS9zeXN0aW5ldC9kZW1vL25ld3NmZWVkL2RhdGEvTmV3c0NoYW5uZWw7' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='getChannel_fault1'>
+                <soap:fault name='getChannel_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/newsfeed/version1/NewsfeedService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='NewsfeedService' binding='tns:NewsfeedService'>
+            <soap:address location='http://soap.systinet.net:6080/Newsfeed/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

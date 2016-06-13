@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="ValidateAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateAddressResult" type="s0:Address" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Address" nillable="true" type="s0:Address" />
+    </s:schema>
+  </types>
+  <message name="ValidateAddressSoapIn">
+    <part name="parameters" element="s0:ValidateAddress" />
+  </message>
+  <message name="ValidateAddressSoapOut">
+    <part name="parameters" element="s0:ValidateAddressResponse" />
+  </message>
+  <message name="ValidateAddressHttpGetIn">
+    <part name="Address" type="s:string" />
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ValidateAddressHttpGetOut">
+    <part name="Body" element="s0:Address" />
+  </message>
+  <message name="ValidateAddressHttpPostIn">
+    <part name="Address" type="s:string" />
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="ValidateAddressHttpPostOut">
+    <part name="Body" element="s0:Address" />
+  </message>
+  <portType name="DOTSAddressValidateSoap">
+    <operation name="ValidateAddress">
+      <documentation>Returns corrected address information for a given US postal address.</documentation>
+      <input message="s0:ValidateAddressSoapIn" />
+      <output message="s0:ValidateAddressSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSAddressValidateHttpGet">
+    <operation name="ValidateAddress">
+      <documentation>Returns corrected address information for a given US postal address.</documentation>
+      <input message="s0:ValidateAddressHttpGetIn" />
+      <output message="s0:ValidateAddressHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSAddressValidateHttpPost">
+    <operation name="ValidateAddress">
+      <documentation>Returns corrected address information for a given US postal address.</documentation>
+      <input message="s0:ValidateAddressHttpPostIn" />
+      <output message="s0:ValidateAddressHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSAddressValidateSoap" type="s0:DOTSAddressValidateSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ValidateAddress">
+      <soap:operation soapAction="http://www.serviceobjects.com/ValidateAddress" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSAddressValidateHttpGet" type="s0:DOTSAddressValidateHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ValidateAddress">
+      <http:operation location="/ValidateAddress" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSAddressValidateHttpPost" type="s0:DOTSAddressValidateHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ValidateAddress">
+      <http:operation location="/ValidateAddress" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSAddressValidate">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSAddressValidateSoap" binding="s0:DOTSAddressValidateSoap">
+      <soap:address location="http://ws2.serviceobjects.net/av/AddressValidate.asmx" />
+    </port>
+    <port name="DOTSAddressValidateHttpGet" binding="s0:DOTSAddressValidateHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/av/AddressValidate.asmx" />
+    </port>
+    <port name="DOTSAddressValidateHttpPost" binding="s0:DOTSAddressValidateHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/av/AddressValidate.asmx" />
+    </port>
+  </service>
+</definitions>

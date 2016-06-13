@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetLotteryInfoByRegionDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLotteryInfoByRegionDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLotteryInfoByRegionDateResult" type="s0:LotteryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LotteryInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Lottery" type="s0:Lottery" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Lottery">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numbers" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLotteryInfoByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLotteryInfoByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLotteryInfoByDateResult" type="s0:LotteryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLotteryRegions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLotteryRegionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLotteryRegionsResult" type="s0:LotteryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomNumbers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfValues" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MinValue" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MaxValue" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomNumbersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRandomNumbersResult" type="s0:RandomNumbers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RandomNumbers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Num" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LotteryInfo" nillable="true" type="s0:LotteryInfo" />
+      <s:element name="RandomNumbers" nillable="true" type="s0:RandomNumbers" />
+    </s:schema>
+  </types>
+  <message name="GetLotteryInfoByRegionDateSoapIn">
+    <part name="parameters" element="s0:GetLotteryInfoByRegionDate" />
+  </message>
+  <message name="GetLotteryInfoByRegionDateSoapOut">
+    <part name="parameters" element="s0:GetLotteryInfoByRegionDateResponse" />
+  </message>
+  <message name="GetLotteryInfoByDateSoapIn">
+    <part name="parameters" element="s0:GetLotteryInfoByDate" />
+  </message>
+  <message name="GetLotteryInfoByDateSoapOut">
+    <part name="parameters" element="s0:GetLotteryInfoByDateResponse" />
+  </message>
+  <message name="GetLotteryRegionsSoapIn">
+    <part name="parameters" element="s0:GetLotteryRegions" />
+  </message>
+  <message name="GetLotteryRegionsSoapOut">
+    <part name="parameters" element="s0:GetLotteryRegionsResponse" />
+  </message>
+  <message name="GetRandomNumbersSoapIn">
+    <part name="parameters" element="s0:GetRandomNumbers" />
+  </message>
+  <message name="GetRandomNumbersSoapOut">
+    <part name="parameters" element="s0:GetRandomNumbersResponse" />
+  </message>
+  <message name="GetLotteryInfoByRegionDateHttpGetIn">
+    <part name="Region" type="s:string" />
+    <part name="Date" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryInfoByRegionDateHttpGetOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetLotteryInfoByDateHttpGetIn">
+    <part name="Date" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryInfoByDateHttpGetOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetLotteryRegionsHttpGetIn">
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryRegionsHttpGetOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetRandomNumbersHttpGetIn">
+    <part name="NumberOfValues" type="s:string" />
+    <part name="MinValue" type="s:string" />
+    <part name="MaxValue" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetRandomNumbersHttpGetOut">
+    <part name="Body" element="s0:RandomNumbers" />
+  </message>
+  <message name="GetLotteryInfoByRegionDateHttpPostIn">
+    <part name="Region" type="s:string" />
+    <part name="Date" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryInfoByRegionDateHttpPostOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetLotteryInfoByDateHttpPostIn">
+    <part name="Date" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryInfoByDateHttpPostOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetLotteryRegionsHttpPostIn">
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetLotteryRegionsHttpPostOut">
+    <part name="Body" element="s0:LotteryInfo" />
+  </message>
+  <message name="GetRandomNumbersHttpPostIn">
+    <part name="NumberOfValues" type="s:string" />
+    <part name="MinValue" type="s:string" />
+    <part name="MaxValue" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetRandomNumbersHttpPostOut">
+    <part name="Body" element="s0:RandomNumbers" />
+  </message>
+  <portType name="DOTSLotteryNumbersSoap">
+    <operation name="GetLotteryInfoByRegionDate">
+      <documentation>Returns lottery results for a given region and date. Results are updated throughout the day.&lt;br&gt;Region is the full region name from the GetLotteryRegions method.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByRegionDateSoapIn" />
+      <output message="s0:GetLotteryInfoByRegionDateSoapOut" />
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <documentation>Returns all lottery results for a given date.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByDateSoapIn" />
+      <output message="s0:GetLotteryInfoByDateSoapOut" />
+    </operation>
+    <operation name="GetLotteryRegions">
+      <documentation>Returns all a list of all regions this server works for.</documentation>
+      <input message="s0:GetLotteryRegionsSoapIn" />
+      <output message="s0:GetLotteryRegionsSoapOut" />
+    </operation>
+    <operation name="GetRandomNumbers">
+      <documentation>Returns a specified number of 'true' random integers ranging from MinValue to MaxValue.&lt;br&gt;NumberOfValues may not be greater than 100.&lt;br&gt;MinValue must be between 0 and 100.&lt;br&gt;MaxValue must be between 0 and 100.</documentation>
+      <input message="s0:GetRandomNumbersSoapIn" />
+      <output message="s0:GetRandomNumbersSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSLotteryNumbersHttpGet">
+    <operation name="GetLotteryInfoByRegionDate">
+      <documentation>Returns lottery results for a given region and date. Results are updated throughout the day.&lt;br&gt;Region is the full region name from the GetLotteryRegions method.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByRegionDateHttpGetIn" />
+      <output message="s0:GetLotteryInfoByRegionDateHttpGetOut" />
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <documentation>Returns all lottery results for a given date.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByDateHttpGetIn" />
+      <output message="s0:GetLotteryInfoByDateHttpGetOut" />
+    </operation>
+    <operation name="GetLotteryRegions">
+      <documentation>Returns all a list of all regions this server works for.</documentation>
+      <input message="s0:GetLotteryRegionsHttpGetIn" />
+      <output message="s0:GetLotteryRegionsHttpGetOut" />
+    </operation>
+    <operation name="GetRandomNumbers">
+      <documentation>Returns a specified number of 'true' random integers ranging from MinValue to MaxValue.&lt;br&gt;NumberOfValues may not be greater than 100.&lt;br&gt;MinValue must be between 0 and 100.&lt;br&gt;MaxValue must be between 0 and 100.</documentation>
+      <input message="s0:GetRandomNumbersHttpGetIn" />
+      <output message="s0:GetRandomNumbersHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSLotteryNumbersHttpPost">
+    <operation name="GetLotteryInfoByRegionDate">
+      <documentation>Returns lottery results for a given region and date. Results are updated throughout the day.&lt;br&gt;Region is the full region name from the GetLotteryRegions method.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByRegionDateHttpPostIn" />
+      <output message="s0:GetLotteryInfoByRegionDateHttpPostOut" />
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <documentation>Returns all lottery results for a given date.&lt;br&gt;Date is in the format mm/dd/yyyy.</documentation>
+      <input message="s0:GetLotteryInfoByDateHttpPostIn" />
+      <output message="s0:GetLotteryInfoByDateHttpPostOut" />
+    </operation>
+    <operation name="GetLotteryRegions">
+      <documentation>Returns all a list of all regions this server works for.</documentation>
+      <input message="s0:GetLotteryRegionsHttpPostIn" />
+      <output message="s0:GetLotteryRegionsHttpPostOut" />
+    </operation>
+    <operation name="GetRandomNumbers">
+      <documentation>Returns a specified number of 'true' random integers ranging from MinValue to MaxValue.&lt;br&gt;NumberOfValues may not be greater than 100.&lt;br&gt;MinValue must be between 0 and 100.&lt;br&gt;MaxValue must be between 0 and 100.</documentation>
+      <input message="s0:GetRandomNumbersHttpPostIn" />
+      <output message="s0:GetRandomNumbersHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSLotteryNumbersSoap" type="s0:DOTSLotteryNumbersSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLotteryInfoByRegionDate">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetLotteryInfoByRegionDate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetLotteryInfoByDate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLotteryRegions">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetLotteryRegions" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRandomNumbers">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetRandomNumbers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSLotteryNumbersHttpGet" type="s0:DOTSLotteryNumbersHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLotteryInfoByRegionDate">
+      <http:operation location="/GetLotteryInfoByRegionDate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <http:operation location="/GetLotteryInfoByDate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLotteryRegions">
+      <http:operation location="/GetLotteryRegions" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomNumbers">
+      <http:operation location="/GetRandomNumbers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSLotteryNumbersHttpPost" type="s0:DOTSLotteryNumbersHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLotteryInfoByRegionDate">
+      <http:operation location="/GetLotteryInfoByRegionDate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLotteryInfoByDate">
+      <http:operation location="/GetLotteryInfoByDate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLotteryRegions">
+      <http:operation location="/GetLotteryRegions" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRandomNumbers">
+      <http:operation location="/GetRandomNumbers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSLotteryNumbers">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSLotteryNumbersSoap" binding="s0:DOTSLotteryNumbersSoap">
+      <soap:address location="http://ws2.serviceobjects.net/ln/lotterynumbers.asmx" />
+    </port>
+    <port name="DOTSLotteryNumbersHttpGet" binding="s0:DOTSLotteryNumbersHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/ln/lotterynumbers.asmx" />
+    </port>
+    <port name="DOTSLotteryNumbersHttpPost" binding="s0:DOTSLotteryNumbersHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/ln/lotterynumbers.asmx" />
+    </port>
+  </service>
+</definitions>

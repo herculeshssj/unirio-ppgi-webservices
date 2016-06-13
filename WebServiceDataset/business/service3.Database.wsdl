@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <s:element name="GetBusinessList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusinessListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusinessListResult" type="s0:ArrayOfBusinessInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBusinessInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BusinessInfo" nillable="true" type="s0:BusinessInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BusinessInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:UddiCore">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="unbounded" name="description" type="s0:Description" />
+              <s:element minOccurs="0" maxOccurs="1" name="serviceInfos" type="s0:ArrayOfServiceInfo" />
+            </s:sequence>
+            <s:attribute name="businessKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="UddiCore" />
+      <s:complexType name="ServiceInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:UddiCore">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            </s:sequence>
+            <s:attribute name="serviceKey" type="s:string" />
+            <s:attribute name="businessKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Description" mixed="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:UddiCore">
+            <s:attribute ref="xml:lang" use="optional" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfServiceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="serviceInfo" nillable="true" type="s0:ServiceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfBusinessInfo" nillable="true" type="s0:ArrayOfBusinessInfo" />
+    </s:schema>
+  </types>
+  <message name="GetBusinessListSoapIn">
+    <part name="parameters" element="s0:GetBusinessList" />
+  </message>
+  <message name="GetBusinessListSoapOut">
+    <part name="parameters" element="s0:GetBusinessListResponse" />
+  </message>
+  <message name="GetBusinessListHttpGetIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetBusinessListHttpGetOut">
+    <part name="Body" element="s0:ArrayOfBusinessInfo" />
+  </message>
+  <message name="GetBusinessListHttpPostIn">
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetBusinessListHttpPostOut">
+    <part name="Body" element="s0:ArrayOfBusinessInfo" />
+  </message>
+  <portType name="BusinessListSoap">
+    <operation name="GetBusinessList">
+      <input message="s0:GetBusinessListSoapIn" />
+      <output message="s0:GetBusinessListSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BusinessListHttpGet">
+    <operation name="GetBusinessList">
+      <input message="s0:GetBusinessListHttpGetIn" />
+      <output message="s0:GetBusinessListHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BusinessListHttpPost">
+    <operation name="GetBusinessList">
+      <input message="s0:GetBusinessListHttpPostIn" />
+      <output message="s0:GetBusinessListHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BusinessListSoap" type="s0:BusinessListSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetBusinessList">
+      <soap:operation soapAction="http://tempuri.org/GetBusinessList" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BusinessListHttpGet" type="s0:BusinessListHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetBusinessList">
+      <http:operation location="/GetBusinessList" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BusinessListHttpPost" type="s0:BusinessListHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetBusinessList">
+      <http:operation location="/GetBusinessList" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BusinessList">
+    <port name="BusinessListSoap" binding="s0:BusinessListSoap">
+      <soap:address location="http://www.esynaps.com/WebServices/BusinessList.asmx" />
+    </port>
+    <port name="BusinessListHttpGet" binding="s0:BusinessListHttpGet">
+      <http:address location="http://www.esynaps.com/WebServices/BusinessList.asmx" />
+    </port>
+    <port name="BusinessListHttpPost" binding="s0:BusinessListHttpPost">
+      <http:address location="http://www.esynaps.com/WebServices/BusinessList.asmx" />
+    </port>
+  </service>
+</definitions>

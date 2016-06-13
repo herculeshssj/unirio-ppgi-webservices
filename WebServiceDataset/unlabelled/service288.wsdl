@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IModulusCheckservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="CheckModulusRequest">
+    <part name="DigitsToCheck" type="xs:string"/>
+  </message>
+  <message name="CheckModulusResponse">
+    <part name="return" type="xs:boolean"/>
+  </message>
+  <message name="GetLastDigitRequest">
+    <part name="DigitsToCheck" type="xs:string"/>
+  </message>
+  <message name="GetLastDigitResponse">
+    <part name="return" type="xs:unsignedByte"/>
+  </message>
+  <portType name="IModulusCheck">
+    <operation name="CheckModulus">
+      <input message="tns:CheckModulusRequest"/>
+      <output message="tns:CheckModulusResponse"/>
+    </operation>
+    <operation name="GetLastDigit">
+      <input message="tns:GetLastDigitRequest"/>
+      <output message="tns:GetLastDigitResponse"/>
+    </operation>
+  </portType>
+  <binding name="IModulusCheckbinding" type="tns:IModulusCheck">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CheckModulus">
+      <soap:operation soapAction="urn:TBWSIntf-IModulusCheck#CheckModulus" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TBWSIntf-IModulusCheck"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TBWSIntf-IModulusCheck"/>
+      </output>
+    </operation>
+    <operation name="GetLastDigit">
+      <soap:operation soapAction="urn:TBWSIntf-IModulusCheck#GetLastDigit" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TBWSIntf-IModulusCheck"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TBWSIntf-IModulusCheck"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IModulusCheckservice">
+    <port name="IModulusCheckPort" binding="tns:IModulusCheckbinding">
+      <soap:address location="http://www2.tankebolaget.com:8080/scripts/TBWS.exe/soap/IModulusCheck"/>
+    </port>
+  </service>
+</definitions>
+

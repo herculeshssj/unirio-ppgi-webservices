@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IWordFindservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="FindAnagramsRequest">
+    <part name="Source" type="xs:string"/>
+  </message>
+  <message name="FindAnagramsResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="FindWordsRequest">
+    <part name="Source" type="xs:string"/>
+  </message>
+  <message name="FindWordsResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IWordFind">
+    <operation name="FindAnagrams">
+      <input message="tns:FindAnagramsRequest"/>
+      <output message="tns:FindAnagramsResponse"/>
+    </operation>
+    <operation name="FindWords">
+      <input message="tns:FindWordsRequest"/>
+      <output message="tns:FindWordsResponse"/>
+    </operation>
+  </portType>
+  <binding name="IWordFindbinding" type="tns:IWordFind">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="FindAnagrams">
+      <soap:operation soapAction="urn:WordFindIntf-IWordFind#FindAnagrams"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordFindIntf-IWordFind"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordFindIntf-IWordFind"/>
+      </output>
+    </operation>
+    <operation name="FindWords">
+      <soap:operation soapAction="urn:WordFindIntf-IWordFind#FindWords"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordFindIntf-IWordFind"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WordFindIntf-IWordFind"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IWordFindservice">
+    <port name="IWordFindPort" binding="tns:IWordFindbinding">
+      <soap:address location="http://webservices.matlus.com/scripts/wordfind.dll/soap/IWordFind"/>
+    </port>
+  </service>
+</definitions>

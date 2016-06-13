@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="controtex.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="controtex.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="controtex.com">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="findZipCodeDistance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="code1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="code2" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findZipCodeDistanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="findZipCodeDistanceResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findZipCordinates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="code1" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findZipCordinatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findZipCordinatesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findZipDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="code1" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findZipDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findZipDetailsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCodeSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="code" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="distance" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCodeSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCodeSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="findZipCodeDistanceSoapIn">
+    <part name="parameters" element="s0:findZipCodeDistance" />
+  </message>
+  <message name="findZipCodeDistanceSoapOut">
+    <part name="parameters" element="s0:findZipCodeDistanceResponse" />
+  </message>
+  <message name="findZipCordinatesSoapIn">
+    <part name="parameters" element="s0:findZipCordinates" />
+  </message>
+  <message name="findZipCordinatesSoapOut">
+    <part name="parameters" element="s0:findZipCordinatesResponse" />
+  </message>
+  <message name="findZipDetailsSoapIn">
+    <part name="parameters" element="s0:findZipDetails" />
+  </message>
+  <message name="findZipDetailsSoapOut">
+    <part name="parameters" element="s0:findZipDetailsResponse" />
+  </message>
+  <message name="getCodeSetSoapIn">
+    <part name="parameters" element="s0:getCodeSet" />
+  </message>
+  <message name="getCodeSetSoapOut">
+    <part name="parameters" element="s0:getCodeSetResponse" />
+  </message>
+  <message name="findZipCodeDistanceHttpGetIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="findZipCodeDistanceHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="findZipCordinatesHttpGetIn">
+    <part name="code1" type="s:string" />
+  </message>
+  <message name="findZipCordinatesHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="findZipDetailsHttpGetIn">
+    <part name="code1" type="s:string" />
+  </message>
+  <message name="findZipDetailsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCodeSetHttpGetIn">
+    <part name="code" type="s:string" />
+    <part name="distance" type="s:string" />
+  </message>
+  <message name="getCodeSetHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="findZipCodeDistanceHttpPostIn">
+    <part name="code1" type="s:string" />
+    <part name="code2" type="s:string" />
+  </message>
+  <message name="findZipCodeDistanceHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="findZipCordinatesHttpPostIn">
+    <part name="code1" type="s:string" />
+  </message>
+  <message name="findZipCordinatesHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="findZipDetailsHttpPostIn">
+    <part name="code1" type="s:string" />
+  </message>
+  <message name="findZipDetailsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCodeSetHttpPostIn">
+    <part name="code" type="s:string" />
+    <part name="distance" type="s:string" />
+  </message>
+  <message name="getCodeSetHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="zipCodeServiceSoap">
+    <operation name="findZipCodeDistance">
+      <input message="s0:findZipCodeDistanceSoapIn" />
+      <output message="s0:findZipCodeDistanceSoapOut" />
+    </operation>
+    <operation name="findZipCordinates">
+      <input message="s0:findZipCordinatesSoapIn" />
+      <output message="s0:findZipCordinatesSoapOut" />
+    </operation>
+    <operation name="findZipDetails">
+      <input message="s0:findZipDetailsSoapIn" />
+      <output message="s0:findZipDetailsSoapOut" />
+    </operation>
+    <operation name="getCodeSet">
+      <input message="s0:getCodeSetSoapIn" />
+      <output message="s0:getCodeSetSoapOut" />
+    </operation>
+  </portType>
+  <portType name="zipCodeServiceHttpGet">
+    <operation name="findZipCodeDistance">
+      <input message="s0:findZipCodeDistanceHttpGetIn" />
+      <output message="s0:findZipCodeDistanceHttpGetOut" />
+    </operation>
+    <operation name="findZipCordinates">
+      <input message="s0:findZipCordinatesHttpGetIn" />
+      <output message="s0:findZipCordinatesHttpGetOut" />
+    </operation>
+    <operation name="findZipDetails">
+      <input message="s0:findZipDetailsHttpGetIn" />
+      <output message="s0:findZipDetailsHttpGetOut" />
+    </operation>
+    <operation name="getCodeSet">
+      <input message="s0:getCodeSetHttpGetIn" />
+      <output message="s0:getCodeSetHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="zipCodeServiceHttpPost">
+    <operation name="findZipCodeDistance">
+      <input message="s0:findZipCodeDistanceHttpPostIn" />
+      <output message="s0:findZipCodeDistanceHttpPostOut" />
+    </operation>
+    <operation name="findZipCordinates">
+      <input message="s0:findZipCordinatesHttpPostIn" />
+      <output message="s0:findZipCordinatesHttpPostOut" />
+    </operation>
+    <operation name="findZipDetails">
+      <input message="s0:findZipDetailsHttpPostIn" />
+      <output message="s0:findZipDetailsHttpPostOut" />
+    </operation>
+    <operation name="getCodeSet">
+      <input message="s0:getCodeSetHttpPostIn" />
+      <output message="s0:getCodeSetHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="zipCodeServiceSoap" type="s0:zipCodeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="findZipCodeDistance">
+      <soap:operation soapAction="controtex.com/findZipCodeDistance" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="findZipCordinates">
+      <soap:operation soapAction="controtex.com/findZipCordinates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="findZipDetails">
+      <soap:operation soapAction="controtex.com/findZipDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCodeSet">
+      <soap:operation soapAction="controtex.com/getCodeSet" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="zipCodeServiceHttpGet" type="s0:zipCodeServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="findZipCodeDistance">
+      <http:operation location="/findZipCodeDistance" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="findZipCordinates">
+      <http:operation location="/findZipCordinates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="findZipDetails">
+      <http:operation location="/findZipDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCodeSet">
+      <http:operation location="/getCodeSet" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="zipCodeServiceHttpPost" type="s0:zipCodeServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="findZipCodeDistance">
+      <http:operation location="/findZipCodeDistance" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="findZipCordinates">
+      <http:operation location="/findZipCordinates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="findZipDetails">
+      <http:operation location="/findZipDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCodeSet">
+      <http:operation location="/getCodeSet" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="zipCodeService">
+    <port name="zipCodeServiceSoap" binding="s0:zipCodeServiceSoap">
+      <soap:address location="http://www.discoverdance.co.uk/zipQuery/zipCodeService.asmx" />
+    </port>
+    <port name="zipCodeServiceHttpGet" binding="s0:zipCodeServiceHttpGet">
+      <http:address location="http://www.discoverdance.co.uk/zipQuery/zipCodeService.asmx" />
+    </port>
+    <port name="zipCodeServiceHttpPost" binding="s0:zipCodeServiceHttpPost">
+      <http:address location="http://www.discoverdance.co.uk/zipQuery/zipCodeService.asmx" />
+    </port>
+  </service>
+</definitions>

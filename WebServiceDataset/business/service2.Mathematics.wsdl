@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://circle24.com/webservices/" targetNamespace="http://circle24.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://circle24.com/webservices/">
+      <s:element name="Calculate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Months" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="RateOfInterest" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalculateResult" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="CalculateSoapIn">
+    <part name="parameters" element="s0:Calculate" />
+  </message>
+  <message name="CalculateSoapOut">
+    <part name="parameters" element="s0:CalculateResponse" />
+  </message>
+  <message name="CalculateHttpGetIn">
+    <part name="Months" type="s:string" />
+    <part name="RateOfInterest" type="s:string" />
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="CalculateHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CalculateHttpPostIn">
+    <part name="Months" type="s:string" />
+    <part name="RateOfInterest" type="s:string" />
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="CalculateHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="AutoloanSoap">
+    <operation name="Calculate">
+      <input message="s0:CalculateSoapIn" />
+      <output message="s0:CalculateSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AutoloanHttpGet">
+    <operation name="Calculate">
+      <input message="s0:CalculateHttpGetIn" />
+      <output message="s0:CalculateHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AutoloanHttpPost">
+    <operation name="Calculate">
+      <input message="s0:CalculateHttpPostIn" />
+      <output message="s0:CalculateHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AutoloanSoap" type="s0:AutoloanSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Calculate">
+      <soap:operation soapAction="http://circle24.com/webservices/Calculate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AutoloanHttpGet" type="s0:AutoloanHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Calculate">
+      <http:operation location="/Calculate" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AutoloanHttpPost" type="s0:AutoloanHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Calculate">
+      <http:operation location="/Calculate" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Autoloan">
+    <documentation>This Web Service mimics a Simple Autoloan calculator.</documentation>
+    <port name="AutoloanSoap" binding="s0:AutoloanSoap">
+      <soap:address location="http://upload.eraserver.net/circle24/autoloan.asmx" />
+    </port>
+    <port name="AutoloanHttpGet" binding="s0:AutoloanHttpGet">
+      <http:address location="http://upload.eraserver.net/circle24/autoloan.asmx" />
+    </port>
+    <port name="AutoloanHttpPost" binding="s0:AutoloanHttpPost">
+      <http:address location="http://upload.eraserver.net/circle24/autoloan.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:s0="http://soap.pocketsoap.com/weblogs.com/encodedTypes" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:tns="http://soap.pocketsoap.com/weblogs.com/" 
+	targetNamespace="http://soap.pocketsoap.com/weblogs.com/" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://soap.pocketsoap.com/weblogs.com/encodedTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="ArrayOfString">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s:string[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="SubscribeSoapIn">
+    <part name="urls" type="s0:ArrayOfString" />
+    <part name="callback_port" type="s:int" />
+    <part name="callback_path" type="s:string" />
+  </message>
+  <message name="SubscribeSoapOut" />
+  <portType name="WeblogsSubscriberSoap">
+    <operation name="Subscribe">
+      <input message="tns:SubscribeSoapIn" />
+      <output message="tns:SubscribeSoapOut" />
+    </operation>
+  </portType>
+  <binding name="WeblogsSubscriberSoap" type="tns:WeblogsSubscriberSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="Subscribe">
+      <soap:operation soapAction="http://soap.pocketsoap.com/weblogs.com/Subscribe" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://soap.pocketsoap.com/weblogs.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://soap.pocketsoap.com/weblogs.com/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WeblogsSubscriber">
+    <documentation>Subscription interface for weblogs.com</documentation>
+    <port name="WeblogsSubscriberSoap" binding="tns:WeblogsSubscriberSoap">
+      <soap:address location="http://soap.4s4c.com/weblogs/subscribe.asmx" />
+    </port>
+  </service>
+</definitions>

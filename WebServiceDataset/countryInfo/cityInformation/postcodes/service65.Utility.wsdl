@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://trwest.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://trwest.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://trwest.com/webservices/">
+      <s:element name="FindZipPlus4">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindZipPlus4Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindZipPlus4Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCityState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCityStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FindCityStateResult" type="s0:CityState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CityState">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="CityState" type="s0:CityState" />
+    </s:schema>
+  </types>
+  <message name="FindZipPlus4SoapIn">
+    <part name="parameters" element="s0:FindZipPlus4" />
+  </message>
+  <message name="FindZipPlus4SoapOut">
+    <part name="parameters" element="s0:FindZipPlus4Response" />
+  </message>
+  <message name="FindCityStateSoapIn">
+    <part name="parameters" element="s0:FindCityState" />
+  </message>
+  <message name="FindCityStateSoapOut">
+    <part name="parameters" element="s0:FindCityStateResponse" />
+  </message>
+  <message name="FindZipPlus4HttpGetIn">
+    <part name="Address" type="s:string" />
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+  </message>
+  <message name="FindZipPlus4HttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindCityStateHttpGetIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="FindCityStateHttpGetOut">
+    <part name="Body" element="s0:CityState" />
+  </message>
+  <message name="FindZipPlus4HttpPostIn">
+    <part name="Address" type="s:string" />
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+  </message>
+  <message name="FindZipPlus4HttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindCityStateHttpPostIn">
+    <part name="zip" type="s:string" />
+  </message>
+  <message name="FindCityStateHttpPostOut">
+    <part name="Body" element="s0:CityState" />
+  </message>
+  <portType name="Service1Soap">
+    <operation name="FindZipPlus4">
+      <input message="s0:FindZipPlus4SoapIn" />
+      <output message="s0:FindZipPlus4SoapOut" />
+    </operation>
+    <operation name="FindCityState">
+      <input message="s0:FindCityStateSoapIn" />
+      <output message="s0:FindCityStateSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpGet">
+    <operation name="FindZipPlus4">
+      <input message="s0:FindZipPlus4HttpGetIn" />
+      <output message="s0:FindZipPlus4HttpGetOut" />
+    </operation>
+    <operation name="FindCityState">
+      <input message="s0:FindCityStateHttpGetIn" />
+      <output message="s0:FindCityStateHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Service1HttpPost">
+    <operation name="FindZipPlus4">
+      <input message="s0:FindZipPlus4HttpPostIn" />
+      <output message="s0:FindZipPlus4HttpPostOut" />
+    </operation>
+    <operation name="FindCityState">
+      <input message="s0:FindCityStateHttpPostIn" />
+      <output message="s0:FindCityStateHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Service1Soap" type="s0:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindZipPlus4">
+      <soap:operation soapAction="http://trwest.com/webservices/FindZipPlus4" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindCityState">
+      <soap:operation soapAction="http://trwest.com/webservices/FindCityState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpGet" type="s0:Service1HttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindZipPlus4">
+      <http:operation location="/FindZipPlus4" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindCityState">
+      <http:operation location="/FindCityState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Service1HttpPost" type="s0:Service1HttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindZipPlus4">
+      <http:operation location="/FindZipPlus4" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindCityState">
+      <http:operation location="/FindCityState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service1">
+    <port name="Service1Soap" binding="s0:Service1Soap">
+      <soap:address location="http://www.dev1.eraserver.net/trwest/trwest_zip4/zip4.asmx" />
+    </port>
+    <port name="Service1HttpGet" binding="s0:Service1HttpGet">
+      <http:address location="http://www.dev1.eraserver.net/trwest/trwest_zip4/zip4.asmx" />
+    </port>
+    <port name="Service1HttpPost" binding="s0:Service1HttpPost">
+      <http:address location="http://www.dev1.eraserver.net/trwest/trwest_zip4/zip4.asmx" />
+    </port>
+  </service>
+</definitions>

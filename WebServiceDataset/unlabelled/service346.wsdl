@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="FindElectronicProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Search" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindElectronicProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindElectronicProductsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindElectronicProductsSoapIn">
+    <part name="parameters" element="s0:FindElectronicProducts" />
+  </message>
+  <message name="FindElectronicProductsSoapOut">
+    <part name="parameters" element="s0:FindElectronicProductsResponse" />
+  </message>
+  <message name="FindElectronicProductsHttpGetIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindElectronicProductsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindElectronicProductsHttpPostIn">
+    <part name="Search" type="s:string" />
+  </message>
+  <message name="FindElectronicProductsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ElectronicProductsFinderSoap">
+    <operation name="FindElectronicProducts">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the electronic products search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindElectronicProductsSoapIn" />
+      <output message="s0:FindElectronicProductsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ElectronicProductsFinderHttpGet">
+    <operation name="FindElectronicProducts">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the electronic products search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindElectronicProductsHttpGetIn" />
+      <output message="s0:FindElectronicProductsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ElectronicProductsFinderHttpPost">
+    <operation name="FindElectronicProducts">
+      <documentation>&lt;h3&gt;Accepts a search string and returns a URL pointing to the electronic products search results. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:FindElectronicProductsHttpPostIn" />
+      <output message="s0:FindElectronicProductsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ElectronicProductsFinderSoap" type="s0:ElectronicProductsFinderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindElectronicProducts">
+      <soap:operation soapAction="http://xmlme.com/WebServices/FindElectronicProducts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ElectronicProductsFinderHttpGet" type="s0:ElectronicProductsFinderHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindElectronicProducts">
+      <http:operation location="/FindElectronicProducts" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ElectronicProductsFinderHttpPost" type="s0:ElectronicProductsFinderHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindElectronicProducts">
+      <http:operation location="/FindElectronicProducts" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ElectronicProductsFinder">
+    <port name="ElectronicProductsFinderSoap" binding="s0:ElectronicProductsFinderSoap">
+      <soap:address location="http://www.xmlme.com/WSElectronics.asmx" />
+    </port>
+    <port name="ElectronicProductsFinderHttpGet" binding="s0:ElectronicProductsFinderHttpGet">
+      <http:address location="http://www.xmlme.com/WSElectronics.asmx" />
+    </port>
+    <port name="ElectronicProductsFinderHttpPost" binding="s0:ElectronicProductsFinderHttpPost">
+      <http:address location="http://www.xmlme.com/WSElectronics.asmx" />
+    </port>
+  </service>
+</definitions>

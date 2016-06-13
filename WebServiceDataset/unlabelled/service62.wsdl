@@ -1,0 +1,100 @@
+<?xml version='1.0'?>
+<wsdl:definitions name='com.systinet.demo.search.w3c.W3CSearchService' targetNamespace='http://systinet.com/wsdl/com/systinet/demo/search/w3c/' 
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+    xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='http://systinet.com/wsdl/com/systinet/demo/search/w3c/' 
+    xmlns:ns0='http://systinet.com/xsd/SchemaTypes/' 
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+    xmlns:map='http://systinet.com/mapping/'>
+    <wsdl:types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/com/systinet/demo/search/w3c/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:complexType name="W3CEntry">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="com.systinet.demo.search.w3c.W3CEntry"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="docType" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="docTypeUrl" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="title" nillable="true"
+                        type="xsd:string"/>
+                    <xsd:element name="type" nillable="true" type="xsd:string"/>
+                    <xsd:element name="url" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfW3CEntry">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lcom.systinet.demo.search.w3c.W3CEntry;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="W3CEntry" nillable="true" type="tns:W3CEntry"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xns4="http://systinet.com/wsdl/com/systinet/demo/search/w3c/">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/com/systinet/demo/search/w3c/"/>
+            <xsd:element name="p0" nillable="true" type="xsd:string"/>
+            <xsd:element name="ArrayOfW3CEntry_Response" nillable="true"
+                type="xns4:ArrayOfW3CEntry"/>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name='W3CSearchService_search_Response'>
+        <wsdl:part name='response' element='ns0:ArrayOfW3CEntry_Response'/>
+    </wsdl:message>
+    <wsdl:message name='W3CSearchService_search_com.systinet.demo.search.SearchException_Fault'>
+        <wsdl:part name='idoox-java-mapping.com.systinet.demo.search.SearchException' type='xsd:string'/>
+    </wsdl:message>
+    <wsdl:message name='W3CSearchService_search_1_Request'>
+        <wsdl:part name='p0' element='ns0:p0'/>
+    </wsdl:message>
+    <wsdl:portType name='W3CSearchService'>
+        <wsdl:operation name='search' parameterOrder='p0'>
+            <wsdl:input message='tns:W3CSearchService_search_1_Request'/>
+            <wsdl:output message='tns:W3CSearchService_search_Response'/>
+            <wsdl:fault name='search_fault1' message='tns:W3CSearchService_search_com.systinet.demo.search.SearchException_Fault'/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name='W3CSearchService' type='tns:W3CSearchService'>
+        <soap:binding transport='http://schemas.xmlsoap.org/soap/http' style='document'/>
+        <wsdl:operation name='search'>
+            <map:java-operation name='search' signature='KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL3NlYXJjaC93M2MvVzNDRW50cnk7'/>
+            <soap:operation soapAction='http://systinet.com/wsdl/com/systinet/demo/search/w3c/W3CSearchService#search#KExqYXZhL2xhbmcvU3RyaW5nOylbTGNvbS9zeXN0aW5ldC9kZW1vL3NlYXJjaC93M2MvVzNDRW50cnk7' style='document'/>
+            <wsdl:input>
+                <soap:body use='literal'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+            <wsdl:fault name='search_fault1'>
+                <soap:fault name='search_fault1' use='literal' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' namespace='http://systinet.com/wsdl/com/systinet/demo/search/w3c/W3CSearchService'/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name='JavaService'>
+        <wsdl:port name='W3CSearchService' binding='tns:W3CSearchService'>
+            <soap:address location='http://soap.systinet.net:6080/W3CSearch/'/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

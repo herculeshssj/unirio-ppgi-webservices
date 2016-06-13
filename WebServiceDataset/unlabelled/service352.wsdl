@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://services.pagedownweb.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://services.pagedownweb.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.pagedownweb.com/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="ZipToState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip_IN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ZipToStateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip_IN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ZipToCityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToCounty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip_IN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="County_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZipToCountyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ZipToCountyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipInfoCSV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipInfoCSVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rtnZipInfoCSVResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipInfoXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="zip_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipInfoXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rtnZipInfoXMLResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City_IN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnZipDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rtnZipDSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnCountyDS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="State_IN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rtnCountyDSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rtnCountyDSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="ZipToStateSoapIn">
+    <part name="parameters" element="s0:ZipToState" />
+  </message>
+  <message name="ZipToStateSoapOut">
+    <part name="parameters" element="s0:ZipToStateResponse" />
+  </message>
+  <message name="ZipToCitySoapIn">
+    <part name="parameters" element="s0:ZipToCity" />
+  </message>
+  <message name="ZipToCitySoapOut">
+    <part name="parameters" element="s0:ZipToCityResponse" />
+  </message>
+  <message name="ZipToCountySoapIn">
+    <part name="parameters" element="s0:ZipToCounty" />
+  </message>
+  <message name="ZipToCountySoapOut">
+    <part name="parameters" element="s0:ZipToCountyResponse" />
+  </message>
+  <message name="rtnZipInfoCSVSoapIn">
+    <part name="parameters" element="s0:rtnZipInfoCSV" />
+  </message>
+  <message name="rtnZipInfoCSVSoapOut">
+    <part name="parameters" element="s0:rtnZipInfoCSVResponse" />
+  </message>
+  <message name="rtnZipInfoXMLSoapIn">
+    <part name="parameters" element="s0:rtnZipInfoXML" />
+  </message>
+  <message name="rtnZipInfoXMLSoapOut">
+    <part name="parameters" element="s0:rtnZipInfoXMLResponse" />
+  </message>
+  <message name="rtnZipDSSoapIn">
+    <part name="parameters" element="s0:rtnZipDS" />
+  </message>
+  <message name="rtnZipDSSoapOut">
+    <part name="parameters" element="s0:rtnZipDSResponse" />
+  </message>
+  <message name="rtnCountyDSSoapIn">
+    <part name="parameters" element="s0:rtnCountyDS" />
+  </message>
+  <message name="rtnCountyDSSoapOut">
+    <part name="parameters" element="s0:rtnCountyDSResponse" />
+  </message>
+  <portType name="ZipCodesSoap">
+    <operation name="ZipToState">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Validates a Zip Code to a US State- &lt;B&gt;RETURNS:&lt;/B&gt; Bool - &lt;B&gt;Params:&lt;/B&gt; zip_IN = String(5); state_IN String(2)</documentation>
+      <input message="s0:ZipToStateSoapIn" />
+      <output message="s0:ZipToStateSoapOut" />
+    </operation>
+    <operation name="ZipToCity">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Validates a Zip Code to a US City- &lt;B&gt;RETURNS:&lt;/B&gt; Bool - Params: zip_IN = String(5); City_IN String(50)</documentation>
+      <input message="s0:ZipToCitySoapIn" />
+      <output message="s0:ZipToCitySoapOut" />
+    </operation>
+    <operation name="ZipToCounty">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Validates a Zip to a US County- &lt;B&gt;RETURNS:&lt;/B&gt; Bool - &lt;B&gt;Params:&lt;/B&gt; zip_IN = String(5); County_IN String(50)</documentation>
+      <input message="s0:ZipToCountySoapIn" />
+      <output message="s0:ZipToCountySoapOut" />
+    </operation>
+    <operation name="rtnZipInfoCSV">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Returns all info for a Zip Code as comma Sep. value &lt;b&gt;RETURNS:&lt;/b&gt; String CSV (zip,city,state,county) - &lt;b&gt;Params:&lt;/b&gt; zip_IN = String(5)</documentation>
+      <input message="s0:rtnZipInfoCSVSoapIn" />
+      <output message="s0:rtnZipInfoCSVSoapOut" />
+    </operation>
+    <operation name="rtnZipInfoXML">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Returns all info for a Zip Code as an XML Element- &lt;b&gt;RETURNS:&lt;/b&gt; Xml.XmlDocument  - &lt;b&gt;Params:&lt;/b&gt; zip_IN = String(5)</documentation>
+      <input message="s0:rtnZipInfoXMLSoapIn" />
+      <output message="s0:rtnZipInfoXMLSoapOut" />
+    </operation>
+    <operation name="rtnZipDS">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Returns all Zip Codes and Info for a city as a dataset XML-  &lt;b&gt;RETURNS:&lt;/b&gt; Data.DataSet, - &lt;b&gt;Params:&lt;/b&gt; City_IN = String(50); State_IN  = String(2) </documentation>
+      <input message="s0:rtnZipDSSoapIn" />
+      <output message="s0:rtnZipDSSoapOut" />
+    </operation>
+    <operation name="rtnCountyDS">
+      <documentation>&lt;b&gt;DESC:&lt;/b&gt; Returns a list of counties for a state as a dataset-  &lt;b&gt;RETURNS:&lt;/b&gt; Data.DataSet, - &lt;b&gt;Params:&lt;/b&gt;State_IN  = String(2) </documentation>
+      <input message="s0:rtnCountyDSSoapIn" />
+      <output message="s0:rtnCountyDSSoapOut" />
+    </operation>
+  </portType>
+  <binding name="ZipCodesSoap" type="s0:ZipCodesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ZipToState">
+      <soap:operation soapAction="http://services.pagedownweb.com/ZipToState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ZipToCity">
+      <soap:operation soapAction="http://services.pagedownweb.com/ZipToCity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ZipToCounty">
+      <soap:operation soapAction="http://services.pagedownweb.com/ZipToCounty" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="rtnZipInfoCSV">
+      <soap:operation soapAction="http://services.pagedownweb.com/rtnZipInfoCSV" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="rtnZipInfoXML">
+      <soap:operation soapAction="http://services.pagedownweb.com/rtnZipInfoXML" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="rtnZipDS">
+      <soap:operation soapAction="http://services.pagedownweb.com/rtnZipDS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="rtnCountyDS">
+      <soap:operation soapAction="http://services.pagedownweb.com/rtnCountyDS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ZipCodes">
+    <port name="ZipCodesSoap" binding="s0:ZipCodesSoap">
+      <soap:address location="http://services.pagedownweb.com/ZipCodes.asmx" />
+    </port>
+  </service>
+</definitions>

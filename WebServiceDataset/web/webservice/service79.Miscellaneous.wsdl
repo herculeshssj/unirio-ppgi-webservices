@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<definitions name="SearchSALCentral.csalcentral" targetNamespace="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="SearchSALCentralRequest">
+        <part name="SearchValues" type="xsd:string"/>
+        <part name="PageNumber" type="xsd:short"/>
+        <part name="recServices" type="xsd:string"/>
+    </message>
+    <message name="SearchSALCentralResponse">
+        <part name="recServices" type="xsd:string"/>
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <message name="SearchSALCentralByKeyCodeRequest">
+        <part name="KeyCodeValue" type="xsd:string"/>
+        <part name="PageNumber" type="xsd:short"/>
+        <part name="recServices" type="xsd:string"/>
+    </message>
+    <message name="SearchSALCentralByKeyCodeResponse">
+        <part name="recServices" type="xsd:string"/>
+        <part name="Return" type="xsd:boolean"/>
+    </message>
+    <portType name="SearchSALCentral.csalcentralPortType">
+        <operation name="SearchSALCentral">
+            <input message="tns:SearchSALCentralRequest"/>
+            <output message="tns:SearchSALCentralResponse"/>
+        </operation>
+        <operation name="SearchSALCentralByKeyCode">
+            <input message="tns:SearchSALCentralByKeyCodeRequest"/>
+            <output message="tns:SearchSALCentralByKeyCodeResponse"/>
+        </operation>
+    </portType>
+    <binding name="SearchSALCentral.csalcentralbinding" type="tns:SearchSALCentral.csalcentralPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="SearchSALCentral">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml#SearchSALCentral"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSALCentralByKeyCode">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml#SearchSALCentralByKeyCode"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/SearchSALCentral/CSALCentral.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="SearchSALCentral.csalcentralService">
+        <port name="SearchSALCentral.csalcentralPort" binding="tns:SearchSALCentral.csalcentralbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salcentral.cgi"/>
+        </port>
+    </service>
+</definitions>

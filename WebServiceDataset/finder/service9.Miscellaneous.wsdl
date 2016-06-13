@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.arieldolan.com/ws/tests" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.arieldolan.com/ws/tests" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.arieldolan.com/ws/tests">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetQueryHtml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keys" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQueryHtmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQueryHtmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQueryXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keys" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQueryXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQueryXmlResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQueryCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="keys" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="desc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQueryCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetQueryCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </types>
+  <message name="GetQueryHtmlSoapIn">
+    <part name="parameters" element="s0:GetQueryHtml" />
+  </message>
+  <message name="GetQueryHtmlSoapOut">
+    <part name="parameters" element="s0:GetQueryHtmlResponse" />
+  </message>
+  <message name="GetQueryXmlSoapIn">
+    <part name="parameters" element="s0:GetQueryXml" />
+  </message>
+  <message name="GetQueryXmlSoapOut">
+    <part name="parameters" element="s0:GetQueryXmlResponse" />
+  </message>
+  <message name="GetQueryCountSoapIn">
+    <part name="parameters" element="s0:GetQueryCount" />
+  </message>
+  <message name="GetQueryCountSoapOut">
+    <part name="parameters" element="s0:GetQueryCountResponse" />
+  </message>
+  <message name="GetQueryHtmlHttpGetIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryHtmlHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetQueryXmlHttpGetIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryXmlHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetQueryCountHttpGetIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryCountHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetQueryHtmlHttpPostIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryHtmlHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetQueryXmlHttpPostIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryXmlHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetQueryCountHttpPostIn">
+    <part name="title" type="s:string" />
+    <part name="url" type="s:string" />
+    <part name="keys" type="s:string" />
+    <part name="desc" type="s:string" />
+    <part name="email" type="s:string" />
+  </message>
+  <message name="GetQueryCountHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <portType name="Alife_x0020_Database_x0020_Web_x0020_ServiceSoap">
+    <operation name="GetQueryHtml">
+      <input message="s0:GetQueryHtmlSoapIn" />
+      <output message="s0:GetQueryHtmlSoapOut" />
+    </operation>
+    <operation name="GetQueryXml">
+      <input message="s0:GetQueryXmlSoapIn" />
+      <output message="s0:GetQueryXmlSoapOut" />
+    </operation>
+    <operation name="GetQueryCount">
+      <input message="s0:GetQueryCountSoapIn" />
+      <output message="s0:GetQueryCountSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpGet">
+    <operation name="GetQueryHtml">
+      <input message="s0:GetQueryHtmlHttpGetIn" />
+      <output message="s0:GetQueryHtmlHttpGetOut" />
+    </operation>
+    <operation name="GetQueryXml">
+      <input message="s0:GetQueryXmlHttpGetIn" />
+      <output message="s0:GetQueryXmlHttpGetOut" />
+    </operation>
+    <operation name="GetQueryCount">
+      <input message="s0:GetQueryCountHttpGetIn" />
+      <output message="s0:GetQueryCountHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpPost">
+    <operation name="GetQueryHtml">
+      <input message="s0:GetQueryHtmlHttpPostIn" />
+      <output message="s0:GetQueryHtmlHttpPostOut" />
+    </operation>
+    <operation name="GetQueryXml">
+      <input message="s0:GetQueryXmlHttpPostIn" />
+      <output message="s0:GetQueryXmlHttpPostOut" />
+    </operation>
+    <operation name="GetQueryCount">
+      <input message="s0:GetQueryCountHttpPostIn" />
+      <output message="s0:GetQueryCountHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Alife_x0020_Database_x0020_Web_x0020_ServiceSoap" type="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQueryHtml">
+      <soap:operation soapAction="http://www.arieldolan.com/ws/tests/GetQueryHtml" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQueryXml">
+      <soap:operation soapAction="http://www.arieldolan.com/ws/tests/GetQueryXml" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQueryCount">
+      <soap:operation soapAction="http://www.arieldolan.com/ws/tests/GetQueryCount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpGet" type="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetQueryHtml">
+      <http:operation location="/GetQueryHtml" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQueryXml">
+      <http:operation location="/GetQueryXml" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQueryCount">
+      <http:operation location="/GetQueryCount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpPost" type="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetQueryHtml">
+      <http:operation location="/GetQueryHtml" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQueryXml">
+      <http:operation location="/GetQueryXml" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQueryCount">
+      <http:operation location="/GetQueryCount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Alife_x0020_Database_x0020_Web_x0020_Service">
+    <documentation>Search for Alife-related (Artificial-Life related)  links on the net</documentation>
+    <port name="Alife_x0020_Database_x0020_Web_x0020_ServiceSoap" binding="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceSoap">
+      <soap:address location="http://www.arieldolan.com/aldb/wbsr/ad5.asmx" />
+    </port>
+    <port name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpGet" binding="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceHttpGet">
+      <http:address location="http://www.arieldolan.com/aldb/wbsr/ad5.asmx" />
+    </port>
+    <port name="Alife_x0020_Database_x0020_Web_x0020_ServiceHttpPost" binding="s0:Alife_x0020_Database_x0020_Web_x0020_ServiceHttpPost">
+      <http:address location="http://www.arieldolan.com/aldb/wbsr/ad5.asmx" />
+    </port>
+  </service>
+</definitions>

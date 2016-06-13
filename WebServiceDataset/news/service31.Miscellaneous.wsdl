@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="GetDotnetDailyFact">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDotnetDailyFactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDotnetDailyFactResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetDotnetDailyFactSoapIn">
+    <part name="parameters" element="s0:GetDotnetDailyFact" />
+  </message>
+  <message name="GetDotnetDailyFactSoapOut">
+    <part name="parameters" element="s0:GetDotnetDailyFactResponse" />
+  </message>
+  <message name="GetDotnetDailyFactHttpGetIn" />
+  <message name="GetDotnetDailyFactHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetDotnetDailyFactHttpPostIn" />
+  <message name="GetDotnetDailyFactHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="DotnetDailyFactSoap">
+    <operation name="GetDotnetDailyFact">
+      <documentation>&lt;h3&gt;Returns a fact of the day reflecting all aspects of the .NET platform. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetDotnetDailyFactSoapIn" />
+      <output message="s0:GetDotnetDailyFactSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DotnetDailyFactHttpGet">
+    <operation name="GetDotnetDailyFact">
+      <documentation>&lt;h3&gt;Returns a fact of the day reflecting all aspects of the .NET platform. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetDotnetDailyFactHttpGetIn" />
+      <output message="s0:GetDotnetDailyFactHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DotnetDailyFactHttpPost">
+    <operation name="GetDotnetDailyFact">
+      <documentation>&lt;h3&gt;Returns a fact of the day reflecting all aspects of the .NET platform. This Web Service was built by Seanco Technology for &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt;.&lt;/h3&gt;</documentation>
+      <input message="s0:GetDotnetDailyFactHttpPostIn" />
+      <output message="s0:GetDotnetDailyFactHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DotnetDailyFactSoap" type="s0:DotnetDailyFactSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetDotnetDailyFact">
+      <soap:operation soapAction="http://xmlme.com/WebServices/GetDotnetDailyFact" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DotnetDailyFactHttpGet" type="s0:DotnetDailyFactHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetDotnetDailyFact">
+      <http:operation location="/GetDotnetDailyFact" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DotnetDailyFactHttpPost" type="s0:DotnetDailyFactHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetDotnetDailyFact">
+      <http:operation location="/GetDotnetDailyFact" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DotnetDailyFact">
+    <port name="DotnetDailyFactSoap" binding="s0:DotnetDailyFactSoap">
+      <soap:address location="http://www.xmlme.com/WSDailyNet.asmx" />
+    </port>
+    <port name="DotnetDailyFactHttpGet" binding="s0:DotnetDailyFactHttpGet">
+      <http:address location="http://www.xmlme.com/WSDailyNet.asmx" />
+    </port>
+    <port name="DotnetDailyFactHttpPost" binding="s0:DotnetDailyFactHttpPost">
+      <http:address location="http://www.xmlme.com/WSDailyNet.asmx" />
+    </port>
+  </service>
+</definitions>

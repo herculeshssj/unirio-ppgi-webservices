@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="WhoIs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DomainName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WhoIsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WhoIsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="WhoIsSoapIn">
+    <part name="parameters" element="s0:WhoIs" />
+  </message>
+  <message name="WhoIsSoapOut">
+    <part name="parameters" element="s0:WhoIsResponse" />
+  </message>
+  <message name="WhoIsHttpGetIn">
+    <part name="DomainName" type="s:string" />
+  </message>
+  <message name="WhoIsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="WhoIsHttpPostIn">
+    <part name="DomainName" type="s:string" />
+  </message>
+  <message name="WhoIsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="WhoIsServiceSoap">
+    <operation name="WhoIs">
+      <input message="s0:WhoIsSoapIn" />
+      <output message="s0:WhoIsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WhoIsServiceHttpGet">
+    <operation name="WhoIs">
+      <input message="s0:WhoIsHttpGetIn" />
+      <output message="s0:WhoIsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WhoIsServiceHttpPost">
+    <operation name="WhoIs">
+      <input message="s0:WhoIsHttpPostIn" />
+      <output message="s0:WhoIsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WhoIsServiceSoap" type="s0:WhoIsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="WhoIs">
+      <soap:operation soapAction="http://tempuri.org/WhoIs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WhoIsServiceHttpGet" type="s0:WhoIsServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="WhoIs">
+      <http:operation location="/WhoIs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WhoIsServiceHttpPost" type="s0:WhoIsServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="WhoIs">
+      <http:operation location="/WhoIs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WhoIsService">
+    <port name="WhoIsServiceSoap" binding="s0:WhoIsServiceSoap">
+      <soap:address location="http://www.esynaps.com/WebServices/WhoIsService.asmx" />
+    </port>
+    <port name="WhoIsServiceHttpGet" binding="s0:WhoIsServiceHttpGet">
+      <http:address location="http://www.esynaps.com/WebServices/WhoIsService.asmx" />
+    </port>
+    <port name="WhoIsServiceHttpPost" binding="s0:WhoIsServiceHttpPost">
+      <http:address location="http://www.esynaps.com/WebServices/WhoIsService.asmx" />
+    </port>
+  </service>
+</definitions>

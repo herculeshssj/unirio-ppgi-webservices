@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.frameWERKS.com/WebServices/HelpfulFunctions/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.frameWERKS.com/WebServices/HelpfulFunctions/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.frameWERKS.com/WebServices/HelpfulFunctions/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Encryption">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Action" type="s0:EncryptionStyle" />
+            <s:element minOccurs="0" maxOccurs="1" name="StringToEffect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GivenEncryptionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GivenIVKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="EncryptionStyle">
+        <s:restriction base="s:string">
+          <s:enumeration value="Encrypt" />
+          <s:enumeration value="Decrypt" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="EncryptionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptionResult" type="s0:EncryptedInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EncryptedInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Result" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncryptionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InitVector" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PercentOf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PercentValue" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TotalValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PercentOfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PercentOfResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPercentage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CurrentNumber" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="PercentToAdd" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPercentageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPercentageResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsSQLInjection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FieldValue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsSQLInjectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsSQLInjectionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidDateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthsBetween">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BeginMonth" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthsBetweenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMonthsBetweenResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetRandomNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRandomNumberResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomNumberWithBase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BaseValue" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRandomNumberWithBaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetRandomNumberWithBaseResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadFromURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadFromURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadFromURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIPAddressLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIPAddressLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIPAddressLocationResult" type="s0:LocationInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LocationInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Certainty" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsProxyNetwork" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CapitalCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Continent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nationality_Singular" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nationality_Plural" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Currency_Code" type="s1:char" />
+          <s:element minOccurs="1" maxOccurs="1" name="Population" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="EncryptionSoapIn">
+    <part name="parameters" element="s0:Encryption" />
+  </message>
+  <message name="EncryptionSoapOut">
+    <part name="parameters" element="s0:EncryptionResponse" />
+  </message>
+  <message name="PercentOfSoapIn">
+    <part name="parameters" element="s0:PercentOf" />
+  </message>
+  <message name="PercentOfSoapOut">
+    <part name="parameters" element="s0:PercentOfResponse" />
+  </message>
+  <message name="AddPercentageSoapIn">
+    <part name="parameters" element="s0:AddPercentage" />
+  </message>
+  <message name="AddPercentageSoapOut">
+    <part name="parameters" element="s0:AddPercentageResponse" />
+  </message>
+  <message name="IsSQLInjectionSoapIn">
+    <part name="parameters" element="s0:IsSQLInjection" />
+  </message>
+  <message name="IsSQLInjectionSoapOut">
+    <part name="parameters" element="s0:IsSQLInjectionResponse" />
+  </message>
+  <message name="IsValidDateSoapIn">
+    <part name="parameters" element="s0:IsValidDate" />
+  </message>
+  <message name="IsValidDateSoapOut">
+    <part name="parameters" element="s0:IsValidDateResponse" />
+  </message>
+  <message name="GetMonthsBetweenSoapIn">
+    <part name="parameters" element="s0:GetMonthsBetween" />
+  </message>
+  <message name="GetMonthsBetweenSoapOut">
+    <part name="parameters" element="s0:GetMonthsBetweenResponse" />
+  </message>
+  <message name="GetRandomNumberSoapIn">
+    <part name="parameters" element="s0:GetRandomNumber" />
+  </message>
+  <message name="GetRandomNumberSoapOut">
+    <part name="parameters" element="s0:GetRandomNumberResponse" />
+  </message>
+  <message name="GetRandomNumberWithBaseSoapIn">
+    <part name="parameters" element="s0:GetRandomNumberWithBase" />
+  </message>
+  <message name="GetRandomNumberWithBaseSoapOut">
+    <part name="parameters" element="s0:GetRandomNumberWithBaseResponse" />
+  </message>
+  <message name="ReadFromURLSoapIn">
+    <part name="parameters" element="s0:ReadFromURL" />
+  </message>
+  <message name="ReadFromURLSoapOut">
+    <part name="parameters" element="s0:ReadFromURLResponse" />
+  </message>
+  <message name="GetIPAddressLocationSoapIn">
+    <part name="parameters" element="s0:GetIPAddressLocation" />
+  </message>
+  <message name="GetIPAddressLocationSoapOut">
+    <part name="parameters" element="s0:GetIPAddressLocationResponse" />
+  </message>
+  <portType name="HelpfulFunctionsSoap">
+    <operation name="Encryption">
+      <documentation>Encrypt and Decrypt any string of information. The Action variable is case sensitive and is either Encrypt or Decrypt. Encryption will return an object that contains an encrypted string data as binary numbers and return keys. The Encrypt action does not require any keys. Keys are required in order to de-encypt data back to a normal string. You can optionally pass in your own encryption keys. Keys are Eight comma delimited sets of Byte numbers. Function may not always work over a GET protocol. For best results, use a POST protocol.</documentation>
+      <input message="s0:EncryptionSoapIn" />
+      <output message="s0:EncryptionSoapOut" />
+    </operation>
+    <operation name="PercentOf">
+      <documentation>Three way percentage function. Variables are Strings because you can place the percent sign in different locations to give a different return value of a Double. Questions that are answered are: X% of 100, X is what percent of 100, AND X is X% of what. The percent symbol can optionally be placed by any number value.</documentation>
+      <input message="s0:PercentOfSoapIn" />
+      <output message="s0:PercentOfSoapOut" />
+    </operation>
+    <operation name="AddPercentage">
+      <documentation>Function will add a percentage to the Total of a number.</documentation>
+      <input message="s0:AddPercentageSoapIn" />
+      <output message="s0:AddPercentageSoapOut" />
+    </operation>
+    <operation name="IsSQLInjection">
+      <documentation>Function is Used to determine if a Field Value possibly contains SQL Injection</documentation>
+      <input message="s0:IsSQLInjectionSoapIn" />
+      <output message="s0:IsSQLInjectionSoapOut" />
+    </operation>
+    <operation name="IsValidDate">
+      <documentation>Makes sure that a Date value is truly a date value. Returns False if a time or SQL Injection is present.</documentation>
+      <input message="s0:IsValidDateSoapIn" />
+      <output message="s0:IsValidDateSoapOut" />
+    </operation>
+    <operation name="GetMonthsBetween">
+      <documentation>Returns the number of months between two months. Useful for billing period displays.</documentation>
+      <input message="s0:GetMonthsBetweenSoapIn" />
+      <output message="s0:GetMonthsBetweenSoapOut" />
+    </operation>
+    <operation name="GetRandomNumber">
+      <documentation>Dynamically select a number from 1 to 100,000,000,000.</documentation>
+      <input message="s0:GetRandomNumberSoapIn" />
+      <output message="s0:GetRandomNumberSoapOut" />
+    </operation>
+    <operation name="GetRandomNumberWithBase">
+      <documentation>Works the same as GetRandomNumber Function, but allows you to define the base number. Returns up to 3 decimal places.</documentation>
+      <input message="s0:GetRandomNumberWithBaseSoapIn" />
+      <output message="s0:GetRandomNumberWithBaseSoapOut" />
+    </operation>
+    <operation name="ReadFromURL">
+      <documentation>Retrieves information from any URL. If the URL is a CGI, it will execute the CGI and return the results as a string.</documentation>
+      <input message="s0:ReadFromURLSoapIn" />
+      <output message="s0:ReadFromURLSoapOut" />
+    </operation>
+    <operation name="GetIPAddressLocation">
+      <documentation>Find important location information about any valid IP Address.</documentation>
+      <input message="s0:GetIPAddressLocationSoapIn" />
+      <output message="s0:GetIPAddressLocationSoapOut" />
+    </operation>
+  </portType>
+  <binding name="HelpfulFunctionsSoap" type="s0:HelpfulFunctionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Encryption">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/Encryption" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PercentOf">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/PercentOf" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddPercentage">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/AddPercentage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsSQLInjection">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/IsSQLInjection" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsValidDate">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/IsValidDate" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMonthsBetween">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/GetMonthsBetween" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRandomNumber">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/GetRandomNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRandomNumberWithBase">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/GetRandomNumberWithBase" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReadFromURL">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/ReadFromURL" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetIPAddressLocation">
+      <soap:operation soapAction="http://www.frameWERKS.com/WebServices/HelpfulFunctions/GetIPAddressLocation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="HelpfulFunctions">
+    <port name="HelpfulFunctionsSoap" binding="s0:HelpfulFunctionsSoap">
+      <soap:address location="http://www.framewerks.com/WebServices/helpfulfunctions/helpfulfunctions.asmx" />
+    </port>
+  </service>
+</definitions>

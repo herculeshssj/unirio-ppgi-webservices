@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/"><wsdl:types><schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion"><import namespace="http://schemas.xmlsoap.org/soap/encoding/"/><complexType name="CFCInvocationException"><sequence/></complexType><element name="CFCInvocationException" nillable="true" type="tns1:CFCInvocationException"/></schema></wsdl:types>
+  <wsdl:message name="GetHolidaysByMonthYearResponse">
+    <wsdl:part name="GetHolidaysByMonthYearReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllHolidayInfoRequest">
+    <wsdl:part name="key" type="xsd:string"/>
+    <wsdl:part name="year" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetHolidayInfoRequest">
+    <wsdl:part name="key" type="xsd:string"/>
+    <wsdl:part name="holiday" type="xsd:string"/>
+    <wsdl:part name="year" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetHolidayInfoResponse">
+    <wsdl:part name="GetHolidayInfoReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetHolidaysByMonthYearRequest">
+    <wsdl:part name="key" type="xsd:string"/>
+    <wsdl:part name="month" type="xsd:string"/>
+    <wsdl:part name="year" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllHolidayInfoResponse">
+    <wsdl:part name="GetAllHolidayInfoReturn" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="holidays">
+    <wsdl:operation name="GetHolidaysByMonthYear" parameterOrder="key month year">
+      <wsdl:input name="GetHolidaysByMonthYearRequest" message="impl:GetHolidaysByMonthYearRequest"/>
+      <wsdl:output name="GetHolidaysByMonthYearResponse" message="impl:GetHolidaysByMonthYearResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetHolidayInfo" parameterOrder="key holiday year">
+      <wsdl:input name="GetHolidayInfoRequest" message="impl:GetHolidayInfoRequest"/>
+      <wsdl:output name="GetHolidayInfoResponse" message="impl:GetHolidayInfoResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHolidayInfo" parameterOrder="key year">
+      <wsdl:input name="GetAllHolidayInfoRequest" message="impl:GetAllHolidayInfoRequest"/>
+      <wsdl:output name="GetAllHolidayInfoResponse" message="impl:GetAllHolidayInfoResponse"/>
+      <wsdl:fault name="CFCInvocationException" message="impl:CFCInvocationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="holidays.cfcSoapBinding" type="impl:holidays">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetHolidaysByMonthYear">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="GetHolidaysByMonthYearRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="GetHolidaysByMonthYearResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHolidayInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="GetHolidayInfoRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="GetHolidayInfoResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHolidayInfo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="GetAllHolidayInfoRequest">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:input>
+      <wsdl:output name="GetAllHolidayInfoResponse">
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="holidaysService">
+    <wsdl:port name="holidays.cfc" binding="impl:holidays.cfcSoapBinding">
+      <wsdlsoap:address location="http://wsdl.wsdlfeeds.com/holidays.cfc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

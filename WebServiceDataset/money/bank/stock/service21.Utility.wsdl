@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myasptools.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myasptools.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myasptools.com/">
+      <s:element name="testGetQuotes">
+        <s:complexType />
+      </s:element>
+      <s:element name="testGetQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testGetQuotesResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickerrequest" type="s0:HistoricalStockRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HistoricalStockRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BeginMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginDay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BeginYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndDay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeFrame" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HistoricalStock">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DateTraded" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="High" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Low" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Close" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volume" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHistoricalStock">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HistoricalStock" nillable="true" type="s0:HistoricalStock" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuotesResult" type="s0:ArrayOfHistoricalStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickerrequest" type="s0:HistoricalStockRequest" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicQuotesResult" type="s0:ArrayOfHistoricalStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="anyType" nillable="true" />
+    </s:schema>
+  </types>
+  <message name="testGetQuotesSoapIn">
+    <part name="parameters" element="s0:testGetQuotes" />
+  </message>
+  <message name="testGetQuotesSoapOut">
+    <part name="parameters" element="s0:testGetQuotesResponse" />
+  </message>
+  <message name="GetQuotesSoapIn">
+    <part name="parameters" element="s0:GetQuotes" />
+  </message>
+  <message name="GetQuotesSoapOut">
+    <part name="parameters" element="s0:GetQuotesResponse" />
+  </message>
+  <message name="GetLicQuotesSoapIn">
+    <part name="parameters" element="s0:GetLicQuotes" />
+  </message>
+  <message name="GetLicQuotesSoapOut">
+    <part name="parameters" element="s0:GetLicQuotesResponse" />
+  </message>
+  <message name="testGetQuotesHttpGetIn" />
+  <message name="testGetQuotesHttpGetOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <message name="testGetQuotesHttpPostIn" />
+  <message name="testGetQuotesHttpPostOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <portType name="HistoricalStockQuotesSoap">
+    <operation name="testGetQuotes">
+      <documentation>This is a test method.</documentation>
+      <input message="s0:testGetQuotesSoapIn" />
+      <output message="s0:testGetQuotesSoapOut" />
+    </operation>
+    <operation name="GetQuotes">
+      <documentation>This method retrieves the historical quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuotesSoapIn" />
+      <output message="s0:GetQuotesSoapOut" />
+    </operation>
+    <operation name="GetLicQuotes">
+      <documentation>This method retrieves the historical quote of the stocks from the world's most popular stock markets. The license code is needed.</documentation>
+      <input message="s0:GetLicQuotesSoapIn" />
+      <output message="s0:GetLicQuotesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="HistoricalStockQuotesHttpGet">
+    <operation name="testGetQuotes">
+      <documentation>This is a test method.</documentation>
+      <input message="s0:testGetQuotesHttpGetIn" />
+      <output message="s0:testGetQuotesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="HistoricalStockQuotesHttpPost">
+    <operation name="testGetQuotes">
+      <documentation>This is a test method.</documentation>
+      <input message="s0:testGetQuotesHttpPostIn" />
+      <output message="s0:testGetQuotesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="HistoricalStockQuotesSoap" type="s0:HistoricalStockQuotesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="testGetQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/testGetQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLicQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetLicQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="HistoricalStockQuotesHttpGet" type="s0:HistoricalStockQuotesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="testGetQuotes">
+      <http:operation location="/testGetQuotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="HistoricalStockQuotesHttpPost" type="s0:HistoricalStockQuotesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="testGetQuotes">
+      <http:operation location="/testGetQuotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="HistoricalStockQuotes">
+    <port name="HistoricalStockQuotesSoap" binding="s0:HistoricalStockQuotesSoap">
+      <soap:address location="http://glkev.webs.innerhost.com/glkev_ws/HistoricalStockQuotes.asmx" />
+    </port>
+    <port name="HistoricalStockQuotesHttpGet" binding="s0:HistoricalStockQuotesHttpGet">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/HistoricalStockQuotes.asmx" />
+    </port>
+    <port name="HistoricalStockQuotesHttpPost" binding="s0:HistoricalStockQuotesHttpPost">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/HistoricalStockQuotes.asmx" />
+    </port>
+  </service>
+</definitions>

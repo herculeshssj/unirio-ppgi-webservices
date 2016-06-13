@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IWhoIsservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetWhoIsRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="ADomainName" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetWhoIsResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:TWhoIsInfo"/>
+  </message>
+  <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="IWhoIs">
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetWhoIs">
+      <input message="tns:GetWhoIsRequest"/>
+      <output message="tns:GetWhoIsResponse"/>
+    </operation>
+  </portType>
+  <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="IWhoIsbinding" type="tns:IWhoIs">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetWhoIs">
+      <soap:operation soapAction="urn:WhoIsIntf-IWhoIs#GetWhoIs" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WhoIsIntf-IWhoIs"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:WhoIsIntf-IWhoIs"/>
+      </output>
+    </operation>
+  </binding>
+  <service xmlns="http://schemas.xmlsoap.org/wsdl/" name="IWhoIsservice">
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="IWhoIsPort" binding="tns:IWhoIsbinding">
+      <soap:address location="http://webservices.matlus.com/scripts/whoiswebservice.dll/soap/IWhoIs"/>
+    </port>
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="80" binding="tns:IWhoIsbinding">
+      <soap:address location=""/>
+    </port>
+  </service>
+</definitions>
+

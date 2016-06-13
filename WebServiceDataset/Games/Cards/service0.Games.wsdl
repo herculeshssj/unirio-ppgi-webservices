@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="CardDealing.ccards" targetNamespace="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" xmlns:tns="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetACardRequest">
+    </message>
+    <message name="GetACardResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetAHandRequest">
+        <part name="NumberOfCards" type="xsd:long"/>
+        <part name="StringSeperator" type="xsd:string"/>
+    </message>
+    <message name="GetAHandResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CardDealing.ccardsPortType">
+        <operation name="GetACard">
+            <input message="tns:GetACardRequest"/>
+            <output message="tns:GetACardResponse"/>
+        </operation>
+        <operation name="GetAHand">
+            <input message="tns:GetAHandRequest"/>
+            <output message="tns:GetAHandResponse"/>
+        </operation>
+    </portType>
+    <binding name="CardDealing.ccardsbinding" type="tns:CardDealing.ccardsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetACard">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml#GetACard"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetAHand">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml#GetAHand"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/CardDealing/CCards.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CardDealing.ccardsService">
+        <port name="CardDealing.ccardsPort" binding="tns:CardDealing.ccardsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/games.cgi"/>
+        </port>
+    </service>
+</definitions>

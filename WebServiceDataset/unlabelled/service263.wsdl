@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://oakleaf.ws/cfr/search" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://oakleaf.ws/cfr/search" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://oakleaf.ws/cfr/search">
+      <s:element name="GetSearchResults">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSearch" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMaxHits" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMinLevel" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMaxLevel" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strTitleId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lngTOCItems" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lngSectItems" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSearchType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchResultsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetSearchResultsSoapIn">
+    <part name="parameters" element="s0:GetSearchResults" />
+  </message>
+  <message name="GetSearchResultsSoapOut">
+    <part name="parameters" element="s0:GetSearchResultsResponse" />
+  </message>
+  <message name="GetSearchResultsHttpGetIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strSearch" type="s:string" />
+    <part name="intMaxHits" type="s:string" />
+    <part name="intMinLevel" type="s:string" />
+    <part name="intMaxLevel" type="s:string" />
+    <part name="strTitleId" type="s:string" />
+    <part name="lngTOCItems" type="s:string" />
+    <part name="lngSectItems" type="s:string" />
+    <part name="strSearchType" type="s:string" />
+  </message>
+  <message name="GetSearchResultsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSearchResultsHttpPostIn">
+    <part name="strConnect" type="s:string" />
+    <part name="strSearch" type="s:string" />
+    <part name="intMaxHits" type="s:string" />
+    <part name="intMinLevel" type="s:string" />
+    <part name="intMaxLevel" type="s:string" />
+    <part name="strTitleId" type="s:string" />
+    <part name="lngTOCItems" type="s:string" />
+    <part name="lngSectItems" type="s:string" />
+    <part name="strSearchType" type="s:string" />
+  </message>
+  <message name="GetSearchResultsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CFRSearchSoap">
+    <operation name="GetSearchResults">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSearchResults Web method accepts the following xsd:string and xsd:int arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; (xsd:string) is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearch&lt;/b&gt; (xsd:string) is a search string that meets the requirement for SQL Server 2000's full-text search service. The default value supplied by the client is &lt;b&gt;satellite NEAR broadcast&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxHits&lt;/b&gt; (xsd:int) is the maximum number of elements returned. Supply any number between &lt;b&gt;1&lt;/b&gt; and &lt;b&gt;100&lt;/b&gt;. Values over 100 are reduced to 100.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMinLevel&lt;/b&gt; (xsd:int) sets the starting level in the TOC hierarchy to include in the response document. The client default is 0 = Titles, so set this value to &lt;b&gt;0&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxLevel&lt;/b&gt; (xsd:int) sets the ending level (2 to 7) in the TOC hierarchy to include in the response document. The client default is 7 = Sections, so set this value to &lt;b&gt;7&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; (xsd:string) is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) An empty value searches all CFR titles, so omit this parameter value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngTOCItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngSectItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearchType&lt;/b&gt; (xsd:string) specifies the document format (&lt;b&gt;XML&lt;/b&gt; or &lt;b&gt;XHTML&lt;/b&gt;). The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSearchResultsSoapIn" />
+      <output message="s0:GetSearchResultsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CFRSearchHttpGet">
+    <operation name="GetSearchResults">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSearchResults Web method accepts the following xsd:string and xsd:int arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; (xsd:string) is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearch&lt;/b&gt; (xsd:string) is a search string that meets the requirement for SQL Server 2000's full-text search service. The default value supplied by the client is &lt;b&gt;satellite NEAR broadcast&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxHits&lt;/b&gt; (xsd:int) is the maximum number of elements returned. Supply any number between &lt;b&gt;1&lt;/b&gt; and &lt;b&gt;100&lt;/b&gt;. Values over 100 are reduced to 100.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMinLevel&lt;/b&gt; (xsd:int) sets the starting level in the TOC hierarchy to include in the response document. The client default is 0 = Titles, so set this value to &lt;b&gt;0&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxLevel&lt;/b&gt; (xsd:int) sets the ending level (2 to 7) in the TOC hierarchy to include in the response document. The client default is 7 = Sections, so set this value to &lt;b&gt;7&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; (xsd:string) is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) An empty value searches all CFR titles, so omit this parameter value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngTOCItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngSectItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearchType&lt;/b&gt; (xsd:string) specifies the document format (&lt;b&gt;XML&lt;/b&gt; or &lt;b&gt;XHTML&lt;/b&gt;). The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSearchResultsHttpGetIn" />
+      <output message="s0:GetSearchResultsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CFRSearchHttpPost">
+    <operation name="GetSearchResults">
+      <documentation>&lt;br /&gt;&lt;p&gt;The GetSearchResults Web method accepts the following xsd:string and xsd:int arguments:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;strConnect&lt;/b&gt; (xsd:string) is an OLEDB connection string for the SQL Server 2000 CFRSQL database. The standard connection string is &lt;b&gt;Provider=SQLOLEDB;Data Source=OAKLEAF-MS7;Initial Catalog=CFRSQL;UID=CFRUser;PWD=charon?123&lt;/b&gt;. CFRUser has dbdatareader permissions for the database.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearch&lt;/b&gt; (xsd:string) is a search string that meets the requirement for SQL Server 2000's full-text search service. The default value supplied by the client is &lt;b&gt;satellite NEAR broadcast&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxHits&lt;/b&gt; (xsd:int) is the maximum number of elements returned. Supply any number between &lt;b&gt;1&lt;/b&gt; and &lt;b&gt;100&lt;/b&gt;. Values over 100 are reduced to 100.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMinLevel&lt;/b&gt; (xsd:int) sets the starting level in the TOC hierarchy to include in the response document. The client default is 0 = Titles, so set this value to &lt;b&gt;0&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;intMaxLevel&lt;/b&gt; (xsd:int) sets the ending level (2 to 7) in the TOC hierarchy to include in the response document. The client default is 7 = Sections, so set this value to &lt;b&gt;7&lt;/b&gt; for testing.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strTitleId&lt;/b&gt; (xsd:string) is a valid CFR title number (1 through 50, except titles 2 and 6, which are reserved.) An empty value searches all CFR titles, so omit this parameter value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngTOCItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;lngSectItems&lt;/b&gt; (xsd:int) is used only by the XHTML version. Supply a &lt;b&gt;0&lt;/b&gt; value.&lt;/li&gt;&lt;li&gt;&lt;b&gt;strSearchType&lt;/b&gt; (xsd:string) specifies the document format (&lt;b&gt;XML&lt;/b&gt; or &lt;b&gt;XHTML&lt;/b&gt;). The default is XML.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;p&gt;XML Web service, documentation, and source code Copyright &amp;#169; 2001, 2002 by OakLeaf Systems and Roger Jennings. All rights reserved.&lt;/p&gt;</documentation>
+      <input message="s0:GetSearchResultsHttpPostIn" />
+      <output message="s0:GetSearchResultsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CFRSearchSoap" type="s0:CFRSearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSearchResults">
+      <soap:operation soapAction="http://oakleaf.ws/cfr/search/GetSearchResults" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRSearchHttpGet" type="s0:CFRSearchHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSearchResults">
+      <http:operation location="/GetSearchResults" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CFRSearchHttpPost" type="s0:CFRSearchHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSearchResults">
+      <http:operation location="/GetSearchResults" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CFRSearch">
+    <documentation>&lt;p&gt;&lt;a href='http://www.amazon.com/roger-jennings'&gt;&lt;img src='http://www.oakleaf.ws/BookSmall.jpg' border='0' align='right' hspace='8' vspace='0' /&gt;&lt;/a&gt;CFRSearchWS is one of three document/literal ASP.NET XML Web services for OakLeaf Systems' Code of Federal Regulations (CFR) demonstration/development database. The 1-GB SQL Server 2000 database (CFRSQL) contains the entire text of the 204 volumes of the CFR as individual structured XML documents, which range in size from about 1,000 to more than 500,000 characters. A Visual Basic .NET client handles the transformation from the U.S. Government Printing Office's unstructured SGML to well-formed XML documents.Chapter 9, "Designing the Presentation Layer for XML Web Services," of &lt;i&gt;&lt;a href='http://shop.barnesandnoble.com/booksearch/isbnInquiry.asp?isbn=0072223693'&gt;Visual Basic .NET XML Web Services Developer's Guide&lt;/a&gt;&lt;/i&gt; describes the ASP.NET client consumer of the CFR XML Web services.&lt;/p&gt;&lt;p&gt;CFRSearchWS executes a Transact-SQL query to return a list of documents that meet an SQL Server full-text search criterion at levels you specify in the CFR hierarchy. You can specify XML or XHTML as the format for the response document. The XHTML transformation is what you see when you click the Search Now button on the OakLeaf CFR Web site's &lt;a href='http://www.oakleaf.ws/cfr/search.aspx'&gt;Full-text Search&lt;/a&gt; page.&lt;/p&gt;&lt;p&gt;Click &lt;a href='http://www.oakleaf.ws/cfr/about.aspx'&gt;here&lt;/a&gt; for further details about the XML and XHTML response document formats and click &lt;a href='http://www.fawcette.com/vsm/2001_12/online/online_eprods/sqlserver_rjennings/'&gt;here&lt;/a&gt; to read an article on the full-text search features of the CFRSQL database. Click &lt;a href='http://www.oakleaf.ws/cfr/CFRSearch.xml'&gt;here&lt;/a&gt; to view a typical XML response document and &lt;a href='http://www.oakleaf.ws/cfr/CFRSearch.xsd'&gt;here&lt;/a&gt; for its XSD schema.&lt;/p&gt;&lt;p&gt;&lt;b&gt;The OakLeaf Systems CFR XML Web services are for demonstration/development use only and do not return official content of the U.S. CFR. Click &lt;a href='http://www.access.gpo.gov/ecfr/'&gt;here&lt;/a&gt; to go to the official U.S. GPO/NARA eCFR Beta Test Site.&lt;/b&gt;&lt;/p&gt;</documentation>
+    <port name="CFRSearchSoap" binding="s0:CFRSearchSoap">
+      <soap:address location="http://www.oakleaf.ws/cfrsearchws/cfrsearchws.asmx" />
+    </port>
+    <port name="CFRSearchHttpGet" binding="s0:CFRSearchHttpGet">
+      <http:address location="http://www.oakleaf.ws/cfrsearchws/cfrsearchws.asmx" />
+    </port>
+    <port name="CFRSearchHttpPost" binding="s0:CFRSearchHttpPost">
+      <http:address location="http://www.oakleaf.ws/cfrsearchws/cfrsearchws.asmx" />
+    </port>
+  </service>
+</definitions>

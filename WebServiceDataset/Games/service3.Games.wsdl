@@ -1,0 +1,68 @@
+<?xml version="1.0" ?>
+
+<definitions name="DiceThrowing.cdice" targetNamespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" xmlns:tns="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="D6DiceRollRequest">
+    </message>
+    <message name="D6DiceRollResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="D10DiceRollRequest">
+    </message>
+    <message name="D10DiceRollResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <message name="D100DiceRollRequest">
+    </message>
+    <message name="D100DiceRollResponse">
+        <part name="Return" type="xsd:long"/>
+    </message>
+    <portType name="DiceThrowing.cdicePortType">
+        <operation name="D6DiceRoll">
+            <input message="tns:D6DiceRollRequest"/>
+            <output message="tns:D6DiceRollResponse"/>
+        </operation>
+        <operation name="D10DiceRoll">
+            <input message="tns:D10DiceRollRequest"/>
+            <output message="tns:D10DiceRollResponse"/>
+        </operation>
+        <operation name="D100DiceRoll">
+            <input message="tns:D100DiceRollRequest"/>
+            <output message="tns:D100DiceRollResponse"/>
+        </operation>
+    </portType>
+    <binding name="DiceThrowing.cdicebinding" type="tns:DiceThrowing.cdicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="D6DiceRoll">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml#D6DiceRoll"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="D10DiceRoll">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml#D10DiceRoll"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="D100DiceRoll">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml#D100DiceRoll"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/xmlone/DiceThrowing/CDice.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="DiceThrowing.cdiceService">
+        <port name="DiceThrowing.cdicePort" binding="tns:DiceThrowing.cdicebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/games.cgi"/>
+        </port>
+    </service>
+</definitions>

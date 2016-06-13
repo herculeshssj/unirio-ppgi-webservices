@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<definitions name="GeneratePassword.generatepassword" targetNamespace="http://sal006.salnetwork.com:83/lucin/GeneratePassword/GeneratePassword.xml" xmlns:tns="http://sal006.salnetwork.com:83/lucin/GeneratePassword/GeneratePassword.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="GetPassKeyRequest">
+    </message>
+    <message name="GetPassKeyResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="GeneratePassword.generatepasswordPortType">
+        <operation name="GetPassKey">
+            <input message="tns:GetPassKeyRequest"/>
+            <output message="tns:GetPassKeyResponse"/>
+        </operation>
+    </portType>
+    <binding name="GeneratePassword.generatepasswordbinding" type="tns:GeneratePassword.generatepasswordPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="GetPassKey">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/lucin/GeneratePassword/GeneratePassword.xml#GetPassKey"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/GeneratePassword/GeneratePassword.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/lucin/GeneratePassword/GeneratePassword.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="GeneratePassword.generatepasswordService">
+        <port name="GeneratePassword.generatepasswordPort" binding="tns:GeneratePassword.generatepasswordbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/password.cgi"/>
+        </port>
+    </service>
+</definitions>

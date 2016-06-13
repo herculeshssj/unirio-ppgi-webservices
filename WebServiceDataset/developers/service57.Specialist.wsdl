@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotsite.spb.ru/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotsite.spb.ru/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotsite.spb.ru/webservices/">
+      <s:element name="GetNotifications">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s0:User" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastAccessTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICQ" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNotificationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotificationsResult" type="s0:ArrayOfNotification" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNotification">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Notification" nillable="true" type="s0:Notification" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Notification">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="To" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetNotificationsSoapIn">
+    <part name="parameters" element="s0:GetNotifications" />
+  </message>
+  <message name="GetNotificationsSoapOut">
+    <part name="parameters" element="s0:GetNotificationsResponse" />
+  </message>
+  <portType name="NotificatorServiceSoap">
+    <operation name="GetNotifications">
+      <documentation>Gets fresh notifications from the server</documentation>
+      <input message="s0:GetNotificationsSoapIn" />
+      <output message="s0:GetNotificationsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="NotificatorServiceHttpGet" />
+  <portType name="NotificatorServiceHttpPost" />
+  <binding name="NotificatorServiceSoap" type="s0:NotificatorServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetNotifications">
+      <soap:operation soapAction="http://www.dotsite.spb.ru/webservices/GetNotifications" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NotificatorServiceHttpGet" type="s0:NotificatorServiceHttpGet">
+    <http:binding verb="GET" />
+  </binding>
+  <binding name="NotificatorServiceHttpPost" type="s0:NotificatorServiceHttpPost">
+    <http:binding verb="POST" />
+  </binding>
+  <service name="NotificatorService">
+    <port name="NotificatorServiceSoap" binding="s0:NotificatorServiceSoap">
+      <soap:address location="http://www.dotsite.spb.ru/webservices/notificatorservice.asmx" />
+    </port>
+    <port name="NotificatorServiceHttpGet" binding="s0:NotificatorServiceHttpGet">
+      <http:address location="http://www.dotsite.spb.ru/webservices/notificatorservice.asmx" />
+    </port>
+    <port name="NotificatorServiceHttpPost" binding="s0:NotificatorServiceHttpPost">
+      <http:address location="http://www.dotsite.spb.ru/webservices/notificatorservice.asmx" />
+    </port>
+  </service>
+</definitions>

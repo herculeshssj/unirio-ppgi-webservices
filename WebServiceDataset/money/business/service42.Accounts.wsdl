@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://gbx2.brinkster.net/WebServiceGustavoPares/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://gbx2.brinkster.net/WebServiceGustavoPares/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://gbx2.brinkster.net/WebServiceGustavoPares/">
+      <s:element name="acidTestRatio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="currentAssets" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Inventories" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="currentLiabilities" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="acidTestRatioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="acidTestRatioResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="averageCollectionPeriod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accountsReceivable" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreditSales" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="numberDays" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="averageCollectionPeriodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="averageCollectionPeriodResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="inventoryTurnover">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="costOfGoodsSold" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Inventory" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="inventoryTurnoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="inventoryTurnoverResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="totalAssetTurnover">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sales" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalAssets" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="totalAssetTurnoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="totalAssetTurnoverResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="debtRatio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="totalDebt" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalAssets" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="debtRatioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="debtRatioResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="returnOnEquity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="netIncome" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="commonEquity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="returnOnEquityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="returnOnEquityResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="accountsReceivableTurnover">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="creditSales" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="accountsReceivable" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="accountsReceivableTurnoverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="accountsReceivableTurnoverResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+      <s:element name="anyType" nillable="true" />
+    </s:schema>
+  </types>
+  <message name="acidTestRatioSoapIn">
+    <part name="parameters" element="s0:acidTestRatio" />
+  </message>
+  <message name="acidTestRatioSoapOut">
+    <part name="parameters" element="s0:acidTestRatioResponse" />
+  </message>
+  <message name="averageCollectionPeriodSoapIn">
+    <part name="parameters" element="s0:averageCollectionPeriod" />
+  </message>
+  <message name="averageCollectionPeriodSoapOut">
+    <part name="parameters" element="s0:averageCollectionPeriodResponse" />
+  </message>
+  <message name="inventoryTurnoverSoapIn">
+    <part name="parameters" element="s0:inventoryTurnover" />
+  </message>
+  <message name="inventoryTurnoverSoapOut">
+    <part name="parameters" element="s0:inventoryTurnoverResponse" />
+  </message>
+  <message name="totalAssetTurnoverSoapIn">
+    <part name="parameters" element="s0:totalAssetTurnover" />
+  </message>
+  <message name="totalAssetTurnoverSoapOut">
+    <part name="parameters" element="s0:totalAssetTurnoverResponse" />
+  </message>
+  <message name="debtRatioSoapIn">
+    <part name="parameters" element="s0:debtRatio" />
+  </message>
+  <message name="debtRatioSoapOut">
+    <part name="parameters" element="s0:debtRatioResponse" />
+  </message>
+  <message name="returnOnEquitySoapIn">
+    <part name="parameters" element="s0:returnOnEquity" />
+  </message>
+  <message name="returnOnEquitySoapOut">
+    <part name="parameters" element="s0:returnOnEquityResponse" />
+  </message>
+  <message name="accountsReceivableTurnoverSoapIn">
+    <part name="parameters" element="s0:accountsReceivableTurnover" />
+  </message>
+  <message name="accountsReceivableTurnoverSoapOut">
+    <part name="parameters" element="s0:accountsReceivableTurnoverResponse" />
+  </message>
+  <message name="acidTestRatioHttpGetIn">
+    <part name="currentAssets" type="s:string" />
+    <part name="Inventories" type="s:string" />
+    <part name="currentLiabilities" type="s:string" />
+  </message>
+  <message name="acidTestRatioHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="averageCollectionPeriodHttpGetIn">
+    <part name="accountsReceivable" type="s:string" />
+    <part name="CreditSales" type="s:string" />
+    <part name="numberDays" type="s:string" />
+  </message>
+  <message name="averageCollectionPeriodHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="inventoryTurnoverHttpGetIn">
+    <part name="costOfGoodsSold" type="s:string" />
+    <part name="Inventory" type="s:string" />
+  </message>
+  <message name="inventoryTurnoverHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="totalAssetTurnoverHttpGetIn">
+    <part name="Sales" type="s:string" />
+    <part name="totalAssets" type="s:string" />
+  </message>
+  <message name="totalAssetTurnoverHttpGetOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <message name="debtRatioHttpGetIn">
+    <part name="totalDebt" type="s:string" />
+    <part name="totalAssets" type="s:string" />
+  </message>
+  <message name="debtRatioHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="returnOnEquityHttpGetIn">
+    <part name="netIncome" type="s:string" />
+    <part name="commonEquity" type="s:string" />
+  </message>
+  <message name="returnOnEquityHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="accountsReceivableTurnoverHttpGetIn">
+    <part name="creditSales" type="s:string" />
+    <part name="accountsReceivable" type="s:string" />
+  </message>
+  <message name="accountsReceivableTurnoverHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="acidTestRatioHttpPostIn">
+    <part name="currentAssets" type="s:string" />
+    <part name="Inventories" type="s:string" />
+    <part name="currentLiabilities" type="s:string" />
+  </message>
+  <message name="acidTestRatioHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="averageCollectionPeriodHttpPostIn">
+    <part name="accountsReceivable" type="s:string" />
+    <part name="CreditSales" type="s:string" />
+    <part name="numberDays" type="s:string" />
+  </message>
+  <message name="averageCollectionPeriodHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="inventoryTurnoverHttpPostIn">
+    <part name="costOfGoodsSold" type="s:string" />
+    <part name="Inventory" type="s:string" />
+  </message>
+  <message name="inventoryTurnoverHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="totalAssetTurnoverHttpPostIn">
+    <part name="Sales" type="s:string" />
+    <part name="totalAssets" type="s:string" />
+  </message>
+  <message name="totalAssetTurnoverHttpPostOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <message name="debtRatioHttpPostIn">
+    <part name="totalDebt" type="s:string" />
+    <part name="totalAssets" type="s:string" />
+  </message>
+  <message name="debtRatioHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="returnOnEquityHttpPostIn">
+    <part name="netIncome" type="s:string" />
+    <part name="commonEquity" type="s:string" />
+  </message>
+  <message name="returnOnEquityHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="accountsReceivableTurnoverHttpPostIn">
+    <part name="creditSales" type="s:string" />
+    <part name="accountsReceivable" type="s:string" />
+  </message>
+  <message name="accountsReceivableTurnoverHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="RatiosSoap">
+    <operation name="acidTestRatio">
+      <input message="s0:acidTestRatioSoapIn" />
+      <output message="s0:acidTestRatioSoapOut" />
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <input message="s0:averageCollectionPeriodSoapIn" />
+      <output message="s0:averageCollectionPeriodSoapOut" />
+    </operation>
+    <operation name="inventoryTurnover">
+      <input message="s0:inventoryTurnoverSoapIn" />
+      <output message="s0:inventoryTurnoverSoapOut" />
+    </operation>
+    <operation name="totalAssetTurnover">
+      <input message="s0:totalAssetTurnoverSoapIn" />
+      <output message="s0:totalAssetTurnoverSoapOut" />
+    </operation>
+    <operation name="debtRatio">
+      <input message="s0:debtRatioSoapIn" />
+      <output message="s0:debtRatioSoapOut" />
+    </operation>
+    <operation name="returnOnEquity">
+      <input message="s0:returnOnEquitySoapIn" />
+      <output message="s0:returnOnEquitySoapOut" />
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <input message="s0:accountsReceivableTurnoverSoapIn" />
+      <output message="s0:accountsReceivableTurnoverSoapOut" />
+    </operation>
+  </portType>
+  <portType name="RatiosHttpGet">
+    <operation name="acidTestRatio">
+      <input message="s0:acidTestRatioHttpGetIn" />
+      <output message="s0:acidTestRatioHttpGetOut" />
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <input message="s0:averageCollectionPeriodHttpGetIn" />
+      <output message="s0:averageCollectionPeriodHttpGetOut" />
+    </operation>
+    <operation name="inventoryTurnover">
+      <input message="s0:inventoryTurnoverHttpGetIn" />
+      <output message="s0:inventoryTurnoverHttpGetOut" />
+    </operation>
+    <operation name="totalAssetTurnover">
+      <input message="s0:totalAssetTurnoverHttpGetIn" />
+      <output message="s0:totalAssetTurnoverHttpGetOut" />
+    </operation>
+    <operation name="debtRatio">
+      <input message="s0:debtRatioHttpGetIn" />
+      <output message="s0:debtRatioHttpGetOut" />
+    </operation>
+    <operation name="returnOnEquity">
+      <input message="s0:returnOnEquityHttpGetIn" />
+      <output message="s0:returnOnEquityHttpGetOut" />
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <input message="s0:accountsReceivableTurnoverHttpGetIn" />
+      <output message="s0:accountsReceivableTurnoverHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="RatiosHttpPost">
+    <operation name="acidTestRatio">
+      <input message="s0:acidTestRatioHttpPostIn" />
+      <output message="s0:acidTestRatioHttpPostOut" />
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <input message="s0:averageCollectionPeriodHttpPostIn" />
+      <output message="s0:averageCollectionPeriodHttpPostOut" />
+    </operation>
+    <operation name="inventoryTurnover">
+      <input message="s0:inventoryTurnoverHttpPostIn" />
+      <output message="s0:inventoryTurnoverHttpPostOut" />
+    </operation>
+    <operation name="totalAssetTurnover">
+      <input message="s0:totalAssetTurnoverHttpPostIn" />
+      <output message="s0:totalAssetTurnoverHttpPostOut" />
+    </operation>
+    <operation name="debtRatio">
+      <input message="s0:debtRatioHttpPostIn" />
+      <output message="s0:debtRatioHttpPostOut" />
+    </operation>
+    <operation name="returnOnEquity">
+      <input message="s0:returnOnEquityHttpPostIn" />
+      <output message="s0:returnOnEquityHttpPostOut" />
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <input message="s0:accountsReceivableTurnoverHttpPostIn" />
+      <output message="s0:accountsReceivableTurnoverHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="RatiosSoap" type="s0:RatiosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="acidTestRatio">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/acidTestRatio" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/averageCollectionPeriod" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="inventoryTurnover">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/inventoryTurnover" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="totalAssetTurnover">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/totalAssetTurnover" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="debtRatio">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/debtRatio" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="returnOnEquity">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/returnOnEquity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/accountsReceivableTurnover" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RatiosHttpGet" type="s0:RatiosHttpGet">
+    <http:binding verb="GET" />
+    <operation name="acidTestRatio">
+      <http:operation location="/acidTestRatio" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <http:operation location="/averageCollectionPeriod" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="inventoryTurnover">
+      <http:operation location="/inventoryTurnover" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="totalAssetTurnover">
+      <http:operation location="/totalAssetTurnover" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="debtRatio">
+      <http:operation location="/debtRatio" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="returnOnEquity">
+      <http:operation location="/returnOnEquity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <http:operation location="/accountsReceivableTurnover" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="RatiosHttpPost" type="s0:RatiosHttpPost">
+    <http:binding verb="POST" />
+    <operation name="acidTestRatio">
+      <http:operation location="/acidTestRatio" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="averageCollectionPeriod">
+      <http:operation location="/averageCollectionPeriod" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="inventoryTurnover">
+      <http:operation location="/inventoryTurnover" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="totalAssetTurnover">
+      <http:operation location="/totalAssetTurnover" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="debtRatio">
+      <http:operation location="/debtRatio" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="returnOnEquity">
+      <http:operation location="/returnOnEquity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="accountsReceivableTurnover">
+      <http:operation location="/accountsReceivableTurnover" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Ratios">
+    <port name="RatiosSoap" binding="s0:RatiosSoap">
+      <soap:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Ratios.asmx" />
+    </port>
+    <port name="RatiosHttpGet" binding="s0:RatiosHttpGet">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Ratios.asmx" />
+    </port>
+    <port name="RatiosHttpPost" binding="s0:RatiosHttpPost">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/Ratios.asmx" />
+    </port>
+  </service>
+</definitions>

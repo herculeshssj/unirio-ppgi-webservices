@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IBorlandChessservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="XML_GetNextMoveRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="Position" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="WhiteMovesNext" type="xs:boolean"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="SearchDepth" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="XML_GetNextMoveResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:string"/>
+  </message>
+  <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="IBorlandChess">
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="XML_GetNextMove">
+      <input message="tns:XML_GetNextMoveRequest"/>
+      <output message="tns:XML_GetNextMoveResponse"/>
+    </operation>
+  </portType>
+  <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="IBorlandChessbinding" type="tns:IBorlandChess">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="XML_GetNextMove">
+      <soap:operation soapAction="urn:BorlandChess-IBorlandChess#XML_GetNextMove" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandChess-IBorlandChess"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandChess-IBorlandChess"/>
+      </output>
+    </operation>
+  </binding>
+  <service xmlns="http://schemas.xmlsoap.org/wsdl/" name="IBorlandChessservice">
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="IBorlandChessPort" binding="tns:IBorlandChessbinding">
+      <soap:address location="http://www.danmarinescu.com/WebServices/ChessCGIServer.exe/soap/IBorlandChess"/>
+    </port>
+  </service>
+</definitions>
+

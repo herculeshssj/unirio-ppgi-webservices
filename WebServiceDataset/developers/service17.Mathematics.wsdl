@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="_1_AddNewLayer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfNeurons" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="NumberOfInputs" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="ActivationFunction" type="s0:AFTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AFTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="LogisticFunction" />
+          <s:enumeration value="HyperbolicTangentFunction" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="_1_AddNewLayerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_1_AddNewLayerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_2_AddTrainingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrainingVector" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesiredOutputVector" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="_2_AddTrainingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="_2_AddTrainingDataResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="TrainingVector" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesiredOutputVector" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_3_TrainNetwork">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Iterations" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ErrorObjective" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="LearningRate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MomentumConstant" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_3_TrainNetworkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Iterations" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ErrorObjective" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_4_CalculateOutput">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Pattern" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="_4_CalculateOutputResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Pattern" type="s0:ArrayOfDouble" />
+            <s:element minOccurs="0" maxOccurs="1" name="Output" type="s0:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNeuron">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Layer" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="NeuronNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNeuronResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNeuronResult" type="s0:NeuronClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NeuronClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="InputWeights" type="s0:ArrayOfDouble" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeltaWeight" type="s0:ArrayOfDouble" />
+          <s:element minOccurs="1" maxOccurs="1" name="Output" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DerivatedOutput" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocalGradient" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActivationFunction" type="s0:ActivationFunctionClass" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ActivationFunctionClass">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:AFTypes" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="NeuronClass" nillable="true" type="s0:NeuronClass" />
+    </s:schema>
+  </types>
+  <message name="_1_AddNewLayerSoapIn">
+    <part name="parameters" element="s0:_1_AddNewLayer" />
+  </message>
+  <message name="_1_AddNewLayerSoapOut">
+    <part name="parameters" element="s0:_1_AddNewLayerResponse" />
+  </message>
+  <message name="_2_AddTrainingDataSoapIn">
+    <part name="parameters" element="s0:_2_AddTrainingData" />
+  </message>
+  <message name="_2_AddTrainingDataSoapOut">
+    <part name="parameters" element="s0:_2_AddTrainingDataResponse" />
+  </message>
+  <message name="_3_TrainNetworkSoapIn">
+    <part name="parameters" element="s0:_3_TrainNetwork" />
+  </message>
+  <message name="_3_TrainNetworkSoapOut">
+    <part name="parameters" element="s0:_3_TrainNetworkResponse" />
+  </message>
+  <message name="_4_CalculateOutputSoapIn">
+    <part name="parameters" element="s0:_4_CalculateOutput" />
+  </message>
+  <message name="_4_CalculateOutputSoapOut">
+    <part name="parameters" element="s0:_4_CalculateOutputResponse" />
+  </message>
+  <message name="GetNeuronSoapIn">
+    <part name="parameters" element="s0:GetNeuron" />
+  </message>
+  <message name="GetNeuronSoapOut">
+    <part name="parameters" element="s0:GetNeuronResponse" />
+  </message>
+  <message name="_1_AddNewLayerHttpGetIn">
+    <part name="NumberOfNeurons" type="s:string" />
+    <part name="NumberOfInputs" type="s:string" />
+    <part name="ActivationFunction" type="s:string" />
+  </message>
+  <message name="_1_AddNewLayerHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetNeuronHttpGetIn">
+    <part name="Layer" type="s:string" />
+    <part name="NeuronNumber" type="s:string" />
+  </message>
+  <message name="GetNeuronHttpGetOut">
+    <part name="Body" element="s0:NeuronClass" />
+  </message>
+  <message name="_1_AddNewLayerHttpPostIn">
+    <part name="NumberOfNeurons" type="s:string" />
+    <part name="NumberOfInputs" type="s:string" />
+    <part name="ActivationFunction" type="s:string" />
+  </message>
+  <message name="_1_AddNewLayerHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetNeuronHttpPostIn">
+    <part name="Layer" type="s:string" />
+    <part name="NeuronNumber" type="s:string" />
+  </message>
+  <message name="GetNeuronHttpPostOut">
+    <part name="Body" element="s0:NeuronClass" />
+  </message>
+  <portType name="BackPropSoap">
+    <operation name="_1_AddNewLayer">
+      <documentation>This function is used for the creation of the neural network. The number of inputs is only interpreted the first time this function is called, then it's ignored.</documentation>
+      <input message="s0:_1_AddNewLayerSoapIn" />
+      <output message="s0:_1_AddNewLayerSoapOut" />
+    </operation>
+    <operation name="_2_AddTrainingData">
+      <documentation>This subroutine allows the user to add a new column of data to the network.</documentation>
+      <input message="s0:_2_AddTrainingDataSoapIn" />
+      <output message="s0:_2_AddTrainingDataSoapOut" />
+    </operation>
+    <operation name="_3_TrainNetwork">
+      <documentation>This function is used to train the neural network based on the data provided.</documentation>
+      <input message="s0:_3_TrainNetworkSoapIn" />
+      <output message="s0:_3_TrainNetworkSoapOut" />
+    </operation>
+    <operation name="_4_CalculateOutput">
+      <documentation>Once the network is trained, it can be used with new data</documentation>
+      <input message="s0:_4_CalculateOutputSoapIn" />
+      <output message="s0:_4_CalculateOutputSoapOut" />
+    </operation>
+    <operation name="GetNeuron">
+      <input message="s0:GetNeuronSoapIn" />
+      <output message="s0:GetNeuronSoapOut" />
+    </operation>
+  </portType>
+  <portType name="BackPropHttpGet">
+    <operation name="_1_AddNewLayer">
+      <documentation>This function is used for the creation of the neural network. The number of inputs is only interpreted the first time this function is called, then it's ignored.</documentation>
+      <input message="s0:_1_AddNewLayerHttpGetIn" />
+      <output message="s0:_1_AddNewLayerHttpGetOut" />
+    </operation>
+    <operation name="GetNeuron">
+      <input message="s0:GetNeuronHttpGetIn" />
+      <output message="s0:GetNeuronHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="BackPropHttpPost">
+    <operation name="_1_AddNewLayer">
+      <documentation>This function is used for the creation of the neural network. The number of inputs is only interpreted the first time this function is called, then it's ignored.</documentation>
+      <input message="s0:_1_AddNewLayerHttpPostIn" />
+      <output message="s0:_1_AddNewLayerHttpPostOut" />
+    </operation>
+    <operation name="GetNeuron">
+      <input message="s0:GetNeuronHttpPostIn" />
+      <output message="s0:GetNeuronHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="BackPropSoap" type="s0:BackPropSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="_1_AddNewLayer">
+      <soap:operation soapAction="http://tempuri.org/_1_AddNewLayer" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_2_AddTrainingData">
+      <soap:operation soapAction="http://tempuri.org/_2_AddTrainingData" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_3_TrainNetwork">
+      <soap:operation soapAction="http://tempuri.org/_3_TrainNetwork" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="_4_CalculateOutput">
+      <soap:operation soapAction="http://tempuri.org/_4_CalculateOutput" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNeuron">
+      <soap:operation soapAction="http://tempuri.org/GetNeuron" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BackPropHttpGet" type="s0:BackPropHttpGet">
+    <http:binding verb="GET" />
+    <operation name="_1_AddNewLayer">
+      <http:operation location="/_1_AddNewLayer" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNeuron">
+      <http:operation location="/GetNeuron" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="BackPropHttpPost" type="s0:BackPropHttpPost">
+    <http:binding verb="POST" />
+    <operation name="_1_AddNewLayer">
+      <http:operation location="/_1_AddNewLayer" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNeuron">
+      <http:operation location="/GetNeuron" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="BackProp">
+    <port name="BackPropSoap" binding="s0:BackPropSoap">
+      <soap:address location="http://botero.www3.dotnetplayground.com/backprop.asmx" />
+    </port>
+    <port name="BackPropHttpGet" binding="s0:BackPropHttpGet">
+      <http:address location="http://botero.www3.dotnetplayground.com/backprop.asmx" />
+    </port>
+    <port name="BackPropHttpPost" binding="s0:BackPropHttpPost">
+      <http:address location="http://botero.www3.dotnetplayground.com/backprop.asmx" />
+    </port>
+  </service>
+</definitions>

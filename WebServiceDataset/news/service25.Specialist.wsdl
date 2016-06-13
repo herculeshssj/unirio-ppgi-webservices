@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated 11/07/01 by Microsoft SOAP Toolkit WSDL File Generator, Version 1.02.813.0 -->
+<definitions name="Report" targetNamespace="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:wsdlns="http://www.coldrooster.com/ssf/2001/11/wsdl/" xmlns:typens="http://www.coldrooster.com/ssf/2001/11/type" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="http://www.coldrooster.com/ssf/2001/11/type" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+		</schema>
+	</types>
+	<message name="Report.GetUsageStats">
+		<part name="sKey" type="xsd:string"/>
+		<part name="dWeekStarting" type="xsd:dateTime"/>
+	</message>
+	<message name="Report.GetUsageStatsResponse">
+		<part name="Result" type="xsd:string"/>
+	</message>
+	<message name="Report.GetURIStats">
+		<part name="sKey" type="xsd:string"/>
+		<part name="dWeekStarting" type="xsd:dateTime"/>
+	</message>
+	<message name="Report.GetURIStatsResponse">
+		<part name="Result" type="xsd:string"/>
+	</message>
+	<portType name="ReportSoapPort">
+		<operation name="GetUsageStats" parameterOrder="sKey dWeekStarting">
+			<input message="wsdlns:Report.GetUsageStats"/>
+			<output message="wsdlns:Report.GetUsageStatsResponse"/>
+		</operation>
+		<operation name="GetURIStats" parameterOrder="sKey dWeekStarting">
+			<input message="wsdlns:Report.GetURIStats"/>
+			<output message="wsdlns:Report.GetURIStatsResponse"/>
+		</operation>
+	</portType>
+	<binding name="ReportSoapBinding" type="wsdlns:ReportSoapPort">
+		<stk:binding preferredEncoding="UTF-8"/>
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetUsageStats">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Report.GetUsageStats"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetURIStats">
+			<soap:operation soapAction="http://www.coldrooster.com/ssf/2001/11/action/Report.GetURIStats"/>
+			<input>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://www.coldrooster.com/ssf/2001/11/message/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="Report">
+		<port name="ReportSoapPort" binding="wsdlns:ReportSoapBinding">
+			<soap:address location="http://coldrooster.com/SSF/Report.asp"/>
+		</port>
+	</service>
+</definitions>

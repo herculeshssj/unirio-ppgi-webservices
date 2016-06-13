@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ITeeChartservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="urn:TeeChartSOAPIntf">
+  <types>
+    <xs:schema targetNamespace="urn:TeeChartSOAPIntf" xmlns="urn:TeeChartSOAPIntf">
+      <xs:complexType name="TDoubleArray">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+            <xs:sequence/>
+            <xs:attribute ref="soapenc:arrayType" n1:arrayType="xs:double[]" xmlns:n1="http://schemas.xmlsoap.org/wsdl/"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="ChartURLRequest">
+    <part name="ChartStyle" type="xs:string"/>
+    <part name="Width" type="xs:int"/>
+    <part name="Height" type="xs:int"/>
+    <part name="Title" type="xs:string"/>
+    <part name="View3D" type="xs:boolean"/>
+    <part name="ColorEach" type="xs:boolean"/>
+    <part name="Data" type="ns1:TDoubleArray"/>
+  </message>
+  <message name="ChartURLResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="ChartFormatURLRequest">
+    <part name="ChartStyle" type="xs:string"/>
+    <part name="Width" type="xs:int"/>
+    <part name="Height" type="xs:int"/>
+    <part name="GraphicFormat" type="xs:string"/>
+    <part name="Title" type="xs:string"/>
+    <part name="View3D" type="xs:boolean"/>
+    <part name="ColorEach" type="xs:boolean"/>
+    <part name="Data" type="ns1:TDoubleArray"/>
+  </message>
+  <message name="ChartFormatURLResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="ITeeChart">
+    <operation name="ChartURL">
+      <input message="tns:ChartURLRequest"/>
+      <output message="tns:ChartURLResponse"/>
+    </operation>
+    <operation name="ChartFormatURL">
+      <input message="tns:ChartFormatURLRequest"/>
+      <output message="tns:ChartFormatURLResponse"/>
+    </operation>
+  </portType>
+  <binding name="ITeeChartbinding" type="tns:ITeeChart">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="ChartURL">
+      <soap:operation soapAction="urn:TeeChartSOAPIntf-ITeeChart#ChartURL" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TeeChartSOAPIntf-ITeeChart"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TeeChartSOAPIntf-ITeeChart"/>
+      </output>
+    </operation>
+    <operation name="ChartFormatURL">
+      <soap:operation soapAction="urn:TeeChartSOAPIntf-ITeeChart#ChartFormatURL" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TeeChartSOAPIntf-ITeeChart"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:TeeChartSOAPIntf-ITeeChart"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ITeeChartservice">
+    <port name="ITeeChartPort" binding="tns:ITeeChartbinding">
+      <soap:address location="http://www.berneda.com/scripts/TeeChartSOAP.exe/soap/ITeeChart"/>
+    </port>
+  </service>
+</definitions>
+

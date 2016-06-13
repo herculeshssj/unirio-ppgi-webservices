@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="GetICD9Code">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICD10Code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD9CodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICD9CodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD10Code">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICD9Code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD10CodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICD10CodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetICD9CodeSoapIn">
+    <part name="parameters" element="s0:GetICD9Code" />
+  </message>
+  <message name="GetICD9CodeSoapOut">
+    <part name="parameters" element="s0:GetICD9CodeResponse" />
+  </message>
+  <message name="GetICD10CodeSoapIn">
+    <part name="parameters" element="s0:GetICD10Code" />
+  </message>
+  <message name="GetICD10CodeSoapOut">
+    <part name="parameters" element="s0:GetICD10CodeResponse" />
+  </message>
+  <message name="GetICD9CodeHttpGetIn">
+    <part name="ICD10Code" type="s:string" />
+  </message>
+  <message name="GetICD9CodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD10CodeHttpGetIn">
+    <part name="ICD9Code" type="s:string" />
+  </message>
+  <message name="GetICD10CodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD9CodeHttpPostIn">
+    <part name="ICD10Code" type="s:string" />
+  </message>
+  <message name="GetICD9CodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD10CodeHttpPostIn">
+    <part name="ICD9Code" type="s:string" />
+  </message>
+  <message name="GetICD10CodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ICD9ToICD10Soap">
+    <operation name="GetICD9Code">
+      <documentation>Get ICD-9-CM code for ICD10 code</documentation>
+      <input message="s0:GetICD9CodeSoapIn" />
+      <output message="s0:GetICD9CodeSoapOut" />
+    </operation>
+    <operation name="GetICD10Code">
+      <documentation>Get ICD-10-CM code for ICD 9 code</documentation>
+      <input message="s0:GetICD10CodeSoapIn" />
+      <output message="s0:GetICD10CodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ICD9ToICD10HttpGet">
+    <operation name="GetICD9Code">
+      <documentation>Get ICD-9-CM code for ICD10 code</documentation>
+      <input message="s0:GetICD9CodeHttpGetIn" />
+      <output message="s0:GetICD9CodeHttpGetOut" />
+    </operation>
+    <operation name="GetICD10Code">
+      <documentation>Get ICD-10-CM code for ICD 9 code</documentation>
+      <input message="s0:GetICD10CodeHttpGetIn" />
+      <output message="s0:GetICD10CodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ICD9ToICD10HttpPost">
+    <operation name="GetICD9Code">
+      <documentation>Get ICD-9-CM code for ICD10 code</documentation>
+      <input message="s0:GetICD9CodeHttpPostIn" />
+      <output message="s0:GetICD9CodeHttpPostOut" />
+    </operation>
+    <operation name="GetICD10Code">
+      <documentation>Get ICD-10-CM code for ICD 9 code</documentation>
+      <input message="s0:GetICD10CodeHttpPostIn" />
+      <output message="s0:GetICD10CodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ICD9ToICD10Soap" type="s0:ICD9ToICD10Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetICD9Code">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetICD9Code" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetICD10Code">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetICD10Code" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD9ToICD10HttpGet" type="s0:ICD9ToICD10HttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetICD9Code">
+      <http:operation location="/GetICD9Code" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICD10Code">
+      <http:operation location="/GetICD10Code" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD9ToICD10HttpPost" type="s0:ICD9ToICD10HttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetICD9Code">
+      <http:operation location="/GetICD9Code" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICD10Code">
+      <http:operation location="/GetICD10Code" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICD9ToICD10">
+    <documentation>ICD-9-CM to ICD-10-CM  and ICD-10-CM to ICD-9-CM</documentation>
+    <port name="ICD9ToICD10Soap" binding="s0:ICD9ToICD10Soap">
+      <soap:address location="http://www.webservicex.net/icd9toicd10.asmx" />
+    </port>
+    <port name="ICD9ToICD10HttpGet" binding="s0:ICD9ToICD10HttpGet">
+      <http:address location="http://www.webservicex.net/icd9toicd10.asmx" />
+    </port>
+    <port name="ICD9ToICD10HttpPost" binding="s0:ICD9ToICD10HttpPost">
+      <http:address location="http://www.webservicex.net/icd9toicd10.asmx" />
+    </port>
+  </service>
+</definitions>

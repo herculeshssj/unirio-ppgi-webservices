@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://dstc.edu.au" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://dstc.edu.au" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://dstc.edu.au">
+      <s:element name="FindServiceAccessPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindServiceAccessPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindServiceAccessPointResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindServiceAccessPoints">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindServiceAccessPointsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindServiceAccessPointsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindServiceAccessPointsQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strQueryString" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindServiceAccessPointsQueryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindServiceAccessPointsQueryResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceAccessPoint" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceAccessPointDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveServiceAccessPoint">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBusinessName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServiceAccessPoint" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUDDIAdminPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolUseUDDITestSite" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveServiceAccessPointResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemoveServiceAccessPointResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="FindServiceAccessPointSoapIn">
+    <part name="parameters" element="s0:FindServiceAccessPoint" />
+  </message>
+  <message name="FindServiceAccessPointSoapOut">
+    <part name="parameters" element="s0:FindServiceAccessPointResponse" />
+  </message>
+  <message name="FindServiceAccessPointsSoapIn">
+    <part name="parameters" element="s0:FindServiceAccessPoints" />
+  </message>
+  <message name="FindServiceAccessPointsSoapOut">
+    <part name="parameters" element="s0:FindServiceAccessPointsResponse" />
+  </message>
+  <message name="FindServiceAccessPointsQuerySoapIn">
+    <part name="parameters" element="s0:FindServiceAccessPointsQuery" />
+  </message>
+  <message name="FindServiceAccessPointsQuerySoapOut">
+    <part name="parameters" element="s0:FindServiceAccessPointsQueryResponse" />
+  </message>
+  <message name="AddServiceSoapIn">
+    <part name="parameters" element="s0:AddService" />
+  </message>
+  <message name="AddServiceSoapOut">
+    <part name="parameters" element="s0:AddServiceResponse" />
+  </message>
+  <message name="RemoveServiceSoapIn">
+    <part name="parameters" element="s0:RemoveService" />
+  </message>
+  <message name="RemoveServiceSoapOut">
+    <part name="parameters" element="s0:RemoveServiceResponse" />
+  </message>
+  <message name="RemoveServiceAccessPointSoapIn">
+    <part name="parameters" element="s0:RemoveServiceAccessPoint" />
+  </message>
+  <message name="RemoveServiceAccessPointSoapOut">
+    <part name="parameters" element="s0:RemoveServiceAccessPointResponse" />
+  </message>
+  <message name="FindServiceAccessPointHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindServiceAccessPointsHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="FindServiceAccessPointsQueryHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strQueryString" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointsQueryHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="AddServiceHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strServiceDescription" type="s:string" />
+    <part name="strServiceAccessPoint" type="s:string" />
+    <part name="strServiceAccessPointDescription" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="AddServiceHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RemoveServiceHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="RemoveServiceHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RemoveServiceAccessPointHttpGetIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strServiceAccessPoint" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="RemoveServiceAccessPointHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="FindServiceAccessPointHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindServiceAccessPointsHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="FindServiceAccessPointsQueryHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strQueryString" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="FindServiceAccessPointsQueryHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="AddServiceHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strServiceDescription" type="s:string" />
+    <part name="strServiceAccessPoint" type="s:string" />
+    <part name="strServiceAccessPointDescription" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="AddServiceHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RemoveServiceHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="RemoveServiceHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="RemoveServiceAccessPointHttpPostIn">
+    <part name="strBusinessName" type="s:string" />
+    <part name="strServiceName" type="s:string" />
+    <part name="strServiceAccessPoint" type="s:string" />
+    <part name="strUDDIAdminLogin" type="s:string" />
+    <part name="strUDDIAdminPassword" type="s:string" />
+    <part name="boolUseUDDITestSite" type="s:string" />
+  </message>
+  <message name="RemoveServiceAccessPointHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="UDDIProxySoap">
+    <operation name="FindServiceAccessPoint">
+      <documentation>Returns the first service access point under a service.</documentation>
+      <input message="s0:FindServiceAccessPointSoapIn" />
+      <output message="s0:FindServiceAccessPointSoapOut" />
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <documentation>Returns all service access points listed under a service.</documentation>
+      <input message="s0:FindServiceAccessPointsSoapIn" />
+      <output message="s0:FindServiceAccessPointsSoapOut" />
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <documentation>Returns all service access points listed under a service whose description contains the query string.</documentation>
+      <input message="s0:FindServiceAccessPointsQuerySoapIn" />
+      <output message="s0:FindServiceAccessPointsQuerySoapOut" />
+    </operation>
+    <operation name="AddService">
+      <documentation>Adds a service access point to a service. The service will be created if it does not exist.</documentation>
+      <input message="s0:AddServiceSoapIn" />
+      <output message="s0:AddServiceSoapOut" />
+    </operation>
+    <operation name="RemoveService">
+      <documentation>Removes a service and all its access points.</documentation>
+      <input message="s0:RemoveServiceSoapIn" />
+      <output message="s0:RemoveServiceSoapOut" />
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <documentation>Removes an access point from a service.</documentation>
+      <input message="s0:RemoveServiceAccessPointSoapIn" />
+      <output message="s0:RemoveServiceAccessPointSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UDDIProxyHttpGet">
+    <operation name="FindServiceAccessPoint">
+      <documentation>Returns the first service access point under a service.</documentation>
+      <input message="s0:FindServiceAccessPointHttpGetIn" />
+      <output message="s0:FindServiceAccessPointHttpGetOut" />
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <documentation>Returns all service access points listed under a service.</documentation>
+      <input message="s0:FindServiceAccessPointsHttpGetIn" />
+      <output message="s0:FindServiceAccessPointsHttpGetOut" />
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <documentation>Returns all service access points listed under a service whose description contains the query string.</documentation>
+      <input message="s0:FindServiceAccessPointsQueryHttpGetIn" />
+      <output message="s0:FindServiceAccessPointsQueryHttpGetOut" />
+    </operation>
+    <operation name="AddService">
+      <documentation>Adds a service access point to a service. The service will be created if it does not exist.</documentation>
+      <input message="s0:AddServiceHttpGetIn" />
+      <output message="s0:AddServiceHttpGetOut" />
+    </operation>
+    <operation name="RemoveService">
+      <documentation>Removes a service and all its access points.</documentation>
+      <input message="s0:RemoveServiceHttpGetIn" />
+      <output message="s0:RemoveServiceHttpGetOut" />
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <documentation>Removes an access point from a service.</documentation>
+      <input message="s0:RemoveServiceAccessPointHttpGetIn" />
+      <output message="s0:RemoveServiceAccessPointHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UDDIProxyHttpPost">
+    <operation name="FindServiceAccessPoint">
+      <documentation>Returns the first service access point under a service.</documentation>
+      <input message="s0:FindServiceAccessPointHttpPostIn" />
+      <output message="s0:FindServiceAccessPointHttpPostOut" />
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <documentation>Returns all service access points listed under a service.</documentation>
+      <input message="s0:FindServiceAccessPointsHttpPostIn" />
+      <output message="s0:FindServiceAccessPointsHttpPostOut" />
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <documentation>Returns all service access points listed under a service whose description contains the query string.</documentation>
+      <input message="s0:FindServiceAccessPointsQueryHttpPostIn" />
+      <output message="s0:FindServiceAccessPointsQueryHttpPostOut" />
+    </operation>
+    <operation name="AddService">
+      <documentation>Adds a service access point to a service. The service will be created if it does not exist.</documentation>
+      <input message="s0:AddServiceHttpPostIn" />
+      <output message="s0:AddServiceHttpPostOut" />
+    </operation>
+    <operation name="RemoveService">
+      <documentation>Removes a service and all its access points.</documentation>
+      <input message="s0:RemoveServiceHttpPostIn" />
+      <output message="s0:RemoveServiceHttpPostOut" />
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <documentation>Removes an access point from a service.</documentation>
+      <input message="s0:RemoveServiceAccessPointHttpPostIn" />
+      <output message="s0:RemoveServiceAccessPointHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UDDIProxySoap" type="s0:UDDIProxySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindServiceAccessPoint">
+      <soap:operation soapAction="http://dstc.edu.au/FindServiceAccessPoint" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <soap:operation soapAction="http://dstc.edu.au/FindServiceAccessPoints" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <soap:operation soapAction="http://dstc.edu.au/FindServiceAccessPointsQuery" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AddService">
+      <soap:operation soapAction="http://dstc.edu.au/AddService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveService">
+      <soap:operation soapAction="http://dstc.edu.au/RemoveService" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <soap:operation soapAction="http://dstc.edu.au/RemoveServiceAccessPoint" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UDDIProxyHttpGet" type="s0:UDDIProxyHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindServiceAccessPoint">
+      <http:operation location="/FindServiceAccessPoint" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <http:operation location="/FindServiceAccessPoints" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <http:operation location="/FindServiceAccessPointsQuery" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddService">
+      <http:operation location="/AddService" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RemoveService">
+      <http:operation location="/RemoveService" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <http:operation location="/RemoveServiceAccessPoint" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UDDIProxyHttpPost" type="s0:UDDIProxyHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindServiceAccessPoint">
+      <http:operation location="/FindServiceAccessPoint" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPoints">
+      <http:operation location="/FindServiceAccessPoints" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindServiceAccessPointsQuery">
+      <http:operation location="/FindServiceAccessPointsQuery" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AddService">
+      <http:operation location="/AddService" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RemoveService">
+      <http:operation location="/RemoveService" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="RemoveServiceAccessPoint">
+      <http:operation location="/RemoveServiceAccessPoint" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="UDDIProxy">
+    <documentation>UDDI Proxy Web Service provides a simple interface to query and administer Microsoft's UDDI Service. &lt;p&gt; Comments to &lt;i&gt;&lt;A HREF=mailto:herring@dstc.edu.au&gt;herring@dstc.edu.au&lt;/a&gt;&lt;/i&gt;&lt;/p&gt;</documentation>
+    <port name="UDDIProxySoap" binding="s0:UDDIProxySoap">
+      <soap:address location="http://erwin.dstc.edu.au/UDDIProxyService/UDDIProxy.asmx" />
+    </port>
+    <port name="UDDIProxyHttpGet" binding="s0:UDDIProxyHttpGet">
+      <http:address location="http://erwin.dstc.edu.au/UDDIProxyService/UDDIProxy.asmx" />
+    </port>
+    <port name="UDDIProxyHttpPost" binding="s0:UDDIProxyHttpPost">
+      <http:address location="http://erwin.dstc.edu.au/UDDIProxyService/UDDIProxy.asmx" />
+    </port>
+  </service>
+</definitions>

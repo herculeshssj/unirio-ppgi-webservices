@@ -1,0 +1,273 @@
+<?xml version="1.0" ?>
+
+<definitions name="CPoints.cpoints" targetNamespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="LookupGetLoyaltyTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecLoyaltyType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetLoyaltyTypeResponse">
+        <part name="RecLoyaltyType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewLoyaltyPointsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="LoyaltyPoints" type="xsd:long"/>
+        <part name="LoyaltyTypeID" type="xsd:short"/>
+        <part name="Description" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+    </message>
+    <message name="NewLoyaltyPointsResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchHistoricLoyaltyPointsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="RecLoyaltyPoints" type="xsd:string"/>
+    </message>
+    <message name="SearchHistoricLoyaltyPointsResponse">
+        <part name="RecLoyaltyPoints" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchVisitorLoyaltyPointsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="ReturnLoyaltyPoints" type="xsd:long"/>
+    </message>
+    <message name="SearchVisitorLoyaltyPointsResponse">
+        <part name="ReturnLoyaltyPoints" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetLoyaltyPointsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ReturnLoyaltyPoints" type="xsd:long"/>
+    </message>
+    <message name="GetLoyaltyPointsResponse">
+        <part name="ReturnLoyaltyPoints" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultLoyaltyTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LoyaltyTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultLoyaltyTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultSalutationRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="RecSalutation" type="xsd:string"/>
+    </message>
+    <message name="LookupGetDefaultSalutationResponse">
+        <part name="RecSalutation" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdLoyaltyTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LoyaltyTypeID" type="xsd:long"/>
+        <part name="LoyaltyTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdLoyaltyTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelLoyaltyTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LoyaltyTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelLoyaltyTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewLoyaltyTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LoyaltyTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnLoyaltyTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewLoyaltyTypeResponse">
+        <part name="ReturnLoyaltyTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultLoyaltyTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LoyaltyTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultLoyaltyTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CPoints.cpointsPortType">
+        <operation name="LookupGetLoyaltyType">
+            <input message="tns:LookupGetLoyaltyTypeRequest"/>
+            <output message="tns:LookupGetLoyaltyTypeResponse"/>
+        </operation>
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="NewLoyaltyPoints">
+            <input message="tns:NewLoyaltyPointsRequest"/>
+            <output message="tns:NewLoyaltyPointsResponse"/>
+        </operation>
+        <operation name="SearchHistoricLoyaltyPoints">
+            <input message="tns:SearchHistoricLoyaltyPointsRequest"/>
+            <output message="tns:SearchHistoricLoyaltyPointsResponse"/>
+        </operation>
+        <operation name="SearchVisitorLoyaltyPoints">
+            <input message="tns:SearchVisitorLoyaltyPointsRequest"/>
+            <output message="tns:SearchVisitorLoyaltyPointsResponse"/>
+        </operation>
+        <operation name="GetLoyaltyPoints">
+            <input message="tns:GetLoyaltyPointsRequest"/>
+            <output message="tns:GetLoyaltyPointsResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultLoyaltyType">
+            <input message="tns:LookupLinkDefaultLoyaltyTypeRequest"/>
+            <output message="tns:LookupLinkDefaultLoyaltyTypeResponse"/>
+        </operation>
+        <operation name="LookupGetDefaultSalutation">
+            <input message="tns:LookupGetDefaultSalutationRequest"/>
+            <output message="tns:LookupGetDefaultSalutationResponse"/>
+        </operation>
+        <operation name="LookupUpdLoyaltyType">
+            <input message="tns:LookupUpdLoyaltyTypeRequest"/>
+            <output message="tns:LookupUpdLoyaltyTypeResponse"/>
+        </operation>
+        <operation name="LookupDelLoyaltyType">
+            <input message="tns:LookupDelLoyaltyTypeRequest"/>
+            <output message="tns:LookupDelLoyaltyTypeResponse"/>
+        </operation>
+        <operation name="LookupNewLoyaltyType">
+            <input message="tns:LookupNewLoyaltyTypeRequest"/>
+            <output message="tns:LookupNewLoyaltyTypeResponse"/>
+        </operation>
+        <operation name="IsDefaultLoyaltyTypeID">
+            <input message="tns:IsDefaultLoyaltyTypeIDRequest"/>
+            <output message="tns:IsDefaultLoyaltyTypeIDResponse"/>
+        </operation>
+    </portType>
+    <binding name="CPoints.cpointsbinding" type="tns:CPoints.cpointsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="LookupGetLoyaltyType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupGetLoyaltyType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewLoyaltyPoints">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#NewLoyaltyPoints"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchHistoricLoyaltyPoints">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#SearchHistoricLoyaltyPoints"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchVisitorLoyaltyPoints">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#SearchVisitorLoyaltyPoints"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetLoyaltyPoints">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#GetLoyaltyPoints"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultLoyaltyType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupLinkDefaultLoyaltyType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetDefaultSalutation">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupGetDefaultSalutation"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdLoyaltyType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupUpdLoyaltyType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelLoyaltyType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupDelLoyaltyType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewLoyaltyType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#LookupNewLoyaltyType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultLoyaltyTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml#IsDefaultLoyaltyTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CPoints/CPoints.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CPoints.cpointsService">
+        <port name="CPoints.cpointsPort" binding="tns:CPoints.cpointsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

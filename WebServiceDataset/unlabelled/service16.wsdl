@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xignite.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xignite.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xignite.com/services/">
+      <s:element name="GetStockGrowthSimulationDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shares" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VariableToSimulate" type="s0:VariableNames" />
+            <s:element minOccurs="1" maxOccurs="1" name="SimulationRuns" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToSimulate" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToUseForStatistics" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="VariableNames">
+        <s:restriction base="s:string">
+          <s:enumeration value="Growth" />
+          <s:enumeration value="Price" />
+          <s:enumeration value="Value" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetStockGrowthSimulationDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockGrowthSimulationDetailsResult" type="s0:ArrayOfRun" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRun">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Run" nillable="true" type="s0:Run" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Run">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Periods" type="s0:ArrayOfPeriod" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Period" nillable="true" type="s0:Period" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Period">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Run" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStockGrowthSimulationPercentiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shares" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VariableToSimulate" type="s0:VariableNames" />
+            <s:element minOccurs="1" maxOccurs="1" name="SimulationRuns" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PercentilesToDisplay" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToSimulate" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToUseForStatistics" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockGrowthSimulationPercentilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockGrowthSimulationPercentilesResult" type="s0:ArrayOfPercentile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPercentile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Percentile" nillable="true" type="s0:Percentile" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Percentile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Variable" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentUnder" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentOver" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Runs" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Period" type="s0:ArrayOfPercentilePeriod" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPercentilePeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PercentilePeriod" nillable="true" type="s0:PercentilePeriod" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PercentilePeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Percentile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStockGrowthSimulationDetailsManual">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shares" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SimulationRuns" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodsToSimulate" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodType" type="s0:PeriodTypes" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MeanofRollingMeanGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingMeanGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MeanOfRollingStdDevGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingStdDevGrowth" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PeriodTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Years" />
+          <s:enumeration value="Months" />
+          <s:enumeration value="Weeks" />
+          <s:enumeration value="Days" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetStockGrowthSimulationDetailsManualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockGrowthSimulationDetailsManualResult" type="s0:ArrayOfRun" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockGrowthSimulationPercentilesManual">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shares" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SimulationRuns" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="PercentilesToDisplay" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodsToSimulate" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PeriodType" type="s0:PeriodTypes" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MeanofRollingMeanGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingMeanGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="MeanOfRollingStdDevGrowth" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="StdDevOfRollingStdDevGrowth" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockGrowthSimulationPercentilesManualResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStockGrowthSimulationPercentilesManualResult" type="s0:ArrayOfPercentile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockGrowthProbability">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Shares" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="VariableToSimulate" type="s0:VariableNames" />
+            <s:element minOccurs="1" maxOccurs="1" name="SimulationRuns" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToSimulate" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MonthsToUseForStatistics" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ValueToReach" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStockGrowthProbabilityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStockGrowthProbabilityResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfRun" nillable="true" type="s0:ArrayOfRun" />
+      <s:element name="ArrayOfPercentile" nillable="true" type="s0:ArrayOfPercentile" />
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="GetStockGrowthSimulationDetailsSoapIn">
+    <part name="parameters" element="s0:GetStockGrowthSimulationDetails" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsSoapOut">
+    <part name="parameters" element="s0:GetStockGrowthSimulationDetailsResponse" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesSoapIn">
+    <part name="parameters" element="s0:GetStockGrowthSimulationPercentiles" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesSoapOut">
+    <part name="parameters" element="s0:GetStockGrowthSimulationPercentilesResponse" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualSoapIn">
+    <part name="parameters" element="s0:GetStockGrowthSimulationDetailsManual" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualSoapOut">
+    <part name="parameters" element="s0:GetStockGrowthSimulationDetailsManualResponse" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualSoapIn">
+    <part name="parameters" element="s0:GetStockGrowthSimulationPercentilesManual" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualSoapOut">
+    <part name="parameters" element="s0:GetStockGrowthSimulationPercentilesManualResponse" />
+  </message>
+  <message name="GetStockGrowthProbabilitySoapIn">
+    <part name="parameters" element="s0:GetStockGrowthProbability" />
+  </message>
+  <message name="GetStockGrowthProbabilitySoapOut">
+    <part name="parameters" element="s0:GetStockGrowthProbabilityResponse" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfRun" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PercentilesToDisplay" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfPercentile" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PeriodsToSimulate" type="s:string" />
+    <part name="PeriodType" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="LastPrice" type="s:string" />
+    <part name="MeanofRollingMeanGrowth" type="s:string" />
+    <part name="StdDevOfRollingMeanGrowth" type="s:string" />
+    <part name="MeanOfRollingStdDevGrowth" type="s:string" />
+    <part name="StdDevOfRollingStdDevGrowth" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualHttpGetOut">
+    <part name="Body" element="s0:ArrayOfRun" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PercentilesToDisplay" type="s:string" />
+    <part name="PeriodsToSimulate" type="s:string" />
+    <part name="PeriodType" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="LastPrice" type="s:string" />
+    <part name="MeanofRollingMeanGrowth" type="s:string" />
+    <part name="StdDevOfRollingMeanGrowth" type="s:string" />
+    <part name="MeanOfRollingStdDevGrowth" type="s:string" />
+    <part name="StdDevOfRollingStdDevGrowth" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualHttpGetOut">
+    <part name="Body" element="s0:ArrayOfPercentile" />
+  </message>
+  <message name="GetStockGrowthProbabilityHttpGetIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+    <part name="ValueToReach" type="s:string" />
+  </message>
+  <message name="GetStockGrowthProbabilityHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfRun" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PercentilesToDisplay" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfPercentile" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PeriodsToSimulate" type="s:string" />
+    <part name="PeriodType" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="LastPrice" type="s:string" />
+    <part name="MeanofRollingMeanGrowth" type="s:string" />
+    <part name="StdDevOfRollingMeanGrowth" type="s:string" />
+    <part name="MeanOfRollingStdDevGrowth" type="s:string" />
+    <part name="StdDevOfRollingStdDevGrowth" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationDetailsManualHttpPostOut">
+    <part name="Body" element="s0:ArrayOfRun" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="PercentilesToDisplay" type="s:string" />
+    <part name="PeriodsToSimulate" type="s:string" />
+    <part name="PeriodType" type="s:string" />
+    <part name="StartDate" type="s:string" />
+    <part name="LastPrice" type="s:string" />
+    <part name="MeanofRollingMeanGrowth" type="s:string" />
+    <part name="StdDevOfRollingMeanGrowth" type="s:string" />
+    <part name="MeanOfRollingStdDevGrowth" type="s:string" />
+    <part name="StdDevOfRollingStdDevGrowth" type="s:string" />
+  </message>
+  <message name="GetStockGrowthSimulationPercentilesManualHttpPostOut">
+    <part name="Body" element="s0:ArrayOfPercentile" />
+  </message>
+  <message name="GetStockGrowthProbabilityHttpPostIn">
+    <part name="Symbol" type="s:string" />
+    <part name="Shares" type="s:string" />
+    <part name="VariableToSimulate" type="s:string" />
+    <part name="SimulationRuns" type="s:string" />
+    <part name="MonthsToSimulate" type="s:string" />
+    <part name="MonthsToUseForStatistics" type="s:string" />
+    <part name="ValueToReach" type="s:string" />
+  </message>
+  <message name="GetStockGrowthProbabilityHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="XigniteSimulationSoap">
+    <operation name="GetStockGrowthSimulationDetails">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsSoapIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsSoapOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesSoapIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesSoapOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsManualSoapIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsManualSoapOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesManualSoapIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesManualSoapOut" />
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthProbabilitySoapIn" />
+      <output message="s0:GetStockGrowthProbabilitySoapOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteSimulationHttpGet">
+    <operation name="GetStockGrowthSimulationDetails">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsHttpGetIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsHttpGetOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesHttpGetIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesHttpGetOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsManualHttpGetIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsManualHttpGetOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesManualHttpGetIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesManualHttpGetOut" />
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthProbabilityHttpGetIn" />
+      <output message="s0:GetStockGrowthProbabilityHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="XigniteSimulationHttpPost">
+    <operation name="GetStockGrowthSimulationDetails">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsHttpPostIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsHttpPostOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesHttpPostIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesHttpPostOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationDetailsManualHttpPostIn" />
+      <output message="s0:GetStockGrowthSimulationDetailsManualHttpPostOut" />
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Requires entry the stock volatility (mean, stddev).&lt;br&gt;&amp;#183; Returns summarized percentile data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthSimulationPercentilesManualHttpPostIn" />
+      <output message="s0:GetStockGrowthSimulationPercentilesManualHttpPostOut" />
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <documentation>&lt;br&gt;Simulates the growth of a stock over future periods with the following options:&lt;br/&gt;&amp;#183; Automatically retrieves stock volatility using &lt;a href="xSecurity.asmx?op=GetGrowthStatistics"&gt;GetGrowthStatistics&lt;/a&gt;.&lt;br&gt;&amp;#183; Returns detailed trial run data for market value, stock price, or stock growth.&lt;br&gt;</documentation>
+      <input message="s0:GetStockGrowthProbabilityHttpPostIn" />
+      <output message="s0:GetStockGrowthProbabilityHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="XigniteSimulationSoap" type="s0:XigniteSimulationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetStockGrowthSimulationDetails">
+      <soap:operation soapAction="http://www.xignite.com/services/GetStockGrowthSimulationDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <soap:operation soapAction="http://www.xignite.com/services/GetStockGrowthSimulationPercentiles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <soap:operation soapAction="http://www.xignite.com/services/GetStockGrowthSimulationDetailsManual" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <soap:operation soapAction="http://www.xignite.com/services/GetStockGrowthSimulationPercentilesManual" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <soap:operation soapAction="http://www.xignite.com/services/GetStockGrowthProbability" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteSimulationHttpGet" type="s0:XigniteSimulationHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetStockGrowthSimulationDetails">
+      <http:operation location="/GetStockGrowthSimulationDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <http:operation location="/GetStockGrowthSimulationPercentiles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <http:operation location="/GetStockGrowthSimulationDetailsManual" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <http:operation location="/GetStockGrowthSimulationPercentilesManual" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <http:operation location="/GetStockGrowthProbability" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="XigniteSimulationHttpPost" type="s0:XigniteSimulationHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetStockGrowthSimulationDetails">
+      <http:operation location="/GetStockGrowthSimulationDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentiles">
+      <http:operation location="/GetStockGrowthSimulationPercentiles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationDetailsManual">
+      <http:operation location="/GetStockGrowthSimulationDetailsManual" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthSimulationPercentilesManual">
+      <http:operation location="/GetStockGrowthSimulationPercentilesManual" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetStockGrowthProbability">
+      <http:operation location="/GetStockGrowthProbability" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="XigniteSimulation">
+    <port name="XigniteSimulationSoap" binding="s0:XigniteSimulationSoap">
+      <soap:address location="http://www.xignite.com/xsimulation.asmx" />
+    </port>
+    <port name="XigniteSimulationHttpGet" binding="s0:XigniteSimulationHttpGet">
+      <http:address location="http://www.xignite.com/xsimulation.asmx" />
+    </port>
+    <port name="XigniteSimulationHttpPost" binding="s0:XigniteSimulationHttpPost">
+      <http:address location="http://www.xignite.com/xsimulation.asmx" />
+    </port>
+  </service>
+</definitions>

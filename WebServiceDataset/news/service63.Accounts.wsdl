@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NFLNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="NFLNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NFLNewsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="NFLNewsSoapIn">
+    <part name="parameters" element="s0:NFLNews" />
+  </message>
+  <message name="NFLNewsSoapOut">
+    <part name="parameters" element="s0:NFLNewsResponse" />
+  </message>
+  <message name="NFLNewsHttpGetIn" />
+  <message name="NFLNewsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="NFLNewsHttpPostIn" />
+  <message name="NFLNewsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="NFLNewsSoap">
+    <operation name="NFLNews">
+      <input message="s0:NFLNewsSoapIn" />
+      <output message="s0:NFLNewsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="NFLNewsHttpGet">
+    <operation name="NFLNews">
+      <input message="s0:NFLNewsHttpGetIn" />
+      <output message="s0:NFLNewsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="NFLNewsHttpPost">
+    <operation name="NFLNews">
+      <input message="s0:NFLNewsHttpPostIn" />
+      <output message="s0:NFLNewsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="NFLNewsSoap" type="s0:NFLNewsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NFLNews">
+      <soap:operation soapAction="http://tempuri.org/NFLNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NFLNewsHttpGet" type="s0:NFLNewsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="NFLNews">
+      <http:operation location="/NFLNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="NFLNewsHttpPost" type="s0:NFLNewsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="NFLNews">
+      <http:operation location="/NFLNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NFLNews">
+    <port name="NFLNewsSoap" binding="s0:NFLNewsSoap">
+      <soap:address location="http://www.esynaps.com/WebServices/NFLNews.asmx" />
+    </port>
+    <port name="NFLNewsHttpGet" binding="s0:NFLNewsHttpGet">
+      <http:address location="http://www.esynaps.com/WebServices/NFLNews.asmx" />
+    </port>
+    <port name="NFLNewsHttpPost" binding="s0:NFLNewsHttpPost">
+      <http:address location="http://www.esynaps.com/WebServices/NFLNews.asmx" />
+    </port>
+  </service>
+</definitions>

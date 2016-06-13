@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="IsValidEMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidEMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidEMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="IsValidEMailSoapIn">
+    <part name="parameters" element="s0:IsValidEMail" />
+  </message>
+  <message name="IsValidEMailSoapOut">
+    <part name="parameters" element="s0:IsValidEMailResponse" />
+  </message>
+  <message name="IsValidEMailHttpGetIn">
+    <part name="EmailAddress" type="s:string" />
+  </message>
+  <message name="IsValidEMailHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="IsValidEMailHttpPostIn">
+    <part name="EmailAddress" type="s:string" />
+  </message>
+  <message name="IsValidEMailHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="ValidateEmailSoap">
+    <operation name="IsValidEMail">
+      <documentation>Validate any email address against the e-mail mail server</documentation>
+      <input message="s0:IsValidEMailSoapIn" />
+      <output message="s0:IsValidEMailSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ValidateEmailHttpGet">
+    <operation name="IsValidEMail">
+      <documentation>Validate any email address against the e-mail mail server</documentation>
+      <input message="s0:IsValidEMailHttpGetIn" />
+      <output message="s0:IsValidEMailHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ValidateEmailHttpPost">
+    <operation name="IsValidEMail">
+      <documentation>Validate any email address against the e-mail mail server</documentation>
+      <input message="s0:IsValidEMailHttpPostIn" />
+      <output message="s0:IsValidEMailHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ValidateEmailSoap" type="s0:ValidateEmailSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="IsValidEMail">
+      <soap:operation soapAction="http://www.webserviceX.NET/IsValidEMail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ValidateEmailHttpGet" type="s0:ValidateEmailHttpGet">
+    <http:binding verb="GET" />
+    <operation name="IsValidEMail">
+      <http:operation location="/IsValidEMail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ValidateEmailHttpPost" type="s0:ValidateEmailHttpPost">
+    <http:binding verb="POST" />
+    <operation name="IsValidEMail">
+      <http:operation location="/IsValidEMail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ValidateEmail">
+    <port name="ValidateEmailSoap" binding="s0:ValidateEmailSoap">
+      <soap:address location="http://www.webservicex.net/ValidateEmail.asmx" />
+    </port>
+    <port name="ValidateEmailHttpGet" binding="s0:ValidateEmailHttpGet">
+      <http:address location="http://www.webservicex.net/ValidateEmail.asmx" />
+    </port>
+    <port name="ValidateEmailHttpPost" binding="s0:ValidateEmailHttpPost">
+      <http:address location="http://www.webservicex.net/ValidateEmail.asmx" />
+    </port>
+  </service>
+</definitions>

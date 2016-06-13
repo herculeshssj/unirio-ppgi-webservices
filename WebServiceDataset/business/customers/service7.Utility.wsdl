@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NameABook">
+        <s:complexType />
+      </s:element>
+      <s:element name="NameABookResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NameABookResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MyUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MyUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MyUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="ServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ServerTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="dateTime" type="s:dateTime" />
+    </s:schema>
+  </types>
+  <message name="NameABookSoapIn">
+    <part name="parameters" element="s0:NameABook" />
+  </message>
+  <message name="NameABookSoapOut">
+    <part name="parameters" element="s0:NameABookResponse" />
+  </message>
+  <message name="MyUsersSoapIn">
+    <part name="parameters" element="s0:MyUsers" />
+  </message>
+  <message name="MyUsersSoapOut">
+    <part name="parameters" element="s0:MyUsersResponse" />
+  </message>
+  <message name="ServerTimeSoapIn">
+    <part name="parameters" element="s0:ServerTime" />
+  </message>
+  <message name="ServerTimeSoapOut">
+    <part name="parameters" element="s0:ServerTimeResponse" />
+  </message>
+  <message name="NameABookHttpGetIn" />
+  <message name="NameABookHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MyUsersHttpGetIn">
+    <part name="userName" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="MyUsersHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ServerTimeHttpGetIn" />
+  <message name="ServerTimeHttpGetOut">
+    <part name="Body" element="s0:dateTime" />
+  </message>
+  <message name="NameABookHttpPostIn" />
+  <message name="NameABookHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="MyUsersHttpPostIn">
+    <part name="userName" type="s:string" />
+    <part name="password" type="s:string" />
+  </message>
+  <message name="MyUsersHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ServerTimeHttpPostIn" />
+  <message name="ServerTimeHttpPostOut">
+    <part name="Body" element="s0:dateTime" />
+  </message>
+  <portType name="CUserServiceSoap">
+    <operation name="NameABook">
+      <documentation>Sample WebService</documentation>
+      <input message="s0:NameABookSoapIn" />
+      <output message="s0:NameABookSoapOut" />
+    </operation>
+    <operation name="MyUsers">
+      <input message="s0:MyUsersSoapIn" />
+      <output message="s0:MyUsersSoapOut" />
+    </operation>
+    <operation name="ServerTime">
+      <documentation>Get Server Time</documentation>
+      <input message="s0:ServerTimeSoapIn" />
+      <output message="s0:ServerTimeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CUserServiceHttpGet">
+    <operation name="NameABook">
+      <documentation>Sample WebService</documentation>
+      <input message="s0:NameABookHttpGetIn" />
+      <output message="s0:NameABookHttpGetOut" />
+    </operation>
+    <operation name="MyUsers">
+      <input message="s0:MyUsersHttpGetIn" />
+      <output message="s0:MyUsersHttpGetOut" />
+    </operation>
+    <operation name="ServerTime">
+      <documentation>Get Server Time</documentation>
+      <input message="s0:ServerTimeHttpGetIn" />
+      <output message="s0:ServerTimeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CUserServiceHttpPost">
+    <operation name="NameABook">
+      <documentation>Sample WebService</documentation>
+      <input message="s0:NameABookHttpPostIn" />
+      <output message="s0:NameABookHttpPostOut" />
+    </operation>
+    <operation name="MyUsers">
+      <input message="s0:MyUsersHttpPostIn" />
+      <output message="s0:MyUsersHttpPostOut" />
+    </operation>
+    <operation name="ServerTime">
+      <documentation>Get Server Time</documentation>
+      <input message="s0:ServerTimeHttpPostIn" />
+      <output message="s0:ServerTimeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CUserServiceSoap" type="s0:CUserServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="NameABook">
+      <soap:operation soapAction="http://tempuri.org/NameABook" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="MyUsers">
+      <soap:operation soapAction="http://tempuri.org/MyUsers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ServerTime">
+      <soap:operation soapAction="http://tempuri.org/ServerTime" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CUserServiceHttpGet" type="s0:CUserServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="NameABook">
+      <http:operation location="/NameABook" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MyUsers">
+      <http:operation location="/MyUsers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ServerTime">
+      <http:operation location="/ServerTime" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CUserServiceHttpPost" type="s0:CUserServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="NameABook">
+      <http:operation location="/NameABook" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="MyUsers">
+      <http:operation location="/MyUsers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ServerTime">
+      <http:operation location="/ServerTime" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CUserService">
+    <port name="CUserServiceSoap" binding="s0:CUserServiceSoap">
+      <soap:address location="http://www31.brinkster.com/webcomponents/CUserService.asmx" />
+    </port>
+    <port name="CUserServiceHttpGet" binding="s0:CUserServiceHttpGet">
+      <http:address location="http://www31.brinkster.com/webcomponents/CUserService.asmx" />
+    </port>
+    <port name="CUserServiceHttpPost" binding="s0:CUserServiceHttpPost">
+      <http:address location="http://www31.brinkster.com/webcomponents/CUserService.asmx" />
+    </port>
+  </service>
+</definitions>

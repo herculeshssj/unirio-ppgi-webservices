@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://xmlme.com/WebServices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://xmlme.com/WebServices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://xmlme.com/WebServices">
+      <s:element name="GetSpeech">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Request" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSpeechResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSpeechResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetSpeechSoapIn">
+    <part name="parameters" element="s0:GetSpeech" />
+  </message>
+  <message name="GetSpeechSoapOut">
+    <part name="parameters" element="s0:GetSpeechResponse" />
+  </message>
+  <message name="GetSpeechHttpGetIn">
+    <part name="Request" type="s:string" />
+  </message>
+  <message name="GetSpeechHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSpeechHttpPostIn">
+    <part name="Request" type="s:string" />
+  </message>
+  <message name="GetSpeechHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ShakespeareSoap">
+    <operation name="GetSpeech">
+      <documentation>&lt;h3&gt;GetSpeech requires a string formatted phrase from one of Shakespeare's plays as input. The speech, speaker, and play will be returned as an XML string. &lt;br /&gt;&lt;br /&gt;Sample Shakespeare Phrases: &lt;br /&gt;&lt;br /&gt;To be, or not to be&lt;br /&gt;My kingdom for a horse&lt;br /&gt;Get thee to a nunnery&lt;br /&gt;There are more things in heaven and earth&lt;br /&gt;I will wear my heart upon my sleeve&lt;br /&gt;When beggars die, there are no comets seen&lt;br /&gt;Lord, what fools these mortals be&lt;br /&gt;Et tu, Brute&lt;br /&gt;Sound and fury&lt;br /&gt;Friends, romans, countrymen&lt;br /&gt;Something wicked this way comes&lt;br /&gt;To sleep: perchance to dream&lt;br /&gt;Green-eyed monster&lt;br /&gt;This was the noblest Roman of them all&lt;br /&gt;Oft expectation fails and most oft there Where most it promises&lt;br /&gt;Eye of newt and toe of frog&lt;br /&gt;Frailty, thy name is woman&lt;br /&gt;What light through yonder window breaks&lt;br /&gt;Think you I am no stronger than my sex&lt;br /&gt;Cowards die many times before their deaths&lt;br /&gt;How poor are they that have not patience&lt;br /&gt;Quality of mercy&lt;br /&gt;My words fly up, my thoughts remain below&lt;br /&gt;Bell, book, and candle&lt;br /&gt;Something is rotten in the state of Denmark&lt;br /&gt;Beware the ides of March&lt;br /&gt;A stage where every man must play a part&lt;br /&gt;Though this be madness, yet there is method in 't&lt;br /&gt;Is this a dagger which I see before me&lt;br /&gt;Now go we in content To liberty and not to banishment&lt;br /&gt;Band of brothers&lt;br /&gt;Alas, poor Yorick! I knew him&lt;br /&gt;The world's mine oyster&lt;br /&gt;Nothing will come of nothing&lt;br /&gt;That man that hath a tongue&lt;br /&gt;All the world's a stage&lt;br /&gt;The course of true love never did run smooth&lt;br /&gt;Love looks not with the eyes, but with the mind&lt;br /&gt;Let every eye negotiate for itself&lt;br /&gt;Kiss me, Kate&lt;br /&gt;The play 's the thing&lt;br /&gt;I am constant as the northern star&lt;br /&gt;The man that hath no music in himself&lt;br /&gt;We are such stuff As dreams are made on&lt;br /&gt;This was the most unkindest cut of all&lt;br /&gt;Journeys end in lovers meeting&lt;br /&gt;Yond Cassius has a lean and hungry look&lt;br /&gt;My only love sprung from my only hate&lt;br /&gt;I am fortune's fool&lt;br /&gt;Loved not wisely but too well&lt;br /&gt;O coward conscience, how dost thou afflict me&lt;br /&gt;When shall we three meet again&lt;br /&gt;A plague o' both your houses&lt;br /&gt;Out, damned spot&lt;br /&gt;To-morrow, and to-morrow, and to-morrow&lt;br /&gt;Our remedies oft in ourselves do lie&lt;br /&gt;Not that I loved Caesar less&lt;br /&gt;Winter of our discontent&lt;br /&gt;Parting is such sweet sorrow&lt;br /&gt;O Romeo, Romeo! wherefore art thou Romeo&lt;br /&gt;The lady protests too much, methinks&lt;br /&gt;What a piece of work is a man&lt;br /&gt;The fault, dear Brutus, is not in our stars&lt;br /&gt;All that glitters is not gold&lt;br /&gt;What's in a name&lt;br /&gt;Thus with a kiss I die&lt;/h3&gt;</documentation>
+      <input message="s0:GetSpeechSoapIn" />
+      <output message="s0:GetSpeechSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ShakespeareHttpGet">
+    <operation name="GetSpeech">
+      <documentation>&lt;h3&gt;GetSpeech requires a string formatted phrase from one of Shakespeare's plays as input. The speech, speaker, and play will be returned as an XML string. &lt;br /&gt;&lt;br /&gt;Sample Shakespeare Phrases: &lt;br /&gt;&lt;br /&gt;To be, or not to be&lt;br /&gt;My kingdom for a horse&lt;br /&gt;Get thee to a nunnery&lt;br /&gt;There are more things in heaven and earth&lt;br /&gt;I will wear my heart upon my sleeve&lt;br /&gt;When beggars die, there are no comets seen&lt;br /&gt;Lord, what fools these mortals be&lt;br /&gt;Et tu, Brute&lt;br /&gt;Sound and fury&lt;br /&gt;Friends, romans, countrymen&lt;br /&gt;Something wicked this way comes&lt;br /&gt;To sleep: perchance to dream&lt;br /&gt;Green-eyed monster&lt;br /&gt;This was the noblest Roman of them all&lt;br /&gt;Oft expectation fails and most oft there Where most it promises&lt;br /&gt;Eye of newt and toe of frog&lt;br /&gt;Frailty, thy name is woman&lt;br /&gt;What light through yonder window breaks&lt;br /&gt;Think you I am no stronger than my sex&lt;br /&gt;Cowards die many times before their deaths&lt;br /&gt;How poor are they that have not patience&lt;br /&gt;Quality of mercy&lt;br /&gt;My words fly up, my thoughts remain below&lt;br /&gt;Bell, book, and candle&lt;br /&gt;Something is rotten in the state of Denmark&lt;br /&gt;Beware the ides of March&lt;br /&gt;A stage where every man must play a part&lt;br /&gt;Though this be madness, yet there is method in 't&lt;br /&gt;Is this a dagger which I see before me&lt;br /&gt;Now go we in content To liberty and not to banishment&lt;br /&gt;Band of brothers&lt;br /&gt;Alas, poor Yorick! I knew him&lt;br /&gt;The world's mine oyster&lt;br /&gt;Nothing will come of nothing&lt;br /&gt;That man that hath a tongue&lt;br /&gt;All the world's a stage&lt;br /&gt;The course of true love never did run smooth&lt;br /&gt;Love looks not with the eyes, but with the mind&lt;br /&gt;Let every eye negotiate for itself&lt;br /&gt;Kiss me, Kate&lt;br /&gt;The play 's the thing&lt;br /&gt;I am constant as the northern star&lt;br /&gt;The man that hath no music in himself&lt;br /&gt;We are such stuff As dreams are made on&lt;br /&gt;This was the most unkindest cut of all&lt;br /&gt;Journeys end in lovers meeting&lt;br /&gt;Yond Cassius has a lean and hungry look&lt;br /&gt;My only love sprung from my only hate&lt;br /&gt;I am fortune's fool&lt;br /&gt;Loved not wisely but too well&lt;br /&gt;O coward conscience, how dost thou afflict me&lt;br /&gt;When shall we three meet again&lt;br /&gt;A plague o' both your houses&lt;br /&gt;Out, damned spot&lt;br /&gt;To-morrow, and to-morrow, and to-morrow&lt;br /&gt;Our remedies oft in ourselves do lie&lt;br /&gt;Not that I loved Caesar less&lt;br /&gt;Winter of our discontent&lt;br /&gt;Parting is such sweet sorrow&lt;br /&gt;O Romeo, Romeo! wherefore art thou Romeo&lt;br /&gt;The lady protests too much, methinks&lt;br /&gt;What a piece of work is a man&lt;br /&gt;The fault, dear Brutus, is not in our stars&lt;br /&gt;All that glitters is not gold&lt;br /&gt;What's in a name&lt;br /&gt;Thus with a kiss I die&lt;/h3&gt;</documentation>
+      <input message="s0:GetSpeechHttpGetIn" />
+      <output message="s0:GetSpeechHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ShakespeareHttpPost">
+    <operation name="GetSpeech">
+      <documentation>&lt;h3&gt;GetSpeech requires a string formatted phrase from one of Shakespeare's plays as input. The speech, speaker, and play will be returned as an XML string. &lt;br /&gt;&lt;br /&gt;Sample Shakespeare Phrases: &lt;br /&gt;&lt;br /&gt;To be, or not to be&lt;br /&gt;My kingdom for a horse&lt;br /&gt;Get thee to a nunnery&lt;br /&gt;There are more things in heaven and earth&lt;br /&gt;I will wear my heart upon my sleeve&lt;br /&gt;When beggars die, there are no comets seen&lt;br /&gt;Lord, what fools these mortals be&lt;br /&gt;Et tu, Brute&lt;br /&gt;Sound and fury&lt;br /&gt;Friends, romans, countrymen&lt;br /&gt;Something wicked this way comes&lt;br /&gt;To sleep: perchance to dream&lt;br /&gt;Green-eyed monster&lt;br /&gt;This was the noblest Roman of them all&lt;br /&gt;Oft expectation fails and most oft there Where most it promises&lt;br /&gt;Eye of newt and toe of frog&lt;br /&gt;Frailty, thy name is woman&lt;br /&gt;What light through yonder window breaks&lt;br /&gt;Think you I am no stronger than my sex&lt;br /&gt;Cowards die many times before their deaths&lt;br /&gt;How poor are they that have not patience&lt;br /&gt;Quality of mercy&lt;br /&gt;My words fly up, my thoughts remain below&lt;br /&gt;Bell, book, and candle&lt;br /&gt;Something is rotten in the state of Denmark&lt;br /&gt;Beware the ides of March&lt;br /&gt;A stage where every man must play a part&lt;br /&gt;Though this be madness, yet there is method in 't&lt;br /&gt;Is this a dagger which I see before me&lt;br /&gt;Now go we in content To liberty and not to banishment&lt;br /&gt;Band of brothers&lt;br /&gt;Alas, poor Yorick! I knew him&lt;br /&gt;The world's mine oyster&lt;br /&gt;Nothing will come of nothing&lt;br /&gt;That man that hath a tongue&lt;br /&gt;All the world's a stage&lt;br /&gt;The course of true love never did run smooth&lt;br /&gt;Love looks not with the eyes, but with the mind&lt;br /&gt;Let every eye negotiate for itself&lt;br /&gt;Kiss me, Kate&lt;br /&gt;The play 's the thing&lt;br /&gt;I am constant as the northern star&lt;br /&gt;The man that hath no music in himself&lt;br /&gt;We are such stuff As dreams are made on&lt;br /&gt;This was the most unkindest cut of all&lt;br /&gt;Journeys end in lovers meeting&lt;br /&gt;Yond Cassius has a lean and hungry look&lt;br /&gt;My only love sprung from my only hate&lt;br /&gt;I am fortune's fool&lt;br /&gt;Loved not wisely but too well&lt;br /&gt;O coward conscience, how dost thou afflict me&lt;br /&gt;When shall we three meet again&lt;br /&gt;A plague o' both your houses&lt;br /&gt;Out, damned spot&lt;br /&gt;To-morrow, and to-morrow, and to-morrow&lt;br /&gt;Our remedies oft in ourselves do lie&lt;br /&gt;Not that I loved Caesar less&lt;br /&gt;Winter of our discontent&lt;br /&gt;Parting is such sweet sorrow&lt;br /&gt;O Romeo, Romeo! wherefore art thou Romeo&lt;br /&gt;The lady protests too much, methinks&lt;br /&gt;What a piece of work is a man&lt;br /&gt;The fault, dear Brutus, is not in our stars&lt;br /&gt;All that glitters is not gold&lt;br /&gt;What's in a name&lt;br /&gt;Thus with a kiss I die&lt;/h3&gt;</documentation>
+      <input message="s0:GetSpeechHttpPostIn" />
+      <output message="s0:GetSpeechHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ShakespeareSoap" type="s0:ShakespeareSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetSpeech">
+      <soap:operation soapAction="http://xmlme.com/WebServices/GetSpeech" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ShakespeareHttpGet" type="s0:ShakespeareHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetSpeech">
+      <http:operation location="/GetSpeech" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ShakespeareHttpPost" type="s0:ShakespeareHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetSpeech">
+      <http:operation location="/GetSpeech" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Shakespeare">
+    <documentation>&lt;h3&gt;This Web Service takes a phrase from the plays of William Shakespeare and returns the associated speech, speaker, and play. The Shakespeare texts used in this Web Service are the &lt;a href=http://www.oasis-open.org/cover/bosakShakespeare200.html&gt; XML versions&lt;/a&gt; developed by Jon Bosak. Please visit &lt;a href=http://www.xmlme.com&gt; XML Me&lt;/a&gt; or &lt;a href=mailto:kevinc@xmlme&gt; contact us&lt;/a&gt; for more information.&lt;/h3&gt;</documentation>
+    <port name="ShakespeareSoap" binding="s0:ShakespeareSoap">
+      <soap:address location="http://www.xmlme.com/WSShakespeare.asmx" />
+    </port>
+    <port name="ShakespeareHttpGet" binding="s0:ShakespeareHttpGet">
+      <http:address location="http://www.xmlme.com/WSShakespeare.asmx" />
+    </port>
+    <port name="ShakespeareHttpPost" binding="s0:ShakespeareHttpPost">
+      <http:address location="http://www.xmlme.com/WSShakespeare.asmx" />
+    </port>
+  </service>
+</definitions>

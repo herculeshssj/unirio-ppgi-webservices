@@ -1,0 +1,1422 @@
+<?xml version="1.0" ?>
+
+<definitions name="CVisitor.cvisitor" targetNamespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" xmlns:tns="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="SuggestVisitorCodeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="UnavailableVisitorCode" type="xsd:string"/>
+        <part name="SuggestedVisitorCode" type="xsd:string"/>
+    </message>
+    <message name="SuggestVisitorCodeResponse">
+        <part name="SuggestedVisitorCode" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetEmailAddressRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorID" type="xsd:long"/>
+        <part name="ReturnEmail" type="xsd:string"/>
+    </message>
+    <message name="GetEmailAddressResponse">
+        <part name="ReturnEmail" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LogonEmailPasswordRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="EmailAddress" type="xsd:string"/>
+        <part name="Password" type="xsd:string"/>
+        <part name="IPAddress" type="xsd:string"/>
+        <part name="Port" type="xsd:short"/>
+        <part name="ReturnVisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+        <part name="ReturnSessionCode" type="xsd:string"/>
+    </message>
+    <message name="LogonEmailPasswordResponse">
+        <part name="ReturnVisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+        <part name="ReturnSessionCode" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="PingRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="PingResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsFreeToLogonRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+    </message>
+    <message name="IsFreeToLogonResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsLoggedOnRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="SessionCode" type="xsd:string"/>
+    </message>
+    <message name="IsLoggedOnResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetVisitorCodeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="EmailAddress" type="xsd:string"/>
+        <part name="ReturnVisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+    </message>
+    <message name="GetVisitorCodeResponse">
+        <part name="ReturnVisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewVisitorCodeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+    </message>
+    <message name="NewVisitorCodeResponse">
+        <part name="ReturnVisitorID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="CurrencyID" type="xsd:long"/>
+    </message>
+    <message name="UpdCurrencyResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+    </message>
+    <message name="UpdSourceTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+    </message>
+    <message name="UpdVisitorTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="LanguageID" type="xsd:long"/>
+    </message>
+    <message name="UpdLanguageResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdVisitorRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="UserName" type="xsd:string"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+        <part name="Password" type="xsd:string"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+        <part name="SourceRef" type="xsd:string"/>
+        <part name="CurrencyID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+        <part name="Dob" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="IsShared" type="xsd:string"/>
+        <part name="OldPassword" type="xsd:string"/>
+    </message>
+    <message name="UpdVisitorResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetVisitorRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="GetVisitorResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LogoffRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="SessionCode" type="xsd:string"/>
+    </message>
+    <message name="LogoffResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LogonRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="IPAddress" type="xsd:string"/>
+        <part name="Port" type="xsd:string"/>
+        <part name="Password" type="xsd:string"/>
+        <part name="ReturnSessionCode" type="xsd:string"/>
+    </message>
+    <message name="LogonResponse">
+        <part name="ReturnSessionCode" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdPasswordRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="OldPassword" type="xsd:string"/>
+        <part name="NewPassword" type="xsd:string"/>
+    </message>
+    <message name="UpdPasswordResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetNumVisitorsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="ReturnNumVisitors" type="xsd:long"/>
+    </message>
+    <message name="GetNumVisitorsResponse">
+        <part name="ReturnNumVisitors" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecLanguage" type="xsd:string"/>
+    </message>
+    <message name="LookupGetLanguageResponse">
+        <part name="RecLanguage" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecCurrency" type="xsd:string"/>
+    </message>
+    <message name="LookupGetCurrencyResponse">
+        <part name="RecCurrency" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecVisitorType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetVisitorTypeResponse">
+        <part name="RecVisitorType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupGetSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="RecSourceType" type="xsd:string"/>
+    </message>
+    <message name="LookupGetSourceTypeResponse">
+        <part name="RecSourceType" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+        <part name="LoyaltyTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="IsSourceRef" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdSourceTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelSourceTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnSourceTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewSourceTypeResponse">
+        <part name="ReturnSourceTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+        <part name="VisitorTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdVisitorTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelVisitorTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnVisitorTypeID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewVisitorTypeResponse">
+        <part name="ReturnVisitorTypeID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+        <part name="LanguageName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdLanguageResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelLanguageResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnLanguageID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewLanguageResponse">
+        <part name="ReturnLanguageID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupUpdCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyID" type="xsd:long"/>
+        <part name="CurrencyName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="CurrencyCode" type="xsd:string"/>
+        <part name="CurrencySymbol" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+    </message>
+    <message name="LookupUpdCurrencyResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupDelCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyID" type="xsd:long"/>
+    </message>
+    <message name="LookupDelCurrencyResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupNewCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyName" type="xsd:string"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="ReturnCurrencyID" type="xsd:long"/>
+    </message>
+    <message name="LookupNewCurrencyResponse">
+        <part name="ReturnCurrencyID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultVisitorTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultVisitorTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultSourceTypeRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultSourceTypeResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultCurrencyRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultCurrencyResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LookupLinkDefaultLanguageRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+        <part name="OrderBy" type="xsd:short"/>
+    </message>
+    <message name="LookupLinkDefaultLanguageResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="NewTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+        <part name="ReturnTextID" type="xsd:long"/>
+    </message>
+    <message name="NewTextResponse">
+        <part name="ReturnTextID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="DelTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="DelTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="LinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UpdTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="OriginatorCode" type="xsd:string"/>
+        <part name="Title" type="xsd:string"/>
+        <part name="Message" type="xsd:string"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="ValidFrom" type="xsd:string"/>
+        <part name="ValidTo" type="xsd:string"/>
+        <part name="OrderBy" type="xsd:long"/>
+        <part name="IsReleased" type="xsd:string"/>
+    </message>
+    <message name="UpdTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsVisitorSharedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+    </message>
+    <message name="IsVisitorSharedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsApplicSharedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+    </message>
+    <message name="IsApplicSharedResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="LinkVisitorRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="SourceApplicID" type="xsd:long"/>
+        <part name="SourceVisitorID" type="xsd:long"/>
+    </message>
+    <message name="LinkVisitorResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnLinkVisitorRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+    </message>
+    <message name="UnLinkVisitorResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+        <part name="RecText" type="xsd:string"/>
+    </message>
+    <message name="GetTextResponse">
+        <part name="RecText" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchVisitorTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeID" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchVisitorTypeIDResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchWhosLoggedOnRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchWhosLoggedOnResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSharedApplicsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromApplicID" type="xsd:long"/>
+        <part name="RecApplic" type="xsd:string"/>
+    </message>
+    <message name="SearchSharedApplicsResponse">
+        <part name="RecApplic" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSharedVisitorsRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchSharedVisitorsResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="Reference" type="xsd:string"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchReferenceResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchUsedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchUsedResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchNotUsedRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchNotUsedResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchSourceTypeIDResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchLanguageIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchLanguageIDResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="SearchCurrencyIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyID" type="xsd:long"/>
+        <part name="MaxRecords" type="xsd:long"/>
+        <part name="FromVisitorID" type="xsd:long"/>
+        <part name="RecVisitor" type="xsd:string"/>
+    </message>
+    <message name="SearchCurrencyIDResponse">
+        <part name="RecVisitor" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetVisitorIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:string"/>
+        <part name="ReturnVisitorID" type="xsd:long"/>
+    </message>
+    <message name="GetVisitorIDResponse">
+        <part name="ReturnVisitorID" type="xsd:long"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultLanguageIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="LanguageID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultLanguageIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultCurrencyIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="CurrencyID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultCurrencyIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultSourceTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="SourceTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultSourceTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="IsDefaultVisitorTypeIDRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorTypeID" type="xsd:long"/>
+    </message>
+    <message name="IsDefaultVisitorTypeIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="UnLinkTextRequest">
+        <part name="ApplicID" type="xsd:long"/>
+        <part name="VisitorCode" type="xsd:long"/>
+        <part name="TextID" type="xsd:long"/>
+    </message>
+    <message name="UnLinkTextResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="CVisitor.cvisitorPortType">
+        <operation name="SuggestVisitorCode">
+            <input message="tns:SuggestVisitorCodeRequest"/>
+            <output message="tns:SuggestVisitorCodeResponse"/>
+        </operation>
+        <operation name="GetEmailAddress">
+            <input message="tns:GetEmailAddressRequest"/>
+            <output message="tns:GetEmailAddressResponse"/>
+        </operation>
+        <operation name="LogonEmailPassword">
+            <input message="tns:LogonEmailPasswordRequest"/>
+            <output message="tns:LogonEmailPasswordResponse"/>
+        </operation>
+        <operation name="Ping">
+            <input message="tns:PingRequest"/>
+            <output message="tns:PingResponse"/>
+        </operation>
+        <operation name="IsFreeToLogon">
+            <input message="tns:IsFreeToLogonRequest"/>
+            <output message="tns:IsFreeToLogonResponse"/>
+        </operation>
+        <operation name="IsLoggedOn">
+            <input message="tns:IsLoggedOnRequest"/>
+            <output message="tns:IsLoggedOnResponse"/>
+        </operation>
+        <operation name="GetVisitorCode">
+            <input message="tns:GetVisitorCodeRequest"/>
+            <output message="tns:GetVisitorCodeResponse"/>
+        </operation>
+        <operation name="NewVisitorCode">
+            <input message="tns:NewVisitorCodeRequest"/>
+            <output message="tns:NewVisitorCodeResponse"/>
+        </operation>
+        <operation name="UpdCurrency">
+            <input message="tns:UpdCurrencyRequest"/>
+            <output message="tns:UpdCurrencyResponse"/>
+        </operation>
+        <operation name="UpdSourceType">
+            <input message="tns:UpdSourceTypeRequest"/>
+            <output message="tns:UpdSourceTypeResponse"/>
+        </operation>
+        <operation name="UpdVisitorType">
+            <input message="tns:UpdVisitorTypeRequest"/>
+            <output message="tns:UpdVisitorTypeResponse"/>
+        </operation>
+        <operation name="UpdLanguage">
+            <input message="tns:UpdLanguageRequest"/>
+            <output message="tns:UpdLanguageResponse"/>
+        </operation>
+        <operation name="UpdVisitor">
+            <input message="tns:UpdVisitorRequest"/>
+            <output message="tns:UpdVisitorResponse"/>
+        </operation>
+        <operation name="GetVisitor">
+            <input message="tns:GetVisitorRequest"/>
+            <output message="tns:GetVisitorResponse"/>
+        </operation>
+        <operation name="Logoff">
+            <input message="tns:LogoffRequest"/>
+            <output message="tns:LogoffResponse"/>
+        </operation>
+        <operation name="Logon">
+            <input message="tns:LogonRequest"/>
+            <output message="tns:LogonResponse"/>
+        </operation>
+        <operation name="UpdPassword">
+            <input message="tns:UpdPasswordRequest"/>
+            <output message="tns:UpdPasswordResponse"/>
+        </operation>
+        <operation name="GetNumVisitors">
+            <input message="tns:GetNumVisitorsRequest"/>
+            <output message="tns:GetNumVisitorsResponse"/>
+        </operation>
+        <operation name="LookupGetLanguage">
+            <input message="tns:LookupGetLanguageRequest"/>
+            <output message="tns:LookupGetLanguageResponse"/>
+        </operation>
+        <operation name="LookupGetCurrency">
+            <input message="tns:LookupGetCurrencyRequest"/>
+            <output message="tns:LookupGetCurrencyResponse"/>
+        </operation>
+        <operation name="LookupGetVisitorType">
+            <input message="tns:LookupGetVisitorTypeRequest"/>
+            <output message="tns:LookupGetVisitorTypeResponse"/>
+        </operation>
+        <operation name="LookupGetSourceType">
+            <input message="tns:LookupGetSourceTypeRequest"/>
+            <output message="tns:LookupGetSourceTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdSourceType">
+            <input message="tns:LookupUpdSourceTypeRequest"/>
+            <output message="tns:LookupUpdSourceTypeResponse"/>
+        </operation>
+        <operation name="LookupDelSourceType">
+            <input message="tns:LookupDelSourceTypeRequest"/>
+            <output message="tns:LookupDelSourceTypeResponse"/>
+        </operation>
+        <operation name="LookupNewSourceType">
+            <input message="tns:LookupNewSourceTypeRequest"/>
+            <output message="tns:LookupNewSourceTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdVisitorType">
+            <input message="tns:LookupUpdVisitorTypeRequest"/>
+            <output message="tns:LookupUpdVisitorTypeResponse"/>
+        </operation>
+        <operation name="LookupDelVisitorType">
+            <input message="tns:LookupDelVisitorTypeRequest"/>
+            <output message="tns:LookupDelVisitorTypeResponse"/>
+        </operation>
+        <operation name="LookupNewVisitorType">
+            <input message="tns:LookupNewVisitorTypeRequest"/>
+            <output message="tns:LookupNewVisitorTypeResponse"/>
+        </operation>
+        <operation name="LookupUpdLanguage">
+            <input message="tns:LookupUpdLanguageRequest"/>
+            <output message="tns:LookupUpdLanguageResponse"/>
+        </operation>
+        <operation name="LookupDelLanguage">
+            <input message="tns:LookupDelLanguageRequest"/>
+            <output message="tns:LookupDelLanguageResponse"/>
+        </operation>
+        <operation name="LookupNewLanguage">
+            <input message="tns:LookupNewLanguageRequest"/>
+            <output message="tns:LookupNewLanguageResponse"/>
+        </operation>
+        <operation name="LookupUpdCurrency">
+            <input message="tns:LookupUpdCurrencyRequest"/>
+            <output message="tns:LookupUpdCurrencyResponse"/>
+        </operation>
+        <operation name="LookupDelCurrency">
+            <input message="tns:LookupDelCurrencyRequest"/>
+            <output message="tns:LookupDelCurrencyResponse"/>
+        </operation>
+        <operation name="LookupNewCurrency">
+            <input message="tns:LookupNewCurrencyRequest"/>
+            <output message="tns:LookupNewCurrencyResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultVisitorType">
+            <input message="tns:LookupLinkDefaultVisitorTypeRequest"/>
+            <output message="tns:LookupLinkDefaultVisitorTypeResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultSourceType">
+            <input message="tns:LookupLinkDefaultSourceTypeRequest"/>
+            <output message="tns:LookupLinkDefaultSourceTypeResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultCurrency">
+            <input message="tns:LookupLinkDefaultCurrencyRequest"/>
+            <output message="tns:LookupLinkDefaultCurrencyResponse"/>
+        </operation>
+        <operation name="LookupLinkDefaultLanguage">
+            <input message="tns:LookupLinkDefaultLanguageRequest"/>
+            <output message="tns:LookupLinkDefaultLanguageResponse"/>
+        </operation>
+        <operation name="NewText">
+            <input message="tns:NewTextRequest"/>
+            <output message="tns:NewTextResponse"/>
+        </operation>
+        <operation name="DelText">
+            <input message="tns:DelTextRequest"/>
+            <output message="tns:DelTextResponse"/>
+        </operation>
+        <operation name="LinkText">
+            <input message="tns:LinkTextRequest"/>
+            <output message="tns:LinkTextResponse"/>
+        </operation>
+        <operation name="UpdText">
+            <input message="tns:UpdTextRequest"/>
+            <output message="tns:UpdTextResponse"/>
+        </operation>
+        <operation name="IsVisitorShared">
+            <input message="tns:IsVisitorSharedRequest"/>
+            <output message="tns:IsVisitorSharedResponse"/>
+        </operation>
+        <operation name="IsApplicShared">
+            <input message="tns:IsApplicSharedRequest"/>
+            <output message="tns:IsApplicSharedResponse"/>
+        </operation>
+        <operation name="LinkVisitor">
+            <input message="tns:LinkVisitorRequest"/>
+            <output message="tns:LinkVisitorResponse"/>
+        </operation>
+        <operation name="UnLinkVisitor">
+            <input message="tns:UnLinkVisitorRequest"/>
+            <output message="tns:UnLinkVisitorResponse"/>
+        </operation>
+        <operation name="GetText">
+            <input message="tns:GetTextRequest"/>
+            <output message="tns:GetTextResponse"/>
+        </operation>
+        <operation name="SearchVisitorTypeID">
+            <input message="tns:SearchVisitorTypeIDRequest"/>
+            <output message="tns:SearchVisitorTypeIDResponse"/>
+        </operation>
+        <operation name="SearchWhosLoggedOn">
+            <input message="tns:SearchWhosLoggedOnRequest"/>
+            <output message="tns:SearchWhosLoggedOnResponse"/>
+        </operation>
+        <operation name="SearchSharedApplics">
+            <input message="tns:SearchSharedApplicsRequest"/>
+            <output message="tns:SearchSharedApplicsResponse"/>
+        </operation>
+        <operation name="SearchSharedVisitors">
+            <input message="tns:SearchSharedVisitorsRequest"/>
+            <output message="tns:SearchSharedVisitorsResponse"/>
+        </operation>
+        <operation name="SearchReference">
+            <input message="tns:SearchReferenceRequest"/>
+            <output message="tns:SearchReferenceResponse"/>
+        </operation>
+        <operation name="SearchUsed">
+            <input message="tns:SearchUsedRequest"/>
+            <output message="tns:SearchUsedResponse"/>
+        </operation>
+        <operation name="SearchNotUsed">
+            <input message="tns:SearchNotUsedRequest"/>
+            <output message="tns:SearchNotUsedResponse"/>
+        </operation>
+        <operation name="SearchSourceTypeID">
+            <input message="tns:SearchSourceTypeIDRequest"/>
+            <output message="tns:SearchSourceTypeIDResponse"/>
+        </operation>
+        <operation name="SearchLanguageID">
+            <input message="tns:SearchLanguageIDRequest"/>
+            <output message="tns:SearchLanguageIDResponse"/>
+        </operation>
+        <operation name="SearchCurrencyID">
+            <input message="tns:SearchCurrencyIDRequest"/>
+            <output message="tns:SearchCurrencyIDResponse"/>
+        </operation>
+        <operation name="GetVisitorID">
+            <input message="tns:GetVisitorIDRequest"/>
+            <output message="tns:GetVisitorIDResponse"/>
+        </operation>
+        <operation name="IsDefaultLanguageID">
+            <input message="tns:IsDefaultLanguageIDRequest"/>
+            <output message="tns:IsDefaultLanguageIDResponse"/>
+        </operation>
+        <operation name="IsDefaultCurrencyID">
+            <input message="tns:IsDefaultCurrencyIDRequest"/>
+            <output message="tns:IsDefaultCurrencyIDResponse"/>
+        </operation>
+        <operation name="IsDefaultSourceTypeID">
+            <input message="tns:IsDefaultSourceTypeIDRequest"/>
+            <output message="tns:IsDefaultSourceTypeIDResponse"/>
+        </operation>
+        <operation name="IsDefaultVisitorTypeID">
+            <input message="tns:IsDefaultVisitorTypeIDRequest"/>
+            <output message="tns:IsDefaultVisitorTypeIDResponse"/>
+        </operation>
+        <operation name="UnLinkText">
+            <input message="tns:UnLinkTextRequest"/>
+            <output message="tns:UnLinkTextResponse"/>
+        </operation>
+    </portType>
+    <binding name="CVisitor.cvisitorbinding" type="tns:CVisitor.cvisitorPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="SuggestVisitorCode">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SuggestVisitorCode"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetEmailAddress">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetEmailAddress"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LogonEmailPassword">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LogonEmailPassword"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Ping">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#Ping"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsFreeToLogon">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsFreeToLogon"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsLoggedOn">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsLoggedOn"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetVisitorCode">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetVisitorCode"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewVisitorCode">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#NewVisitorCode"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdVisitor">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdVisitor"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetVisitor">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetVisitor"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Logoff">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#Logoff"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="Logon">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#Logon"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdPassword">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdPassword"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetNumVisitors">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetNumVisitors"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupGetLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupGetCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupGetVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupGetSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupGetSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupUpdSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupDelSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupNewSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupUpdVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupDelVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupNewVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupUpdLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupDelLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupNewLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupUpdCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupUpdCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupDelCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupDelCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupNewCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupNewCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultVisitorType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupLinkDefaultVisitorType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultSourceType">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupLinkDefaultSourceType"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultCurrency">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupLinkDefaultCurrency"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LookupLinkDefaultLanguage">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LookupLinkDefaultLanguage"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="NewText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#NewText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="DelText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#DelText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UpdText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UpdText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsVisitorShared">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsVisitorShared"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsApplicShared">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsApplicShared"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="LinkVisitor">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#LinkVisitor"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnLinkVisitor">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UnLinkVisitor"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchVisitorTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchVisitorTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchWhosLoggedOn">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchWhosLoggedOn"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSharedApplics">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchSharedApplics"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSharedVisitors">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchSharedVisitors"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchReference">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchReference"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchUsed">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchUsed"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchNotUsed">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchNotUsed"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchSourceTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchSourceTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchLanguageID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchLanguageID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="SearchCurrencyID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#SearchCurrencyID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetVisitorID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#GetVisitorID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultLanguageID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsDefaultLanguageID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultCurrencyID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsDefaultCurrencyID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultSourceTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsDefaultSourceTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="IsDefaultVisitorTypeID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#IsDefaultVisitorTypeID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="UnLinkText">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml#UnLinkText"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/userman/CVisitor/CVisitor.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CVisitor.cvisitorService">
+        <port name="CVisitor.cvisitorPort" binding="tns:CVisitor.cvisitorbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/salacc.cgi"/>
+        </port>
+    </service>
+</definitions>

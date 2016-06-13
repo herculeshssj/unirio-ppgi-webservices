@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="GetICD9Drug">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Substance" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICD9DrugResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICD9DrugResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetICD9DrugSoapIn">
+    <part name="parameters" element="s0:GetICD9Drug" />
+  </message>
+  <message name="GetICD9DrugSoapOut">
+    <part name="parameters" element="s0:GetICD9DrugResponse" />
+  </message>
+  <message name="GetICD9DrugHttpGetIn">
+    <part name="Substance" type="s:string" />
+  </message>
+  <message name="GetICD9DrugHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetICD9DrugHttpPostIn">
+    <part name="Substance" type="s:string" />
+  </message>
+  <message name="GetICD9DrugHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ICD9DrugSoap">
+    <operation name="GetICD9Drug">
+      <documentation>ICD-9-CM CLASSIFICATION OF Drug</documentation>
+      <input message="s0:GetICD9DrugSoapIn" />
+      <output message="s0:GetICD9DrugSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ICD9DrugHttpGet">
+    <operation name="GetICD9Drug">
+      <documentation>ICD-9-CM CLASSIFICATION OF Drug</documentation>
+      <input message="s0:GetICD9DrugHttpGetIn" />
+      <output message="s0:GetICD9DrugHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ICD9DrugHttpPost">
+    <operation name="GetICD9Drug">
+      <documentation>ICD-9-CM CLASSIFICATION OF Drug</documentation>
+      <input message="s0:GetICD9DrugHttpPostIn" />
+      <output message="s0:GetICD9DrugHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ICD9DrugSoap" type="s0:ICD9DrugSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetICD9Drug">
+      <soap:operation soapAction="http://www.webserviceX.NET/GetICD9Drug" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD9DrugHttpGet" type="s0:ICD9DrugHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetICD9Drug">
+      <http:operation location="/GetICD9Drug" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICD9DrugHttpPost" type="s0:ICD9DrugHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetICD9Drug">
+      <http:operation location="/GetICD9Drug" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICD9Drug">
+    <documentation>ICD-9-CM CLASSIFICATION OF Drug</documentation>
+    <port name="ICD9DrugSoap" binding="s0:ICD9DrugSoap">
+      <soap:address location="http://www.webservicex.net/icd9drug.asmx" />
+    </port>
+    <port name="ICD9DrugHttpGet" binding="s0:ICD9DrugHttpGet">
+      <http:address location="http://www.webservicex.net/icd9drug.asmx" />
+    </port>
+    <port name="ICD9DrugHttpPost" binding="s0:ICD9DrugHttpPost">
+      <http:address location="http://www.webservicex.net/icd9drug.asmx" />
+    </port>
+  </service>
+</definitions>

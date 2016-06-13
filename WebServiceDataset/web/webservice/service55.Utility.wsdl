@@ -1,0 +1,47 @@
+<definitions name="X1" targetNamespace="SoapInterop" xmlns:wsdlns="SoapInterop" xmlns:typens="SoapInterop" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:stk="http://schemas.microsoft.com/soap-toolkit/wsdl-extension" xmlns="http://schemas.xmlsoap.org/wsdl/">
+ <types>
+  <schema targetNamespace="SoapInterop" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+  </schema>
+ </types>
+
+ <message name="getVxRequest">
+    <part name="arg0" type="xsd:string" />
+  </message>
+
+ <message name="getVxResponse">
+    <part name="return" type="xsd:string" />
+ </message>
+
+
+ <portType name="X1PortType">
+  <operation name="getVx">
+    <input message="wsdlns:getVxRequest"/>
+    <output message="wsdlns:getVxResponse"/>
+  </operation>
+ </portType>
+
+ <binding name="X1Binding" type="wsdlns:X1PortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+   <operation name="getVx">
+    <soap:operation soapAction="#getVx"/>
+     <input>
+      <soap:body use="encoded" namespace="SoapInterop" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+     </input>
+     <output>
+      <soap:body use="encoded" namespace="SoapInterop" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+     </output>
+    </operation>
+ </binding>
+
+ <service name="X1">
+  <port name="IBaseDataTypes" binding="wsdlns:X1Binding">
+   <soap:address location="http://www.testor.de/cgi-bin/serverType/X1.wsdl"/>
+  </port>
+</service>
+</definitions>
+
+
+
+
+
+

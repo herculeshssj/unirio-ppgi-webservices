@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetUPCInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPCCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUPCInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUPCInfoResult" type="s0:UPCInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UPCInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UPC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SizeWeight" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Manufacturer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManufacturerCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UPCInfo" nillable="true" type="s0:UPCInfo" />
+    </s:schema>
+  </types>
+  <message name="GetUPCInfoSoapIn">
+    <part name="parameters" element="s0:GetUPCInfo" />
+  </message>
+  <message name="GetUPCInfoSoapOut">
+    <part name="parameters" element="s0:GetUPCInfoResponse" />
+  </message>
+  <message name="GetUPCInfoHttpGetIn">
+    <part name="UPCCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetUPCInfoHttpGetOut">
+    <part name="Body" element="s0:UPCInfo" />
+  </message>
+  <message name="GetUPCInfoHttpPostIn">
+    <part name="UPCCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetUPCInfoHttpPostOut">
+    <part name="Body" element="s0:UPCInfo" />
+  </message>
+  <portType name="DOTSUPCSoap">
+    <operation name="GetUPCInfo">
+      <documentation>Enter the all digits printed on the UPC bar code. Include any numbers to the right or left of the bar code itself, even if they don't line up with the main row of numbers. 12 digits required for a normal Type A UPC code. 8 digits required for a Type-E (zero-suppressed) UPC code.</documentation>
+      <input message="s0:GetUPCInfoSoapIn" />
+      <output message="s0:GetUPCInfoSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSUPCHttpGet">
+    <operation name="GetUPCInfo">
+      <documentation>Enter the all digits printed on the UPC bar code. Include any numbers to the right or left of the bar code itself, even if they don't line up with the main row of numbers. 12 digits required for a normal Type A UPC code. 8 digits required for a Type-E (zero-suppressed) UPC code.</documentation>
+      <input message="s0:GetUPCInfoHttpGetIn" />
+      <output message="s0:GetUPCInfoHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSUPCHttpPost">
+    <operation name="GetUPCInfo">
+      <documentation>Enter the all digits printed on the UPC bar code. Include any numbers to the right or left of the bar code itself, even if they don't line up with the main row of numbers. 12 digits required for a normal Type A UPC code. 8 digits required for a Type-E (zero-suppressed) UPC code.</documentation>
+      <input message="s0:GetUPCInfoHttpPostIn" />
+      <output message="s0:GetUPCInfoHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSUPCSoap" type="s0:DOTSUPCSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetUPCInfo">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetUPCInfo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSUPCHttpGet" type="s0:DOTSUPCHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetUPCInfo">
+      <http:operation location="/GetUPCInfo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSUPCHttpPost" type="s0:DOTSUPCHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetUPCInfo">
+      <http:operation location="/GetUPCInfo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSUPC">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSUPCSoap" binding="s0:DOTSUPCSoap">
+      <soap:address location="http://ws2.serviceobjects.net/upc/UPC.asmx" />
+    </port>
+    <port name="DOTSUPCHttpGet" binding="s0:DOTSUPCHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/upc/UPC.asmx" />
+    </port>
+    <port name="DOTSUPCHttpPost" binding="s0:DOTSUPCHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/upc/UPC.asmx" />
+    </port>
+  </service>
+</definitions>
