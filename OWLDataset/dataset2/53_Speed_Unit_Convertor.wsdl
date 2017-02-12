@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ConvertSpeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="speed" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="FromUnit" type="s0:SpeedUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="ToUnit" type="s0:SpeedUnit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="SpeedUnit">
+        <s:restriction base="s:string">
+          <s:enumeration value="centimetersPersecond" />
+          <s:enumeration value="metersPersecond" />
+          <s:enumeration value="feetPersecond" />
+          <s:enumeration value="feetPerminute" />
+          <s:enumeration value="milesPerhour" />
+          <s:enumeration value="kilometersPerhour" />
+          <s:enumeration value="furlongsPermin" />
+          <s:enumeration value="knots" />
+          <s:enumeration value="leaguesPerday" />
+          <s:enumeration value="Mach" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ConvertSpeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertSpeedResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ConvertSpeedSoapIn">
+    <part name="parameters" element="s0:ConvertSpeed" />
+  </message>
+  <message name="ConvertSpeedSoapOut">
+    <part name="parameters" element="s0:ConvertSpeedResponse" />
+  </message>
+  <message name="ConvertSpeedHttpGetIn">
+    <part name="speed" type="s:string" />
+    <part name="FromUnit" type="s:string" />
+    <part name="ToUnit" type="s:string" />
+  </message>
+  <message name="ConvertSpeedHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ConvertSpeedHttpPostIn">
+    <part name="speed" type="s:string" />
+    <part name="FromUnit" type="s:string" />
+    <part name="ToUnit" type="s:string" />
+  </message>
+  <message name="ConvertSpeedHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="ConvertSpeedsSoap">
+    <operation name="ConvertSpeed">
+      <input message="s0:ConvertSpeedSoapIn" />
+      <output message="s0:ConvertSpeedSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertSpeedsHttpGet">
+    <operation name="ConvertSpeed">
+      <input message="s0:ConvertSpeedHttpGetIn" />
+      <output message="s0:ConvertSpeedHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ConvertSpeedsHttpPost">
+    <operation name="ConvertSpeed">
+      <input message="s0:ConvertSpeedHttpPostIn" />
+      <output message="s0:ConvertSpeedHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ConvertSpeedsSoap" type="s0:ConvertSpeedsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ConvertSpeed">
+      <soap:operation soapAction="http://www.webserviceX.NET/ConvertSpeed" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertSpeedsHttpGet" type="s0:ConvertSpeedsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ConvertSpeed">
+      <http:operation location="/ConvertSpeed" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ConvertSpeedsHttpPost" type="s0:ConvertSpeedsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ConvertSpeed">
+      <http:operation location="/ConvertSpeed" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ConvertSpeeds">
+    <port name="ConvertSpeedsSoap" binding="s0:ConvertSpeedsSoap">
+      <soap:address location="http://www.webservicex.net/ConvertSpeed.asmx" />
+    </port>
+    <port name="ConvertSpeedsHttpGet" binding="s0:ConvertSpeedsHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertSpeed.asmx" />
+    </port>
+    <port name="ConvertSpeedsHttpPost" binding="s0:ConvertSpeedsHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertSpeed.asmx" />
+    </port>
+  </service>
+</definitions>

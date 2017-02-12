@@ -1,0 +1,892 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/127_FastWeather_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_FastWeather">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByZip_47358"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByCityState_47364"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByIP_47371"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByZip_47378"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByCityState_47384"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByIP_47391"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByZip_47398"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByCityState_47403"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetWeatherByIP_47408"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByZip_47358 ID: 47358 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByZip_47358">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByZip_47358" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByZip"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostalCode_47360"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#PostalCode_47360"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47361"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47361"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipHttpGetOut_47362"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47363"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47363/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47363/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47363/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47363/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47363/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47363/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47363/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47363/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47363/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47363/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47363/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47363/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47363/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47363/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47363/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47363/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByCityState_47364 ID: 47364 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByCityState_47364">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByCityState_47364" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByCityState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#City_47366"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#City_47366"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_47367"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_47367"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47368"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47368"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateHttpGetOut_47369"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47370"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47370/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47370/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47370/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47370/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47370/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47370/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47370/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47370/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47370/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47370/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47370/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47370/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47370/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47370/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47370/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47370/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByIP_47371 ID: 47371 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByIP_47371">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByIP_47371" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByIP"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#IPAddress_47373"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#IPAddress_47373"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47374"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47374"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPHttpGetOut_47375"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47376"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47376/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47376/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47376/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47376/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47376/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47376/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47376/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47376/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47376/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47376/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47376/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47376/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47376/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47376/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47376/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47376/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByZip_47378 ID: 47378 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByZip_47378">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByZip_47378" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByZip"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostalCode_47380"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#PostalCode_47380"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47381"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47381"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipHttpPostOut_47382"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47383"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47383/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47383/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47383/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47383/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47383/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47383/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47383/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47383/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47383/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47383/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47383/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47383/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47383/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47383/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47383/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47383/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByCityState_47384 ID: 47384 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByCityState_47384">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByCityState_47384" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByCityState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#City_47386"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#City_47386"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_47387"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_47387"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47388"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47388"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateHttpPostOut_47389"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47390"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47390/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47390/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47390/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47390/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47390/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47390/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47390/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47390/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47390/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47390/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47390/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47390/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47390/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47390/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47390/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47390/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByIP_47391 ID: 47391 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByIP_47391">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByIP_47391" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByIP"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#IPAddress_47393"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#IPAddress_47393"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_47394"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_47394"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPHttpPostOut_47395"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_47396"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Weather>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="Body_47396/LastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="Body_47396/TemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="Body_47396/Windchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="Body_47396/HeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="Body_47396/Humidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="Body_47396/Dewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="Body_47396/Wind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="Body_47396/Pressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="Body_47396/Conditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="Body_47396/Visibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="Body_47396/Sunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="Body_47396/Sunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="Body_47396/City"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="Body_47396/State"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="Body_47396/Moonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="Body_47396/Moonset"/></the_concepts:Moonset>
+        </the_concepts:Weather>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByZip_47398 ID: 47398 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByZip_47398">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByZip_47398" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByZip"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47400"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetWeatherByZip
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetWeatherByZip">
+
+        <ws:PostalCode xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByZip/the_concepts:PostalCode"/>        </ws:PostalCode>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByZip/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetWeatherByZip>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByZipSoapOut_47401"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47402"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetWeatherByZipResponse>
+        <the_concepts:GetWeatherByZipResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="GetWeatherByZipResultLastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="GetWeatherByZipResultTemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="GetWeatherByZipResultWindchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="GetWeatherByZipResultHeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="GetWeatherByZipResultHumidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="GetWeatherByZipResultDewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="GetWeatherByZipResultWind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="GetWeatherByZipResultPressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="GetWeatherByZipResultConditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="GetWeatherByZipResultVisibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="GetWeatherByZipResultSunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="GetWeatherByZipResultSunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="GetWeatherByZipResultCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetWeatherByZipResultState"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="GetWeatherByZipResultMoonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="GetWeatherByZipResultMoonset"/></the_concepts:Moonset>
+        </the_concepts:GetWeatherByZipResult>
+        </the_concepts:GetWeatherByZipResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByCityState_47403 ID: 47403 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByCityState_47403">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByCityState_47403" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByCityState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47405"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetWeatherByCityState
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetWeatherByCityState">
+
+        <ws:City xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByCityState/the_concepts:City"/>        </ws:City>
+        <ws:State xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByCityState/the_concepts:State"/>        </ws:State>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByCityState/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetWeatherByCityState>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByCityStateSoapOut_47406"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47407"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetWeatherByCityStateResponse>
+        <the_concepts:GetWeatherByCityStateResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="GetWeatherByCityStateResultLastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="GetWeatherByCityStateResultTemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="GetWeatherByCityStateResultWindchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="GetWeatherByCityStateResultHeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="GetWeatherByCityStateResultHumidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="GetWeatherByCityStateResultDewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="GetWeatherByCityStateResultWind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="GetWeatherByCityStateResultPressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="GetWeatherByCityStateResultConditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="GetWeatherByCityStateResultVisibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="GetWeatherByCityStateResultSunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="GetWeatherByCityStateResultSunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="GetWeatherByCityStateResultCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetWeatherByCityStateResultState"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="GetWeatherByCityStateResultMoonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="GetWeatherByCityStateResultMoonset"/></the_concepts:Moonset>
+        </the_concepts:GetWeatherByCityStateResult>
+        </the_concepts:GetWeatherByCityStateResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetWeatherByIP_47408 ID: 47408 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetWeatherByIP_47408">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetWeatherByIP_47408" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastWeatherSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetWeatherByIP"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47410"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetWeatherByIP
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetWeatherByIP">
+
+        <ws:IPAddress xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByIP/the_concepts:IPAddress"/>        </ws:IPAddress>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetWeatherByIP/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetWeatherByIP>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetWeatherByIPSoapOut_47411"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_47412"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetWeatherByIPResponse>
+        <the_concepts:GetWeatherByIPResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:LastUpdated><xsl:value-of select="GetWeatherByIPResultLastUpdated"/></the_concepts:LastUpdated>
+        <the_concepts:TemperatureF><xsl:value-of select="GetWeatherByIPResultTemperatureF"/></the_concepts:TemperatureF>
+        <the_concepts:Windchill><xsl:value-of select="GetWeatherByIPResultWindchill"/></the_concepts:Windchill>
+        <the_concepts:HeatIndex><xsl:value-of select="GetWeatherByIPResultHeatIndex"/></the_concepts:HeatIndex>
+        <the_concepts:Humidity><xsl:value-of select="GetWeatherByIPResultHumidity"/></the_concepts:Humidity>
+        <the_concepts:Dewpoint><xsl:value-of select="GetWeatherByIPResultDewpoint"/></the_concepts:Dewpoint>
+        <the_concepts:Wind><xsl:value-of select="GetWeatherByIPResultWind"/></the_concepts:Wind>
+        <the_concepts:Pressure><xsl:value-of select="GetWeatherByIPResultPressure"/></the_concepts:Pressure>
+        <the_concepts:Conditions><xsl:value-of select="GetWeatherByIPResultConditions"/></the_concepts:Conditions>
+        <the_concepts:Visibility><xsl:value-of select="GetWeatherByIPResultVisibility"/></the_concepts:Visibility>
+        <the_concepts:Sunrise><xsl:value-of select="GetWeatherByIPResultSunrise"/></the_concepts:Sunrise>
+        <the_concepts:Sunset><xsl:value-of select="GetWeatherByIPResultSunset"/></the_concepts:Sunset>
+        <the_concepts:City><xsl:value-of select="GetWeatherByIPResultCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetWeatherByIPResultState"/></the_concepts:State>
+        <the_concepts:Moonrise><xsl:value-of select="GetWeatherByIPResultMoonrise"/></the_concepts:Moonrise>
+        <the_concepts:Moonset><xsl:value-of select="GetWeatherByIPResultMoonset"/></the_concepts:Moonset>
+        </the_concepts:GetWeatherByIPResult>
+        </the_concepts:GetWeatherByIPResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,462 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/101_AustralianPostcodeService_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_AustralianPostcodeService">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolvePostcodeToSuburbs_45271"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolveSuburbDetails_45276"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolvePostcodeToSuburbs_45282"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolveSuburbDetails_45287"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolvePostcodeToSuburbs_45293"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#resolveSuburbDetails_45298"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: resolvePostcodeToSuburbs_45271 ID: 45271 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolvePostcodeToSuburbs_45271">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolvePostcodeToSuburbs_45271" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolvePostcodeToSuburbs"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_45273"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:resolvePostcodeToSuburbs
+       xmlns:ws="http://stanski.com/services/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:resolvePostcodeToSuburbs">
+
+        <ws:strPostcode xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:resolvePostcodeToSuburbs/the_concepts:strPostcode"/>        </ws:strPostcode>
+
+      </ws:resolvePostcodeToSuburbs>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsSoapOut_45274"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_45275"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:resolvePostcodeToSuburbsResponse>
+        <the_concepts:resolvePostcodeToSuburbsResult>
+        <the_concepts:anyType><xsl:value-of select="resolvePostcodeToSuburbsResultanyType"/></the_concepts:anyType>
+        </the_concepts:resolvePostcodeToSuburbsResult>
+        </the_concepts:resolvePostcodeToSuburbsResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: resolveSuburbDetails_45276 ID: 45276 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolveSuburbDetails_45276">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolveSuburbDetails_45276" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolveSuburbDetails"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_45278"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:resolveSuburbDetails
+       xmlns:ws="http://stanski.com/services/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:resolveSuburbDetails">
+
+        <ws:strSuburbname xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:resolveSuburbDetails/the_concepts:strSuburbname"/>        </ws:strSuburbname>
+
+      </ws:resolveSuburbDetails>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsSoapOut_45279"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_45280"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:resolveSuburbDetailsResponse>
+        <the_concepts:resolveSuburbDetailsResult>
+        <the_concepts:anyType><xsl:value-of select="resolveSuburbDetailsResultanyType"/></the_concepts:anyType>
+        </the_concepts:resolveSuburbDetailsResult>
+        </the_concepts:resolveSuburbDetailsResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: resolvePostcodeToSuburbs_45282 ID: 45282 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolvePostcodeToSuburbs_45282">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolvePostcodeToSuburbs_45282" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolvePostcodeToSuburbs"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#strPostcode_45284"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#strPostcode_45284"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsHttpPostOut_45285"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_45286"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfAnyType>
+        <the_concepts:anyType><xsl:value-of select="Body_45286/anyType"/></the_concepts:anyType>
+        </the_concepts:ArrayOfAnyType>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: resolveSuburbDetails_45287 ID: 45287 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolveSuburbDetails_45287">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolveSuburbDetails_45287" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolveSuburbDetails"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#strSuburbname_45289"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#strSuburbname_45289"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsHttpPostOut_45290"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_45291"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfAnyType>
+        <the_concepts:anyType><xsl:value-of select="Body_45291/anyType"/></the_concepts:anyType>
+        </the_concepts:ArrayOfAnyType>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: resolvePostcodeToSuburbs_45293 ID: 45293 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolvePostcodeToSuburbs_45293">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolvePostcodeToSuburbs_45293" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolvePostcodeToSuburbs"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#strPostcode_45295"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#strPostcode_45295"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolvePostcodeToSuburbsHttpGetOut_45296"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_45297"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfAnyType>
+        <the_concepts:anyType><xsl:value-of select="Body_45297/anyType"/></the_concepts:anyType>
+        </the_concepts:ArrayOfAnyType>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: resolveSuburbDetails_45298 ID: 45298 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_resolveSuburbDetails_45298">
+  <grounding:owlsProcess rdf:resource="&the_process;#resolveSuburbDetails_45298" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#PostcodeServiceHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#resolveSuburbDetails"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#strSuburbname_45300"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#strSuburbname_45300"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#resolveSuburbDetailsHttpGetOut_45301"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_45302"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfAnyType>
+        <the_concepts:anyType><xsl:value-of select="Body_45302/anyType"/></the_concepts:anyType>
+        </the_concepts:ArrayOfAnyType>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,632 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Concepts.owl">
+  <!ENTITY DEFAULT   "http://moguntia.ucd.ie/owl/dataset2/37_SMSfromRedcoal_Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<process:ProcessModel rdf:ID="SMSfromRedcoal">
+  <process:hasProcess rdf:resource="#SendTextSMS_41212"/>
+  <process:hasProcess rdf:resource="#SendBinarySMS_41225"/>
+  <process:hasProcess rdf:resource="#CheckMessageStatus_41238"/>
+  <process:hasProcess rdf:resource="#GetPropertyPage_41247"/>
+  <process:hasProcess rdf:resource="#GetCreditsLeft_41255"/>
+  <process:hasProcess rdf:resource="#GetLicenseInformation_41263"/>
+  <process:hasProcess rdf:resource="#GetIncomingMessage_41271"/>
+  <process:hasProcess rdf:resource="#EnterSchedule_41286"/>
+  <process:hasProcess rdf:resource="#EnterScheduleExt_41299"/>
+  <process:hasProcess rdf:resource="#DeleteSchedule_41314"/>
+  <process:hasProcess rdf:resource="#GetListNames_41321"/>
+  <process:hasProcess rdf:resource="#GetListEntries_41329"/>
+  <process:hasProcess rdf:resource="#RegisterAccount_41338"/>
+  <process:hasProcess rdf:resource="#RedWebServiceVersion_41347"/>
+</process:ProcessModel>
+
+
+
+<process:AtomicProcess rdf:ID="SendTextSMS_41212">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41214">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41215">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInRecipients_41216">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInMessageText_41217">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInReplyEmail_41218">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInOriginator_41219">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInType_41220">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutMessageIDs_41221">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutMessageIDs_41223">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41224">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="SendBinarySMS_41225">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41227">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41228">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInRecipients_41229">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInBinaryContent_41230">
+      <process:parameterType rdf:resource="&xsd;#base64Binary"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInExtraParam_41231">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInReplyEmail_41232">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInType_41233">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutMessageIDs_41234">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutMessageIDs_41236">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41237">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="CheckMessageStatus_41238">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41240">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41241">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInMessageIDs_41242">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutMessageStatus_41243">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutMessageStatus_41245">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41246">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPropertyPage_41247">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41249">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41250">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutContent_41251">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutContent_41253">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41254">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetCreditsLeft_41255">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41257">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41258">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="dOutCreditsLeft_41259">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="dOutCreditsLeft_41261">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41262">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetLicenseInformation_41263">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41265">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41266">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutLicenseInfo_41267">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutLicenseInfo_41269">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41270">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetIncomingMessage_41271">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41273">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41274">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInReplyEmail_41275">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutSender_41276">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutMessageContent_41277">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutTimeStamp_41278">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iOutMessagesLeft_41279">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutSender_41281">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutMessageContent_41282">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutTimeStamp_41283">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="iOutMessagesLeft_41284">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41285">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="EnterSchedule_41286">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41288">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41289">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInRecipients_41290">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInMessageText_41291">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInReplyEmail_41292">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInOriginator_41293">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="dInDateTime_41294">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="dInRefTime_41295">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInType_41296">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41298">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="EnterScheduleExt_41299">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41301">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41302">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInRecipients_41303">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInMessageText_41304">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInReplyEmail_41305">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInOriginator_41306">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="dInDateTime_41307">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="dInRefTime_41308">
+      <process:parameterType rdf:resource="&xsd;#double"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInType_41309">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutMessageIDs_41310">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutMessageIDs_41312">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41313">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="DeleteSchedule_41314">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41316">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41317">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInMessageIDs_41318">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41320">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetListNames_41321">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41323">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41324">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutListNames_41325">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutListNames_41327">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41328">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetListEntries_41329">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41331">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInSMSKey_41332">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInListID_41333">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strOutListEntries_41334">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="strOutListEntries_41336">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41337">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="RegisterAccount_41338">
+  <process:hasInput>
+    <process:Input rdf:ID="strInSerialNo_41340">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInEmailAddress_41341">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInName_41342">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="strInOrganization_41343">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="iInCountryID_41344">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41346">
+      <process:parameterType rdf:resource="&xsd;#int"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="RedWebServiceVersion_41347">
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="return_41350">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+</rdf:RDF>

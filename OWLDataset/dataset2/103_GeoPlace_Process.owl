@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Concepts.owl">
+  <!ENTITY DEFAULT   "http://moguntia.ucd.ie/owl/dataset2/103_GeoPlace_Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<process:ProcessModel rdf:ID="GeoPlace">
+  <process:hasProcess rdf:resource="#GetPlacesWithin_45394"/>
+  <process:hasProcess rdf:resource="#GetDistanceBetweenPlaces_45402"/>
+  <process:hasProcess rdf:resource="#GetPlaceDetails_45410"/>
+  <process:hasProcess rdf:resource="#GetPlacesWithin_45417"/>
+  <process:hasProcess rdf:resource="#GetDistanceBetweenPlaces_45425"/>
+  <process:hasProcess rdf:resource="#GetPlaceDetails_45433"/>
+  <process:hasProcess rdf:resource="#GetPlacesWithin_45440"/>
+  <process:hasProcess rdf:resource="#GetDistanceBetweenPlaces_45448"/>
+  <process:hasProcess rdf:resource="#GetPlaceDetails_45456"/>
+</process:ProcessModel>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlacesWithin_45394">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45396">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45397">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="distance_45398">
+      <process:parameterType rdf:resource="&xsd;#float"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="placeTypeToFind_45399">
+      <process:parameterType rdf:resource="#GeoPlaceType"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="GetPlacesWithinResult_45401">
+      <process:parameterType rdf:resource="#ArrayOfGeoPlaceDistance"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetDistanceBetweenPlaces_45402">
+  <process:hasInput>
+    <process:Input rdf:ID="place1_45404">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state1_45405">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="place2_45406">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state2_45407">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="GetDistanceBetweenPlacesResult_45409">
+      <process:parameterType rdf:resource="&xsd;#float"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlaceDetails_45410">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45412">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45413">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="GetPlaceDetailsResult_45415">
+      <process:parameterType rdf:resource="#GeoPlaceDetails"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlacesWithin_45417">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45419">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45420">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="distance_45421">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="placeTypeToFind_45422">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45424">
+      <process:parameterType rdf:resource="#ArrayOfGeoPlaceDistance"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetDistanceBetweenPlaces_45425">
+  <process:hasInput>
+    <process:Input rdf:ID="place1_45427">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state1_45428">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="place2_45429">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state2_45430">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45432">
+      <process:parameterType rdf:resource="#float"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlaceDetails_45433">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45435">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45436">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45438">
+      <process:parameterType rdf:resource="#GeoPlaceDetails"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlacesWithin_45440">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45442">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45443">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="distance_45444">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="placeTypeToFind_45445">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45447">
+      <process:parameterType rdf:resource="#ArrayOfGeoPlaceDistance"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetDistanceBetweenPlaces_45448">
+  <process:hasInput>
+    <process:Input rdf:ID="place1_45450">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state1_45451">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="place2_45452">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state2_45453">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45455">
+      <process:parameterType rdf:resource="#float"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetPlaceDetails_45456">
+  <process:hasInput>
+    <process:Input rdf:ID="place_45458">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="state_45459">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_45461">
+      <process:parameterType rdf:resource="#GeoPlaceDetails"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+</rdf:RDF>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:impl="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup-impl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:message name="getPopulationResponse">
+    <wsdl:part name="return" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="getPopulationRequest">
+    <wsdl:part name="in0" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="CountryInfoLookup">
+    <wsdl:operation name="getPopulation" parameterOrder="in0">
+      <wsdl:input message="intf:getPopulationRequest"/>
+      <wsdl:output message="intf:getPopulationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="urn%3acountryInfoLookupSoapBinding" type="intf:CountryInfoLookup">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPopulation">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup"/>
+      </wsdl:input>
+      <wsdl:output>
+        <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryInfoLookupService">
+    <wsdl:port name="urn%3acountryInfoLookup" binding="intf:urn%3acountryInfoLookupSoapBinding">
+      <wsdlsoap:address location="http://cs.uga.edu:8080/axis/services/urn%3acountryInfoLookup"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

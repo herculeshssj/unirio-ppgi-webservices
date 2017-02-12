@@ -1,0 +1,897 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/159_FastQuote_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_FastQuote">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetStockInfo_49638"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetMutualInfo_49644"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetInternationalStockInfo_49650"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetStockInfo_49657"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetMutualInfo_49663"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetInternationalStockInfo_49669"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetStockInfo_49676"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetMutualInfo_49681"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetInternationalStockInfo_49686"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: GetStockInfo_49638 ID: 49638 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetStockInfo_49638">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetStockInfo_49638" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49640"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49640"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49641"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49641"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoHttpPostOut_49642"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49643"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49643/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49643/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49643/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49643/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49643/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49643/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49643/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49643/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49643/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49643/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49643/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49643/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49643/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49643/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49643/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49643/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49643/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49643/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetMutualInfo_49644 ID: 49644 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetMutualInfo_49644">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetMutualInfo_49644" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetMutualInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49646"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49646"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49647"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49647"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoHttpPostOut_49648"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49649"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49649/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49649/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49649/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49649/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49649/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49649/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49649/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49649/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49649/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49649/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49649/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49649/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49649/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49649/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49649/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49649/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49649/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49649/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetInternationalStockInfo_49650 ID: 49650 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetInternationalStockInfo_49650">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetInternationalStockInfo_49650" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetInternationalStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49652"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49652"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49653"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49653"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoHttpPostOut_49654"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49655"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49655/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49655/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49655/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49655/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49655/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49655/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49655/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49655/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49655/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49655/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49655/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49655/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49655/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49655/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49655/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49655/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49655/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49655/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetStockInfo_49657 ID: 49657 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetStockInfo_49657">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetStockInfo_49657" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49659"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49659"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49660"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49660"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoHttpGetOut_49661"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49662"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49662/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49662/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49662/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49662/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49662/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49662/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49662/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49662/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49662/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49662/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49662/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49662/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49662/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49662/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49662/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49662/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49662/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49662/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetMutualInfo_49663 ID: 49663 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetMutualInfo_49663">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetMutualInfo_49663" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetMutualInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49665"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49665"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49666"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49666"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoHttpGetOut_49667"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49668"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49668/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49668/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49668/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49668/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49668/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49668/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49668/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49668/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49668/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49668/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49668/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49668/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49668/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49668/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49668/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49668/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49668/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49668/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetInternationalStockInfo_49669 ID: 49669 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetInternationalStockInfo_49669">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetInternationalStockInfo_49669" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetInternationalStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49671"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49671"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_49672"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_49672"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoHttpGetOut_49673"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49674"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:StockInfo>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="Body_49674/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="Body_49674/Name"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="Body_49674/QuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="Body_49674/QuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="Body_49674/QuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="Body_49674/QuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="Body_49674/QuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="Body_49674/QuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="Body_49674/QuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="Body_49674/QuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="Body_49674/QuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="Body_49674/FiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="Body_49674/FiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="Body_49674/PE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="Body_49674/DivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="Body_49674/NAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="Body_49674/PrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="Body_49674/Status"/></the_concepts:Status>
+        </the_concepts:StockInfo>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetStockInfo_49676 ID: 49676 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetStockInfo_49676">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetStockInfo_49676" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49678"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetStockInfo
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetStockInfo">
+
+        <ws:Ticker xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetStockInfo/the_concepts:Ticker"/>        </ws:Ticker>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetStockInfo/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetStockInfo>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetStockInfoSoapOut_49679"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49680"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetStockInfoResponse>
+        <the_concepts:GetStockInfoResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="GetStockInfoResultSymbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="GetStockInfoResultName"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="GetStockInfoResultQuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="GetStockInfoResultQuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="GetStockInfoResultQuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="GetStockInfoResultQuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="GetStockInfoResultQuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="GetStockInfoResultQuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="GetStockInfoResultQuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="GetStockInfoResultQuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="GetStockInfoResultQuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="GetStockInfoResultFiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="GetStockInfoResultFiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="GetStockInfoResultPE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="GetStockInfoResultDivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="GetStockInfoResultNAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="GetStockInfoResultPrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="GetStockInfoResultStatus"/></the_concepts:Status>
+        </the_concepts:GetStockInfoResult>
+        </the_concepts:GetStockInfoResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetMutualInfo_49681 ID: 49681 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetMutualInfo_49681">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetMutualInfo_49681" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetMutualInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49683"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetMutualInfo
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetMutualInfo">
+
+        <ws:Ticker xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetMutualInfo/the_concepts:Ticker"/>        </ws:Ticker>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetMutualInfo/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetMutualInfo>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetMutualInfoSoapOut_49684"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49685"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetMutualInfoResponse>
+        <the_concepts:GetMutualInfoResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="GetMutualInfoResultSymbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="GetMutualInfoResultName"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="GetMutualInfoResultQuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="GetMutualInfoResultQuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="GetMutualInfoResultQuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="GetMutualInfoResultQuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="GetMutualInfoResultQuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="GetMutualInfoResultQuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="GetMutualInfoResultQuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="GetMutualInfoResultQuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="GetMutualInfoResultQuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="GetMutualInfoResultFiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="GetMutualInfoResultFiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="GetMutualInfoResultPE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="GetMutualInfoResultDivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="GetMutualInfoResultNAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="GetMutualInfoResultPrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="GetMutualInfoResultStatus"/></the_concepts:Status>
+        </the_concepts:GetMutualInfoResult>
+        </the_concepts:GetMutualInfoResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetInternationalStockInfo_49686 ID: 49686 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetInternationalStockInfo_49686">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetInternationalStockInfo_49686" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSFastQuoteSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetInternationalStockInfo"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49688"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetInternationalStockInfo
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetInternationalStockInfo">
+
+        <ws:Ticker xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetInternationalStockInfo/the_concepts:Ticker"/>        </ws:Ticker>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetInternationalStockInfo/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:GetInternationalStockInfo>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetInternationalStockInfoSoapOut_49689"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49690"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetInternationalStockInfoResponse>
+        <the_concepts:GetInternationalStockInfoResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:Symbol><xsl:value-of select="GetInternationalStockInfoResultSymbol"/></the_concepts:Symbol>
+        <the_concepts:Name><xsl:value-of select="GetInternationalStockInfoResultName"/></the_concepts:Name>
+        <the_concepts:QuoteOpen><xsl:value-of select="GetInternationalStockInfoResultQuoteOpen"/></the_concepts:QuoteOpen>
+        <the_concepts:QuoteLast><xsl:value-of select="GetInternationalStockInfoResultQuoteLast"/></the_concepts:QuoteLast>
+        <the_concepts:QuoteVolume><xsl:value-of select="GetInternationalStockInfoResultQuoteVolume"/></the_concepts:QuoteVolume>
+        <the_concepts:QuoteChange><xsl:value-of select="GetInternationalStockInfoResultQuoteChange"/></the_concepts:QuoteChange>
+        <the_concepts:QuotePercentChange><xsl:value-of select="GetInternationalStockInfoResultQuotePercentChange"/></the_concepts:QuotePercentChange>
+        <the_concepts:QuoteDate><xsl:value-of select="GetInternationalStockInfoResultQuoteDate"/></the_concepts:QuoteDate>
+        <the_concepts:QuoteTime><xsl:value-of select="GetInternationalStockInfoResultQuoteTime"/></the_concepts:QuoteTime>
+        <the_concepts:QuoteHigh><xsl:value-of select="GetInternationalStockInfoResultQuoteHigh"/></the_concepts:QuoteHigh>
+        <the_concepts:QuoteLow><xsl:value-of select="GetInternationalStockInfoResultQuoteLow"/></the_concepts:QuoteLow>
+        <the_concepts:FiftyTwoWeekHigh><xsl:value-of select="GetInternationalStockInfoResultFiftyTwoWeekHigh"/></the_concepts:FiftyTwoWeekHigh>
+        <the_concepts:FiftyTwoWeekLow><xsl:value-of select="GetInternationalStockInfoResultFiftyTwoWeekLow"/></the_concepts:FiftyTwoWeekLow>
+        <the_concepts:PE><xsl:value-of select="GetInternationalStockInfoResultPE"/></the_concepts:PE>
+        <the_concepts:DivPerShare><xsl:value-of select="GetInternationalStockInfoResultDivPerShare"/></the_concepts:DivPerShare>
+        <the_concepts:NAV><xsl:value-of select="GetInternationalStockInfoResultNAV"/></the_concepts:NAV>
+        <the_concepts:PrevNAV><xsl:value-of select="GetInternationalStockInfoResultPrevNAV"/></the_concepts:PrevNAV>
+        <the_concepts:Status><xsl:value-of select="GetInternationalStockInfoResultStatus"/></the_concepts:Status>
+        </the_concepts:GetInternationalStockInfoResult>
+        </the_concepts:GetInternationalStockInfoResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

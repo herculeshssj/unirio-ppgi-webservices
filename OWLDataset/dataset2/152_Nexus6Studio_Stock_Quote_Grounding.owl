@@ -1,0 +1,485 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/152_Nexus6Studio_Stock_Quote_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_Nexus6Studio_Stock_Quote">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuote_49203"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetDetailQuote_49208"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuote_49214"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetDetailQuote_49219"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuote_49225"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetDetailQuote_49230"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuote_49203 ID: 49203 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuote_49203">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuote_49203" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49205"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetQuickQuote
+       xmlns:ws="http://nexus6studio.org/Services/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetQuickQuote">
+
+        <ws:Ticker xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetQuickQuote/the_concepts:Ticker"/>        </ws:Ticker>
+
+      </ws:GetQuickQuote>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteSoapOut_49206"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49207"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetQuickQuoteResponse>
+        <the_concepts:GetQuickQuoteResult><xsl:value-of select="parameters_49207/GetQuickQuoteResult"/></the_concepts:GetQuickQuoteResult>
+        </the_concepts:GetQuickQuoteResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetDetailQuote_49208 ID: 49208 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetDetailQuote_49208">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetDetailQuote_49208" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetDetailQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49210"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetDetailQuote
+       xmlns:ws="http://nexus6studio.org/Services/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetDetailQuote">
+
+        <ws:Ticker xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetDetailQuote/the_concepts:Ticker"/>        </ws:Ticker>
+
+      </ws:GetDetailQuote>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteSoapOut_49211"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49212"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetDetailQuoteResponse>
+        <the_concepts:GetDetailQuoteResult>
+        <the_concepts:Symbol><xsl:value-of select="GetDetailQuoteResultSymbol"/></the_concepts:Symbol>
+        <the_concepts:Price><xsl:value-of select="GetDetailQuoteResultPrice"/></the_concepts:Price>
+        <the_concepts:Change_Points><xsl:value-of select="GetDetailQuoteResultChange_Points"/></the_concepts:Change_Points>
+        <the_concepts:Change_Percent><xsl:value-of select="GetDetailQuoteResultChange_Percent"/></the_concepts:Change_Percent>
+        <the_concepts:Open><xsl:value-of select="GetDetailQuoteResultOpen"/></the_concepts:Open>
+        <the_concepts:High><xsl:value-of select="GetDetailQuoteResultHigh"/></the_concepts:High>
+        <the_concepts:Low><xsl:value-of select="GetDetailQuoteResultLow"/></the_concepts:Low>
+        <the_concepts:Bid><xsl:value-of select="GetDetailQuoteResultBid"/></the_concepts:Bid>
+        <the_concepts:Ask><xsl:value-of select="GetDetailQuoteResultAsk"/></the_concepts:Ask>
+        <the_concepts:Volume><xsl:value-of select="GetDetailQuoteResultVolume"/></the_concepts:Volume>
+        </the_concepts:GetDetailQuoteResult>
+        </the_concepts:GetDetailQuoteResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuote_49214 ID: 49214 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuote_49214">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuote_49214" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49216"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49216"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteHttpPostOut_49217"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49218"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:string>
+        </the_concepts:string>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetDetailQuote_49219 ID: 49219 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetDetailQuote_49219">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetDetailQuote_49219" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetDetailQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49221"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49221"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteHttpPostOut_49222"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49223"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:DetailQuote>
+        <the_concepts:Symbol><xsl:value-of select="Body_49223/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Price><xsl:value-of select="Body_49223/Price"/></the_concepts:Price>
+        <the_concepts:Change_Points><xsl:value-of select="Body_49223/Change_Points"/></the_concepts:Change_Points>
+        <the_concepts:Change_Percent><xsl:value-of select="Body_49223/Change_Percent"/></the_concepts:Change_Percent>
+        <the_concepts:Open><xsl:value-of select="Body_49223/Open"/></the_concepts:Open>
+        <the_concepts:High><xsl:value-of select="Body_49223/High"/></the_concepts:High>
+        <the_concepts:Low><xsl:value-of select="Body_49223/Low"/></the_concepts:Low>
+        <the_concepts:Bid><xsl:value-of select="Body_49223/Bid"/></the_concepts:Bid>
+        <the_concepts:Ask><xsl:value-of select="Body_49223/Ask"/></the_concepts:Ask>
+        <the_concepts:Volume><xsl:value-of select="Body_49223/Volume"/></the_concepts:Volume>
+        </the_concepts:DetailQuote>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuote_49225 ID: 49225 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuote_49225">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuote_49225" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49227"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49227"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuoteHttpGetOut_49228"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49229"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:string>
+        </the_concepts:string>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetDetailQuote_49230 ID: 49230 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetDetailQuote_49230">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetDetailQuote_49230" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetDetailQuote"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Ticker_49232"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Ticker_49232"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetDetailQuoteHttpGetOut_49233"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49234"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:DetailQuote>
+        <the_concepts:Symbol><xsl:value-of select="Body_49234/Symbol"/></the_concepts:Symbol>
+        <the_concepts:Price><xsl:value-of select="Body_49234/Price"/></the_concepts:Price>
+        <the_concepts:Change_Points><xsl:value-of select="Body_49234/Change_Points"/></the_concepts:Change_Points>
+        <the_concepts:Change_Percent><xsl:value-of select="Body_49234/Change_Percent"/></the_concepts:Change_Percent>
+        <the_concepts:Open><xsl:value-of select="Body_49234/Open"/></the_concepts:Open>
+        <the_concepts:High><xsl:value-of select="Body_49234/High"/></the_concepts:High>
+        <the_concepts:Low><xsl:value-of select="Body_49234/Low"/></the_concepts:Low>
+        <the_concepts:Bid><xsl:value-of select="Body_49234/Bid"/></the_concepts:Bid>
+        <the_concepts:Ask><xsl:value-of select="Body_49234/Ask"/></the_concepts:Ask>
+        <the_concepts:Volume><xsl:value-of select="Body_49234/Volume"/></the_concepts:Volume>
+        </the_concepts:DetailQuote>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

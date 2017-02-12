@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetQuote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSymbols" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuoteResult" type="s0:ArrayOfStockQuote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStockQuote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StockQuote" nillable="true" type="s0:StockQuote" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StockQuote">
+        <s:attribute name="Open" type="s:double" />
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Symbol" type="s:string" />
+        <s:attribute name="Price" type="s:double" />
+        <s:attribute name="Change" type="s:double" />
+        <s:attribute name="DayHigh" type="s:double" />
+        <s:attribute name="DayLow" type="s:double" />
+        <s:attribute name="Volume" type="s:int" />
+        <s:attribute name="Updated" type="s:dateTime" />
+      </s:complexType>
+      <s:element name="ArrayOfStockQuote" nillable="true" type="s0:ArrayOfStockQuote" />
+    </s:schema>
+  </types>
+  <message name="GetQuoteSoapIn">
+    <part name="parameters" element="s0:GetQuote" />
+  </message>
+  <message name="GetQuoteSoapOut">
+    <part name="parameters" element="s0:GetQuoteResponse" />
+  </message>
+  <message name="GetQuoteHttpGetIn">
+    <part name="strSymbols" type="s:string" />
+  </message>
+  <message name="GetQuoteHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStockQuote" />
+  </message>
+  <message name="GetQuoteHttpPostIn">
+    <part name="strSymbols" type="s:string" />
+  </message>
+  <message name="GetQuoteHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStockQuote" />
+  </message>
+  <portType name="StockScraperSoap">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteSoapIn" />
+      <output message="s0:GetQuoteSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StockScraperHttpGet">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteHttpGetIn" />
+      <output message="s0:GetQuoteHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StockScraperHttpPost">
+    <operation name="GetQuote">
+      <input message="s0:GetQuoteHttpPostIn" />
+      <output message="s0:GetQuoteHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StockScraperSoap" type="s0:StockScraperSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuote">
+      <soap:operation soapAction="http://tempuri.org/GetQuote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockScraperHttpGet" type="s0:StockScraperHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetQuote">
+      <http:operation location="/GetQuote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockScraperHttpPost" type="s0:StockScraperHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetQuote">
+      <http:operation location="/GetQuote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StockScraper">
+    <port name="StockScraperSoap" binding="s0:StockScraperSoap">
+      <soap:address location="http://www.syntheticstream.com/stockscraper/stockscraper.asmx" />
+    </port>
+    <port name="StockScraperHttpGet" binding="s0:StockScraperHttpGet">
+      <http:address location="http://www.syntheticstream.com/stockscraper/stockscraper.asmx" />
+    </port>
+    <port name="StockScraperHttpPost" binding="s0:StockScraperHttpPost">
+      <http:address location="http://www.syntheticstream.com/stockscraper/stockscraper.asmx" />
+    </port>
+  </service>
+</definitions>

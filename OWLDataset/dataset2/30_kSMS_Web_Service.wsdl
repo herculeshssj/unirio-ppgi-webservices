@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SenderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendSMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCountryCodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCountryCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCountryCodesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SendSMSSoapIn">
+    <part name="parameters" element="s0:SendSMS" />
+  </message>
+  <message name="SendSMSSoapOut">
+    <part name="parameters" element="s0:SendSMSResponse" />
+  </message>
+  <message name="GetCountryCodesSoapIn">
+    <part name="parameters" element="s0:GetCountryCodes" />
+  </message>
+  <message name="GetCountryCodesSoapOut">
+    <part name="parameters" element="s0:GetCountryCodesResponse" />
+  </message>
+  <message name="SendSMSHttpGetIn">
+    <part name="SenderName" type="s:string" />
+    <part name="MobileNumber" type="s:string" />
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="SendSMSHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCountryCodesHttpGetIn" />
+  <message name="GetCountryCodesHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendSMSHttpPostIn">
+    <part name="SenderName" type="s:string" />
+    <part name="MobileNumber" type="s:string" />
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="SendSMSHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCountryCodesHttpPostIn" />
+  <message name="GetCountryCodesHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="kSMSSoap">
+    <operation name="SendSMS">
+      <documentation>Send SMS to any Mobile Devices around the world</documentation>
+      <input message="s0:SendSMSSoapIn" />
+      <output message="s0:SendSMSSoapOut" />
+    </operation>
+    <operation name="GetCountryCodes">
+      <documentation>Gets a list of All the countries and their Codes in XML Format</documentation>
+      <input message="s0:GetCountryCodesSoapIn" />
+      <output message="s0:GetCountryCodesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="kSMSHttpGet">
+    <operation name="SendSMS">
+      <documentation>Send SMS to any Mobile Devices around the world</documentation>
+      <input message="s0:SendSMSHttpGetIn" />
+      <output message="s0:SendSMSHttpGetOut" />
+    </operation>
+    <operation name="GetCountryCodes">
+      <documentation>Gets a list of All the countries and their Codes in XML Format</documentation>
+      <input message="s0:GetCountryCodesHttpGetIn" />
+      <output message="s0:GetCountryCodesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="kSMSHttpPost">
+    <operation name="SendSMS">
+      <documentation>Send SMS to any Mobile Devices around the world</documentation>
+      <input message="s0:SendSMSHttpPostIn" />
+      <output message="s0:SendSMSHttpPostOut" />
+    </operation>
+    <operation name="GetCountryCodes">
+      <documentation>Gets a list of All the countries and their Codes in XML Format</documentation>
+      <input message="s0:GetCountryCodesHttpPostIn" />
+      <output message="s0:GetCountryCodesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="kSMSSoap" type="s0:kSMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCountryCodes">
+      <soap:operation soapAction="http://tempuri.org/GetCountryCodes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="kSMSHttpGet" type="s0:kSMSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryCodes">
+      <http:operation location="/GetCountryCodes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="kSMSHttpPost" type="s0:kSMSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SendSMS">
+      <http:operation location="/SendSMS" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetCountryCodes">
+      <http:operation location="/GetCountryCodes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="kSMS">
+    <port name="kSMSSoap" binding="s0:kSMSSoap">
+      <soap:address location="http://smsonweb.www1.dotnetplayground.com/ksms.asmx" />
+    </port>
+    <port name="kSMSHttpGet" binding="s0:kSMSHttpGet">
+      <http:address location="http://smsonweb.www1.dotnetplayground.com/ksms.asmx" />
+    </port>
+    <port name="kSMSHttpPost" binding="s0:kSMSHttpPost">
+      <http:address location="http://smsonweb.www1.dotnetplayground.com/ksms.asmx" />
+    </port>
+  </service>
+</definitions>

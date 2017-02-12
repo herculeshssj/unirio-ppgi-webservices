@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://nexus6studio.org/Services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://nexus6studio.org/Services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://nexus6studio.org/Services/">
+      <s:element name="GetQuickQuote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuickQuoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailQuote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDetailQuoteResult" type="s0:DetailQuote" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetailQuote">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Change_Points" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Change_Percent" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="High" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Low" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ask" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volume" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DetailQuote" type="s0:DetailQuote" />
+    </s:schema>
+  </types>
+  <message name="GetQuickQuoteSoapIn">
+    <part name="parameters" element="s0:GetQuickQuote" />
+  </message>
+  <message name="GetQuickQuoteSoapOut">
+    <part name="parameters" element="s0:GetQuickQuoteResponse" />
+  </message>
+  <message name="GetDetailQuoteSoapIn">
+    <part name="parameters" element="s0:GetDetailQuote" />
+  </message>
+  <message name="GetDetailQuoteSoapOut">
+    <part name="parameters" element="s0:GetDetailQuoteResponse" />
+  </message>
+  <message name="GetQuickQuoteHttpGetIn">
+    <part name="Ticker" type="s:string" />
+  </message>
+  <message name="GetQuickQuoteHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetDetailQuoteHttpGetIn">
+    <part name="Ticker" type="s:string" />
+  </message>
+  <message name="GetDetailQuoteHttpGetOut">
+    <part name="Body" element="s0:DetailQuote" />
+  </message>
+  <message name="GetQuickQuoteHttpPostIn">
+    <part name="Ticker" type="s:string" />
+  </message>
+  <message name="GetQuickQuoteHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetDetailQuoteHttpPostIn">
+    <part name="Ticker" type="s:string" />
+  </message>
+  <message name="GetDetailQuoteHttpPostOut">
+    <part name="Body" element="s0:DetailQuote" />
+  </message>
+  <portType name="Nexus6Studio_x0020_Stock_x0020_QuoteSoap">
+    <operation name="GetQuickQuote">
+      <documentation>This method will return a single value representing the Last Trade Price. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetQuickQuoteSoapIn" />
+      <output message="s0:GetQuickQuoteSoapOut" />
+    </operation>
+    <operation name="GetDetailQuote">
+      <documentation>This method returns a detailed quote. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetDetailQuoteSoapIn" />
+      <output message="s0:GetDetailQuoteSoapOut" />
+    </operation>
+  </portType>
+  <portType name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet">
+    <operation name="GetQuickQuote">
+      <documentation>This method will return a single value representing the Last Trade Price. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetQuickQuoteHttpGetIn" />
+      <output message="s0:GetQuickQuoteHttpGetOut" />
+    </operation>
+    <operation name="GetDetailQuote">
+      <documentation>This method returns a detailed quote. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetDetailQuoteHttpGetIn" />
+      <output message="s0:GetDetailQuoteHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost">
+    <operation name="GetQuickQuote">
+      <documentation>This method will return a single value representing the Last Trade Price. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetQuickQuoteHttpPostIn" />
+      <output message="s0:GetQuickQuoteHttpPostOut" />
+    </operation>
+    <operation name="GetDetailQuote">
+      <documentation>This method returns a detailed quote. It accepts a ticker simple as it's only argument.</documentation>
+      <input message="s0:GetDetailQuoteHttpPostIn" />
+      <output message="s0:GetDetailQuoteHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="Nexus6Studio_x0020_Stock_x0020_QuoteSoap" type="s0:Nexus6Studio_x0020_Stock_x0020_QuoteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuickQuote">
+      <soap:operation soapAction="http://nexus6studio.org/Services/GetQuickQuote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDetailQuote">
+      <soap:operation soapAction="http://nexus6studio.org/Services/GetDetailQuote" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet" type="s0:Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetQuickQuote">
+      <http:operation location="/GetQuickQuote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDetailQuote">
+      <http:operation location="/GetDetailQuote" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost" type="s0:Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetQuickQuote">
+      <http:operation location="/GetQuickQuote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDetailQuote">
+      <http:operation location="/GetDetailQuote" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Nexus6Studio_x0020_Stock_x0020_Quote">
+    <documentation>This service returns current stock prices. There is a delay of up to 20 minutes in data updates.</documentation>
+    <port name="Nexus6Studio_x0020_Stock_x0020_QuoteSoap" binding="s0:Nexus6Studio_x0020_Stock_x0020_QuoteSoap">
+      <soap:address location="http://www.nexus6studio.org/Services/StockQoute.asmx" />
+    </port>
+    <port name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet" binding="s0:Nexus6Studio_x0020_Stock_x0020_QuoteHttpGet">
+      <http:address location="http://www.nexus6studio.org/Services/StockQoute.asmx" />
+    </port>
+    <port name="Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost" binding="s0:Nexus6Studio_x0020_Stock_x0020_QuoteHttpPost">
+      <http:address location="http://www.nexus6studio.org/Services/StockQoute.asmx" />
+    </port>
+  </service>
+</definitions>

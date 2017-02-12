@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.paymentresources.com/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.paymentresources.com/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.paymentresources.com/webservices/">
+      <s:element name="CloseBatch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForceSettlement" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseBatchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CloseBatchResult" type="s0:BankCardSettleStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BankCardSettleStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SettledDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AVSCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:StatusCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="StatusCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Settled" />
+          <s:enumeration value="Authorized" />
+          <s:enumeration value="Declined" />
+          <s:enumeration value="Voided" />
+          <s:enumeration value="Canceled" />
+          <s:enumeration value="Qued" />
+          <s:enumeration value="UnKnown" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreditCardAutoSettle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardAutoSettleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardAutoSettleResult" type="s0:BankCardSettleStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Expiration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TrackData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardSaleResult" type="s0:BankCardDebitStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BankCardDebitStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SettledDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AVSCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:StatusCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreditCardVoiceAuthorization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardHolderName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Expiration" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TrackData" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VoiceAuthCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardVoiceAuthorizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardVoiceAuthorizationResult" type="s0:BankCardDebitStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardCredit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardCreditResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardCreditResult" type="s0:BankCardCreditStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BankCardCreditStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreditID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SettledDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s0:StatusCode" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostedDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VoidCreditCardSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TransID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VoidCreditCardSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VoidCreditCardSaleResult" type="s0:BankCardDebitStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankCardDebitStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TransID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankCardDebitStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBankCardDebitStatusResult" type="s0:BankCardDebitStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankCardCreditStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreditID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBankCardCreditStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBankCardCreditStatusResult" type="s0:BankCardCreditStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BankCardSettleStatus" nillable="true" type="s0:BankCardSettleStatus" />
+      <s:element name="BankCardDebitStatus" nillable="true" type="s0:BankCardDebitStatus" />
+      <s:element name="BankCardCreditStatus" nillable="true" type="s0:BankCardCreditStatus" />
+    </s:schema>
+  </types>
+  <message name="CloseBatchSoapIn">
+    <part name="parameters" element="s0:CloseBatch" />
+  </message>
+  <message name="CloseBatchSoapOut">
+    <part name="parameters" element="s0:CloseBatchResponse" />
+  </message>
+  <message name="CreditCardAutoSettleSoapIn">
+    <part name="parameters" element="s0:CreditCardAutoSettle" />
+  </message>
+  <message name="CreditCardAutoSettleSoapOut">
+    <part name="parameters" element="s0:CreditCardAutoSettleResponse" />
+  </message>
+  <message name="CreditCardSaleSoapIn">
+    <part name="parameters" element="s0:CreditCardSale" />
+  </message>
+  <message name="CreditCardSaleSoapOut">
+    <part name="parameters" element="s0:CreditCardSaleResponse" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationSoapIn">
+    <part name="parameters" element="s0:CreditCardVoiceAuthorization" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationSoapOut">
+    <part name="parameters" element="s0:CreditCardVoiceAuthorizationResponse" />
+  </message>
+  <message name="CreditCardCreditSoapIn">
+    <part name="parameters" element="s0:CreditCardCredit" />
+  </message>
+  <message name="CreditCardCreditSoapOut">
+    <part name="parameters" element="s0:CreditCardCreditResponse" />
+  </message>
+  <message name="VoidCreditCardSaleSoapIn">
+    <part name="parameters" element="s0:VoidCreditCardSale" />
+  </message>
+  <message name="VoidCreditCardSaleSoapOut">
+    <part name="parameters" element="s0:VoidCreditCardSaleResponse" />
+  </message>
+  <message name="GetBankCardDebitStatusSoapIn">
+    <part name="parameters" element="s0:GetBankCardDebitStatus" />
+  </message>
+  <message name="GetBankCardDebitStatusSoapOut">
+    <part name="parameters" element="s0:GetBankCardDebitStatusResponse" />
+  </message>
+  <message name="GetBankCardCreditStatusSoapIn">
+    <part name="parameters" element="s0:GetBankCardCreditStatus" />
+  </message>
+  <message name="GetBankCardCreditStatusSoapOut">
+    <part name="parameters" element="s0:GetBankCardCreditStatusResponse" />
+  </message>
+  <message name="CloseBatchHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="TransID" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="ForceSettlement" type="s:string" />
+  </message>
+  <message name="CloseBatchHttpGetOut">
+    <part name="Body" element="s0:BankCardSettleStatus" />
+  </message>
+  <message name="CreditCardAutoSettleHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="TransID" type="s:string" />
+  </message>
+  <message name="CreditCardAutoSettleHttpGetOut">
+    <part name="Body" element="s0:BankCardSettleStatus" />
+  </message>
+  <message name="CreditCardSaleHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="CardNumber" type="s:string" />
+    <part name="CardHolderName" type="s:string" />
+    <part name="Expiration" type="s:string" />
+    <part name="RefID" type="s:string" />
+    <part name="Address" type="s:string" />
+    <part name="ZipCode" type="s:string" />
+    <part name="TrackData" type="s:string" />
+  </message>
+  <message name="CreditCardSaleHttpGetOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="CardNumber" type="s:string" />
+    <part name="CardHolderName" type="s:string" />
+    <part name="Expiration" type="s:string" />
+    <part name="RefID" type="s:string" />
+    <part name="Address" type="s:string" />
+    <part name="ZipCode" type="s:string" />
+    <part name="TrackData" type="s:string" />
+    <part name="VoiceAuthCode" type="s:string" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationHttpGetOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="CreditCardCreditHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="TransID" type="s:string" />
+    <part name="RefID" type="s:string" />
+  </message>
+  <message name="CreditCardCreditHttpGetOut">
+    <part name="Body" element="s0:BankCardCreditStatus" />
+  </message>
+  <message name="VoidCreditCardSaleHttpGetIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="TransID" type="s:string" />
+  </message>
+  <message name="VoidCreditCardSaleHttpGetOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="GetBankCardDebitStatusHttpGetIn">
+    <part name="TransID" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+  </message>
+  <message name="GetBankCardDebitStatusHttpGetOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="GetBankCardCreditStatusHttpGetIn">
+    <part name="CreditID" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+  </message>
+  <message name="GetBankCardCreditStatusHttpGetOut">
+    <part name="Body" element="s0:BankCardCreditStatus" />
+  </message>
+  <message name="CloseBatchHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="TransID" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="ForceSettlement" type="s:string" />
+  </message>
+  <message name="CloseBatchHttpPostOut">
+    <part name="Body" element="s0:BankCardSettleStatus" />
+  </message>
+  <message name="CreditCardAutoSettleHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="TransID" type="s:string" />
+  </message>
+  <message name="CreditCardAutoSettleHttpPostOut">
+    <part name="Body" element="s0:BankCardSettleStatus" />
+  </message>
+  <message name="CreditCardSaleHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="CardNumber" type="s:string" />
+    <part name="CardHolderName" type="s:string" />
+    <part name="Expiration" type="s:string" />
+    <part name="RefID" type="s:string" />
+    <part name="Address" type="s:string" />
+    <part name="ZipCode" type="s:string" />
+    <part name="TrackData" type="s:string" />
+  </message>
+  <message name="CreditCardSaleHttpPostOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="CardNumber" type="s:string" />
+    <part name="CardHolderName" type="s:string" />
+    <part name="Expiration" type="s:string" />
+    <part name="RefID" type="s:string" />
+    <part name="Address" type="s:string" />
+    <part name="ZipCode" type="s:string" />
+    <part name="TrackData" type="s:string" />
+    <part name="VoiceAuthCode" type="s:string" />
+  </message>
+  <message name="CreditCardVoiceAuthorizationHttpPostOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="CreditCardCreditHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="TransID" type="s:string" />
+    <part name="RefID" type="s:string" />
+  </message>
+  <message name="CreditCardCreditHttpPostOut">
+    <part name="Body" element="s0:BankCardCreditStatus" />
+  </message>
+  <message name="VoidCreditCardSaleHttpPostIn">
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+    <part name="TransID" type="s:string" />
+  </message>
+  <message name="VoidCreditCardSaleHttpPostOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="GetBankCardDebitStatusHttpPostIn">
+    <part name="TransID" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+  </message>
+  <message name="GetBankCardDebitStatusHttpPostOut">
+    <part name="Body" element="s0:BankCardDebitStatus" />
+  </message>
+  <message name="GetBankCardCreditStatusHttpPostIn">
+    <part name="CreditID" type="s:string" />
+    <part name="MerchantID" type="s:string" />
+    <part name="RegKey" type="s:string" />
+  </message>
+  <message name="GetBankCardCreditStatusHttpPostOut">
+    <part name="Body" element="s0:BankCardCreditStatus" />
+  </message>
+  <portType name="CreditCardSoap">
+    <operation name="CloseBatch">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CloseBatchSoapIn" />
+      <output message="s0:CloseBatchSoapOut" />
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardAutoSettleSoapIn" />
+      <output message="s0:CreditCardAutoSettleSoapOut" />
+    </operation>
+    <operation name="CreditCardSale">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardSaleSoapIn" />
+      <output message="s0:CreditCardSaleSoapOut" />
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardVoiceAuthorizationSoapIn" />
+      <output message="s0:CreditCardVoiceAuthorizationSoapOut" />
+    </operation>
+    <operation name="CreditCardCredit">
+      <documentation>For credit card credit processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardCreditSoapIn" />
+      <output message="s0:CreditCardCreditSoapOut" />
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <documentation>For voiding a credit card sale. Required Fields are MerchantID, RegKey  and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. A Credit Card Sale can only be voided if it has not been settled. Payment Resources settles all transactions  approximately 9PM Pacific Time. To determine if a transaction is voidable(ie not settled yet) you can use the WebMethod GetBankCardDebitStatus.</documentation>
+      <input message="s0:VoidCreditCardSaleSoapIn" />
+      <output message="s0:VoidCreditCardSaleSoapOut" />
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <documentation>For Determining the current status of a credit card sale.</documentation>
+      <input message="s0:GetBankCardDebitStatusSoapIn" />
+      <output message="s0:GetBankCardDebitStatusSoapOut" />
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <documentation>For Determining the current status of a credit card credit</documentation>
+      <input message="s0:GetBankCardCreditStatusSoapIn" />
+      <output message="s0:GetBankCardCreditStatusSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CreditCardHttpGet">
+    <operation name="CloseBatch">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CloseBatchHttpGetIn" />
+      <output message="s0:CloseBatchHttpGetOut" />
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardAutoSettleHttpGetIn" />
+      <output message="s0:CreditCardAutoSettleHttpGetOut" />
+    </operation>
+    <operation name="CreditCardSale">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardSaleHttpGetIn" />
+      <output message="s0:CreditCardSaleHttpGetOut" />
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardVoiceAuthorizationHttpGetIn" />
+      <output message="s0:CreditCardVoiceAuthorizationHttpGetOut" />
+    </operation>
+    <operation name="CreditCardCredit">
+      <documentation>For credit card credit processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardCreditHttpGetIn" />
+      <output message="s0:CreditCardCreditHttpGetOut" />
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <documentation>For voiding a credit card sale. Required Fields are MerchantID, RegKey  and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. A Credit Card Sale can only be voided if it has not been settled. Payment Resources settles all transactions  approximately 9PM Pacific Time. To determine if a transaction is voidable(ie not settled yet) you can use the WebMethod GetBankCardDebitStatus.</documentation>
+      <input message="s0:VoidCreditCardSaleHttpGetIn" />
+      <output message="s0:VoidCreditCardSaleHttpGetOut" />
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <documentation>For Determining the current status of a credit card sale.</documentation>
+      <input message="s0:GetBankCardDebitStatusHttpGetIn" />
+      <output message="s0:GetBankCardDebitStatusHttpGetOut" />
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <documentation>For Determining the current status of a credit card credit</documentation>
+      <input message="s0:GetBankCardCreditStatusHttpGetIn" />
+      <output message="s0:GetBankCardCreditStatusHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CreditCardHttpPost">
+    <operation name="CloseBatch">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CloseBatchHttpPostIn" />
+      <output message="s0:CloseBatchHttpPostOut" />
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <documentation>For credit card settle processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardAutoSettleHttpPostIn" />
+      <output message="s0:CreditCardAutoSettleHttpPostOut" />
+    </operation>
+    <operation name="CreditCardSale">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardSaleHttpPostIn" />
+      <output message="s0:CreditCardSaleHttpPostOut" />
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <documentation>For credit card debit authorizations. Required Fields are MerchantID, RegKey, Amount, CardNumber and Expiration. Expiration is in the form mmyy. ie february 2003 would be 0203. RefID is for your determined use. If you have a unique tracking ID for purchases you might want to place it here. TrackData is for Swiped Transactions.</documentation>
+      <input message="s0:CreditCardVoiceAuthorizationHttpPostIn" />
+      <output message="s0:CreditCardVoiceAuthorizationHttpPostOut" />
+    </operation>
+    <operation name="CreditCardCredit">
+      <documentation>For credit card credit processing. Required Fields are MerchantID, RegKey, Amount and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. RefID is for your determined use. Credit Amounts can not exceed the original sale amount. </documentation>
+      <input message="s0:CreditCardCreditHttpPostIn" />
+      <output message="s0:CreditCardCreditHttpPostOut" />
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <documentation>For voiding a credit card sale. Required Fields are MerchantID, RegKey  and TransID. TransID is the TransID of the original sale. A TransID will be returned when a Credit Card Sale is authrorized with WebMethod CreditCardSale. A Credit Card Sale can only be voided if it has not been settled. Payment Resources settles all transactions  approximately 9PM Pacific Time. To determine if a transaction is voidable(ie not settled yet) you can use the WebMethod GetBankCardDebitStatus.</documentation>
+      <input message="s0:VoidCreditCardSaleHttpPostIn" />
+      <output message="s0:VoidCreditCardSaleHttpPostOut" />
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <documentation>For Determining the current status of a credit card sale.</documentation>
+      <input message="s0:GetBankCardDebitStatusHttpPostIn" />
+      <output message="s0:GetBankCardDebitStatusHttpPostOut" />
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <documentation>For Determining the current status of a credit card credit</documentation>
+      <input message="s0:GetBankCardCreditStatusHttpPostIn" />
+      <output message="s0:GetBankCardCreditStatusHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CreditCardSoap" type="s0:CreditCardSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CloseBatch">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/CloseBatch" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/CreditCardAutoSettle" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreditCardSale">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/CreditCardSale" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/CreditCardVoiceAuthorization" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreditCardCredit">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/CreditCardCredit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/VoidCreditCardSale" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/GetBankCardDebitStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <soap:operation soapAction="http://www.paymentresources.com/webservices/GetBankCardCreditStatus" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CreditCardHttpGet" type="s0:CreditCardHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CloseBatch">
+      <http:operation location="/CloseBatch" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <http:operation location="/CreditCardAutoSettle" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardSale">
+      <http:operation location="/CreditCardSale" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <http:operation location="/CreditCardVoiceAuthorization" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardCredit">
+      <http:operation location="/CreditCardCredit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <http:operation location="/VoidCreditCardSale" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <http:operation location="/GetBankCardDebitStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <http:operation location="/GetBankCardCreditStatus" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CreditCardHttpPost" type="s0:CreditCardHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CloseBatch">
+      <http:operation location="/CloseBatch" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardAutoSettle">
+      <http:operation location="/CreditCardAutoSettle" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardSale">
+      <http:operation location="/CreditCardSale" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardVoiceAuthorization">
+      <http:operation location="/CreditCardVoiceAuthorization" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreditCardCredit">
+      <http:operation location="/CreditCardCredit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="VoidCreditCardSale">
+      <http:operation location="/VoidCreditCardSale" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBankCardDebitStatus">
+      <http:operation location="/GetBankCardDebitStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetBankCardCreditStatus">
+      <http:operation location="/GetBankCardCreditStatus" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CreditCard">
+    <documentation>&lt;font size='4'&gt;&lt;a href='http://www.paymentresource.com'&gt;Payment Resources International&lt;/a&gt;&lt;/font&gt; &lt;font size='3'&gt;provides this Credit Card Processing Web Service for its customers. &lt;BR&gt;In order to process a credit card you will need to have a valid Merchant Account with us. &lt;BR&gt;However, two methods below can be tested without supplying a MerchantID nor RegKey.&lt;BR&gt;WebMethods CreditCardSale,CreditCardCredit, and VoidCreditCardSale will return sample results if you leave MerchantID and RegKey blank(you will need to fill in the other fields). CreditCardSale will return a fictitious authorization if the amount is even(ie 2.00,1.02). Otherwise it will return a decline. &lt;BR&gt; For more information on this service go to &lt;a href='CreditCardProcessing.htm'&gt;Processing Credit Cards&lt;/a&gt;&lt;/font&gt;</documentation>
+    <port name="CreditCardSoap" binding="s0:CreditCardSoap">
+      <soap:address location="http://webservices.primerchants.com/creditcard.asmx" />
+    </port>
+    <port name="CreditCardHttpGet" binding="s0:CreditCardHttpGet">
+      <http:address location="http://webservices.primerchants.com/creditcard.asmx" />
+    </port>
+    <port name="CreditCardHttpPost" binding="s0:CreditCardHttpPost">
+      <http:address location="http://webservices.primerchants.com/creditcard.asmx" />
+    </port>
+  </service>
+</definitions>

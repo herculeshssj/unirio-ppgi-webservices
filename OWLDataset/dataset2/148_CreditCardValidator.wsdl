@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webservicex.net" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webservicex.net" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webservicex.net">
+      <s:element name="ValidateCardNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cardType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateCardNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateCardNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="ValidateCardNumberSoapIn">
+    <part name="parameters" element="s0:ValidateCardNumber" />
+  </message>
+  <message name="ValidateCardNumberSoapOut">
+    <part name="parameters" element="s0:ValidateCardNumberResponse" />
+  </message>
+  <message name="ValidateCardNumberHttpGetIn">
+    <part name="cardType" type="s:string" />
+    <part name="cardNumber" type="s:string" />
+  </message>
+  <message name="ValidateCardNumberHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ValidateCardNumberHttpPostIn">
+    <part name="cardType" type="s:string" />
+    <part name="cardNumber" type="s:string" />
+  </message>
+  <message name="ValidateCardNumberHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="CCCheckerSoap">
+    <operation name="ValidateCardNumber">
+      <documentation>Please enter card type as  VISA or MASTERCARD or DINERS or AMEX</documentation>
+      <input message="s0:ValidateCardNumberSoapIn" />
+      <output message="s0:ValidateCardNumberSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CCCheckerHttpGet">
+    <operation name="ValidateCardNumber">
+      <documentation>Please enter card type as  VISA or MASTERCARD or DINERS or AMEX</documentation>
+      <input message="s0:ValidateCardNumberHttpGetIn" />
+      <output message="s0:ValidateCardNumberHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CCCheckerHttpPost">
+    <operation name="ValidateCardNumber">
+      <documentation>Please enter card type as  VISA or MASTERCARD or DINERS or AMEX</documentation>
+      <input message="s0:ValidateCardNumberHttpPostIn" />
+      <output message="s0:ValidateCardNumberHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CCCheckerSoap" type="s0:CCCheckerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ValidateCardNumber">
+      <soap:operation soapAction="http://www.webservicex.net/ValidateCardNumber" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CCCheckerHttpGet" type="s0:CCCheckerHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ValidateCardNumber">
+      <http:operation location="/ValidateCardNumber" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CCCheckerHttpPost" type="s0:CCCheckerHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ValidateCardNumber">
+      <http:operation location="/ValidateCardNumber" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CCChecker">
+    <port name="CCCheckerSoap" binding="s0:CCCheckerSoap">
+      <soap:address location="http://www.webservicex.net/CreditCard.asmx" />
+    </port>
+    <port name="CCCheckerHttpGet" binding="s0:CCCheckerHttpGet">
+      <http:address location="http://www.webservicex.net/CreditCard.asmx" />
+    </port>
+    <port name="CCCheckerHttpPost" binding="s0:CCCheckerHttpPost">
+      <http:address location="http://www.webservicex.net/CreditCard.asmx" />
+    </port>
+  </service>
+</definitions>

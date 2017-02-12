@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://behrreic/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://behrreic/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://behrreic/webservices">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetTrafficIncidents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCounty" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrafficIncidentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrafficIncidentsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrafficIncidentByIndex">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strIndex" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrafficIncidentByIndexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrafficIncidentByIndexResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LastUpdated">
+        <s:complexType />
+      </s:element>
+      <s:element name="LastUpdatedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LastUpdatedResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="GetTrafficIncidentsSoapIn">
+    <part name="parameters" element="s0:GetTrafficIncidents" />
+  </message>
+  <message name="GetTrafficIncidentsSoapOut">
+    <part name="parameters" element="s0:GetTrafficIncidentsResponse" />
+  </message>
+  <message name="GetTrafficIncidentByIndexSoapIn">
+    <part name="parameters" element="s0:GetTrafficIncidentByIndex" />
+  </message>
+  <message name="GetTrafficIncidentByIndexSoapOut">
+    <part name="parameters" element="s0:GetTrafficIncidentByIndexResponse" />
+  </message>
+  <message name="LastUpdatedSoapIn">
+    <part name="parameters" element="s0:LastUpdated" />
+  </message>
+  <message name="LastUpdatedSoapOut">
+    <part name="parameters" element="s0:LastUpdatedResponse" />
+  </message>
+  <message name="GetTrafficIncidentsHttpGetIn">
+    <part name="strCounty" type="s:string" />
+  </message>
+  <message name="GetTrafficIncidentsHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetTrafficIncidentByIndexHttpGetIn">
+    <part name="strIndex" type="s:string" />
+  </message>
+  <message name="GetTrafficIncidentByIndexHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="LastUpdatedHttpGetIn" />
+  <message name="LastUpdatedHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTrafficIncidentsHttpPostIn">
+    <part name="strCounty" type="s:string" />
+  </message>
+  <message name="GetTrafficIncidentsHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetTrafficIncidentByIndexHttpPostIn">
+    <part name="strIndex" type="s:string" />
+  </message>
+  <message name="GetTrafficIncidentByIndexHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="LastUpdatedHttpPostIn" />
+  <message name="LastUpdatedHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="trafficSoap">
+    <operation name="GetTrafficIncidents">
+      <input message="s0:GetTrafficIncidentsSoapIn" />
+      <output message="s0:GetTrafficIncidentsSoapOut" />
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <input message="s0:GetTrafficIncidentByIndexSoapIn" />
+      <output message="s0:GetTrafficIncidentByIndexSoapOut" />
+    </operation>
+    <operation name="LastUpdated">
+      <input message="s0:LastUpdatedSoapIn" />
+      <output message="s0:LastUpdatedSoapOut" />
+    </operation>
+  </portType>
+  <portType name="trafficHttpGet">
+    <operation name="GetTrafficIncidents">
+      <input message="s0:GetTrafficIncidentsHttpGetIn" />
+      <output message="s0:GetTrafficIncidentsHttpGetOut" />
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <input message="s0:GetTrafficIncidentByIndexHttpGetIn" />
+      <output message="s0:GetTrafficIncidentByIndexHttpGetOut" />
+    </operation>
+    <operation name="LastUpdated">
+      <input message="s0:LastUpdatedHttpGetIn" />
+      <output message="s0:LastUpdatedHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="trafficHttpPost">
+    <operation name="GetTrafficIncidents">
+      <input message="s0:GetTrafficIncidentsHttpPostIn" />
+      <output message="s0:GetTrafficIncidentsHttpPostOut" />
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <input message="s0:GetTrafficIncidentByIndexHttpPostIn" />
+      <output message="s0:GetTrafficIncidentByIndexHttpPostOut" />
+    </operation>
+    <operation name="LastUpdated">
+      <input message="s0:LastUpdatedHttpPostIn" />
+      <output message="s0:LastUpdatedHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="trafficSoap" type="s0:trafficSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetTrafficIncidents">
+      <soap:operation soapAction="http://behrreic/webservices/GetTrafficIncidents" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <soap:operation soapAction="http://behrreic/webservices/GetTrafficIncidentByIndex" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LastUpdated">
+      <soap:operation soapAction="http://behrreic/webservices/LastUpdated" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="trafficHttpGet" type="s0:trafficHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTrafficIncidents">
+      <http:operation location="/GetTrafficIncidents" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <http:operation location="/GetTrafficIncidentByIndex" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LastUpdated">
+      <http:operation location="/LastUpdated" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="trafficHttpPost" type="s0:trafficHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTrafficIncidents">
+      <http:operation location="/GetTrafficIncidents" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTrafficIncidentByIndex">
+      <http:operation location="/GetTrafficIncidentByIndex" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="LastUpdated">
+      <http:operation location="/LastUpdated" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="traffic">
+    <port name="trafficSoap" binding="s0:trafficSoap">
+      <soap:address location="http://www.billmiami.com/webservices/traffic.asmx" />
+    </port>
+    <port name="trafficHttpGet" binding="s0:trafficHttpGet">
+      <http:address location="http://www.billmiami.com/webservices/traffic.asmx" />
+    </port>
+    <port name="trafficHttpPost" binding="s0:trafficHttpPost">
+      <http:address location="http://www.billmiami.com/webservices/traffic.asmx" />
+    </port>
+  </service>
+</definitions>

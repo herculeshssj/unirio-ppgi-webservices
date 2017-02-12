@@ -1,0 +1,1176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://webservices.textuall.com/user/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://webservices.textuall.com/user/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.textuall.com/user/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s0:sessionData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="sessionData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Logout">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogoutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptTerms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcceptTermsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AcceptTermsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListUsersResult" type="s0:ArrayOfUserData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="userData" nillable="true" type="s0:userData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="userData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="userRole" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListSalutations">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListSalutationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListSalutationsResult" type="s0:ArrayOfSalutation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSalutation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="salutation" nillable="true" type="s0:salutation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="salutation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="salutationID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="salutation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListRoles">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListRolesResult" type="s0:ArrayOfRole" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="role" nillable="true" type="s0:role" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="role">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userRole" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="userRoleID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="getUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDetailsResult" type="s0:userDetails" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="userDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="salutation" type="s0:salutation" />
+          <s:element minOccurs="0" maxOccurs="1" name="role" type="s0:role" />
+          <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="eMailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lastLoginDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="termsAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isActive" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateUserDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="updateUserID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="salutationID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMSNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateUserDetailsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdatePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="userRoleID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="salutationID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eMailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMSNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateUserResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="deleteUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="otherUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="otherUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeactivateUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sessionData" nillable="true" type="s0:sessionData" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="ArrayOfUserData" nillable="true" type="s0:ArrayOfUserData" />
+      <s:element name="ArrayOfSalutation" nillable="true" type="s0:ArrayOfSalutation" />
+      <s:element name="ArrayOfRole" nillable="true" type="s0:ArrayOfRole" />
+      <s:element name="userDetails" nillable="true" type="s0:userDetails" />
+      <s:element name="long" type="s:long" />
+    </s:schema>
+  </types>
+  <message name="LoginSoapIn">
+    <part name="parameters" element="s0:Login" />
+  </message>
+  <message name="LoginSoapOut">
+    <part name="parameters" element="s0:LoginResponse" />
+  </message>
+  <message name="LogoutSoapIn">
+    <part name="parameters" element="s0:Logout" />
+  </message>
+  <message name="LogoutSoapOut">
+    <part name="parameters" element="s0:LogoutResponse" />
+  </message>
+  <message name="AcceptTermsSoapIn">
+    <part name="parameters" element="s0:AcceptTerms" />
+  </message>
+  <message name="AcceptTermsSoapOut">
+    <part name="parameters" element="s0:AcceptTermsResponse" />
+  </message>
+  <message name="ListUsersSoapIn">
+    <part name="parameters" element="s0:ListUsers" />
+  </message>
+  <message name="ListUsersSoapOut">
+    <part name="parameters" element="s0:ListUsersResponse" />
+  </message>
+  <message name="ListSalutationsSoapIn">
+    <part name="parameters" element="s0:ListSalutations" />
+  </message>
+  <message name="ListSalutationsSoapOut">
+    <part name="parameters" element="s0:ListSalutationsResponse" />
+  </message>
+  <message name="ListRolesSoapIn">
+    <part name="parameters" element="s0:ListRoles" />
+  </message>
+  <message name="ListRolesSoapOut">
+    <part name="parameters" element="s0:ListRolesResponse" />
+  </message>
+  <message name="GetUserDetailsSoapIn">
+    <part name="parameters" element="s0:GetUserDetails" />
+  </message>
+  <message name="GetUserDetailsSoapOut">
+    <part name="parameters" element="s0:GetUserDetailsResponse" />
+  </message>
+  <message name="UpdateUserDetailsSoapIn">
+    <part name="parameters" element="s0:UpdateUserDetails" />
+  </message>
+  <message name="UpdateUserDetailsSoapOut">
+    <part name="parameters" element="s0:UpdateUserDetailsResponse" />
+  </message>
+  <message name="UpdatePasswordSoapIn">
+    <part name="parameters" element="s0:UpdatePassword" />
+  </message>
+  <message name="UpdatePasswordSoapOut">
+    <part name="parameters" element="s0:UpdatePasswordResponse" />
+  </message>
+  <message name="CreateUserSoapIn">
+    <part name="parameters" element="s0:CreateUser" />
+  </message>
+  <message name="CreateUserSoapOut">
+    <part name="parameters" element="s0:CreateUserResponse" />
+  </message>
+  <message name="DeleteUserSoapIn">
+    <part name="parameters" element="s0:DeleteUser" />
+  </message>
+  <message name="DeleteUserSoapOut">
+    <part name="parameters" element="s0:DeleteUserResponse" />
+  </message>
+  <message name="ActivateUserSoapIn">
+    <part name="parameters" element="s0:ActivateUser" />
+  </message>
+  <message name="ActivateUserSoapOut">
+    <part name="parameters" element="s0:ActivateUserResponse" />
+  </message>
+  <message name="DeactivateUserSoapIn">
+    <part name="parameters" element="s0:DeactivateUser" />
+  </message>
+  <message name="DeactivateUserSoapOut">
+    <part name="parameters" element="s0:DeactivateUserResponse" />
+  </message>
+  <message name="LoginHttpGetIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="siteID" type="s:string" />
+  </message>
+  <message name="LoginHttpGetOut">
+    <part name="Body" element="s0:sessionData" />
+  </message>
+  <message name="LogoutHttpGetIn">
+    <part name="sessionID" type="s:string" />
+  </message>
+  <message name="LogoutHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="AcceptTermsHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+  </message>
+  <message name="AcceptTermsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ListUsersHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="ListUsersHttpGetOut">
+    <part name="Body" element="s0:ArrayOfUserData" />
+  </message>
+  <message name="ListSalutationsHttpGetIn" />
+  <message name="ListSalutationsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfSalutation" />
+  </message>
+  <message name="ListRolesHttpGetIn" />
+  <message name="ListRolesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfRole" />
+  </message>
+  <message name="GetUserDetailsHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="getUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="GetUserDetailsHttpGetOut">
+    <part name="Body" element="s0:userDetails" />
+  </message>
+  <message name="UpdateUserDetailsHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="updateUserID" type="s:string" />
+    <part name="salutationID" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="SMSNumber" type="s:string" />
+    <part name="eMailAddress" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="UpdateUserDetailsHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="UpdatePasswordHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="oldPassword" type="s:string" />
+    <part name="newPassword" type="s:string" />
+  </message>
+  <message name="UpdatePasswordHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CreateUserHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="userRoleID" type="s:string" />
+    <part name="salutationID" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="eMailAddress" type="s:string" />
+    <part name="SMSNumber" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="CreateUserHttpGetOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="DeleteUserHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="deleteUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="DeleteUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ActivateUserHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="otherUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="ActivateUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DeactivateUserHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="otherUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="DeactivateUserHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LoginHttpPostIn">
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="siteID" type="s:string" />
+  </message>
+  <message name="LoginHttpPostOut">
+    <part name="Body" element="s0:sessionData" />
+  </message>
+  <message name="LogoutHttpPostIn">
+    <part name="sessionID" type="s:string" />
+  </message>
+  <message name="LogoutHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="AcceptTermsHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+  </message>
+  <message name="AcceptTermsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ListUsersHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="ListUsersHttpPostOut">
+    <part name="Body" element="s0:ArrayOfUserData" />
+  </message>
+  <message name="ListSalutationsHttpPostIn" />
+  <message name="ListSalutationsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfSalutation" />
+  </message>
+  <message name="ListRolesHttpPostIn" />
+  <message name="ListRolesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfRole" />
+  </message>
+  <message name="GetUserDetailsHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="getUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="GetUserDetailsHttpPostOut">
+    <part name="Body" element="s0:userDetails" />
+  </message>
+  <message name="UpdateUserDetailsHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="updateUserID" type="s:string" />
+    <part name="salutationID" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="SMSNumber" type="s:string" />
+    <part name="eMailAddress" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="UpdateUserDetailsHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="UpdatePasswordHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="oldPassword" type="s:string" />
+    <part name="newPassword" type="s:string" />
+  </message>
+  <message name="UpdatePasswordHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="CreateUserHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="userRoleID" type="s:string" />
+    <part name="salutationID" type="s:string" />
+    <part name="firstName" type="s:string" />
+    <part name="lastName" type="s:string" />
+    <part name="username" type="s:string" />
+    <part name="password" type="s:string" />
+    <part name="eMailAddress" type="s:string" />
+    <part name="SMSNumber" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="CreateUserHttpPostOut">
+    <part name="Body" element="s0:long" />
+  </message>
+  <message name="DeleteUserHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="deleteUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="DeleteUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ActivateUserHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="otherUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="ActivateUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="DeactivateUserHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="otherUserID" type="s:string" />
+    <part name="childSiteID" type="s:string" />
+  </message>
+  <message name="DeactivateUserHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="UserSoap">
+    <operation name="Login">
+      <documentation>Log into Textuall system.&lt;BR&gt;For personal accounts leave siteID blank; the siteID to use will be returned.</documentation>
+      <input message="s0:LoginSoapIn" />
+      <output message="s0:LoginSoapOut" />
+    </operation>
+    <operation name="Logout">
+      <documentation>Log out of Textuall system.</documentation>
+      <input message="s0:LogoutSoapIn" />
+      <output message="s0:LogoutSoapOut" />
+    </operation>
+    <operation name="AcceptTerms">
+      <documentation>Accept terms and conditions.&lt;BR&gt;The terms and conditions have to be accepted in order to use the system.&lt;BR&gt;Read the terms and conditions here: &lt;A href='http://www.textuall.com/terms.asp' target='new'&gt;Terms &amp; Conditions&lt;/A&gt;</documentation>
+      <input message="s0:AcceptTermsSoapIn" />
+      <output message="s0:AcceptTermsSoapOut" />
+    </operation>
+    <operation name="ListUsers">
+      <documentation>List the users of an account (business accounts only).&lt;BR&gt;ChildSiteID may be left blank if not required.</documentation>
+      <input message="s0:ListUsersSoapIn" />
+      <output message="s0:ListUsersSoapOut" />
+    </operation>
+    <operation name="ListSalutations">
+      <documentation>List salutations.</documentation>
+      <input message="s0:ListSalutationsSoapIn" />
+      <output message="s0:ListSalutationsSoapOut" />
+    </operation>
+    <operation name="ListRoles">
+      <documentation>List allowed roles.</documentation>
+      <input message="s0:ListRolesSoapIn" />
+      <output message="s0:ListRolesSoapOut" />
+    </operation>
+    <operation name="GetUserDetails">
+      <documentation>Get a user's details.&lt;BR&gt;Business accounts can query users from child accounts.&lt;BR&gt;ChildSiteID must be left blank if the user is from the current account.</documentation>
+      <input message="s0:GetUserDetailsSoapIn" />
+      <output message="s0:GetUserDetailsSoapOut" />
+    </operation>
+    <operation name="UpdateUserDetails">
+      <documentation>Update details of a specific user.&lt;BR&gt;Restrictions are applied depending on the current user type and account type.&lt;BR&gt;To keep a parameter's current value leave it blank. To keep the current salutationID set it to -1.&lt;BR&gt;ChildSiteID may be left blank if the user to update is from the current account.</documentation>
+      <input message="s0:UpdateUserDetailsSoapIn" />
+      <output message="s0:UpdateUserDetailsSoapOut" />
+    </operation>
+    <operation name="UpdatePassword">
+      <documentation>Update the current user's password.</documentation>
+      <input message="s0:UpdatePasswordSoapIn" />
+      <output message="s0:UpdatePasswordSoapOut" />
+    </operation>
+    <operation name="CreateUser">
+      <documentation>Create a new user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID may be left blank if the new user is to be created in the current account.</documentation>
+      <input message="s0:CreateUserSoapIn" />
+      <output message="s0:CreateUserSoapOut" />
+    </operation>
+    <operation name="DeleteUser">
+      <documentation>Delete a user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID must be left blank if user to delete is from the current account.</documentation>
+      <input message="s0:DeleteUserSoapIn" />
+      <output message="s0:DeleteUserSoapOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activate a specific user (business accounts only).&lt;BR&gt;Only administrators can activate users.&lt;BR&gt;ChildSiteID must be left blank if user to activate is from the current account.</documentation>
+      <input message="s0:ActivateUserSoapIn" />
+      <output message="s0:ActivateUserSoapOut" />
+    </operation>
+    <operation name="DeactivateUser">
+      <documentation>Deactivate a specific user (business accounts only).&lt;BR&gt;Only administrators can deactivate users.&lt;BR&gt;ChildSiteID must be left blank if user to deactivate is from the current account.</documentation>
+      <input message="s0:DeactivateUserSoapIn" />
+      <output message="s0:DeactivateUserSoapOut" />
+    </operation>
+  </portType>
+  <portType name="UserHttpGet">
+    <operation name="Login">
+      <documentation>Log into Textuall system.&lt;BR&gt;For personal accounts leave siteID blank; the siteID to use will be returned.</documentation>
+      <input message="s0:LoginHttpGetIn" />
+      <output message="s0:LoginHttpGetOut" />
+    </operation>
+    <operation name="Logout">
+      <documentation>Log out of Textuall system.</documentation>
+      <input message="s0:LogoutHttpGetIn" />
+      <output message="s0:LogoutHttpGetOut" />
+    </operation>
+    <operation name="AcceptTerms">
+      <documentation>Accept terms and conditions.&lt;BR&gt;The terms and conditions have to be accepted in order to use the system.&lt;BR&gt;Read the terms and conditions here: &lt;A href='http://www.textuall.com/terms.asp' target='new'&gt;Terms &amp; Conditions&lt;/A&gt;</documentation>
+      <input message="s0:AcceptTermsHttpGetIn" />
+      <output message="s0:AcceptTermsHttpGetOut" />
+    </operation>
+    <operation name="ListUsers">
+      <documentation>List the users of an account (business accounts only).&lt;BR&gt;ChildSiteID may be left blank if not required.</documentation>
+      <input message="s0:ListUsersHttpGetIn" />
+      <output message="s0:ListUsersHttpGetOut" />
+    </operation>
+    <operation name="ListSalutations">
+      <documentation>List salutations.</documentation>
+      <input message="s0:ListSalutationsHttpGetIn" />
+      <output message="s0:ListSalutationsHttpGetOut" />
+    </operation>
+    <operation name="ListRoles">
+      <documentation>List allowed roles.</documentation>
+      <input message="s0:ListRolesHttpGetIn" />
+      <output message="s0:ListRolesHttpGetOut" />
+    </operation>
+    <operation name="GetUserDetails">
+      <documentation>Get a user's details.&lt;BR&gt;Business accounts can query users from child accounts.&lt;BR&gt;ChildSiteID must be left blank if the user is from the current account.</documentation>
+      <input message="s0:GetUserDetailsHttpGetIn" />
+      <output message="s0:GetUserDetailsHttpGetOut" />
+    </operation>
+    <operation name="UpdateUserDetails">
+      <documentation>Update details of a specific user.&lt;BR&gt;Restrictions are applied depending on the current user type and account type.&lt;BR&gt;To keep a parameter's current value leave it blank. To keep the current salutationID set it to -1.&lt;BR&gt;ChildSiteID may be left blank if the user to update is from the current account.</documentation>
+      <input message="s0:UpdateUserDetailsHttpGetIn" />
+      <output message="s0:UpdateUserDetailsHttpGetOut" />
+    </operation>
+    <operation name="UpdatePassword">
+      <documentation>Update the current user's password.</documentation>
+      <input message="s0:UpdatePasswordHttpGetIn" />
+      <output message="s0:UpdatePasswordHttpGetOut" />
+    </operation>
+    <operation name="CreateUser">
+      <documentation>Create a new user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID may be left blank if the new user is to be created in the current account.</documentation>
+      <input message="s0:CreateUserHttpGetIn" />
+      <output message="s0:CreateUserHttpGetOut" />
+    </operation>
+    <operation name="DeleteUser">
+      <documentation>Delete a user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID must be left blank if user to delete is from the current account.</documentation>
+      <input message="s0:DeleteUserHttpGetIn" />
+      <output message="s0:DeleteUserHttpGetOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activate a specific user (business accounts only).&lt;BR&gt;Only administrators can activate users.&lt;BR&gt;ChildSiteID must be left blank if user to activate is from the current account.</documentation>
+      <input message="s0:ActivateUserHttpGetIn" />
+      <output message="s0:ActivateUserHttpGetOut" />
+    </operation>
+    <operation name="DeactivateUser">
+      <documentation>Deactivate a specific user (business accounts only).&lt;BR&gt;Only administrators can deactivate users.&lt;BR&gt;ChildSiteID must be left blank if user to deactivate is from the current account.</documentation>
+      <input message="s0:DeactivateUserHttpGetIn" />
+      <output message="s0:DeactivateUserHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="UserHttpPost">
+    <operation name="Login">
+      <documentation>Log into Textuall system.&lt;BR&gt;For personal accounts leave siteID blank; the siteID to use will be returned.</documentation>
+      <input message="s0:LoginHttpPostIn" />
+      <output message="s0:LoginHttpPostOut" />
+    </operation>
+    <operation name="Logout">
+      <documentation>Log out of Textuall system.</documentation>
+      <input message="s0:LogoutHttpPostIn" />
+      <output message="s0:LogoutHttpPostOut" />
+    </operation>
+    <operation name="AcceptTerms">
+      <documentation>Accept terms and conditions.&lt;BR&gt;The terms and conditions have to be accepted in order to use the system.&lt;BR&gt;Read the terms and conditions here: &lt;A href='http://www.textuall.com/terms.asp' target='new'&gt;Terms &amp; Conditions&lt;/A&gt;</documentation>
+      <input message="s0:AcceptTermsHttpPostIn" />
+      <output message="s0:AcceptTermsHttpPostOut" />
+    </operation>
+    <operation name="ListUsers">
+      <documentation>List the users of an account (business accounts only).&lt;BR&gt;ChildSiteID may be left blank if not required.</documentation>
+      <input message="s0:ListUsersHttpPostIn" />
+      <output message="s0:ListUsersHttpPostOut" />
+    </operation>
+    <operation name="ListSalutations">
+      <documentation>List salutations.</documentation>
+      <input message="s0:ListSalutationsHttpPostIn" />
+      <output message="s0:ListSalutationsHttpPostOut" />
+    </operation>
+    <operation name="ListRoles">
+      <documentation>List allowed roles.</documentation>
+      <input message="s0:ListRolesHttpPostIn" />
+      <output message="s0:ListRolesHttpPostOut" />
+    </operation>
+    <operation name="GetUserDetails">
+      <documentation>Get a user's details.&lt;BR&gt;Business accounts can query users from child accounts.&lt;BR&gt;ChildSiteID must be left blank if the user is from the current account.</documentation>
+      <input message="s0:GetUserDetailsHttpPostIn" />
+      <output message="s0:GetUserDetailsHttpPostOut" />
+    </operation>
+    <operation name="UpdateUserDetails">
+      <documentation>Update details of a specific user.&lt;BR&gt;Restrictions are applied depending on the current user type and account type.&lt;BR&gt;To keep a parameter's current value leave it blank. To keep the current salutationID set it to -1.&lt;BR&gt;ChildSiteID may be left blank if the user to update is from the current account.</documentation>
+      <input message="s0:UpdateUserDetailsHttpPostIn" />
+      <output message="s0:UpdateUserDetailsHttpPostOut" />
+    </operation>
+    <operation name="UpdatePassword">
+      <documentation>Update the current user's password.</documentation>
+      <input message="s0:UpdatePasswordHttpPostIn" />
+      <output message="s0:UpdatePasswordHttpPostOut" />
+    </operation>
+    <operation name="CreateUser">
+      <documentation>Create a new user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID may be left blank if the new user is to be created in the current account.</documentation>
+      <input message="s0:CreateUserHttpPostIn" />
+      <output message="s0:CreateUserHttpPostOut" />
+    </operation>
+    <operation name="DeleteUser">
+      <documentation>Delete a user (business accounts only).&lt;BR&gt;Restrictions are applied depending on the current user type.&lt;BR&gt;ChildSiteID must be left blank if user to delete is from the current account.</documentation>
+      <input message="s0:DeleteUserHttpPostIn" />
+      <output message="s0:DeleteUserHttpPostOut" />
+    </operation>
+    <operation name="ActivateUser">
+      <documentation>Activate a specific user (business accounts only).&lt;BR&gt;Only administrators can activate users.&lt;BR&gt;ChildSiteID must be left blank if user to activate is from the current account.</documentation>
+      <input message="s0:ActivateUserHttpPostIn" />
+      <output message="s0:ActivateUserHttpPostOut" />
+    </operation>
+    <operation name="DeactivateUser">
+      <documentation>Deactivate a specific user (business accounts only).&lt;BR&gt;Only administrators can deactivate users.&lt;BR&gt;ChildSiteID must be left blank if user to deactivate is from the current account.</documentation>
+      <input message="s0:DeactivateUserHttpPostIn" />
+      <output message="s0:DeactivateUserHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="UserSoap" type="s0:UserSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Login">
+      <soap:operation soapAction="http://webservices.textuall.com/user/Login" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Logout">
+      <soap:operation soapAction="http://webservices.textuall.com/user/Logout" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="AcceptTerms">
+      <soap:operation soapAction="http://webservices.textuall.com/user/AcceptTerms" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListUsers">
+      <soap:operation soapAction="http://webservices.textuall.com/user/ListUsers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListSalutations">
+      <soap:operation soapAction="http://webservices.textuall.com/user/ListSalutations" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ListRoles">
+      <soap:operation soapAction="http://webservices.textuall.com/user/ListRoles" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserDetails">
+      <soap:operation soapAction="http://webservices.textuall.com/user/GetUserDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UpdateUserDetails">
+      <soap:operation soapAction="http://webservices.textuall.com/user/UpdateUserDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="UpdatePassword">
+      <soap:operation soapAction="http://webservices.textuall.com/user/UpdatePassword" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <soap:operation soapAction="http://webservices.textuall.com/user/CreateUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeleteUser">
+      <soap:operation soapAction="http://webservices.textuall.com/user/DeleteUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <soap:operation soapAction="http://webservices.textuall.com/user/ActivateUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DeactivateUser">
+      <soap:operation soapAction="http://webservices.textuall.com/user/DeactivateUser" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UserHttpGet" type="s0:UserHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Login">
+      <http:operation location="/Login" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Logout">
+      <http:operation location="/Logout" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AcceptTerms">
+      <http:operation location="/AcceptTerms" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListUsers">
+      <http:operation location="/ListUsers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListSalutations">
+      <http:operation location="/ListSalutations" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListRoles">
+      <http:operation location="/ListRoles" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserDetails">
+      <http:operation location="/GetUserDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UpdateUserDetails">
+      <http:operation location="/UpdateUserDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UpdatePassword">
+      <http:operation location="/UpdatePassword" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <http:operation location="/CreateUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteUser">
+      <http:operation location="/DeleteUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <http:operation location="/ActivateUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeactivateUser">
+      <http:operation location="/DeactivateUser" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="UserHttpPost" type="s0:UserHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Login">
+      <http:operation location="/Login" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Logout">
+      <http:operation location="/Logout" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="AcceptTerms">
+      <http:operation location="/AcceptTerms" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListUsers">
+      <http:operation location="/ListUsers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListSalutations">
+      <http:operation location="/ListSalutations" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ListRoles">
+      <http:operation location="/ListRoles" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserDetails">
+      <http:operation location="/GetUserDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UpdateUserDetails">
+      <http:operation location="/UpdateUserDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="UpdatePassword">
+      <http:operation location="/UpdatePassword" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CreateUser">
+      <http:operation location="/CreateUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeleteUser">
+      <http:operation location="/DeleteUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ActivateUser">
+      <http:operation location="/ActivateUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DeactivateUser">
+      <http:operation location="/DeactivateUser" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="User">
+    <port name="UserSoap" binding="s0:UserSoap">
+      <soap:address location="http://webservices.textuall.com/user.asmx" />
+    </port>
+    <port name="UserHttpGet" binding="s0:UserHttpGet">
+      <http:address location="http://webservices.textuall.com/user.asmx" />
+    </port>
+    <port name="UserHttpPost" binding="s0:UserHttpPost">
+      <http:address location="http://webservices.textuall.com/user.asmx" />
+    </port>
+  </service>
+</definitions>

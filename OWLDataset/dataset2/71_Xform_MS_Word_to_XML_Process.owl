@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Concepts.owl">
+  <!ENTITY DEFAULT   "http://moguntia.ucd.ie/owl/dataset2/71_Xform_MS_Word_to_XML_Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<process:ProcessModel rdf:ID="Xform_MS_Word_to_XML">
+  <process:hasProcess rdf:resource="#PickUpForTransformation_43142"/>
+  <process:hasProcess rdf:resource="#DeliverForComparison_43148"/>
+  <process:hasProcess rdf:resource="#PickUpForComparison_43155"/>
+  <process:hasProcess rdf:resource="#DeliverForTransformation_43162"/>
+  <process:hasProcess rdf:resource="#PickUpForTransformation_43167"/>
+  <process:hasProcess rdf:resource="#DeliverForComparison_43172"/>
+  <process:hasProcess rdf:resource="#PickUpForComparison_43177"/>
+  <process:hasProcess rdf:resource="#PickUpForTransformation_43183"/>
+  <process:hasProcess rdf:resource="#DeliverForComparison_43189"/>
+  <process:hasProcess rdf:resource="#PickUpForComparison_43196"/>
+</process:ProcessModel>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForTransformation_43142">
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43144">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="ticket_43145">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43147">
+      <process:parameterType rdf:resource="#XFormTransformResult"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="DeliverForComparison_43148">
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43150">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="document1_43151">
+      <process:parameterType rdf:resource="#StringArray"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="document2_43152">
+      <process:parameterType rdf:resource="#StringArray"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43154">
+      <process:parameterType rdf:resource="#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForComparison_43155">
+  <process:hasInput>
+    <process:Input rdf:ID="ticket_43157">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43158">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43160">
+      <process:parameterType rdf:resource="#XFormCompareResult"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="DeliverForTransformation_43162">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43164">
+      <process:parameterType rdf:resource="#DeliverForTransformation"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43166">
+      <process:parameterType rdf:resource="#DeliverForTransformationResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForTransformation_43167">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43169">
+      <process:parameterType rdf:resource="#PickUpForTransformation"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43171">
+      <process:parameterType rdf:resource="#PickUpForTransformationResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="DeliverForComparison_43172">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43174">
+      <process:parameterType rdf:resource="#DeliverForComparison"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43176">
+      <process:parameterType rdf:resource="#DeliverForComparisonResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForComparison_43177">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43179">
+      <process:parameterType rdf:resource="#PickUpForComparison"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43181">
+      <process:parameterType rdf:resource="#PickUpForComparisonResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForTransformation_43183">
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43185">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="ticket_43186">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43188">
+      <process:parameterType rdf:resource="#XFormTransformResult"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="DeliverForComparison_43189">
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43191">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="document1_43192">
+      <process:parameterType rdf:resource="#StringArray"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="document2_43193">
+      <process:parameterType rdf:resource="#StringArray"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43195">
+      <process:parameterType rdf:resource="#string"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="PickUpForComparison_43196">
+  <process:hasInput>
+    <process:Input rdf:ID="ticket_43198">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="licenseKey_43199">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43201">
+      <process:parameterType rdf:resource="#XFormCompareResult"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+</rdf:RDF>

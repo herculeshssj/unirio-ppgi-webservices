@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx">
+      <s:element name="cp2ville">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cp2villeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cp2villeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ville2cp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ville" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ville2cpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ville2cpResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="cp2villeSoapIn">
+    <part name="parameters" element="s0:cp2ville" />
+  </message>
+  <message name="cp2villeSoapOut">
+    <part name="parameters" element="s0:cp2villeResponse" />
+  </message>
+  <message name="ville2cpSoapIn">
+    <part name="parameters" element="s0:ville2cp" />
+  </message>
+  <message name="ville2cpSoapOut">
+    <part name="parameters" element="s0:ville2cpResponse" />
+  </message>
+  <message name="cp2villeHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="cp" type="s:string" />
+  </message>
+  <message name="cp2villeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ville2cpHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="ville" type="s:string" />
+  </message>
+  <message name="ville2cpHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="cp2villeHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="cp" type="s:string" />
+  </message>
+  <message name="cp2villeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="ville2cpHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="ville" type="s:string" />
+  </message>
+  <message name="ville2cpHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="codepostalSoap">
+    <operation name="cp2ville">
+      <documentation>Permet de concertir un code postal fran??ais en Ville</documentation>
+      <input message="s0:cp2villeSoapIn" />
+      <output message="s0:cp2villeSoapOut" />
+    </operation>
+    <operation name="ville2cp">
+      <documentation>Permet de concertir une Ville fran??ais en code postal</documentation>
+      <input message="s0:ville2cpSoapIn" />
+      <output message="s0:ville2cpSoapOut" />
+    </operation>
+  </portType>
+  <portType name="codepostalHttpGet">
+    <operation name="cp2ville">
+      <documentation>Permet de concertir un code postal fran??ais en Ville</documentation>
+      <input message="s0:cp2villeHttpGetIn" />
+      <output message="s0:cp2villeHttpGetOut" />
+    </operation>
+    <operation name="ville2cp">
+      <documentation>Permet de concertir une Ville fran??ais en code postal</documentation>
+      <input message="s0:ville2cpHttpGetIn" />
+      <output message="s0:ville2cpHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="codepostalHttpPost">
+    <operation name="cp2ville">
+      <documentation>Permet de concertir un code postal fran??ais en Ville</documentation>
+      <input message="s0:cp2villeHttpPostIn" />
+      <output message="s0:cp2villeHttpPostOut" />
+    </operation>
+    <operation name="ville2cp">
+      <documentation>Permet de concertir une Ville fran??ais en code postal</documentation>
+      <input message="s0:ville2cpHttpPostIn" />
+      <output message="s0:ville2cpHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="codepostalSoap" type="s0:codepostalSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="cp2ville">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx/cp2ville" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ville2cp">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx/ville2cp" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="codepostalHttpGet" type="s0:codepostalHttpGet">
+    <http:binding verb="GET" />
+    <operation name="cp2ville">
+      <http:operation location="/cp2ville" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ville2cp">
+      <http:operation location="/ville2cp" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="codepostalHttpPost" type="s0:codepostalHttpPost">
+    <http:binding verb="POST" />
+    <operation name="cp2ville">
+      <http:operation location="/cp2ville" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="ville2cp">
+      <http:operation location="/ville2cp" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="codepostal">
+    <port name="codepostalSoap" binding="s0:codepostalSoap">
+      <soap:address location="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx" />
+    </port>
+    <port name="codepostalHttpGet" binding="s0:codepostalHttpGet">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx" />
+    </port>
+    <port name="codepostalHttpPost" binding="s0:codepostalHttpPost">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/codepostal.asmx" />
+    </port>
+  </service>
+</definitions>

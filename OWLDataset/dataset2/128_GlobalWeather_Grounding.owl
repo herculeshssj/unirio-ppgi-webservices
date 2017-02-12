@@ -1,0 +1,761 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/128_GlobalWeather_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_GlobalWeather">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#getWeatherReport_47512"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#getStation_47518"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#isValidCode_47523"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#listCountries_47528"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#searchByCode_47532"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#searchByCountry_47537"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#searchByName_47542"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#searchByRegion_47547"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: getWeatherReport_47512 ID: 47512 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_getWeatherReport_47512">
+  <grounding:owlsProcess rdf:resource="&the_process;#getWeatherReport_47512" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#GlobalWeather"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#getWeatherReport"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#getWeatherReport"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#code_47514"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#code_47514"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#getWeatherReportResponse_47515"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47516"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:WeatherReport>
+        <the_concepts:timestamp><xsl:value-of select="return_47516/timestamp"/></the_concepts:timestamp>
+        <the_concepts:station>
+        <the_concepts:icao><xsl:value-of select="stationicao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="stationwmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="stationiata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="stationelevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="stationlatitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="stationlongitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="stationname"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="stationregion"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="stationcountry"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="stationstring"/></the_concepts:string>
+        </the_concepts:station>
+        <the_concepts:phenomena parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:intensity>
+        </the_concepts:intensity>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="phenomenaPhenomenon">
+          <the_concepts:Phenomenon>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:intensity>
+        </the_concepts:intensity>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Phenomenon>
+        </xsl:for-each>
+        </the_concepts:phenomena>
+        <the_concepts:precipitation parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:amount><xsl:value-of select="itemamount"/></the_concepts:amount>
+        <the_concepts:hours><xsl:value-of select="itemhours"/></the_concepts:hours>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="precipitationPrecipitation">
+          <the_concepts:Precipitation>
+        <the_concepts:amount><xsl:value-of select="amount"/></the_concepts:amount>
+        <the_concepts:hours><xsl:value-of select="hours"/></the_concepts:hours>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Precipitation>
+        </xsl:for-each>
+        </the_concepts:precipitation>
+        <the_concepts:extremes parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:temperature>
+        <the_concepts:ambient><xsl:value-of select="temperatureambient"/></the_concepts:ambient>
+        <the_concepts:dewpoint><xsl:value-of select="temperaturedewpoint"/></the_concepts:dewpoint>
+        <the_concepts:relative_humidity><xsl:value-of select="temperaturerelative_humidity"/></the_concepts:relative_humidity>
+        <the_concepts:string><xsl:value-of select="temperaturestring"/></the_concepts:string>
+        </the_concepts:temperature>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:hours><xsl:value-of select="itemhours"/></the_concepts:hours>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="extremesExtreme">
+          <the_concepts:Extreme>
+        <the_concepts:temperature>
+        <the_concepts:ambient><xsl:value-of select="temperatureambient"/></the_concepts:ambient>
+        <the_concepts:dewpoint><xsl:value-of select="temperaturedewpoint"/></the_concepts:dewpoint>
+        <the_concepts:relative_humidity><xsl:value-of select="temperaturerelative_humidity"/></the_concepts:relative_humidity>
+        <the_concepts:string><xsl:value-of select="temperaturestring"/></the_concepts:string>
+        </the_concepts:temperature>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:hours><xsl:value-of select="hours"/></the_concepts:hours>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Extreme>
+        </xsl:for-each>
+        </the_concepts:extremes>
+        <the_concepts:pressure>
+        <the_concepts:altimeter><xsl:value-of select="pressurealtimeter"/></the_concepts:altimeter>
+        <the_concepts:slp><xsl:value-of select="pressureslp"/></the_concepts:slp>
+        <the_concepts:delta><xsl:value-of select="pressuredelta"/></the_concepts:delta>
+        <the_concepts:delta_hours><xsl:value-of select="pressuredelta_hours"/></the_concepts:delta_hours>
+        <the_concepts:string><xsl:value-of select="pressurestring"/></the_concepts:string>
+        </the_concepts:pressure>
+        <the_concepts:sky>
+        <the_concepts:ceiling_altitude><xsl:value-of select="skyceiling_altitude"/></the_concepts:ceiling_altitude>
+        <the_concepts:layers parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:altitude><xsl:value-of select="itemaltitude"/></the_concepts:altitude>
+        <the_concepts:extent><xsl:value-of select="itemextent"/></the_concepts:extent>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="layersLayer">
+          <the_concepts:Layer>
+        <the_concepts:altitude><xsl:value-of select="altitude"/></the_concepts:altitude>
+        <the_concepts:extent><xsl:value-of select="extent"/></the_concepts:extent>
+        <the_concepts:type>
+        </the_concepts:type>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Layer>
+        </xsl:for-each>
+        </the_concepts:layers>
+        <the_concepts:string><xsl:value-of select="skystring"/></the_concepts:string>
+        </the_concepts:sky>
+        <the_concepts:temperature>
+        <the_concepts:ambient><xsl:value-of select="temperatureambient"/></the_concepts:ambient>
+        <the_concepts:dewpoint><xsl:value-of select="temperaturedewpoint"/></the_concepts:dewpoint>
+        <the_concepts:relative_humidity><xsl:value-of select="temperaturerelative_humidity"/></the_concepts:relative_humidity>
+        <the_concepts:string><xsl:value-of select="temperaturestring"/></the_concepts:string>
+        </the_concepts:temperature>
+        <the_concepts:visibility>
+        <the_concepts:distance><xsl:value-of select="visibilitydistance"/></the_concepts:distance>
+        <the_concepts:qualifier>
+        </the_concepts:qualifier>
+        <the_concepts:string><xsl:value-of select="visibilitystring"/></the_concepts:string>
+        </the_concepts:visibility>
+        <the_concepts:wind>
+        <the_concepts:prevailing_speed><xsl:value-of select="windprevailing_speed"/></the_concepts:prevailing_speed>
+        <the_concepts:gust_speed><xsl:value-of select="windgust_speed"/></the_concepts:gust_speed>
+        <the_concepts:prevailing_direction>
+        <the_concepts:compass>
+        </the_concepts:compass>
+        <the_concepts:degrees><xsl:value-of select="prevailing_directiondegrees"/></the_concepts:degrees>
+        <the_concepts:string><xsl:value-of select="prevailing_directionstring"/></the_concepts:string>
+        </the_concepts:prevailing_direction>
+        <the_concepts:varying_from_direction>
+        <the_concepts:compass>
+        </the_concepts:compass>
+        <the_concepts:degrees><xsl:value-of select="varying_from_directiondegrees"/></the_concepts:degrees>
+        <the_concepts:string><xsl:value-of select="varying_from_directionstring"/></the_concepts:string>
+        </the_concepts:varying_from_direction>
+        <the_concepts:varying_to_direction>
+        <the_concepts:compass>
+        </the_concepts:compass>
+        <the_concepts:degrees><xsl:value-of select="varying_to_directiondegrees"/></the_concepts:degrees>
+        <the_concepts:string><xsl:value-of select="varying_to_directionstring"/></the_concepts:string>
+        </the_concepts:varying_to_direction>
+        <the_concepts:string><xsl:value-of select="windstring"/></the_concepts:string>
+        </the_concepts:wind>
+        </the_concepts:WeatherReport>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: getStation_47518 ID: 47518 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_getStation_47518">
+  <grounding:owlsProcess rdf:resource="&the_process;#getStation_47518" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#getStation"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#getStation"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#code_47520"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#code_47520"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#getStationResponse_47521"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47522"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Station>
+        <the_concepts:icao><xsl:value-of select="return_47522/icao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="return_47522/wmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="return_47522/iata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="return_47522/elevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="return_47522/latitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="return_47522/longitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="return_47522/name"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="return_47522/region"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="return_47522/country"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="return_47522/string"/></the_concepts:string>
+        </the_concepts:Station>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: isValidCode_47523 ID: 47523 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_isValidCode_47523">
+  <grounding:owlsProcess rdf:resource="&the_process;#isValidCode_47523" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#isValidCode"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#isValidCode"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#code_47525"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#code_47525"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#isValidCodeResponse_47526"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47527"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#return_47527"/>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: listCountries_47528 ID: 47528 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_listCountries_47528">
+  <grounding:owlsProcess rdf:resource="&the_process;#listCountries_47528" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#listCountries"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#listCountries"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#listCountriesResponse_47530"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47531"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfstring parseType="owl:collection">
+        <the_concepts:item><xsl:value-of select="return_47531/item"/></the_concepts:item>
+        </the_concepts:ArrayOfstring>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: searchByCode_47532 ID: 47532 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_searchByCode_47532">
+  <grounding:owlsProcess rdf:resource="&the_process;#searchByCode_47532" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#searchByCode"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByCode"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#code_47534"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#code_47534"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByCodeResponse_47535"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47536"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStation parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:icao><xsl:value-of select="itemicao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="itemwmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="itemiata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="itemelevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="itemlatitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="itemlongitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="itemname"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="itemregion"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="itemcountry"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="return_47536/Station">
+          <the_concepts:Station>
+        <the_concepts:icao><xsl:value-of select="icao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="wmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="iata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="elevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="latitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="longitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="name"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="region"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="country"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Station>
+        </xsl:for-each>
+        </the_concepts:ArrayOfStation>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: searchByCountry_47537 ID: 47537 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_searchByCountry_47537">
+  <grounding:owlsProcess rdf:resource="&the_process;#searchByCountry_47537" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#searchByCountry"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByCountry"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#country_47539"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#country_47539"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByCountryResponse_47540"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47541"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStation parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:icao><xsl:value-of select="itemicao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="itemwmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="itemiata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="itemelevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="itemlatitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="itemlongitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="itemname"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="itemregion"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="itemcountry"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="return_47541/Station">
+          <the_concepts:Station>
+        <the_concepts:icao><xsl:value-of select="icao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="wmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="iata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="elevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="latitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="longitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="name"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="region"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="country"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Station>
+        </xsl:for-each>
+        </the_concepts:ArrayOfStation>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: searchByName_47542 ID: 47542 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_searchByName_47542">
+  <grounding:owlsProcess rdf:resource="&the_process;#searchByName_47542" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#searchByName"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByName"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#name_47544"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#name_47544"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByNameResponse_47545"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47546"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStation parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:icao><xsl:value-of select="itemicao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="itemwmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="itemiata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="itemelevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="itemlatitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="itemlongitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="itemname"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="itemregion"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="itemcountry"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="return_47546/Station">
+          <the_concepts:Station>
+        <the_concepts:icao><xsl:value-of select="icao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="wmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="iata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="elevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="latitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="longitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="name"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="region"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="country"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Station>
+        </xsl:for-each>
+        </the_concepts:ArrayOfStation>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: searchByRegion_47547 ID: 47547 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_searchByRegion_47547">
+  <grounding:owlsProcess rdf:resource="&the_process;#searchByRegion_47547" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StationInfo"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#searchByRegion"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByRegion"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#region_47549"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#region_47549"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#searchByRegionResponse_47550"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#return_47551"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStation parseType="owl:collection">
+        <the_concepts:item>
+        <the_concepts:icao><xsl:value-of select="itemicao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="itemwmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="itemiata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="itemelevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="itemlatitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="itemlongitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="itemname"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="itemregion"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="itemcountry"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="itemstring"/></the_concepts:string>
+        </the_concepts:item>
+        <xsl:for-each select="return_47551/Station">
+          <the_concepts:Station>
+        <the_concepts:icao><xsl:value-of select="icao"/></the_concepts:icao>
+        <the_concepts:wmo><xsl:value-of select="wmo"/></the_concepts:wmo>
+        <the_concepts:iata><xsl:value-of select="iata"/></the_concepts:iata>
+        <the_concepts:elevation><xsl:value-of select="elevation"/></the_concepts:elevation>
+        <the_concepts:latitude><xsl:value-of select="latitude"/></the_concepts:latitude>
+        <the_concepts:longitude><xsl:value-of select="longitude"/></the_concepts:longitude>
+        <the_concepts:name><xsl:value-of select="name"/></the_concepts:name>
+        <the_concepts:region><xsl:value-of select="region"/></the_concepts:region>
+        <the_concepts:country><xsl:value-of select="country"/></the_concepts:country>
+        <the_concepts:string><xsl:value-of select="string"/></the_concepts:string>
+          </the_concepts:Station>
+        </xsl:for-each>
+        </the_concepts:ArrayOfStation>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

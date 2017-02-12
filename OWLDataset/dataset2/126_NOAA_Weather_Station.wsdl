@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/ICAOLocations" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/ICAOLocations" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/ICAOLocations">
+      <s:element name="GetICAOCountrys">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetICAOCountrysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICAOCountrysResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetICAOLocations">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetICAOLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICAOLocationsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICAOLocationsByCountry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inCountry" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetICAOLocationsByCountryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetICAOLocationsByCountryResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetICAOCountrysSoapIn">
+    <part name="parameters" element="s0:GetICAOCountrys" />
+  </message>
+  <message name="GetICAOCountrysSoapOut">
+    <part name="parameters" element="s0:GetICAOCountrysResponse" />
+  </message>
+  <message name="GetICAOLocationsSoapIn">
+    <part name="parameters" element="s0:GetICAOLocations" />
+  </message>
+  <message name="GetICAOLocationsSoapOut">
+    <part name="parameters" element="s0:GetICAOLocationsResponse" />
+  </message>
+  <message name="GetICAOLocationsByCountrySoapIn">
+    <part name="parameters" element="s0:GetICAOLocationsByCountry" />
+  </message>
+  <message name="GetICAOLocationsByCountrySoapOut">
+    <part name="parameters" element="s0:GetICAOLocationsByCountryResponse" />
+  </message>
+  <message name="GetICAOCountrysHttpGetIn" />
+  <message name="GetICAOCountrysHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetICAOLocationsHttpGetIn" />
+  <message name="GetICAOLocationsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetICAOLocationsByCountryHttpGetIn">
+    <part name="inCountry" type="s:string" />
+  </message>
+  <message name="GetICAOLocationsByCountryHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetICAOCountrysHttpPostIn" />
+  <message name="GetICAOCountrysHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetICAOLocationsHttpPostIn" />
+  <message name="GetICAOLocationsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetICAOLocationsByCountryHttpPostIn">
+    <part name="inCountry" type="s:string" />
+  </message>
+  <message name="GetICAOLocationsByCountryHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="ICAOLocationsSoap">
+    <operation name="GetICAOCountrys">
+      <input message="s0:GetICAOCountrysSoapIn" />
+      <output message="s0:GetICAOCountrysSoapOut" />
+    </operation>
+    <operation name="GetICAOLocations">
+      <input message="s0:GetICAOLocationsSoapIn" />
+      <output message="s0:GetICAOLocationsSoapOut" />
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <input message="s0:GetICAOLocationsByCountrySoapIn" />
+      <output message="s0:GetICAOLocationsByCountrySoapOut" />
+    </operation>
+  </portType>
+  <portType name="ICAOLocationsHttpGet">
+    <operation name="GetICAOCountrys">
+      <input message="s0:GetICAOCountrysHttpGetIn" />
+      <output message="s0:GetICAOCountrysHttpGetOut" />
+    </operation>
+    <operation name="GetICAOLocations">
+      <input message="s0:GetICAOLocationsHttpGetIn" />
+      <output message="s0:GetICAOLocationsHttpGetOut" />
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <input message="s0:GetICAOLocationsByCountryHttpGetIn" />
+      <output message="s0:GetICAOLocationsByCountryHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ICAOLocationsHttpPost">
+    <operation name="GetICAOCountrys">
+      <input message="s0:GetICAOCountrysHttpPostIn" />
+      <output message="s0:GetICAOCountrysHttpPostOut" />
+    </operation>
+    <operation name="GetICAOLocations">
+      <input message="s0:GetICAOLocationsHttpPostIn" />
+      <output message="s0:GetICAOLocationsHttpPostOut" />
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <input message="s0:GetICAOLocationsByCountryHttpPostIn" />
+      <output message="s0:GetICAOLocationsByCountryHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ICAOLocationsSoap" type="s0:ICAOLocationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetICAOCountrys">
+      <soap:operation soapAction="http://innergears.com/WebServices/ICAOLocations/GetICAOCountrys" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocations">
+      <soap:operation soapAction="http://innergears.com/WebServices/ICAOLocations/GetICAOLocations" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <soap:operation soapAction="http://innergears.com/WebServices/ICAOLocations/GetICAOLocationsByCountry" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICAOLocationsHttpGet" type="s0:ICAOLocationsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetICAOCountrys">
+      <http:operation location="/GetICAOCountrys" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocations">
+      <http:operation location="/GetICAOLocations" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <http:operation location="/GetICAOLocationsByCountry" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ICAOLocationsHttpPost" type="s0:ICAOLocationsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetICAOCountrys">
+      <http:operation location="/GetICAOCountrys" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocations">
+      <http:operation location="/GetICAOLocations" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetICAOLocationsByCountry">
+      <http:operation location="/GetICAOLocationsByCountry" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ICAOLocations">
+    <port name="ICAOLocationsSoap" binding="s0:ICAOLocationsSoap">
+      <soap:address location="http://www.innergears.com/WebServices/ICAOLocations/ICAOLocations.asmx" />
+    </port>
+    <port name="ICAOLocationsHttpGet" binding="s0:ICAOLocationsHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/ICAOLocations/ICAOLocations.asmx" />
+    </port>
+    <port name="ICAOLocationsHttpPost" binding="s0:ICAOLocationsHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/ICAOLocations/ICAOLocations.asmx" />
+    </port>
+  </service>
+</definitions>

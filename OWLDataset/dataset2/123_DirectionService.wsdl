@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.parsonsdesigns.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.parsonsdesigns.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.parsonsdesigns.com/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="FindRoute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OriginStreetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginCountry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationStreetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationCountry" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RouteSource" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRouteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRouteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRouteAsDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OriginStreetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginCountry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationStreetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationCity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationPostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestinationCountry" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RouteSource" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindRouteAsDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRouteAsDatasetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="FindRouteSoapIn">
+    <part name="parameters" element="s0:FindRoute" />
+  </message>
+  <message name="FindRouteSoapOut">
+    <part name="parameters" element="s0:FindRouteResponse" />
+  </message>
+  <message name="FindRouteAsDatasetSoapIn">
+    <part name="parameters" element="s0:FindRouteAsDataset" />
+  </message>
+  <message name="FindRouteAsDatasetSoapOut">
+    <part name="parameters" element="s0:FindRouteAsDatasetResponse" />
+  </message>
+  <message name="FindRouteHttpGetIn">
+    <part name="OriginStreetAddress" type="s:string" />
+    <part name="OriginCity" type="s:string" />
+    <part name="OriginState" type="s:string" />
+    <part name="OriginPostalCode" type="s:string" />
+    <part name="OriginCountry" type="s:string" />
+    <part name="DestinationStreetAddress" type="s:string" />
+    <part name="DestinationCity" type="s:string" />
+    <part name="DestinationState" type="s:string" />
+    <part name="DestinationPostalCode" type="s:string" />
+    <part name="DestinationCountry" type="s:string" />
+    <part name="RouteSource" type="s:string" />
+  </message>
+  <message name="FindRouteHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindRouteAsDatasetHttpGetIn">
+    <part name="OriginStreetAddress" type="s:string" />
+    <part name="OriginCity" type="s:string" />
+    <part name="OriginState" type="s:string" />
+    <part name="OriginPostalCode" type="s:string" />
+    <part name="OriginCountry" type="s:string" />
+    <part name="DestinationStreetAddress" type="s:string" />
+    <part name="DestinationCity" type="s:string" />
+    <part name="DestinationState" type="s:string" />
+    <part name="DestinationPostalCode" type="s:string" />
+    <part name="DestinationCountry" type="s:string" />
+    <part name="RouteSource" type="s:string" />
+  </message>
+  <message name="FindRouteAsDatasetHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="FindRouteHttpPostIn">
+    <part name="OriginStreetAddress" type="s:string" />
+    <part name="OriginCity" type="s:string" />
+    <part name="OriginState" type="s:string" />
+    <part name="OriginPostalCode" type="s:string" />
+    <part name="OriginCountry" type="s:string" />
+    <part name="DestinationStreetAddress" type="s:string" />
+    <part name="DestinationCity" type="s:string" />
+    <part name="DestinationState" type="s:string" />
+    <part name="DestinationPostalCode" type="s:string" />
+    <part name="DestinationCountry" type="s:string" />
+    <part name="RouteSource" type="s:string" />
+  </message>
+  <message name="FindRouteHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindRouteAsDatasetHttpPostIn">
+    <part name="OriginStreetAddress" type="s:string" />
+    <part name="OriginCity" type="s:string" />
+    <part name="OriginState" type="s:string" />
+    <part name="OriginPostalCode" type="s:string" />
+    <part name="OriginCountry" type="s:string" />
+    <part name="DestinationStreetAddress" type="s:string" />
+    <part name="DestinationCity" type="s:string" />
+    <part name="DestinationState" type="s:string" />
+    <part name="DestinationPostalCode" type="s:string" />
+    <part name="DestinationCountry" type="s:string" />
+    <part name="RouteSource" type="s:string" />
+  </message>
+  <message name="FindRouteAsDatasetHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="DirectionServiceSoap">
+    <operation name="FindRoute">
+      <input message="s0:FindRouteSoapIn" />
+      <output message="s0:FindRouteSoapOut" />
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <input message="s0:FindRouteAsDatasetSoapIn" />
+      <output message="s0:FindRouteAsDatasetSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DirectionServiceHttpGet">
+    <operation name="FindRoute">
+      <input message="s0:FindRouteHttpGetIn" />
+      <output message="s0:FindRouteHttpGetOut" />
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <input message="s0:FindRouteAsDatasetHttpGetIn" />
+      <output message="s0:FindRouteAsDatasetHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DirectionServiceHttpPost">
+    <operation name="FindRoute">
+      <input message="s0:FindRouteHttpPostIn" />
+      <output message="s0:FindRouteHttpPostOut" />
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <input message="s0:FindRouteAsDatasetHttpPostIn" />
+      <output message="s0:FindRouteAsDatasetHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DirectionServiceSoap" type="s0:DirectionServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindRoute">
+      <soap:operation soapAction="http://www.parsonsdesigns.com/FindRoute" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <soap:operation soapAction="http://www.parsonsdesigns.com/FindRouteAsDataset" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DirectionServiceHttpGet" type="s0:DirectionServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindRoute">
+      <http:operation location="/FindRoute" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <http:operation location="/FindRouteAsDataset" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DirectionServiceHttpPost" type="s0:DirectionServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindRoute">
+      <http:operation location="/FindRoute" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindRouteAsDataset">
+      <http:operation location="/FindRouteAsDataset" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DirectionService">
+    <port name="DirectionServiceSoap" binding="s0:DirectionServiceSoap">
+      <soap:address location="http://www.dev1.eraserver.net/MrAndyPuppy/DirectionService.asmx" />
+    </port>
+    <port name="DirectionServiceHttpGet" binding="s0:DirectionServiceHttpGet">
+      <http:address location="http://www.dev1.eraserver.net/MrAndyPuppy/DirectionService.asmx" />
+    </port>
+    <port name="DirectionServiceHttpPost" binding="s0:DirectionServiceHttpPost">
+      <http:address location="http://www.dev1.eraserver.net/MrAndyPuppy/DirectionService.asmx" />
+    </port>
+  </service>
+</definitions>

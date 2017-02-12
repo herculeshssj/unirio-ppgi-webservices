@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeForceUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ForceValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromForceUnit" type="s0:Forces" />
+            <s:element minOccurs="1" maxOccurs="1" name="toForceUnit" type="s0:Forces" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Forces">
+        <s:restriction base="s:string">
+          <s:enumeration value="dyne" />
+          <s:enumeration value="gramforce" />
+          <s:enumeration value="poundals" />
+          <s:enumeration value="newtons" />
+          <s:enumeration value="pounds" />
+          <s:enumeration value="kilopondkgmforce" />
+          <s:enumeration value="Kip" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeForceUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeForceUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeForceUnitSoapIn">
+    <part name="parameters" element="s0:ChangeForceUnit" />
+  </message>
+  <message name="ChangeForceUnitSoapOut">
+    <part name="parameters" element="s0:ChangeForceUnitResponse" />
+  </message>
+  <message name="ChangeForceUnitHttpGetIn">
+    <part name="ForceValue" type="s:string" />
+    <part name="fromForceUnit" type="s:string" />
+    <part name="toForceUnit" type="s:string" />
+  </message>
+  <message name="ChangeForceUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeForceUnitHttpPostIn">
+    <part name="ForceValue" type="s:string" />
+    <part name="fromForceUnit" type="s:string" />
+    <part name="toForceUnit" type="s:string" />
+  </message>
+  <message name="ChangeForceUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="ForceUnitSoap">
+    <operation name="ChangeForceUnit">
+      <input message="s0:ChangeForceUnitSoapIn" />
+      <output message="s0:ChangeForceUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ForceUnitHttpGet">
+    <operation name="ChangeForceUnit">
+      <input message="s0:ChangeForceUnitHttpGetIn" />
+      <output message="s0:ChangeForceUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ForceUnitHttpPost">
+    <operation name="ChangeForceUnit">
+      <input message="s0:ChangeForceUnitHttpPostIn" />
+      <output message="s0:ChangeForceUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ForceUnitSoap" type="s0:ForceUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeForceUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeForceUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForceUnitHttpGet" type="s0:ForceUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeForceUnit">
+      <http:operation location="/ChangeForceUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ForceUnitHttpPost" type="s0:ForceUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeForceUnit">
+      <http:operation location="/ChangeForceUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ForceUnit">
+    <port name="ForceUnitSoap" binding="s0:ForceUnitSoap">
+      <soap:address location="http://www.webservicex.net/ConvertForec.asmx" />
+    </port>
+    <port name="ForceUnitHttpGet" binding="s0:ForceUnitHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertForec.asmx" />
+    </port>
+    <port name="ForceUnitHttpPost" binding="s0:ForceUnitHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertForec.asmx" />
+    </port>
+  </service>
+</definitions>

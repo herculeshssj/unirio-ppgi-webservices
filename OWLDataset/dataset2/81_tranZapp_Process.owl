@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Concepts.owl">
+  <!ENTITY DEFAULT   "http://moguntia.ucd.ie/owl/dataset2/81_tranZapp_Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<process:ProcessModel rdf:ID="tranZapp">
+  <process:hasProcess rdf:resource="#GetLanguages_43571"/>
+  <process:hasProcess rdf:resource="#Register_43575"/>
+  <process:hasProcess rdf:resource="#GetLanguages_43586"/>
+  <process:hasProcess rdf:resource="#Register_43591"/>
+  <process:hasProcess rdf:resource="#TranslateFile_43596"/>
+  <process:hasProcess rdf:resource="#CompletedFiles_43601"/>
+  <process:hasProcess rdf:resource="#GetCompletedFile_43606"/>
+  <process:hasProcess rdf:resource="#ConfirmFile_43611"/>
+  <process:hasProcess rdf:resource="#CancelJob_43616"/>
+  <process:hasProcess rdf:resource="#GetLanguages_43622"/>
+  <process:hasProcess rdf:resource="#Register_43626"/>
+</process:ProcessModel>
+
+
+
+<process:AtomicProcess rdf:ID="GetLanguages_43571">
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43574">
+      <process:parameterType rdf:resource="#ArrayOfString"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="Register_43575">
+  <process:hasInput>
+    <process:Input rdf:ID="ClientCode_43577">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="UserName_43578">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Password_43579">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Email_43580">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="DefaultLangauge_43581">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="sendEmail_43582">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43584">
+      <process:parameterType rdf:resource="#RegistrationInfo"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetLanguages_43586">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43588">
+      <process:parameterType rdf:resource="#GetLanguages"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43590">
+      <process:parameterType rdf:resource="#GetLanguagesResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="Register_43591">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43593">
+      <process:parameterType rdf:resource="#Register"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43595">
+      <process:parameterType rdf:resource="#RegisterResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="TranslateFile_43596">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43598">
+      <process:parameterType rdf:resource="#TranslateFile"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43600">
+      <process:parameterType rdf:resource="#TranslateFileResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="CompletedFiles_43601">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43603">
+      <process:parameterType rdf:resource="#CompletedFiles"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43605">
+      <process:parameterType rdf:resource="#CompletedFilesResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetCompletedFile_43606">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43608">
+      <process:parameterType rdf:resource="#GetCompletedFile"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43610">
+      <process:parameterType rdf:resource="#GetCompletedFileResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="ConfirmFile_43611">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43613">
+      <process:parameterType rdf:resource="#ConfirmFile"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43615">
+      <process:parameterType rdf:resource="#ConfirmFileResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="CancelJob_43616">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_43618">
+      <process:parameterType rdf:resource="#CancelJob"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_43620">
+      <process:parameterType rdf:resource="#CancelJobResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetLanguages_43622">
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43625">
+      <process:parameterType rdf:resource="#ArrayOfString"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="Register_43626">
+  <process:hasInput>
+    <process:Input rdf:ID="ClientCode_43628">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="UserName_43629">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Password_43630">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Email_43631">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="DefaultLangauge_43632">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="sendEmail_43633">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_43635">
+      <process:parameterType rdf:resource="#RegistrationInfo"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+</rdf:RDF>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    WSDL for DataConcert Transform Service(TM)
+    Copyright(c) 2001 DataConcert, Inc.
+ -->
+<definitions name="Transform" targetNamespace="http://dataconcert.com/transform.wsdl" xmlns:thisns="http://dataconcert.com/transform.wsdl" xmlns:typens="http://schemas.dataconcert.com/transform/type/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<schema targetNamespace="http://schemas.dataconcert.com/transform/type/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<!-- a type that allows any XML tags -->
+			<complexType name="ArbitraryXML">
+				<sequence>
+					<any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+				</sequence>
+			</complexType>
+			<!-- formats supported by Transform -->
+			<simpleType name="FormatEnum">
+				<restriction base="xsd:string">
+					<enumeration value="xml"/>
+					<enumeration value="excel"/>
+					<enumeration value="csv"/>
+					<enumeration value="x12"/>
+					<enumeration value="edifact"/>
+				</restriction>
+			</simpleType>
+			<!-- format parameters (can contain arbitrary XML) -->
+			<complexType name="FormatParams">
+				<sequence>
+					<any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+				</sequence>
+			</complexType>
+			<!-- CSV format options -->
+			<complexType name="CSVOptions">
+				<sequence>
+					<element name="namesInFirstRow" type="xsd:boolean"/>
+					<element name="rowDelimiter" type="xsd:string"/>
+					<element name="columnDelimiter" type="xsd:string"/>
+					<element name="escapeCharacter" type="xsd:string"/>
+					<element name="quoteCharacter" type="xsd:string"/>
+				</sequence>
+			</complexType>
+			<!-- XML format options -->
+			<complexType name="XMLOptions">
+				<sequence>
+					<element name="useAttributes" type="xsd:boolean"/>
+					<element name="usePropertyNames" type="xsd:boolean"/>
+					<element name="usePropertyValues" type="xsd:boolean"/>
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	<!-- messages for storing XSLT in Transform -->
+	<message name="StoreXSLTRequest">
+		<part name="userId" type="xsd:string"/>
+		<part name="password" type="xsd:string"/>
+		<part name="xsltName" type="xsd:string"/>
+		<part name="inputSchemaName" type="xsd:string"/>
+		<part name="outputSchemaName" type="xsd:string"/>
+		<part name="inputDocument" type="typens:ArbitraryXML"/>
+	</message>
+	<message name="StoreXSLTResponse">
+		<part name="outputMessage" type="xsd:string"/>
+	</message>
+	<!-- messages for storing Schemas in Transform -->
+	<message name="StoreSchemaRequest">
+		<part name="userId" type="xsd:string"/>
+		<part name="password" type="xsd:string"/>
+		<part name="schemaName" type="xsd:string"/>
+		<part name="inputDocument" type="typens:ArbitraryXML"/>
+	</message>
+	<message name="StoreSchemaResponse">
+		<part name="outputMessage" type="xsd:string"/>
+	</message>
+	<!-- messages for executing a transformation by name -->
+	<message name="ExecuteTransformRequest">
+		<part name="userId" type="xsd:string"/>
+		<part name="password" type="xsd:string"/>
+		<part name="transformName" type="xsd:string"/>
+		<part name="useEmail" type="xsd:boolean"/>
+		<part name="format" type="xsd:string"/>
+		<part name="formatParams" type="typens:FormatParams"/>
+		<part name="inputDocument" type="typens:ArbitraryXML"/>
+	</message>
+	<message name="ExecuteTransformResponse">
+		<part name="outputDocument" type="typens:ArbitraryXML"/>
+	</message>
+	<!-- Operations -->
+	<portType name="TransformPortType">
+		<operation name="StoreXSLT">
+			<input message="thisns:StoreXSLTRequest"/>
+			<output message="thisns:StoreXSLTResponse"/>
+		</operation>
+		<operation name="StoreSchema">
+			<input message="thisns:StoreSchemaRequest"/>
+			<output message="thisns:StoreSchemaResponse"/>
+		</operation>
+		<operation name="ExecuteTransform">
+			<input message="thisns:ExecuteTransformRequest"/>
+			<output message="thisns:ExecuteTransformResponse"/>
+		</operation>
+	</portType>
+	<!-- Bindings -->
+	<binding name="TransformSoapBinding" type="thisns:TransformPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="StoreXSLT">
+			<soap:operation soapAction="http://dataconcert.com/transform/StoreXSLT"/>
+			<input>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+			<fault>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</fault>
+		</operation>
+		<operation name="StoreSchema">
+			<soap:operation soapAction="http://dataconcert.com/transform/StoreSchema"/>
+			<input>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+			<fault>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</fault>
+		</operation>
+		<operation name="ExecuteTransform">
+			<soap:operation soapAction="http://dataconcert.com/transform/ExecuteTransform"/>
+			<input>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+			<fault>
+				<soap:body use="encoded" namespace="http://schemas.dataconcert.com/transform/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="Transform">
+		<documentation>DataConcert (tm) Business Document Transform WebService</documentation>
+		<port name="TransformPort" binding="thisns:TransformSoapBinding">
+			<soap:address location="http://transform.dataconcert.com/webservice/default.asp"/>
+		</port>
+	</service>
+</definitions>

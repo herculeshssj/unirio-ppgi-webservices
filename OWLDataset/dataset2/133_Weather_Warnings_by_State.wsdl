@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/StateWarnings" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/StateWarnings" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/StateWarnings">
+      <s:element name="GetStateWarnings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStateWarningsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStateWarningsResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetStateWarningsSoapIn">
+    <part name="parameters" element="s0:GetStateWarnings" />
+  </message>
+  <message name="GetStateWarningsSoapOut">
+    <part name="parameters" element="s0:GetStateWarningsResponse" />
+  </message>
+  <message name="GetStateWarningsHttpGetIn">
+    <part name="inState" type="s:string" />
+  </message>
+  <message name="GetStateWarningsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetStateWarningsHttpPostIn">
+    <part name="inState" type="s:string" />
+  </message>
+  <message name="GetStateWarningsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="StateWarningsSoap">
+    <operation name="GetStateWarnings">
+      <input message="s0:GetStateWarningsSoapIn" />
+      <output message="s0:GetStateWarningsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StateWarningsHttpGet">
+    <operation name="GetStateWarnings">
+      <input message="s0:GetStateWarningsHttpGetIn" />
+      <output message="s0:GetStateWarningsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StateWarningsHttpPost">
+    <operation name="GetStateWarnings">
+      <input message="s0:GetStateWarningsHttpPostIn" />
+      <output message="s0:GetStateWarningsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StateWarningsSoap" type="s0:StateWarningsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetStateWarnings">
+      <soap:operation soapAction="http://innergears.com/WebServices/StateWarnings/GetStateWarnings" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StateWarningsHttpGet" type="s0:StateWarningsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetStateWarnings">
+      <http:operation location="/GetStateWarnings" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StateWarningsHttpPost" type="s0:StateWarningsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetStateWarnings">
+      <http:operation location="/GetStateWarnings" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StateWarnings">
+    <port name="StateWarningsSoap" binding="s0:StateWarningsSoap">
+      <soap:address location="http://www.innergears.com/WebServices/StateWarnings/StateWarnings.asmx" />
+    </port>
+    <port name="StateWarningsHttpGet" binding="s0:StateWarningsHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/StateWarnings/StateWarnings.asmx" />
+    </port>
+    <port name="StateWarningsHttpPost" binding="s0:StateWarningsHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/StateWarnings/StateWarnings.asmx" />
+    </port>
+  </service>
+</definitions>

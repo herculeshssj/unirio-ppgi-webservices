@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ISOAPServerservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendTextSMSRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInRecipients" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInMessageText" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInReplyEmail" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInOriginator" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInType" type="xs:int"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendTextSMSResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendBinarySMSRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInRecipients" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInBinaryContent" type="xs:base64Binary"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInExtraParam" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInReplyEmail" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInType" type="xs:int"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendBinarySMSResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="CheckMessageStatusRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInMessageIDs" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageStatus" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="CheckMessageStatusResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageStatus" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetPropertyPageRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutContent" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetPropertyPageResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutContent" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetCreditsLeftRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dOutCreditsLeft" type="xs:double"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetCreditsLeftResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dOutCreditsLeft" type="xs:double"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetLicenseInformationRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutLicenseInfo" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetLicenseInformationResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutLicenseInfo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetIncomingMessageRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInReplyEmail" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutSender" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageContent" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutTimeStamp" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iOutMessagesLeft" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetIncomingMessageResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutSender" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageContent" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutTimeStamp" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iOutMessagesLeft" type="xs:int"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInRecipients" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInMessageText" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInReplyEmail" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInOriginator" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dInDateTime" type="xs:double"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dInRefTime" type="xs:double"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInType" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleExtRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInRecipients" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInMessageText" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInReplyEmail" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInOriginator" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dInDateTime" type="xs:double"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="dInRefTime" type="xs:double"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInType" type="xs:int"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleExtResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutMessageIDs" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteScheduleRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInMessageIDs" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteScheduleResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListNamesRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutListNames" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListNamesResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutListNames" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListEntriesRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSMSKey" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInListID" type="xs:int"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutListEntries" type="xs:string"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListEntriesResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strOutListEntries" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="RegisterAccountRequest">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInSerialNo" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInEmailAddress" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInName" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="strInOrganization" type="xs:string"/>
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="iInCountryID" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="RegisterAccountResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:int"/>
+  </message>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="RedWebServiceVersionRequest"/>
+  <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="RedWebServiceVersionResponse">
+    <part xmlns="http://schemas.xmlsoap.org/wsdl/" name="return" type="xs:string"/>
+  </message>
+  <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="ISOAPServer">
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendTextSMS">
+      <input message="tns:SendTextSMSRequest"/>
+      <output message="tns:SendTextSMSResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendBinarySMS">
+      <input message="tns:SendBinarySMSRequest"/>
+      <output message="tns:SendBinarySMSResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="CheckMessageStatus">
+      <input message="tns:CheckMessageStatusRequest"/>
+      <output message="tns:CheckMessageStatusResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetPropertyPage">
+      <input message="tns:GetPropertyPageRequest"/>
+      <output message="tns:GetPropertyPageResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetCreditsLeft">
+      <input message="tns:GetCreditsLeftRequest"/>
+      <output message="tns:GetCreditsLeftResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetLicenseInformation">
+      <input message="tns:GetLicenseInformationRequest"/>
+      <output message="tns:GetLicenseInformationResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetIncomingMessage">
+      <input message="tns:GetIncomingMessageRequest"/>
+      <output message="tns:GetIncomingMessageResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterSchedule">
+      <input message="tns:EnterScheduleRequest"/>
+      <output message="tns:EnterScheduleResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleExt">
+      <input message="tns:EnterScheduleExtRequest"/>
+      <output message="tns:EnterScheduleExtResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSchedule">
+      <input message="tns:DeleteScheduleRequest"/>
+      <output message="tns:DeleteScheduleResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListNames">
+      <input message="tns:GetListNamesRequest"/>
+      <output message="tns:GetListNamesResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListEntries">
+      <input message="tns:GetListEntriesRequest"/>
+      <output message="tns:GetListEntriesResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="RegisterAccount">
+      <input message="tns:RegisterAccountRequest"/>
+      <output message="tns:RegisterAccountResponse"/>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="RedWebServiceVersion">
+      <input message="tns:RedWebServiceVersionRequest"/>
+      <output message="tns:RedWebServiceVersionResponse"/>
+    </operation>
+  </portType>
+  <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="ISOAPServerbinding" type="tns:ISOAPServer">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendTextSMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendTextSMS" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="SendBinarySMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendBinarySMS" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="CheckMessageStatus">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#CheckMessageStatus" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetPropertyPage">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetPropertyPage" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetCreditsLeft">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetCreditsLeft" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetLicenseInformation">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetLicenseInformation" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetIncomingMessage">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetIncomingMessage" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterSchedule">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#EnterSchedule" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="EnterScheduleExt">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#EnterScheduleExt" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="DeleteSchedule">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#DeleteSchedule" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListNames">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetListNames" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="GetListEntries">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetListEntries" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="RegisterAccount">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#RegisterAccount" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+    <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="RedWebServiceVersion">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#RedWebServiceVersion" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:SOAPServerImpl-ISOAPServer"/>
+      </output>
+    </operation>
+  </binding>
+  <service xmlns="http://schemas.xmlsoap.org/wsdl/" name="ISOAPServerservice">
+    <port xmlns="http://schemas.xmlsoap.org/wsdl/" name="ISoapServerPort" binding="tns:ISOAPServerbinding">
+      <soap:address location="http://xml.redcoal.com/soapserver.dll/soap/ISoapServer"/>
+    </port>
+  </service>
+</definitions>
+

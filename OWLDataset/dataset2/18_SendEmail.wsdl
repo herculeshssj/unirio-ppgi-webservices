@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<definitions  name="AbysalSendEmail"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   targetNamespace="http://www.abysal.com/soap/AbysalEmail.wsdl"
+         xmlns:tns="http://www.abysal.com/soap/AbysalEmail.wsdl"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+   <documentation>Servicio de envio de e-mail bajo el sistema Abysal-webDTP de Abysal Systems, S.A.</documentation>
+
+   <message name="SendEmailInput">
+      <part name="From"            type="xsd:string"/>
+      <part name="FromAddress"     type="xsd:string"/>
+      <part name="To"              type="xsd:string"/>
+      <part name="ToAddress"       type="xsd:string"/>
+      <part name="Subject"         type="xsd:string"/>
+      <part name="MsgBody"         type="xsd:string"/>
+      <part name="Acknowledgement" type="xsd:string"/>
+      <part name="Priority"        type="xsd:string"/>
+   </message>
+
+   <message name="SendEmailResponse">
+      <part name="ReturnCode" type="xsd:integer"/>
+   </message>
+
+   <portType name="SendEmailPortType">
+      <operation name="SendEmail">
+         <input message="tns:SendEmailInput" />
+         <output message="tns:SendEmailResponse" />
+      </operation>
+   </portType>
+
+   <binding name="SendEmailBinding" type="tns:SendEmailPortType">
+      <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="SendEmail">
+         <soap:operation soapAction="http://www.abysal.com/soap#abysal_program=soapmail"/>
+         <input>
+            <soap:body use="encoded" namespace="http://www.abysal.com/Abysal-webDTP"
+                                 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </input>
+         <output>
+            <soap:body use="encoded" namespace="http://www.abysal.com/Abysal-webDTP"
+                                 encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+         </output>
+      </operation>
+   </binding>
+
+   <service name="SendEmailService">
+      <documentation>Servicio de envio de e-mail bajo Abysal-webDTP</documentation>
+      <port name="SendEmailPort" binding="tns:SendEmailBinding">
+         <soap:address location="http://www.abysal.com/soap/abysal_webdtp"/>
+      </port>
+   </service>
+
+</definitions>
+

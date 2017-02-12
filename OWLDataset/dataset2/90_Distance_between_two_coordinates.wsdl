@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/CalcDistance2Coords" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/CalcDistance2Coords" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/CalcDistance2Coords">
+      <s:element name="CalcDistTwoCoords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Latitude1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Longitude1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Latitude2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Longitude2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcDistTwoCoordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalcDistTwoCoordsResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="CalcDistTwoCoordsSoapIn">
+    <part name="parameters" element="s0:CalcDistTwoCoords" />
+  </message>
+  <message name="CalcDistTwoCoordsSoapOut">
+    <part name="parameters" element="s0:CalcDistTwoCoordsResponse" />
+  </message>
+  <message name="CalcDistTwoCoordsHttpGetIn">
+    <part name="Latitude1" type="s:string" />
+    <part name="Longitude1" type="s:string" />
+    <part name="Latitude2" type="s:string" />
+    <part name="Longitude2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoCoordsHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="CalcDistTwoCoordsHttpPostIn">
+    <part name="Latitude1" type="s:string" />
+    <part name="Longitude1" type="s:string" />
+    <part name="Latitude2" type="s:string" />
+    <part name="Longitude2" type="s:string" />
+  </message>
+  <message name="CalcDistTwoCoordsHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="CalcDistance2CoordsSoap">
+    <operation name="CalcDistTwoCoords">
+      <input message="s0:CalcDistTwoCoordsSoapIn" />
+      <output message="s0:CalcDistTwoCoordsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CalcDistance2CoordsHttpGet">
+    <operation name="CalcDistTwoCoords">
+      <input message="s0:CalcDistTwoCoordsHttpGetIn" />
+      <output message="s0:CalcDistTwoCoordsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CalcDistance2CoordsHttpPost">
+    <operation name="CalcDistTwoCoords">
+      <input message="s0:CalcDistTwoCoordsHttpPostIn" />
+      <output message="s0:CalcDistTwoCoordsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CalcDistance2CoordsSoap" type="s0:CalcDistance2CoordsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="CalcDistTwoCoords">
+      <soap:operation soapAction="http://innergears.com/WebServices/CalcDistance2Coords/CalcDistTwoCoords" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CalcDistance2CoordsHttpGet" type="s0:CalcDistance2CoordsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="CalcDistTwoCoords">
+      <http:operation location="/CalcDistTwoCoords" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CalcDistance2CoordsHttpPost" type="s0:CalcDistance2CoordsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="CalcDistTwoCoords">
+      <http:operation location="/CalcDistTwoCoords" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CalcDistance2Coords">
+    <port name="CalcDistance2CoordsSoap" binding="s0:CalcDistance2CoordsSoap">
+      <soap:address location="http://www.innergears.com/WebServices/CalcDistance2Coords/CalcDistance2Coords.asmx" />
+    </port>
+    <port name="CalcDistance2CoordsHttpGet" binding="s0:CalcDistance2CoordsHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/CalcDistance2Coords/CalcDistance2Coords.asmx" />
+    </port>
+    <port name="CalcDistance2CoordsHttpPost" binding="s0:CalcDistance2CoordsHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/CalcDistance2Coords/CalcDistance2Coords.asmx" />
+    </port>
+  </service>
+</definitions>

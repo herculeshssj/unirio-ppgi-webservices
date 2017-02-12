@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<definitions name="Countries.ccountries" targetNamespace="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" xmlns:tns="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="IsValidCountryIDRequest">
+        <part name="CountryID" type="xsd:long"/>
+    </message>
+    <message name="IsValidCountryIDResponse">
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <message name="GetCountriesRequest">
+        <part name="RecCountries" type="xsd:string"/>
+    </message>
+    <message name="GetCountriesResponse">
+        <part name="RecCountries" type="xsd:string"/>
+        <part name="Return" type="xsd:string"/>
+    </message>
+    <portType name="Countries.ccountriesPortType">
+        <operation name="IsValidCountryID">
+            <input message="tns:IsValidCountryIDRequest"/>
+            <output message="tns:IsValidCountryIDResponse"/>
+        </operation>
+        <operation name="GetCountries">
+            <input message="tns:GetCountriesRequest"/>
+            <output message="tns:GetCountriesResponse"/>
+        </operation>
+    </portType>
+    <binding name="Countries.ccountriesbinding" type="tns:Countries.ccountriesPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="IsValidCountryID">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml#IsValidCountryID"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="GetCountries">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml#GetCountries"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/retail/Countries/CCountries.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Countries.ccountriesService">
+        <port name="Countries.ccountriesPort" binding="tns:Countries.ccountriesbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/lccountrycodes.cgi"/>
+        </port>
+    </service>
+</definitions>

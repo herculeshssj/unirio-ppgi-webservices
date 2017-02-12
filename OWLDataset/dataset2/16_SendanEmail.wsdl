@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IEmailServiceservice" targetNamespace="http://www.borland.com/soapServices/" xmlns:tns="http://www.borland.com/soapServices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="SendMailRequest">
+    <part name="ToAddress" type="xs:string"/>
+    <part name="FromAddress" type="xs:string"/>
+    <part name="ASubject" type="xs:string"/>
+    <part name="MsgBody" type="xs:string"/>
+  </message>
+  <message name="SendMailResponse">
+    <part name="return" type="xs:int"/>
+  </message>
+  <portType name="IEmailService">
+    <operation name="SendMail">
+      <input message="tns:SendMailRequest"/>
+      <output message="tns:SendMailResponse"/>
+    </operation>
+  </portType>
+  <binding name="IEmailServicebinding" type="tns:IEmailService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="SendMail">
+      <soap:operation soapAction="urn:EmailIPortTypeInft-IEmailService#SendMail" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:EmailIPortTypeInft-IEmailService"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:EmailIPortTypeInft-IEmailService"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IEmailServiceservice">
+    <port name="IEmailServicePort" binding="tns:IEmailServicebinding">
+      <soap:address location="http://webservices.matlus.com/scripts/emailwebservice.dll/soap/IEmailservice"/>
+    </port>
+  </service>
+</definitions>
+

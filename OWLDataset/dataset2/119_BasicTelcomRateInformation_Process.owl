@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Concepts.owl">
+  <!ENTITY DEFAULT   "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Process.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<process:ProcessModel rdf:ID="BasicTelcomRateInformation">
+  <process:hasProcess rdf:resource="#GetAreaCodesForCity_46669"/>
+  <process:hasProcess rdf:resource="#GetAreaCodesForState_46675"/>
+  <process:hasProcess rdf:resource="#RateBasicInformation_46680"/>
+  <process:hasProcess rdf:resource="#GetAreaCodesForCity_46689"/>
+  <process:hasProcess rdf:resource="#GetAreaCodesForState_46694"/>
+  <process:hasProcess rdf:resource="#RateBasicInformation_46699"/>
+  <process:hasProcess rdf:resource="#GetAreaCodesForCity_46705"/>
+  <process:hasProcess rdf:resource="#GetAreaCodesForState_46711"/>
+  <process:hasProcess rdf:resource="#RateBasicInformation_46716"/>
+</process:ProcessModel>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForCity_46669">
+  <process:hasInput>
+    <process:Input rdf:ID="City_46671">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="State_46672">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46674">
+      <process:parameterType rdf:resource="#ArrayOfGetAreaCodesForCity"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForState_46675">
+  <process:hasInput>
+    <process:Input rdf:ID="State_46677">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46679">
+      <process:parameterType rdf:resource="#ArrayOfGetAreaCodesForState"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="RateBasicInformation_46680">
+  <process:hasInput>
+    <process:Input rdf:ID="Org_Area_Code_46682">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Org_Switch_46683">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Dest_Area_Code_46684">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Dest_Switch_46685">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46687">
+      <process:parameterType rdf:resource="#CallDetail"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForCity_46689">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_46691">
+      <process:parameterType rdf:resource="#GetAreaCodesForCity"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_46693">
+      <process:parameterType rdf:resource="#GetAreaCodesForCityResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForState_46694">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_46696">
+      <process:parameterType rdf:resource="#GetAreaCodesForState"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_46698">
+      <process:parameterType rdf:resource="#GetAreaCodesForStateResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="RateBasicInformation_46699">
+  <process:hasInput>
+    <process:Input rdf:ID="parameters_46701">
+      <process:parameterType rdf:resource="#RateBasicInformation"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="parameters_46703">
+      <process:parameterType rdf:resource="#RateBasicInformationResponse"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForCity_46705">
+  <process:hasInput>
+    <process:Input rdf:ID="City_46707">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="State_46708">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46710">
+      <process:parameterType rdf:resource="#ArrayOfGetAreaCodesForCity"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="GetAreaCodesForState_46711">
+  <process:hasInput>
+    <process:Input rdf:ID="State_46713">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46715">
+      <process:parameterType rdf:resource="#ArrayOfGetAreaCodesForState"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+
+
+<process:AtomicProcess rdf:ID="RateBasicInformation_46716">
+  <process:hasInput>
+    <process:Input rdf:ID="Org_Area_Code_46718">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Org_Switch_46719">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Dest_Area_Code_46720">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasInput>
+    <process:Input rdf:ID="Dest_Switch_46721">
+      <process:parameterType rdf:resource="&xsd;#string"/>
+    </process:Input>
+  </process:hasInput>
+  <process:hasOutput>
+    <process:ConditionalOutput rdf:ID="Body_46723">
+      <process:parameterType rdf:resource="#CallDetail"/>
+    </process:ConditionalOutput>
+  </process:hasOutput>
+</process:AtomicProcess>
+
+</rdf:RDF>

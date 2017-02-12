@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://trwest.com/webservices" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://trwest.com/webservices" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://trwest.com/webservices">
+      <s:element name="FindCapitals">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapitalsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapitalsResult" type="s0:ArrayOfStateCapital" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateCapital">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateCapital" type="s0:StateCapital" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateCapital">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Capital" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindLargestCities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindLargestCitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindLargestCitiesResult" type="s0:ArrayOfStateLargestCity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateLargestCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateLargestCity" type="s0:StateLargestCity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateLargestCity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LargestCity" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindBirds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBirdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBirdsResult" type="s0:ArrayOfStateBird" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateBird">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateBird" type="s0:StateBird" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateBird">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bird" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindFlowers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindFlowersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindFlowersResult" type="s0:ArrayOfStateFlower" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateFlower">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateFlower" type="s0:StateFlower" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateFlower">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Flower" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindSongs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PartialStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSongsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSongsResult" type="s0:ArrayOfStateSong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStateSong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StateSong" type="s0:StateSong" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StateSong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Song" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindCapital">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapitalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapitalResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindLargestCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindLargestCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindLargestCityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBird">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindBirdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindBirdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindFlower">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindFlowerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindFlowerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FullStateName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSongResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfStateCapital" nillable="true" type="s0:ArrayOfStateCapital" />
+      <s:element name="ArrayOfStateLargestCity" nillable="true" type="s0:ArrayOfStateLargestCity" />
+      <s:element name="ArrayOfStateBird" nillable="true" type="s0:ArrayOfStateBird" />
+      <s:element name="ArrayOfStateFlower" nillable="true" type="s0:ArrayOfStateFlower" />
+      <s:element name="ArrayOfStateSong" nillable="true" type="s0:ArrayOfStateSong" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="FindCapitalsSoapIn">
+    <part name="parameters" element="s0:FindCapitals" />
+  </message>
+  <message name="FindCapitalsSoapOut">
+    <part name="parameters" element="s0:FindCapitalsResponse" />
+  </message>
+  <message name="FindLargestCitiesSoapIn">
+    <part name="parameters" element="s0:FindLargestCities" />
+  </message>
+  <message name="FindLargestCitiesSoapOut">
+    <part name="parameters" element="s0:FindLargestCitiesResponse" />
+  </message>
+  <message name="FindBirdsSoapIn">
+    <part name="parameters" element="s0:FindBirds" />
+  </message>
+  <message name="FindBirdsSoapOut">
+    <part name="parameters" element="s0:FindBirdsResponse" />
+  </message>
+  <message name="FindFlowersSoapIn">
+    <part name="parameters" element="s0:FindFlowers" />
+  </message>
+  <message name="FindFlowersSoapOut">
+    <part name="parameters" element="s0:FindFlowersResponse" />
+  </message>
+  <message name="FindSongsSoapIn">
+    <part name="parameters" element="s0:FindSongs" />
+  </message>
+  <message name="FindSongsSoapOut">
+    <part name="parameters" element="s0:FindSongsResponse" />
+  </message>
+  <message name="FindCapitalSoapIn">
+    <part name="parameters" element="s0:FindCapital" />
+  </message>
+  <message name="FindCapitalSoapOut">
+    <part name="parameters" element="s0:FindCapitalResponse" />
+  </message>
+  <message name="FindLargestCitySoapIn">
+    <part name="parameters" element="s0:FindLargestCity" />
+  </message>
+  <message name="FindLargestCitySoapOut">
+    <part name="parameters" element="s0:FindLargestCityResponse" />
+  </message>
+  <message name="FindBirdSoapIn">
+    <part name="parameters" element="s0:FindBird" />
+  </message>
+  <message name="FindBirdSoapOut">
+    <part name="parameters" element="s0:FindBirdResponse" />
+  </message>
+  <message name="FindFlowerSoapIn">
+    <part name="parameters" element="s0:FindFlower" />
+  </message>
+  <message name="FindFlowerSoapOut">
+    <part name="parameters" element="s0:FindFlowerResponse" />
+  </message>
+  <message name="FindSongSoapIn">
+    <part name="parameters" element="s0:FindSong" />
+  </message>
+  <message name="FindSongSoapOut">
+    <part name="parameters" element="s0:FindSongResponse" />
+  </message>
+  <message name="FindCapitalsHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindCapitalsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateCapital" />
+  </message>
+  <message name="FindLargestCitiesHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindLargestCitiesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateLargestCity" />
+  </message>
+  <message name="FindBirdsHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindBirdsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateBird" />
+  </message>
+  <message name="FindFlowersHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindFlowersHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateFlower" />
+  </message>
+  <message name="FindSongsHttpGetIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindSongsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStateSong" />
+  </message>
+  <message name="FindCapitalHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindCapitalHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindLargestCityHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindLargestCityHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindBirdHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindBirdHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindFlowerHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindFlowerHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindSongHttpGetIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindSongHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindCapitalsHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindCapitalsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateCapital" />
+  </message>
+  <message name="FindLargestCitiesHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindLargestCitiesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateLargestCity" />
+  </message>
+  <message name="FindBirdsHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindBirdsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateBird" />
+  </message>
+  <message name="FindFlowersHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindFlowersHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateFlower" />
+  </message>
+  <message name="FindSongsHttpPostIn">
+    <part name="PartialStateName" type="s:string" />
+  </message>
+  <message name="FindSongsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStateSong" />
+  </message>
+  <message name="FindCapitalHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindCapitalHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindLargestCityHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindLargestCityHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindBirdHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindBirdHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindFlowerHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindFlowerHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="FindSongHttpPostIn">
+    <part name="FullStateName" type="s:string" />
+  </message>
+  <message name="FindSongHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="StateDataServiceSoap">
+    <operation name="FindCapitals">
+      <documentation>Input partial state name, get back matching states and their captials</documentation>
+      <input message="s0:FindCapitalsSoapIn" />
+      <output message="s0:FindCapitalsSoapOut" />
+    </operation>
+    <operation name="FindLargestCities">
+      <documentation>Input partial state name, get back matching states and their largest cities</documentation>
+      <input message="s0:FindLargestCitiesSoapIn" />
+      <output message="s0:FindLargestCitiesSoapOut" />
+    </operation>
+    <operation name="FindBirds">
+      <documentation>Input partial state name, get back matching states and their birds</documentation>
+      <input message="s0:FindBirdsSoapIn" />
+      <output message="s0:FindBirdsSoapOut" />
+    </operation>
+    <operation name="FindFlowers">
+      <documentation>Input partial state name, get back matching states and their flowers</documentation>
+      <input message="s0:FindFlowersSoapIn" />
+      <output message="s0:FindFlowersSoapOut" />
+    </operation>
+    <operation name="FindSongs">
+      <documentation>Input partial state name, get back matching states and their songs</documentation>
+      <input message="s0:FindSongsSoapIn" />
+      <output message="s0:FindSongsSoapOut" />
+    </operation>
+    <operation name="FindCapital">
+      <documentation>Input full state name, get back the state capital</documentation>
+      <input message="s0:FindCapitalSoapIn" />
+      <output message="s0:FindCapitalSoapOut" />
+    </operation>
+    <operation name="FindLargestCity">
+      <documentation>Input full state name, get back the state's largest city</documentation>
+      <input message="s0:FindLargestCitySoapIn" />
+      <output message="s0:FindLargestCitySoapOut" />
+    </operation>
+    <operation name="FindBird">
+      <documentation>Input full state name, get back the state bird</documentation>
+      <input message="s0:FindBirdSoapIn" />
+      <output message="s0:FindBirdSoapOut" />
+    </operation>
+    <operation name="FindFlower">
+      <documentation>Input full state name, get back the state flower</documentation>
+      <input message="s0:FindFlowerSoapIn" />
+      <output message="s0:FindFlowerSoapOut" />
+    </operation>
+    <operation name="FindSong">
+      <documentation>Input full state name, get back the state song</documentation>
+      <input message="s0:FindSongSoapIn" />
+      <output message="s0:FindSongSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StateDataServiceHttpGet">
+    <operation name="FindCapitals">
+      <documentation>Input partial state name, get back matching states and their captials</documentation>
+      <input message="s0:FindCapitalsHttpGetIn" />
+      <output message="s0:FindCapitalsHttpGetOut" />
+    </operation>
+    <operation name="FindLargestCities">
+      <documentation>Input partial state name, get back matching states and their largest cities</documentation>
+      <input message="s0:FindLargestCitiesHttpGetIn" />
+      <output message="s0:FindLargestCitiesHttpGetOut" />
+    </operation>
+    <operation name="FindBirds">
+      <documentation>Input partial state name, get back matching states and their birds</documentation>
+      <input message="s0:FindBirdsHttpGetIn" />
+      <output message="s0:FindBirdsHttpGetOut" />
+    </operation>
+    <operation name="FindFlowers">
+      <documentation>Input partial state name, get back matching states and their flowers</documentation>
+      <input message="s0:FindFlowersHttpGetIn" />
+      <output message="s0:FindFlowersHttpGetOut" />
+    </operation>
+    <operation name="FindSongs">
+      <documentation>Input partial state name, get back matching states and their songs</documentation>
+      <input message="s0:FindSongsHttpGetIn" />
+      <output message="s0:FindSongsHttpGetOut" />
+    </operation>
+    <operation name="FindCapital">
+      <documentation>Input full state name, get back the state capital</documentation>
+      <input message="s0:FindCapitalHttpGetIn" />
+      <output message="s0:FindCapitalHttpGetOut" />
+    </operation>
+    <operation name="FindLargestCity">
+      <documentation>Input full state name, get back the state's largest city</documentation>
+      <input message="s0:FindLargestCityHttpGetIn" />
+      <output message="s0:FindLargestCityHttpGetOut" />
+    </operation>
+    <operation name="FindBird">
+      <documentation>Input full state name, get back the state bird</documentation>
+      <input message="s0:FindBirdHttpGetIn" />
+      <output message="s0:FindBirdHttpGetOut" />
+    </operation>
+    <operation name="FindFlower">
+      <documentation>Input full state name, get back the state flower</documentation>
+      <input message="s0:FindFlowerHttpGetIn" />
+      <output message="s0:FindFlowerHttpGetOut" />
+    </operation>
+    <operation name="FindSong">
+      <documentation>Input full state name, get back the state song</documentation>
+      <input message="s0:FindSongHttpGetIn" />
+      <output message="s0:FindSongHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StateDataServiceHttpPost">
+    <operation name="FindCapitals">
+      <documentation>Input partial state name, get back matching states and their captials</documentation>
+      <input message="s0:FindCapitalsHttpPostIn" />
+      <output message="s0:FindCapitalsHttpPostOut" />
+    </operation>
+    <operation name="FindLargestCities">
+      <documentation>Input partial state name, get back matching states and their largest cities</documentation>
+      <input message="s0:FindLargestCitiesHttpPostIn" />
+      <output message="s0:FindLargestCitiesHttpPostOut" />
+    </operation>
+    <operation name="FindBirds">
+      <documentation>Input partial state name, get back matching states and their birds</documentation>
+      <input message="s0:FindBirdsHttpPostIn" />
+      <output message="s0:FindBirdsHttpPostOut" />
+    </operation>
+    <operation name="FindFlowers">
+      <documentation>Input partial state name, get back matching states and their flowers</documentation>
+      <input message="s0:FindFlowersHttpPostIn" />
+      <output message="s0:FindFlowersHttpPostOut" />
+    </operation>
+    <operation name="FindSongs">
+      <documentation>Input partial state name, get back matching states and their songs</documentation>
+      <input message="s0:FindSongsHttpPostIn" />
+      <output message="s0:FindSongsHttpPostOut" />
+    </operation>
+    <operation name="FindCapital">
+      <documentation>Input full state name, get back the state capital</documentation>
+      <input message="s0:FindCapitalHttpPostIn" />
+      <output message="s0:FindCapitalHttpPostOut" />
+    </operation>
+    <operation name="FindLargestCity">
+      <documentation>Input full state name, get back the state's largest city</documentation>
+      <input message="s0:FindLargestCityHttpPostIn" />
+      <output message="s0:FindLargestCityHttpPostOut" />
+    </operation>
+    <operation name="FindBird">
+      <documentation>Input full state name, get back the state bird</documentation>
+      <input message="s0:FindBirdHttpPostIn" />
+      <output message="s0:FindBirdHttpPostOut" />
+    </operation>
+    <operation name="FindFlower">
+      <documentation>Input full state name, get back the state flower</documentation>
+      <input message="s0:FindFlowerHttpPostIn" />
+      <output message="s0:FindFlowerHttpPostOut" />
+    </operation>
+    <operation name="FindSong">
+      <documentation>Input full state name, get back the state song</documentation>
+      <input message="s0:FindSongHttpPostIn" />
+      <output message="s0:FindSongHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StateDataServiceSoap" type="s0:StateDataServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FindCapitals">
+      <soap:operation soapAction="http://trwest.com/webservices/FindCapitals" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindLargestCities">
+      <soap:operation soapAction="http://trwest.com/webservices/FindLargestCities" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindBirds">
+      <soap:operation soapAction="http://trwest.com/webservices/FindBirds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindFlowers">
+      <soap:operation soapAction="http://trwest.com/webservices/FindFlowers" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindSongs">
+      <soap:operation soapAction="http://trwest.com/webservices/FindSongs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindCapital">
+      <soap:operation soapAction="http://trwest.com/webservices/FindCapital" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindLargestCity">
+      <soap:operation soapAction="http://trwest.com/webservices/FindLargestCity" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindBird">
+      <soap:operation soapAction="http://trwest.com/webservices/FindBird" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindFlower">
+      <soap:operation soapAction="http://trwest.com/webservices/FindFlower" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FindSong">
+      <soap:operation soapAction="http://trwest.com/webservices/FindSong" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StateDataServiceHttpGet" type="s0:StateDataServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FindCapitals">
+      <http:operation location="/FindCapitals" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindLargestCities">
+      <http:operation location="/FindLargestCities" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBirds">
+      <http:operation location="/FindBirds" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindFlowers">
+      <http:operation location="/FindFlowers" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindSongs">
+      <http:operation location="/FindSongs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindCapital">
+      <http:operation location="/FindCapital" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindLargestCity">
+      <http:operation location="/FindLargestCity" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBird">
+      <http:operation location="/FindBird" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindFlower">
+      <http:operation location="/FindFlower" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindSong">
+      <http:operation location="/FindSong" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StateDataServiceHttpPost" type="s0:StateDataServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FindCapitals">
+      <http:operation location="/FindCapitals" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindLargestCities">
+      <http:operation location="/FindLargestCities" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBirds">
+      <http:operation location="/FindBirds" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindFlowers">
+      <http:operation location="/FindFlowers" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindSongs">
+      <http:operation location="/FindSongs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindCapital">
+      <http:operation location="/FindCapital" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindLargestCity">
+      <http:operation location="/FindLargestCity" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindBird">
+      <http:operation location="/FindBird" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindFlower">
+      <http:operation location="/FindFlower" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FindSong">
+      <http:operation location="/FindSong" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StateDataService">
+    <port name="StateDataServiceSoap" binding="s0:StateDataServiceSoap">
+      <soap:address location="http://www.dev1.eraserver.net/trwest/StateData/StateData.asmx" />
+    </port>
+    <port name="StateDataServiceHttpGet" binding="s0:StateDataServiceHttpGet">
+      <http:address location="http://www.dev1.eraserver.net/trwest/StateData/StateData.asmx" />
+    </port>
+    <port name="StateDataServiceHttpPost" binding="s0:StateDataServiceHttpPost">
+      <http:address location="http://www.dev1.eraserver.net/trwest/StateData/StateData.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="getSessionReport"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:serviceNS="urn:Reports"
+    xmlns:types="urn:Reports"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:ns1="http://xml.apache.org/xml-soap"
+    xmlns:xsi="http://www.w3.org/2001/XLMSchema-instance"
+    xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+    targetNamespace="urn:Reports">
+    <types>
+
+
+      <schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="urn:Reports"
+			xmlns:tns="urn:Reports"
+			elementFormDefault="qualified"
+			attributeFormDefault="qualified"
+                        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" >
+
+
+      <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <!-- DEFINE TYPES FOR USE IN THE getSessionReport ELEMENT -->
+
+      <complexType name="ArrayOf_Call">
+         <complexContent>
+            <restriction base="SOAP-ENC:Array">
+               <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Call[]"/>
+            </restriction>
+         </complexContent>
+      </complexType>
+
+      <complexType name="ArrayOf_Event">
+         <complexContent>
+	    <restriction base="SOAP-ENC:Array">
+		<attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="tns:Event[]"/>
+	    </restriction>
+         </complexContent>
+      </complexType>
+
+      <complexType name="Call">
+		<sequence>
+		  <element name="initiated" type="xsd:string" />
+		  <element name="status" type="xsd:string" />
+		  <element name="caller" type="xsd:string" />
+		  <element name="callId" type="xsd:string" />
+		  <element name="topic" type="xsd:string" />
+		  <element name="callee" type="xsd:string" />
+		  <element name="type" type="xsd:string" />
+		</sequence>
+       </complexType>
+
+       <complexType name="Event">
+		<sequence>
+		  <element name="description" type="xsd:string" />
+		  <element name="lastActivity" type="xsd:string" />
+		</sequence>
+       </complexType>
+
+       <complexType name="CallDetails">
+		<sequence>
+		  <element name="callee" type="xsd:string" />
+		  <element name="caller" type="xsd:string" />
+		  <element name="topic" type="xsd:string" />
+		  <element name="type" type="xsd:string" />
+		  <element name="session" type="xsd:string" />
+		  <element name="events" type="tns:ArrayOf_Event" />
+		</sequence>
+       </complexType>
+
+     </schema>
+    </types>
+
+    <!-- DEFINE MESSAGES -->
+    <message name="getSessionReport">
+       <part name="username" type="xsd:string" />
+       <part name="password" type="xsd:string" />
+       <part name="sessionId" type="xsd:string" />
+    </message>
+
+    <message name="getSessionReportResponse">
+       <part name="SummaryReport" type="types:ArrayOf_Call" />
+    </message>
+
+    <message name="getCallDetails">
+       <part name="username" type="xsd:string" />
+       <part name="password" type="xsd:string" />
+       <part name="callId" type="xsd:string" />
+    </message>
+
+    <message name="getCallDetailsResponse">
+       <part name="CallDetails" type="types:CallDetails"/>
+    </message>
+
+
+    <!-- PORT TYPE DEFINITIONS -->
+    <portType name="GCCReportsWebServicePortType">
+        <operation name="getSessionReport">
+            <input message="serviceNS:getSessionReport" />
+            <output message="serviceNS:getSessionReportResponse" />
+        </operation>
+        <operation name="getCallDetails">
+            <input message="serviceNS:getCallDetails" />
+            <output message="serviceNS:getCallDetailsResponse" />
+        </operation>
+    </portType>
+
+    <!-- BINDINGS -->
+    <binding name="GCCReportsWebServiceBinding" type="serviceNS:GCCReportsWebServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getSessionReport">
+            <soap:operation style="rpc" soapAction="urn:Reports#getSessionReport"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Reports"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Reports"/>
+            </output>
+        </operation>
+        <operation name="getCallDetails">
+            <soap:operation style="rpc" soapAction="urn:Reports#getCallDetails"/>
+            <input>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Reports"/>
+            </input>
+            <output>
+                <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:Reports"/>
+            </output>
+        </operation>
+    </binding>
+
+    <!-- SERVICES -->
+    <service name="GCCReportsWebService">
+        <port name="GCCReportsWebServicePort" binding="serviceNS:GCCReportsWebServiceBinding">
+            <soap:address location="https://sandbox.grandcentral.com/services/reports" />
+        </port>
+    </service>
+</definitions>

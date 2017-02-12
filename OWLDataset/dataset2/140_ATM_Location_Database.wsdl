@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.serviceobjects.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.serviceobjects.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.serviceobjects.com/">
+      <s:element name="GetATMLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetATMLocationsResult" type="s0:ATMLocations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ATMLocations">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ATM" type="s0:ATM" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s0:Err" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ATM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Err">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Desc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetATMLocationsByZipRadius">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Radius" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsByZipRadiusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetATMLocationsByZipRadiusResult" type="s0:ATMLocations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsByZipStreet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StreetName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsByZipStreetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetATMLocationsByZipStreetResult" type="s0:ATMLocations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsByCityState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetATMLocationsByCityStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetATMLocationsByCityStateResult" type="s0:ATMLocations" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ATMLocations" nillable="true" type="s0:ATMLocations" />
+    </s:schema>
+  </types>
+  <message name="GetATMLocationsSoapIn">
+    <part name="parameters" element="s0:GetATMLocations" />
+  </message>
+  <message name="GetATMLocationsSoapOut">
+    <part name="parameters" element="s0:GetATMLocationsResponse" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusSoapIn">
+    <part name="parameters" element="s0:GetATMLocationsByZipRadius" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusSoapOut">
+    <part name="parameters" element="s0:GetATMLocationsByZipRadiusResponse" />
+  </message>
+  <message name="GetATMLocationsByZipStreetSoapIn">
+    <part name="parameters" element="s0:GetATMLocationsByZipStreet" />
+  </message>
+  <message name="GetATMLocationsByZipStreetSoapOut">
+    <part name="parameters" element="s0:GetATMLocationsByZipStreetResponse" />
+  </message>
+  <message name="GetATMLocationsByCityStateSoapIn">
+    <part name="parameters" element="s0:GetATMLocationsByCityState" />
+  </message>
+  <message name="GetATMLocationsByCityStateSoapOut">
+    <part name="parameters" element="s0:GetATMLocationsByCityStateResponse" />
+  </message>
+  <message name="GetATMLocationsHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsHttpGetOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="Radius" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusHttpGetOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByZipStreetHttpGetIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="StreetName" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByZipStreetHttpGetOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByCityStateHttpGetIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByCityStateHttpGetOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsHttpPostOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="Radius" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByZipRadiusHttpPostOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByZipStreetHttpPostIn">
+    <part name="PostalCode" type="s:string" />
+    <part name="StreetName" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByZipStreetHttpPostOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <message name="GetATMLocationsByCityStateHttpPostIn">
+    <part name="City" type="s:string" />
+    <part name="State" type="s:string" />
+    <part name="LicenseKey" type="s:string" />
+  </message>
+  <message name="GetATMLocationsByCityStateHttpPostOut">
+    <part name="Body" element="s0:ATMLocations" />
+  </message>
+  <portType name="DOTSGeoCashSoap">
+    <operation name="GetATMLocations">
+      <documentation>Returns up to ten ATM locations for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsSoapIn" />
+      <output message="s0:GetATMLocationsSoapOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <documentation>Returns up to fifty ATM locations within a specified radius (in miles) for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipRadiusSoapIn" />
+      <output message="s0:GetATMLocationsByZipRadiusSoapOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <documentation>Returns up to fifty ATM locations that match a street name within a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipStreetSoapIn" />
+      <output message="s0:GetATMLocationsByZipStreetSoapOut" />
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <documentation>Returns up to fifty ATM locations for a given city and 2-letter state abbreviation.</documentation>
+      <input message="s0:GetATMLocationsByCityStateSoapIn" />
+      <output message="s0:GetATMLocationsByCityStateSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoCashHttpGet">
+    <operation name="GetATMLocations">
+      <documentation>Returns up to ten ATM locations for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsHttpGetIn" />
+      <output message="s0:GetATMLocationsHttpGetOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <documentation>Returns up to fifty ATM locations within a specified radius (in miles) for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipRadiusHttpGetIn" />
+      <output message="s0:GetATMLocationsByZipRadiusHttpGetOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <documentation>Returns up to fifty ATM locations that match a street name within a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipStreetHttpGetIn" />
+      <output message="s0:GetATMLocationsByZipStreetHttpGetOut" />
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <documentation>Returns up to fifty ATM locations for a given city and 2-letter state abbreviation.</documentation>
+      <input message="s0:GetATMLocationsByCityStateHttpGetIn" />
+      <output message="s0:GetATMLocationsByCityStateHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DOTSGeoCashHttpPost">
+    <operation name="GetATMLocations">
+      <documentation>Returns up to ten ATM locations for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsHttpPostIn" />
+      <output message="s0:GetATMLocationsHttpPostOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <documentation>Returns up to fifty ATM locations within a specified radius (in miles) for a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipRadiusHttpPostIn" />
+      <output message="s0:GetATMLocationsByZipRadiusHttpPostOut" />
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <documentation>Returns up to fifty ATM locations that match a street name within a given 5-digit zipcode.</documentation>
+      <input message="s0:GetATMLocationsByZipStreetHttpPostIn" />
+      <output message="s0:GetATMLocationsByZipStreetHttpPostOut" />
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <documentation>Returns up to fifty ATM locations for a given city and 2-letter state abbreviation.</documentation>
+      <input message="s0:GetATMLocationsByCityStateHttpPostIn" />
+      <output message="s0:GetATMLocationsByCityStateHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DOTSGeoCashSoap" type="s0:DOTSGeoCashSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetATMLocations">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetATMLocations" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetATMLocationsByZipRadius" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetATMLocationsByZipStreet" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <soap:operation soapAction="http://www.serviceobjects.com/GetATMLocationsByCityState" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoCashHttpGet" type="s0:DOTSGeoCashHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetATMLocations">
+      <http:operation location="/GetATMLocations" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <http:operation location="/GetATMLocationsByZipRadius" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <http:operation location="/GetATMLocationsByZipStreet" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <http:operation location="/GetATMLocationsByCityState" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DOTSGeoCashHttpPost" type="s0:DOTSGeoCashHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetATMLocations">
+      <http:operation location="/GetATMLocations" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipRadius">
+      <http:operation location="/GetATMLocationsByZipRadius" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByZipStreet">
+      <http:operation location="/GetATMLocationsByZipStreet" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetATMLocationsByCityState">
+      <http:operation location="/GetATMLocationsByCityState" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DOTSGeoCash">
+    <documentation>For more information on our web services, visit us at &lt;a href='http://www.serviceobjects.com/products/default.asp' target='new'&gt;our website&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href='http://www.serviceobjects.com' target='new'&gt;&lt;img src='http://www.serviceobjects.com/images/so_logo_2_inside.gif' border='0'/&gt;&lt;/a&gt;</documentation>
+    <port name="DOTSGeoCashSoap" binding="s0:DOTSGeoCashSoap">
+      <soap:address location="http://ws2.serviceobjects.net/gc/GeoCash.asmx" />
+    </port>
+    <port name="DOTSGeoCashHttpGet" binding="s0:DOTSGeoCashHttpGet">
+      <http:address location="http://ws2.serviceobjects.net/gc/GeoCash.asmx" />
+    </port>
+    <port name="DOTSGeoCashHttpPost" binding="s0:DOTSGeoCashHttpPost">
+      <http:address location="http://ws2.serviceobjects.net/gc/GeoCash.asmx" />
+    </port>
+  </service>
+</definitions>

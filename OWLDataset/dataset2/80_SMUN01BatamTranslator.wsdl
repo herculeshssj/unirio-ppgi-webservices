@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<definitions name="translate" targetNamespace="http://www.velocigen.com:82/vx_engine/wsdl_publish.vep/translate.wsdl" xmlns:tns="http://www.velocigen.com:82/vx_engine/wsdl_publish.vep/translate.wsdl" xmlns:xsd1="http://www.velocigen.com:82/vx_engine/wsdl_publish.vep/translate.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  
+  <types>
+    <schema targetNamespace="http://www.velocigen.com:82/vx_engine/wsdl_publish.vep/translate.xsd" xmlns="http://www.w3.org/1999/XMLSchema">
+    <element name="getTranslation"><complexType><sequence><element name="input"><complexType><sequence><element name="text" type="string"/><element name="language" type="string"/></sequence></complexType></element></sequence></complexType></element><element name="getTranslationResult"><complexType><sequence><element name="output"><complexType><sequence><element name="text" type="string"/></sequence></complexType></element></sequence></complexType></element></schema>
+  </types>
+
+  <message name="getTranslation">
+    <part name="body" element="xsd1:getTranslation"/>
+  </message>
+
+  <message name="getTranslationResult">
+    <part name="body" element="xsd1:getTranslationResult"/>
+  </message>
+
+  <portType name="PortType">
+    <operation name="getTranslation">
+      <input message="tns:getTranslation"/>
+      <output message="tns:getTranslationResult"/>
+    </operation>
+  </portType>
+
+  <binding name="SoapBinding" type="tns:PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getTranslation">
+      <soap:operation soapAction="urn:vgx-translate"/>
+      <input>
+        <soap:body use="literal" namespace="urn:vgx-translate" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="urn:vgx-translate" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="translate">
+    <port name="Port" binding="tns:SoapBinding">
+      <soap:address location="http://www.velocigen.com:82/vx_engine/soap-trigger.pperl"/>
+    </port>
+  </service>
+
+</definitions>

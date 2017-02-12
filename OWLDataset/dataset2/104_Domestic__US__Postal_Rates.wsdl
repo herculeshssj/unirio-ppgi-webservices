@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/DomesticPostalRates" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/DomesticPostalRates" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/DomesticPostalRates">
+      <s:element name="GetDomesticPostalRates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OriginZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DestZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pounds" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ounces" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContainerType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContainerSize" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Machinable" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDomesticPostalRatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDomesticPostalRatesResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetDomesticPostalRatesSoapIn">
+    <part name="parameters" element="s0:GetDomesticPostalRates" />
+  </message>
+  <message name="GetDomesticPostalRatesSoapOut">
+    <part name="parameters" element="s0:GetDomesticPostalRatesResponse" />
+  </message>
+  <message name="GetDomesticPostalRatesHttpGetIn">
+    <part name="ServiceType" type="s:string" />
+    <part name="OriginZip" type="s:string" />
+    <part name="DestZip" type="s:string" />
+    <part name="Pounds" type="s:string" />
+    <part name="Ounces" type="s:string" />
+    <part name="ContainerType" type="s:string" />
+    <part name="ContainerSize" type="s:string" />
+    <part name="Machinable" type="s:string" />
+  </message>
+  <message name="GetDomesticPostalRatesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetDomesticPostalRatesHttpPostIn">
+    <part name="ServiceType" type="s:string" />
+    <part name="OriginZip" type="s:string" />
+    <part name="DestZip" type="s:string" />
+    <part name="Pounds" type="s:string" />
+    <part name="Ounces" type="s:string" />
+    <part name="ContainerType" type="s:string" />
+    <part name="ContainerSize" type="s:string" />
+    <part name="Machinable" type="s:string" />
+  </message>
+  <message name="GetDomesticPostalRatesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="DomesticPostalRatesSoap">
+    <operation name="GetDomesticPostalRates">
+      <input message="s0:GetDomesticPostalRatesSoapIn" />
+      <output message="s0:GetDomesticPostalRatesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="DomesticPostalRatesHttpGet">
+    <operation name="GetDomesticPostalRates">
+      <input message="s0:GetDomesticPostalRatesHttpGetIn" />
+      <output message="s0:GetDomesticPostalRatesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="DomesticPostalRatesHttpPost">
+    <operation name="GetDomesticPostalRates">
+      <input message="s0:GetDomesticPostalRatesHttpPostIn" />
+      <output message="s0:GetDomesticPostalRatesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="DomesticPostalRatesSoap" type="s0:DomesticPostalRatesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetDomesticPostalRates">
+      <soap:operation soapAction="http://innergears.com/WebServices/DomesticPostalRates/GetDomesticPostalRates" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DomesticPostalRatesHttpGet" type="s0:DomesticPostalRatesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetDomesticPostalRates">
+      <http:operation location="/GetDomesticPostalRates" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="DomesticPostalRatesHttpPost" type="s0:DomesticPostalRatesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetDomesticPostalRates">
+      <http:operation location="/GetDomesticPostalRates" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DomesticPostalRates">
+    <port name="DomesticPostalRatesSoap" binding="s0:DomesticPostalRatesSoap">
+      <soap:address location="http://www.innergears.com/WebServices/DomesticPostalRates/DomesticPostalRates.asmx" />
+    </port>
+    <port name="DomesticPostalRatesHttpGet" binding="s0:DomesticPostalRatesHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/DomesticPostalRates/DomesticPostalRates.asmx" />
+    </port>
+    <port name="DomesticPostalRatesHttpPost" binding="s0:DomesticPostalRatesHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/DomesticPostalRates/DomesticPostalRates.asmx" />
+    </port>
+  </service>
+</definitions>

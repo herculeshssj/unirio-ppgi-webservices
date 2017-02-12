@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IBorlandBabelservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="BabelFishRequest">
+    <part name="translationmode" type="xs:string"/>
+    <part name="sourcedata" type="xs:string"/>
+  </message>
+  <message name="BabelFishResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="SupportedLanguagesRequest"/>
+  <message name="SupportedLanguagesResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <portType name="IBorlandBabel">
+    <operation name="BabelFish">
+      <input message="tns:BabelFishRequest"/>
+      <output message="tns:BabelFishResponse"/>
+    </operation>
+    <operation name="SupportedLanguages">
+      <input message="tns:SupportedLanguagesRequest"/>
+      <output message="tns:SupportedLanguagesResponse"/>
+    </operation>
+  </portType>
+  <binding name="IBorlandBabelbinding" type="tns:IBorlandBabel">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="BabelFish">
+      <soap:operation soapAction="urn:BorlandBabelIntf-IBorlandBabel#BabelFish" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandBabelIntf-IBorlandBabel"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandBabelIntf-IBorlandBabel"/>
+      </output>
+    </operation>
+    <operation name="SupportedLanguages">
+      <soap:operation soapAction="urn:BorlandBabelIntf-IBorlandBabel#SupportedLanguages" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandBabelIntf-IBorlandBabel"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:BorlandBabelIntf-IBorlandBabel"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IBorlandBabelservice">
+    <port name="IBorlandBabelPort" binding="tns:IBorlandBabelbinding">
+      <soap:address location="http://ww6.borland.com/webservices/BorlandBabel/BorlandBabel.exe/soap/IBorlandBabel"/>
+    </port>
+  </service>
+</definitions>
+

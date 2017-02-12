@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="geoserve" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.transactionalweb.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:impl="http://POST-impl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.transactionalweb.com">
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.transactionalweb.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.transactionalweb.com">
+			<import namespace="http://www.w3.org/2001/XMLSchema" schemaLocation="http://www.w3.org/2001/XMLSchema.xsd"/>
+			<complexType name="responsearray" xmlns:tns="http://www.transactionalweb.com">
+				<sequence>
+					<element name="controlarray" type="tns:controlarray" xmlns:Unnamed="Unspecified"/>
+					<element name="recordarray" type="tns:recordarray"/>
+				</sequence>
+			</complexType>
+			<complexType name="controlarray">
+				<sequence>
+					<element name="count" type="string"/>
+				</sequence>
+			</complexType>
+			<complexType name="recordarray">
+				<sequence>
+					<element name="record" type="tns:record"/>
+				</sequence>
+			</complexType>
+			<complexType name="record">
+				<sequence>
+					<element name="adminarea1" type="string" nillable="true"/>
+					<element name="adminarea2" type="string" nillable="true"/>
+					<element name="adminarea3" type="string" nillable="true"/>
+					<element name="adminarea4" type="string" nillable="true"/>
+					<element name="adminarea2type" type="string" nillable="true"/>
+					<element name="adminarea3type" type="string" nillable="true"/>
+					<element name="adminarea4type" type="string" nillable="true"/>
+					<element name="latitude" type="string" nillable="true"/>
+					<element name="longitude" type="string" nillable="true"/>
+				</sequence>
+			</complexType>
+		</schema>
+	</types>
+	<message name="geosearchResponse">
+		<part name="responsearray" type="tns:responsearray"/>
+	</message>
+	<message name="geosearch">
+		<part name="searchstring" type="xsd:string">
+			<documentation>
+This is the string used to search for matches.			</documentation>
+		</part>
+		<part name="statecode" type="xsd:string">
+			<documentation>
+Standard two letter USPS state code. ie TX, NJ, NY...			</documentation>
+		</part>
+		<part name="cc" type="xsd:string">
+			<documentation>
+ISO Standard English 2-character country code (upper case).			</documentation>
+		</part>
+	</message>
+	<portType name="QueryInterface">
+		<operation name="doasearch" parameterOrder="in0 in1">
+			<input message="tns:geosearch"/>
+			<output message="tns:geosearchResponse"/>
+		</operation>
+	</portType>
+	<binding name="locatorSoapBinding" type="tns:QueryInterface">
+		<wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="doasearch">
+			<wsdlsoap:operation soapAction=""/>
+			<input>
+				<wsdlsoap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<wsdlsoap:body use="encoded" namespace="tns" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="QueryInterfaceService">
+		<port name="LOCATOR" binding="tns:locatorSoapBinding">
+			<wsdlsoap:address location="http://206.142.132.15/geosoap.php"/>
+		</port>
+	</service>
+</definitions>

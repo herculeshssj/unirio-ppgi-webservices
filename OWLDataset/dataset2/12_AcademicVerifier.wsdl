@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AcademicVerifier" targetNamespace="http://www.capeclear.com/AcademicVerifier.wsdl" xmlns:xsd1="http://www.capeclear.com/AcademicVerifier.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.capeclear.com/AcademicVerifier.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <message name="isAcademicEmailAddress">
+    <part name="emailAddress" type="xsd:string"/>
+  </message>
+  <message name="getInstitutionNameFromDomain">
+    <part name="domain" type="xsd:string"/>
+  </message>
+  <message name="getInstitutionNameFromDomainResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="getInstitutionNameFromEmailAddress">
+    <part name="email" type="xsd:string"/>
+  </message>
+  <message name="isAcademicEmailAddressResponse">
+    <part name="return" type="xsd:boolean"/>
+  </message>
+  <message name="isAcademicDomain">
+    <part name="domain" type="xsd:string"/>
+  </message>
+  <message name="isAcademicDomainResponse">
+    <part name="return" type="xsd:boolean"/>
+  </message>
+  <message name="getInstitutionNameFromEmailAddressResponse">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <portType name="AcademicVerifier">
+    <operation name="getInstitutionNameFromDomain">
+      <input message="tns:getInstitutionNameFromDomain"/>
+      <output message="tns:getInstitutionNameFromDomainResponse"/>
+    </operation>
+    <operation name="getInstitutionNameFromEmailAddress">
+      <input message="tns:getInstitutionNameFromEmailAddress"/>
+      <output message="tns:getInstitutionNameFromEmailAddressResponse"/>
+    </operation>
+    <operation name="isAcademicDomain">
+      <input message="tns:isAcademicDomain"/>
+      <output message="tns:isAcademicDomainResponse"/>
+    </operation>
+    <operation name="isAcademicEmailAddress">
+      <input message="tns:isAcademicEmailAddress"/>
+      <output message="tns:isAcademicEmailAddressResponse"/>
+    </operation>
+  </portType>
+  <binding name="AcademicVerifier" type="tns:AcademicVerifier">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getInstitutionNameFromDomain">
+      <soap:operation soapAction="capeconnect:AcademicVerifier:AcademicVerifier#getInstitutionNameFromDomain"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </output>
+    </operation>
+    <operation name="getInstitutionNameFromEmailAddress">
+      <soap:operation soapAction="capeconnect:AcademicVerifier:AcademicVerifier#getInstitutionNameFromEmailAddress"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </output>
+    </operation>
+    <operation name="isAcademicDomain">
+      <soap:operation soapAction="capeconnect:AcademicVerifier:AcademicVerifier#isAcademicDomain"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </output>
+    </operation>
+    <operation name="isAcademicEmailAddress">
+      <soap:operation soapAction="capeconnect:AcademicVerifier:AcademicVerifier#isAcademicEmailAddress"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:AcademicVerifier:AcademicVerifier"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="AcademicVerifier">
+<documentation>AcademicVerifier</documentation>
+    <port name="AcademicVerifier" binding="tns:AcademicVerifier">
+      <soap:address location="http://localhost:8000/ccx/AcademicVerifier"/>
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://www.myasptools.com/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.myasptools.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.myasptools.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.myasptools.com/">
+      <s:element name="GetQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickers" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="stocktype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuotesResult" type="s0:ArrayOfStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStock">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Stock" nillable="true" type="s0:Stock" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Stock">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastPrice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastTradeDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastTradeTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceChange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PercentageChange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Volume" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvgDialyVol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BidPrice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AskPrice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousClose" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TodayOpen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DayRange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearRange" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dividend" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarketCap" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockExchange" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLicQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickers" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="stocktype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLicQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLicQuotesResult" type="s0:ArrayOfStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickers" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuickQuotesResult" type="s0:ArrayOfStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickLicQuotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tickers" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="licNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuickLicQuotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuickLicQuotesResult" type="s0:ArrayOfStock" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfStock" nillable="true" type="s0:ArrayOfStock" />
+    </s:schema>
+    <s:schema targetNamespace="http://www.myasptools.com/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetQuotesSoapIn">
+    <part name="parameters" element="s0:GetQuotes" />
+  </message>
+  <message name="GetQuotesSoapOut">
+    <part name="parameters" element="s0:GetQuotesResponse" />
+  </message>
+  <message name="GetLicQuotesSoapIn">
+    <part name="parameters" element="s0:GetLicQuotes" />
+  </message>
+  <message name="GetLicQuotesSoapOut">
+    <part name="parameters" element="s0:GetLicQuotesResponse" />
+  </message>
+  <message name="GetQuickQuotesSoapIn">
+    <part name="parameters" element="s0:GetQuickQuotes" />
+  </message>
+  <message name="GetQuickQuotesSoapOut">
+    <part name="parameters" element="s0:GetQuickQuotesResponse" />
+  </message>
+  <message name="GetQuickLicQuotesSoapIn">
+    <part name="parameters" element="s0:GetQuickLicQuotes" />
+  </message>
+  <message name="GetQuickLicQuotesSoapOut">
+    <part name="parameters" element="s0:GetQuickLicQuotesResponse" />
+  </message>
+  <message name="GetQuotesHttpGetIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="stocktype" type="s:string" />
+  </message>
+  <message name="GetQuotesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetLicQuotesHttpGetIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="stocktype" type="s:string" />
+    <part name="licNumber" type="s:string" />
+  </message>
+  <message name="GetLicQuotesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetQuickQuotesHttpGetIn">
+    <part name="tickers" type="s1:StringArray" />
+  </message>
+  <message name="GetQuickQuotesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetQuickLicQuotesHttpGetIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="licNumber" type="s:string" />
+  </message>
+  <message name="GetQuickLicQuotesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetQuotesHttpPostIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="stocktype" type="s:string" />
+  </message>
+  <message name="GetQuotesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetLicQuotesHttpPostIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="stocktype" type="s:string" />
+    <part name="licNumber" type="s:string" />
+  </message>
+  <message name="GetLicQuotesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetQuickQuotesHttpPostIn">
+    <part name="tickers" type="s1:StringArray" />
+  </message>
+  <message name="GetQuickQuotesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <message name="GetQuickLicQuotesHttpPostIn">
+    <part name="tickers" type="s1:StringArray" />
+    <part name="licNumber" type="s:string" />
+  </message>
+  <message name="GetQuickLicQuotesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfStock" />
+  </message>
+  <portType name="StockServicesSoap">
+    <operation name="GetQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuotesSoapIn" />
+      <output message="s0:GetQuotesSoapOut" />
+    </operation>
+    <operation name="GetLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetLicQuotesSoapIn" />
+      <output message="s0:GetLicQuotesSoapOut" />
+    </operation>
+    <operation name="GetQuickQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuickQuotesSoapIn" />
+      <output message="s0:GetQuickQuotesSoapOut" />
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets. The license number is needed.</documentation>
+      <input message="s0:GetQuickLicQuotesSoapIn" />
+      <output message="s0:GetQuickLicQuotesSoapOut" />
+    </operation>
+  </portType>
+  <portType name="StockServicesHttpGet">
+    <operation name="GetQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuotesHttpGetIn" />
+      <output message="s0:GetQuotesHttpGetOut" />
+    </operation>
+    <operation name="GetLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetLicQuotesHttpGetIn" />
+      <output message="s0:GetLicQuotesHttpGetOut" />
+    </operation>
+    <operation name="GetQuickQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuickQuotesHttpGetIn" />
+      <output message="s0:GetQuickQuotesHttpGetOut" />
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets. The license number is needed.</documentation>
+      <input message="s0:GetQuickLicQuotesHttpGetIn" />
+      <output message="s0:GetQuickLicQuotesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="StockServicesHttpPost">
+    <operation name="GetQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuotesHttpPostIn" />
+      <output message="s0:GetQuotesHttpPostOut" />
+    </operation>
+    <operation name="GetLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetLicQuotesHttpPostIn" />
+      <output message="s0:GetLicQuotesHttpPostOut" />
+    </operation>
+    <operation name="GetQuickQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets</documentation>
+      <input message="s0:GetQuickQuotesHttpPostIn" />
+      <output message="s0:GetQuickQuotesHttpPostOut" />
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <documentation>This method retrieves the delayed quote of the stocks from the world's most popular stock markets. The license number is needed.</documentation>
+      <input message="s0:GetQuickLicQuotesHttpPostIn" />
+      <output message="s0:GetQuickLicQuotesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="StockServicesSoap" type="s0:StockServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLicQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetLicQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQuickQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetQuickQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <soap:operation soapAction="http://www.myasptools.com/GetQuickLicQuotes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockServicesHttpGet" type="s0:StockServicesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetQuotes">
+      <http:operation location="/GetQuotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicQuotes">
+      <http:operation location="/GetLicQuotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuickQuotes">
+      <http:operation location="/GetQuickQuotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <http:operation location="/GetQuickLicQuotes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="StockServicesHttpPost" type="s0:StockServicesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetQuotes">
+      <http:operation location="/GetQuotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetLicQuotes">
+      <http:operation location="/GetLicQuotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuickQuotes">
+      <http:operation location="/GetQuickQuotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetQuickLicQuotes">
+      <http:operation location="/GetQuickLicQuotes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="StockServices">
+    <port name="StockServicesSoap" binding="s0:StockServicesSoap">
+      <soap:address location="http://glkev.webs.innerhost.com/glkev_ws/StockServices.asmx" />
+    </port>
+    <port name="StockServicesHttpGet" binding="s0:StockServicesHttpGet">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/StockServices.asmx" />
+    </port>
+    <port name="StockServicesHttpPost" binding="s0:StockServicesHttpPost">
+      <http:address location="http://glkev.webs.innerhost.com/glkev_ws/StockServices.asmx" />
+    </port>
+  </service>
+</definitions>

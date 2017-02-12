@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET/">
+      <s:element name="ChangeAngleUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AngleValue" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fromAngleUnit" type="s0:Angles" />
+            <s:element minOccurs="1" maxOccurs="1" name="toAngleUnit" type="s0:Angles" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Angles">
+        <s:restriction base="s:string">
+          <s:enumeration value="radians" />
+          <s:enumeration value="mils" />
+          <s:enumeration value="gradients" />
+          <s:enumeration value="degrees" />
+          <s:enumeration value="minutes" />
+          <s:enumeration value="seconds" />
+          <s:enumeration value="points" />
+          <s:enumeration value="OneBySixtienCircle" />
+          <s:enumeration value="OneByTenCircle" />
+          <s:enumeration value="OneByEightCircle" />
+          <s:enumeration value="OneBySixCircle" />
+          <s:enumeration value="OneByFourCircle" />
+          <s:enumeration value="OneByTwoCircle" />
+          <s:enumeration value="fullCircle" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ChangeAngleUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeAngleUnitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="double" type="s:double" />
+    </s:schema>
+  </types>
+  <message name="ChangeAngleUnitSoapIn">
+    <part name="parameters" element="s0:ChangeAngleUnit" />
+  </message>
+  <message name="ChangeAngleUnitSoapOut">
+    <part name="parameters" element="s0:ChangeAngleUnitResponse" />
+  </message>
+  <message name="ChangeAngleUnitHttpGetIn">
+    <part name="AngleValue" type="s:string" />
+    <part name="fromAngleUnit" type="s:string" />
+    <part name="toAngleUnit" type="s:string" />
+  </message>
+  <message name="ChangeAngleUnitHttpGetOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <message name="ChangeAngleUnitHttpPostIn">
+    <part name="AngleValue" type="s:string" />
+    <part name="fromAngleUnit" type="s:string" />
+    <part name="toAngleUnit" type="s:string" />
+  </message>
+  <message name="ChangeAngleUnitHttpPostOut">
+    <part name="Body" element="s0:double" />
+  </message>
+  <portType name="AngleUnitSoap">
+    <operation name="ChangeAngleUnit">
+      <input message="s0:ChangeAngleUnitSoapIn" />
+      <output message="s0:ChangeAngleUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AngleUnitHttpGet">
+    <operation name="ChangeAngleUnit">
+      <input message="s0:ChangeAngleUnitHttpGetIn" />
+      <output message="s0:ChangeAngleUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AngleUnitHttpPost">
+    <operation name="ChangeAngleUnit">
+      <input message="s0:ChangeAngleUnitHttpPostIn" />
+      <output message="s0:ChangeAngleUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AngleUnitSoap" type="s0:AngleUnitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="ChangeAngleUnit">
+      <soap:operation soapAction="http://www.webserviceX.NET/ChangeAngleUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AngleUnitHttpGet" type="s0:AngleUnitHttpGet">
+    <http:binding verb="GET" />
+    <operation name="ChangeAngleUnit">
+      <http:operation location="/ChangeAngleUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AngleUnitHttpPost" type="s0:AngleUnitHttpPost">
+    <http:binding verb="POST" />
+    <operation name="ChangeAngleUnit">
+      <http:operation location="/ChangeAngleUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AngleUnit">
+    <port name="AngleUnitSoap" binding="s0:AngleUnitSoap">
+      <soap:address location="http://www.webservicex.net/ConvertAngle.asmx" />
+    </port>
+    <port name="AngleUnitHttpGet" binding="s0:AngleUnitHttpGet">
+      <http:address location="http://www.webservicex.net/ConvertAngle.asmx" />
+    </port>
+    <port name="AngleUnitHttpPost" binding="s0:AngleUnitHttpPost">
+      <http:address location="http://www.webservicex.net/ConvertAngle.asmx" />
+    </port>
+  </service>
+</definitions>

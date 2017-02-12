@@ -1,0 +1,763 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/119_BasicTelcomRateInformation_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_BasicTelcomRateInformation">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForCity_46669"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForState_46675"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#RateBasicInformation_46680"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForCity_46689"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForState_46694"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#RateBasicInformation_46699"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForCity_46705"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetAreaCodesForState_46711"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#RateBasicInformation_46716"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForCity_46669 ID: 46669 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForCity_46669">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForCity_46669" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForCity"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCityHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#City_46671"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#City_46671"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_46672"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_46672"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCityHttpGetOut_46673"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46674"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfGetAreaCodesForCity>
+        <the_concepts:GetAreaCodesForCity>
+        <the_concepts:City><xsl:value-of select="GetAreaCodesForCityCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForCityState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForCity>
+        </the_concepts:ArrayOfGetAreaCodesForCity>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForState_46675 ID: 46675 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForState_46675">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForState_46675" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_46677"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_46677"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateHttpGetOut_46678"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46679"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfGetAreaCodesForState>
+        <the_concepts:GetAreaCodesForState>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForStateState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForState>
+        </the_concepts:ArrayOfGetAreaCodesForState>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: RateBasicInformation_46680 ID: 46680 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_RateBasicInformation_46680">
+  <grounding:owlsProcess rdf:resource="&the_process;#RateBasicInformation_46680" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#RateBasicInformation"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Org_Area_Code_46682"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Org_Area_Code_46682"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Org_Switch_46683"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Org_Switch_46683"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Dest_Area_Code_46684"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Dest_Area_Code_46684"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Dest_Switch_46685"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Dest_Switch_46685"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationHttpGetOut_46686"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46687"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:CallDetail>
+        <the_concepts:Mileage><xsl:value-of select="Body_46687/Mileage"/></the_concepts:Mileage>
+        <the_concepts:OrigCity><xsl:value-of select="Body_46687/OrigCity"/></the_concepts:OrigCity>
+        <the_concepts:OrigState><xsl:value-of select="Body_46687/OrigState"/></the_concepts:OrigState>
+        <the_concepts:OrigZip><xsl:value-of select="Body_46687/OrigZip"/></the_concepts:OrigZip>
+        <the_concepts:OrigCounty><xsl:value-of select="Body_46687/OrigCounty"/></the_concepts:OrigCounty>
+        <the_concepts:OrigLATA><xsl:value-of select="Body_46687/OrigLATA"/></the_concepts:OrigLATA>
+        <the_concepts:OrigCLLI><xsl:value-of select="Body_46687/OrigCLLI"/></the_concepts:OrigCLLI>
+        <the_concepts:DestCity><xsl:value-of select="Body_46687/DestCity"/></the_concepts:DestCity>
+        <the_concepts:DestState><xsl:value-of select="Body_46687/DestState"/></the_concepts:DestState>
+        <the_concepts:DestZip><xsl:value-of select="Body_46687/DestZip"/></the_concepts:DestZip>
+        <the_concepts:DestCounty><xsl:value-of select="Body_46687/DestCounty"/></the_concepts:DestCounty>
+        <the_concepts:DestLATA><xsl:value-of select="Body_46687/DestLATA"/></the_concepts:DestLATA>
+        <the_concepts:DestCLLI><xsl:value-of select="Body_46687/DestCLLI"/></the_concepts:DestCLLI>
+        </the_concepts:CallDetail>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForCity_46689 ID: 46689 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForCity_46689">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForCity_46689" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForCity"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCitySoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46691"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetAreaCodesForCity
+       xmlns:ws="http://www.xeeinc.com/Xee"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetAreaCodesForCity">
+
+        <ws:City xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetAreaCodesForCity/the_concepts:City"/>        </ws:City>
+        <ws:State xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetAreaCodesForCity/the_concepts:State"/>        </ws:State>
+
+      </ws:GetAreaCodesForCity>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCitySoapOut_46692"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46693"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetAreaCodesForCityResponse>
+        <the_concepts:GetAreaCodesForCityResult>
+        <the_concepts:GetAreaCodesForCity>
+        <the_concepts:City><xsl:value-of select="GetAreaCodesForCityCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForCityState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForCity>
+        </the_concepts:GetAreaCodesForCityResult>
+        </the_concepts:GetAreaCodesForCityResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForState_46694 ID: 46694 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForState_46694">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForState_46694" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46696"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetAreaCodesForState
+       xmlns:ws="http://www.xeeinc.com/Xee"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetAreaCodesForState">
+
+        <ws:State xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetAreaCodesForState/the_concepts:State"/>        </ws:State>
+
+      </ws:GetAreaCodesForState>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateSoapOut_46697"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46698"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetAreaCodesForStateResponse>
+        <the_concepts:GetAreaCodesForStateResult>
+        <the_concepts:GetAreaCodesForState>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForStateState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForState>
+        </the_concepts:GetAreaCodesForStateResult>
+        </the_concepts:GetAreaCodesForStateResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: RateBasicInformation_46699 ID: 46699 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_RateBasicInformation_46699">
+  <grounding:owlsProcess rdf:resource="&the_process;#RateBasicInformation_46699" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#RateBasicInformation"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46701"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:RateBasicInformation
+       xmlns:ws="http://www.xeeinc.com/Xee"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:RateBasicInformation">
+
+        <ws:Org_Area_Code xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:RateBasicInformation/the_concepts:Org_Area_Code"/>        </ws:Org_Area_Code>
+        <ws:Org_Switch xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:RateBasicInformation/the_concepts:Org_Switch"/>        </ws:Org_Switch>
+        <ws:Dest_Area_Code xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:RateBasicInformation/the_concepts:Dest_Area_Code"/>        </ws:Dest_Area_Code>
+        <ws:Dest_Switch xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:RateBasicInformation/the_concepts:Dest_Switch"/>        </ws:Dest_Switch>
+
+      </ws:RateBasicInformation>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationSoapOut_46702"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_46703"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:RateBasicInformationResponse>
+        <the_concepts:RateBasicInformationResult>
+        <the_concepts:Mileage><xsl:value-of select="RateBasicInformationResultMileage"/></the_concepts:Mileage>
+        <the_concepts:OrigCity><xsl:value-of select="RateBasicInformationResultOrigCity"/></the_concepts:OrigCity>
+        <the_concepts:OrigState><xsl:value-of select="RateBasicInformationResultOrigState"/></the_concepts:OrigState>
+        <the_concepts:OrigZip><xsl:value-of select="RateBasicInformationResultOrigZip"/></the_concepts:OrigZip>
+        <the_concepts:OrigCounty><xsl:value-of select="RateBasicInformationResultOrigCounty"/></the_concepts:OrigCounty>
+        <the_concepts:OrigLATA><xsl:value-of select="RateBasicInformationResultOrigLATA"/></the_concepts:OrigLATA>
+        <the_concepts:OrigCLLI><xsl:value-of select="RateBasicInformationResultOrigCLLI"/></the_concepts:OrigCLLI>
+        <the_concepts:DestCity><xsl:value-of select="RateBasicInformationResultDestCity"/></the_concepts:DestCity>
+        <the_concepts:DestState><xsl:value-of select="RateBasicInformationResultDestState"/></the_concepts:DestState>
+        <the_concepts:DestZip><xsl:value-of select="RateBasicInformationResultDestZip"/></the_concepts:DestZip>
+        <the_concepts:DestCounty><xsl:value-of select="RateBasicInformationResultDestCounty"/></the_concepts:DestCounty>
+        <the_concepts:DestLATA><xsl:value-of select="RateBasicInformationResultDestLATA"/></the_concepts:DestLATA>
+        <the_concepts:DestCLLI><xsl:value-of select="RateBasicInformationResultDestCLLI"/></the_concepts:DestCLLI>
+        </the_concepts:RateBasicInformationResult>
+        </the_concepts:RateBasicInformationResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForCity_46705 ID: 46705 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForCity_46705">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForCity_46705" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForCity"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCityHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#City_46707"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#City_46707"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_46708"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_46708"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForCityHttpPostOut_46709"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46710"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfGetAreaCodesForCity>
+        <the_concepts:GetAreaCodesForCity>
+        <the_concepts:City><xsl:value-of select="GetAreaCodesForCityCity"/></the_concepts:City>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForCityState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForCity>
+        </the_concepts:ArrayOfGetAreaCodesForCity>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetAreaCodesForState_46711 ID: 46711 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetAreaCodesForState_46711">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetAreaCodesForState_46711" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetAreaCodesForState"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#State_46713"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#State_46713"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetAreaCodesForStateHttpPostOut_46714"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46715"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfGetAreaCodesForState>
+        <the_concepts:GetAreaCodesForState>
+        <the_concepts:State><xsl:value-of select="GetAreaCodesForStateState"/></the_concepts:State>
+        </the_concepts:GetAreaCodesForState>
+        </the_concepts:ArrayOfGetAreaCodesForState>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: RateBasicInformation_46716 ID: 46716 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_RateBasicInformation_46716">
+  <grounding:owlsProcess rdf:resource="&the_process;#RateBasicInformation_46716" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#RateInfoClassHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#RateBasicInformation"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Org_Area_Code_46718"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Org_Area_Code_46718"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Org_Switch_46719"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Org_Switch_46719"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Dest_Area_Code_46720"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Dest_Area_Code_46720"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Dest_Switch_46721"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Dest_Switch_46721"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#RateBasicInformationHttpPostOut_46722"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_46723"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:CallDetail>
+        <the_concepts:Mileage><xsl:value-of select="Body_46723/Mileage"/></the_concepts:Mileage>
+        <the_concepts:OrigCity><xsl:value-of select="Body_46723/OrigCity"/></the_concepts:OrigCity>
+        <the_concepts:OrigState><xsl:value-of select="Body_46723/OrigState"/></the_concepts:OrigState>
+        <the_concepts:OrigZip><xsl:value-of select="Body_46723/OrigZip"/></the_concepts:OrigZip>
+        <the_concepts:OrigCounty><xsl:value-of select="Body_46723/OrigCounty"/></the_concepts:OrigCounty>
+        <the_concepts:OrigLATA><xsl:value-of select="Body_46723/OrigLATA"/></the_concepts:OrigLATA>
+        <the_concepts:OrigCLLI><xsl:value-of select="Body_46723/OrigCLLI"/></the_concepts:OrigCLLI>
+        <the_concepts:DestCity><xsl:value-of select="Body_46723/DestCity"/></the_concepts:DestCity>
+        <the_concepts:DestState><xsl:value-of select="Body_46723/DestState"/></the_concepts:DestState>
+        <the_concepts:DestZip><xsl:value-of select="Body_46723/DestZip"/></the_concepts:DestZip>
+        <the_concepts:DestCounty><xsl:value-of select="Body_46723/DestCounty"/></the_concepts:DestCounty>
+        <the_concepts:DestLATA><xsl:value-of select="Body_46723/DestLATA"/></the_concepts:DestLATA>
+        <the_concepts:DestCLLI><xsl:value-of select="Body_46723/DestCLLI"/></the_concepts:DestCLLI>
+        </the_concepts:CallDetail>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://innergears.com/WebServices/CityStateByZip" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://innergears.com/WebServices/CityStateByZip" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://innergears.com/WebServices/CityStateByZip">
+      <s:element name="GetCityStateByZip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityStateByZipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityStateByZipResult" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArrayOfString" nillable="true" type="s0:ArrayOfString" />
+    </s:schema>
+  </types>
+  <message name="GetCityStateByZipSoapIn">
+    <part name="parameters" element="s0:GetCityStateByZip" />
+  </message>
+  <message name="GetCityStateByZipSoapOut">
+    <part name="parameters" element="s0:GetCityStateByZipResponse" />
+  </message>
+  <message name="GetCityStateByZipHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetCityStateByZipHttpGetOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <message name="GetCityStateByZipHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="GetCityStateByZipHttpPostOut">
+    <part name="Body" element="s0:ArrayOfString" />
+  </message>
+  <portType name="CityStateByZipSoap">
+    <operation name="GetCityStateByZip">
+      <input message="s0:GetCityStateByZipSoapIn" />
+      <output message="s0:GetCityStateByZipSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CityStateByZipHttpGet">
+    <operation name="GetCityStateByZip">
+      <input message="s0:GetCityStateByZipHttpGetIn" />
+      <output message="s0:GetCityStateByZipHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CityStateByZipHttpPost">
+    <operation name="GetCityStateByZip">
+      <input message="s0:GetCityStateByZipHttpPostIn" />
+      <output message="s0:GetCityStateByZipHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CityStateByZipSoap" type="s0:CityStateByZipSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetCityStateByZip">
+      <soap:operation soapAction="http://innergears.com/WebServices/CityStateByZip/GetCityStateByZip" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CityStateByZipHttpGet" type="s0:CityStateByZipHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetCityStateByZip">
+      <http:operation location="/GetCityStateByZip" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CityStateByZipHttpPost" type="s0:CityStateByZipHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetCityStateByZip">
+      <http:operation location="/GetCityStateByZip" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CityStateByZip">
+    <port name="CityStateByZipSoap" binding="s0:CityStateByZipSoap">
+      <soap:address location="http://www.innergears.com/WebServices/CityStateByZip/CityStateByZip.asmx" />
+    </port>
+    <port name="CityStateByZipHttpGet" binding="s0:CityStateByZipHttpGet">
+      <http:address location="http://www.innergears.com/WebServices/CityStateByZip/CityStateByZip.asmx" />
+    </port>
+    <port name="CityStateByZipHttpPost" binding="s0:CityStateByZipHttpPost">
+      <http:address location="http://www.innergears.com/WebServices/CityStateByZip/CityStateByZip.asmx" />
+    </port>
+  </service>
+</definitions>

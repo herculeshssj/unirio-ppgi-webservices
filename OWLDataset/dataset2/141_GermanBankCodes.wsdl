@@ -1,0 +1,48 @@
+
+<definitions name="BankCode" 
+targetNamespace="java:com.pepperzak.webservices.ecommerce" 
+xmlns="http://schemas.xmlsoap.org/wsdl/"
+xmlns:tns="java:com.pepperzak.webservices.ecommerce"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+>
+<types>
+<schema targetNamespace='java:com.pepperzak.webservices.ecommerce' 
+xmlns='http://www.w3.org/2001/XMLSchema'>
+</schema>
+</types>
+<message name="getNameByCodeRequest">
+<part name="arg0" type="xsd:string" />
+</message>
+<message name="getNameByCodeResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="getCodeByNameRequest">
+<part name="arg0" type="xsd:string" />
+</message>
+<message name="getCodeByNameResponse">
+<part name="return" type="xsd:string" />
+</message>
+<portType name="BankCodePortType">
+<operation name="getNameByCode">
+<input message="tns:getNameByCodeRequest"/>
+<output message="tns:getNameByCodeResponse"/>
+</operation>
+<operation name="getCodeByName">
+<input message="tns:getCodeByNameRequest"/>
+<output message="tns:getCodeByNameResponse"/>
+</operation>
+</portType>
+<binding name="BankCodeBinding" type="tns:BankCodePortType"><soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="getNameByCode">
+<soap:operation soapAction="urn:getNameByCode"/>
+<input><soap:body use="encoded" namespace='urn:BankCode' encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+<output><soap:body use="encoded" namespace='urn:BankCode' encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+</operation>
+<operation name="getCodeByName">
+<soap:operation soapAction="urn:getCodeByName"/>
+<input><soap:body use="encoded" namespace='urn:BankCode' encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+<output><soap:body use="encoded" namespace='urn:BankCode' encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+</operation>
+</binding>
+<service name="BankCode"><documentation>Translates german bank codes (Bankleitzahlen) to bank names and vice versa.</documentation><port name="BankCodePort" binding="tns:BankCodeBinding"><soap:address location="http://appserver.pepperzak.net:80/bankcode/bankcodeuri"/></port></service></definitions>

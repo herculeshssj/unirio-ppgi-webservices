@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="FOPService" targetNamespace="http://www.capeclear.com/FOPService.wsdl" xmlns:xsd1="http://www.capeclear.com/FOPService.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.capeclear.com/FOPService.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types>
+        <xsd:schema targetNamespace="http://www.capeclear.com/FOPService.xsd" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="DataSource">
+                <xsd:sequence/>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+  <message name="renderResponse">
+    <part name="return" type="xsd1:DataSource"/>
+  </message>
+  <message name="render">
+    <part name="arg0" type="xsd1:DataSource"/>
+    <part name="arg1" type="xsd:string"/>
+  </message>
+  <portType name="FopServer">
+    <operation name="render">
+      <input message="tns:render"/>
+      <output message="tns:renderResponse"/>
+    </operation>
+  </portType>
+  <binding name="FopServerBinding" type="tns:FopServer">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="render">
+      <soap:operation soapAction="capeconnect:FOPService:FopServer#render"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:FOPService:FopServer"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="capeconnect:FOPService:FopServer"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="FOPService">
+<documentation>FOPService</documentation>
+    <port name="FopServer" binding="tns:FopServerBinding">
+      <soap:address location="http://live.capescience.com:8000/ccx/FOPService"/>
+    </port>
+  </service>
+</definitions>
+

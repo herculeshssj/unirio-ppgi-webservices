@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.webserviceX.NET" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.webserviceX.NET" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.webserviceX.NET">
+      <s:element name="SendTextToFax">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BodyText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextToFaxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendTextToFaxResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SendTextToFaxSoapIn">
+    <part name="parameters" element="s0:SendTextToFax" />
+  </message>
+  <message name="SendTextToFaxSoapOut">
+    <part name="parameters" element="s0:SendTextToFaxResponse" />
+  </message>
+  <message name="SendTextToFaxHttpGetIn">
+    <part name="FromEmail" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="BodyText" type="s:string" />
+    <part name="ToName" type="s:string" />
+  </message>
+  <message name="SendTextToFaxHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendTextToFaxHttpPostIn">
+    <part name="FromEmail" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="FaxNumber" type="s:string" />
+    <part name="BodyText" type="s:string" />
+    <part name="ToName" type="s:string" />
+  </message>
+  <message name="SendTextToFaxHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="faxSoap">
+    <operation name="SendTextToFax">
+      <documentation>Send a FAX (for free) to many different parts of the world&lt;br&gt; &lt;span&gt;&lt;br&gt;&lt;br&gt;This webservice provide a facilty to send fax anywhere in the world.Please add country code (without preceding zero(s)) to your fax number(Without hyphen).&lt;br&gt;&lt;I&gt;&lt;b&gt;e.g If your number is 0091-435-416353 ,please enter fax number as 91435416353&lt;/b&gt;&lt;/i&gt;	&lt;/span&gt;&lt;br&gt;&lt;b&gt;Please Note:&lt;/b&gt;&lt;br&gt;The character '_' is converted to a space and The character '/' is converted to start a new line </documentation>
+      <input message="s0:SendTextToFaxSoapIn" />
+      <output message="s0:SendTextToFaxSoapOut" />
+    </operation>
+  </portType>
+  <portType name="faxHttpGet">
+    <operation name="SendTextToFax">
+      <documentation>Send a FAX (for free) to many different parts of the world&lt;br&gt; &lt;span&gt;&lt;br&gt;&lt;br&gt;This webservice provide a facilty to send fax anywhere in the world.Please add country code (without preceding zero(s)) to your fax number(Without hyphen).&lt;br&gt;&lt;I&gt;&lt;b&gt;e.g If your number is 0091-435-416353 ,please enter fax number as 91435416353&lt;/b&gt;&lt;/i&gt;	&lt;/span&gt;&lt;br&gt;&lt;b&gt;Please Note:&lt;/b&gt;&lt;br&gt;The character '_' is converted to a space and The character '/' is converted to start a new line </documentation>
+      <input message="s0:SendTextToFaxHttpGetIn" />
+      <output message="s0:SendTextToFaxHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="faxHttpPost">
+    <operation name="SendTextToFax">
+      <documentation>Send a FAX (for free) to many different parts of the world&lt;br&gt; &lt;span&gt;&lt;br&gt;&lt;br&gt;This webservice provide a facilty to send fax anywhere in the world.Please add country code (without preceding zero(s)) to your fax number(Without hyphen).&lt;br&gt;&lt;I&gt;&lt;b&gt;e.g If your number is 0091-435-416353 ,please enter fax number as 91435416353&lt;/b&gt;&lt;/i&gt;	&lt;/span&gt;&lt;br&gt;&lt;b&gt;Please Note:&lt;/b&gt;&lt;br&gt;The character '_' is converted to a space and The character '/' is converted to start a new line </documentation>
+      <input message="s0:SendTextToFaxHttpPostIn" />
+      <output message="s0:SendTextToFaxHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="faxSoap" type="s0:faxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendTextToFax">
+      <soap:operation soapAction="http://www.webserviceX.NET/SendTextToFax" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="faxHttpGet" type="s0:faxHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SendTextToFax">
+      <http:operation location="/SendTextToFax" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="faxHttpPost" type="s0:faxHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SendTextToFax">
+      <http:operation location="/SendTextToFax" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="fax">
+    <port name="faxSoap" binding="s0:faxSoap">
+      <soap:address location="http://www.webservicex.net/fax.asmx" />
+    </port>
+    <port name="faxHttpGet" binding="s0:faxHttpGet">
+      <http:address location="http://www.webservicex.net/fax.asmx" />
+    </port>
+    <port name="faxHttpPost" binding="s0:faxHttpPost">
+      <http:address location="http://www.webservicex.net/fax.asmx" />
+    </port>
+  </service>
+</definitions>

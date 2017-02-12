@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="IIBANservice" targetNamespace="http://tempuri.org/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <message name="GetInfoRequest"/>
+  <message name="GetInfoResponse">
+    <part name="return" type="xs:string"/>
+  </message>
+  <message name="GenerateIBANRequest">
+    <part name="CC" type="xs:string"/>
+    <part name="IID" type="xs:string"/>
+    <part name="BAN" type="xs:string"/>
+    <part name="ErrorMsg" type="xs:string"/>
+    <part name="IBAN" type="xs:string"/>
+  </message>
+  <message name="GenerateIBANResponse">
+    <part name="ErrorMsg" type="xs:string"/>
+    <part name="IBAN" type="xs:string"/>
+    <part name="return" type="xs:int"/>
+  </message>
+  <portType name="IIBAN">
+    <operation name="GetInfo">
+      <input message="tns:GetInfoRequest"/>
+      <output message="tns:GetInfoResponse"/>
+    </operation>
+    <operation name="GenerateIBAN">
+      <input message="tns:GenerateIBANRequest"/>
+      <output message="tns:GenerateIBANResponse"/>
+    </operation>
+  </portType>
+  <binding name="IIBANbinding" type="tns:IIBAN">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="GetInfo">
+      <soap:operation soapAction="urn:IBANIntf-IIBAN#GetInfo" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:IBANIntf-IIBAN"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:IBANIntf-IIBAN"/>
+      </output>
+    </operation>
+    <operation name="GenerateIBAN">
+      <soap:operation soapAction="urn:IBANIntf-IIBAN#GenerateIBAN" style="rpc"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:IBANIntf-IIBAN"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:IBANIntf-IIBAN"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="IIBANservice">
+    <port name="IIBANPort" binding="tns:IIBANbinding">
+      <soap:address location="http://www2.baumann.at/WebServices/iban/soap/IIBAN"/>
+    </port>
+  </service>
+</definitions>
+

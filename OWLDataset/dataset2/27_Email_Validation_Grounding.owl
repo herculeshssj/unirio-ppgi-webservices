@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/27_Email_Validation_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_Email_Validation">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#ValidateEmail_40298"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#ValidateEmail_40305"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#ValidateEmail_40311"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: ValidateEmail_40298 ID: 40298 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_ValidateEmail_40298">
+  <grounding:owlsProcess rdf:resource="&the_process;#ValidateEmail_40298" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSEmailValidateHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#ValidateEmail"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Email_40300"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Email_40300"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_40301"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_40301"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailHttpPostOut_40302"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_40303"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Email>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:SyntaxCheck><xsl:value-of select="Body_40303/SyntaxCheck"/></the_concepts:SyntaxCheck>
+        <the_concepts:DNSCheck><xsl:value-of select="Body_40303/DNSCheck"/></the_concepts:DNSCheck>
+        <the_concepts:SMTPCheck><xsl:value-of select="Body_40303/SMTPCheck"/></the_concepts:SMTPCheck>
+        <the_concepts:AgeIndex><xsl:value-of select="Body_40303/AgeIndex"/></the_concepts:AgeIndex>
+        <the_concepts:ValidityIndex><xsl:value-of select="Body_40303/ValidityIndex"/></the_concepts:ValidityIndex>
+        </the_concepts:Email>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: ValidateEmail_40305 ID: 40305 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_ValidateEmail_40305">
+  <grounding:owlsProcess rdf:resource="&the_process;#ValidateEmail_40305" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSEmailValidateSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#ValidateEmail"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_40307"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:ValidateEmail
+       xmlns:ws="http://www.serviceobjects.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:ValidateEmail">
+
+        <ws:Email xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:ValidateEmail/the_concepts:Email"/>        </ws:Email>
+        <ws:LicenseKey xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:ValidateEmail/the_concepts:LicenseKey"/>        </ws:LicenseKey>
+
+      </ws:ValidateEmail>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailSoapOut_40308"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_40309"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ValidateEmailResponse>
+        <the_concepts:ValidateEmailResult>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:SyntaxCheck><xsl:value-of select="ValidateEmailResultSyntaxCheck"/></the_concepts:SyntaxCheck>
+        <the_concepts:DNSCheck><xsl:value-of select="ValidateEmailResultDNSCheck"/></the_concepts:DNSCheck>
+        <the_concepts:SMTPCheck><xsl:value-of select="ValidateEmailResultSMTPCheck"/></the_concepts:SMTPCheck>
+        <the_concepts:AgeIndex><xsl:value-of select="ValidateEmailResultAgeIndex"/></the_concepts:AgeIndex>
+        <the_concepts:ValidityIndex><xsl:value-of select="ValidateEmailResultValidityIndex"/></the_concepts:ValidityIndex>
+        </the_concepts:ValidateEmailResult>
+        </the_concepts:ValidateEmailResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: ValidateEmail_40311 ID: 40311 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_ValidateEmail_40311">
+  <grounding:owlsProcess rdf:resource="&the_process;#ValidateEmail_40311" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#DOTSEmailValidateHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#ValidateEmail"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Email_40313"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#Email_40313"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#LicenseKey_40314"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#LicenseKey_40314"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#ValidateEmailHttpGetOut_40315"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_40316"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:Email>
+        <the_concepts:Error>
+        <the_concepts:Desc><xsl:value-of select="ErrorDesc"/></the_concepts:Desc>
+        <the_concepts:Number><xsl:value-of select="ErrorNumber"/></the_concepts:Number>
+        <the_concepts:Location><xsl:value-of select="ErrorLocation"/></the_concepts:Location>
+        </the_concepts:Error>
+        <the_concepts:SyntaxCheck><xsl:value-of select="Body_40316/SyntaxCheck"/></the_concepts:SyntaxCheck>
+        <the_concepts:DNSCheck><xsl:value-of select="Body_40316/DNSCheck"/></the_concepts:DNSCheck>
+        <the_concepts:SMTPCheck><xsl:value-of select="Body_40316/SMTPCheck"/></the_concepts:SMTPCheck>
+        <the_concepts:AgeIndex><xsl:value-of select="Body_40316/AgeIndex"/></the_concepts:AgeIndex>
+        <the_concepts:ValidityIndex><xsl:value-of select="Body_40316/ValidityIndex"/></the_concepts:ValidityIndex>
+        </the_concepts:Email>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>

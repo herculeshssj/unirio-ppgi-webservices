@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://stanski.com/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://stanski.com/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://stanski.com/services/">
+      <s:element name="resolvePostcodeToSuburbs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strPostcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="resolvePostcodeToSuburbsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resolvePostcodeToSuburbsResult" type="s0:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="resolveSuburbDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSuburbname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="resolveSuburbDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="resolveSuburbDetailsResult" type="s0:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfAnyType" nillable="true" type="s0:ArrayOfAnyType" />
+    </s:schema>
+  </types>
+  <message name="resolvePostcodeToSuburbsSoapIn">
+    <part name="parameters" element="s0:resolvePostcodeToSuburbs" />
+  </message>
+  <message name="resolvePostcodeToSuburbsSoapOut">
+    <part name="parameters" element="s0:resolvePostcodeToSuburbsResponse" />
+  </message>
+  <message name="resolveSuburbDetailsSoapIn">
+    <part name="parameters" element="s0:resolveSuburbDetails" />
+  </message>
+  <message name="resolveSuburbDetailsSoapOut">
+    <part name="parameters" element="s0:resolveSuburbDetailsResponse" />
+  </message>
+  <message name="resolvePostcodeToSuburbsHttpGetIn">
+    <part name="strPostcode" type="s:string" />
+  </message>
+  <message name="resolvePostcodeToSuburbsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="resolveSuburbDetailsHttpGetIn">
+    <part name="strSuburbname" type="s:string" />
+  </message>
+  <message name="resolveSuburbDetailsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="resolvePostcodeToSuburbsHttpPostIn">
+    <part name="strPostcode" type="s:string" />
+  </message>
+  <message name="resolvePostcodeToSuburbsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="resolveSuburbDetailsHttpPostIn">
+    <part name="strSuburbname" type="s:string" />
+  </message>
+  <message name="resolveSuburbDetailsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <portType name="PostcodeServiceSoap">
+    <operation name="resolvePostcodeToSuburbs">
+      <documentation>This method takes a postcode number and returns a list of matching suburbs (postcode, suburb name, state).</documentation>
+      <input message="s0:resolvePostcodeToSuburbsSoapIn" />
+      <output message="s0:resolvePostcodeToSuburbsSoapOut" />
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <documentation>This method takes first letters of a suburb name and returns like matching suburb details (postcode, full suburb name, state).</documentation>
+      <input message="s0:resolveSuburbDetailsSoapIn" />
+      <output message="s0:resolveSuburbDetailsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="PostcodeServiceHttpGet">
+    <operation name="resolvePostcodeToSuburbs">
+      <documentation>This method takes a postcode number and returns a list of matching suburbs (postcode, suburb name, state).</documentation>
+      <input message="s0:resolvePostcodeToSuburbsHttpGetIn" />
+      <output message="s0:resolvePostcodeToSuburbsHttpGetOut" />
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <documentation>This method takes first letters of a suburb name and returns like matching suburb details (postcode, full suburb name, state).</documentation>
+      <input message="s0:resolveSuburbDetailsHttpGetIn" />
+      <output message="s0:resolveSuburbDetailsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="PostcodeServiceHttpPost">
+    <operation name="resolvePostcodeToSuburbs">
+      <documentation>This method takes a postcode number and returns a list of matching suburbs (postcode, suburb name, state).</documentation>
+      <input message="s0:resolvePostcodeToSuburbsHttpPostIn" />
+      <output message="s0:resolvePostcodeToSuburbsHttpPostOut" />
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <documentation>This method takes first letters of a suburb name and returns like matching suburb details (postcode, full suburb name, state).</documentation>
+      <input message="s0:resolveSuburbDetailsHttpPostIn" />
+      <output message="s0:resolveSuburbDetailsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="PostcodeServiceSoap" type="s0:PostcodeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="resolvePostcodeToSuburbs">
+      <soap:operation soapAction="http://stanski.com/services/resolvePostcodeToSuburbs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <soap:operation soapAction="http://stanski.com/services/resolveSuburbDetails" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PostcodeServiceHttpGet" type="s0:PostcodeServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="resolvePostcodeToSuburbs">
+      <http:operation location="/resolvePostcodeToSuburbs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <http:operation location="/resolveSuburbDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="PostcodeServiceHttpPost" type="s0:PostcodeServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="resolvePostcodeToSuburbs">
+      <http:operation location="/resolvePostcodeToSuburbs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="resolveSuburbDetails">
+      <http:operation location="/resolveSuburbDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="PostcodeService">
+    <port name="PostcodeServiceSoap" binding="s0:PostcodeServiceSoap">
+      <soap:address location="http://www.stanski.com/services/postcode/postcode.asmx" />
+    </port>
+    <port name="PostcodeServiceHttpGet" binding="s0:PostcodeServiceHttpGet">
+      <http:address location="http://www.stanski.com/services/postcode/postcode.asmx" />
+    </port>
+    <port name="PostcodeServiceHttpPost" binding="s0:PostcodeServiceHttpPost">
+      <http:address location="http://www.stanski.com/services/postcode/postcode.asmx" />
+    </port>
+  </service>
+</definitions>

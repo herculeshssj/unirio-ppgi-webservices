@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx">
+      <s:element name="email">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serveur" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediteur" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destinataire" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objet" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="formatmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="corps" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="emailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mailing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passe" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serveur" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expediteur" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="liste" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objet" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="formatmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="corps" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mailingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mailingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="emailSoapIn">
+    <part name="parameters" element="s0:email" />
+  </message>
+  <message name="emailSoapOut">
+    <part name="parameters" element="s0:emailResponse" />
+  </message>
+  <message name="mailingSoapIn">
+    <part name="parameters" element="s0:mailing" />
+  </message>
+  <message name="mailingSoapOut">
+    <part name="parameters" element="s0:mailingResponse" />
+  </message>
+  <message name="emailHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="serveur" type="s:string" />
+    <part name="expediteur" type="s:string" />
+    <part name="destinataire" type="s:string" />
+    <part name="objet" type="s:string" />
+    <part name="formatmail" type="s:string" />
+    <part name="corps" type="s:string" />
+  </message>
+  <message name="emailHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="mailingHttpGetIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="serveur" type="s:string" />
+    <part name="expediteur" type="s:string" />
+    <part name="liste" type="s:string" />
+    <part name="objet" type="s:string" />
+    <part name="formatmail" type="s:string" />
+    <part name="corps" type="s:string" />
+  </message>
+  <message name="mailingHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="emailHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="serveur" type="s:string" />
+    <part name="expediteur" type="s:string" />
+    <part name="destinataire" type="s:string" />
+    <part name="objet" type="s:string" />
+    <part name="formatmail" type="s:string" />
+    <part name="corps" type="s:string" />
+  </message>
+  <message name="emailHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="mailingHttpPostIn">
+    <part name="login" type="s:string" />
+    <part name="passe" type="s:string" />
+    <part name="serveur" type="s:string" />
+    <part name="expediteur" type="s:string" />
+    <part name="liste" type="s:string" />
+    <part name="objet" type="s:string" />
+    <part name="formatmail" type="s:string" />
+    <part name="corps" type="s:string" />
+  </message>
+  <message name="mailingHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="simplemailSoap">
+    <operation name="email">
+      <documentation>Permet d'envoyer un e-mail ?? un destinataire au format texte ou html</documentation>
+      <input message="s0:emailSoapIn" />
+      <output message="s0:emailSoapOut" />
+    </operation>
+    <operation name="mailing">
+      <documentation>Permet d'envoyer un e-mail individuel aux membres d'une liste de diffusion au format texte ou html</documentation>
+      <input message="s0:mailingSoapIn" />
+      <output message="s0:mailingSoapOut" />
+    </operation>
+  </portType>
+  <portType name="simplemailHttpGet">
+    <operation name="email">
+      <documentation>Permet d'envoyer un e-mail ?? un destinataire au format texte ou html</documentation>
+      <input message="s0:emailHttpGetIn" />
+      <output message="s0:emailHttpGetOut" />
+    </operation>
+    <operation name="mailing">
+      <documentation>Permet d'envoyer un e-mail individuel aux membres d'une liste de diffusion au format texte ou html</documentation>
+      <input message="s0:mailingHttpGetIn" />
+      <output message="s0:mailingHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="simplemailHttpPost">
+    <operation name="email">
+      <documentation>Permet d'envoyer un e-mail ?? un destinataire au format texte ou html</documentation>
+      <input message="s0:emailHttpPostIn" />
+      <output message="s0:emailHttpPostOut" />
+    </operation>
+    <operation name="mailing">
+      <documentation>Permet d'envoyer un e-mail individuel aux membres d'une liste de diffusion au format texte ou html</documentation>
+      <input message="s0:mailingHttpPostIn" />
+      <output message="s0:mailingHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="simplemailSoap" type="s0:simplemailSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="email">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx/email" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="mailing">
+      <soap:operation soapAction="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx/mailing" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="simplemailHttpGet" type="s0:simplemailHttpGet">
+    <http:binding verb="GET" />
+    <operation name="email">
+      <http:operation location="/email" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="mailing">
+      <http:operation location="/mailing" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="simplemailHttpPost" type="s0:simplemailHttpPost">
+    <http:binding verb="POST" />
+    <operation name="email">
+      <http:operation location="/email" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="mailing">
+      <http:operation location="/mailing" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="simplemail">
+    <port name="simplemailSoap" binding="s0:simplemailSoap">
+      <soap:address location="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx" />
+    </port>
+    <port name="simplemailHttpGet" binding="s0:simplemailHttpGet">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx" />
+    </port>
+    <port name="simplemailHttpPost" binding="s0:simplemailHttpPost">
+      <http:address location="http://www.dotnetisp.com/webservices/dotnetisp/simplemail.asmx" />
+    </port>
+  </service>
+</definitions>

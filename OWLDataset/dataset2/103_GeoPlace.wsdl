@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://skats.net/services/literalTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://skats.net/services/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://skats.net/services/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://skats.net/services/">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <s:simpleType name="GeoPlaceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ZipCode" />
+          <s:enumeration value="City" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfGeoPlaceDistance">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:attribute d7p1:arrayType="s0:GeoPlaceDistance[]" ref="soapenc:arrayType" xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" />
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GeoPlaceDistance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ToPlace" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToState" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeoPlaceDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s0:GeoPlaceType" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatRadians" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonRadians" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://skats.net/services/literalTypes">
+      <s:element name="ArrayOfGeoPlaceDistance" nillable="true" type="s1:ArrayOfGeoPlaceDistance" />
+      <s:complexType name="ArrayOfGeoPlaceDistance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GeoPlaceDistance" nillable="true" type="s1:GeoPlaceDistance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeoPlaceDistance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ToPlace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToState" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="float" type="s:float" />
+      <s:element name="GeoPlaceDetails" nillable="true" type="s1:GeoPlaceDetails" />
+      <s:complexType name="GeoPlaceDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s1:GeoPlaceType" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonDegrees" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatRadians" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="LonRadians" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="GeoPlaceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ZipCode" />
+          <s:enumeration value="City" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </types>
+  <message name="GetPlacesWithinSoapIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="distance" type="s:float" />
+    <part name="placeTypeToFind" type="s0:GeoPlaceType" />
+  </message>
+  <message name="GetPlacesWithinSoapOut">
+    <part name="GetPlacesWithinResult" type="s0:ArrayOfGeoPlaceDistance" />
+  </message>
+  <message name="GetPlacesWithinAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetDistanceBetweenPlacesSoapIn">
+    <part name="place1" type="s:string" />
+    <part name="state1" type="s:string" />
+    <part name="place2" type="s:string" />
+    <part name="state2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenPlacesSoapOut">
+    <part name="GetDistanceBetweenPlacesResult" type="s:float" />
+  </message>
+  <message name="GetDistanceBetweenPlacesAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetPlaceDetailsSoapIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+  </message>
+  <message name="GetPlaceDetailsSoapOut">
+    <part name="GetPlaceDetailsResult" type="s0:GeoPlaceDetails" />
+  </message>
+  <message name="GetPlaceDetailsAuthenticationHeader">
+    <part name="AuthenticationHeader" type="s0:AuthenticationHeader" />
+  </message>
+  <message name="GetPlacesWithinHttpGetIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="distance" type="s:string" />
+    <part name="placeTypeToFind" type="s:string" />
+  </message>
+  <message name="GetPlacesWithinHttpGetOut">
+    <part name="Body" element="s1:ArrayOfGeoPlaceDistance" />
+  </message>
+  <message name="GetDistanceBetweenPlacesHttpGetIn">
+    <part name="place1" type="s:string" />
+    <part name="state1" type="s:string" />
+    <part name="place2" type="s:string" />
+    <part name="state2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenPlacesHttpGetOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetPlaceDetailsHttpGetIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+  </message>
+  <message name="GetPlaceDetailsHttpGetOut">
+    <part name="Body" element="s1:GeoPlaceDetails" />
+  </message>
+  <message name="GetPlacesWithinHttpPostIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+    <part name="distance" type="s:string" />
+    <part name="placeTypeToFind" type="s:string" />
+  </message>
+  <message name="GetPlacesWithinHttpPostOut">
+    <part name="Body" element="s1:ArrayOfGeoPlaceDistance" />
+  </message>
+  <message name="GetDistanceBetweenPlacesHttpPostIn">
+    <part name="place1" type="s:string" />
+    <part name="state1" type="s:string" />
+    <part name="place2" type="s:string" />
+    <part name="state2" type="s:string" />
+  </message>
+  <message name="GetDistanceBetweenPlacesHttpPostOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetPlaceDetailsHttpPostIn">
+    <part name="place" type="s:string" />
+    <part name="state" type="s:string" />
+  </message>
+  <message name="GetPlaceDetailsHttpPostOut">
+    <part name="Body" element="s1:GeoPlaceDetails" />
+  </message>
+  <portType name="GeoPlacesSoap">
+    <operation name="GetPlacesWithin">
+      <documentation>Returns a list of geo places within a specified distance from a given place. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes), distance - distance in miles, placeTypeToFind - type of place to look for: ZipCode or City (including any villages, towns, etc).</documentation>
+      <input message="s0:GetPlacesWithinSoapIn" />
+      <output message="s0:GetPlacesWithinSoapOut" />
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <documentation>Returns a distance in miles between two geo places. Parameters: place1 - place name (65 char max), state1 - 2 letter state code (not required for zip codes), place2 - place name (65 char max), state2 - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetDistanceBetweenPlacesSoapIn" />
+      <output message="s0:GetDistanceBetweenPlacesSoapOut" />
+    </operation>
+    <operation name="GetPlaceDetails">
+      <documentation>Returns a geo place details: name, type, state and coordinates. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetPlaceDetailsSoapIn" />
+      <output message="s0:GetPlaceDetailsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="GeoPlacesHttpGet">
+    <operation name="GetPlacesWithin">
+      <documentation>Returns a list of geo places within a specified distance from a given place. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes), distance - distance in miles, placeTypeToFind - type of place to look for: ZipCode or City (including any villages, towns, etc).</documentation>
+      <input message="s0:GetPlacesWithinHttpGetIn" />
+      <output message="s0:GetPlacesWithinHttpGetOut" />
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <documentation>Returns a distance in miles between two geo places. Parameters: place1 - place name (65 char max), state1 - 2 letter state code (not required for zip codes), place2 - place name (65 char max), state2 - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetDistanceBetweenPlacesHttpGetIn" />
+      <output message="s0:GetDistanceBetweenPlacesHttpGetOut" />
+    </operation>
+    <operation name="GetPlaceDetails">
+      <documentation>Returns a geo place details: name, type, state and coordinates. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetPlaceDetailsHttpGetIn" />
+      <output message="s0:GetPlaceDetailsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="GeoPlacesHttpPost">
+    <operation name="GetPlacesWithin">
+      <documentation>Returns a list of geo places within a specified distance from a given place. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes), distance - distance in miles, placeTypeToFind - type of place to look for: ZipCode or City (including any villages, towns, etc).</documentation>
+      <input message="s0:GetPlacesWithinHttpPostIn" />
+      <output message="s0:GetPlacesWithinHttpPostOut" />
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <documentation>Returns a distance in miles between two geo places. Parameters: place1 - place name (65 char max), state1 - 2 letter state code (not required for zip codes), place2 - place name (65 char max), state2 - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetDistanceBetweenPlacesHttpPostIn" />
+      <output message="s0:GetDistanceBetweenPlacesHttpPostOut" />
+    </operation>
+    <operation name="GetPlaceDetails">
+      <documentation>Returns a geo place details: name, type, state and coordinates. Parameters: place - place name (65 char max), state - 2 letter state code (not required for zip codes).</documentation>
+      <input message="s0:GetPlaceDetailsHttpPostIn" />
+      <output message="s0:GetPlaceDetailsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="GeoPlacesSoap" type="s0:GeoPlacesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetPlacesWithin">
+      <soap:operation soapAction="http://skats.net/services/GetPlacesWithin" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetPlacesWithinAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <soap:operation soapAction="http://skats.net/services/GetDistanceBetweenPlaces" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetDistanceBetweenPlacesAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetPlaceDetails">
+      <soap:operation soapAction="http://skats.net/services/GetPlaceDetails" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:header message="s0:GetPlaceDetailsAuthenticationHeader" part="AuthenticationHeader" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://skats.net/services/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GeoPlacesHttpGet" type="s0:GeoPlacesHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetPlacesWithin">
+      <http:operation location="/GetPlacesWithin" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <http:operation location="/GetDistanceBetweenPlaces" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPlaceDetails">
+      <http:operation location="/GetPlaceDetails" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GeoPlacesHttpPost" type="s0:GeoPlacesHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetPlacesWithin">
+      <http:operation location="/GetPlacesWithin" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDistanceBetweenPlaces">
+      <http:operation location="/GetDistanceBetweenPlaces" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPlaceDetails">
+      <http:operation location="/GetPlaceDetails" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GeoPlaces">
+    <documentation>GeoPlaces Service is the evolution of ZipCode Lookup service. It enhances ZipCode Lookup by adding support for city names. Now you can find near by zip codes and cities, find distance between zip codes and cities, get coordinates of zip codes and cities. Place's coordinates are determined using an approximate center point of the shape.</documentation>
+    <port name="GeoPlacesSoap" binding="s0:GeoPlacesSoap">
+      <soap:address location="http://www.codebump.com/services/placelookup.asmx" />
+    </port>
+    <port name="GeoPlacesHttpGet" binding="s0:GeoPlacesHttpGet">
+      <http:address location="http://www.codebump.com/services/placelookup.asmx" />
+    </port>
+    <port name="GeoPlacesHttpPost" binding="s0:GeoPlacesHttpPost">
+      <http:address location="http://www.codebump.com/services/placelookup.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="AbiCabIT" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="AbiCabIT" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="AbiCabIT">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="validateAbiCabCodes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiCodeToValidate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cabCodeToValidate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAbiCabCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateAbiCabCodesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAbiCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiCodeToValidate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAbiCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateAbiCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCabCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CabCodeToValidate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateCabCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateCabCodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAbiNameFromAbiCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAbiNameFromAbiCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAbiNameFromAbiCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAbiCodeFromAbiName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAbiCodeFromAbiNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAbiCodeFromAbiNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAbiName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiNameToValidate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAbiNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="validateAbiNameResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showServiceCredits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="showServiceCreditsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="showServiceCreditsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCabTellersFromAbiCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="abiCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cityTown" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCabTellersFromAbiCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCabTellersFromAbiCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCabTellersFromCabCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cabCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCabTellersFromCabCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCabTellersFromCabCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="validateAbiCabCodesSoapIn">
+    <part name="parameters" element="s0:validateAbiCabCodes" />
+  </message>
+  <message name="validateAbiCabCodesSoapOut">
+    <part name="parameters" element="s0:validateAbiCabCodesResponse" />
+  </message>
+  <message name="validateAbiCodeSoapIn">
+    <part name="parameters" element="s0:validateAbiCode" />
+  </message>
+  <message name="validateAbiCodeSoapOut">
+    <part name="parameters" element="s0:validateAbiCodeResponse" />
+  </message>
+  <message name="validateCabCodeSoapIn">
+    <part name="parameters" element="s0:validateCabCode" />
+  </message>
+  <message name="validateCabCodeSoapOut">
+    <part name="parameters" element="s0:validateCabCodeResponse" />
+  </message>
+  <message name="getAbiNameFromAbiCodeSoapIn">
+    <part name="parameters" element="s0:getAbiNameFromAbiCode" />
+  </message>
+  <message name="getAbiNameFromAbiCodeSoapOut">
+    <part name="parameters" element="s0:getAbiNameFromAbiCodeResponse" />
+  </message>
+  <message name="getAbiCodeFromAbiNameSoapIn">
+    <part name="parameters" element="s0:getAbiCodeFromAbiName" />
+  </message>
+  <message name="getAbiCodeFromAbiNameSoapOut">
+    <part name="parameters" element="s0:getAbiCodeFromAbiNameResponse" />
+  </message>
+  <message name="validateAbiNameSoapIn">
+    <part name="parameters" element="s0:validateAbiName" />
+  </message>
+  <message name="validateAbiNameSoapOut">
+    <part name="parameters" element="s0:validateAbiNameResponse" />
+  </message>
+  <message name="showServiceCreditsSoapIn">
+    <part name="parameters" element="s0:showServiceCredits" />
+  </message>
+  <message name="showServiceCreditsSoapOut">
+    <part name="parameters" element="s0:showServiceCreditsResponse" />
+  </message>
+  <message name="getCabTellersFromAbiCodeSoapIn">
+    <part name="parameters" element="s0:getCabTellersFromAbiCode" />
+  </message>
+  <message name="getCabTellersFromAbiCodeSoapOut">
+    <part name="parameters" element="s0:getCabTellersFromAbiCodeResponse" />
+  </message>
+  <message name="getCabTellersFromCabCodeSoapIn">
+    <part name="parameters" element="s0:getCabTellersFromCabCode" />
+  </message>
+  <message name="getCabTellersFromCabCodeSoapOut">
+    <part name="parameters" element="s0:getCabTellersFromCabCodeResponse" />
+  </message>
+  <message name="validateAbiCabCodesHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCodeToValidate" type="s:string" />
+    <part name="cabCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiCabCodesHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="validateAbiCodeHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiCodeHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="validateCabCodeHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CabCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateCabCodeHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="getAbiNameFromAbiCodeHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCode" type="s:string" />
+  </message>
+  <message name="getAbiNameFromAbiCodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getAbiCodeFromAbiNameHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiName" type="s:string" />
+  </message>
+  <message name="getAbiCodeFromAbiNameHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="validateAbiNameHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiNameToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiNameHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="showServiceCreditsHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+  </message>
+  <message name="showServiceCreditsHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="getCabTellersFromAbiCodeHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCode" type="s:string" />
+    <part name="cityTown" type="s:string" />
+  </message>
+  <message name="getCabTellersFromAbiCodeHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCabTellersFromCabCodeHttpGetIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="cabCode" type="s:string" />
+  </message>
+  <message name="getCabTellersFromCabCodeHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="validateAbiCabCodesHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCodeToValidate" type="s:string" />
+    <part name="cabCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiCabCodesHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="validateAbiCodeHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiCodeHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="validateCabCodeHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="CabCodeToValidate" type="s:string" />
+  </message>
+  <message name="validateCabCodeHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="getAbiNameFromAbiCodeHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCode" type="s:string" />
+  </message>
+  <message name="getAbiNameFromAbiCodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getAbiCodeFromAbiNameHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiName" type="s:string" />
+  </message>
+  <message name="getAbiCodeFromAbiNameHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="validateAbiNameHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiNameToValidate" type="s:string" />
+  </message>
+  <message name="validateAbiNameHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="showServiceCreditsHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+  </message>
+  <message name="showServiceCreditsHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="getCabTellersFromAbiCodeHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="abiCode" type="s:string" />
+    <part name="cityTown" type="s:string" />
+  </message>
+  <message name="getCabTellersFromAbiCodeHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="getCabTellersFromCabCodeHttpPostIn">
+    <part name="UserName" type="s:string" />
+    <part name="PassWord" type="s:string" />
+    <part name="cabCode" type="s:string" />
+  </message>
+  <message name="getCabTellersFromCabCodeHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="AbiCabITSoap">
+    <operation name="validateAbiCabCodes">
+      <documentation>To validate a combination between ABI and CAB codes.</documentation>
+      <input message="s0:validateAbiCabCodesSoapIn" />
+      <output message="s0:validateAbiCabCodesSoapOut" />
+    </operation>
+    <operation name="validateAbiCode">
+      <documentation>To validate an ABI code.</documentation>
+      <input message="s0:validateAbiCodeSoapIn" />
+      <output message="s0:validateAbiCodeSoapOut" />
+    </operation>
+    <operation name="validateCabCode">
+      <documentation>To validate a CAB code.</documentation>
+      <input message="s0:validateCabCodeSoapIn" />
+      <output message="s0:validateCabCodeSoapOut" />
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <documentation>To get the bank name from an ABI code.</documentation>
+      <input message="s0:getAbiNameFromAbiCodeSoapIn" />
+      <output message="s0:getAbiNameFromAbiCodeSoapOut" />
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <documentation>To get the ABI code from a bank name.</documentation>
+      <input message="s0:getAbiCodeFromAbiNameSoapIn" />
+      <output message="s0:getAbiCodeFromAbiNameSoapOut" />
+    </operation>
+    <operation name="validateAbiName">
+      <documentation>To validate a bank name.</documentation>
+      <input message="s0:validateAbiNameSoapIn" />
+      <output message="s0:validateAbiNameSoapOut" />
+    </operation>
+    <operation name="showServiceCredits">
+      <documentation>To get the authenticated user credits.</documentation>
+      <input message="s0:showServiceCreditsSoapIn" />
+      <output message="s0:showServiceCreditsSoapOut" />
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <documentation>To get all tellers from an ABI code in the specified city or town.</documentation>
+      <input message="s0:getCabTellersFromAbiCodeSoapIn" />
+      <output message="s0:getCabTellersFromAbiCodeSoapOut" />
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <documentation>To get all tellers from a CAB code.</documentation>
+      <input message="s0:getCabTellersFromCabCodeSoapIn" />
+      <output message="s0:getCabTellersFromCabCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="AbiCabITHttpGet">
+    <operation name="validateAbiCabCodes">
+      <documentation>To validate a combination between ABI and CAB codes.</documentation>
+      <input message="s0:validateAbiCabCodesHttpGetIn" />
+      <output message="s0:validateAbiCabCodesHttpGetOut" />
+    </operation>
+    <operation name="validateAbiCode">
+      <documentation>To validate an ABI code.</documentation>
+      <input message="s0:validateAbiCodeHttpGetIn" />
+      <output message="s0:validateAbiCodeHttpGetOut" />
+    </operation>
+    <operation name="validateCabCode">
+      <documentation>To validate a CAB code.</documentation>
+      <input message="s0:validateCabCodeHttpGetIn" />
+      <output message="s0:validateCabCodeHttpGetOut" />
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <documentation>To get the bank name from an ABI code.</documentation>
+      <input message="s0:getAbiNameFromAbiCodeHttpGetIn" />
+      <output message="s0:getAbiNameFromAbiCodeHttpGetOut" />
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <documentation>To get the ABI code from a bank name.</documentation>
+      <input message="s0:getAbiCodeFromAbiNameHttpGetIn" />
+      <output message="s0:getAbiCodeFromAbiNameHttpGetOut" />
+    </operation>
+    <operation name="validateAbiName">
+      <documentation>To validate a bank name.</documentation>
+      <input message="s0:validateAbiNameHttpGetIn" />
+      <output message="s0:validateAbiNameHttpGetOut" />
+    </operation>
+    <operation name="showServiceCredits">
+      <documentation>To get the authenticated user credits.</documentation>
+      <input message="s0:showServiceCreditsHttpGetIn" />
+      <output message="s0:showServiceCreditsHttpGetOut" />
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <documentation>To get all tellers from an ABI code in the specified city or town.</documentation>
+      <input message="s0:getCabTellersFromAbiCodeHttpGetIn" />
+      <output message="s0:getCabTellersFromAbiCodeHttpGetOut" />
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <documentation>To get all tellers from a CAB code.</documentation>
+      <input message="s0:getCabTellersFromCabCodeHttpGetIn" />
+      <output message="s0:getCabTellersFromCabCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="AbiCabITHttpPost">
+    <operation name="validateAbiCabCodes">
+      <documentation>To validate a combination between ABI and CAB codes.</documentation>
+      <input message="s0:validateAbiCabCodesHttpPostIn" />
+      <output message="s0:validateAbiCabCodesHttpPostOut" />
+    </operation>
+    <operation name="validateAbiCode">
+      <documentation>To validate an ABI code.</documentation>
+      <input message="s0:validateAbiCodeHttpPostIn" />
+      <output message="s0:validateAbiCodeHttpPostOut" />
+    </operation>
+    <operation name="validateCabCode">
+      <documentation>To validate a CAB code.</documentation>
+      <input message="s0:validateCabCodeHttpPostIn" />
+      <output message="s0:validateCabCodeHttpPostOut" />
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <documentation>To get the bank name from an ABI code.</documentation>
+      <input message="s0:getAbiNameFromAbiCodeHttpPostIn" />
+      <output message="s0:getAbiNameFromAbiCodeHttpPostOut" />
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <documentation>To get the ABI code from a bank name.</documentation>
+      <input message="s0:getAbiCodeFromAbiNameHttpPostIn" />
+      <output message="s0:getAbiCodeFromAbiNameHttpPostOut" />
+    </operation>
+    <operation name="validateAbiName">
+      <documentation>To validate a bank name.</documentation>
+      <input message="s0:validateAbiNameHttpPostIn" />
+      <output message="s0:validateAbiNameHttpPostOut" />
+    </operation>
+    <operation name="showServiceCredits">
+      <documentation>To get the authenticated user credits.</documentation>
+      <input message="s0:showServiceCreditsHttpPostIn" />
+      <output message="s0:showServiceCreditsHttpPostOut" />
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <documentation>To get all tellers from an ABI code in the specified city or town.</documentation>
+      <input message="s0:getCabTellersFromAbiCodeHttpPostIn" />
+      <output message="s0:getCabTellersFromAbiCodeHttpPostOut" />
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <documentation>To get all tellers from a CAB code.</documentation>
+      <input message="s0:getCabTellersFromCabCodeHttpPostIn" />
+      <output message="s0:getCabTellersFromCabCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="AbiCabITSoap" type="s0:AbiCabITSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="validateAbiCabCodes">
+      <soap:operation soapAction="AbiCabIT/validateAbiCabCodes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validateAbiCode">
+      <soap:operation soapAction="AbiCabIT/validateAbiCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validateCabCode">
+      <soap:operation soapAction="AbiCabIT/validateCabCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <soap:operation soapAction="AbiCabIT/getAbiNameFromAbiCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <soap:operation soapAction="AbiCabIT/getAbiCodeFromAbiName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validateAbiName">
+      <soap:operation soapAction="AbiCabIT/validateAbiName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="showServiceCredits">
+      <soap:operation soapAction="AbiCabIT/showServiceCredits" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <soap:operation soapAction="AbiCabIT/getCabTellersFromAbiCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <soap:operation soapAction="AbiCabIT/getCabTellersFromCabCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AbiCabITHttpGet" type="s0:AbiCabITHttpGet">
+    <http:binding verb="GET" />
+    <operation name="validateAbiCabCodes">
+      <http:operation location="/validateAbiCabCodes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateAbiCode">
+      <http:operation location="/validateAbiCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateCabCode">
+      <http:operation location="/validateCabCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <http:operation location="/getAbiNameFromAbiCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <http:operation location="/getAbiCodeFromAbiName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateAbiName">
+      <http:operation location="/validateAbiName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showServiceCredits">
+      <http:operation location="/showServiceCredits" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <http:operation location="/getCabTellersFromAbiCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <http:operation location="/getCabTellersFromCabCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="AbiCabITHttpPost" type="s0:AbiCabITHttpPost">
+    <http:binding verb="POST" />
+    <operation name="validateAbiCabCodes">
+      <http:operation location="/validateAbiCabCodes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateAbiCode">
+      <http:operation location="/validateAbiCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateCabCode">
+      <http:operation location="/validateCabCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAbiNameFromAbiCode">
+      <http:operation location="/getAbiNameFromAbiCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getAbiCodeFromAbiName">
+      <http:operation location="/getAbiCodeFromAbiName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="validateAbiName">
+      <http:operation location="/validateAbiName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="showServiceCredits">
+      <http:operation location="/showServiceCredits" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromAbiCode">
+      <http:operation location="/getCabTellersFromAbiCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getCabTellersFromCabCode">
+      <http:operation location="/getCabTellersFromCabCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="AbiCabIT">
+    <documentation>The &lt;b&gt;AbiCabIT&lt;/b&gt; class contains methods to validate and get italian banks ABI and CAB codes and values.&lt;br /&gt;Dowload the zipped file &lt;a href="http://www11.brinkster.com/devnext/download.asp?fldID=5"&gt;AbiCabIT.xls&lt;/a&gt; to run all these methods without write one line of code; updating&lt;br /&gt;corporate data into a Microsoft Excel version 2002 spreadsheet by using &lt;b&gt;AbiCabIT&lt;/b&gt; XML Web service and XBRL.&lt;br /&gt;Be sure to install the Microsoft XML Support update: it's free from Microsoft. Minimum requirements,&lt;br /&gt;&lt;a href="http://msdn.microsoft.com/downloads/default.asp?url=/downloads/sample.asp?url=/msdn-files/027/001/772/msdncompositedoc.xml"&gt;XML Parser&lt;/a&gt; Version 3 (for developers, download the optional &lt;a href="http://download.microsoft.com/download/xml/soap/2.0/W98NT42KMe/EN-US/SoapToolkit20.exe"&gt;XML/SOAP Toolkit&lt;/a&gt;).&lt;br /&gt;To test all the methods you will need also &lt;b&gt;credentials&lt;/b&gt; and &lt;b&gt;free access credits&lt;/b&gt;: send an e-mail with your credits request.&lt;br /&gt;&lt;br /&gt;More informations about this webservice at &lt;b&gt;&lt;a href="http://net.intranext.it/abicabit/"&gt;http://net.intranext.it/abicabit/&lt;/a&gt;&lt;/b&gt; or sending an e-mail to &lt;b&gt;&lt;a href="mailto:abicabit@intranext.it"&gt;abicabit@intranext.it&lt;/a&gt;&lt;/b&gt;.&lt;br /&gt;&lt;i&gt;All rights reserved ??2002 Intranext s.a.s IT. - Names and trademarks are the property of their respective owners.&lt;/i&gt;</documentation>
+    <port name="AbiCabITSoap" binding="s0:AbiCabITSoap">
+      <soap:address location="http://inext.www1.dotnetplayground.com/AbiCabIT.asmx" />
+    </port>
+    <port name="AbiCabITHttpGet" binding="s0:AbiCabITHttpGet">
+      <http:address location="http://inext.www1.dotnetplayground.com/AbiCabIT.asmx" />
+    </port>
+    <port name="AbiCabITHttpPost" binding="s0:AbiCabITHttpPost">
+      <http:address location="http://inext.www1.dotnetplayground.com/AbiCabIT.asmx" />
+    </port>
+  </service>
+</definitions>

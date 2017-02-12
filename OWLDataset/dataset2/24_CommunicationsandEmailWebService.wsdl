@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.soapengine.com/lucin/salcentral/ccomms.asmx" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.soapengine.com/lucin/salcentral/ccomms.asmx" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.soapengine.com/lucin/salcentral/ccomms.asmx">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="SendNewsletter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Users">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewsLetter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s0:MailFormat" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MailFormat">
+        <s:restriction base="s:string">
+          <s:enumeration value="Text" />
+          <s:enumeration value="Html" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SendNewsletterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendNewsletterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsEmailAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsEmailAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsEmailAddressResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Recipient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s0:MailFormat" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBulkEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AdminUserID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Recipient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BCCRecipients" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCRecipients" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s0:MailFormat" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBulkEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendBulkEmailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="SendNewsletterSoapIn">
+    <part name="parameters" element="s0:SendNewsletter" />
+  </message>
+  <message name="SendNewsletterSoapOut">
+    <part name="parameters" element="s0:SendNewsletterResponse" />
+  </message>
+  <message name="IsEmailAddressSoapIn">
+    <part name="parameters" element="s0:IsEmailAddress" />
+  </message>
+  <message name="IsEmailAddressSoapOut">
+    <part name="parameters" element="s0:IsEmailAddressResponse" />
+  </message>
+  <message name="SendEmailSoapIn">
+    <part name="parameters" element="s0:SendEmail" />
+  </message>
+  <message name="SendEmailSoapOut">
+    <part name="parameters" element="s0:SendEmailResponse" />
+  </message>
+  <message name="SendBulkEmailSoapIn">
+    <part name="parameters" element="s0:SendBulkEmail" />
+  </message>
+  <message name="SendBulkEmailSoapOut">
+    <part name="parameters" element="s0:SendBulkEmailResponse" />
+  </message>
+  <message name="GetUserIDSoapIn">
+    <part name="parameters" element="s0:GetUserID" />
+  </message>
+  <message name="GetUserIDSoapOut">
+    <part name="parameters" element="s0:GetUserIDResponse" />
+  </message>
+  <message name="IsEmailAddressHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="EmailAddress" type="s:string" />
+  </message>
+  <message name="IsEmailAddressHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="SendEmailHttpGetIn">
+    <part name="Sender" type="s:string" />
+    <part name="Recipient" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="MessageType" type="s:string" />
+  </message>
+  <message name="SendEmailHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="SendBulkEmailHttpGetIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Sender" type="s:string" />
+    <part name="Recipient" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="BCCRecipients" type="s:string" />
+    <part name="CCRecipients" type="s:string" />
+    <part name="MessageType" type="s:string" />
+  </message>
+  <message name="SendBulkEmailHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetUserIDHttpGetIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="IsEmailAddressHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="EmailAddress" type="s:string" />
+  </message>
+  <message name="IsEmailAddressHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="SendEmailHttpPostIn">
+    <part name="Sender" type="s:string" />
+    <part name="Recipient" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="MessageType" type="s:string" />
+  </message>
+  <message name="SendEmailHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="SendBulkEmailHttpPostIn">
+    <part name="AdminUserID" type="s:string" />
+    <part name="Password" type="s:string" />
+    <part name="Sender" type="s:string" />
+    <part name="Recipient" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Message" type="s:string" />
+    <part name="BCCRecipients" type="s:string" />
+    <part name="CCRecipients" type="s:string" />
+    <part name="MessageType" type="s:string" />
+  </message>
+  <message name="SendBulkEmailHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="GetUserIDHttpPostIn">
+    <part name="EmailAddress" type="s:string" />
+    <part name="Name" type="s:string" />
+  </message>
+  <message name="GetUserIDHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="ccommsSoap">
+    <operation name="SendNewsletter">
+      <documentation>Send a newsletter to a list of users which are passed down to this web service using a dataset. Also passed to this web service is a newsletter, the newsletter can contain &amp;lt;?FIELD_NAME?&amp;gt; fields which are substituted during parsing of the newsletter for the values/fields found in the users dataset.&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;AdminUserID&lt;/b&gt; = Valid and active Administrator User identification. This gives you the ability to alter other users information as long as they belong to your brokerage.&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your Administration UserID&lt;br&gt;&lt;b&gt;Sender&lt;/b&gt; = Senders email address, also accepts address in the following syntax i.e. SoapEngine &amp;lt;salcentral@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Users&lt;/b&gt; = Dataset list of users to send a newsletter too&lt;br&gt;&lt;b&gt;Subject&lt;/b&gt; = The subject of a message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;NewsLetter&lt;/b&gt; = Newsletter to send to recipients, newsletters can contain &amp;lt;?FIELD_NAME?&amp;gt; syntax to allow fields to be substituted within the newsletter by data found within a dataset&lt;br&gt;&lt;b&gt;MessageType&lt;/b&gt; = Use the value 'Html' for Html messages and the value 'Text' for Text messages&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SendNewsletterSoapIn" />
+      <output message="s0:SendNewsletterSoapOut" />
+    </operation>
+    <operation name="IsEmailAddress">
+      <documentation>Return true if the supplied email address is a valid email address form&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Email address to send the email too. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsEmailAddressSoapIn" />
+      <output message="s0:IsEmailAddressSoapOut" />
+    </operation>
+    <operation name="SendEmail">
+      <input message="s0:SendEmailSoapIn" />
+      <output message="s0:SendEmailSoapOut" />
+    </operation>
+    <operation name="SendBulkEmail">
+      <documentation>Send a single email to many recipients using BCC and/or CC transport&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;Sender&lt;/b&gt; = Senders email address, also accepts address in the following syntax i.e. SoapEngine &amp;lt;salcentral@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Recipient&lt;/b&gt; = Destination email address you want to send this email message to. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Subject&lt;/b&gt; = The subject of a message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;Message&lt;/b&gt; = The content of the message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;BCCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using BCC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;CCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using CC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;MessageType&lt;/b&gt; = Use the value 'Html' for Html messages and the value 'Text' for Text messages&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SendBulkEmailSoapIn" />
+      <output message="s0:SendBulkEmailSoapOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDSoapIn" />
+      <output message="s0:GetUserIDSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ccommsHttpGet">
+    <operation name="IsEmailAddress">
+      <documentation>Return true if the supplied email address is a valid email address form&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Email address to send the email too. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsEmailAddressHttpGetIn" />
+      <output message="s0:IsEmailAddressHttpGetOut" />
+    </operation>
+    <operation name="SendEmail">
+      <input message="s0:SendEmailHttpGetIn" />
+      <output message="s0:SendEmailHttpGetOut" />
+    </operation>
+    <operation name="SendBulkEmail">
+      <documentation>Send a single email to many recipients using BCC and/or CC transport&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;Sender&lt;/b&gt; = Senders email address, also accepts address in the following syntax i.e. SoapEngine &amp;lt;salcentral@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Recipient&lt;/b&gt; = Destination email address you want to send this email message to. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Subject&lt;/b&gt; = The subject of a message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;Message&lt;/b&gt; = The content of the message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;BCCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using BCC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;CCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using CC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;MessageType&lt;/b&gt; = Use the value 'Html' for Html messages and the value 'Text' for Text messages&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SendBulkEmailHttpGetIn" />
+      <output message="s0:SendBulkEmailHttpGetOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpGetIn" />
+      <output message="s0:GetUserIDHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ccommsHttpPost">
+    <operation name="IsEmailAddress">
+      <documentation>Return true if the supplied email address is a valid email address form&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Email address to send the email too. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:IsEmailAddressHttpPostIn" />
+      <output message="s0:IsEmailAddressHttpPostOut" />
+    </operation>
+    <operation name="SendEmail">
+      <input message="s0:SendEmailHttpPostIn" />
+      <output message="s0:SendEmailHttpPostOut" />
+    </operation>
+    <operation name="SendBulkEmail">
+      <documentation>Send a single email to many recipients using BCC and/or CC transport&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;UserID&lt;/b&gt; = Valid and active User identification, you can get this by running the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included within this web service&lt;br&gt;&lt;b&gt;Password&lt;/b&gt; = Password to use with your UserID, you can get a password/userid by using the &lt;a target='_blank' href='cwsinherit.asmx?op=GetUserID'&gt;GetUserID&lt;/a&gt; method also included with this web service.&lt;br&gt;&lt;b&gt;Sender&lt;/b&gt; = Senders email address, also accepts address in the following syntax i.e. SoapEngine &amp;lt;salcentral@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Recipient&lt;/b&gt; = Destination email address you want to send this email message to. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;Subject&lt;/b&gt; = The subject of a message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;Message&lt;/b&gt; = The content of the message, email, note, code snippet, review etc.&lt;br&gt;&lt;b&gt;BCCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using BCC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;CCRecipients&lt;/b&gt; = Semicolon seperated list of recipients you wish to send this email to using CC methods. You can use the name followed by &amp;lt;?&amp;gt; to signify the email address i.e. Mr Anonymous &amp;lt;anon@lucin.com&amp;gt;&lt;br&gt;&lt;b&gt;MessageType&lt;/b&gt; = Use the value 'Html' for Html messages and the value 'Text' for Text messages&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:SendBulkEmailHttpPostIn" />
+      <output message="s0:SendBulkEmailHttpPostOut" />
+    </operation>
+    <operation name="GetUserID">
+      <documentation>Enter your email address and name to have a unique user id emailed to you, to allow you to use some of the methods within this web service. If you are already registered with SoapEngine simply enter your email address and leave your name blank. NB* This method can also be used if you've forgotten your password as an existing user simply enter your email address and continue. This UserID can be used on the following www.soapengine.com web services.&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='cidea.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cidea.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cadvert.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cadvert.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnotes.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnotes.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='ccomms.asmx'&gt;http://www.soapengine.com/lucin/salcentral/ccomms.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='caccounts.asmx'&gt;http://www.soapengine.com/lucin/salcentral/caccounts.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cdatadict.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cdatadict.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='chotlist.asmx'&gt;http://www.soapengine.com/lucin/salcentral/chotlist.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cinquire.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cinquire.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='clatest.asmx'&gt;http://www.soapengine.com/lucin/salcentral/clatest.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cnewsletter.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cnewsletter.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='crss.asmx'&gt;http://www.soapengine.com/lucin/salcentral/crss.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csearch.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csearch.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csecurity.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csecurity.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csignin.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csignin.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cstatistics.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cstatistics.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='csystem.asmx'&gt;http://www.soapengine.com/lucin/salcentral/csystem.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cuddi.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cuddi.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cvisitor.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cvisitor.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cwsinherit.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cwsinherit.asmx&lt;/a&gt;&lt;br&gt;
+&lt;a target='_blank' href='cweather.asmx'&gt;http://www.soapengine.com/lucin/salcentral/cweather.asmx&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;table cellspacing=1 cellpadding=2 border=0 bgcolor='DarkGray' width='90%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='White' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;table cellspacing=0 cellpadding=2 border=0 bgcolor='Bisque' width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;EmailAddress&lt;/b&gt; = Valid email address&lt;br&gt;&lt;b&gt;Name&lt;/b&gt; = Your full name (if existing SoapEngine user leave blank)&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</documentation>
+      <input message="s0:GetUserIDHttpPostIn" />
+      <output message="s0:GetUserIDHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ccommsSoap" type="s0:ccommsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="SendNewsletter">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/ccomms.asmx/SendNewsletter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="IsEmailAddress">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/ccomms.asmx/IsEmailAddress" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendEmail">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/ccomms.asmx/SendEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SendBulkEmail">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/ccomms.asmx/SendBulkEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <soap:operation soapAction="http://www.soapengine.com/lucin/salcentral/ccomms.asmx/GetUserID" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ccommsHttpGet" type="s0:ccommsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="IsEmailAddress">
+      <http:operation location="/IsEmailAddress" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendEmail">
+      <http:operation location="/SendEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendBulkEmail">
+      <http:operation location="/SendBulkEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ccommsHttpPost" type="s0:ccommsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="IsEmailAddress">
+      <http:operation location="/IsEmailAddress" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendEmail">
+      <http:operation location="/SendEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SendBulkEmail">
+      <http:operation location="/SendBulkEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetUserID">
+      <http:operation location="/GetUserID" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ccomms">
+    <documentation>&lt;font size='3'&gt;&lt;b&gt;SoapEngine Communications Web Service&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font size='3'&gt;Allows an authorised user to communicate from within SoapEngine&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Overview:&lt;/b&gt;&lt;br&gt;General communications web service, allows a user to send or receive messages from the outside world i.e. via sms or email&lt;br&gt;&lt;br&gt;&lt;b&gt;How to get your UserID &amp; Password?&lt;/b&gt;&lt;br&gt;This web service uses a userid and password to allow people to access each of its methods, you can obtain your own personal identification that can be used on any SoapEngine web service using this following &lt;a target='_blank' href='?op=GetUserID'&gt;GetUserID&lt;/a&gt; method, &lt;a target='_blank' href='?op=GetUserID'&gt;click HERE&lt;/a&gt; for details.&lt;br&gt;&lt;br&gt;&lt;b&gt;Terms of Use:&lt;/b&gt;&lt;br&gt;The following web services can be used free of charge for non-commercial activities, we would however ask you to consider placing the following pointer on your web site (this request may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities), thank you for your support:&lt;br&gt;&lt;br&gt;&lt;a target='_blank' href='http://www.salcentral.com'&gt;&lt;img border=0 src='images/salcsmall.gif'&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Commercial Use:&lt;/b&gt;&lt;br&gt;Much of the functionality within these web services may be used for FREE non-commercial use, however if you are using any these services commercially please register by email at &lt;a href='mailto:support@lucin.com?Subject=Register Commercial Use'&gt;Register Commercial Use&lt;/a&gt; with your name and web site (if applicable). In response we will endeavour to support your use of our products as much as possible. This rule may be ignored as long as you have permission from Lucin/SoapEngine which states you may use this web service for commercial activities.&lt;br&gt;&lt;br&gt;&lt;b&gt;Error Trapping:&lt;/b&gt;&lt;br&gt;This web service contains in-built software driven error trapping device, therefore whenever you receive a programmatic error the support team for this web service also receives the same error but via email. Once the error has been rectified, support will email you back using your registered email address to advise you that the error has been fixed and that you can once again use that function. This support mechanism is a predominant feature of all SoapEngine web services.&lt;br&gt;&lt;br&gt;&lt;b&gt;How does AdminUser Work?&lt;/b&gt;&lt;br&gt;All SoapEngine web services are governed by a single web service called &lt;a target='_blank' href='csecurity.asmx'&gt;csecurity&lt;/a&gt;, this web service controls access for all users and administrators. An administrator can use their AdminUserID and password to gain administrator access to a certain methods or web services, only methods that contain the AdminUserID argument allow admin access. It does this in two ways ...&lt;br&gt;&lt;br&gt;1) It checks to see that the userid supplied is a valid userid and the password supplied is correct, NB* its important to remember that if you are an AdminUser and your using the adminuserid field then the password you enter must be your password not the password of the userid you are also using.&lt;br&gt;&lt;br&gt;2) If an adminuserid is also supplied it is validated to see that the adminuserid is valid and along with the password entered also passes the security check, in addition each method called has a unique Identifier hidden from the user but is used to see whether this adminuserid has Administrator access to the method your attempting to process.&lt;br&gt;&lt;br&gt;To gain administrative access to a specific web service please email &lt;a href='mailto:support@lucin.com?Subject=Request for Admin Access to Web Service'&gt;AdminAccess&lt;/a&gt; with details about the web service or method you want access to and why.&lt;br&gt;&lt;br&gt;&lt;b&gt;Support and Feedback:&lt;/b&gt;&lt;br&gt;We will endeavour to support this web service for external activities as much as possible, please email &lt;a href='mailto:support@lucin.com?Subject=Web Service Support or Feedback'&gt;Support&lt;/a&gt; with any questions or feedback you may have.&lt;br&gt;&lt;br&gt;&lt;br&gt;</documentation>
+    <port name="ccommsSoap" binding="s0:ccommsSoap">
+      <soap:address location="http://www.soapengine.com/lucin/salcentral/ccomms.asmx" />
+    </port>
+    <port name="ccommsHttpGet" binding="s0:ccommsHttpGet">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/ccomms.asmx" />
+    </port>
+    <port name="ccommsHttpPost" binding="s0:ccommsHttpPost">
+      <http:address location="http://www.soapengine.com/lucin/salcentral/ccomms.asmx" />
+    </port>
+  </service>
+</definitions>

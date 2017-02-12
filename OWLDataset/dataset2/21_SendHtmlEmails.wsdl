@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://gbx2.brinkster.net/WebServiceGustavoPares/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://gbx2.brinkster.net/WebServiceGustavoPares/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://gbx2.brinkster.net/WebServiceGustavoPares/">
+      <s:element name="sendEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fromWho" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="toWho" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendEmailResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendHtmlEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="yourEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailDestination" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="backgroundColor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fontColor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BodyText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendHtmlEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sendHtmlEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="anyType" nillable="true" />
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="sendEmailSoapIn">
+    <part name="parameters" element="s0:sendEmail" />
+  </message>
+  <message name="sendEmailSoapOut">
+    <part name="parameters" element="s0:sendEmailResponse" />
+  </message>
+  <message name="sendHtmlEmailSoapIn">
+    <part name="parameters" element="s0:sendHtmlEmail" />
+  </message>
+  <message name="sendHtmlEmailSoapOut">
+    <part name="parameters" element="s0:sendHtmlEmailResponse" />
+  </message>
+  <message name="sendEmailHttpGetIn">
+    <part name="fromWho" type="s:string" />
+    <part name="toWho" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Body" type="s:string" />
+  </message>
+  <message name="sendEmailHttpGetOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <message name="sendHtmlEmailHttpGetIn">
+    <part name="yourEmail" type="s:string" />
+    <part name="emailDestination" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="backgroundColor" type="s:string" />
+    <part name="fontColor" type="s:string" />
+    <part name="BodyText" type="s:string" />
+  </message>
+  <message name="sendHtmlEmailHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="sendEmailHttpPostIn">
+    <part name="fromWho" type="s:string" />
+    <part name="toWho" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="Body" type="s:string" />
+  </message>
+  <message name="sendEmailHttpPostOut">
+    <part name="Body" element="s0:anyType" />
+  </message>
+  <message name="sendHtmlEmailHttpPostIn">
+    <part name="yourEmail" type="s:string" />
+    <part name="emailDestination" type="s:string" />
+    <part name="Subject" type="s:string" />
+    <part name="backgroundColor" type="s:string" />
+    <part name="fontColor" type="s:string" />
+    <part name="BodyText" type="s:string" />
+  </message>
+  <message name="sendHtmlEmailHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="HtmlEmailSoap">
+    <operation name="sendEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;You can send plain text emails.</documentation>
+      <input message="s0:sendEmailSoapIn" />
+      <output message="s0:sendEmailSoapOut" />
+    </operation>
+    <operation name="sendHtmlEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;font color=red size =5&gt;You can send&lt;/font&gt;&lt;font color=yellow size=4&gt; emails&lt;/font&gt;&lt;font color=blue&gt; with &lt;b&gt;&lt;u&gt;HTML &lt;/b&gt;&lt;/u&gt;format, &lt;/font&gt;&lt;font color=green size=4&gt;you can choose the&lt;/font&gt;&lt;font color=orange size=6&gt; font and  background colors. &lt;/font&gt;You must fill all the fields in the web service (example, backgroundColor: blue  fontColor: red) , without using quotation marks. If your inbox is protected against spam mail, you might not receive the email.&lt;p&gt;&lt;/p&gt;&lt;font color=blue size =4&gt; By Gustavo R. Par??s Arce an IT Consultant that works at Mexico City  gus_ksh@hotmail.com &lt;/font&gt;</documentation>
+      <input message="s0:sendHtmlEmailSoapIn" />
+      <output message="s0:sendHtmlEmailSoapOut" />
+    </operation>
+  </portType>
+  <portType name="HtmlEmailHttpGet">
+    <operation name="sendEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;You can send plain text emails.</documentation>
+      <input message="s0:sendEmailHttpGetIn" />
+      <output message="s0:sendEmailHttpGetOut" />
+    </operation>
+    <operation name="sendHtmlEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;font color=red size =5&gt;You can send&lt;/font&gt;&lt;font color=yellow size=4&gt; emails&lt;/font&gt;&lt;font color=blue&gt; with &lt;b&gt;&lt;u&gt;HTML &lt;/b&gt;&lt;/u&gt;format, &lt;/font&gt;&lt;font color=green size=4&gt;you can choose the&lt;/font&gt;&lt;font color=orange size=6&gt; font and  background colors. &lt;/font&gt;You must fill all the fields in the web service (example, backgroundColor: blue  fontColor: red) , without using quotation marks. If your inbox is protected against spam mail, you might not receive the email.&lt;p&gt;&lt;/p&gt;&lt;font color=blue size =4&gt; By Gustavo R. Par??s Arce an IT Consultant that works at Mexico City  gus_ksh@hotmail.com &lt;/font&gt;</documentation>
+      <input message="s0:sendHtmlEmailHttpGetIn" />
+      <output message="s0:sendHtmlEmailHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="HtmlEmailHttpPost">
+    <operation name="sendEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;You can send plain text emails.</documentation>
+      <input message="s0:sendEmailHttpPostIn" />
+      <output message="s0:sendEmailHttpPostOut" />
+    </operation>
+    <operation name="sendHtmlEmail">
+      <documentation>&lt;p&gt;&lt;/p&gt;&lt;font color=red size =5&gt;You can send&lt;/font&gt;&lt;font color=yellow size=4&gt; emails&lt;/font&gt;&lt;font color=blue&gt; with &lt;b&gt;&lt;u&gt;HTML &lt;/b&gt;&lt;/u&gt;format, &lt;/font&gt;&lt;font color=green size=4&gt;you can choose the&lt;/font&gt;&lt;font color=orange size=6&gt; font and  background colors. &lt;/font&gt;You must fill all the fields in the web service (example, backgroundColor: blue  fontColor: red) , without using quotation marks. If your inbox is protected against spam mail, you might not receive the email.&lt;p&gt;&lt;/p&gt;&lt;font color=blue size =4&gt; By Gustavo R. Par??s Arce an IT Consultant that works at Mexico City  gus_ksh@hotmail.com &lt;/font&gt;</documentation>
+      <input message="s0:sendHtmlEmailHttpPostIn" />
+      <output message="s0:sendHtmlEmailHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="HtmlEmailSoap" type="s0:HtmlEmailSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="sendEmail">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/sendEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sendHtmlEmail">
+      <soap:operation soapAction="http://gbx2.brinkster.net/WebServiceGustavoPares/sendHtmlEmail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="HtmlEmailHttpGet" type="s0:HtmlEmailHttpGet">
+    <http:binding verb="GET" />
+    <operation name="sendEmail">
+      <http:operation location="/sendEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="sendHtmlEmail">
+      <http:operation location="/sendHtmlEmail" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="HtmlEmailHttpPost" type="s0:HtmlEmailHttpPost">
+    <http:binding verb="POST" />
+    <operation name="sendEmail">
+      <http:operation location="/sendEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="sendHtmlEmail">
+      <http:operation location="/sendHtmlEmail" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="HtmlEmail">
+    <port name="HtmlEmailSoap" binding="s0:HtmlEmailSoap">
+      <soap:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/htmlEmail.asmx" />
+    </port>
+    <port name="HtmlEmailHttpGet" binding="s0:HtmlEmailHttpGet">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/htmlEmail.asmx" />
+    </port>
+    <port name="HtmlEmailHttpPost" binding="s0:HtmlEmailHttpPost">
+      <http:address location="http://gbx2.brinkster.net/WebServiceGustavoPares/htmlEmail.asmx" />
+    </port>
+  </service>
+</definitions>

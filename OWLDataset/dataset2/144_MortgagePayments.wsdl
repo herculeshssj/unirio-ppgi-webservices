@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+
+<definitions name="MortgagePayments.cmortgagepayments" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="MonthlyPaymentsRequest">
+        <part name="LoanAmount" type="xsd:double"/>
+        <part name="Rate" type="xsd:double"/>
+        <part name="NumberOfYears" type="xsd:long"/>
+    </message>
+    <message name="MonthlyPaymentsResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="TotalRepaidRequest">
+        <part name="LoanAmount" type="xsd:double"/>
+        <part name="Rate" type="xsd:double"/>
+        <part name="NumberOfYears" type="xsd:long"/>
+    </message>
+    <message name="TotalRepaidResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <portType name="MortgagePayments.cmortgagepaymentsPortType">
+        <operation name="MonthlyPayments">
+            <input message="tns:MonthlyPaymentsRequest"/>
+            <output message="tns:MonthlyPaymentsResponse"/>
+        </operation>
+        <operation name="TotalRepaid">
+            <input message="tns:TotalRepaidRequest"/>
+            <output message="tns:TotalRepaidResponse"/>
+        </operation>
+    </portType>
+    <binding name="MortgagePayments.cmortgagepaymentsbinding" type="tns:MortgagePayments.cmortgagepaymentsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="MonthlyPayments">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml#MonthlyPayments"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="TotalRepaid">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml#TotalRepaid"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/MortgagePayments/CMortgagePayments.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="MortgagePayments.cmortgagepaymentsService">
+        <port name="MortgagePayments.cmortgagepaymentsPort" binding="tns:MortgagePayments.cmortgagepaymentsbinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/finance.cgi"/>
+        </port>
+    </service>
+</definitions>

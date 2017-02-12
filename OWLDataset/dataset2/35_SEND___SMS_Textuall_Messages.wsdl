@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://webservices.textuall.com/sms/AbstractTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://webservices.textuall.com/sms/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://webservices.textuall.com/sms/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://webservices.textuall.com/sms/">
+      <s:element name="Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="siteID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMSText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sendDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="optionIDList" type="s0:ArrayOfString" />
+            <s:element minOccurs="1" maxOccurs="1" name="savedFilterID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="childSiteIDList" type="s0:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="SMSNumberList" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema targetNamespace="http://webservices.textuall.com/sms/AbstractTypes">
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="SendSoapIn">
+    <part name="parameters" element="s0:Send" />
+  </message>
+  <message name="SendSoapOut">
+    <part name="parameters" element="s0:SendResponse" />
+  </message>
+  <message name="SendHttpGetIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="SMSText" type="s:string" />
+    <part name="sendDate" type="s:string" />
+    <part name="optionIDList" type="s1:StringArray" />
+    <part name="savedFilterID" type="s:string" />
+    <part name="childSiteIDList" type="s1:StringArray" />
+    <part name="SMSNumberList" type="s1:StringArray" />
+  </message>
+  <message name="SendHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="SendHttpPostIn">
+    <part name="sessionID" type="s:string" />
+    <part name="siteID" type="s:string" />
+    <part name="userID" type="s:string" />
+    <part name="SMSText" type="s:string" />
+    <part name="sendDate" type="s:string" />
+    <part name="optionIDList" type="s1:StringArray" />
+    <part name="savedFilterID" type="s:string" />
+    <part name="childSiteIDList" type="s1:StringArray" />
+    <part name="SMSNumberList" type="s1:StringArray" />
+  </message>
+  <message name="SendHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="SMSSoap">
+    <operation name="Send">
+      <documentation>Send SMS messages.&lt;BR&gt;Leave sendDate blank to send messages immediately (otherwise messages are sent on the nearest hour).&lt;BR&gt;The profiling options: optionIDList, savedFilterID, childSiteIDList are used in the same way as for 'FilterRecipents' in the 'Profile' WebService.&lt;BR&gt;Messages may be sent to recipients that are not in the database by writing their SMS numbers to the SMSNumberList.</documentation>
+      <input message="s0:SendSoapIn" />
+      <output message="s0:SendSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpGet">
+    <operation name="Send">
+      <documentation>Send SMS messages.&lt;BR&gt;Leave sendDate blank to send messages immediately (otherwise messages are sent on the nearest hour).&lt;BR&gt;The profiling options: optionIDList, savedFilterID, childSiteIDList are used in the same way as for 'FilterRecipents' in the 'Profile' WebService.&lt;BR&gt;Messages may be sent to recipients that are not in the database by writing their SMS numbers to the SMSNumberList.</documentation>
+      <input message="s0:SendHttpGetIn" />
+      <output message="s0:SendHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SMSHttpPost">
+    <operation name="Send">
+      <documentation>Send SMS messages.&lt;BR&gt;Leave sendDate blank to send messages immediately (otherwise messages are sent on the nearest hour).&lt;BR&gt;The profiling options: optionIDList, savedFilterID, childSiteIDList are used in the same way as for 'FilterRecipents' in the 'Profile' WebService.&lt;BR&gt;Messages may be sent to recipients that are not in the database by writing their SMS numbers to the SMSNumberList.</documentation>
+      <input message="s0:SendHttpPostIn" />
+      <output message="s0:SendHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SMSSoap" type="s0:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Send">
+      <soap:operation soapAction="http://webservices.textuall.com/sms/Send" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SMSHttpGet" type="s0:SMSHttpGet">
+    <http:binding verb="GET" />
+    <operation name="Send">
+      <http:operation location="/Send" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SMSHttpPost" type="s0:SMSHttpPost">
+    <http:binding verb="POST" />
+    <operation name="Send">
+      <http:operation location="/Send" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SMS">
+    <port name="SMSSoap" binding="s0:SMSSoap">
+      <soap:address location="http://webservices.textuall.com/sms.asmx" />
+    </port>
+    <port name="SMSHttpGet" binding="s0:SMSHttpGet">
+      <http:address location="http://webservices.textuall.com/sms.asmx" />
+    </port>
+    <port name="SMSHttpPost" binding="s0:SMSHttpPost">
+      <http:address location="http://webservices.textuall.com/sms.asmx" />
+    </port>
+  </service>
+</definitions>

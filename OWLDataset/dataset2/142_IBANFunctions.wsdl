@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://ntg.webs.innerhost.com/IBAN/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://ntg.webs.innerhost.com/IBAN/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ntg.webs.innerhost.com/IBAN/">
+      <s:element name="getIBANFromBBAN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BBAN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIBANFromBBANResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIBANFromBBANResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIBAN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BankCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BAN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIBANResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIBANResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkIBAN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IBAN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkIBANResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkIBANResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </types>
+  <message name="getIBANFromBBANSoapIn">
+    <part name="parameters" element="s0:getIBANFromBBAN" />
+  </message>
+  <message name="getIBANFromBBANSoapOut">
+    <part name="parameters" element="s0:getIBANFromBBANResponse" />
+  </message>
+  <message name="getIBANSoapIn">
+    <part name="parameters" element="s0:getIBAN" />
+  </message>
+  <message name="getIBANSoapOut">
+    <part name="parameters" element="s0:getIBANResponse" />
+  </message>
+  <message name="checkIBANSoapIn">
+    <part name="parameters" element="s0:checkIBAN" />
+  </message>
+  <message name="checkIBANSoapOut">
+    <part name="parameters" element="s0:checkIBANResponse" />
+  </message>
+  <message name="getIBANFromBBANHttpGetIn">
+    <part name="CountryCode" type="s:string" />
+    <part name="BBAN" type="s:string" />
+  </message>
+  <message name="getIBANFromBBANHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getIBANHttpGetIn">
+    <part name="CountryCode" type="s:string" />
+    <part name="BankCode" type="s:string" />
+    <part name="BranchCode" type="s:string" />
+    <part name="BAN" type="s:string" />
+  </message>
+  <message name="getIBANHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="checkIBANHttpGetIn">
+    <part name="IBAN" type="s:string" />
+  </message>
+  <message name="checkIBANHttpGetOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <message name="getIBANFromBBANHttpPostIn">
+    <part name="CountryCode" type="s:string" />
+    <part name="BBAN" type="s:string" />
+  </message>
+  <message name="getIBANFromBBANHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="getIBANHttpPostIn">
+    <part name="CountryCode" type="s:string" />
+    <part name="BankCode" type="s:string" />
+    <part name="BranchCode" type="s:string" />
+    <part name="BAN" type="s:string" />
+  </message>
+  <message name="getIBANHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="checkIBANHttpPostIn">
+    <part name="IBAN" type="s:string" />
+  </message>
+  <message name="checkIBANHttpPostOut">
+    <part name="Body" element="s0:boolean" />
+  </message>
+  <portType name="IBANFunctionsSoap">
+    <operation name="getIBANFromBBAN">
+      <documentation>Creates an International Bank Account Number from a country code and a Basic Bank Account Number.</documentation>
+      <input message="s0:getIBANFromBBANSoapIn" />
+      <output message="s0:getIBANFromBBANSoapOut" />
+    </operation>
+    <operation name="getIBAN">
+      <documentation>Creates an International Bank Account Number from a country code, a bank code, a branch code and a bank account number. This function is identical to getIBANFromBBAN in functionality, but synthesizes BBAN from its elements.</documentation>
+      <input message="s0:getIBANSoapIn" />
+      <output message="s0:getIBANSoapOut" />
+    </operation>
+    <operation name="checkIBAN">
+      <documentation>Checks an International Bank Account Number for correctness.</documentation>
+      <input message="s0:checkIBANSoapIn" />
+      <output message="s0:checkIBANSoapOut" />
+    </operation>
+  </portType>
+  <portType name="IBANFunctionsHttpGet">
+    <operation name="getIBANFromBBAN">
+      <documentation>Creates an International Bank Account Number from a country code and a Basic Bank Account Number.</documentation>
+      <input message="s0:getIBANFromBBANHttpGetIn" />
+      <output message="s0:getIBANFromBBANHttpGetOut" />
+    </operation>
+    <operation name="getIBAN">
+      <documentation>Creates an International Bank Account Number from a country code, a bank code, a branch code and a bank account number. This function is identical to getIBANFromBBAN in functionality, but synthesizes BBAN from its elements.</documentation>
+      <input message="s0:getIBANHttpGetIn" />
+      <output message="s0:getIBANHttpGetOut" />
+    </operation>
+    <operation name="checkIBAN">
+      <documentation>Checks an International Bank Account Number for correctness.</documentation>
+      <input message="s0:checkIBANHttpGetIn" />
+      <output message="s0:checkIBANHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="IBANFunctionsHttpPost">
+    <operation name="getIBANFromBBAN">
+      <documentation>Creates an International Bank Account Number from a country code and a Basic Bank Account Number.</documentation>
+      <input message="s0:getIBANFromBBANHttpPostIn" />
+      <output message="s0:getIBANFromBBANHttpPostOut" />
+    </operation>
+    <operation name="getIBAN">
+      <documentation>Creates an International Bank Account Number from a country code, a bank code, a branch code and a bank account number. This function is identical to getIBANFromBBAN in functionality, but synthesizes BBAN from its elements.</documentation>
+      <input message="s0:getIBANHttpPostIn" />
+      <output message="s0:getIBANHttpPostOut" />
+    </operation>
+    <operation name="checkIBAN">
+      <documentation>Checks an International Bank Account Number for correctness.</documentation>
+      <input message="s0:checkIBANHttpPostIn" />
+      <output message="s0:checkIBANHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="IBANFunctionsSoap" type="s0:IBANFunctionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="getIBANFromBBAN">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/IBAN/getIBANFromBBAN" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getIBAN">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/IBAN/getIBAN" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="checkIBAN">
+      <soap:operation soapAction="http://ntg.webs.innerhost.com/IBAN/checkIBAN" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IBANFunctionsHttpGet" type="s0:IBANFunctionsHttpGet">
+    <http:binding verb="GET" />
+    <operation name="getIBANFromBBAN">
+      <http:operation location="/getIBANFromBBAN" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getIBAN">
+      <http:operation location="/getIBAN" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="checkIBAN">
+      <http:operation location="/checkIBAN" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="IBANFunctionsHttpPost" type="s0:IBANFunctionsHttpPost">
+    <http:binding verb="POST" />
+    <operation name="getIBANFromBBAN">
+      <http:operation location="/getIBANFromBBAN" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="getIBAN">
+      <http:operation location="/getIBAN" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="checkIBAN">
+      <http:operation location="/checkIBAN" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IBANFunctions">
+    <port name="IBANFunctionsSoap" binding="s0:IBANFunctionsSoap">
+      <soap:address location="http://ntg.webs.innerhost.com/IBAN/IBANFuncs.asmx" />
+    </port>
+    <port name="IBANFunctionsHttpGet" binding="s0:IBANFunctionsHttpGet">
+      <http:address location="http://ntg.webs.innerhost.com/IBAN/IBANFuncs.asmx" />
+    </port>
+    <port name="IBANFunctionsHttpPost" binding="s0:IBANFunctionsHttpPost">
+      <http:address location="http://ntg.webs.innerhost.com/IBAN/IBANFuncs.asmx" />
+    </port>
+  </service>
+</definitions>

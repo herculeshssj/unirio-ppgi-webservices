@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<!-- WSDL description -->
+
+<definitions name="urn:what-is-around"
+             targetNamespace="urn:what-is-around"
+             xmlns:typens="urn:what-is-around"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <!-- Types for search - results -->
+
+  <types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+                targetNamespace="urn:what-is-around">
+            
+      <xsd:complexType name="WiaItemResult">
+        <xsd:all>
+          <!-- <xsd:element name="documentFiltering"  type="xsd:boolean"/>   -->
+          <xsd:element name="item_name"         	type="xsd:string"/>
+          <xsd:element name="item_id"  		type="xsd:int"/>
+          <xsd:element name="item_category"		type="xsd:string"/>
+          <xsd:element name="item_location"  		type="xsd:string"/>
+          <xsd:element name="item_distance_km"         type="xsd:double"/>
+          <xsd:element name="item_distance_mi"         type="xsd:double"/>
+      </xsd:all>
+      </xsd:complexType>
+
+      <xsd:complexType name="WiaSearchResult">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+             <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="typens:WiaItemResult[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+
+    </xsd:schema>
+  </types> 
+
+  <!-- Messages for WIA Web APIs -->
+             
+  <message name="doWiaSearchByLoc">
+    <part name="longitude"         type="xsd:string"/>
+    <part name="latitude"          type="xsd:string"/>
+    <part name="language"          type="xsd:string"/>
+    <!-- <part name="maxResults"     type="xsd:int"/>  -->
+  </message>
+  <message name="doWiaSearchByLocResponse">
+    <part name="return"         type="typens:WiaSearchResult"/>           
+  </message>
+
+  <!-- Port for Wia Web APIs, "WiaSearch" -->
+  <portType name="WiaSearchPort">
+    <operation name="doWiaSearchByLoc">
+      <input message="typens:doWiaSearchByLoc"/>
+      <output message="typens:doWiaSearchByLocResponse"/>
+    </operation>
+  </portType>
+
+  <!-- Binding for WIA Web APIs - RPC, SOAP over HTTP -->
+  <binding name="WiaSearchBinding" type="typens:WiaSearchPort">
+    <soap:binding style="rpc"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <operation name="doWiaSearchByLoc">
+      <soap:operation soapAction="urn:WiaSearchAction"/>
+      <input>
+        <soap:body use="encoded"
+                   namespace="urn:WiaSearch"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded"
+                   namespace="urn:WiaSearch"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+  <!-- Endpoint for Wia Web APIs -->
+  <service name="WiaSearchService">
+    <port name="WiaSearchPort" binding="typens:WiaSearchBinding">
+      <soap:address location="http://www.what-is-around.com/awwebserver.php"/>
+    </port>
+  </service>
+
+</definitions>

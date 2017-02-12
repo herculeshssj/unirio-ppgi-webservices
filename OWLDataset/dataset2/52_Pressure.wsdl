@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+
+<definitions name="Pressure.cpressure" targetNamespace="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" xmlns:tns="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <message name="PoundsPerSqrInchToKilogramsPerSqrCentimeterRequest">
+        <part name="PoundsPerSqrInch" type="xsd:double"/>
+    </message>
+    <message name="PoundsPerSqrInchToKilogramsPerSqrCentimeterResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <message name="KilogramsPerSqrCentimeterToPoundsPerSqrInchRequest">
+        <part name="KilogramsPerSqrCentimeter" type="xsd:double"/>
+    </message>
+    <message name="KilogramsPerSqrCentimeterToPoundsPerSqrInchResponse">
+        <part name="Return" type="xsd:double"/>
+    </message>
+    <portType name="Pressure.cpressurePortType">
+        <operation name="PoundsPerSqrInchToKilogramsPerSqrCentimeter">
+            <input message="tns:PoundsPerSqrInchToKilogramsPerSqrCentimeterRequest"/>
+            <output message="tns:PoundsPerSqrInchToKilogramsPerSqrCentimeterResponse"/>
+        </operation>
+        <operation name="KilogramsPerSqrCentimeterToPoundsPerSqrInch">
+            <input message="tns:KilogramsPerSqrCentimeterToPoundsPerSqrInchRequest"/>
+            <output message="tns:KilogramsPerSqrCentimeterToPoundsPerSqrInchResponse"/>
+        </operation>
+    </portType>
+    <binding name="Pressure.cpressurebinding" type="tns:Pressure.cpressurePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="PoundsPerSqrInchToKilogramsPerSqrCentimeter">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml#PoundsPerSqrInchToKilogramsPerSqrCentimeter"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="KilogramsPerSqrCentimeterToPoundsPerSqrInch">
+        <soap:operation soapAction="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml#KilogramsPerSqrCentimeterToPoundsPerSqrInch"/>
+            <input>
+                <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+            <soap:body use="encoded" namespace="http://sal006.salnetwork.com:83/a1vbcode/Pressure/CPressure.xml" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Pressure.cpressureService">
+        <port name="Pressure.cpressurePort" binding="tns:Pressure.cpressurebinding">
+            <soap:address location="http://sal006.salnetwork.com:82/bin/converter.cgi"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,1302 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf       "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs      "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY xsd       "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY owl       "http://www.w3.org/2002/07/owl">
+  <!ENTITY service   "http://www.daml.org/services/owl-s/1.0/Service.owl">
+  <!ENTITY process   "http://www.daml.org/services/owl-s/1.0/Process.owl">
+  <!ENTITY profile   "http://www.daml.org/services/owl-s/1.0/Profile.owl">
+  <!ENTITY grounding "http://www.daml.org/services/daml-s/0.7/Grounding.daml">
+  <!ENTITY profileHierarchy "http://moguntia.ucd.ie/owl/ProfileHierarchy.owl">
+  <!ENTITY operations "http://moguntia.ucd.ie/owl/Operations.owl">
+  <!ENTITY datatypes "http://moguntia.ucd.ie/owl/Datatypes.owl">
+  <!ENTITY xsl       "http://www.w3.org/1999/XSL/Transform">
+  <!ENTITY the_service	 "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Service.owl">
+  <!ENTITY the_process	 "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Process.owl">
+  <!ENTITY the_profile   "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Profile.owl">
+  <!ENTITY the_wsdl      "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services.wsdl">
+  <!ENTITY the_grounding "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Grounding.owl">
+  <!ENTITY the_concepts  "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Concepts.owl">
+  <!ENTITY DEFAULT "http://moguntia.ucd.ie/owl/dataset2/160_Stock_Services_Grounding.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf = "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:xsd = "&xsd;#"
+  xmlns:owl = "&owl;#"
+  xmlns:service = "&service;#"
+  xmlns:process = "&process;#"
+  xmlns:profile = "&profile;#"
+  xmlns:grounding = "&grounding;#"
+  xmlns:profileHierarchy = "&profileHierarchy;#"
+  xmlns:operations = "&operations;#"
+  xmlns:datatypes = "&datatypes;#"
+  xmlns:xsl = "&xsl;#"
+  xml:base = "&DEFAULT;#"
+  xmlns = "&DEFAULT;#"
+>
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    Generated using the ASSAM OWL export module
+  </owl:versionInfo>
+  <owl:imports rdf:resource="&service;"/>
+  <owl:imports rdf:resource="&process;"/>
+  <owl:imports rdf:resource="&profile;"/>
+  <owl:imports rdf:resource="&grounding;"/>
+  <owl:imports rdf:resource="&the_process;"/>
+  <owl:imports rdf:resource="&the_service;"/>
+  <owl:imports rdf:resource="&the_grounding;"/>
+  <owl:imports rdf:resource="&the_profile;"/>
+  <owl:imports rdf:resource="&profileHierarchy;"/>
+  <owl:imports rdf:resource="&operations;"/>
+  <owl:imports rdf:resource="&datatypes;"/>
+</owl:Ontology>
+
+
+
+<!-- Grounding Instance for the Service -->
+
+<grounding:WsdlGrounding rdf:ID="WSDLGrounding_Stock_Services">
+  <service:supportedBy rdf:resource="&the_service;"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuotes_49740"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetLicQuotes_49745"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuotes_49750"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickLicQuotes_49755"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuotes_49761"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetLicQuotes_49767"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuotes_49774"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickLicQuotes_49779"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuotes_49786"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetLicQuotes_49792"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickQuotes_49799"/>
+  <grounding:hasAtomicProcessGrounding rdf:resource="&the_process;#GetQuickLicQuotes_49804"/>
+</grounding:WsdlGrounding>
+
+
+
+<!-- Atomic Process: GetQuotes_49740 ID: 49740 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuotes_49740">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuotes_49740" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49742"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetQuotes
+       xmlns:ws="http://www.myasptools.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetQuotes">
+
+        <ws:tickers><ws:string></ws:string>        </ws:tickers>
+        <ws:stocktype xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetQuotes/the_concepts:stocktype"/>        </ws:stocktype>
+
+      </ws:GetQuotes>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesSoapOut_49743"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49744"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetQuotesResponse>
+        <the_concepts:GetQuotesResult>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:GetQuotesResult>
+        </the_concepts:GetQuotesResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetLicQuotes_49745 ID: 49745 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetLicQuotes_49745">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetLicQuotes_49745" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49747"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetLicQuotes
+       xmlns:ws="http://www.myasptools.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetLicQuotes">
+
+        <ws:tickers><ws:string></ws:string>        </ws:tickers>
+        <ws:stocktype xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetLicQuotes/the_concepts:stocktype"/>        </ws:stocktype>
+        <ws:licNumber xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetLicQuotes/the_concepts:licNumber"/>        </ws:licNumber>
+
+      </ws:GetLicQuotes>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesSoapOut_49748"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49749"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetLicQuotesResponse>
+        <the_concepts:GetLicQuotesResult>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:GetLicQuotesResult>
+        </the_concepts:GetLicQuotesResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuotes_49750 ID: 49750 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuotes_49750">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuotes_49750" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49752"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetQuickQuotes
+       xmlns:ws="http://www.myasptools.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetQuickQuotes">
+
+        <ws:tickers><ws:string></ws:string>        </ws:tickers>
+
+      </ws:GetQuickQuotes>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesSoapOut_49753"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49754"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetQuickQuotesResponse>
+        <the_concepts:GetQuickQuotesResult>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:GetQuickQuotesResult>
+        </the_concepts:GetQuickQuotesResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickLicQuotes_49755 ID: 49755 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickLicQuotes_49755">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickLicQuotes_49755" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesSoap"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesSoapIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49757"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:GetQuickLicQuotes
+       xmlns:ws="http://www.myasptools.com/"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:GetQuickLicQuotes">
+
+        <ws:tickers><ws:string></ws:string>        </ws:tickers>
+        <ws:licNumber xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:GetQuickLicQuotes/the_concepts:licNumber"/>        </ws:licNumber>
+
+      </ws:GetQuickLicQuotes>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesSoapOut_49758"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#parameters_49759"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:GetQuickLicQuotesResponse>
+        <the_concepts:GetQuickLicQuotesResult>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:GetQuickLicQuotesResult>
+        </the_concepts:GetQuickLicQuotesResponse>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuotes_49761 ID: 49761 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuotes_49761">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuotes_49761" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49763"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#stocktype_49764"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#stocktype_49764"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesHttpPostOut_49765"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49766"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetLicQuotes_49767 ID: 49767 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetLicQuotes_49767">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetLicQuotes_49767" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49769"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#stocktype_49770"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#stocktype_49770"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#licNumber_49771"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#licNumber_49771"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesHttpPostOut_49772"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49773"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuotes_49774 ID: 49774 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuotes_49774">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuotes_49774" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49776"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesHttpPostOut_49777"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49778"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickLicQuotes_49779 ID: 49779 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickLicQuotes_49779">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickLicQuotes_49779" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpPost"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesHttpPostIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49781"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#licNumber_49782"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#licNumber_49782"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesHttpPostOut_49783"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49784"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuotes_49786 ID: 49786 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuotes_49786">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuotes_49786" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49788"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#stocktype_49789"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#stocktype_49789"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuotesHttpGetOut_49790"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49791"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetLicQuotes_49792 ID: 49792 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetLicQuotes_49792">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetLicQuotes_49792" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49794"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#stocktype_49795"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#stocktype_49795"/>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#licNumber_49796"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#licNumber_49796"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetLicQuotesHttpGetOut_49797"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49798"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickQuotes_49799 ID: 49799 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickQuotes_49799">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickQuotes_49799" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49801"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickQuotesHttpGetOut_49802"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49803"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+
+
+<!-- Atomic Process: GetQuickLicQuotes_49804 ID: 49804 -->
+
+<grounding:WsdlAtomicProcessGrounding rdf:ID="WSDLGrounding_GetQuickLicQuotes_49804">
+  <grounding:owlsProcess rdf:resource="&the_process;#GetQuickLicQuotes_49804" />
+  <grounding:wsdlOperation>
+    <grounding:WsdlOperationRef>
+      <grounding:portType>
+        <xsd:anyURI rdf:value="&the_wsdl;#StockServicesHttpGet"/>
+      </grounding:portType>
+      <grounding:operation>
+        <xsd:anyURI rdf:value="the_wsdl;#GetQuickLicQuotes"/>
+      </grounding:operation>
+    </grounding:WsdlOperationRef>
+  </grounding:wsdlOperation>
+  <grounding:wsdlInputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesHttpGetIn"/>
+  </grounding:wsdlInputMessage>
+  <grounding:wsdlInputs rdf:parseType="Collection">
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#tickers_49806"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template xsl:match="/">
+      <ws:StringArray
+       xmlns:ws="http://www.myasptools.com/AbstractTypes"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;"
+       xsi:type="ws:StringArray">
+
+        <ws:String xsi:type="xsd:string"><xsl:value-of xsl:select="rdf:RDF/the_concepts:StringArray/the_concepts:String"/>        </ws:String>
+
+      </ws:StringArray>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlInputMessageMap>
+    <grounding:wsdlInputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#licNumber_49807"/>
+      </grounding:wsdlMessagePart>
+      <grounding:owlsParameter rdf:resource="the_process;#licNumber_49807"/>
+    </grounding:wsdlInputMessageMap>
+  </grounding:wsdlInputs>
+
+  <grounding:wsdlOutputMessage>
+    <xsd:anyURI rdf:value="&the_wsdl;#GetQuickLicQuotesHttpGetOut_49808"/>
+  </grounding:wsdlOutputMessage>
+  <grounding:wsdlOutputs rdf:parseType="Collection">
+    <grounding:wsdlOutputMessageMap>
+      <grounding:wsdlMessagePart>
+        <xsd:anyURI rdf:value="&the_wsdl;#Body_49809"/>
+      </grounding:wsdlMessagePart>
+
+<grounding:xsltTransformation rdf:parseType="Literal">
+  <xsl:stylesheet version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+    <xsl:template match="/">
+      <rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns"
+       xmlns:the_concepts="&the_concepts;"
+       xmlns:the_process="&the_process;">
+        <the_concepts:ArrayOfStock>
+        <the_concepts:Stock>
+        <the_concepts:Symbol><xsl:value-of select="StockSymbol"/></the_concepts:Symbol>
+        <the_concepts:CompanyName><xsl:value-of select="StockCompanyName"/></the_concepts:CompanyName>
+        <the_concepts:LastPrice><xsl:value-of select="StockLastPrice"/></the_concepts:LastPrice>
+        <the_concepts:LastTradeDate><xsl:value-of select="StockLastTradeDate"/></the_concepts:LastTradeDate>
+        <the_concepts:LastTradeTime><xsl:value-of select="StockLastTradeTime"/></the_concepts:LastTradeTime>
+        <the_concepts:PriceChange><xsl:value-of select="StockPriceChange"/></the_concepts:PriceChange>
+        <the_concepts:PercentageChange><xsl:value-of select="StockPercentageChange"/></the_concepts:PercentageChange>
+        <the_concepts:Volume><xsl:value-of select="StockVolume"/></the_concepts:Volume>
+        <the_concepts:AvgDialyVol><xsl:value-of select="StockAvgDialyVol"/></the_concepts:AvgDialyVol>
+        <the_concepts:BidPrice><xsl:value-of select="StockBidPrice"/></the_concepts:BidPrice>
+        <the_concepts:AskPrice><xsl:value-of select="StockAskPrice"/></the_concepts:AskPrice>
+        <the_concepts:PreviousClose><xsl:value-of select="StockPreviousClose"/></the_concepts:PreviousClose>
+        <the_concepts:TodayOpen><xsl:value-of select="StockTodayOpen"/></the_concepts:TodayOpen>
+        <the_concepts:DayRange><xsl:value-of select="StockDayRange"/></the_concepts:DayRange>
+        <the_concepts:YearRange><xsl:value-of select="StockYearRange"/></the_concepts:YearRange>
+        <the_concepts:PE><xsl:value-of select="StockPE"/></the_concepts:PE>
+        <the_concepts:Dividend><xsl:value-of select="StockDividend"/></the_concepts:Dividend>
+        <the_concepts:MarketCap><xsl:value-of select="StockMarketCap"/></the_concepts:MarketCap>
+        <the_concepts:StockExchange><xsl:value-of select="StockStockExchange"/></the_concepts:StockExchange>
+        </the_concepts:Stock>
+        </the_concepts:ArrayOfStock>
+
+      </rdf:RDF>
+    </xsl:template>
+  </xsl:stylesheet>
+</grounding:xsltTransformation>
+    </grounding:wsdlOutputMessageMap>
+  </grounding:wsdlOutputs>
+
+</grounding:WsdlAtomicProcessGrounding>
+
+</rdf:RDF>
