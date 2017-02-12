@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/MultilingualSpellchecker.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="MultilingualSpellchecker">
+    <service:presents rdf:resource="#MultilingualSpellchecker-Profile"/>
+    <service:describedBy rdf:resource="#MultilingualSpellchecker-Process-Model"/>
+    <service:supports rdf:resource="#MultilingualSpellchecker-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="MultilingualSpellchecker-Profile">
+    <service:isPresentedBy rdf:resource="#MultilingualSpellchecker-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Multilingual Spell checker
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Spell-checks and corrects texts in different languages
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Text"/>
+    <profile:hasInput rdf:resource="#Language"/>
+    <profile:hasOutput rdf:resource="#CorrectedText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="MultilingualSpellchecker-Process-Model">
+     <service:describes rdf:resource="#MultilingualSpellchecker-Service"/>
+     <process:hasProcess rdf:resource="#MultilingualSpellchecker-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="MultilingualSpellchecker-Process">
+   <process:hasInput rdf:resource="#Text"/>
+   <process:hasInput rdf:resource="#Language"/>
+   <process:hasOutput rdf:resource="#CorrectedText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Text">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Text value to spell check</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Language">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Language</process:parameterType>
+    <rdfs:label>Language of the text</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="CorrectedText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Corrected Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="MultilingualSpellchecker-Grounding">
+    <service:supportedBy rdf:resource="#MultilingualSpellchecker-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/NationalityFinder.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="NationalityFinder">
+    <service:presents rdf:resource="#NationalityFinder-Profile"/>
+    <service:describedBy rdf:resource="#NationalityFinder-Process-Model"/>
+    <service:supports rdf:resource="#NationalityFinder-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="NationalityFinder-Profile">
+    <service:isPresentedBy rdf:resource="#NationalityFinder-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Nationality Finder
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This web service returns the nationality of a person
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#PersonInfo"/>
+    <profile:hasOutput rdf:resource="#PersonNationality"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="NationalityFinder-Process-Model">
+     <service:describes rdf:resource="#NationalityFinder-Service"/>
+     <process:hasProcess rdf:resource="#NationalityFinder-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="NationalityFinder-Process">
+   <process:hasInput rdf:resource="#PersonInfo"/>
+   <process:hasOutput rdf:resource="#PersonNationality"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="PersonInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Person Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="PersonNationality">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Nationality</process:parameterType>
+    <rdfs:label>The Nationality of the person</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="NationalityFinder-Grounding">
+    <service:supportedBy rdf:resource="#NationalityFinder-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

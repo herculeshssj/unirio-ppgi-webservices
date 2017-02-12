@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetWikipediaInformation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetWikipediaInformation">
+    <service:presents rdf:resource="#GetWikipediaInformation-Profile"/>
+    <service:describedBy rdf:resource="#GetWikipediaInformation-Process-Model"/>
+    <service:supports rdf:resource="#GetWikipediaInformation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetWikipediaInformation-Profile">
+    <service:isPresentedBy rdf:resource="#GetWikipediaInformation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Wikipedia Information
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the wikipedia information of a phrase
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SearchPhrase"/>
+    <profile:hasOutput rdf:resource="#WikipediaInformation"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetWikipediaInformation-Process-Model">
+     <service:describes rdf:resource="#GetWikipediaInformation-Service"/>
+     <process:hasProcess rdf:resource="#GetWikipediaInformation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetWikipediaInformation-Process">
+   <process:hasInput rdf:resource="#SearchPhrase"/>
+   <process:hasOutput rdf:resource="#WikipediaInformation"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SearchPhrase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Phrase</process:parameterType>
+    <rdfs:label>Search Phrase to get information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="WikipediaInformation">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#WikipediaInformation</process:parameterType>
+    <rdfs:label>Wikipedia Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetWikipediaInformation-Grounding">
+    <service:supportedBy rdf:resource="#GetWikipediaInformation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

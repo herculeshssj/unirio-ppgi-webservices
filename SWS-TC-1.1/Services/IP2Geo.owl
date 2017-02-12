@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/IP2Geo.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="IP2Geo">
+    <service:presents rdf:resource="#IP2Geo-Profile"/>
+    <service:describedBy rdf:resource="#IP2Geo-Process-Model"/>
+    <service:supports rdf:resource="#IP2Geo-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="IP2Geo-Profile">
+    <service:isPresentedBy rdf:resource="#IP2Geo-Service"/>
+	 <profile:serviceName xml:lang="en">
+           IP2Geo
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           The IP2Geo Web service resolves IP addresses to Network Owner Name, City, State/Province, and Country. In most U.S. cities, it will also provide extra information such as Area Code and Latitude/Longitude.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#IPAddress"/>
+    <profile:hasOutput rdf:resource="#NetworkOwnerName"/>
+    <profile:hasOutput rdf:resource="#City"/>
+    <profile:hasOutput rdf:resource="#StateProvince"/>
+    <profile:hasOutput rdf:resource="#Country"/>
+    <profile:hasOutput rdf:resource="#AreaCode"/>
+    <profile:hasOutput rdf:resource="#Latitude"/>
+    <profile:hasOutput rdf:resource="#Longitude"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="IP2Geo-Process-Model">
+     <service:describes rdf:resource="#IP2Geo-Service"/>
+     <process:hasProcess rdf:resource="#IP2Geo-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="IP2Geo-Process">
+   <process:hasInput rdf:resource="#IPAddress"/>
+   <process:hasOutput rdf:resource="#NetworkOwnerName"/>
+   <process:hasOutput rdf:resource="#City"/>
+   <process:hasOutput rdf:resource="#StateProvince"/>
+   <process:hasOutput rdf:resource="#Country"/>
+   <process:hasOutput rdf:resource="#AreaCode"/>
+   <process:hasOutput rdf:resource="#Latitude"/>
+   <process:hasOutput rdf:resource="#Longitude"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="IPAddress">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#IPAddress</process:parameterType>
+    <rdfs:label>IP Address</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="NetworkOwnerName">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Name</process:parameterType>
+    <rdfs:label>Network Owner Name</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="City">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Information</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="StateProvince">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#StateProvince</process:parameterType>
+    <rdfs:label>State or Province Information</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Country">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Country</process:parameterType>
+    <rdfs:label>Country Information</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="AreaCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AreaCode</process:parameterType>
+    <rdfs:label>Area Code</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Latitude">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Latitude Number</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Longitude">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Longitude Number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="IP2Geo-Grounding">
+    <service:supportedBy rdf:resource="#IP2Geo-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ShipObject.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ShipObject">
+    <service:presents rdf:resource="#ShipObject-Profile"/>
+    <service:describedBy rdf:resource="#ShipObject-Process-Model"/>
+    <service:supports rdf:resource="#ShipObject-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ShipObject-Profile">
+    <service:isPresentedBy rdf:resource="#ShipObject-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Ship Object
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives an Object and if it is in shopping cart and credit card is approved, ships the object to the given address and a notification is returned.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Object"/>
+    <profile:hasInput rdf:resource="#DestinationAddres"/>
+    <profile:hasOutput rdf:resource="#Notification"/>
+    <profile:hasPrecondition rdf:resource="#ObjectPurchased"/>
+    <profile:hasResult rdf:resource="#ObjectShipped"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ShipObject-Process-Model">
+     <service:describes rdf:resource="#ShipObject-Service"/>
+     <process:hasProcess rdf:resource="#ShipObject-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ShipObject-Process">
+   <process:hasInput rdf:resource="#Object"/>
+   <process:hasInput rdf:resource="#DestinationAddres"/>
+   <process:hasOutput rdf:resource="#Notification"/>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="ObjectPurchased">
+          <rdfs:comment>Object Purchased</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+   <process:hasResult>
+      <process:Result rdf:ID="ObjectShipped">
+          <rdfs:comment>Object Shipped</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Object">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Object</process:parameterType>
+    <rdfs:label>Object to be shipped</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationAddres">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Address</process:parameterType>
+    <rdfs:label>Destination Address</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Notification">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Notification</process:parameterType>
+    <rdfs:label>Notification</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ShipObject-Grounding">
+    <service:supportedBy rdf:resource="#ShipObject-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

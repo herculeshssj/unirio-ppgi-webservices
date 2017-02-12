@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetRecommendedTherapy.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetRecommendedTherapy">
+    <service:presents rdf:resource="#GetRecommendedTherapy-Profile"/>
+    <service:describedBy rdf:resource="#GetRecommendedTherapy-Process-Model"/>
+    <service:supports rdf:resource="#GetRecommendedTherapy-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetRecommendedTherapy-Profile">
+    <service:isPresentedBy rdf:resource="#GetRecommendedTherapy-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Recommended Therapy
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns recommended therapy for a patient
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Patient"/>
+    <profile:hasInput rdf:resource="#Doctor"/>
+    <profile:hasOutput rdf:resource="#Therapy"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetRecommendedTherapy-Process-Model">
+     <service:describes rdf:resource="#GetRecommendedTherapy-Service"/>
+     <process:hasProcess rdf:resource="#GetRecommendedTherapy-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetRecommendedTherapy-Process">
+   <process:hasInput rdf:resource="#Patient"/>
+   <process:hasInput rdf:resource="#Doctor"/>
+   <process:hasOutput rdf:resource="#Therapy"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Patient">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Patient Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Doctor">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Physician</process:parameterType>
+    <rdfs:label>Doctor Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Therapy">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Therapy</process:parameterType>
+    <rdfs:label>Therapy Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetRecommendedTherapy-Grounding">
+    <service:supportedBy rdf:resource="#GetRecommendedTherapy-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

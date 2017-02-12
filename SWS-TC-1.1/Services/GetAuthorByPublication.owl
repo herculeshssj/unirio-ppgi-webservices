@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetAuthorByPublication.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetAuthorByPublication">
+    <service:presents rdf:resource="#GetAuthorByPublication-Profile"/>
+    <service:describedBy rdf:resource="#GetAuthorByPublication-Process-Model"/>
+    <service:supports rdf:resource="#GetAuthorByPublication-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetAuthorByPublication-Profile">
+    <service:isPresentedBy rdf:resource="#GetAuthorByPublication-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Author By Publication
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives a publication and returns its author.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Publication"/>
+    <profile:hasOutput rdf:resource="#Author"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetAuthorByPublication-Process-Model">
+     <service:describes rdf:resource="#GetAuthorByPublication-Service"/>
+     <process:hasProcess rdf:resource="#GetAuthorByPublication-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetAuthorByPublication-Process">
+   <process:hasInput rdf:resource="#Publication"/>
+   <process:hasOutput rdf:resource="#Author"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Publication">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Publication</process:parameterType>
+    <rdfs:label>Publication Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Author">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Author Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetAuthorByPublication-Grounding">
+    <service:supportedBy rdf:resource="#GetAuthorByPublication-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

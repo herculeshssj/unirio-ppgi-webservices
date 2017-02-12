@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/HtmltoXmlWebService.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="HtmltoXmlWebService">
+    <service:presents rdf:resource="#HtmltoXmlWebService-Profile"/>
+    <service:describedBy rdf:resource="#HtmltoXmlWebService-Process-Model"/>
+    <service:supports rdf:resource="#HtmltoXmlWebService-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="HtmltoXmlWebService-Profile">
+    <service:isPresentedBy rdf:resource="#HtmltoXmlWebService-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Html to Xml Web Service
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           The Html2Xml WebService takes an Html text and converts it into an Xml text. Some corrections are done to the Html to make it well-formed Xml.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#HTMLText"/>
+    <profile:hasOutput rdf:resource="#XMLText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="HtmltoXmlWebService-Process-Model">
+     <service:describes rdf:resource="#HtmltoXmlWebService-Service"/>
+     <process:hasProcess rdf:resource="#HtmltoXmlWebService-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="HtmltoXmlWebService-Process">
+   <process:hasInput rdf:resource="#HTMLText"/>
+   <process:hasOutput rdf:resource="#XMLText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="HTMLText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#HTMLData</process:parameterType>
+    <rdfs:label>HTML Text</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="XMLText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#XMLData</process:parameterType>
+    <rdfs:label>XML Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="HtmltoXmlWebService-Grounding">
+    <service:supportedBy rdf:resource="#HtmltoXmlWebService-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

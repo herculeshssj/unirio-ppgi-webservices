@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SendTextToFax.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SendTextToFax">
+    <service:presents rdf:resource="#SendTextToFax-Profile"/>
+    <service:describedBy rdf:resource="#SendTextToFax-Process-Model"/>
+    <service:supports rdf:resource="#SendTextToFax-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SendTextToFax-Profile">
+    <service:isPresentedBy rdf:resource="#SendTextToFax-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Send Text To Fax
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Send FAX (for free) to any part of the world. This webservice provide a facilty to send fax anywhere in the world. Please add country code (without preceding zero(s)) to your fax number(Without hyphen). e.g If your number is 0091-435-416353 ,please enter fax number as 91435416353. Please Note: The character '_' is converted to a space and The character '/' is converted to start a new line. Coverage List: CheckCoverage.htm
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#FromEMail"/>
+    <profile:hasInput rdf:resource="#Subject"/>
+    <profile:hasInput rdf:resource="#FaxNumber"/>
+    <profile:hasInput rdf:resource="#BodyText"/>
+    <profile:hasInput rdf:resource="#ToName"/>
+    <profile:hasOutput rdf:resource="#SendTextToFaxResult"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SendTextToFax-Process-Model">
+     <service:describes rdf:resource="#SendTextToFax-Service"/>
+     <process:hasProcess rdf:resource="#SendTextToFax-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SendTextToFax-Process">
+   <process:hasInput rdf:resource="#FromEMail"/>
+   <process:hasInput rdf:resource="#Subject"/>
+   <process:hasInput rdf:resource="#FaxNumber"/>
+   <process:hasInput rdf:resource="#BodyText"/>
+   <process:hasInput rdf:resource="#ToName"/>
+   <process:hasOutput rdf:resource="#SendTextToFaxResult"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="FromEMail">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#EMailAddress</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Subject">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="FaxNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#PhoneNumber</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="BodyText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="ToName">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Name</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="SendTextToFaxResult">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Notification</process:parameterType>
+    <rdfs:label>SendTextToFax Result</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="SendTextToFax-Grounding">
+    <service:supportedBy rdf:resource="#SendTextToFax-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

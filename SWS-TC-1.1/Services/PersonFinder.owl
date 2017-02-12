@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/PersonFinder.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="PersonFinder">
+    <service:presents rdf:resource="#PersonFinder-Profile"/>
+    <service:describedBy rdf:resource="#PersonFinder-Process-Model"/>
+    <service:supports rdf:resource="#PersonFinder-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="PersonFinder-Profile">
+    <service:isPresentedBy rdf:resource="#PersonFinder-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Person Finder
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Finds a person from his/her phone number
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#PhoneNumber"/>
+    <profile:hasOutput rdf:resource="#PersonInfo"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="PersonFinder-Process-Model">
+     <service:describes rdf:resource="#PersonFinder-Service"/>
+     <process:hasProcess rdf:resource="#PersonFinder-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="PersonFinder-Process">
+   <process:hasInput rdf:resource="#PhoneNumber"/>
+   <process:hasOutput rdf:resource="#PersonInfo"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="PhoneNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#PhoneNumber</process:parameterType>
+    <rdfs:label>Phone Number</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="PersonInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Person Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="PersonFinder-Grounding">
+    <service:supportedBy rdf:resource="#PersonFinder-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

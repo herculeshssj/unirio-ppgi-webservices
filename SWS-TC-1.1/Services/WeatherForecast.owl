@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/WeatherForecast.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="WeatherForecast">
+    <service:presents rdf:resource="#WeatherForecast-Profile"/>
+    <service:describedBy rdf:resource="#WeatherForecast-Process-Model"/>
+    <service:supports rdf:resource="#WeatherForecast-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="WeatherForecast-Profile">
+    <service:isPresentedBy rdf:resource="#WeatherForecast-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Weather Forecast
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This web service returns the weather forecast of a given city in a specified time.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CityInfo"/>
+    <profile:hasInput rdf:resource="#ForecastDate"/>
+    <profile:hasOutput rdf:resource="#Forecast"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="WeatherForecast-Process-Model">
+     <service:describes rdf:resource="#WeatherForecast-Service"/>
+     <process:hasProcess rdf:resource="#WeatherForecast-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="WeatherForecast-Process">
+   <process:hasInput rdf:resource="#CityInfo"/>
+   <process:hasInput rdf:resource="#ForecastDate"/>
+   <process:hasOutput rdf:resource="#Forecast"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CityInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="ForecastDate">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Date</process:parameterType>
+    <rdfs:label>Forecast Date</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Forecast">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#WeatherForecast</process:parameterType>
+    <rdfs:label>Weather Forecast for the given city</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="WeatherForecast-Grounding">
+    <service:supportedBy rdf:resource="#WeatherForecast-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

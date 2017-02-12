@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/PerformPurchase.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="PerformPurchase">
+    <service:presents rdf:resource="#PerformPurchase-Profile"/>
+    <service:describedBy rdf:resource="#PerformPurchase-Process-Model"/>
+    <service:supports rdf:resource="#PerformPurchase-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="PerformPurchase-Profile">
+    <service:isPresentedBy rdf:resource="#PerformPurchase-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Perform Purchase
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives an object information and a credit card and does the purchase operation.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CreditCard"/>
+    <profile:hasInput rdf:resource="#Object"/>
+    <profile:hasInput rdf:resource="#Price"/>
+    <profile:hasOutput rdf:resource="#ConfirmationNumber"/>
+    <profile:hasPrecondition rdf:resource="#CreditCardCharged"/>
+    <profile:hasResult rdf:resource="#ObjectPurchased"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="PerformPurchase-Process-Model">
+     <service:describes rdf:resource="#PerformPurchase-Service"/>
+     <process:hasProcess rdf:resource="#PerformPurchase-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="PerformPurchase-Process">
+   <process:hasInput rdf:resource="#CreditCard"/>
+   <process:hasInput rdf:resource="#Object"/>
+   <process:hasInput rdf:resource="#Price"/>
+   <process:hasOutput rdf:resource="#ConfirmationNumber"/>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="CreditCardCharged">
+          <rdfs:comment>Credit Card Charged</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+   <process:hasResult>
+      <process:Result rdf:ID="ObjectPurchased">
+          <rdfs:comment>Object Purchased</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CreditCard">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#CreditCard</process:parameterType>
+    <rdfs:label>Credit Card Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Object">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Object</process:parameterType>
+    <rdfs:label>Object to be purchased</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Price">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Price Value</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ConfirmationNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Confirmation Number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="PerformPurchase-Grounding">
+    <service:supportedBy rdf:resource="#PerformPurchase-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

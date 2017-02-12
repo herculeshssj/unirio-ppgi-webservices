@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SSNtoStateValidator.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SSNtoStateValidator">
+    <service:presents rdf:resource="#SSNtoStateValidator-Profile"/>
+    <service:describedBy rdf:resource="#SSNtoStateValidator-Process-Model"/>
+    <service:supports rdf:resource="#SSNtoStateValidator-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SSNtoStateValidator-Profile">
+    <service:isPresentedBy rdf:resource="#SSNtoStateValidator-Service"/>
+	 <profile:serviceName xml:lang="en">
+           SSN to State Validator
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           A simple free service that takes a social security number and returns the state a person was registered (or born) in.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SSN"/>
+    <profile:hasOutput rdf:resource="#CountryState"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SSNtoStateValidator-Process-Model">
+     <service:describes rdf:resource="#SSNtoStateValidator-Service"/>
+     <process:hasProcess rdf:resource="#SSNtoStateValidator-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SSNtoStateValidator-Process">
+   <process:hasInput rdf:resource="#SSN"/>
+   <process:hasOutput rdf:resource="#CountryState"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SSN">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#SSN</process:parameterType>
+    <rdfs:label>Socoal Security Number (SSN)</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="CountryState">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#CountryState</process:parameterType>
+    <rdfs:label>Country State</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="SSNtoStateValidator-Grounding">
+    <service:supportedBy rdf:resource="#SSNtoStateValidator-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

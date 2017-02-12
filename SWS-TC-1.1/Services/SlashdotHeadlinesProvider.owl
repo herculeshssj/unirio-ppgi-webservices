@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SlashdotHeadlinesProvider.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SlashdotHeadlinesProvider">
+    <service:presents rdf:resource="#SlashdotHeadlinesProvider-Profile"/>
+    <service:describedBy rdf:resource="#SlashdotHeadlinesProvider-Process-Model"/>
+    <service:supports rdf:resource="#SlashdotHeadlinesProvider-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SlashdotHeadlinesProvider-Profile">
+    <service:isPresentedBy rdf:resource="#SlashdotHeadlinesProvider-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Slashdot Headlines Provider
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Provides new and old headlines from opensource site slashdot.org
+    </profile:textDescription>
+    <profile:hasOutput rdf:resource="#title"/>
+    <profile:hasOutput rdf:resource="#url"/>
+    <profile:hasOutput rdf:resource="#time"/>
+    <profile:hasOutput rdf:resource="#author"/>
+    <profile:hasOutput rdf:resource="#department"/>
+    <profile:hasOutput rdf:resource="#topic"/>
+    <profile:hasOutput rdf:resource="#comments"/>
+    <profile:hasOutput rdf:resource="#section"/>
+    <profile:hasOutput rdf:resource="#image"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SlashdotHeadlinesProvider-Process-Model">
+     <service:describes rdf:resource="#SlashdotHeadlinesProvider-Service"/>
+     <process:hasProcess rdf:resource="#SlashdotHeadlinesProvider-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SlashdotHeadlinesProvider-Process">
+   <process:hasOutput rdf:resource="#title"/>
+   <process:hasOutput rdf:resource="#url"/>
+   <process:hasOutput rdf:resource="#time"/>
+   <process:hasOutput rdf:resource="#author"/>
+   <process:hasOutput rdf:resource="#department"/>
+   <process:hasOutput rdf:resource="#topic"/>
+   <process:hasOutput rdf:resource="#comments"/>
+   <process:hasOutput rdf:resource="#section"/>
+   <process:hasOutput rdf:resource="#image"/>
+</process:AtomicProcess>
+
+<process:Output rdf:ID="title">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Title</process:parameterType>
+    <rdfs:label>title</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="url">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#URL</process:parameterType>
+    <rdfs:label>url</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="time">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Time</process:parameterType>
+    <rdfs:label>time</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="author">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Author</process:parameterType>
+    <rdfs:label>author</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="department">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Department</process:parameterType>
+    <rdfs:label>department</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="topic">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Topic</process:parameterType>
+    <rdfs:label>topic</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="comments">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Comment</process:parameterType>
+    <rdfs:label>comments</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="section">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Section</process:parameterType>
+    <rdfs:label>section</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="image">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Image</process:parameterType>
+    <rdfs:label>image</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="SlashdotHeadlinesProvider-Grounding">
+    <service:supportedBy rdf:resource="#SlashdotHeadlinesProvider-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

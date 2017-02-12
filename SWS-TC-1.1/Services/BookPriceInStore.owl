@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/BookPriceInStore.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="BookPriceInStore">
+    <service:presents rdf:resource="#BookPriceInStore-Profile"/>
+    <service:describedBy rdf:resource="#BookPriceInStore-Process-Model"/>
+    <service:supports rdf:resource="#BookPriceInStore-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="BookPriceInStore-Profile">
+    <service:isPresentedBy rdf:resource="#BookPriceInStore-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Book Price In Store
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the price of a book if it is offered by the given bookstore otherwise the not available message is returned.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Book"/>
+    <profile:hasInput rdf:resource="#BookStore"/>
+    <profile:hasOutput rdf:resource="#BookPrice"/>
+    <profile:hasResult rdf:resource="#BookNotAvailable"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="BookPriceInStore-Process-Model">
+     <service:describes rdf:resource="#BookPriceInStore-Service"/>
+     <process:hasProcess rdf:resource="#BookPriceInStore-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="BookPriceInStore-Process">
+   <process:hasInput rdf:resource="#Book"/>
+   <process:hasInput rdf:resource="#BookStore"/>
+   <process:hasOutput rdf:resource="#BookPrice"/>
+   <process:hasResult>
+      <process:Result rdf:ID="BookNotAvailable">
+          <rdfs:comment>Book Not Available</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Book">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Book</process:parameterType>
+    <rdfs:label>Book Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="BookStore">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#BookStore</process:parameterType>
+    <rdfs:label>Book Store Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="BookPrice">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Book Price</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="BookPriceInStore-Grounding">
+    <service:supportedBy rdf:resource="#BookPriceInStore-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

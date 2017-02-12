@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/BusinessDocumentTransformationService.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="BusinessDocumentTransformationService">
+    <service:presents rdf:resource="#BusinessDocumentTransformationService-Profile"/>
+    <service:describedBy rdf:resource="#BusinessDocumentTransformationService-Process-Model"/>
+    <service:supports rdf:resource="#BusinessDocumentTransformationService-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="BusinessDocumentTransformationService-Profile">
+    <service:isPresentedBy rdf:resource="#BusinessDocumentTransformationService-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Business Document Transformation Service
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Convert business data to or from CSV, EDI, xCBL and other XML vocabularies.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#InputDocument"/>
+    <profile:hasInput rdf:resource="#DestinationDocumentType"/>
+    <profile:hasOutput rdf:resource="#OutputDocument"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="BusinessDocumentTransformationService-Process-Model">
+     <service:describes rdf:resource="#BusinessDocumentTransformationService-Service"/>
+     <process:hasProcess rdf:resource="#BusinessDocumentTransformationService-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="BusinessDocumentTransformationService-Process">
+   <process:hasInput rdf:resource="#InputDocument"/>
+   <process:hasInput rdf:resource="#DestinationDocumentType"/>
+   <process:hasOutput rdf:resource="#OutputDocument"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="InputDocument">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Document</process:parameterType>
+    <rdfs:label>Business Document to Convert</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationDocumentType">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DocumentType</process:parameterType>
+    <rdfs:label>Destination Business Document type</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="OutputDocument">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Document</process:parameterType>
+    <rdfs:label>Converted Business Document</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="BusinessDocumentTransformationService-Grounding">
+    <service:supportedBy rdf:resource="#BusinessDocumentTransformationService-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

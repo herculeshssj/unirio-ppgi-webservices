@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetMetroTimeTable.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetMetroTimeTable">
+    <service:presents rdf:resource="#GetMetroTimeTable-Profile"/>
+    <service:describedBy rdf:resource="#GetMetroTimeTable-Process-Model"/>
+    <service:supports rdf:resource="#GetMetroTimeTable-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetMetroTimeTable-Profile">
+    <service:isPresentedBy rdf:resource="#GetMetroTimeTable-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Metro Time Table
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns time table of a metro service in a city
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CityInfo"/>
+    <profile:hasOutput rdf:resource="#TimeTable"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetMetroTimeTable-Process-Model">
+     <service:describes rdf:resource="#GetMetroTimeTable-Service"/>
+     <process:hasProcess rdf:resource="#GetMetroTimeTable-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetMetroTimeTable-Process">
+   <process:hasInput rdf:resource="#CityInfo"/>
+   <process:hasOutput rdf:resource="#TimeTable"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CityInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TimeTable">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TimeTable</process:parameterType>
+    <rdfs:label>Metro Time Table</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetMetroTimeTable-Grounding">
+    <service:supportedBy rdf:resource="#GetMetroTimeTable-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

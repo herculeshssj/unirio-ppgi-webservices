@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/WeatherInfo.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="WeatherInfo">
+    <service:presents rdf:resource="#WeatherInfo-Profile"/>
+    <service:describedBy rdf:resource="#WeatherInfo-Process-Model"/>
+    <service:supports rdf:resource="#WeatherInfo-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="WeatherInfo-Profile">
+    <service:isPresentedBy rdf:resource="#WeatherInfo-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Weather Info
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns Weather Information of a zipcode
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ZipCode"/>
+    <profile:hasOutput rdf:resource="#Weather"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="WeatherInfo-Process-Model">
+     <service:describes rdf:resource="#WeatherInfo-Service"/>
+     <process:hasProcess rdf:resource="#WeatherInfo-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="WeatherInfo-Process">
+   <process:hasInput rdf:resource="#ZipCode"/>
+   <process:hasOutput rdf:resource="#Weather"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ZipCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ZipCode</process:parameterType>
+    <rdfs:label>Zip Code to find the weather</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Weather">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Weather</process:parameterType>
+    <rdfs:label>Weather Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="WeatherInfo-Grounding">
+    <service:supportedBy rdf:resource="#WeatherInfo-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Translator.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Translator">
+    <service:presents rdf:resource="#Translator-Profile"/>
+    <service:describedBy rdf:resource="#Translator-Process-Model"/>
+    <service:supports rdf:resource="#Translator-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Translator-Profile">
+    <service:isPresentedBy rdf:resource="#Translator-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Translator
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives a text in a language and translates it to another language.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SourceLanguage"/>
+    <profile:hasInput rdf:resource="#SoucreText"/>
+    <profile:hasInput rdf:resource="#DestinationLanguage"/>
+    <profile:hasOutput rdf:resource="#TranslatedText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Translator-Process-Model">
+     <service:describes rdf:resource="#Translator-Service"/>
+     <process:hasProcess rdf:resource="#Translator-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Translator-Process">
+   <process:hasInput rdf:resource="#SourceLanguage"/>
+   <process:hasInput rdf:resource="#SoucreText"/>
+   <process:hasInput rdf:resource="#DestinationLanguage"/>
+   <process:hasOutput rdf:resource="#TranslatedText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SourceLanguage">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Language</process:parameterType>
+    <rdfs:label>Source Language</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="SoucreText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Text to translate</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationLanguage">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Language</process:parameterType>
+    <rdfs:label>Destination Language</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TranslatedText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Translated Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Translator-Grounding">
+    <service:supportedBy rdf:resource="#Translator-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

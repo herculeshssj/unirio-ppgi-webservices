@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Orbitarium.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Orbitarium">
+    <service:presents rdf:resource="#Orbitarium-Profile"/>
+    <service:describedBy rdf:resource="#Orbitarium-Process-Model"/>
+    <service:supports rdf:resource="#Orbitarium-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Orbitarium-Profile">
+    <service:isPresentedBy rdf:resource="#Orbitarium-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Orbitarium
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Retrieves positions of the Sun,Moon,and Planets for any date and time
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#DateTime"/>
+    <profile:hasOutput rdf:resource="#SunPosition"/>
+    <profile:hasOutput rdf:resource="#MoonPosition"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Orbitarium-Process-Model">
+     <service:describes rdf:resource="#Orbitarium-Service"/>
+     <process:hasProcess rdf:resource="#Orbitarium-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Orbitarium-Process">
+   <process:hasInput rdf:resource="#DateTime"/>
+   <process:hasOutput rdf:resource="#SunPosition"/>
+   <process:hasOutput rdf:resource="#MoonPosition"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="DateTime">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label>Date and Time</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="SunPosition">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#SpacePosition</process:parameterType>
+    <rdfs:label>Sun Space Position</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="MoonPosition">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#SpacePosition</process:parameterType>
+    <rdfs:label>Moon Space Position</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Orbitarium-Grounding">
+    <service:supportedBy rdf:resource="#Orbitarium-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

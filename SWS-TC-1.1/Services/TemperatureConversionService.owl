@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/TemperatureConversionService.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="TemperatureConversionService">
+    <service:presents rdf:resource="#TemperatureConversionService-Profile"/>
+    <service:describedBy rdf:resource="#TemperatureConversionService-Process-Model"/>
+    <service:supports rdf:resource="#TemperatureConversionService-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="TemperatureConversionService-Profile">
+    <service:isPresentedBy rdf:resource="#TemperatureConversionService-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Temperature Conversion Service
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This Web service performs Fahrenheit to Centigrade and Centigrade to Fahrenheit conversions. The service current contains two functions: CtoF and FtoC. Both functions take an integer argument and return an integer result. CtoF takes an integer representing a Centigrade temperature and returns its Fahrenheit equivalent. FtoC takes an integer representing a fahrenheit temperature and returns its Centigrade equivalent. This simple Web service is described in the seminar Delphi 6 Web Services, XML, and Socket Programming, which is part of the Delphi Developer Days seminar series. Visit www.DelphiDeveloperDays.com for more information
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#InputTemperature"/>
+    <profile:hasInput rdf:resource="#Type"/>
+    <profile:hasOutput rdf:resource="#OutputTemperature"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="TemperatureConversionService-Process-Model">
+     <service:describes rdf:resource="#TemperatureConversionService-Service"/>
+     <process:hasProcess rdf:resource="#TemperatureConversionService-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="TemperatureConversionService-Process">
+   <process:hasInput rdf:resource="#InputTemperature"/>
+   <process:hasInput rdf:resource="#Type"/>
+   <process:hasOutput rdf:resource="#OutputTemperature"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="InputTemperature">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Temperature</process:parameterType>
+    <rdfs:label>Source Temperature value</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Type">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TemperatureUnit</process:parameterType>
+    <rdfs:label>Destination Temperature Type</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="OutputTemperature">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Temperature</process:parameterType>
+    <rdfs:label>Destination Temperature value</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="TemperatureConversionService-Grounding">
+    <service:supportedBy rdf:resource="#TemperatureConversionService-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

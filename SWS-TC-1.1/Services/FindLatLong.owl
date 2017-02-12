@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/FindLatLong.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="FindLatLong">
+    <service:presents rdf:resource="#FindLatLong-Profile"/>
+    <service:describedBy rdf:resource="#FindLatLong-Process-Model"/>
+    <service:supports rdf:resource="#FindLatLong-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="FindLatLong-Profile">
+    <service:isPresentedBy rdf:resource="#FindLatLong-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Find LatLong
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives the zipcode of a place and returns its latitude and longtitude.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ZipCode"/>
+    <profile:hasOutput rdf:resource="#LatitudeValue"/>
+    <profile:hasOutput rdf:resource="#LongitudeValue"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="FindLatLong-Process-Model">
+     <service:describes rdf:resource="#FindLatLong-Service"/>
+     <process:hasProcess rdf:resource="#FindLatLong-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="FindLatLong-Process">
+   <process:hasInput rdf:resource="#ZipCode"/>
+   <process:hasOutput rdf:resource="#LatitudeValue"/>
+   <process:hasOutput rdf:resource="#LongitudeValue"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ZipCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ZipCode</process:parameterType>
+    <rdfs:label>ZipCode of a place</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="LatitudeValue">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Latitude</process:parameterType>
+    <rdfs:label>Latitude Number</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="LongitudeValue">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Longitude</process:parameterType>
+    <rdfs:label>Longitude Number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="FindLatLong-Grounding">
+    <service:supportedBy rdf:resource="#FindLatLong-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Login.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Login">
+    <service:presents rdf:resource="#Login-Profile"/>
+    <service:describedBy rdf:resource="#Login-Process-Model"/>
+    <service:supports rdf:resource="#Login-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Login-Profile">
+    <service:isPresentedBy rdf:resource="#Login-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Login
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Gets as input a username and a password and if these information are valid the corresponding AccountID is returned.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Username"/>
+    <profile:hasInput rdf:resource="#Password"/>
+    <profile:hasOutput rdf:resource="#AccountID"/>
+    <profile:hasOutput rdf:resource="#InvalidData"/>
+    <profile:hasResult rdf:resource="#LoggedIn"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Login-Process-Model">
+     <service:describes rdf:resource="#Login-Service"/>
+     <process:hasProcess rdf:resource="#Login-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Login-Process">
+   <process:hasInput rdf:resource="#Username"/>
+   <process:hasInput rdf:resource="#Password"/>
+   <process:hasOutput rdf:resource="#AccountID"/>
+   <process:hasOutput rdf:resource="#InvalidData"/>
+   <process:hasResult>
+      <process:Result rdf:ID="LoggedIn">
+          <rdfs:comment>User logged in</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Username">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>User name</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Password">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>User Password</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="AccountID">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#UserAccountID</process:parameterType>
+    <rdfs:label>Identity Account ID</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="InvalidData">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Notification</process:parameterType>
+    <rdfs:label>Invalid Data Notification</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Login-Grounding">
+    <service:supportedBy rdf:resource="#Login-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

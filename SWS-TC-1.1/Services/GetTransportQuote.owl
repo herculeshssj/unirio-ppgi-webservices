@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetTransportQuote.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetTransportQuote">
+    <service:presents rdf:resource="#GetTransportQuote-Profile"/>
+    <service:describedBy rdf:resource="#GetTransportQuote-Process-Model"/>
+    <service:supports rdf:resource="#GetTransportQuote-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetTransportQuote-Profile">
+    <service:isPresentedBy rdf:resource="#GetTransportQuote-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Transport Quote
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns a Transport Quote
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Object"/>
+    <profile:hasInput rdf:resource="#SourcePlace"/>
+    <profile:hasInput rdf:resource="#DestinationPlace"/>
+    <profile:hasOutput rdf:resource="#TransportQuoteList"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetTransportQuote-Process-Model">
+     <service:describes rdf:resource="#GetTransportQuote-Service"/>
+     <process:hasProcess rdf:resource="#GetTransportQuote-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetTransportQuote-Process">
+   <process:hasInput rdf:resource="#Object"/>
+   <process:hasInput rdf:resource="#SourcePlace"/>
+   <process:hasInput rdf:resource="#DestinationPlace"/>
+   <process:hasOutput rdf:resource="#TransportQuoteList"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Object">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Object</process:parameterType>
+    <rdfs:label>Object</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="SourcePlace">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Place</process:parameterType>
+    <rdfs:label>Source Place</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationPlace">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Place</process:parameterType>
+    <rdfs:label>Destination Place</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TransportQuoteList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Quote</process:parameterType>
+    <rdfs:label>Transport Quote List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetTransportQuote-Grounding">
+    <service:supportedBy rdf:resource="#GetTransportQuote-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

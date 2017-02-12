@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetPlaceTreeCount.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetPlaceTreeCount">
+    <service:presents rdf:resource="#GetPlaceTreeCount-Profile"/>
+    <service:describedBy rdf:resource="#GetPlaceTreeCount-Process-Model"/>
+    <service:supports rdf:resource="#GetPlaceTreeCount-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetPlaceTreeCount-Profile">
+    <service:isPresentedBy rdf:resource="#GetPlaceTreeCount-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Place Tree Count
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the tree count for a place
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Place"/>
+    <profile:hasOutput rdf:resource="#TreeCount"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetPlaceTreeCount-Process-Model">
+     <service:describes rdf:resource="#GetPlaceTreeCount-Service"/>
+     <process:hasProcess rdf:resource="#GetPlaceTreeCount-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetPlaceTreeCount-Process">
+   <process:hasInput rdf:resource="#Place"/>
+   <process:hasOutput rdf:resource="#TreeCount"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Place">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Place</process:parameterType>
+    <rdfs:label>Place Informtion</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TreeCount">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Count</process:parameterType>
+    <rdfs:label>Tree Count</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetPlaceTreeCount-Grounding">
+    <service:supportedBy rdf:resource="#GetPlaceTreeCount-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

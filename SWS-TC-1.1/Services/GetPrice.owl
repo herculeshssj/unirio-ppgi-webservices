@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetPrice.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetPrice">
+    <service:presents rdf:resource="#GetPrice-Profile"/>
+    <service:describedBy rdf:resource="#GetPrice-Process-Model"/>
+    <service:supports rdf:resource="#GetPrice-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetPrice-Profile">
+    <service:isPresentedBy rdf:resource="#GetPrice-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Price
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives an object and tries to find its price.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Object"/>
+    <profile:hasOutput rdf:resource="#ObjectPrice"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetPrice-Process-Model">
+     <service:describes rdf:resource="#GetPrice-Service"/>
+     <process:hasProcess rdf:resource="#GetPrice-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetPrice-Process">
+   <process:hasInput rdf:resource="#Object"/>
+   <process:hasOutput rdf:resource="#ObjectPrice"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Object">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Object</process:parameterType>
+    <rdfs:label>Object to put in shopping cart</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ObjectPrice">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Price of the Object</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetPrice-Grounding">
+    <service:supportedBy rdf:resource="#GetPrice-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

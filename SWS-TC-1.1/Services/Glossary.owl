@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Glossary.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Glossary">
+    <service:presents rdf:resource="#Glossary-Profile"/>
+    <service:describedBy rdf:resource="#Glossary-Process-Model"/>
+    <service:supports rdf:resource="#Glossary-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Glossary-Profile">
+    <service:isPresentedBy rdf:resource="#Glossary-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Glossary
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Provides noun definitions and synonyms
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Phrase"/>
+    <profile:hasOutput rdf:resource="#Definition"/>
+    <profile:hasOutput rdf:resource="#Synonyms"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Glossary-Process-Model">
+     <service:describes rdf:resource="#Glossary-Service"/>
+     <process:hasProcess rdf:resource="#Glossary-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Glossary-Process">
+   <process:hasInput rdf:resource="#Phrase"/>
+   <process:hasOutput rdf:resource="#Definition"/>
+   <process:hasOutput rdf:resource="#Synonyms"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Phrase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Phrase</process:parameterType>
+    <rdfs:label>Phrase Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Definition">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Definition of the phrase</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Synonyms">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Synonym</process:parameterType>
+    <rdfs:label>Synonyms List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Glossary-Grounding">
+    <service:supportedBy rdf:resource="#Glossary-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

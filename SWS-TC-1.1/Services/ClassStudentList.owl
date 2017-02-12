@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ClassStudentList.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ClassStudentList">
+    <service:presents rdf:resource="#ClassStudentList-Profile"/>
+    <service:describedBy rdf:resource="#ClassStudentList-Process-Model"/>
+    <service:supports rdf:resource="#ClassStudentList-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ClassStudentList-Profile">
+    <service:isPresentedBy rdf:resource="#ClassStudentList-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Class Student List
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns List of Students in a class
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ClassInfo"/>
+    <profile:hasOutput rdf:resource="#StudentList"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ClassStudentList-Process-Model">
+     <service:describes rdf:resource="#ClassStudentList-Service"/>
+     <process:hasProcess rdf:resource="#ClassStudentList-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ClassStudentList-Process">
+   <process:hasInput rdf:resource="#ClassInfo"/>
+   <process:hasOutput rdf:resource="#StudentList"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ClassInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Class</process:parameterType>
+    <rdfs:label>Class Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="StudentList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Student List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ClassStudentList-Grounding">
+    <service:supportedBy rdf:resource="#ClassStudentList-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

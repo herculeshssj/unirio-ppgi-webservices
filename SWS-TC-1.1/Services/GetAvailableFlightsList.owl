@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetAvailableFlightsList.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetAvailableFlightsList">
+    <service:presents rdf:resource="#GetAvailableFlightsList-Profile"/>
+    <service:describedBy rdf:resource="#GetAvailableFlightsList-Process-Model"/>
+    <service:supports rdf:resource="#GetAvailableFlightsList-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetAvailableFlightsList-Profile">
+    <service:isPresentedBy rdf:resource="#GetAvailableFlightsList-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Available Flights List
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns available flights list
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SourceCity"/>
+    <profile:hasInput rdf:resource="#DestinationCity"/>
+    <profile:hasInput rdf:resource="#Date"/>
+    <profile:hasOutput rdf:resource="#FlightsList"/>
+    <profile:hasResult rdf:resource="#FlightAvailable"/>
+    <profile:hasResult rdf:resource="#FlightNotAvailable"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetAvailableFlightsList-Process-Model">
+     <service:describes rdf:resource="#GetAvailableFlightsList-Service"/>
+     <process:hasProcess rdf:resource="#GetAvailableFlightsList-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetAvailableFlightsList-Process">
+   <process:hasInput rdf:resource="#SourceCity"/>
+   <process:hasInput rdf:resource="#DestinationCity"/>
+   <process:hasInput rdf:resource="#Date"/>
+   <process:hasOutput rdf:resource="#FlightsList"/>
+   <process:hasResult>
+      <process:Result rdf:ID="FlightAvailable">
+          <rdfs:comment>Flight Available</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+   <process:hasResult>
+      <process:Result rdf:ID="FlightNotAvailable">
+          <rdfs:comment>Flight Not Available</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SourceCity">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>Source City</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationCity">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>Destination City</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Date">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Date</process:parameterType>
+    <rdfs:label>Date</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FlightsList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Flight</process:parameterType>
+    <rdfs:label>Flights List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetAvailableFlightsList-Grounding">
+    <service:supportedBy rdf:resource="#GetAvailableFlightsList-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

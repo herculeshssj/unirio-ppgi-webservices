@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/HotelCost.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="HotelCost">
+    <service:presents rdf:resource="#HotelCost-Profile"/>
+    <service:describedBy rdf:resource="#HotelCost-Process-Model"/>
+    <service:supports rdf:resource="#HotelCost-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="HotelCost-Profile">
+    <service:isPresentedBy rdf:resource="#HotelCost-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Hotel Cost
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Finds a hotel in a place for a time interval and returns cost of booking and if it cannot find a hotel, a not available notification will be sent
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#TimeInterval"/>
+    <profile:hasInput rdf:resource="#Place"/>
+    <profile:hasOutput rdf:resource="#Cost"/>
+    <profile:hasOutput rdf:resource="#Hotel"/>
+    <profile:hasOutput rdf:resource="#NotAvailableNotification"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="HotelCost-Process-Model">
+     <service:describes rdf:resource="#HotelCost-Service"/>
+     <process:hasProcess rdf:resource="#HotelCost-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="HotelCost-Process">
+   <process:hasInput rdf:resource="#TimeInterval"/>
+   <process:hasInput rdf:resource="#Place"/>
+   <process:hasOutput rdf:resource="#Cost"/>
+   <process:hasOutput rdf:resource="#Hotel"/>
+   <process:hasOutput rdf:resource="#NotAvailableNotification"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="TimeInterval">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TimeInterval</process:parameterType>
+    <rdfs:label>Time Interval</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Place">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Place</process:parameterType>
+    <rdfs:label>Place Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Cost">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Cost of the booking</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Hotel">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Hotel</process:parameterType>
+    <rdfs:label>Hotel Information</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="NotAvailableNotification">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Notification</process:parameterType>
+    <rdfs:label>Not Available Notification</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="HotelCost-Grounding">
+    <service:supportedBy rdf:resource="#HotelCost-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

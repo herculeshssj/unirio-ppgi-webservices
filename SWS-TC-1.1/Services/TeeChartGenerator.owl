@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/TeeChartGenerator.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="TeeChartGenerator">
+    <service:presents rdf:resource="#TeeChartGenerator-Profile"/>
+    <service:describedBy rdf:resource="#TeeChartGenerator-Process-Model"/>
+    <service:supports rdf:resource="#TeeChartGenerator-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="TeeChartGenerator-Profile">
+    <service:isPresentedBy rdf:resource="#TeeChartGenerator-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Tee Chart Generator
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Create Charts from your dat (provides a remote charting server, Charts are created at server side as images. The URL of the server side image is returned as string).
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ChartData"/>
+    <profile:hasOutput rdf:resource="#ChartURL"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="TeeChartGenerator-Process-Model">
+     <service:describes rdf:resource="#TeeChartGenerator-Service"/>
+     <process:hasProcess rdf:resource="#TeeChartGenerator-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="TeeChartGenerator-Process">
+   <process:hasInput rdf:resource="#ChartData"/>
+   <process:hasOutput rdf:resource="#ChartURL"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ChartData">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ChartData</process:parameterType>
+    <rdfs:label>Chart Data</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ChartURL">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#URL</process:parameterType>
+    <rdfs:label>Generated Chart URL</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="TeeChartGenerator-Grounding">
+    <service:supportedBy rdf:resource="#TeeChartGenerator-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

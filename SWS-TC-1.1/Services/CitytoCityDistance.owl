@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/CitytoCityDistance.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="CitytoCityDistance">
+    <service:presents rdf:resource="#CitytoCityDistance-Profile"/>
+    <service:describedBy rdf:resource="#CitytoCityDistance-Process-Model"/>
+    <service:supports rdf:resource="#CitytoCityDistance-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="CitytoCityDistance-Profile">
+    <service:isPresentedBy rdf:resource="#CitytoCityDistance-Service"/>
+	 <profile:serviceName xml:lang="en">
+           City to City Distance
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the distance between two cities
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SourceCity"/>
+    <profile:hasInput rdf:resource="#DestinationCity"/>
+    <profile:hasOutput rdf:resource="#Distance"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="CitytoCityDistance-Process-Model">
+     <service:describes rdf:resource="#CitytoCityDistance-Service"/>
+     <process:hasProcess rdf:resource="#CitytoCityDistance-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="CitytoCityDistance-Process">
+   <process:hasInput rdf:resource="#SourceCity"/>
+   <process:hasInput rdf:resource="#DestinationCity"/>
+   <process:hasOutput rdf:resource="#Distance"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SourceCity">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>Source City</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationCity">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>Destination City</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Distance">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Distance</process:parameterType>
+    <rdfs:label>Distance between two cities</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="CitytoCityDistance-Grounding">
+    <service:supportedBy rdf:resource="#CitytoCityDistance-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

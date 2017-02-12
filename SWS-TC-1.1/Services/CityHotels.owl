@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/CityHotels.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="CityHotels">
+    <service:presents rdf:resource="#CityHotels-Profile"/>
+    <service:describedBy rdf:resource="#CityHotels-Process-Model"/>
+    <service:supports rdf:resource="#CityHotels-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="CityHotels-Profile">
+    <service:isPresentedBy rdf:resource="#CityHotels-Service"/>
+	 <profile:serviceName xml:lang="en">
+           City Hotels
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the list of hotels which are located in a given city.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CityInfo"/>
+    <profile:hasOutput rdf:resource="#HotelsList"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="CityHotels-Process-Model">
+     <service:describes rdf:resource="#CityHotels-Service"/>
+     <process:hasProcess rdf:resource="#CityHotels-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="CityHotels-Process">
+   <process:hasInput rdf:resource="#CityInfo"/>
+   <process:hasOutput rdf:resource="#HotelsList"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CityInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="HotelsList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Hotel</process:parameterType>
+    <rdfs:label>Hotels List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="CityHotels-Grounding">
+    <service:supportedBy rdf:resource="#CityHotels-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

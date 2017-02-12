@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/QuranVerse.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="QuranVerse">
+    <service:presents rdf:resource="#QuranVerse-Profile"/>
+    <service:describedBy rdf:resource="#QuranVerse-Process-Model"/>
+    <service:supports rdf:resource="#QuranVerse-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="QuranVerse-Profile">
+    <service:isPresentedBy rdf:resource="#QuranVerse-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Quran Verse
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Retrieve a verse of the Qur'an in English or Arabic by giving surah number and verse number
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Language"/>
+    <profile:hasInput rdf:resource="#SurahNumber"/>
+    <profile:hasInput rdf:resource="#VerseNumber"/>
+    <profile:hasOutput rdf:resource="#Verse"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="QuranVerse-Process-Model">
+     <service:describes rdf:resource="#QuranVerse-Service"/>
+     <process:hasProcess rdf:resource="#QuranVerse-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="QuranVerse-Process">
+   <process:hasInput rdf:resource="#Language"/>
+   <process:hasInput rdf:resource="#SurahNumber"/>
+   <process:hasInput rdf:resource="#VerseNumber"/>
+   <process:hasOutput rdf:resource="#Verse"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Language">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Language</process:parameterType>
+    <rdfs:label>Language, English or Arabic</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="SurahNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Surah Number</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="VerseNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Verse Number</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Verse">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Verse</process:parameterType>
+    <rdfs:label>Verse Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="QuranVerse-Grounding">
+    <service:supportedBy rdf:resource="#QuranVerse-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

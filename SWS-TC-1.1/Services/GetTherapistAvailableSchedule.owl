@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetTherapistAvailableSchedule.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetTherapistAvailableSchedule">
+    <service:presents rdf:resource="#GetTherapistAvailableSchedule-Profile"/>
+    <service:describedBy rdf:resource="#GetTherapistAvailableSchedule-Process-Model"/>
+    <service:supports rdf:resource="#GetTherapistAvailableSchedule-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetTherapistAvailableSchedule-Profile">
+    <service:isPresentedBy rdf:resource="#GetTherapistAvailableSchedule-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Therapist Available Schedule
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns Available Schedule of a therapist
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#TherapistInfo"/>
+    <profile:hasOutput rdf:resource="#ScheduleInfo"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetTherapistAvailableSchedule-Process-Model">
+     <service:describes rdf:resource="#GetTherapistAvailableSchedule-Service"/>
+     <process:hasProcess rdf:resource="#GetTherapistAvailableSchedule-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetTherapistAvailableSchedule-Process">
+   <process:hasInput rdf:resource="#TherapistInfo"/>
+   <process:hasOutput rdf:resource="#ScheduleInfo"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="TherapistInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Therapist</process:parameterType>
+    <rdfs:label>Therapist Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ScheduleInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label>Schedule Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetTherapistAvailableSchedule-Grounding">
+    <service:supportedBy rdf:resource="#GetTherapistAvailableSchedule-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ISBNBookSearch.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ISBNBookSearch">
+    <service:presents rdf:resource="#ISBNBookSearch-Profile"/>
+    <service:describedBy rdf:resource="#ISBNBookSearch-Process-Model"/>
+    <service:supports rdf:resource="#ISBNBookSearch-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ISBNBookSearch-Profile">
+    <service:isPresentedBy rdf:resource="#ISBNBookSearch-Service"/>
+	 <profile:serviceName xml:lang="en">
+           ISBN Book Search
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives an ISBN and returns the book information.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ISBN"/>
+    <profile:hasOutput rdf:resource="#Book"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ISBNBookSearch-Process-Model">
+     <service:describes rdf:resource="#ISBNBookSearch-Service"/>
+     <process:hasProcess rdf:resource="#ISBNBookSearch-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ISBNBookSearch-Process">
+   <process:hasInput rdf:resource="#ISBN"/>
+   <process:hasOutput rdf:resource="#Book"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ISBN">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ISBN</process:parameterType>
+    <rdfs:label>ISBN</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Book">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Book</process:parameterType>
+    <rdfs:label>Book Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ISBNBookSearch-Grounding">
+    <service:supportedBy rdf:resource="#ISBNBookSearch-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/FlightTracker.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="FlightTracker">
+    <service:presents rdf:resource="#FlightTracker-Profile"/>
+    <service:describedBy rdf:resource="#FlightTracker-Process-Model"/>
+    <service:supports rdf:resource="#FlightTracker-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="FlightTracker-Profile">
+    <service:isPresentedBy rdf:resource="#FlightTracker-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Flight Tracker
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Finds a flight information of an airline
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#AirlineCode"/>
+    <profile:hasInput rdf:resource="#FlightNumber"/>
+    <profile:hasOutput rdf:resource="#FlightInformation"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="FlightTracker-Process-Model">
+     <service:describes rdf:resource="#FlightTracker-Service"/>
+     <process:hasProcess rdf:resource="#FlightTracker-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="FlightTracker-Process">
+   <process:hasInput rdf:resource="#AirlineCode"/>
+   <process:hasInput rdf:resource="#FlightNumber"/>
+   <process:hasOutput rdf:resource="#FlightInformation"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="AirlineCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AirlineCode</process:parameterType>
+    <rdfs:label>Airline Code</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="FlightNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Flight Number</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FlightInformation">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Flight</process:parameterType>
+    <rdfs:label>Flight Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="FlightTracker-Grounding">
+    <service:supportedBy rdf:resource="#FlightTracker-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

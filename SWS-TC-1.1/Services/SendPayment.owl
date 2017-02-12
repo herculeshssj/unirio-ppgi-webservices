@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SendPayment.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SendPayment">
+    <service:presents rdf:resource="#SendPayment-Profile"/>
+    <service:describedBy rdf:resource="#SendPayment-Process-Model"/>
+    <service:supports rdf:resource="#SendPayment-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SendPayment-Profile">
+    <service:isPresentedBy rdf:resource="#SendPayment-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Send Payment
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Send payments using Fidesic e-payments. Signup using the website and then you can use the SOAP interface to make payments to members (electronic) and non-members (paper check).
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#PaymentValue"/>
+    <profile:hasInput rdf:resource="#Sender"/>
+    <profile:hasInput rdf:resource="#Receiver"/>
+    <profile:hasResult rdf:resource="#PaymentSent"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SendPayment-Process-Model">
+     <service:describes rdf:resource="#SendPayment-Service"/>
+     <process:hasProcess rdf:resource="#SendPayment-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SendPayment-Process">
+   <process:hasInput rdf:resource="#PaymentValue"/>
+   <process:hasInput rdf:resource="#Sender"/>
+   <process:hasInput rdf:resource="#Receiver"/>
+   <process:hasResult>
+      <process:Result rdf:ID="PaymentSent">
+          <rdfs:comment>Payment Successfully sent</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="PaymentValue">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Payment Price Value</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Sender">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AccountID</process:parameterType>
+    <rdfs:label>Sender Account</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Receiver">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AccountID</process:parameterType>
+    <rdfs:label>Receiver Account</rdfs:label>
+</process:Input>
+
+<grounding:WsdlGrounding rdf:ID="SendPayment-Grounding">
+    <service:supportedBy rdf:resource="#SendPayment-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

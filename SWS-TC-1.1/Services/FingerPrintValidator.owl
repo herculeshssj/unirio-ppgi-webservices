@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/FingerPrintValidator.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="FingerPrintValidator">
+    <service:presents rdf:resource="#FingerPrintValidator-Profile"/>
+    <service:describedBy rdf:resource="#FingerPrintValidator-Process-Model"/>
+    <service:supports rdf:resource="#FingerPrintValidator-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="FingerPrintValidator-Profile">
+    <service:isPresentedBy rdf:resource="#FingerPrintValidator-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Finger Print Validator
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           validates a finger print
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#PersonInfo"/>
+    <profile:hasInput rdf:resource="#FingerPrint"/>
+    <profile:hasOutput rdf:resource="#ValidityResult"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="FingerPrintValidator-Process-Model">
+     <service:describes rdf:resource="#FingerPrintValidator-Service"/>
+     <process:hasProcess rdf:resource="#FingerPrintValidator-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="FingerPrintValidator-Process">
+   <process:hasInput rdf:resource="#PersonInfo"/>
+   <process:hasInput rdf:resource="#FingerPrint"/>
+   <process:hasOutput rdf:resource="#ValidityResult"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="PersonInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Person Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="FingerPrint">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#FingerPrint</process:parameterType>
+    <rdfs:label>Finger Print Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ValidityResult">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#true-false</process:parameterType>
+    <rdfs:label>Validation Result</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="FingerPrintValidator-Grounding">
+    <service:supportedBy rdf:resource="#FingerPrintValidator-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SpellingSuggestor.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SpellingSuggestor">
+    <service:presents rdf:resource="#SpellingSuggestor-Profile"/>
+    <service:describedBy rdf:resource="#SpellingSuggestor-Process-Model"/>
+    <service:supports rdf:resource="#SpellingSuggestor-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SpellingSuggestor-Profile">
+    <service:isPresentedBy rdf:resource="#SpellingSuggestor-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Spelling Suggestor
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This web service returns a number of spelling suggestion for a given phrase.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#InputPhrase"/>
+    <profile:hasOutput rdf:resource="#SuggestionPhrase"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SpellingSuggestor-Process-Model">
+     <service:describes rdf:resource="#SpellingSuggestor-Service"/>
+     <process:hasProcess rdf:resource="#SpellingSuggestor-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SpellingSuggestor-Process">
+   <process:hasInput rdf:resource="#InputPhrase"/>
+   <process:hasOutput rdf:resource="#SuggestionPhrase"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="InputPhrase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Input phrase</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="SuggestionPhrase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#SpellingSuggestion</process:parameterType>
+    <rdfs:label>Suggestion phrase</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="SpellingSuggestor-Grounding">
+    <service:supportedBy rdf:resource="#SpellingSuggestor-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

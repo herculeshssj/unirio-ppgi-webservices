@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/FlightInformation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="FlightInformation">
+    <service:presents rdf:resource="#FlightInformation-Profile"/>
+    <service:describedBy rdf:resource="#FlightInformation-Process-Model"/>
+    <service:supports rdf:resource="#FlightInformation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="FlightInformation-Profile">
+    <service:isPresentedBy rdf:resource="#FlightInformation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Flight Information
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Service allows quering the flights schedule as well as receiving the detailed information about a flight including the geographical map with the flight shown on it. Service requires Session Key received using Security service.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Schedule"/>
+    <profile:hasOutput rdf:resource="#FlightSchedules"/>
+    <profile:hasOutput rdf:resource="#GeographicalMap"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="FlightInformation-Process-Model">
+     <service:describes rdf:resource="#FlightInformation-Service"/>
+     <process:hasProcess rdf:resource="#FlightInformation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="FlightInformation-Process">
+   <process:hasInput rdf:resource="#Schedule"/>
+   <process:hasOutput rdf:resource="#FlightSchedules"/>
+   <process:hasOutput rdf:resource="#GeographicalMap"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Schedule">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label>Schedule Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FlightSchedules">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label>Flight Schedule</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="GeographicalMap">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Map</process:parameterType>
+    <rdfs:label>GeographicalMap</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="FlightInformation-Grounding">
+    <service:supportedBy rdf:resource="#FlightInformation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

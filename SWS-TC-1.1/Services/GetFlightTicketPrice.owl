@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetFlightTicketPrice.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetFlightTicketPrice">
+    <service:presents rdf:resource="#GetFlightTicketPrice-Profile"/>
+    <service:describedBy rdf:resource="#GetFlightTicketPrice-Process-Model"/>
+    <service:supports rdf:resource="#GetFlightTicketPrice-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetFlightTicketPrice-Profile">
+    <service:isPresentedBy rdf:resource="#GetFlightTicketPrice-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Flight Ticket Price
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns ticket price of a flight from an agency
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#FlightInfo"/>
+    <profile:hasInput rdf:resource="#TravelAgency"/>
+    <profile:hasOutput rdf:resource="#TicketPrice"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetFlightTicketPrice-Process-Model">
+     <service:describes rdf:resource="#GetFlightTicketPrice-Service"/>
+     <process:hasProcess rdf:resource="#GetFlightTicketPrice-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetFlightTicketPrice-Process">
+   <process:hasInput rdf:resource="#FlightInfo"/>
+   <process:hasInput rdf:resource="#TravelAgency"/>
+   <process:hasOutput rdf:resource="#TicketPrice"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="FlightInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Flight</process:parameterType>
+    <rdfs:label>Flight Information</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="TravelAgency">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TravelAgency</process:parameterType>
+    <rdfs:label>Travel Agency Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TicketPrice">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Ticket Price</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetFlightTicketPrice-Grounding">
+    <service:supportedBy rdf:resource="#GetFlightTicketPrice-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

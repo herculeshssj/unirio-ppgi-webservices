@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/DESencryptionanddecryption.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="DESencryptionanddecryption">
+    <service:presents rdf:resource="#DESencryptionanddecryption-Profile"/>
+    <service:describedBy rdf:resource="#DESencryptionanddecryption-Process-Model"/>
+    <service:supports rdf:resource="#DESencryptionanddecryption-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="DESencryptionanddecryption-Profile">
+    <service:isPresentedBy rdf:resource="#DESencryptionanddecryption-Service"/>
+	 <profile:serviceName xml:lang="en">
+           DES encryption and decryption
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Provides basic DES encryption/decryption functionality.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#SourceText"/>
+    <profile:hasInput rdf:resource="#EncORDec"/>
+    <profile:hasOutput rdf:resource="#ResultText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="DESencryptionanddecryption-Process-Model">
+     <service:describes rdf:resource="#DESencryptionanddecryption-Service"/>
+     <process:hasProcess rdf:resource="#DESencryptionanddecryption-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="DESencryptionanddecryption-Process">
+   <process:hasInput rdf:resource="#SourceText"/>
+   <process:hasInput rdf:resource="#EncORDec"/>
+   <process:hasOutput rdf:resource="#ResultText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="SourceText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Source Text</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="EncORDec">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#EncryptionOrDecryptionType</process:parameterType>
+    <rdfs:label>Encryption or Decryption Type</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ResultText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Result Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="DESencryptionanddecryption-Grounding">
+    <service:supportedBy rdf:resource="#DESencryptionanddecryption-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

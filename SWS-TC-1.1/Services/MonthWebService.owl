@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/MonthWebService.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="MonthWebService">
+    <service:presents rdf:resource="#MonthWebService-Profile"/>
+    <service:describedBy rdf:resource="#MonthWebService-Process-Model"/>
+    <service:supports rdf:resource="#MonthWebService-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="MonthWebService-Profile">
+    <service:isPresentedBy rdf:resource="#MonthWebService-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Month Web Service
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the name of the month associated with the input number
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#MonthNumber"/>
+    <profile:hasOutput rdf:resource="#MonthName"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="MonthWebService-Process-Model">
+     <service:describes rdf:resource="#MonthWebService-Service"/>
+     <process:hasProcess rdf:resource="#MonthWebService-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="MonthWebService-Process">
+   <process:hasInput rdf:resource="#MonthNumber"/>
+   <process:hasOutput rdf:resource="#MonthName"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="MonthNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#MonthNumber</process:parameterType>
+    <rdfs:label>Month Number between 1 and 12</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="MonthName">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#MonthName</process:parameterType>
+    <rdfs:label>Month Name</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="MonthWebService-Grounding">
+    <service:supportedBy rdf:resource="#MonthWebService-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

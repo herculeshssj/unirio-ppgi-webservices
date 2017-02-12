@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/MXChecker.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="MXChecker">
+    <service:presents rdf:resource="#MXChecker-Profile"/>
+    <service:describedBy rdf:resource="#MXChecker-Process-Model"/>
+    <service:supports rdf:resource="#MXChecker-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="MXChecker-Profile">
+    <service:isPresentedBy rdf:resource="#MXChecker-Service"/>
+	 <profile:serviceName xml:lang="en">
+           MX Checker
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Checks for valid DNS MX records. This is a simple web service that checks for valid MX records using DNS services. You can use this service to validate any email address. This service uses DNS services to query the mail server named in your email address
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#MXRecord"/>
+    <profile:hasOutput rdf:resource="#CheckResult"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="MXChecker-Process-Model">
+     <service:describes rdf:resource="#MXChecker-Service"/>
+     <process:hasProcess rdf:resource="#MXChecker-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="MXChecker-Process">
+   <process:hasInput rdf:resource="#MXRecord"/>
+   <process:hasOutput rdf:resource="#CheckResult"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="MXRecord">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#MXRecord</process:parameterType>
+    <rdfs:label>MX Record</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="CheckResult">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#CheckResult</process:parameterType>
+    <rdfs:label>Check Result</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="MXChecker-Grounding">
+    <service:supportedBy rdf:resource="#MXChecker-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

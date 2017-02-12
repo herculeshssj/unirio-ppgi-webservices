@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetUserProfile.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetUserProfile">
+    <service:presents rdf:resource="#GetUserProfile-Profile"/>
+    <service:describedBy rdf:resource="#GetUserProfile-Process-Model"/>
+    <service:supports rdf:resource="#GetUserProfile-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetUserProfile-Profile">
+    <service:isPresentedBy rdf:resource="#GetUserProfile-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get User Profile
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives an AccountID and returns its corresponding user profile.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#AccountID"/>
+    <profile:hasOutput rdf:resource="#UserProfileInfo"/>
+    <profile:hasPrecondition rdf:resource="#LoggedIn"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetUserProfile-Process-Model">
+     <service:describes rdf:resource="#GetUserProfile-Service"/>
+     <process:hasProcess rdf:resource="#GetUserProfile-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetUserProfile-Process">
+   <process:hasInput rdf:resource="#AccountID"/>
+   <process:hasOutput rdf:resource="#UserProfileInfo"/>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="LoggedIn">
+          <rdfs:comment>Logged In</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="AccountID">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#UserAccountID</process:parameterType>
+    <rdfs:label>Identity Account ID</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="UserProfileInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#UserProfile</process:parameterType>
+    <rdfs:label>User Profile Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetUserProfile-Grounding">
+    <service:supportedBy rdf:resource="#GetUserProfile-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

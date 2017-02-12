@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Fibonacci.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Fibonacci">
+    <service:presents rdf:resource="#Fibonacci-Profile"/>
+    <service:describedBy rdf:resource="#Fibonacci-Process-Model"/>
+    <service:supports rdf:resource="#Fibonacci-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Fibonacci-Profile">
+    <service:isPresentedBy rdf:resource="#Fibonacci-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Fibonacci
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           The Fibonacci problem
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#StatementNumber"/>
+    <profile:hasOutput rdf:resource="#FibonacciValue"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Fibonacci-Process-Model">
+     <service:describes rdf:resource="#Fibonacci-Service"/>
+     <process:hasProcess rdf:resource="#Fibonacci-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Fibonacci-Process">
+   <process:hasInput rdf:resource="#StatementNumber"/>
+   <process:hasOutput rdf:resource="#FibonacciValue"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="StatementNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Statement Number</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FibonacciValue">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Specified Statement Number of Fibonacci Serie</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Fibonacci-Grounding">
+    <service:supportedBy rdf:resource="#Fibonacci-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

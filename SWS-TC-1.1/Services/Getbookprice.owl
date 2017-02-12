@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Getbookprice.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Getbookprice">
+    <service:presents rdf:resource="#Getbookprice-Profile"/>
+    <service:describedBy rdf:resource="#Getbookprice-Process-Model"/>
+    <service:supports rdf:resource="#Getbookprice-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Getbookprice-Profile">
+    <service:isPresentedBy rdf:resource="#Getbookprice-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get book price
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           get the price of a book from the zwiftbooks catalog
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#BookInfo"/>
+    <profile:hasOutput rdf:resource="#BookPrice"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Getbookprice-Process-Model">
+     <service:describes rdf:resource="#Getbookprice-Service"/>
+     <process:hasProcess rdf:resource="#Getbookprice-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Getbookprice-Process">
+   <process:hasInput rdf:resource="#BookInfo"/>
+   <process:hasOutput rdf:resource="#BookPrice"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="BookInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Book</process:parameterType>
+    <rdfs:label>Book Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="BookPrice">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Price of the book</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Getbookprice-Grounding">
+    <service:supportedBy rdf:resource="#Getbookprice-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

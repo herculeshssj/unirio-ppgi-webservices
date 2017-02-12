@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/MapGenerator.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="MapGenerator">
+    <service:presents rdf:resource="#MapGenerator-Profile"/>
+    <service:describedBy rdf:resource="#MapGenerator-Process-Model"/>
+    <service:supports rdf:resource="#MapGenerator-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="MapGenerator-Profile">
+    <service:isPresentedBy rdf:resource="#MapGenerator-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Map Generator
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Gets as input a set of locations (latitude and longtitude) and generates a map which covers all of these locations.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#LatitudeLongitudeList"/>
+    <profile:hasOutput rdf:resource="#Map"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="MapGenerator-Process-Model">
+     <service:describes rdf:resource="#MapGenerator-Service"/>
+     <process:hasProcess rdf:resource="#MapGenerator-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="MapGenerator-Process">
+   <process:hasInput rdf:resource="#LatitudeLongitudeList"/>
+   <process:hasOutput rdf:resource="#Map"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="LatitudeLongitudeList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#LatitudeLongitude</process:parameterType>
+    <rdfs:label>Latitude and Longitude List of locations</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Map">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Map</process:parameterType>
+    <rdfs:label>Map Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="MapGenerator-Grounding">
+    <service:supportedBy rdf:resource="#MapGenerator-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetFlightInformation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetFlightInformation">
+    <service:presents rdf:resource="#GetFlightInformation-Profile"/>
+    <service:describedBy rdf:resource="#GetFlightInformation-Process-Model"/>
+    <service:supports rdf:resource="#GetFlightInformation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetFlightInformation-Profile">
+    <service:isPresentedBy rdf:resource="#GetFlightInformation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Flight Information
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Recieves Flight Number in an airport and returns the flight information
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#FlightNumber"/>
+    <profile:hasOutput rdf:resource="#FlightClass"/>
+    <profile:hasOutput rdf:resource="#AirlineCode"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetFlightInformation-Process-Model">
+     <service:describes rdf:resource="#GetFlightInformation-Service"/>
+     <process:hasProcess rdf:resource="#GetFlightInformation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetFlightInformation-Process">
+   <process:hasInput rdf:resource="#FlightNumber"/>
+   <process:hasOutput rdf:resource="#FlightClass"/>
+   <process:hasOutput rdf:resource="#AirlineCode"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="FlightNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#FlightNumber</process:parameterType>
+    <rdfs:label>Flight Number</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FlightClass">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#FlightClass</process:parameterType>
+    <rdfs:label>Flight Class</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="AirlineCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AirlineCode</process:parameterType>
+    <rdfs:label>Airline Code</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetFlightInformation-Grounding">
+    <service:supportedBy rdf:resource="#GetFlightInformation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

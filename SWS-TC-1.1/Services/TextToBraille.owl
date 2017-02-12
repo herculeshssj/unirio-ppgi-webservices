@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/TextToBraille.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="TextToBraille">
+    <service:presents rdf:resource="#TextToBraille-Profile"/>
+    <service:describedBy rdf:resource="#TextToBraille-Process-Model"/>
+    <service:supports rdf:resource="#TextToBraille-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="TextToBraille-Profile">
+    <service:isPresentedBy rdf:resource="#TextToBraille-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Text To Braille
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the corresponding Braille information of a text
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#EnglishText"/>
+    <profile:hasOutput rdf:resource="#BrailleText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="TextToBraille-Process-Model">
+     <service:describes rdf:resource="#TextToBraille-Service"/>
+     <process:hasProcess rdf:resource="#TextToBraille-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="TextToBraille-Process">
+   <process:hasInput rdf:resource="#EnglishText"/>
+   <process:hasOutput rdf:resource="#BrailleText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="EnglishText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>English text to convert</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="BrailleText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Braille</process:parameterType>
+    <rdfs:label>Braille Text Format</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="TextToBraille-Grounding">
+    <service:supportedBy rdf:resource="#TextToBraille-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

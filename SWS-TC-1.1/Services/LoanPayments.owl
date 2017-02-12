@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/LoanPayments.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="LoanPayments">
+    <service:presents rdf:resource="#LoanPayments-Profile"/>
+    <service:describedBy rdf:resource="#LoanPayments-Process-Model"/>
+    <service:supports rdf:resource="#LoanPayments-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="LoanPayments-Profile">
+    <service:isPresentedBy rdf:resource="#LoanPayments-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Loan Payments
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This service will calculate load payments and total to repay. Given amount, interest rate, and term, this service will calculate load payments, and total to repay
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Amount"/>
+    <profile:hasInput rdf:resource="#InterestRate"/>
+    <profile:hasInput rdf:resource="#Term"/>
+    <profile:hasOutput rdf:resource="#TotalRepay"/>
+    <profile:hasOutput rdf:resource="#LoanPaymentsPrice"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="LoanPayments-Process-Model">
+     <service:describes rdf:resource="#LoanPayments-Service"/>
+     <process:hasProcess rdf:resource="#LoanPayments-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="LoanPayments-Process">
+   <process:hasInput rdf:resource="#Amount"/>
+   <process:hasInput rdf:resource="#InterestRate"/>
+   <process:hasInput rdf:resource="#Term"/>
+   <process:hasOutput rdf:resource="#TotalRepay"/>
+   <process:hasOutput rdf:resource="#LoanPaymentsPrice"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Amount">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="InterestRate">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#InterestRate</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Term">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TotalRepay">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Total repay price</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="LoanPaymentsPrice">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Loan Payments</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="LoanPayments-Grounding">
+    <service:supportedBy rdf:resource="#LoanPayments-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

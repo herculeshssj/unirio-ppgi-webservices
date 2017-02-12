@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ConvertNumberToString.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ConvertNumberToString">
+    <service:presents rdf:resource="#ConvertNumberToString-Profile"/>
+    <service:describedBy rdf:resource="#ConvertNumberToString-Process-Model"/>
+    <service:supports rdf:resource="#ConvertNumberToString-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ConvertNumberToString-Profile">
+    <service:isPresentedBy rdf:resource="#ConvertNumberToString-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Convert Number To String
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Converts a number to its string equivalent
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Number"/>
+    <profile:hasOutput rdf:resource="#StringNumber"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ConvertNumberToString-Process-Model">
+     <service:describes rdf:resource="#ConvertNumberToString-Service"/>
+     <process:hasProcess rdf:resource="#ConvertNumberToString-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ConvertNumberToString-Process">
+   <process:hasInput rdf:resource="#Number"/>
+   <process:hasOutput rdf:resource="#StringNumber"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Number">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Number to convert</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="StringNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>String euivalent of the number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ConvertNumberToString-Grounding">
+    <service:supportedBy rdf:resource="#ConvertNumberToString-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

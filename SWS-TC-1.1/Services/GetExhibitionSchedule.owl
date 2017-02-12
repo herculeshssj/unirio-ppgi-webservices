@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetExhibitionSchedule.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetExhibitionSchedule">
+    <service:presents rdf:resource="#GetExhibitionSchedule-Profile"/>
+    <service:describedBy rdf:resource="#GetExhibitionSchedule-Process-Model"/>
+    <service:supports rdf:resource="#GetExhibitionSchedule-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetExhibitionSchedule-Profile">
+    <service:isPresentedBy rdf:resource="#GetExhibitionSchedule-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Exhibition Schedule
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the schedule of an exhibition
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ExhibitionInfo"/>
+    <profile:hasOutput rdf:resource="#Schedule"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetExhibitionSchedule-Process-Model">
+     <service:describes rdf:resource="#GetExhibitionSchedule-Service"/>
+     <process:hasProcess rdf:resource="#GetExhibitionSchedule-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetExhibitionSchedule-Process">
+   <process:hasInput rdf:resource="#ExhibitionInfo"/>
+   <process:hasOutput rdf:resource="#Schedule"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ExhibitionInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Exhibition</process:parameterType>
+    <rdfs:label>Exhibition Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Schedule">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label>Exhibition Schedule Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetExhibitionSchedule-Grounding">
+    <service:supportedBy rdf:resource="#GetExhibitionSchedule-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

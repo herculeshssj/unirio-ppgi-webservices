@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Doc2PDF.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Doc2PDF">
+    <service:presents rdf:resource="#Doc2PDF-Profile"/>
+    <service:describedBy rdf:resource="#Doc2PDF-Process-Model"/>
+    <service:supports rdf:resource="#Doc2PDF-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Doc2PDF-Profile">
+    <service:isPresentedBy rdf:resource="#Doc2PDF-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Doc2PDF
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Converts a Doc type file to PDF Version
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#DocFile"/>
+    <profile:hasOutput rdf:resource="#PDFFile"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Doc2PDF-Process-Model">
+     <service:describes rdf:resource="#Doc2PDF-Service"/>
+     <process:hasProcess rdf:resource="#Doc2PDF-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Doc2PDF-Process">
+   <process:hasInput rdf:resource="#DocFile"/>
+   <process:hasOutput rdf:resource="#PDFFile"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="DocFile">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DocFile</process:parameterType>
+    <rdfs:label>Microsoft Word Doc File</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="PDFFile">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#PDFFile</process:parameterType>
+    <rdfs:label>Portable Document Format File (PDF for Adobe Acrobat)</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Doc2PDF-Grounding">
+    <service:supportedBy rdf:resource="#Doc2PDF-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

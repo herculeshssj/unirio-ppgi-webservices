@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Number2Words.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Number2Words">
+    <service:presents rdf:resource="#Number2Words-Profile"/>
+    <service:describedBy rdf:resource="#Number2Words-Process-Model"/>
+    <service:supports rdf:resource="#Number2Words-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Number2Words-Profile">
+    <service:isPresentedBy rdf:resource="#Number2Words-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Number2Words
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Convert Number to Words
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Number"/>
+    <profile:hasInput rdf:resource="#DestinationLanguage"/>
+    <profile:hasOutput rdf:resource="#Text"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Number2Words-Process-Model">
+     <service:describes rdf:resource="#Number2Words-Service"/>
+     <process:hasProcess rdf:resource="#Number2Words-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Number2Words-Process">
+   <process:hasInput rdf:resource="#Number"/>
+   <process:hasInput rdf:resource="#DestinationLanguage"/>
+   <process:hasOutput rdf:resource="#Text"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Number">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Number to convert</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationLanguage">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Language</process:parameterType>
+    <rdfs:label>Destination Language</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Text">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Words version of the number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Number2Words-Grounding">
+    <service:supportedBy rdf:resource="#Number2Words-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

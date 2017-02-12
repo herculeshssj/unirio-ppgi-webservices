@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/AirportWeatherCheck.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="AirportWeatherCheck">
+    <service:presents rdf:resource="#AirportWeatherCheck-Profile"/>
+    <service:describedBy rdf:resource="#AirportWeatherCheck-Process-Model"/>
+    <service:supports rdf:resource="#AirportWeatherCheck-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="AirportWeatherCheck-Profile">
+    <service:isPresentedBy rdf:resource="#AirportWeatherCheck-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Airport Weather Check
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the weather information of an airport
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#AirportCode"/>
+    <profile:hasOutput rdf:resource="#WeatherInfo"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="AirportWeatherCheck-Process-Model">
+     <service:describes rdf:resource="#AirportWeatherCheck-Service"/>
+     <process:hasProcess rdf:resource="#AirportWeatherCheck-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="AirportWeatherCheck-Process">
+   <process:hasInput rdf:resource="#AirportCode"/>
+   <process:hasOutput rdf:resource="#WeatherInfo"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="AirportCode">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#AirportCode</process:parameterType>
+    <rdfs:label>Airport Code</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="WeatherInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Weather</process:parameterType>
+    <rdfs:label>Weather Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="AirportWeatherCheck-Grounding">
+    <service:supportedBy rdf:resource="#AirportWeatherCheck-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

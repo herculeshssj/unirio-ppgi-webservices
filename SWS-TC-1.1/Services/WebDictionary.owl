@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/WebDictionary.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="WebDictionary">
+    <service:presents rdf:resource="#WebDictionary-Profile"/>
+    <service:describedBy rdf:resource="#WebDictionary-Process-Model"/>
+    <service:supports rdf:resource="#WebDictionary-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="WebDictionary-Profile">
+    <service:isPresentedBy rdf:resource="#WebDictionary-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Web Dictionary
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           An online dictionary that translates keywords of one web programming language to the others
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#InputKeyword"/>
+    <profile:hasInput rdf:resource="#SourceLanguage"/>
+    <profile:hasInput rdf:resource="#DestinationLanguage"/>
+    <profile:hasOutput rdf:resource="#OutputKeyword"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="WebDictionary-Process-Model">
+     <service:describes rdf:resource="#WebDictionary-Service"/>
+     <process:hasProcess rdf:resource="#WebDictionary-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="WebDictionary-Process">
+   <process:hasInput rdf:resource="#InputKeyword"/>
+   <process:hasInput rdf:resource="#SourceLanguage"/>
+   <process:hasInput rdf:resource="#DestinationLanguage"/>
+   <process:hasOutput rdf:resource="#OutputKeyword"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="InputKeyword">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Phrase</process:parameterType>
+    <rdfs:label>Source Programming Language Keyword</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="SourceLanguage">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ProgrammingLanguage</process:parameterType>
+    <rdfs:label>Source Programming Language</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationLanguage">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ProgrammingLanguage</process:parameterType>
+    <rdfs:label>Destination Programming Language</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="OutputKeyword">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Phrase</process:parameterType>
+    <rdfs:label>Destination Programming Language Keyword</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="WebDictionary-Grounding">
+    <service:supportedBy rdf:resource="#WebDictionary-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

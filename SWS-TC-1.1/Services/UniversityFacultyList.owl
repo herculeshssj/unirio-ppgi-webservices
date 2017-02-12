@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/UniversityFacultyList.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="UniversityFacultyList">
+    <service:presents rdf:resource="#UniversityFacultyList-Profile"/>
+    <service:describedBy rdf:resource="#UniversityFacultyList-Process-Model"/>
+    <service:supports rdf:resource="#UniversityFacultyList-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="UniversityFacultyList-Profile">
+    <service:isPresentedBy rdf:resource="#UniversityFacultyList-Service"/>
+	 <profile:serviceName xml:lang="en">
+           University Faculty List
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the University Faculty List
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#UniversityInfo"/>
+    <profile:hasOutput rdf:resource="#FacultyList"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="UniversityFacultyList-Process-Model">
+     <service:describes rdf:resource="#UniversityFacultyList-Service"/>
+     <process:hasProcess rdf:resource="#UniversityFacultyList-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="UniversityFacultyList-Process">
+   <process:hasInput rdf:resource="#UniversityInfo"/>
+   <process:hasOutput rdf:resource="#FacultyList"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="UniversityInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#University</process:parameterType>
+    <rdfs:label>University Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="FacultyList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Person</process:parameterType>
+    <rdfs:label>Faculty List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="UniversityFacultyList-Grounding">
+    <service:supportedBy rdf:resource="#UniversityFacultyList-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

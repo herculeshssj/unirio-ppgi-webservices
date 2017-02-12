@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetHotelInformation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetHotelInformation">
+    <service:presents rdf:resource="#GetHotelInformation-Profile"/>
+    <service:describedBy rdf:resource="#GetHotelInformation-Process-Model"/>
+    <service:supports rdf:resource="#GetHotelInformation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetHotelInformation-Profile">
+    <service:isPresentedBy rdf:resource="#GetHotelInformation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Hotel Information
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns a Hotel Information, such as available schedule, hotel type and facilities
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Hotel"/>
+    <profile:hasOutput rdf:resource="#AvailableSchedule"/>
+    <profile:hasOutput rdf:resource="#HotelType"/>
+    <profile:hasOutput rdf:resource="#Facilities"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetHotelInformation-Process-Model">
+     <service:describes rdf:resource="#GetHotelInformation-Service"/>
+     <process:hasProcess rdf:resource="#GetHotelInformation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetHotelInformation-Process">
+   <process:hasInput rdf:resource="#Hotel"/>
+   <process:hasOutput rdf:resource="#AvailableSchedule"/>
+   <process:hasOutput rdf:resource="#HotelType"/>
+   <process:hasOutput rdf:resource="#Facilities"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Hotel">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Hotel</process:parameterType>
+    <rdfs:label>Hotel Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="AvailableSchedule">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Schedule</process:parameterType>
+    <rdfs:label>Available Schedule</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="HotelType">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#HotelType</process:parameterType>
+    <rdfs:label>Hotel Type</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Facilities">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Facility</process:parameterType>
+    <rdfs:label>Hotel Facilities</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetHotelInformation-Grounding">
+    <service:supportedBy rdf:resource="#GetHotelInformation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

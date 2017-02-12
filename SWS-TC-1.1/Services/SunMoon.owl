@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SunMoon.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SunMoon">
+    <service:presents rdf:resource="#SunMoon-Profile"/>
+    <service:describedBy rdf:resource="#SunMoon-Process-Model"/>
+    <service:supports rdf:resource="#SunMoon-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SunMoon-Profile">
+    <service:isPresentedBy rdf:resource="#SunMoon-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Sun Moon
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Sun/Moon rise and set data. Sunrise, sunset, moonrise, moonset for a given latitude, longitude, date and time bias
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Latitude"/>
+    <profile:hasInput rdf:resource="#Longitude"/>
+    <profile:hasInput rdf:resource="#DateTime"/>
+    <profile:hasOutput rdf:resource="#SunRise"/>
+    <profile:hasOutput rdf:resource="#Sunset"/>
+    <profile:hasOutput rdf:resource="#Moonrise"/>
+    <profile:hasOutput rdf:resource="#Moonset"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SunMoon-Process-Model">
+     <service:describes rdf:resource="#SunMoon-Service"/>
+     <process:hasProcess rdf:resource="#SunMoon-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SunMoon-Process">
+   <process:hasInput rdf:resource="#Latitude"/>
+   <process:hasInput rdf:resource="#Longitude"/>
+   <process:hasInput rdf:resource="#DateTime"/>
+   <process:hasOutput rdf:resource="#SunRise"/>
+   <process:hasOutput rdf:resource="#Sunset"/>
+   <process:hasOutput rdf:resource="#Moonrise"/>
+   <process:hasOutput rdf:resource="#Moonset"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Latitude">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Latitude</process:parameterType>
+    <rdfs:label>Latitude Value</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Longitude">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Longitude</process:parameterType>
+    <rdfs:label>Longitude Value</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DateTime">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="SunRise">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label>Sun rise time</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Sunset">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label>Sun set time</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Moonrise">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label>Moon rise time</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="Moonset">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#DateTime</process:parameterType>
+    <rdfs:label>Moon set time</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="SunMoon-Grounding">
+    <service:supportedBy rdf:resource="#SunMoon-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

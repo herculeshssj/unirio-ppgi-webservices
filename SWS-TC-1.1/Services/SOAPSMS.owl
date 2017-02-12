@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/SOAPSMS.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="SOAPSMS">
+    <service:presents rdf:resource="#SOAPSMS-Profile"/>
+    <service:describedBy rdf:resource="#SOAPSMS-Process-Model"/>
+    <service:supports rdf:resource="#SOAPSMS-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="SOAPSMS-Profile">
+    <service:isPresentedBy rdf:resource="#SOAPSMS-Service"/>
+	 <profile:serviceName xml:lang="en">
+           SOAP SMS
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Send SMS to 130 countries using the Redcoal SOAP interface
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Message"/>
+    <profile:hasInput rdf:resource="#PhoneNumber"/>
+    <profile:hasResult rdf:resource="#SMS_Sent"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="SOAPSMS-Process-Model">
+     <service:describes rdf:resource="#SOAPSMS-Service"/>
+     <process:hasProcess rdf:resource="#SOAPSMS-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="SOAPSMS-Process">
+   <process:hasInput rdf:resource="#Message"/>
+   <process:hasInput rdf:resource="#PhoneNumber"/>
+   <process:hasResult>
+      <process:Result rdf:ID="SMS_Sent">
+          <rdfs:comment>SMS Successfully sent</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Message">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Message Text</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="PhoneNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#PhoneNumber</process:parameterType>
+    <rdfs:label>Phone Number</rdfs:label>
+</process:Input>
+
+<grounding:WsdlGrounding rdf:ID="SOAPSMS-Grounding">
+    <service:supportedBy rdf:resource="#SOAPSMS-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

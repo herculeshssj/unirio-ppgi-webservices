@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/NormalDecompressText.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="NormalDecompressText">
+    <service:presents rdf:resource="#NormalDecompressText-Profile"/>
+    <service:describedBy rdf:resource="#NormalDecompressText-Process-Model"/>
+    <service:supports rdf:resource="#NormalDecompressText-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="NormalDecompressText-Profile">
+    <service:isPresentedBy rdf:resource="#NormalDecompressText-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Normal Decompress Text
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Text Compression, Returns the decompressed form of specified text
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CompressedText"/>
+    <profile:hasOutput rdf:resource="#DecompressedText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="NormalDecompressText-Process-Model">
+     <service:describes rdf:resource="#NormalDecompressText-Service"/>
+     <process:hasProcess rdf:resource="#NormalDecompressText-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="NormalDecompressText-Process">
+   <process:hasInput rdf:resource="#CompressedText"/>
+   <process:hasOutput rdf:resource="#DecompressedText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CompressedText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#CompressedText</process:parameterType>
+    <rdfs:label>Compressed Text</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="DecompressedText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Decompressed Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="NormalDecompressText-Grounding">
+    <service:supportedBy rdf:resource="#NormalDecompressText-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

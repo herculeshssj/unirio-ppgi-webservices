@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/BookPrice.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="BookPrice">
+    <service:presents rdf:resource="#BookPrice-Profile"/>
+    <service:describedBy rdf:resource="#BookPrice-Process-Model"/>
+    <service:supports rdf:resource="#BookPrice-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="BookPrice-Profile">
+    <service:isPresentedBy rdf:resource="#BookPrice-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Book Price
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the price of a book if it is available in the stock.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Book"/>
+    <profile:hasOutput rdf:resource="#PriceOfBook"/>
+    <profile:hasPrecondition rdf:resource="#BookInStock"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="BookPrice-Process-Model">
+     <service:describes rdf:resource="#BookPrice-Service"/>
+     <process:hasProcess rdf:resource="#BookPrice-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="BookPrice-Process">
+   <process:hasInput rdf:resource="#Book"/>
+   <process:hasOutput rdf:resource="#PriceOfBook"/>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="BookInStock">
+          <rdfs:comment>Is Book in stock</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Book">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Book</process:parameterType>
+    <rdfs:label></rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="PriceOfBook">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Price</process:parameterType>
+    <rdfs:label>Book Price</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="BookPrice-Grounding">
+    <service:supportedBy rdf:resource="#BookPrice-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

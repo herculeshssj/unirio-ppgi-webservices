@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/CDYNESpellChecker.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="CDYNESpellChecker">
+    <service:presents rdf:resource="#CDYNESpellChecker-Profile"/>
+    <service:describedBy rdf:resource="#CDYNESpellChecker-Process-Model"/>
+    <service:supports rdf:resource="#CDYNESpellChecker-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="CDYNESpellChecker-Profile">
+    <service:isPresentedBy rdf:resource="#CDYNESpellChecker-Service"/>
+	 <profile:serviceName xml:lang="en">
+           CDYNE Spell Checker
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Spell Checks text and sends back suggestions
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Text"/>
+    <profile:hasOutput rdf:resource="#SuggestionList"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="CDYNESpellChecker-Process-Model">
+     <service:describes rdf:resource="#CDYNESpellChecker-Service"/>
+     <process:hasProcess rdf:resource="#CDYNESpellChecker-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="CDYNESpellChecker-Process">
+   <process:hasInput rdf:resource="#Text"/>
+   <process:hasOutput rdf:resource="#SuggestionList"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Text">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Text to check spelling</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="SuggestionList">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Suggestion</process:parameterType>
+    <rdfs:label>Suggestion List, including Line Number, Invalid Phrase and suggested one</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="CDYNESpellChecker-Grounding">
+    <service:supportedBy rdf:resource="#CDYNESpellChecker-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

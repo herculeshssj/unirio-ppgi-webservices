@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/BabylonDictionary.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="BabylonDictionary">
+    <service:presents rdf:resource="#BabylonDictionary-Profile"/>
+    <service:describedBy rdf:resource="#BabylonDictionary-Process-Model"/>
+    <service:supports rdf:resource="#BabylonDictionary-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="BabylonDictionary-Profile">
+    <service:isPresentedBy rdf:resource="#BabylonDictionary-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Babylon Dictionary
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Finds the definitions of a given word in the Babylon dictionary.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Word"/>
+    <profile:hasOutput rdf:resource="#Definitions"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="BabylonDictionary-Process-Model">
+     <service:describes rdf:resource="#BabylonDictionary-Service"/>
+     <process:hasProcess rdf:resource="#BabylonDictionary-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="BabylonDictionary-Process">
+   <process:hasInput rdf:resource="#Word"/>
+   <process:hasOutput rdf:resource="#Definitions"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Word">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Word</process:parameterType>
+    <rdfs:label>Word to lookup</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Definitions">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Definition</process:parameterType>
+    <rdfs:label>Word definitions</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="BabylonDictionary-Grounding">
+    <service:supportedBy rdf:resource="#BabylonDictionary-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

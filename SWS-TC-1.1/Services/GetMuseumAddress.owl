@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetMuseumAddress.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetMuseumAddress">
+    <service:presents rdf:resource="#GetMuseumAddress-Profile"/>
+    <service:describedBy rdf:resource="#GetMuseumAddress-Process-Model"/>
+    <service:supports rdf:resource="#GetMuseumAddress-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetMuseumAddress-Profile">
+    <service:isPresentedBy rdf:resource="#GetMuseumAddress-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Museum Address
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returns the address of a museum
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#MuseumInfo"/>
+    <profile:hasOutput rdf:resource="#MuseumAddress"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetMuseumAddress-Process-Model">
+     <service:describes rdf:resource="#GetMuseumAddress-Service"/>
+     <process:hasProcess rdf:resource="#GetMuseumAddress-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetMuseumAddress-Process">
+   <process:hasInput rdf:resource="#MuseumInfo"/>
+   <process:hasOutput rdf:resource="#MuseumAddress"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="MuseumInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Museum</process:parameterType>
+    <rdfs:label>Museum Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="MuseumAddress">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Address</process:parameterType>
+    <rdfs:label>Museum Address Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetMuseumAddress-Grounding">
+    <service:supportedBy rdf:resource="#GetMuseumAddress-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

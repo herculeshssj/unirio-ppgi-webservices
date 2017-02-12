@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GeoMonsterMailValidate.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GeoMonsterMailValidate">
+    <service:presents rdf:resource="#GeoMonsterMailValidate-Profile"/>
+    <service:describedBy rdf:resource="#GeoMonsterMailValidate-Process-Model"/>
+    <service:supports rdf:resource="#GeoMonsterMailValidate-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GeoMonsterMailValidate-Profile">
+    <service:isPresentedBy rdf:resource="#GeoMonsterMailValidate-Service"/>
+	 <profile:serviceName xml:lang="en">
+           GeoMonster Mail Validate
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Web Service to validate an email address against a mail server. With MailValidate you can instantly check whether an email address is valid and able to accept messages. Use this to instantly validate addresses on web forms or to process your existing customer lists to maintain the quality of your data
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#EMailAddress"/>
+    <profile:hasOutput rdf:resource="#ValidationResult"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GeoMonsterMailValidate-Process-Model">
+     <service:describes rdf:resource="#GeoMonsterMailValidate-Service"/>
+     <process:hasProcess rdf:resource="#GeoMonsterMailValidate-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GeoMonsterMailValidate-Process">
+   <process:hasInput rdf:resource="#EMailAddress"/>
+   <process:hasOutput rdf:resource="#ValidationResult"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="EMailAddress">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#EMailAddress</process:parameterType>
+    <rdfs:label>EMail Address to validate</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ValidationResult">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#true-false</process:parameterType>
+    <rdfs:label>Validation Result</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GeoMonsterMailValidate-Grounding">
+    <service:supportedBy rdf:resource="#GeoMonsterMailValidate-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

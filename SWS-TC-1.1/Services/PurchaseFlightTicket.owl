@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/PurchaseFlightTicket.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="PurchaseFlightTicket">
+    <service:presents rdf:resource="#PurchaseFlightTicket-Profile"/>
+    <service:describedBy rdf:resource="#PurchaseFlightTicket-Process-Model"/>
+    <service:supports rdf:resource="#PurchaseFlightTicket-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="PurchaseFlightTicket-Profile">
+    <service:isPresentedBy rdf:resource="#PurchaseFlightTicket-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Purchase Flight Ticket
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           This web service will purchase a ticket for a specified flight
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Flight"/>
+    <profile:hasOutput rdf:resource="#Acknowledgement"/>
+    <profile:hasPrecondition rdf:resource="#FlightAvailable"/>
+    <profile:hasPrecondition rdf:resource="#CreditCardCharged"/>
+    <profile:hasResult rdf:resource="#FlightTicketPurchased"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="PurchaseFlightTicket-Process-Model">
+     <service:describes rdf:resource="#PurchaseFlightTicket-Service"/>
+     <process:hasProcess rdf:resource="#PurchaseFlightTicket-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="PurchaseFlightTicket-Process">
+   <process:hasInput rdf:resource="#Flight"/>
+   <process:hasOutput rdf:resource="#Acknowledgement"/>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="FlightAvailable">
+          <rdfs:comment>Flight Is Available</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+   <process:hasPrecondition>
+      <expr:SWRL-Condition rdf:ID="CreditCardCharged">
+          <rdfs:comment>Credit Card Charged</rdfs:comment>
+          <expr:expressionLanguage rdf:resource="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#SWRL" />
+          <expr:expressionBody rdf:parseType="Literal">
+              <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+          </expr:expressionBody>
+      </expr:SWRL-Condition>
+   </process:hasPrecondition>
+   <process:hasResult>
+      <process:Result rdf:ID="FlightTicketPurchased">
+          <rdfs:comment>Flight Ticket Purchased</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Flight">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Flight</process:parameterType>
+    <rdfs:label>Flight Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Acknowledgement">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Acknowledgement</process:parameterType>
+    <rdfs:label>Acknowledgement</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="PurchaseFlightTicket-Grounding">
+    <service:supportedBy rdf:resource="#PurchaseFlightTicket-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

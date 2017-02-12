@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ChangeNumberBase.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ChangeNumberBase">
+    <service:presents rdf:resource="#ChangeNumberBase-Profile"/>
+    <service:describedBy rdf:resource="#ChangeNumberBase-Process-Model"/>
+    <service:supports rdf:resource="#ChangeNumberBase-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ChangeNumberBase-Profile">
+    <service:isPresentedBy rdf:resource="#ChangeNumberBase-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Change Number Base
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Changes the base of a number
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#InputNumber"/>
+    <profile:hasInput rdf:resource="#SourceBase"/>
+    <profile:hasInput rdf:resource="#DestinationBase"/>
+    <profile:hasOutput rdf:resource="#OutputNumber"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ChangeNumberBase-Process-Model">
+     <service:describes rdf:resource="#ChangeNumberBase-Service"/>
+     <process:hasProcess rdf:resource="#ChangeNumberBase-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ChangeNumberBase-Process">
+   <process:hasInput rdf:resource="#InputNumber"/>
+   <process:hasInput rdf:resource="#SourceBase"/>
+   <process:hasInput rdf:resource="#DestinationBase"/>
+   <process:hasOutput rdf:resource="#OutputNumber"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="InputNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Number to change the base</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="SourceBase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#NumberBase</process:parameterType>
+    <rdfs:label>Source Number Base</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="DestinationBase">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#NumberBase</process:parameterType>
+    <rdfs:label>Destination Number Base</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="OutputNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Converted Base Number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ChangeNumberBase-Grounding">
+    <service:supportedBy rdf:resource="#ChangeNumberBase-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/FileSyncronizeService.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="FileSyncronizeService">
+    <service:presents rdf:resource="#FileSyncronizeService-Profile"/>
+    <service:describedBy rdf:resource="#FileSyncronizeService-Process-Model"/>
+    <service:supports rdf:resource="#FileSyncronizeService-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="FileSyncronizeService-Profile">
+    <service:isPresentedBy rdf:resource="#FileSyncronizeService-Service"/>
+	 <profile:serviceName xml:lang="en">
+           File Syncronize Service
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           A web-based file sync service for travellers and small business. This service synchronizes your important data files on your computers to a secure encrypted server on the Internet. You can access your files from any computer, anywhere!
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#File"/>
+    <profile:hasResult rdf:resource="#FileSynchronized"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="FileSyncronizeService-Process-Model">
+     <service:describes rdf:resource="#FileSyncronizeService-Service"/>
+     <process:hasProcess rdf:resource="#FileSyncronizeService-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="FileSyncronizeService-Process">
+   <process:hasInput rdf:resource="#File"/>
+   <process:hasResult>
+      <process:Result rdf:ID="FileSynchronized">
+          <rdfs:comment>File Synchronized</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="File">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#File</process:parameterType>
+    <rdfs:label>File to synchronize</rdfs:label>
+</process:Input>
+
+<grounding:WsdlGrounding rdf:ID="FileSyncronizeService-Grounding">
+    <service:supportedBy rdf:resource="#FileSyncronizeService-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

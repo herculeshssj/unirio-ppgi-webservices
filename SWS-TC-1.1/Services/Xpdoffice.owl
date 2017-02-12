@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/Xpdoffice.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="Xpdoffice">
+    <service:presents rdf:resource="#Xpdoffice-Profile"/>
+    <service:describedBy rdf:resource="#Xpdoffice-Process-Model"/>
+    <service:supports rdf:resource="#Xpdoffice-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="Xpdoffice-Profile">
+    <service:isPresentedBy rdf:resource="#Xpdoffice-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Xpdoffice
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Easy to use online timesheets. Easy to use online timesheets with components for expense reporting, contracting, hr, invoicing and project management. Integrated with MS Project and popular accounting packages
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Period"/>
+    <profile:hasOutput rdf:resource="#TimeSheet"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="Xpdoffice-Process-Model">
+     <service:describes rdf:resource="#Xpdoffice-Service"/>
+     <process:hasProcess rdf:resource="#Xpdoffice-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="Xpdoffice-Process">
+   <process:hasInput rdf:resource="#Period"/>
+   <process:hasOutput rdf:resource="#TimeSheet"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Period">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Period</process:parameterType>
+    <rdfs:label>Time Period</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TimeSheet">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TimeSheet</process:parameterType>
+    <rdfs:label>Time Sheet</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="Xpdoffice-Grounding">
+    <service:supportedBy rdf:resource="#Xpdoffice-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

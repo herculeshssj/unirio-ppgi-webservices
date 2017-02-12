@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetCityHospitals.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetCityHospitals">
+    <service:presents rdf:resource="#GetCityHospitals-Profile"/>
+    <service:describedBy rdf:resource="#GetCityHospitals-Process-Model"/>
+    <service:supports rdf:resource="#GetCityHospitals-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetCityHospitals-Profile">
+    <service:isPresentedBy rdf:resource="#GetCityHospitals-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get City Hospitals
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Returnds the hospitals in a city
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#CityInfo"/>
+    <profile:hasOutput rdf:resource="#Hospitals"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetCityHospitals-Process-Model">
+     <service:describes rdf:resource="#GetCityHospitals-Service"/>
+     <process:hasProcess rdf:resource="#GetCityHospitals-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetCityHospitals-Process">
+   <process:hasInput rdf:resource="#CityInfo"/>
+   <process:hasOutput rdf:resource="#Hospitals"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="CityInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Informtion</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="Hospitals">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Hospital</process:parameterType>
+    <rdfs:label>City Hospital List</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetCityHospitals-Grounding">
+    <service:supportedBy rdf:resource="#GetCityHospitals-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/TicketReservation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="TicketReservation">
+    <service:presents rdf:resource="#TicketReservation-Profile"/>
+    <service:describedBy rdf:resource="#TicketReservation-Process-Model"/>
+    <service:supports rdf:resource="#TicketReservation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="TicketReservation-Profile">
+    <service:isPresentedBy rdf:resource="#TicketReservation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Ticket Reservation
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           That's obvious. For reserving tickets over I'Net
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Ticket"/>
+    <profile:hasOutput rdf:resource="#ReservationNumber"/>
+    <profile:hasResult rdf:resource="#Reserved"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="TicketReservation-Process-Model">
+     <service:describes rdf:resource="#TicketReservation-Service"/>
+     <process:hasProcess rdf:resource="#TicketReservation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="TicketReservation-Process">
+   <process:hasInput rdf:resource="#Ticket"/>
+   <process:hasOutput rdf:resource="#ReservationNumber"/>
+   <process:hasResult>
+      <process:Result rdf:ID="Reserved">
+          <rdfs:comment>Ticket Reserved</rdfs:comment>
+          <process:Effect>
+              <expr:SWRL-Expression>
+                  <expr:expressionBody rdf:parseType="Literal">
+                      <swrl:AtomList rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+                  </expr:expressionBody>
+              </expr:SWRL-Expression>
+          </process:Effect>
+      </process:Result>
+   </process:hasResult>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Ticket">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Ticket</process:parameterType>
+    <rdfs:label>Ticket Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ReservationNumber">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Reservation Number</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="TicketReservation-Grounding">
+    <service:supportedBy rdf:resource="#TicketReservation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

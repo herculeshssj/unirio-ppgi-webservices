@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/DailyNews.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="DailyNews">
+    <service:presents rdf:resource="#DailyNews-Profile"/>
+    <service:describedBy rdf:resource="#DailyNews-Process-Model"/>
+    <service:supports rdf:resource="#DailyNews-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="DailyNews-Profile">
+    <service:isPresentedBy rdf:resource="#DailyNews-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Daily News
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Receives a daily newspaper information and returns news items from that newspaper.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#DailyNewspaper"/>
+    <profile:hasOutput rdf:resource="#NewsItem"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="DailyNews-Process-Model">
+     <service:describes rdf:resource="#DailyNews-Service"/>
+     <process:hasProcess rdf:resource="#DailyNews-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="DailyNews-Process">
+   <process:hasInput rdf:resource="#DailyNewspaper"/>
+   <process:hasOutput rdf:resource="#NewsItem"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="DailyNewspaper">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Newspaper</process:parameterType>
+    <rdfs:label>Daily Newspaper Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="NewsItem">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#News</process:parameterType>
+    <rdfs:label>News Items</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="DailyNews-Grounding">
+    <service:supportedBy rdf:resource="#DailyNews-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

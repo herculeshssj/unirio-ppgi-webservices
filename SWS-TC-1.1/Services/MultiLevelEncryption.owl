@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/MultiLevelEncryption.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="MultiLevelEncryption">
+    <service:presents rdf:resource="#MultiLevelEncryption-Profile"/>
+    <service:describedBy rdf:resource="#MultiLevelEncryption-Process-Model"/>
+    <service:supports rdf:resource="#MultiLevelEncryption-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="MultiLevelEncryption-Profile">
+    <service:isPresentedBy rdf:resource="#MultiLevelEncryption-Service"/>
+	 <profile:serviceName xml:lang="en">
+           MultiLevel Encryption
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Encryption with multi level format (using ciphertext algorithm, it has a multiple level)
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#TextToEncrypt"/>
+    <profile:hasInput rdf:resource="#EncryptionLevel"/>
+    <profile:hasOutput rdf:resource="#EncryptedText"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="MultiLevelEncryption-Process-Model">
+     <service:describes rdf:resource="#MultiLevelEncryption-Service"/>
+     <process:hasProcess rdf:resource="#MultiLevelEncryption-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="MultiLevelEncryption-Process">
+   <process:hasInput rdf:resource="#TextToEncrypt"/>
+   <process:hasInput rdf:resource="#EncryptionLevel"/>
+   <process:hasOutput rdf:resource="#EncryptedText"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="TextToEncrypt">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Text</process:parameterType>
+    <rdfs:label>Text to be encrypt</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="EncryptionLevel">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#EncryptionLevel</process:parameterType>
+    <rdfs:label>Encryption Level</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="EncryptedText">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#EncryptedText</process:parameterType>
+    <rdfs:label>Encrypted Text</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="MultiLevelEncryption-Grounding">
+    <service:supportedBy rdf:resource="#MultiLevelEncryption-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

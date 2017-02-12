@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/LargeMath.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="LargeMath">
+    <service:presents rdf:resource="#LargeMath-Profile"/>
+    <service:describedBy rdf:resource="#LargeMath-Process-Model"/>
+    <service:supports rdf:resource="#LargeMath-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="LargeMath-Profile">
+    <service:isPresentedBy rdf:resource="#LargeMath-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Large Math
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Arithmetic for large numbers
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#Operand1"/>
+    <profile:hasInput rdf:resource="#Operand2"/>
+    <profile:hasInput rdf:resource="#Operation"/>
+    <profile:hasOutput rdf:resource="#ResultValue"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="LargeMath-Process-Model">
+     <service:describes rdf:resource="#LargeMath-Service"/>
+     <process:hasProcess rdf:resource="#LargeMath-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="LargeMath-Process">
+   <process:hasInput rdf:resource="#Operand1"/>
+   <process:hasInput rdf:resource="#Operand2"/>
+   <process:hasInput rdf:resource="#Operation"/>
+   <process:hasOutput rdf:resource="#ResultValue"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="Operand1">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Operand 1</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Operand2">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Operand 2</rdfs:label>
+</process:Input>
+
+<process:Input rdf:ID="Operation">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#ArithmeticOperationType</process:parameterType>
+    <rdfs:label>Arithmetic Operation Type</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ResultValue">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Number</process:parameterType>
+    <rdfs:label>Operation Result Value</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="LargeMath-Grounding">
+    <service:supportedBy rdf:resource="#LargeMath-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

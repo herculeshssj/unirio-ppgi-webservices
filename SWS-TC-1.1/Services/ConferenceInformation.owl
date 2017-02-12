@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/ConferenceInformation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="ConferenceInformation">
+    <service:presents rdf:resource="#ConferenceInformation-Profile"/>
+    <service:describedBy rdf:resource="#ConferenceInformation-Process-Model"/>
+    <service:supports rdf:resource="#ConferenceInformation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="ConferenceInformation-Profile">
+    <service:isPresentedBy rdf:resource="#ConferenceInformation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Conference Information
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Gets a conference information as input and returns the time interval and the city in which the conference will be hold.
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#ConferenceInfo"/>
+    <profile:hasOutput rdf:resource="#TimeInterval"/>
+    <profile:hasOutput rdf:resource="#City"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="ConferenceInformation-Process-Model">
+     <service:describes rdf:resource="#ConferenceInformation-Service"/>
+     <process:hasProcess rdf:resource="#ConferenceInformation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="ConferenceInformation-Process">
+   <process:hasInput rdf:resource="#ConferenceInfo"/>
+   <process:hasOutput rdf:resource="#TimeInterval"/>
+   <process:hasOutput rdf:resource="#City"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="ConferenceInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Conference</process:parameterType>
+    <rdfs:label>Conference Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="TimeInterval">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#TimeInterval</process:parameterType>
+    <rdfs:label>Time Interval</rdfs:label>
+</process:Output>
+
+<process:Output rdf:ID="City">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#City</process:parameterType>
+    <rdfs:label>City Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="ConferenceInformation-Grounding">
+    <service:supportedBy rdf:resource="#ConferenceInformation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF 
+ xmlns:owl = "http://www.w3.org/2002/07/owl#"
+ xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:service = "http://www.daml.org/services/owl-s/1.1/Service.owl#"
+ xmlns:process = "http://www.daml.org/services/owl-s/1.1/Process.owl#"
+ xmlns:profile = "http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+ xmlns:grounding = "http://www.daml.org/services/owl-s/1.1/Grounding.owl#"
+ xmlns:expr = "http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"
+ xmlns:swrl = "http://www.w3.org/2003/11/swrl#"
+ xml:base = "http://127.0.0.1/services/GetTherapistReputation.owl"> 
+
+<owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://127.0.0.1/ontology/Concepts.owl"/>
+</owl:Ontology>
+
+<service:Service rdf:ID="GetTherapistReputation">
+    <service:presents rdf:resource="#GetTherapistReputation-Profile"/>
+    <service:describedBy rdf:resource="#GetTherapistReputation-Process-Model"/>
+    <service:supports rdf:resource="#GetTherapistReputation-Grounding"/>
+</service:Service>
+
+<profile:Profile rdf:ID="GetTherapistReputation-Profile">
+    <service:isPresentedBy rdf:resource="#GetTherapistReputation-Service"/>
+	 <profile:serviceName xml:lang="en">
+           Get Therapist Reputation
+    </profile:serviceName>
+    <profile:textDescription xml:lang="en">
+           Finds Reputation of a therapist within a central DB
+    </profile:textDescription>
+    <profile:hasInput rdf:resource="#TherapistInfo"/>
+    <profile:hasOutput rdf:resource="#ReputationInfo"/>
+</profile:Profile>
+
+<process:ProcessModel rdf:ID="GetTherapistReputation-Process-Model">
+     <service:describes rdf:resource="#GetTherapistReputation-Service"/>
+     <process:hasProcess rdf:resource="#GetTherapistReputation-Process"/>
+</process:ProcessModel>
+
+<process:AtomicProcess rdf:ID="GetTherapistReputation-Process">
+   <process:hasInput rdf:resource="#TherapistInfo"/>
+   <process:hasOutput rdf:resource="#ReputationInfo"/>
+</process:AtomicProcess>
+
+<process:Input rdf:ID="TherapistInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Therapist</process:parameterType>
+    <rdfs:label>Therapist Information</rdfs:label>
+</process:Input>
+
+<process:Output rdf:ID="ReputationInfo">
+    <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://127.0.0.1/ontology/Concepts.owl#Reputation</process:parameterType>
+    <rdfs:label>Reputation Information</rdfs:label>
+</process:Output>
+
+<grounding:WsdlGrounding rdf:ID="GetTherapistReputation-Grounding">
+    <service:supportedBy rdf:resource="#GetTherapistReputation-Service"/>
+</grounding:WsdlGrounding>
+
+</rdf:RDF>
