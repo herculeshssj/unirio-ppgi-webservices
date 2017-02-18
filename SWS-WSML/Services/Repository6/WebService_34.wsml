@@ -1,0 +1,24 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-flight"
+namespace { _"http://www.uniriotec.br/wsmo/services#"
+, 
+     dc _"http://purl.org/dc/elements/1.1/", 
+     wsml _"http://www.wsmo.org/wsml/wsml-syntax#", 
+     xsd _"http://www.w3.org/2001/XMLSchema#", 
+     targetnamespace _"http://www.uniriotec.br/wsmo/services#" }
+
+
+webService _"http://www.uniriotec.br/wsmo/services/CountryInformationFinder"
+     nonFunctionalProperties
+          _"http://purl.org/dc/elements/1.1#description" hasValue "Country Name "
+          _"http://purl.org/dc/elements/1.1#title" hasValue "Web Service 3 4 "
+     endNonFunctionalProperties
+
+     importsOntology
+            _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl"
+
+capability targetnamespace#CountryInformationFinderCapability
+
+postcondition targetnamespace#CountryInformationFinderAxiom
+     definedBy 
+          ?a memberOf _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl#Country" and ?b memberOf _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl#Name".
+

@@ -1,0 +1,24 @@
+wsmlVariant _"http://www.wsmo.org/wsml/wsml-syntax/wsml-flight"
+namespace { _"http://www.uniriotec.br/wsmo/services#"
+, 
+     dc _"http://purl.org/dc/elements/1.1/", 
+     wsml _"http://www.wsmo.org/wsml/wsml-syntax#", 
+     xsd _"http://www.w3.org/2001/XMLSchema#", 
+     targetnamespace _"http://www.uniriotec.br/wsmo/services#" }
+
+
+webService _"http://www.uniriotec.br/wsmo/services/HotelReservation"
+     nonFunctionalProperties
+          _"http://purl.org/dc/elements/1.1#description" hasValue "Date Date Hotel "
+          _"http://purl.org/dc/elements/1.1#title" hasValue "Web Service 1 4 6 "
+     endNonFunctionalProperties
+
+     importsOntology
+            _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl"
+
+capability targetnamespace#HotelReservationCapability
+
+postcondition targetnamespace#HotelReservationAxiom
+     definedBy 
+          ?a memberOf _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl#Date" and ?b memberOf _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl#Date" and ?c memberOf _"http://www.uniriotec.br/wsmo/ontology/Concepts.owl#Hotel".
+
